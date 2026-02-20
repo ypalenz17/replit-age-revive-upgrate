@@ -163,7 +163,7 @@ const SideSheet = ({ isOpen, onClose, title, children }) => {
         <div className="space-y-8">
           <div className="space-y-2">
             <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ar-teal">Clinical Archive</p>
-            <h3 className="text-3xl md:text-4xl font-heading font-extrabold tracking-[-0.03em] uppercase">{title}</h3>
+            <h3 className="text-3xl md:text-4xl font-sans font-extrabold tracking-[-0.03em] uppercase">{title}</h3>
           </div>
 
           <div className="text-sm text-black/60 font-medium leading-relaxed space-y-4">
@@ -205,7 +205,7 @@ const Navbar = () => {
         className={['h-8 md:h-9 w-auto transition-all duration-500', scrolled ? '' : 'brightness-0 invert'].join(' ')}
       />
 
-      <div className="hidden md:flex items-center gap-10 font-extrabold text-[10px] uppercase tracking-[0.2em]">
+      <div className="hidden md:flex items-center gap-10 font-mono font-medium text-[10px] uppercase tracking-[0.2em]">
         {['Shop', 'The Axis', 'Science', 'Journal'].map((l) => (
           <a key={l} href="#" className={['transition-all hover:text-ar-teal', scrolled ? 'text-ar-navy/60' : 'text-white/60'].join(' ')}>
             {l}
@@ -273,7 +273,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
               <div className="h-[1px] w-12 bg-ar-teal" />
               <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Protocol Infrastructure</span>
             </div>
-            <h1 className="text-6xl md:text-8xl font-heading font-extrabold text-white tracking-[-0.05em] leading-[0.85]">
+            <h1 className="text-6xl md:text-8xl font-sans font-extrabold text-white tracking-[-0.05em] leading-[0.85]">
               Cellular Energy.
               <br />
               Gut Resilience.
@@ -291,21 +291,21 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
                 'CELLUBIOME gut–mito signaling support*',
                 'CELLUNOVA 7-day protocol cycle*'
               ].map((o) => (
-                <div key={o} className="flex items-center gap-3 text-white/60 text-xs font-extrabold uppercase tracking-tight">
+                <div key={o} className="flex items-center gap-3 text-white/60 text-xs font-mono font-bold uppercase tracking-tight">
                   <span className="w-1.5 h-1.5 rounded-full bg-ar-teal shrink-0" /> {o}
                 </div>
               ))}
             </div>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <button className="group relative px-10 py-5 bg-ar-teal text-ar-navy rounded-full font-extrabold uppercase text-[10px] tracking-[0.22em] overflow-hidden transition-transform hover:scale-105 active:scale-95">
+              <button className="group relative px-10 py-5 bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[10px] tracking-[0.22em] overflow-hidden transition-transform hover:scale-105 active:scale-95">
                 <span className="relative z-10">Start Full Protocol</span>
                 <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               </button>
 
               <button
                 onClick={onOpenEvidence}
-                className="px-8 py-5 border border-white/20 text-white rounded-full font-extrabold uppercase text-[10px] tracking-[0.22em] hover:bg-white/5 transition-all"
+                className="px-8 py-5 border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[10px] tracking-[0.22em] hover:bg-white/5 transition-all"
               >
                 View Evidence
               </button>
@@ -314,7 +314,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             <div className="flex items-center gap-4 pt-4 opacity-70">
               <span className="font-mono text-[10px] text-ar-teal font-bold tracking-[0.14em]">4.9 / 5.0</span>
               <span className="w-px h-3 bg-white/20" />
-              <span className="text-[10px] text-white uppercase font-extrabold tracking-[0.22em]">
+              <span className="text-[10px] text-white uppercase font-mono font-bold tracking-[0.22em]">
                 "Built like a protocol, not a supplement."
               </span>
             </div>
@@ -328,7 +328,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
         <div className="w-full md:w-1/3 mt-16 md:mt-0 hero-panel">
           <div className="bg-ar-paper p-8 rounded-ar-4xl shadow-float space-y-8 border border-black/5">
             <div className="space-y-2">
-              <h3 className="text-xl font-heading font-extrabold uppercase tracking-[-0.02em] text-ar-navy">Protocol Selector</h3>
+              <h3 className="text-xl font-sans font-extrabold uppercase tracking-[-0.02em] text-ar-navy">Protocol Selector</h3>
               <p className="text-[10px] font-mono text-black/40 uppercase tracking-[0.22em]">Select your starting system</p>
             </div>
 
@@ -347,7 +347,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
                   </div>
 
                   <div className="relative z-10">
-                    <h4 className="font-heading font-extrabold text-sm tracking-tight uppercase text-ar-navy">{p.name}</h4>
+                    <h4 className="font-sans font-extrabold text-sm tracking-tight uppercase text-ar-navy">{p.name}</h4>
                     <p className="text-[10px] font-medium text-black/55 leading-tight mb-2">{p.tagline}</p>
 
                     <div className="flex flex-wrap gap-2">
@@ -362,7 +362,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
               ))}
             </div>
 
-            <button className="w-full py-5 bg-ar-navy text-white rounded-full font-extrabold uppercase text-[10px] tracking-[0.22em] hover:bg-ar-ink transition-colors">
+            <button className="w-full py-5 bg-ar-navy text-white rounded-full font-mono font-bold uppercase text-[10px] tracking-[0.22em] hover:bg-ar-ink transition-colors">
               Explore The Axis
             </button>
 
@@ -382,7 +382,7 @@ const TheAxis = ({ onOpenEvidence }) => {
       <div className="max-w-7xl mx-auto space-y-24">
         <div className="max-w-2xl reveal">
           <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">The Foundation</span>
-          <h2 className="text-6xl font-heading font-extrabold tracking-[-0.04em] uppercase mt-4">
+          <h2 className="text-6xl font-sans font-extrabold tracking-[-0.04em] uppercase mt-4">
             The Age Revive
             <br />
             Systems Axis.
@@ -415,13 +415,13 @@ const TheAxis = ({ onOpenEvidence }) => {
                 <span className="font-mono text-xs font-bold tracking-[0.14em]">{item.tag}</span>
               </div>
               <div className="space-y-4">
-                <h3 className="text-2xl font-heading font-extrabold uppercase tracking-tight">{item.name}</h3>
+                <h3 className="text-2xl font-sans font-extrabold uppercase tracking-tight">{item.name}</h3>
                 <p className="text-sm font-medium text-black/60 leading-relaxed">{item.desc}</p>
               </div>
 
               <ul className="space-y-3">
                 {item.steps.map((s) => (
-                  <li key={s} className="flex items-center gap-3 text-[10px] font-extrabold uppercase tracking-[0.22em] text-black/45">
+                  <li key={s} className="flex items-center gap-3 text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-black/45">
                     <div className="w-1.5 h-1.5 rounded-full bg-ar-teal" /> {s}
                   </li>
                 ))}
@@ -429,7 +429,7 @@ const TheAxis = ({ onOpenEvidence }) => {
 
               <button
                 onClick={onOpenEvidence}
-                className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-ar-teal flex items-center gap-2 hover:gap-3 transition-all"
+                className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-ar-teal flex items-center gap-2 hover:gap-3 transition-all"
               >
                 View Evidence <ArrowRight size={14} />
               </button>
@@ -447,7 +447,7 @@ const SixPillars = () => {
       <div className="max-w-7xl mx-auto space-y-16">
         <div className="text-center space-y-4 reveal">
           <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Framework</span>
-          <h2 className="text-5xl font-heading font-extrabold tracking-[-0.04em] uppercase">6 Pillars of Systemic Aging</h2>
+          <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] uppercase">6 Pillars of Systemic Aging</h2>
           <p className="text-sm text-black/55 font-medium max-w-2xl mx-auto">
             A framework for mapping protocols to systems. Not medical advice.
           </p>
@@ -457,11 +457,11 @@ const SixPillars = () => {
           {PILLARS.map((p) => (
             <div key={p.title} className="reveal group p-10 bg-ar-paper rounded-ar-3xl border border-black/5 hover:border-ar-teal/20 transition-all hover:shadow-float hover:-translate-y-1">
               <div className="space-y-6">
-                <h4 className="text-xl font-heading font-extrabold uppercase tracking-tight">{p.title}</h4>
+                <h4 className="text-xl font-sans font-extrabold uppercase tracking-tight">{p.title}</h4>
                 <p className="text-xs font-medium text-black/45 leading-relaxed min-h-[46px]">{p.desc}</p>
                 <div className="pt-4 border-t border-black/10 flex justify-between items-center">
                   <span className="text-[10px] font-mono text-black/35 uppercase tracking-[0.22em]">Mapped Protocol</span>
-                  <span className="text-[10px] font-extrabold text-ar-teal uppercase tracking-[0.22em]">{p.protocol}</span>
+                  <span className="text-[10px] font-mono font-bold text-ar-teal uppercase tracking-[0.22em]">{p.protocol}</span>
                 </div>
               </div>
             </div>
@@ -485,9 +485,9 @@ const Journal = () => {
         <div className="flex flex-col md:flex-row justify-between items-end gap-6 reveal">
           <div className="space-y-4">
             <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Scientific Literacy</span>
-            <h2 className="text-5xl font-heading font-extrabold tracking-[-0.04em] uppercase">The Age Revive Journal.</h2>
+            <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] uppercase">The Age Revive Journal.</h2>
           </div>
-          <button className="text-[10px] font-extrabold uppercase tracking-[0.22em] border-b border-black/20 pb-2 hover:text-ar-teal hover:border-ar-teal transition-all flex items-center gap-2">
+          <button className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] border-b border-black/20 pb-2 hover:text-ar-teal hover:border-ar-teal transition-all flex items-center gap-2">
             Read the science <ArrowRight size={14} />
           </button>
         </div>
@@ -500,7 +500,7 @@ const Journal = () => {
               </div>
               <div className="space-y-2">
                 <span className="font-mono text-[9px] text-black/35 uppercase tracking-[0.22em]">{j.cat}</span>
-                <h4 className="text-xl font-heading font-extrabold uppercase tracking-tight group-hover:text-ar-teal transition-colors">{j.title}</h4>
+                <h4 className="text-xl font-sans font-extrabold uppercase tracking-tight group-hover:text-ar-teal transition-colors">{j.title}</h4>
               </div>
             </div>
           ))}
@@ -567,7 +567,7 @@ export default function Home() {
             <div key={p} className="flex items-center gap-3">
               <span className="font-mono text-[10px] font-bold text-ar-teal tracking-[0.14em]">{String(i + 1).padStart(2, '0')}</span>
               <span className="w-px h-3 bg-black/10" />
-              <span className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-black/55">{p}</span>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-black/55">{p}</span>
             </div>
           ))}
         </div>
@@ -599,14 +599,14 @@ export default function Home() {
           <img src="https://images.unsplash.com/photo-1579389083395-4507e9f4a171?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover" alt="" />
         </div>
         <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10 reveal">
-          <h2 className="text-6xl md:text-8xl font-heading font-extrabold tracking-[-0.05em] uppercase leading-[0.85]">
+          <h2 className="text-6xl md:text-8xl font-sans font-extrabold tracking-[-0.05em] uppercase leading-[0.85]">
             Build your baseline.
           </h2>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <button className="px-12 py-6 bg-ar-teal text-ar-navy rounded-full font-extrabold uppercase text-xs tracking-[0.22em] hover:scale-105 transition-all">
+            <button className="px-12 py-6 bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-xs tracking-[0.22em] hover:scale-105 transition-all">
               Start Full Protocol
             </button>
-            <button className="px-12 py-6 border border-white/20 text-white rounded-full font-extrabold uppercase text-xs tracking-[0.22em] hover:bg-white/5 transition-all">
+            <button className="px-12 py-6 border border-white/20 text-white rounded-full font-mono font-bold uppercase text-xs tracking-[0.22em] hover:bg-white/5 transition-all">
               Build your stack
             </button>
           </div>
@@ -628,7 +628,7 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-16">
             <div className="space-y-4">
-              <h5 className="text-[10px] font-extrabold uppercase tracking-[0.22em]">Shop</h5>
+              <h5 className="text-[10px] font-mono font-bold uppercase tracking-[0.22em]">Shop</h5>
               <ul className="space-y-2 text-[10px] font-medium text-black/50 uppercase list-none p-0">
                 <li>CELLUBIOME</li>
                 <li>CELLUNAD+</li>
@@ -637,7 +637,7 @@ export default function Home() {
             </div>
 
             <div className="space-y-4">
-              <h5 className="text-[10px] font-extrabold uppercase tracking-[0.22em]">Info</h5>
+              <h5 className="text-[10px] font-mono font-bold uppercase tracking-[0.22em]">Info</h5>
               <ul className="space-y-2 text-[10px] font-medium text-black/50 uppercase list-none p-0">
                 <li>The Axis</li>
                 <li>Journal</li>
@@ -646,7 +646,7 @@ export default function Home() {
             </div>
 
             <div className="space-y-4">
-              <h5 className="text-[10px] font-extrabold uppercase tracking-[0.22em]">Connect</h5>
+              <h5 className="text-[10px] font-mono font-bold uppercase tracking-[0.22em]">Connect</h5>
               <ul className="space-y-2 text-[10px] font-medium text-black/50 uppercase list-none p-0">
                 <li>Instagram</li>
                 <li>X</li>
@@ -670,7 +670,7 @@ export default function Home() {
       <SideSheet isOpen={evidencePanel} onClose={() => setEvidencePanel(false)} title="Scientific Evidence & Rationale">
         <div className="space-y-6">
           <section className="space-y-2">
-            <h4 className="font-heading font-extrabold uppercase tracking-tight text-ar-navy">Designed as a system</h4>
+            <h4 className="font-sans font-extrabold uppercase tracking-tight text-ar-navy">Designed as a system</h4>
             <p>
               Age Revive protocols are built around standardized actives, defined cadence, and quality controls.
               We keep claims clinically responsible and focus on repeatable execution.
@@ -678,7 +678,7 @@ export default function Home() {
           </section>
 
           <section className="space-y-2">
-            <h4 className="font-heading font-extrabold uppercase tracking-tight text-ar-navy">What you will see here</h4>
+            <h4 className="font-sans font-extrabold uppercase tracking-tight text-ar-navy">What you will see here</h4>
             <p>
               This panel summarizes protocol intent. Full research references can be linked in the Science section when ready.
             </p>
@@ -698,11 +698,11 @@ export default function Home() {
           <div className="space-y-8">
             <div className="space-y-2">
               <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-black/45">{activeProduct.category}</p>
-              <p className="text-xl font-heading font-extrabold uppercase tracking-[-0.02em]">{activeProduct.tagline}</p>
+              <p className="text-xl font-sans font-extrabold uppercase tracking-[-0.02em]">{activeProduct.tagline}</p>
               <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-black/40">{activeProduct.serving}</p>
               {activeProduct.warning && (
                 <div className="p-4 bg-red-500/5 border border-red-500/10 rounded-ar-2xl">
-                  <p className="text-[10px] font-extrabold text-red-600 uppercase tracking-[0.22em] mb-1">Warning</p>
+                  <p className="text-[10px] font-mono font-bold text-red-600 uppercase tracking-[0.22em] mb-1">Warning</p>
                   <p className="text-sm font-medium">{activeProduct.warning}</p>
                 </div>
               )}
@@ -723,10 +723,10 @@ export default function Home() {
               {activeProduct.fullIngredients.map((ing) => (
                 <div key={ing.name} className="flex justify-between items-end border-b border-black/10 pb-3 gap-6">
                   <div className="space-y-1">
-                    <p className="font-heading font-extrabold text-sm uppercase tracking-[-0.01em]">{ing.name}</p>
+                    <p className="font-sans font-extrabold text-sm uppercase tracking-[-0.01em]">{ing.name}</p>
                     <p className="text-[10px] font-mono text-black/45 uppercase tracking-[0.22em]">{ing.purpose}</p>
                   </div>
-                  <span className="font-mono text-sm font-extrabold text-ar-teal">{ing.dose}</span>
+                  <span className="font-mono text-sm font-bold text-ar-teal">{ing.dose}</span>
                 </div>
               ))}
             </div>
@@ -735,13 +735,13 @@ export default function Home() {
               <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-black/45">Rationale</p>
               {activeProduct.rationale.map((r) => (
                 <div key={r.title} className="rounded-ar-2xl bg-white border border-black/5 p-4">
-                  <p className="text-xs font-heading font-extrabold uppercase tracking-[0.12em]">{r.title}</p>
+                  <p className="text-xs font-sans font-extrabold uppercase tracking-[0.12em]">{r.title}</p>
                   <p className="mt-2 text-sm text-black/60 font-medium leading-relaxed">{r.text}</p>
                 </div>
               ))}
             </div>
 
-            <button className="w-full py-5 bg-ar-navy text-white rounded-full font-extrabold uppercase text-[10px] tracking-[0.22em] hover:bg-ar-ink transition-colors flex items-center justify-center gap-2">
+            <button className="w-full py-5 bg-ar-navy text-white rounded-full font-mono font-bold uppercase text-[10px] tracking-[0.22em] hover:bg-ar-ink transition-colors flex items-center justify-center gap-2">
               Add to Cart <ArrowRight size={14} />
             </button>
 
