@@ -231,7 +231,7 @@ const Navbar = () => {
 
       <div className="flex items-center gap-6">
         <button className={scrolled ? 'text-ar-navy' : 'text-white'} aria-label="Cart"><ShoppingBag size={20} /></button>
-        <button className={scrolled ? 'text-ar-navy' : 'text-white'} aria-label="Menu"><Menu size={20} /></button>
+        <button className={['md:hidden', scrolled ? 'text-ar-navy' : 'text-white'].join(' ')} aria-label="Menu"><Menu size={20} /></button>
       </div>
     </nav>
   );
