@@ -610,51 +610,46 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 px-6 border-t border-white/[0.06]">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
-          <div className="space-y-6">
-            <img src={brandLogo} alt="AGE REVIVE" className="h-8 w-auto brightness-0 invert" />
-            <p className="text-[10px] font-mono text-white/30 uppercase tracking-[0.22em] leading-relaxed max-w-xs">
-              * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
-            </p>
-          </div>
+      <footer className="py-10 px-6 border-t border-white/[0.06]">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-8">
+            <img src={brandLogo} alt="AGE REVIVE" className="h-7 w-auto brightness-0 invert" />
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-16">
-            <div className="space-y-4">
-              <h5 className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-white">Shop</h5>
-              <ul className="space-y-2 text-[10px] font-mono font-medium text-white/40 uppercase list-none p-0">
-                <li><a href="/shop" className="hover:text-ar-teal transition-colors">CELLUBIOME</a></li>
-                <li><a href="/shop" className="hover:text-ar-teal transition-colors">CELLUNAD+</a></li>
-                <li><a href="/shop" className="hover:text-ar-teal transition-colors">CELLUNOVA</a></li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h5 className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-white">Info</h5>
-              <ul className="space-y-2 text-[10px] font-mono font-medium text-white/40 uppercase list-none p-0">
-                <li><a href="#axis" className="hover:text-ar-teal transition-colors">The Axis</a></li>
-                <li><a href="#journal" className="hover:text-ar-teal transition-colors">Journal</a></li>
-                <li><a href="#" className="hover:text-ar-teal transition-colors">References</a></li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h5 className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-white">Connect</h5>
-              <ul className="space-y-2 text-[10px] font-mono font-medium text-white/40 uppercase list-none p-0">
-                <li><a href="#" className="hover:text-ar-teal transition-colors">Instagram</a></li>
-                <li><a href="#" className="hover:text-ar-teal transition-colors">X</a></li>
-                <li><a href="#" className="hover:text-ar-teal transition-colors">Contact</a></li>
-              </ul>
+            <div className="flex flex-wrap gap-x-14 gap-y-6">
+              <div className="space-y-3">
+                <h5 className="text-[9px] font-mono font-bold uppercase tracking-[0.22em] text-white/60">Shop</h5>
+                <ul className="space-y-1.5 text-[9px] font-mono font-medium text-white/35 uppercase list-none p-0">
+                  <li><a href="/shop" className="hover:text-ar-teal transition-colors">CELLUBIOME</a></li>
+                  <li><a href="/shop" className="hover:text-ar-teal transition-colors">CELLUNAD+</a></li>
+                  <li><a href="/shop" className="hover:text-ar-teal transition-colors">CELLUNOVA</a></li>
+                </ul>
+              </div>
+              <div className="space-y-3">
+                <h5 className="text-[9px] font-mono font-bold uppercase tracking-[0.22em] text-white/60">Info</h5>
+                <ul className="space-y-1.5 text-[9px] font-mono font-medium text-white/35 uppercase list-none p-0">
+                  <li><a href="#pillars" className="hover:text-ar-teal transition-colors">Science</a></li>
+                  <li><a href="#journal" className="hover:text-ar-teal transition-colors">Journal</a></li>
+                  <li><a href="#" className="hover:text-ar-teal transition-colors">References</a></li>
+                </ul>
+              </div>
+              <div className="space-y-3">
+                <h5 className="text-[9px] font-mono font-bold uppercase tracking-[0.22em] text-white/60">Connect</h5>
+                <ul className="space-y-1.5 text-[9px] font-mono font-medium text-white/35 uppercase list-none p-0">
+                  <li><a href="#" className="hover:text-ar-teal transition-colors">Instagram</a></li>
+                  <li><a href="#" className="hover:text-ar-teal transition-colors">X</a></li>
+                  <li><a href="#" className="hover:text-ar-teal transition-colors">Contact</a></li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/[0.06] flex flex-col md:flex-row justify-between items-center gap-6">
-          <span className="text-[9px] font-mono text-white/25 uppercase tracking-[0.22em]">© 2026 Age Revive</span>
-          <div className="flex gap-8 text-[9px] font-mono text-white/25 uppercase tracking-[0.22em]">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="#">Shipping</a>
+          <div className="mt-8 pt-6 border-t border-white/[0.06] flex flex-col md:flex-row justify-between items-center gap-4">
+            <span className="text-[8px] font-mono text-white/20 uppercase tracking-[0.22em]">© 2026 Age Revive · *These statements have not been evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent any disease.</span>
+            <div className="flex gap-6 text-[8px] font-mono text-white/20 uppercase tracking-[0.22em]">
+              <a href="#" className="hover:text-white/40 transition-colors">Privacy</a>
+              <a href="#" className="hover:text-white/40 transition-colors">Terms</a>
+              <a href="#" className="hover:text-white/40 transition-colors">Shipping</a>
+            </div>
           </div>
         </div>
       </footer>
