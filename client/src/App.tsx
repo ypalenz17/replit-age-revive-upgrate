@@ -269,15 +269,15 @@ function TrustStats({ product }) {
   const stats = [
     { value: String(product.ingredients.length), label: 'Standardized Actives' },
     { value: 'Full', label: 'Dose Disclosure' },
-    { value: '3rd Party', label: 'Tested & Verified' },
+    { value: '3rd', label: 'Party Tested' },
   ];
 
   return (
     <div className="grid grid-cols-3 gap-3">
       {stats.map((stat, i) => (
-        <div key={i} className="bg-white border border-black/5 rounded-2xl p-4 text-center">
-          <p className="text-lg font-extrabold tracking-tight text-ar-navy">{stat.value}</p>
-          <p className="text-[9px] font-mono font-medium uppercase tracking-[0.1em] text-black/35 mt-1">{stat.label}</p>
+        <div key={i} className="bg-white border border-black/5 rounded-2xl p-4 text-center flex flex-col items-center justify-center min-h-[88px]">
+          <p className="text-lg font-extrabold tracking-tight text-ar-navy whitespace-nowrap">{stat.value}</p>
+          <p className="text-[9px] font-mono font-medium uppercase tracking-[0.1em] text-black/35 mt-1 whitespace-nowrap">{stat.label}</p>
         </div>
       ))}
     </div>
@@ -613,16 +613,16 @@ function ProductTemplate({ product }) {
 
       {/* De-risk Strip */}
       <section className="bg-white border-y border-black/5 py-8">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-8">
           {[
             { Icon: ShieldCheck, text: '3rd Party Tested' },
             { Icon: Zap, text: 'Standardized Actives' },
             { Icon: Clock, text: 'Protocol Cadence' },
             { Icon: Activity, text: 'Quality Controls' }
           ].map((item, i) => (
-            <div key={i} className="flex items-center gap-4 group">
-              <item.Icon className="text-[color:var(--accent)] group-hover:scale-110 transition-transform" size={18} />
-              <span className="text-[10px] font-mono font-medium uppercase tracking-[0.14em] text-black/40">{item.text}</span>
+            <div key={i} className="flex items-center gap-3 group">
+              <item.Icon className="text-[color:var(--accent)] group-hover:scale-110 transition-transform shrink-0" size={18} />
+              <span className="text-[10px] font-mono font-medium uppercase tracking-[0.1em] text-black/40 whitespace-nowrap">{item.text}</span>
             </div>
           ))}
         </div>
@@ -792,12 +792,12 @@ function ProductTemplate({ product }) {
       <SideSheet open={activeSidePanel === 'ingredients'} title="Full Ingredient Panel" onClose={() => setActiveSidePanel(null)}>
         <div className="space-y-6">
           {product.ingredients.map((ing, i) => (
-            <div key={i} className="flex justify-between items-end border-b border-black/5 pb-4 gap-6">
-              <div className="space-y-1">
+            <div key={i} className="flex justify-between items-baseline border-b border-black/5 pb-4 gap-4">
+              <div className="space-y-1 min-w-0 flex-1">
                 <p className="font-sans font-extrabold text-sm tracking-[-0.01em] uppercase">{ing.name}</p>
-                <p className="text-[10px] font-mono text-black/45 uppercase tracking-[0.22em]">{ing.purpose}</p>
+                <p className="text-[10px] font-mono text-black/45 uppercase tracking-[0.14em] leading-relaxed">{ing.purpose}</p>
               </div>
-              <span className="font-mono text-sm font-extrabold" style={{ color: product.accent }}>{ing.dose}</span>
+              <span className="font-mono text-sm font-extrabold whitespace-nowrap shrink-0" style={{ color: product.accent }}>{ing.dose}</span>
             </div>
           ))}
         </div>
