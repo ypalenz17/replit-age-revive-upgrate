@@ -178,7 +178,7 @@ const PRODUCTS = {
 ------------------------------ */
 function NoiseOverlay() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-[90] opacity-[0.045]" aria-hidden="true">
+    <div className="hidden md:block fixed inset-0 pointer-events-none z-[90] opacity-[0.045]" aria-hidden="true">
       <svg width="100%" height="100%">
         <filter id="noise">
           <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
