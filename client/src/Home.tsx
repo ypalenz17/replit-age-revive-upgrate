@@ -322,11 +322,11 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
 
 const TheAxis = ({ onOpenEvidence }) => {
   return (
-    <section id="axis" className="py-32 bg-ar-paper px-6">
+    <section id="axis" className="py-32 px-6">
       <div className="max-w-7xl mx-auto space-y-24">
         <div className="max-w-2xl reveal">
           <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">The Foundation</span>
-          <h2 className="text-6xl font-sans font-extrabold tracking-[-0.04em] uppercase mt-4">
+          <h2 className="text-6xl font-sans font-extrabold tracking-[-0.04em] uppercase mt-4 text-white">
             The Age Revive
             <br />
             Systems Axis.
@@ -355,17 +355,17 @@ const TheAxis = ({ onOpenEvidence }) => {
             }
           ].map((item, i) => (
             <div key={i} className="space-y-8 reveal group">
-              <div className="w-16 h-16 rounded-ar-2xl bg-ar-navy text-ar-paper flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+              <div className="w-16 h-16 rounded-ar-2xl bg-white/[0.06] border border-white/[0.08] text-white flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                 <span className="font-mono text-xs font-bold tracking-[0.14em]">{item.tag}</span>
               </div>
               <div className="space-y-4">
-                <h3 className="text-2xl font-sans font-extrabold uppercase tracking-tight">{item.name}</h3>
-                <p className="text-sm font-medium text-black/60 leading-relaxed">{item.desc}</p>
+                <h3 className="text-2xl font-sans font-extrabold uppercase tracking-tight text-white">{item.name}</h3>
+                <p className="text-sm font-medium text-white/50 leading-relaxed">{item.desc}</p>
               </div>
 
               <ul className="space-y-3">
                 {item.steps.map((s) => (
-                  <li key={s} className="flex items-center gap-3 text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-black/45">
+                  <li key={s} className="flex items-center gap-3 text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-white/35">
                     <div className="w-1.5 h-1.5 rounded-full bg-ar-teal" /> {s}
                   </li>
                 ))}
@@ -387,24 +387,24 @@ const TheAxis = ({ onOpenEvidence }) => {
 
 const SixPillars = () => {
   return (
-    <section id="pillars" className="py-32 px-6 bg-white overflow-hidden">
+    <section id="pillars" className="py-32 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-16">
         <div className="text-center space-y-4 reveal">
           <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Framework</span>
-          <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] uppercase">6 Pillars of Systemic Aging</h2>
-          <p className="text-sm text-black/55 font-medium max-w-2xl mx-auto">
+          <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] uppercase text-white">6 Pillars of Systemic Aging</h2>
+          <p className="text-sm text-white/45 font-medium max-w-2xl mx-auto">
             A framework for mapping protocols to systems. Not medical advice.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {PILLARS.map((p) => (
-            <div key={p.title} className="reveal group p-10 bg-ar-paper rounded-ar-3xl border border-black/5 hover:border-ar-teal/20 transition-all hover:shadow-float hover:-translate-y-1">
+            <div key={p.title} className="reveal group p-10 bg-white/[0.04] rounded-ar-3xl border border-white/[0.08] hover:border-ar-teal/20 transition-all hover:-translate-y-1">
               <div className="space-y-6">
-                <h4 className="text-xl font-sans font-extrabold uppercase tracking-tight">{p.title}</h4>
-                <p className="text-xs font-medium text-black/45 leading-relaxed min-h-[46px]">{p.desc}</p>
-                <div className="pt-4 border-t border-black/10 flex justify-between items-center">
-                  <span className="text-[10px] font-mono text-black/35 uppercase tracking-[0.22em]">Mapped Protocol</span>
+                <h4 className="text-xl font-sans font-extrabold uppercase tracking-tight text-white">{p.title}</h4>
+                <p className="text-xs font-medium text-white/40 leading-relaxed min-h-[46px]">{p.desc}</p>
+                <div className="pt-4 border-t border-white/[0.06] flex justify-between items-center">
+                  <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.22em]">Mapped Protocol</span>
                   <span className="text-[10px] font-mono font-bold text-ar-teal uppercase tracking-[0.22em]">{p.protocol}</span>
                 </div>
               </div>
@@ -424,14 +424,14 @@ const Journal = () => {
   ];
 
   return (
-    <section id="journal" className="py-32 px-6 bg-ar-paper">
+    <section id="journal" className="py-32 px-6">
       <div className="max-w-7xl mx-auto space-y-16">
         <div className="flex flex-col md:flex-row justify-between items-end gap-6 reveal">
           <div className="space-y-4">
             <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Scientific Literacy</span>
-            <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] uppercase">The Age Revive Journal.</h2>
+            <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] uppercase text-white">The Age Revive Journal.</h2>
           </div>
-          <button className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] border-b border-black/20 pb-2 hover:text-ar-teal hover:border-ar-teal transition-all flex items-center gap-2">
+          <button className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] border-b border-white/20 pb-2 text-white/60 hover:text-ar-teal hover:border-ar-teal transition-all flex items-center gap-2">
             Read the science <ArrowRight size={14} />
           </button>
         </div>
@@ -439,18 +439,18 @@ const Journal = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {posts.map((j) => (
             <div key={j.title} className="reveal group cursor-pointer space-y-6">
-              <div className="aspect-[4/5] overflow-hidden rounded-ar-3xl bg-ar-navy">
-                <img src={j.img} className="w-full h-full object-cover grayscale opacity-55 group-hover:grayscale-0 group-hover:opacity-85 group-hover:scale-105 transition-all duration-700" alt="" />
+              <div className="aspect-[4/5] overflow-hidden rounded-ar-3xl bg-white/[0.04] border border-white/[0.06]">
+                <img src={j.img} className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700" alt="" />
               </div>
               <div className="space-y-2">
-                <span className="font-mono text-[9px] text-black/35 uppercase tracking-[0.22em]">{j.cat}</span>
-                <h4 className="text-xl font-sans font-extrabold uppercase tracking-tight group-hover:text-ar-teal transition-colors">{j.title}</h4>
+                <span className="font-mono text-[9px] text-white/30 uppercase tracking-[0.22em]">{j.cat}</span>
+                <h4 className="text-xl font-sans font-extrabold uppercase tracking-tight text-white group-hover:text-ar-teal transition-colors">{j.title}</h4>
               </div>
             </div>
           ))}
         </div>
 
-        <p className="text-[10px] font-mono text-black/40 uppercase tracking-[0.22em]">
+        <p className="text-[10px] font-mono text-white/30 uppercase tracking-[0.22em]">
           Editorial placeholders. Replace with real posts when ready.
         </p>
       </div>
@@ -544,13 +544,13 @@ export default function Home() {
       </section>
 
       {/* Proof Row */}
-      <section className="bg-white border-y border-black/5 py-12 px-6">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-center md:justify-between gap-x-8 gap-y-4 opacity-60">
+      <section className="border-y border-white/[0.06] py-12 px-6">
+        <div className="max-w-7xl mx-auto flex flex-wrap justify-center md:justify-between gap-x-8 gap-y-4">
           {['3rd Party Testing', 'Standardized Actives', 'Enteric Delivery', 'Quality Controls'].map((p, i) => (
             <div key={p} className="flex items-center gap-3">
               <span className="font-mono text-[10px] font-bold text-ar-teal tracking-[0.14em]">{String(i + 1).padStart(2, '0')}</span>
-              <span className="w-px h-3 bg-black/10" />
-              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-black/55 whitespace-nowrap">{p}</span>
+              <span className="w-px h-3 bg-white/15" />
+              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-white/40 whitespace-nowrap">{p}</span>
             </div>
           ))}
         </div>
@@ -559,7 +559,7 @@ export default function Home() {
       <TheAxis onOpenEvidence={() => setEvidencePanel(true)} />
 
       {/* Signature Micro-UI Bar */}
-      <section className="bg-ar-navy py-6 px-6 overflow-hidden">
+      <section className="py-6 px-6 overflow-hidden border-y border-white/[0.06]">
         <div className="max-w-7xl mx-auto flex justify-between items-center gap-12">
           <div className="flex items-center gap-4">
             <div className="w-2 h-2 rounded-full bg-ar-teal animate-pulse" />
@@ -577,10 +577,7 @@ export default function Home() {
       <Journal />
 
       {/* Final CTA */}
-      <section className="py-40 px-6 bg-ar-navy text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <img src="https://images.unsplash.com/photo-1579389083395-4507e9f4a171?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover" alt="" />
-        </div>
+      <section className="py-40 px-6 text-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10 reveal">
           <h2 className="text-6xl md:text-8xl font-sans font-extrabold tracking-[-0.05em] uppercase leading-[0.85]">
             Build your baseline.
