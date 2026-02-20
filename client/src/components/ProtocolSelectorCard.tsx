@@ -14,68 +14,51 @@ export default function ProtocolSelectorCard({ p }: { p: { slug: string; name: s
   return (
     <Link
       to={`/products/${p.slug}`}
-      className="group relative block p-5 bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-ar-3xl overflow-hidden hover:bg-white/[0.12] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-ar-teal/40"
+      className="group relative block bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-500 focus:outline-none"
       aria-label={`View ${p.name}`}
       data-testid={`card-protocol-${p.slug}`}
     >
-      <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: p.color }} />
-
       <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
         style={{
-          background: `radial-gradient(650px 240px at 15% 0%, ${hexToRgba(p.color, 0.25)}, transparent 60%)`,
+          background: `radial-gradient(400px 200px at 80% 100%, ${hexToRgba(p.color, 0.15)}, transparent 70%)`,
         }}
       />
 
-      <div className="relative z-10 flex items-start justify-between gap-4">
-        <div className="flex items-start gap-4">
-          <div className="w-11 h-11 rounded-full overflow-hidden bg-white/10 ring-1 ring-white/15">
-            <img
-              src={p.image}
-              alt=""
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            />
-          </div>
-
-          <div className="space-y-1">
-            <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/45">
-              {p.category}
-            </p>
-            <h4 className="font-bold text-sm tracking-tight uppercase text-white">
-              {p.name}
-            </h4>
-            <p className="text-[10px] font-mono font-medium text-white/50 leading-tight">
-              {p.tagline}
-            </p>
-          </div>
+      <div className="relative z-10 flex items-center gap-5 p-4 pr-5">
+        <div className="shrink-0 w-[72px] h-[88px] flex items-center justify-center">
+          <img
+            src={p.image}
+            alt={p.name}
+            className="w-full h-full object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)] group-hover:scale-105 transition-transform duration-500"
+          />
         </div>
 
-        <ArrowRight
-          size={18}
-          className="mt-1 group-hover:translate-x-1 transition-transform"
-          style={{ color: p.color }}
-        />
-      </div>
+        <div className="flex-1 min-w-0 space-y-2.5">
+          <div>
+            <p className="text-[9px] font-mono uppercase tracking-[0.22em] text-white/35 mb-1">{p.category}</p>
+            <h4 className="font-sans font-extrabold text-[15px] tracking-[-0.02em] uppercase text-white leading-tight">{p.name}</h4>
+          </div>
 
-      <div className="relative z-10 mt-4 flex flex-wrap gap-2">
-        {p.ingredients.map((ing) => (
-          <span
-            key={ing}
-            className="text-[9px] font-mono uppercase tracking-[0.18em] px-2 py-1 rounded-full border"
-            style={{ color: p.color, borderColor: hexToRgba(p.color, 0.3) }}
-          >
-            {ing}
-          </span>
-        ))}
-      </div>
+          <div className="flex flex-wrap gap-1.5">
+            {p.ingredients.map((ing) => (
+              <span
+                key={ing}
+                className="text-[8px] font-mono uppercase tracking-[0.14em] px-2 py-0.5 rounded-full"
+                style={{ color: p.color, background: hexToRgba(p.color, 0.12) }}
+              >
+                {ing}
+              </span>
+            ))}
+          </div>
 
-      <div className="relative z-10 mt-5 flex items-center justify-between">
-        <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/35">
-          {p.serving}
-        </span>
-        <span className="text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: p.color }}>
-          View Protocol
-        </span>
+          <div className="flex items-center justify-between pt-0.5">
+            <span className="text-[9px] font-mono uppercase tracking-[0.14em] text-white/30">{p.serving}</span>
+            <span className="text-[9px] font-mono font-bold uppercase tracking-[0.14em] flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300" style={{ color: p.color }}>
+              View <ArrowRight size={11} />
+            </span>
+          </div>
+        </div>
       </div>
     </Link>
   );
