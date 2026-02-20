@@ -8,13 +8,16 @@ module.exports = {
         'ar-paper': '#F5F3EE',
         'ar-teal': '#19B3A6',
         'ar-violet': '#6C5CE7',
+        'ar-blue': '#1e3a8a',
         'ar-ink': '#0B0D13',
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-        heading: ['Manrope', 'ui-sans-serif', 'system-ui'],
-        serif: ['Fraunces', 'ui-serif', 'Georgia'],
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular'],
+      },
+      fontSize: {
+        'ar-label': ['0.75rem', { lineHeight: '1.2', letterSpacing: '0.2em', fontWeight: '500' }],
+        'ar-nav': ['0.6875rem', { lineHeight: '1.2', letterSpacing: '0.1em', fontWeight: '500' }],
       },
       borderRadius: {
         'ar-2xl': '2rem',

@@ -59,7 +59,7 @@ const PRODUCTS = {
       'A molecular-grade daily protocol that supports NAD+ metabolism with redox and methylation cofactors. Built to feel precise, not noisy.',
     price: '$92.00',
     serving: '2 capsules daily',
-    accent: '#19B3A6',
+    accent: '#1e3a8a',
     heroImage:
       'https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&q=80&w=2200',
     outcomes: [
@@ -100,7 +100,7 @@ const PRODUCTS = {
       'Enteric-coated delivery of Urolithin A plus tributyrin to support mitochondrial recycling signals and short-chain fatty acid activity.',
     price: '$110.00',
     serving: '2 enteric-coated capsules daily',
-    accent: '#6C5CE7',
+    accent: '#19B3A6',
     heroImage:
       'https://images.unsplash.com/photo-1628595308665-ad528919623e?auto=format&fit=crop&q=80&w=2200',
     outcomes: [
@@ -136,7 +136,7 @@ const PRODUCTS = {
     price: '$145.00',
     serving: '5 capsules daily for 7 consecutive days',
     warnings: 'Contains wheat (spermidine source).',
-    accent: '#212535',
+    accent: '#6C5CE7',
     heroImage:
       'https://images.unsplash.com/photo-1576086213369-97a306dca665?auto=format&fit=crop&q=80&w=2200',
     outcomes: [
@@ -311,7 +311,7 @@ function ProtocolScheduler() {
                 setConfirmed(true);
               }}
               className={[
-                'w-full aspect-square flex items-center justify-center rounded-xl text-[10px] font-extrabold',
+                'w-full aspect-square flex items-center justify-center rounded-xl text-[10px] font-mono font-bold',
                 'transition-all select-none',
                 current === i
                   ? 'bg-[color:var(--accent)] text-ar-navy scale-[1.06]'
@@ -365,11 +365,11 @@ function Navbar() {
       ].join(' ')}
       aria-label="Primary navigation"
     >
-      <div className={['font-heading font-extrabold tracking-[-0.04em] text-xl transition-colors', scrolled ? 'text-ar-navy' : 'text-white'].join(' ')}>
+      <div className={['font-sans font-extrabold tracking-[-0.04em] text-xl transition-colors', scrolled ? 'text-ar-navy' : 'text-white'].join(' ')}>
         AGE REVIVE<span className="text-[color:var(--accent)]">.</span>
       </div>
 
-      <div className="hidden md:flex items-center gap-8 font-semibold text-[11px] tracking-[0.22em] uppercase">
+      <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[11px] tracking-[0.14em] uppercase">
         {['Infrastructure', 'Protocols', 'Rationale', 'Journal'].map((link) => (
           <a
             key={link}
@@ -485,8 +485,8 @@ function SideSheet({ open, title, onClose, children }) {
 
         <div className="space-y-10">
           <div className="space-y-2">
-            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-black/40">Overlay</p>
-            <h3 className="text-3xl font-heading font-extrabold tracking-[-0.03em] uppercase">{title}</h3>
+            <p className="text-[10px] font-mono font-medium uppercase tracking-[0.14em] text-black/40">Overlay</p>
+            <h3 className="text-3xl font-sans font-extrabold tracking-[-0.03em] uppercase">{title}</h3>
           </div>
 
           {children}
@@ -575,7 +575,7 @@ function ProductTemplate({ product }) {
   const accentGlow = hexToRgba(product.accent, 0.55);
 
   return (
-    <main ref={containerRef} style={{ '--accent': product.accent, '--accentGlow': accentGlow }} className="bg-ar-paper text-ar-navy selection:bg-ar-teal selection:text-white">
+    <main ref={containerRef} style={{ '--accent': product.accent, '--accentGlow': accentGlow }} className="bg-ar-paper text-ar-navy">
       <NoiseOverlay />
       <Navbar />
 
@@ -604,7 +604,7 @@ function ProductTemplate({ product }) {
               </span>
             </div>
 
-            <h1 className="text-[clamp(3.25rem,7vw,6.5rem)] font-heading font-extrabold tracking-[-0.05em] mb-4 leading-[0.88]">{product.name}</h1>
+            <h1 className="text-[clamp(3.25rem,7vw,6.5rem)] font-sans font-extrabold tracking-[-0.05em] mb-4 leading-[0.88]">{product.name}</h1>
 
             <p className="text-lg md:text-2xl font-medium text-white/80 max-w-xl mb-8 leading-tight">{product.tagline}</p>
 
@@ -632,7 +632,7 @@ function ProductTemplate({ product }) {
 
               <div className="space-y-2">
                 <div className="flex justify-between items-baseline gap-4">
-                  <h3 className="text-2xl font-heading font-extrabold tracking-[-0.03em] uppercase">{product.name}</h3>
+                  <h3 className="text-2xl font-sans font-extrabold tracking-[-0.03em] uppercase">{product.name}</h3>
                   <span className="text-xl font-semibold">{product.price}</span>
                 </div>
                 <p className="text-sm text-black/55 leading-relaxed font-medium">{product.description}</p>
@@ -657,7 +657,7 @@ function ProductTemplate({ product }) {
               </div>
 
               <MagneticButton
-                className="w-full py-5 bg-ar-navy text-ar-paper rounded-full font-extrabold tracking-[0.22em] text-xs uppercase flex items-center justify-center gap-3 active:scale-[0.99] transition-transform relative overflow-hidden group"
+                className="w-full py-5 bg-ar-navy text-ar-paper rounded-full font-mono font-bold tracking-[0.14em] text-xs uppercase flex items-center justify-center gap-3 active:scale-[0.99] transition-transform relative overflow-hidden group"
                 onClick={() => {}}
               >
                 <span className="relative z-10">Add to Protocol Archive</span>
@@ -666,10 +666,10 @@ function ProductTemplate({ product }) {
               </MagneticButton>
 
               <div className="grid grid-cols-2 gap-4">
-                <button onClick={() => setActiveSidePanel('rationale')} className="py-3 border border-black/10 rounded-full text-[10px] uppercase font-extrabold tracking-[0.22em] hover:bg-black/[0.03] transition-colors flex items-center justify-center gap-2">
+                <button onClick={() => setActiveSidePanel('rationale')} className="py-3 border border-black/10 rounded-full text-[10px] uppercase font-mono font-bold tracking-[0.14em] hover:bg-black/[0.03] transition-colors flex items-center justify-center gap-2">
                   <FlaskConical size={12} /> Evidence
                 </button>
-                <button onClick={() => setActiveSidePanel('ingredients')} className="py-3 border border-black/10 rounded-full text-[10px] uppercase font-extrabold tracking-[0.22em] hover:bg-black/[0.03] transition-colors flex items-center justify-center gap-2">
+                <button onClick={() => setActiveSidePanel('ingredients')} className="py-3 border border-black/10 rounded-full text-[10px] uppercase font-mono font-bold tracking-[0.14em] hover:bg-black/[0.03] transition-colors flex items-center justify-center gap-2">
                   <Info size={12} /> Ingredients
                 </button>
               </div>
@@ -693,7 +693,7 @@ function ProductTemplate({ product }) {
           ].map((item, i) => (
             <div key={i} className="flex items-center gap-4 group">
               <item.Icon className="text-[color:var(--accent)] group-hover:scale-110 transition-transform" size={18} />
-              <span className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-black/40">{item.text}</span>
+              <span className="text-[10px] font-mono font-medium uppercase tracking-[0.14em] text-black/40">{item.text}</span>
             </div>
           ))}
         </div>
@@ -704,8 +704,8 @@ function ProductTemplate({ product }) {
         <div className="grid md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-5 space-y-8 reveal">
             <TypewriterTelemetry />
-            <h2 className="text-5xl font-heading font-extrabold tracking-[-0.04em] leading-[1.06]">
-              Clinical interfaces for <span className="italic font-serif text-[color:var(--accent)]">biological protocols</span>.
+            <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] leading-[1.06]">
+              Clinical interfaces for <span className="italic text-[color:var(--accent)]">biological protocols</span>.
             </h2>
             <p className="text-lg text-black/60 leading-relaxed font-medium">
               Age Revive is built like infrastructure: clear inputs, consistent cadence, and a protocol-first approach that respects your routine.
@@ -714,12 +714,12 @@ function ProductTemplate({ product }) {
             <div className="grid grid-cols-2 gap-4">
               <div className="p-6 bg-white rounded-ar-2xl border border-black/5 space-y-2 shadow-soft">
                 <Microscope size={24} className="text-ar-violet mb-2" />
-                <h4 className="font-heading font-extrabold text-sm tracking-[0.14em] uppercase">Standardized Inputs</h4>
+                <h4 className="font-sans font-extrabold text-sm tracking-[0.14em] uppercase">Standardized Inputs</h4>
                 <p className="text-xs text-black/45 font-medium">Built around standardized actives and tight protocol intent.</p>
               </div>
               <div className="p-6 bg-white rounded-ar-2xl border border-black/5 space-y-2 shadow-soft">
                 <Beaker size={24} className="text-[color:var(--accent)] mb-2" />
-                <h4 className="font-heading font-extrabold text-sm tracking-[0.14em] uppercase">Stack Logic</h4>
+                <h4 className="font-sans font-extrabold text-sm tracking-[0.14em] uppercase">Stack Logic</h4>
                 <p className="text-xs text-black/45 font-medium">Designed to layer without chaos. Base, cycle, signal.</p>
               </div>
             </div>
@@ -737,10 +737,10 @@ function ProductTemplate({ product }) {
                   </div>
                 </div>
 
-                <div className="relative z-10 flex gap-1 items-end h-20">
+                <div className="relative z-10 flex gap-1 items-end h-20 group">
                   {[40, 60, 45, 90, 80, 50, 70, 85, 95, 60, 40].map((h, i) => (
                     <div key={i} className="flex-1 rounded-full relative overflow-hidden" style={{ height: `${h}%`, background: 'rgba(245,243,238,0.10)' }}>
-                      <div className="absolute inset-0 origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-500" style={{ background: 'rgba(25,179,166,0.35)' }} />
+                      <div className="absolute inset-0 origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-500" style={{ background: hexToRgba(product.accent, 0.35) }} />
                     </div>
                   ))}
                 </div>
@@ -763,7 +763,7 @@ function ProductTemplate({ product }) {
                   <ShieldCheck size={20} />
                 </div>
                 <div className="relative z-10">
-                  <h4 className="text-white font-heading font-extrabold tracking-[0.14em] text-sm uppercase">Privacy-first UX</h4>
+                  <h4 className="text-white font-sans font-extrabold tracking-[0.14em] text-sm uppercase">Privacy-first UX</h4>
                   <p className="text-white/45 text-[11px] leading-relaxed font-medium">Built to feel clinical and calm. No noisy gimmicks.</p>
                 </div>
               </div>
@@ -777,7 +777,7 @@ function ProductTemplate({ product }) {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20 space-y-4 reveal">
             <span className="text-[10px] font-mono uppercase tracking-[0.32em] text-[color:var(--accent)]">Protocol Arc</span>
-            <h2 className="text-5xl font-heading font-extrabold tracking-[-0.04em]">What to expect over time</h2>
+            <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em]">What to expect over time</h2>
             <p className="text-sm text-black/55 font-medium max-w-2xl mx-auto">This is a support protocol. Individual responses vary. Consistency is the point.</p>
           </div>
 
@@ -786,16 +786,15 @@ function ProductTemplate({ product }) {
               <div key={i} className="relative group reveal">
                 <div className="timeline-card p-8 rounded-ar-2xl bg-ar-paper border border-black/5 transition-all duration-300 hover:shadow-soft hover:-translate-y-1">
                   <p className="text-[10px] font-mono text-[color:var(--accent)] mb-2 uppercase tracking-[0.22em]">{step.time}</p>
-                  <h4 className="text-xl font-heading font-extrabold mb-3 tracking-[-0.02em]">{step.label}</h4>
+                  <h4 className="text-xl font-sans font-extrabold mb-3 tracking-[-0.02em]">{step.label}</h4>
                   <p className="text-xs text-black/55 leading-relaxed font-medium mb-6">{step.desc}</p>
 
                   <div className="h-1 bg-black/5 rounded-full overflow-hidden">
                     <div className="h-full" style={{ width: `${(i + 1) * 25}%`, background: 'var(--accent)' }} />
                   </div>
 
-                  <div className="mt-4 flex justify-between items-center">
-                    <span className="text-[9px] font-extrabold uppercase text-black/40 tracking-[0.18em]">{step.value}</span>
-                    <ChevronDown size={14} className="text-black/20" />
+                  <div className="mt-4">
+                    <span className="text-[10px] font-mono font-medium uppercase text-black/40 tracking-[0.18em]">{step.value}</span>
                   </div>
                 </div>
               </div>
@@ -809,7 +808,7 @@ function ProductTemplate({ product }) {
         <div className="max-w-4xl mx-auto space-y-24">
           <div className="text-center text-white mb-20 space-y-4 reveal">
             <span className="text-[10px] font-mono uppercase tracking-[0.32em] text-[color:var(--accent)]">Mechanistic Layering</span>
-            <h2 className="text-5xl font-heading font-extrabold tracking-[-0.04em]">Rationale, simplified</h2>
+            <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em]">Rationale, simplified</h2>
             <p className="text-sm text-white/55 font-medium max-w-2xl mx-auto">Clear intent. Clean inputs. Built to be scanned, not worshipped.</p>
           </div>
 
@@ -835,13 +834,13 @@ function ProductTemplate({ product }) {
                     <ArchiveIcon size={40} />
                   </div>
 
-                  <h3 className="text-4xl font-heading font-extrabold tracking-[-0.03em] uppercase leading-none">{item.title}</h3>
+                  <h3 className="text-4xl font-sans font-extrabold tracking-[-0.03em] uppercase leading-none">{item.title}</h3>
 
-                  <p className="text-xl font-medium text-black/60 leading-relaxed italic font-serif">“{item.text}”</p>
+                  <p className="text-xl font-medium text-black/60 leading-relaxed italic">“{item.text}”</p>
 
                   <div className="pt-8 flex justify-center gap-4">
-                    <div className="px-6 py-2 border border-black/10 rounded-full text-[10px] font-extrabold uppercase tracking-[0.22em]">Protocol intent</div>
-                    <div className="px-6 py-2 rounded-full text-[10px] font-extrabold uppercase tracking-[0.22em] border" style={{ borderColor: hexToRgba(product.accent, 0.28), color: product.accent }}>
+                    <div className="px-6 py-2 border border-black/10 rounded-full text-[10px] font-mono font-medium uppercase tracking-[0.14em]">Protocol intent</div>
+                    <div className="px-6 py-2 rounded-full text-[10px] font-mono font-medium uppercase tracking-[0.14em] border" style={{ borderColor: hexToRgba(product.accent, 0.28), color: product.accent }}>
                       Clean inputs
                     </div>
                   </div>
@@ -854,7 +853,7 @@ function ProductTemplate({ product }) {
 
       {/* FAQ + Disclaimer */}
       <section className="py-32 px-6 max-w-4xl mx-auto">
-        <h2 className="text-4xl font-heading font-extrabold tracking-[-0.03em] mb-16 text-center">Protocol Inquiries</h2>
+        <h2 className="text-4xl font-sans font-extrabold tracking-[-0.03em] mb-16 text-center">Protocol Inquiries</h2>
 
         <div className="space-y-4 mb-24">
           {[
@@ -863,7 +862,7 @@ function ProductTemplate({ product }) {
             { q: 'Can I stack these products together?', a: 'They are designed to layer across different support systems. If you are unsure, start with one base product and add one layer at a time.' }
           ].map((faq, i) => (
             <details key={i} className="group bg-white border border-black/5 rounded-ar-2xl p-6 cursor-pointer hover:bg-black/[0.02] transition-colors">
-              <summary className="list-none flex justify-between items-center font-heading font-extrabold tracking-[0.08em] uppercase text-sm">
+              <summary className="list-none flex justify-between items-center font-sans font-extrabold tracking-[0.08em] uppercase text-sm">
                 {faq.q}
                 <ChevronDown className="group-open:rotate-180 transition-transform text-black/30" />
               </summary>
@@ -880,11 +879,11 @@ function ProductTemplate({ product }) {
 
           <div className="relative z-10 flex justify-center gap-12 border-t border-white/10 pt-8">
             <div className="text-white">
-              <p className="text-lg font-heading font-extrabold">100%</p>
+              <p className="text-lg font-sans font-extrabold">100%</p>
               <p className="text-[10px] font-mono text-white/45 uppercase tracking-[0.22em]">Money-Back Guarantee</p>
             </div>
             <div className="text-white">
-              <p className="text-lg font-heading font-extrabold">Priority</p>
+              <p className="text-lg font-sans font-extrabold">Priority</p>
               <p className="text-[10px] font-mono text-white/45 uppercase tracking-[0.22em]">Worldwide Dispatch</p>
             </div>
           </div>
@@ -894,14 +893,14 @@ function ProductTemplate({ product }) {
       {/* Footer */}
       <footer className="py-20 border-t border-black/5 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-          <div className="text-3xl font-heading font-extrabold tracking-[-0.04em]">
+          <div className="text-3xl font-sans font-extrabold tracking-[-0.04em]">
             AGE REVIVE<span className="text-[color:var(--accent)]">.</span>
           </div>
 
-          <div className="flex gap-12 text-[10px] font-extrabold uppercase tracking-[0.28em] text-black/40">
-            <a href="#" className="hover:text-black">Terms</a>
-            <a href="#" className="hover:text-black">Quality</a>
-            <a href="#" className="hover:text-black">Scientific Advisory</a>
+          <div className="flex gap-12 text-[10px] font-mono font-medium uppercase tracking-[0.14em] text-black/40">
+            <a href="#" className="hover:text-black transition-colors">Terms</a>
+            <a href="#" className="hover:text-black transition-colors">Quality</a>
+            <a href="#" className="hover:text-black transition-colors">Scientific Advisory</a>
           </div>
 
           <div className="text-[10px] font-mono text-black/40 uppercase tracking-[0.22em]">© 2026 AGE REVIVE</div>
@@ -914,7 +913,7 @@ function ProductTemplate({ product }) {
           {product.ingredients.map((ing, i) => (
             <div key={i} className="flex justify-between items-end border-b border-black/5 pb-4 gap-6">
               <div className="space-y-1">
-                <p className="font-heading font-extrabold text-sm tracking-[-0.01em] uppercase">{ing.name}</p>
+                <p className="font-sans font-extrabold text-sm tracking-[-0.01em] uppercase">{ing.name}</p>
                 <p className="text-[10px] font-mono text-black/45 uppercase tracking-[0.22em]">{ing.purpose}</p>
               </div>
               <span className="font-mono text-sm font-extrabold" style={{ color: product.accent }}>{ing.dose}</span>
@@ -924,7 +923,7 @@ function ProductTemplate({ product }) {
 
         {product.warnings && (
           <div className="mt-10 p-6 bg-red-500/5 border border-red-500/10 rounded-ar-2xl">
-            <p className="text-[10px] font-extrabold text-red-600 uppercase tracking-[0.22em] mb-1">Warning</p>
+            <p className="text-[10px] font-mono font-bold text-red-600 uppercase tracking-[0.14em] mb-1">Warning</p>
             <p className="text-sm font-semibold">{product.warnings}</p>
           </div>
         )}
@@ -935,10 +934,10 @@ function ProductTemplate({ product }) {
           {product.mechanics.map((mech, i) => (
             <div key={i} className="space-y-3">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-extrabold" style={{ background: hexToRgba(product.accent, 0.12), color: product.accent }}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-mono font-bold" style={{ background: hexToRgba(product.accent, 0.12), color: product.accent }}>
                   {i + 1}
                 </div>
-                <h4 className="font-heading font-extrabold uppercase tracking-[0.12em]">{mech.title}</h4>
+                <h4 className="font-sans font-extrabold uppercase tracking-[0.12em]">{mech.title}</h4>
               </div>
               <p className="text-sm text-black/65 leading-relaxed font-medium pl-11">{mech.text}</p>
             </div>
@@ -972,9 +971,10 @@ export default function App() {
             key={p.id}
             onClick={() => setSlug(p.id)}
             className={[
-              'px-4 py-2 rounded-full text-[10px] font-extrabold uppercase tracking-[0.22em] transition-all',
-              slug === p.id ? 'bg-ar-navy text-white' : 'hover:bg-black/5 text-ar-navy'
+              'px-4 py-2 rounded-full text-[10px] font-mono font-bold uppercase tracking-[0.14em] transition-all',
+              slug === p.id ? 'text-white' : 'hover:bg-black/5 text-ar-navy'
             ].join(' ')}
+            style={slug === p.id ? { background: p.accent } : undefined}
           >
             {p.name}
           </button>
