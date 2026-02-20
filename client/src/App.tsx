@@ -479,20 +479,26 @@ function ProductTemplate({ product }) {
         });
       });
 
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
       const cards = gsap.utils.toArray('.archive-card');
       cards.forEach((card, i) => {
         ScrollTrigger.create({
           trigger: card,
-          start: 'top top',
-          end: '+=120%',
+          start: isMobile ? 'top 10%' : 'top top',
+          end: isMobile ? '+=80%' : '+=120%',
           pin: true,
-          pinSpacing: false,
+          pinSpacing: isMobile,
           invalidateOnRefresh: true
         });
 
         if (i < cards.length - 1) {
           gsap.to(card, {
-            scrollTrigger: { trigger: cards[i + 1], start: 'top 65%', end: 'top 10%', scrub: true },
+            scrollTrigger: {
+              trigger: cards[i + 1],
+              start: isMobile ? 'top 80%' : 'top 65%',
+              end: isMobile ? 'top 20%' : 'top 10%',
+              scrub: true
+            },
             scale: 0.92,
             opacity: 0.55,
             filter: 'blur(18px)',
@@ -707,7 +713,7 @@ function ProductTemplate({ product }) {
           {product.mechanics.map((item, i) => {
             const ArchiveIcon = i === 0 ? Zap : i === 1 ? Activity : ShieldCheck;
             return (
-              <div key={i} className="archive-card h-[62vh] w-full bg-ar-paper rounded-ar-4xl p-12 md:p-20 shadow-float flex flex-col justify-center items-center text-center overflow-hidden border border-black/5 relative">
+              <div key={i} className="archive-card min-h-[50vh] md:h-[62vh] w-full bg-ar-paper rounded-ar-4xl p-8 md:p-20 shadow-float flex flex-col justify-center items-center text-center overflow-hidden border border-black/5 relative">
                 <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
                   <svg width="100%" height="100%">
                     <pattern id={`p-${product.id}-${i}`} x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
@@ -783,7 +789,7 @@ function ProductTemplate({ product }) {
       </section>
 
       {/* Footer */}
-      <footer className="py-20 border-t border-black/5 px-6">
+      <footer className="py-20 pb-28 md:py-20 border-t border-black/5 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
           <div className="text-3xl font-sans font-extrabold tracking-[-0.04em]">
             AGE REVIVE<span className="text-[color:var(--accent)]">.</span>
