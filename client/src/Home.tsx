@@ -540,12 +540,12 @@ export default function Home() {
               <ProtocolSelectorCard key={p.slug} p={p} />
             ))}
           </div>
-          <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-4 mt-12">
+          <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-3 mt-12">
             {['3rd Party Testing', 'Standardized Actives', 'Enteric Delivery', 'Quality Controls'].map((p, i) => (
-              <div key={p} className="flex items-center gap-3 bg-white/[0.06] border border-white/[0.1] rounded-full px-5 py-2.5">
-                <span className="font-mono text-[10px] font-bold text-ar-teal tracking-[0.14em]">{String(i + 1).padStart(2, '0')}</span>
+              <div key={p} className="flex items-center justify-center gap-2 bg-white/[0.06] border border-white/[0.1] rounded-full px-3 py-2">
+                <span className="font-mono text-[9px] font-bold text-ar-teal tracking-[0.14em]">{String(i + 1).padStart(2, '0')}</span>
                 <span className="w-px h-3 bg-white/20" />
-                <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-white/60 whitespace-nowrap">{p}</span>
+                <span className="text-[9px] font-mono font-bold uppercase tracking-[0.14em] text-white/60 whitespace-nowrap">{p}</span>
               </div>
             ))}
           </div>
