@@ -11,7 +11,7 @@ function hexToRgba(hex: string, a = 1) {
 }
 
 export default function ProtocolSelectorCard({ p }: { p: { slug: string; name: string; category: string; tagline: string; serving: string; color: string; image: string; ingredients: string[] } }) {
-  const badgeColor = p.color === '#212535' ? '#8B93A8' : p.color;
+  const badgeColor = p.color;
 
   return (
     <Link

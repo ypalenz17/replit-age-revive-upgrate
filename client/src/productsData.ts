@@ -29,7 +29,7 @@ export const PRODUCTS = [
     category: '7-Day Autophagy + Protocol Cycle',
     tagline: 'Seven days on. Designed as a cycle, not forever.',
     serving: '5 capsules daily for 7 days',
-    color: '#212535',
+    color: '#8B5CF6',
     image: imgCellunova,
     ingredients: ['Fisetin', 'Spermidine', 'PQQ'],
   }
