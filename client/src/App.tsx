@@ -78,9 +78,9 @@ const PRODUCTS = {
       { name: 'BioPerine', dose: '5 mg', purpose: 'Bioavailability support' }
     ],
     mechanics: [
-      { title: 'NAD+ Pool Support', text: 'NR supports NAD+ pools as a daily input layer.' },
-      { title: 'Redox Balance', text: 'R-Lipoic Acid supports mitochondrial redox balance for steady output.' },
-      { title: 'Cofactor Alignment', text: 'Methylation cofactors support metabolic efficiency and daily consistency.' }
+      { title: 'NAD+ Pool Support', text: 'NR supports NAD+ pools as a daily input layer.', tags: ['Precursor delivery', 'Daily input'] },
+      { title: 'Redox Balance', text: 'R-Lipoic Acid supports mitochondrial redox balance for steady output.', tags: ['Mitochondrial', 'Steady state'] },
+      { title: 'Cofactor Alignment', text: 'Methylation cofactors support metabolic efficiency and daily consistency.', tags: ['Methylation', 'Consistency'] }
     ],
     timeline: [
       { time: 'Days 1–3', label: 'Protocol Onboarding', desc: 'Routine locks in. Many people notice the first shift as consistency, not a spike.', value: 'Foundation' },
@@ -114,9 +114,9 @@ const PRODUCTS = {
       { name: 'Tributyrin', dose: '500 mg', purpose: 'Postbiotic support (butyrate delivery)' }
     ],
     mechanics: [
-      { title: 'Recycling Signal', text: 'Urolithin A supports mitochondrial recycling signaling (mitophagy support).' },
-      { title: 'Postbiotic Support', text: 'Tributyrin supports short-chain fatty acid activity through butyrate delivery.' },
-      { title: 'Enteric Precision', text: 'Enteric-coated delivery supports release beyond the upper GI environment.' }
+      { title: 'Recycling Signal', text: 'Urolithin A supports mitochondrial recycling signaling (mitophagy support).', tags: ['Mitophagy', 'Signal layer'] },
+      { title: 'Postbiotic Support', text: 'Tributyrin supports short-chain fatty acid activity through butyrate delivery.', tags: ['SCFA delivery', 'Gut axis'] },
+      { title: 'Enteric Precision', text: 'Enteric-coated delivery supports release beyond the upper GI environment.', tags: ['Targeted release', 'Bioavailability'] }
     ],
     telemetry: ['Gut Signaling', 'Mito Renewal', 'Postbiotic Support'],
     timeline: [
@@ -159,9 +159,9 @@ const PRODUCTS = {
       { name: 'BioPerine', dose: '5 mg', purpose: 'Bioavailability support' }
     ],
     mechanics: [
-      { title: 'Phase Design', text: 'Designed for 7-day bursts to support cellular maintenance pathways intentionally.' },
-      { title: 'Polyphenol Stack', text: 'A focused blend of polyphenols and antioxidants for short-cycle intensity.' },
-      { title: 'Off-Cycle Matters', text: 'The off-cycle is part of the protocol. This is a cadence, not a constant.' }
+      { title: 'Phase Design', text: 'Designed for 7-day bursts to support cellular maintenance pathways intentionally.', tags: ['Cyclical protocol', '7-day burst'] },
+      { title: 'Polyphenol Stack', text: 'A focused blend of polyphenols and antioxidants for short-cycle intensity.', tags: ['Antioxidant', 'High density'] },
+      { title: 'Off-Cycle Matters', text: 'The off-cycle is part of the protocol. This is a cadence, not a constant.', tags: ['Recovery phase', 'Cadence'] }
     ],
     telemetry: ['Autophagy Support', 'Cellular Cleanup', 'Phase Design'],
     timeline: [
@@ -695,42 +695,37 @@ function ProductTemplate({ product }) {
             <p className="text-sm text-white/55 font-medium max-w-2xl mx-auto">Clear intent. Clean inputs. Built to be scanned, not worshipped.</p>
           </div>
 
-          {product.mechanics.map((item, i) => {
-            const ArchiveIcon = i === 0 ? Zap : i === 1 ? Activity : ShieldCheck;
-            return (
-              <div key={i} className="archive-card w-full bg-ar-paper rounded-ar-4xl p-10 md:p-20 shadow-float flex flex-col justify-center items-center text-center overflow-hidden border border-black/5 relative">
-                <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
-                  <svg width="100%" height="100%">
-                    <pattern id={`p-${product.id}-${i}`} x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
-                      <circle cx="2" cy="2" r="1" fill="currentColor" />
-                    </pattern>
-                    <rect width="100%" height="100%" fill={`url(#p-${product.id}-${i})`} />
-                  </svg>
-                </div>
-
-                <div className="absolute inset-0 pointer-events-none opacity-[0.22]">
+          {product.mechanics.map((item, i) => (
+              <div key={i} className="archive-card w-full bg-ar-paper rounded-ar-4xl p-10 md:p-16 shadow-float flex flex-col justify-center items-center text-center overflow-hidden border border-black/5 relative" data-testid={`rationale-card-${i}`}>
+                <div className="absolute inset-0 pointer-events-none opacity-[0.18]">
                   <div className="absolute top-[20%] left-0 right-0 h-[1px] animate-scan-x" style={{ background: 'linear-gradient(90deg, transparent, var(--accent), transparent)' }} />
                 </div>
 
-                <div className="relative z-10 max-w-xl space-y-8">
-                  <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto" style={{ background: hexToRgba(product.accent, 0.12), color: product.accent }}>
-                    <ArchiveIcon size={40} />
+                <div className="relative z-10 max-w-xl space-y-6">
+                  <div className="flex flex-col items-center gap-3">
+                    <span className="text-[40px] font-mono font-bold leading-none" style={{ color: hexToRgba(product.accent, 0.15) }}>{`${String(i + 1).padStart(2, '0')}`}</span>
+                    <div className="w-10 h-[1.5px] rounded-full" style={{ background: product.accent }} />
                   </div>
 
-                  <h3 className="text-4xl font-sans font-extrabold tracking-[-0.03em] uppercase leading-none">{item.title}</h3>
+                  <h3 className="text-3xl md:text-4xl font-sans font-extrabold tracking-[-0.03em] uppercase leading-none">{item.title}</h3>
 
-                  <p className="text-xl font-medium text-black/60 leading-relaxed italic">“{item.text}”</p>
+                  <p className="text-lg md:text-xl font-medium text-black/55 leading-relaxed italic max-w-md mx-auto">“{item.text}”</p>
 
-                  <div className="pt-8 flex justify-center gap-4">
-                    <div className="px-6 py-2 border border-black/10 rounded-full text-[10px] font-mono font-medium uppercase tracking-[0.14em]">Protocol intent</div>
-                    <div className="px-6 py-2 rounded-full text-[10px] font-mono font-medium uppercase tracking-[0.14em] border" style={{ borderColor: hexToRgba(product.accent, 0.28), color: product.accent }}>
-                      Clean inputs
-                    </div>
+                  <div className="pt-4 flex flex-wrap justify-center gap-3">
+                    {item.tags.map((tag, t) => (
+                      <span
+                        key={t}
+                        className="px-4 py-1.5 rounded-full text-[10px] font-mono font-medium uppercase tracking-[0.12em]"
+                        style={t === 0
+                          ? { border: '1px solid rgba(0,0,0,0.08)', color: 'rgba(0,0,0,0.4)' }
+                          : { border: `1px solid ${hexToRgba(product.accent, 0.25)}`, color: product.accent }
+                        }
+                      >{tag}</span>
+                    ))}
                   </div>
                 </div>
               </div>
-            );
-          })}
+          ))}
         </div>
       </section>
 
