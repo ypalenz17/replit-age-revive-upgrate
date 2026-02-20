@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 
 import { gsap } from 'gsap';
+import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -209,9 +210,11 @@ const Navbar = () => {
         scrolled ? 'bg-ar-paper/80 backdrop-blur-xl border-black/5 shadow-float' : 'bg-transparent border-white/10'
       ].join(' ')}
     >
-      <div className={['text-2xl font-heading font-extrabold tracking-[-0.04em] transition-colors', scrolled ? 'text-ar-navy' : 'text-white'].join(' ')}>
-        AGE REVIVE<span className="text-ar-teal">.</span>
-      </div>
+      <img
+        src={brandLogo}
+        alt="AGE REVIVE"
+        className={['h-8 md:h-9 w-auto transition-all duration-500', scrolled ? '' : 'brightness-0 invert'].join(' ')}
+      />
 
       <div className="hidden md:flex items-center gap-10 font-extrabold text-[10px] uppercase tracking-[0.2em]">
         {['Shop', 'The Axis', 'Science', 'Journal'].map((l) => (
@@ -630,9 +633,7 @@ export default function Home() {
       <footer className="py-24 px-6 border-t border-black/5 bg-ar-paper">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
           <div className="space-y-6">
-            <div className="text-2xl font-heading font-extrabold tracking-[-0.04em]">
-              AGE REVIVE<span className="text-ar-teal">.</span>
-            </div>
+            <img src={brandLogo} alt="AGE REVIVE" className="h-8 w-auto" />
             <p className="text-[10px] font-mono text-black/40 uppercase tracking-[0.22em] leading-relaxed max-w-xs">
               * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
             </p>
