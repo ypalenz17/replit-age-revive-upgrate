@@ -319,17 +319,6 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
               </button>
             </div>
 
-            <div className="flex items-center gap-4 pt-4 opacity-70">
-              <span className="font-mono text-[10px] text-ar-teal font-bold tracking-[0.14em]">4.9 / 5.0</span>
-              <span className="w-px h-3 bg-white/20" />
-              <span className="text-[10px] text-white uppercase font-mono font-bold tracking-[0.22em]">
-                "Built like a protocol, not a supplement."
-              </span>
-            </div>
-
-            <p className="text-[10px] font-mono text-white/35 uppercase tracking-[0.22em]">
-              *Structure/function support statements. Not medical advice.
-            </p>
           </div>
         </div>
 
