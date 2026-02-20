@@ -200,38 +200,46 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', h);
   }, []);
 
-  return (
-    <nav
-      className={[
-        'fixed top-8 left-1/2 -translate-x-1/2 z-[150] w-[92%] max-w-6xl',
-        'transition-all duration-700 rounded-full border px-8 py-4 flex items-center justify-between',
-        scrolled ? 'bg-ar-paper/80 backdrop-blur-xl border-black/5 shadow-float' : 'bg-transparent border-white/10'
-      ].join(' ')}
-    >
-      <a href="/" aria-label="Go to homepage">
-        <img
-          src={brandLogo}
-          alt="AGE REVIVE"
-          className={['h-8 md:h-9 w-auto transition-all duration-500', scrolled ? '' : 'brightness-0 invert'].join(' ')}
-        />
-      </a>
+  const navLinks = [
+    { label: 'Shop', href: '/shop' },
+    { label: 'The Axis', href: '#axis' },
+    { label: 'Science', href: '#pillars' },
+    { label: 'Journal', href: '#journal' }
+  ];
 
-      <div className="hidden md:flex items-center gap-10 font-mono font-medium text-[10px] uppercase tracking-[0.2em]">
-        {[
-          { label: 'Shop', href: '/shop' },
-          { label: 'The Axis', href: '#axis' },
-          { label: 'Science', href: '#pillars' },
-          { label: 'Journal', href: '#journal' }
-        ].map((l) => (
-          <a key={l.label} href={l.href} className={['transition-all hover:text-ar-teal', scrolled ? 'text-ar-navy/60' : 'text-white/60'].join(' ')}>
-            {l.label}
-          </a>
-        ))}
+  return (
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[150] w-[92%] max-w-6xl flex items-center justify-between px-2 py-3">
+      <div
+        className={[
+          'flex items-center gap-8 transition-all duration-700 rounded-full px-6 py-3',
+          scrolled ? 'bg-ar-paper/80 backdrop-blur-xl shadow-float border border-black/5' : 'bg-transparent border border-transparent'
+        ].join(' ')}
+      >
+        <a href="/" aria-label="Go to homepage">
+          <img
+            src={brandLogo}
+            alt="AGE REVIVE"
+            className={['h-7 md:h-8 w-auto transition-all duration-500', scrolled ? '' : 'brightness-0 invert'].join(' ')}
+          />
+        </a>
+
+        <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[10px] uppercase tracking-[0.2em]">
+          {navLinks.map((l) => (
+            <a key={l.label} href={l.href} className={['transition-all hover:text-ar-teal', scrolled ? 'text-ar-navy/60' : 'text-white/60'].join(' ')}>
+              {l.label}
+            </a>
+          ))}
+        </div>
       </div>
 
-      <div className="flex items-center gap-6">
-        <button className={scrolled ? 'text-ar-navy' : 'text-white'} aria-label="Cart"><ShoppingBag size={20} /></button>
-        <button className={['md:hidden', scrolled ? 'text-ar-navy' : 'text-white'].join(' ')} aria-label="Menu"><Menu size={20} /></button>
+      <div
+        className={[
+          'flex items-center gap-5 transition-all duration-700 rounded-full px-5 py-3',
+          scrolled ? 'bg-ar-paper/80 backdrop-blur-xl shadow-float border border-black/5' : 'bg-transparent border border-transparent'
+        ].join(' ')}
+      >
+        <button className={['transition-all', scrolled ? 'text-ar-navy' : 'text-white'].join(' ')} aria-label="Cart"><ShoppingBag size={18} /></button>
+        <button className={['md:hidden transition-all', scrolled ? 'text-ar-navy' : 'text-white'].join(' ')} aria-label="Menu"><Menu size={18} /></button>
       </div>
     </nav>
   );
