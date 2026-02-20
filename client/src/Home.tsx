@@ -219,7 +219,7 @@ const Navbar = () => {
           <img
             src={brandLogo}
             alt="AGE REVIVE"
-            className={['h-7 md:h-8 w-auto transition-all duration-500', scrolled ? '' : 'brightness-0 invert'].join(' ')}
+            className={['h-7 md:h-8 w-auto transition-all duration-500', scrolled ? 'opacity-60' : 'brightness-0 invert'].join(' ')}
           />
         </a>
 
