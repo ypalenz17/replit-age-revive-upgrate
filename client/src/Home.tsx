@@ -1,20 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowRight,
-  Check,
-  ChevronDown,
-  ShieldCheck,
-  Zap,
-  Activity,
-  Clock,
-  Microscope,
   Menu,
   ShoppingBag,
-  Star,
-  Info,
-  Beaker,
-  X,
-  BookOpen
+  X
 } from 'lucide-react';
 
 import { gsap } from 'gsap';
@@ -303,7 +292,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
                 'CELLUNOVA 7-day protocol cycle*'
               ].map((o) => (
                 <div key={o} className="flex items-center gap-3 text-white/60 text-xs font-extrabold uppercase tracking-tight">
-                  <Check size={14} className="text-ar-teal" /> {o}
+                  <span className="w-1.5 h-1.5 rounded-full bg-ar-teal shrink-0" /> {o}
                 </div>
               ))}
             </div>
@@ -323,11 +312,8 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             </div>
 
             <div className="flex items-center gap-4 pt-4 opacity-70">
-              <div className="flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={10} fill="#19B3A6" stroke="none" />
-                ))}
-              </div>
+              <span className="font-mono text-[10px] text-ar-teal font-bold tracking-[0.14em]">4.9 / 5.0</span>
+              <span className="w-px h-3 bg-white/20" />
               <span className="text-[10px] text-white uppercase font-extrabold tracking-[0.22em]">
                 "Built like a protocol, not a supplement."
               </span>
@@ -407,26 +393,26 @@ const TheAxis = ({ onOpenEvidence }) => {
           {[
             {
               name: 'Gut–Mito Axis',
-              icon: Activity,
+              tag: 'GMA',
               desc: 'Postbiotic signaling and mitochondrial renewal support designed for daily repeatability.',
               steps: ['Enteric delivery', 'Barrier support', 'Mitophagy signaling']
             },
             {
               name: 'NAD+ Infrastructure',
-              icon: Zap,
+              tag: 'NAD',
               desc: 'Daily NAD+ precursor support with co-factors for consistent pathway support.',
               steps: ['NAD+ pools', 'Redox support', 'Methylation support']
             },
             {
               name: 'Autophagy Pulse',
-              icon: Clock,
+              tag: 'APC',
               desc: 'A 7-day cyclical protocol designed to support cellular cleanup processes and resilience.',
               steps: ['Short cycle', 'Defense layer', 'Return to base']
             }
           ].map((item, i) => (
             <div key={i} className="space-y-8 reveal group">
               <div className="w-16 h-16 rounded-ar-2xl bg-ar-navy text-ar-paper flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                <item.icon size={28} />
+                <span className="font-mono text-xs font-bold tracking-[0.14em]">{item.tag}</span>
               </div>
               <div className="space-y-4">
                 <h3 className="text-2xl font-heading font-extrabold uppercase tracking-tight">{item.name}</h3>
@@ -502,7 +488,7 @@ const Journal = () => {
             <h2 className="text-5xl font-heading font-extrabold tracking-[-0.04em] uppercase">The Age Revive Journal.</h2>
           </div>
           <button className="text-[10px] font-extrabold uppercase tracking-[0.22em] border-b border-black/20 pb-2 hover:text-ar-teal hover:border-ar-teal transition-all flex items-center gap-2">
-            Read the science <BookOpen size={14} />
+            Read the science <ArrowRight size={14} />
           </button>
         </div>
 
@@ -577,9 +563,10 @@ export default function Home() {
       {/* Proof Row */}
       <section className="bg-white border-y border-black/5 py-12 px-6">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between gap-8 opacity-60">
-          {['3rd Party Testing', 'Standardized Actives', 'Enteric Delivery (as applicable)', 'Quality Controls'].map((p) => (
+          {['3rd Party Testing', 'Standardized Actives', 'Enteric Delivery (as applicable)', 'Quality Controls'].map((p, i) => (
             <div key={p} className="flex items-center gap-3">
-              <ShieldCheck size={16} className="text-ar-teal" />
+              <span className="font-mono text-[10px] font-bold text-ar-teal tracking-[0.14em]">{String(i + 1).padStart(2, '0')}</span>
+              <span className="w-px h-3 bg-black/10" />
               <span className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-black/55">{p}</span>
             </div>
           ))}
@@ -725,9 +712,7 @@ export default function Home() {
               <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-black/45">Key outcomes</p>
               {activeProduct.outcomes.map((o) => (
                 <div key={o} className="flex items-center gap-3 text-sm font-medium">
-                  <div className="w-5 h-5 rounded-full bg-ar-teal/15 text-ar-teal flex items-center justify-center">
-                    <Check size={12} />
-                  </div>
+                  <span className="w-1.5 h-1.5 rounded-full bg-ar-teal shrink-0" />
                   <span className="text-black/75">{o}</span>
                 </div>
               ))}

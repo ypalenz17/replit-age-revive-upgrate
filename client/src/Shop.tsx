@@ -1,17 +1,9 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowRight,
-  Check,
   ChevronDown,
-  ShieldCheck,
-  Zap,
-  Activity,
-  Clock,
-  FlaskConical,
   Menu,
   ShoppingBag,
-  Star,
-  Info,
   X
 } from 'lucide-react';
 
@@ -521,12 +513,7 @@ function ProductTemplate({ product }) {
             <div className="flex flex-wrap items-center gap-3 mb-7">
               <span className="px-3 py-1 border border-white/18 rounded-full text-[10px] uppercase font-mono tracking-[0.22em] text-[color:var(--accent)]">In Stock</span>
 
-              <div className="flex items-center gap-1.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={12} className="text-[color:var(--accent)]" fill="currentColor" stroke="none" />
-                ))}
-                <span className="text-[10px] font-mono opacity-55 ml-1">4.9</span>
-              </div>
+              <span className="font-mono text-[10px] font-bold tracking-[0.14em] text-[color:var(--accent)]">4.9 / 5.0</span>
 
               <span className="hidden sm:inline text-[10px] font-mono text-white/35 uppercase tracking-[0.22em]">
                 Clinical boutique. Organic tech luxury.
@@ -577,9 +564,7 @@ function ProductTemplate({ product }) {
               <div className="space-y-3">
                 {product.outcomes.map((item, i) => (
                   <div key={i} className="flex items-center gap-3 text-xs font-semibold tracking-tight">
-                    <div className="w-5 h-5 rounded-full flex items-center justify-center" style={{ background: hexToRgba(product.accent, 0.12), color: product.accent }}>
-                      <Check size={12} />
-                    </div>
+                    <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: product.accent }} />
                     <span className="text-black/80">{item}</span>
                   </div>
                 ))}
@@ -596,10 +581,10 @@ function ProductTemplate({ product }) {
 
               <div className="grid grid-cols-2 gap-4">
                 <button onClick={() => setActiveSidePanel('rationale')} className="py-3 border border-black/10 rounded-full text-[10px] uppercase font-mono font-bold tracking-[0.14em] hover:bg-black/[0.03] transition-colors flex items-center justify-center gap-2">
-                  <FlaskConical size={12} /> Evidence
+                  Evidence <ArrowRight size={10} />
                 </button>
                 <button onClick={() => setActiveSidePanel('ingredients')} className="py-3 border border-black/10 rounded-full text-[10px] uppercase font-mono font-bold tracking-[0.14em] hover:bg-black/[0.03] transition-colors flex items-center justify-center gap-2">
-                  <Info size={12} /> Ingredients
+                  Ingredients <ArrowRight size={10} />
                 </button>
               </div>
 
@@ -614,15 +599,11 @@ function ProductTemplate({ product }) {
       {/* De-risk Strip */}
       <section className="border-y border-black/[0.04] py-5 md:py-6 bg-white/40">
         <div className="max-w-5xl mx-auto px-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 md:gap-x-12">
-          {[
-            { Icon: ShieldCheck, text: '3rd Party Tested' },
-            { Icon: Zap, text: 'Standardized Actives' },
-            { Icon: Clock, text: 'Protocol Cadence' },
-            { Icon: Activity, text: 'Quality Controls' }
-          ].map((item, i) => (
+          {['3rd Party Tested', 'Standardized Actives', 'Protocol Cadence', 'Quality Controls'].map((text, i) => (
             <div key={i} className="flex items-center gap-2.5" data-testid={`trust-badge-${i}`}>
-              <item.Icon className="text-[color:var(--accent)] shrink-0" size={16} strokeWidth={1.8} />
-              <span className="text-[10px] font-mono font-medium uppercase tracking-[0.12em] text-black/40 whitespace-nowrap">{item.text}</span>
+              <span className="font-mono text-[10px] font-bold tracking-[0.14em] text-[color:var(--accent)]">{String(i + 1).padStart(2, '0')}</span>
+              <span className="w-px h-3 bg-black/10" />
+              <span className="text-[10px] font-mono font-medium uppercase tracking-[0.12em] text-black/40 whitespace-nowrap">{text}</span>
             </div>
           ))}
         </div>
