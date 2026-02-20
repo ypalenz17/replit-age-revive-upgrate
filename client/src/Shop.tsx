@@ -6,6 +6,7 @@ import {
   ShoppingBag,
   X
 } from 'lucide-react';
+import { useParams } from 'wouter';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -813,8 +814,16 @@ function ProductTemplate({ product }) {
    App Shell + Product Switcher
 ------------------------------ */
 export default function Shop() {
-  const [slug, setSlug] = useState('cellunad');
+  const params = useParams<{ slug?: string }>();
+  const initialSlug = (params.slug && PRODUCTS[params.slug]) ? params.slug : 'cellunad';
+  const [slug, setSlug] = useState(initialSlug);
   const currentProduct = PRODUCTS[slug];
+
+  useEffect(() => {
+    if (params.slug && PRODUCTS[params.slug] && params.slug !== slug) {
+      setSlug(params.slug);
+    }
+  }, [params.slug]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

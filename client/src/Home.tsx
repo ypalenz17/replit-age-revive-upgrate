@@ -9,6 +9,8 @@ import {
 import { gsap } from 'gsap';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { PRODUCTS as SELECTOR_PRODUCTS } from './productsData';
+import ProtocolSelectorCard from './components/ProtocolSelectorCard';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -342,32 +344,8 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             </div>
 
             <div className="space-y-4">
-              {PRODUCTS.map((p) => (
-                <button
-                  key={p.slug}
-                  onClick={() => onOpenProduct(p.slug)}
-                  className="w-full text-left group relative p-6 bg-white border border-black/5 rounded-ar-3xl hover:border-ar-teal/30 transition-all cursor-pointer overflow-hidden shadow-soft"
-                >
-                  <div className="flex items-center justify-between mb-3 relative z-10">
-                    <div className="w-10 h-10 rounded-full overflow-hidden grayscale group-hover:grayscale-0 transition-all">
-                      <img src={p.image} className="w-full h-full object-cover" alt="" />
-                    </div>
-                    <ArrowRight size={16} className="text-black/20 group-hover:text-ar-teal group-hover:translate-x-1 transition-all" />
-                  </div>
-
-                  <div className="relative z-10">
-                    <h4 className="font-sans font-extrabold text-sm tracking-tight uppercase text-ar-navy">{p.name}</h4>
-                    <p className="text-[10px] font-mono font-medium text-black/55 leading-tight mb-2">{p.tagline}</p>
-
-                    <div className="flex flex-wrap gap-2">
-                      {p.ingredientsBadges.slice(0, 3).map((ing) => (
-                        <span key={ing} className="text-[8px] font-mono text-ar-teal uppercase border border-ar-teal/20 px-2 py-1 rounded">
-                          {ing}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </button>
+              {SELECTOR_PRODUCTS.map((p) => (
+                <ProtocolSelectorCard key={p.slug} p={p} />
               ))}
             </div>
 
