@@ -118,7 +118,7 @@ const PILLARS = [
    Small helpers
 ------------------------------ */
 const NoiseOverlay = () => (
-  <div className="fixed inset-0 z-[80] pointer-events-none opacity-[0.045]" aria-hidden="true">
+  <div className="fixed inset-0 z-[50] pointer-events-none opacity-[0.045]" aria-hidden="true">
     <svg width="100%" height="100%">
       <filter id="noise">
         <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" />
@@ -137,6 +137,9 @@ const SideSheet = ({ isOpen, onClose, title, children }) => {
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
+    const handleEsc = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', handleEsc);
+
     const ctx = gsap.context(() => {
       const panel = sheetRef.current?.querySelector('[data-panel]');
       const overlay = sheetRef.current?.querySelector('[data-overlay]');
@@ -146,10 +149,11 @@ const SideSheet = ({ isOpen, onClose, title, children }) => {
     }, sheetRef);
 
     return () => {
+      window.removeEventListener('keydown', handleEsc);
       ctx.revert();
       document.body.style.overflow = prev;
     };
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -157,7 +161,7 @@ const SideSheet = ({ isOpen, onClose, title, children }) => {
     <div ref={sheetRef} className="fixed inset-0 z-[200] flex justify-end" role="dialog" aria-modal="true">
       <div data-overlay className="absolute inset-0 bg-ar-navy/60 backdrop-blur-sm" onClick={onClose} />
       <div data-panel className="relative w-full max-w-xl bg-ar-paper h-full shadow-float p-10 md:p-12 overflow-y-auto border-l border-black/5">
-        <button onClick={onClose} className="absolute top-7 right-7 p-2 rounded-full hover:bg-black/5 transition-colors" aria-label="Close">
+        <button onClick={onClose} className="absolute top-7 right-7 z-10 p-2 rounded-full hover:bg-black/5 transition-colors" aria-label="Close" data-testid="button-close-sidesheet">
           <X size={22} />
         </button>
         <div className="space-y-8">
@@ -206,9 +210,14 @@ const Navbar = () => {
       />
 
       <div className="hidden md:flex items-center gap-10 font-mono font-medium text-[10px] uppercase tracking-[0.2em]">
-        {['Shop', 'The Axis', 'Science', 'Journal'].map((l) => (
-          <a key={l} href="#" className={['transition-all hover:text-ar-teal', scrolled ? 'text-ar-navy/60' : 'text-white/60'].join(' ')}>
-            {l}
+        {[
+          { label: 'Shop', href: '/shop' },
+          { label: 'The Axis', href: '#axis' },
+          { label: 'Science', href: '#pillars' },
+          { label: 'Journal', href: '#journal' }
+        ].map((l) => (
+          <a key={l.label} href={l.href} className={['transition-all hover:text-ar-teal', scrolled ? 'text-ar-navy/60' : 'text-white/60'].join(' ')}>
+            {l.label}
           </a>
         ))}
       </div>
@@ -348,7 +357,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
 
                   <div className="relative z-10">
                     <h4 className="font-sans font-extrabold text-sm tracking-tight uppercase text-ar-navy">{p.name}</h4>
-                    <p className="text-[10px] font-medium text-black/55 leading-tight mb-2">{p.tagline}</p>
+                    <p className="text-[10px] font-mono font-medium text-black/55 leading-tight mb-2">{p.tagline}</p>
 
                     <div className="flex flex-wrap gap-2">
                       {p.ingredientsBadges.slice(0, 3).map((ing) => (
@@ -378,7 +387,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
 
 const TheAxis = ({ onOpenEvidence }) => {
   return (
-    <section className="py-32 bg-ar-paper px-6">
+    <section id="axis" className="py-32 bg-ar-paper px-6">
       <div className="max-w-7xl mx-auto space-y-24">
         <div className="max-w-2xl reveal">
           <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">The Foundation</span>
@@ -443,7 +452,7 @@ const TheAxis = ({ onOpenEvidence }) => {
 
 const SixPillars = () => {
   return (
-    <section className="py-32 px-6 bg-white overflow-hidden">
+    <section id="pillars" className="py-32 px-6 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-16">
         <div className="text-center space-y-4 reveal">
           <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Framework</span>
@@ -480,7 +489,7 @@ const Journal = () => {
   ];
 
   return (
-    <section className="py-32 px-6 bg-ar-paper">
+    <section id="journal" className="py-32 px-6 bg-ar-paper">
       <div className="max-w-7xl mx-auto space-y-16">
         <div className="flex flex-col md:flex-row justify-between items-end gap-6 reveal">
           <div className="space-y-4">
@@ -562,12 +571,12 @@ export default function Home() {
 
       {/* Proof Row */}
       <section className="bg-white border-y border-black/5 py-12 px-6">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-between gap-8 opacity-60">
-          {['3rd Party Testing', 'Standardized Actives', 'Enteric Delivery (as applicable)', 'Quality Controls'].map((p, i) => (
+        <div className="max-w-7xl mx-auto flex flex-wrap justify-center md:justify-between gap-x-8 gap-y-4 opacity-60">
+          {['3rd Party Testing', 'Standardized Actives', 'Enteric Delivery', 'Quality Controls'].map((p, i) => (
             <div key={p} className="flex items-center gap-3">
               <span className="font-mono text-[10px] font-bold text-ar-teal tracking-[0.14em]">{String(i + 1).padStart(2, '0')}</span>
               <span className="w-px h-3 bg-black/10" />
-              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-black/55">{p}</span>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-black/55 whitespace-nowrap">{p}</span>
             </div>
           ))}
         </div>
@@ -629,28 +638,28 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-16">
             <div className="space-y-4">
               <h5 className="text-[10px] font-mono font-bold uppercase tracking-[0.22em]">Shop</h5>
-              <ul className="space-y-2 text-[10px] font-medium text-black/50 uppercase list-none p-0">
-                <li>CELLUBIOME</li>
-                <li>CELLUNAD+</li>
-                <li>CELLUNOVA</li>
+              <ul className="space-y-2 text-[10px] font-mono font-medium text-black/50 uppercase list-none p-0">
+                <li><a href="/shop" className="hover:text-black transition-colors">CELLUBIOME</a></li>
+                <li><a href="/shop" className="hover:text-black transition-colors">CELLUNAD+</a></li>
+                <li><a href="/shop" className="hover:text-black transition-colors">CELLUNOVA</a></li>
               </ul>
             </div>
 
             <div className="space-y-4">
               <h5 className="text-[10px] font-mono font-bold uppercase tracking-[0.22em]">Info</h5>
-              <ul className="space-y-2 text-[10px] font-medium text-black/50 uppercase list-none p-0">
-                <li>The Axis</li>
-                <li>Journal</li>
-                <li>References</li>
+              <ul className="space-y-2 text-[10px] font-mono font-medium text-black/50 uppercase list-none p-0">
+                <li><a href="#axis" className="hover:text-black transition-colors">The Axis</a></li>
+                <li><a href="#journal" className="hover:text-black transition-colors">Journal</a></li>
+                <li><a href="#" className="hover:text-black transition-colors">References</a></li>
               </ul>
             </div>
 
             <div className="space-y-4">
               <h5 className="text-[10px] font-mono font-bold uppercase tracking-[0.22em]">Connect</h5>
-              <ul className="space-y-2 text-[10px] font-medium text-black/50 uppercase list-none p-0">
-                <li>Instagram</li>
-                <li>X</li>
-                <li>Contact</li>
+              <ul className="space-y-2 text-[10px] font-mono font-medium text-black/50 uppercase list-none p-0">
+                <li><a href="#" className="hover:text-black transition-colors">Instagram</a></li>
+                <li><a href="#" className="hover:text-black transition-colors">X</a></li>
+                <li><a href="#" className="hover:text-black transition-colors">Contact</a></li>
               </ul>
             </div>
           </div>
