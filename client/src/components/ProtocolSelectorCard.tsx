@@ -16,7 +16,7 @@ export default function ProtocolSelectorCard({ p }: { p: { slug: string; name: s
   return (
     <Link
       to={`/products/${p.slug}`}
-      className="group relative flex flex-col items-center bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-500 focus:outline-none pt-0 pb-5 px-4"
+      className="group relative flex flex-col items-center bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-500 focus:outline-none pb-4 px-3"
       aria-label={`View ${p.name}`}
       data-testid={`card-protocol-${p.slug}`}
     >
@@ -28,11 +28,11 @@ export default function ProtocolSelectorCard({ p }: { p: { slug: string; name: s
       />
 
       <div className="relative z-10 w-full flex flex-col items-center">
-        <div className="w-full flex items-center justify-center py-4">
+        <div className="w-full flex items-center justify-center -mx-3">
           <img
             src={p.image}
             alt={p.name}
-            className="w-[260px] h-[300px] object-contain drop-shadow-[0_16px_40px_rgba(0,0,0,0.6)] group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-auto max-h-[280px] object-contain drop-shadow-[0_16px_40px_rgba(0,0,0,0.6)] group-hover:scale-105 transition-transform duration-500"
           />
         </div>
 
