@@ -1,0 +1,76 @@
+import React from 'react';
+
+// 1. THE GRID OVERLAY (Visual Motif: Page 2 of Guidelines)
+const GridOverlay = () => (
+  <div 
+    className="absolute inset-0 pointer-events-none opacity-[0.04] z-10" 
+    style={{ 
+      backgroundImage: `linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)`, 
+      backgroundSize: '100px 100px' 
+    }}
+  />
+);
+
+// 2. THE MASTER BACKGROUND STACK (The "Blue Void" - Page 1 of Guidelines)
+const BackgroundStack = () => (
+  <div className="absolute inset-0 z-0 bg-[#0f172a]">
+    {/* Layer A: Biological Topography (Seed-tier aesthetic) */}
+    <img 
+      src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2400" 
+      className="w-full h-full object-cover grayscale opacity-30 mix-blend-screen" 
+      alt="Systemic Surface" 
+    />
+    
+    {/* Layer B: Master Radial Gradient (Logic: #1e3a8a 0% to #0f172a 120%) */}
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
+  </div>
+);
+
+// 3. THE GLOBAL NOISE OVERLAY (Eliminates flat gradients)
+const GlobalNoise = () => (
+  <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.05]">
+    <svg width="100%" height="100%">
+      <filter id="noise">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+        <feColorMatrix type="saturate" values="0" />
+      </filter>
+      <rect width="100%" height="100%" filter="url(#noise)" />
+    </svg>
+  </div>
+);
+
+// MAIN APP COMPONENT (Required for environment to render correctly)
+export default function App() {
+  return (
+    <div className="relative min-h-screen w-full overflow-hidden">
+      {/* Background System */}
+      <BackgroundStack />
+      <GridOverlay />
+      <GlobalNoise />
+      
+      {/* Foreground Content (Visual Reference) */}
+      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen text-[#F4F1EA] p-10 text-center">
+        <div className="max-w-2xl space-y-6">
+          <h1 className="text-6xl font-black tracking-tighter uppercase leading-[0.9]">
+            Systemic <br /> Architecture.
+          </h1>
+          <p className="text-lg opacity-60 font-medium tracking-tight">
+            The background system is successfully initialized. 
+            Visualizing the Blue Void, Grid Motifs, and High-Density Noise.
+          </p>
+        </div>
+      </div>
+
+      <style>{`
+        body {
+          margin: 0;
+          background-color: #0f172a;
+        }
+        * {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+      `}</style>
+    </div>
+  );
+}
