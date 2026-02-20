@@ -17,6 +17,7 @@ import {
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -303,9 +304,11 @@ function Navbar() {
       ].join(' ')}
       aria-label="Primary navigation"
     >
-      <div className={['font-sans font-extrabold tracking-[-0.04em] text-xl transition-colors', scrolled ? 'text-ar-navy' : 'text-white'].join(' ')}>
-        AGE REVIVE<span className="text-[color:var(--accent)]">.</span>
-      </div>
+      <img
+        src={brandLogo}
+        alt="AGE REVIVE"
+        className={['h-5 md:h-6 w-auto transition-all duration-500', scrolled ? '' : 'brightness-0 invert'].join(' ')}
+      />
 
       <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[11px] tracking-[0.14em] uppercase">
         {['Infrastructure', 'Protocols', 'Rationale', 'Journal'].map((link) => (
@@ -773,9 +776,7 @@ function ProductTemplate({ product }) {
       {/* Footer */}
       <footer className="py-20 pb-28 md:py-20 border-t border-black/5 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-          <div className="text-3xl font-sans font-extrabold tracking-[-0.04em]">
-            AGE REVIVE<span className="text-[color:var(--accent)]">.</span>
-          </div>
+          <img src={brandLogo} alt="AGE REVIVE" className="h-6 w-auto" />
 
           <div className="flex gap-12 text-[10px] font-mono font-medium uppercase tracking-[0.14em] text-black/40">
             <a href="#" className="hover:text-black transition-colors">Terms</a>
