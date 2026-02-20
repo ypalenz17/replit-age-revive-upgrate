@@ -88,7 +88,8 @@ const PRODUCTS = {
       { time: 'Week 1', label: 'Stability Layer', desc: 'Daily inputs become predictable. The goal is steady, repeatable adherence.', value: 'Cadence' },
       { time: 'Month 1', label: 'Compounding', desc: 'Consistency becomes the product. This is where protocols start to feel “owned.”', value: 'Momentum' },
       { time: 'Months 2–3', label: 'Infrastructure', desc: 'Sustained routine typically feels smoother than intermittent intensity.', value: 'Durability' }
-    ]
+    ],
+    telemetry: ['NAD+ Support', 'Cellular Energy', 'Redox Balance']
   },
 
   cellubiome: {
@@ -118,6 +119,7 @@ const PRODUCTS = {
       { title: 'Postbiotic Support', text: 'Tributyrin supports short-chain fatty acid activity through butyrate delivery.' },
       { title: 'Enteric Precision', text: 'Enteric-coated delivery supports release beyond the upper GI environment.' }
     ],
+    telemetry: ['Gut Signaling', 'Mito Renewal', 'Postbiotic Support'],
     timeline: [
       { time: 'Days 1–3', label: 'Comfort + Consistency', desc: 'Enteric delivery supports a smoother start, especially for sensitive routines.', value: 'Settle In' },
       { time: 'Week 1', label: 'Signal Support', desc: 'Daily inputs support signaling layers that benefit from repetition.', value: 'Alignment' },
@@ -162,6 +164,7 @@ const PRODUCTS = {
       { title: 'Polyphenol Stack', text: 'A focused blend of polyphenols and antioxidants for short-cycle intensity.' },
       { title: 'Off-Cycle Matters', text: 'The off-cycle is part of the protocol. This is a cadence, not a constant.' }
     ],
+    telemetry: ['Autophagy Support', 'Cellular Cleanup', 'Phase Design'],
     timeline: [
       { time: 'Days 1–2', label: 'Ramp', desc: 'Phase begins. Keep hydration and routine tight. Consistency beats force.', value: 'Initiate' },
       { time: 'Days 3–5', label: 'Peak Week', desc: 'This is the center of the cycle. Keep variables stable and boring.', value: 'Center' },
@@ -188,21 +191,17 @@ function NoiseOverlay() {
   );
 }
 
-function TypewriterTelemetry() {
-  const phrases = useMemo(
-    () => [
-      'CALIBRATING_PROTOCOL_ADHERENCE...',
-      'MITO_OUTPUT_INDEX: STABLE',
-      'REDOX_BALANCE: IN_RANGE',
-      'SCFA_SIGNAL: ACTIVE',
-      'CELLULAR_ENERGY_TREND: UP'
-    ],
-    []
-  );
+function TypewriterTelemetry({ phrases: inputPhrases }) {
+  const phrases = useMemo(() => inputPhrases || ['NAD+ Support', 'Cellular Energy', 'Redox Balance'], [inputPhrases]);
 
   const [text, setText] = useState('');
   const [cursor, setCursor] = useState(true);
   const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    setIndex(0);
+    setText('');
+  }, [phrases]);
 
   useEffect(() => {
     let charIdx = 0;
@@ -684,7 +683,7 @@ function ProductTemplate({ product }) {
       <section className="py-24 px-6 max-w-7xl mx-auto overflow-hidden">
         <div className="grid md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-5 space-y-8 reveal">
-            <TypewriterTelemetry />
+            <TypewriterTelemetry phrases={product.telemetry} />
             <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] leading-[1.06]">
               Clinical interfaces for <span className="italic text-[color:var(--accent)]">biological protocols</span>.
             </h2>
