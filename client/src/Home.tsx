@@ -270,22 +270,7 @@ const TelemetryTypewriter = () => {
 
 const Hero = ({ onOpenEvidence, onOpenProduct }) => {
   return (
-    <section className="relative min-h-[100dvh] flex flex-col md:flex-row bg-ar-navy overflow-hidden">
-      <div className="absolute inset-0 z-0 bg-[#0f172a]">
-        <img
-          src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2400"
-          className="w-full h-full object-cover grayscale opacity-30 mix-blend-screen"
-          alt=""
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
-      </div>
-      <div
-        className="absolute inset-0 pointer-events-none z-[1] opacity-[0.04]"
-        style={{
-          backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
-          backgroundSize: '100px 100px'
-        }}
-      />
+    <section className="relative min-h-[100dvh] flex flex-col md:flex-row overflow-hidden">
 
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 px-6 pt-32 pb-12">
         <div className="w-full md:w-1/2 space-y-10 hero-text">
@@ -548,7 +533,23 @@ export default function Home() {
   const productBySlug = useMemo(() => Object.fromEntries(PRODUCTS.map((p) => [p.slug, p])), []);
 
   return (
-    <div ref={containerRef} className="bg-ar-paper selection:bg-ar-teal selection:text-white">
+    <div ref={containerRef} className="relative bg-[#0f172a] selection:bg-ar-teal selection:text-white">
+      <div className="fixed inset-0 z-0 bg-[#0f172a]">
+        <img
+          src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2400"
+          className="w-full h-full object-cover grayscale opacity-30 mix-blend-screen"
+          alt=""
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
+      </div>
+      <div
+        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.04]"
+        style={{
+          backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
+          backgroundSize: '100px 100px'
+        }}
+      />
+      <div className="relative z-[2]">
       <NoiseOverlay />
       <Navbar />
 
@@ -662,6 +663,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      </div>
 
       {/* Evidence SideSheet */}
       <SideSheet isOpen={evidencePanel} onClose={() => setEvidencePanel(false)} title="Scientific Evidence & Rationale">

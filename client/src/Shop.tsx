@@ -449,13 +449,6 @@ function ProductTemplate({ product }) {
       gsap.from('.hero-content', { opacity: 0, y: 46, duration: 1.05, ease: 'power4.out', delay: 0.18 });
       gsap.from('.buy-panel', { opacity: 0, x: 34, duration: 1.05, ease: 'power4.out', delay: 0.28 });
 
-      gsap.to('.hero-bg', {
-        scale: 1.08,
-        y: 60,
-        ease: 'none',
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
-      });
-
       gsap.utils.toArray('.reveal').forEach((el) => {
         gsap.from(el, {
           scrollTrigger: { trigger: el, start: 'top 85%' },
@@ -497,29 +490,30 @@ function ProductTemplate({ product }) {
   const accentGlow = hexToRgba(product.accent, 0.55);
 
   return (
-    <main ref={containerRef} style={{ '--accent': product.accent, '--accentGlow': accentGlow }} className="bg-ar-paper text-ar-navy">
+    <main ref={containerRef} style={{ '--accent': product.accent, '--accentGlow': accentGlow }} className="relative bg-[#0f172a] text-ar-navy">
+      <div className="fixed inset-0 z-0 bg-[#0f172a]">
+        <img
+          src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2400"
+          className="w-full h-full object-cover grayscale opacity-30 mix-blend-screen"
+          alt=""
+          decoding="async"
+          fetchpriority="high"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
+      </div>
+      <div
+        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.04]"
+        style={{
+          backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
+          backgroundSize: '100px 100px'
+        }}
+      />
+      <div className="relative z-[2]">
       <NoiseOverlay />
       <Navbar />
 
       {/* Hero */}
-      <section className="hero relative min-h-[100dvh] flex flex-col md:flex-row bg-ar-navy overflow-hidden">
-        <div className="absolute inset-0 z-0 bg-[#0f172a]">
-          <img
-            src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2400"
-            className="hero-bg w-full h-full object-cover grayscale opacity-30 mix-blend-screen"
-            alt=""
-            decoding="async"
-            fetchpriority="high"
-          />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
-        </div>
-        <div
-          className="absolute inset-0 pointer-events-none z-[1] opacity-[0.04]"
-          style={{
-            backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
-            backgroundSize: '100px 100px'
-          }}
-        />
+      <section className="hero relative min-h-[100dvh] flex flex-col md:flex-row overflow-hidden">
         <div className="absolute inset-0 z-[2] opacity-[0.25]" style={{ background: 'radial-gradient(900px 600px at 20% 85%, var(--accentGlow), transparent 60%)' }} />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-12 px-6 pt-32 pb-12 items-end">
@@ -777,6 +771,7 @@ function ProductTemplate({ product }) {
           <div className="text-[10px] font-mono text-black/40 uppercase tracking-[0.22em]">© 2026 AGE REVIVE</div>
         </div>
       </footer>
+      </div>
 
       {/* Side Sheets */}
       <SideSheet open={activeSidePanel === 'ingredients'} title="Full Ingredient Panel" onClose={() => setActiveSidePanel(null)}>
