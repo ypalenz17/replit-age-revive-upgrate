@@ -14,7 +14,7 @@ export default function ProtocolSelectorCard({ p }: { p: { slug: string; name: s
   return (
     <Link
       to={`/products/${p.slug}`}
-      className="group relative block p-6 bg-white border border-black/5 rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-ar-teal/40"
+      className="group relative block p-6 bg-white border border-black/5 rounded-ar-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-ar-teal/40"
       aria-label={`View ${p.name}`}
       data-testid={`card-protocol-${p.slug}`}
     >

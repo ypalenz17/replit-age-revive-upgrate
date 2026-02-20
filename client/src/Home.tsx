@@ -277,7 +277,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
         <div className="absolute inset-0 bg-gradient-to-tr from-ar-navy via-ar-navy/45 to-transparent" />
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 pt-32 pb-12">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 px-6 pt-32 pb-12">
         <div className="w-full md:w-1/2 space-y-10 hero-text">
           <div className="space-y-4">
             <div className="flex items-center gap-3">

@@ -171,7 +171,7 @@ const PRODUCTS = {
 ------------------------------ */
 function NoiseOverlay() {
   return (
-    <div className="hidden md:block fixed inset-0 pointer-events-none z-[90] opacity-[0.045]" aria-hidden="true">
+    <div className="hidden md:block fixed inset-0 pointer-events-none z-[50] opacity-[0.045]" aria-hidden="true">
       <svg width="100%" height="100%">
         <filter id="noise">
           <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
@@ -290,10 +290,10 @@ function Navbar() {
   return (
     <nav
       className={[
-        'fixed top-6 left-1/2 -translate-x-1/2 z-[80] w-[92%] max-w-5xl',
-        'rounded-full border px-6 py-3 flex items-center justify-between',
-        'transition-all duration-500',
-        scrolled ? 'bg-ar-paper/80 backdrop-blur-md border-black/5 shadow-soft' : 'bg-transparent border-white/10'
+        'fixed top-8 left-1/2 -translate-x-1/2 z-[150] w-[92%] max-w-6xl',
+        'rounded-full border px-8 py-4 flex items-center justify-between',
+        'transition-all duration-700',
+        scrolled ? 'bg-ar-paper/80 backdrop-blur-xl border-black/5 shadow-float' : 'bg-transparent border-white/10'
       ].join(' ')}
       aria-label="Primary navigation"
     >
@@ -509,7 +509,7 @@ function ProductTemplate({ product }) {
           <div className="absolute inset-0 opacity-[0.25]" style={{ background: 'radial-gradient(900px 600px at 20% 85%, var(--accentGlow), transparent 60%)' }} />
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row px-6 md:px-12 pt-32 pb-12 items-end">
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-12 px-6 pt-32 pb-12 items-end">
           <div className="w-full md:w-3/5 mb-12 md:mb-0 hero-content text-white">
             <div className="flex flex-wrap items-center gap-3 mb-7">
               <span className="px-3 py-1 border border-white/18 rounded-full text-[10px] uppercase font-mono tracking-[0.22em] text-[color:var(--accent)]">In Stock</span>
@@ -543,7 +543,7 @@ function ProductTemplate({ product }) {
             </div>
           </div>
 
-          <div className="w-full md:w-2/5 md:pl-12 buy-panel">
+          <div className="w-full md:w-2/5 buy-panel">
             <div className="bg-ar-paper p-8 md:p-10 rounded-ar-4xl shadow-float space-y-8 border border-black/5 relative overflow-hidden" style={{ boxShadow: `0 40px 110px -65px ${hexToRgba(product.accent, 0.55)}` }}>
               <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: 'var(--accent)' }} />
 
@@ -598,8 +598,8 @@ function ProductTemplate({ product }) {
       </section>
 
       {/* De-risk Strip */}
-      <section className="border-y border-black/[0.04] py-5 md:py-6 bg-white/40">
-        <div className="max-w-5xl mx-auto px-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 md:gap-x-12">
+      <section className="border-y border-black/5 py-12 bg-white/40">
+        <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-center md:justify-between gap-x-8 gap-y-4">
           {['3rd Party Tested', 'Standardized Actives', 'Protocol Cadence', 'Quality Controls'].map((text, i) => (
             <div key={i} className="flex items-center gap-2.5" data-testid={`trust-badge-${i}`}>
               <span className="font-mono text-[10px] font-bold tracking-[0.14em] text-[color:var(--accent)]">{String(i + 1).padStart(2, '0')}</span>
@@ -611,7 +611,7 @@ function ProductTemplate({ product }) {
       </section>
 
       {/* What's Inside */}
-      <section className="py-24 px-6 max-w-7xl mx-auto overflow-hidden">
+      <section className="py-32 px-6 max-w-7xl mx-auto overflow-hidden">
         <div className="grid md:grid-cols-12 gap-16 items-start">
           <div className="md:col-span-5 space-y-8 reveal md:sticky md:top-32">
             <TypewriterTelemetry phrases={product.telemetry} />
@@ -638,7 +638,7 @@ function ProductTemplate({ product }) {
       </section>
 
       {/* Timeline */}
-      <section className="py-24 bg-white">
+      <section className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20 space-y-4 reveal">
             <span className="text-[10px] font-mono uppercase tracking-[0.32em] text-[color:var(--accent)]">Protocol Arc</span>
@@ -669,7 +669,7 @@ function ProductTemplate({ product }) {
       </section>
 
       {/* Mechanistic Rationale Archive */}
-      <section className="bg-ar-navy py-24 px-6">
+      <section className="bg-ar-navy py-32 px-6">
         <div className="max-w-4xl mx-auto space-y-24">
           <div className="text-center text-white mb-20 space-y-4 reveal">
             <span className="text-[10px] font-mono uppercase tracking-[0.32em] text-[color:var(--accent)]">Mechanistic Layering</span>
@@ -751,7 +751,7 @@ function ProductTemplate({ product }) {
       </section>
 
       {/* Footer */}
-      <footer className="py-20 pb-28 md:py-20 border-t border-black/5 px-6">
+      <footer className="py-24 pb-28 md:py-24 border-t border-black/5 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
           <img src={brandLogo} alt="AGE REVIVE" className="h-8 w-auto" />
 
