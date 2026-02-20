@@ -322,8 +322,8 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
 
 const TheAxis = ({ onOpenEvidence }) => {
   return (
-    <section id="axis" className="py-32 px-6">
-      <div className="max-w-7xl mx-auto space-y-24">
+    <section id="axis" className="py-20 px-6">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-14 reveal">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-[1px] w-12 bg-ar-teal" />
@@ -391,7 +391,7 @@ const TheAxis = ({ onOpenEvidence }) => {
 
 const SixPillars = () => {
   return (
-    <section id="pillars" className="py-32 px-6 overflow-hidden">
+    <section id="pillars" className="py-20 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-16">
         <div className="text-center mb-14 reveal">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -432,7 +432,7 @@ const Journal = () => {
   ];
 
   return (
-    <section id="journal" className="py-32 px-6">
+    <section id="journal" className="py-20 px-6">
       <div className="max-w-7xl mx-auto space-y-16">
         <div className="text-center mb-14 reveal">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -528,7 +528,7 @@ export default function Home() {
       />
 
       {/* Protocol Selector */}
-      <section className="py-24 px-6">
+      <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14 reveal">
             <div className="flex items-center justify-center gap-3 mb-4">
@@ -591,7 +591,7 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
 
       {/* Final CTA */}
-      <section className="py-40 px-6 text-white relative overflow-hidden">
+      <section className="py-24 px-6 text-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10 reveal">
           <h2 className="text-6xl md:text-8xl font-sans font-extrabold tracking-[-0.05em] uppercase leading-[0.85]">
             Build your baseline.
@@ -611,48 +611,48 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-24 px-6 border-t border-black/5 bg-ar-paper">
+      <footer className="py-16 px-6 border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
           <div className="space-y-6">
-            <img src={brandLogo} alt="AGE REVIVE" className="h-8 w-auto" />
-            <p className="text-[10px] font-mono text-black/40 uppercase tracking-[0.22em] leading-relaxed max-w-xs">
+            <img src={brandLogo} alt="AGE REVIVE" className="h-8 w-auto brightness-0 invert" />
+            <p className="text-[10px] font-mono text-white/30 uppercase tracking-[0.22em] leading-relaxed max-w-xs">
               * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
             </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-16">
             <div className="space-y-4">
-              <h5 className="text-[10px] font-mono font-bold uppercase tracking-[0.22em]">Shop</h5>
-              <ul className="space-y-2 text-[10px] font-mono font-medium text-black/50 uppercase list-none p-0">
-                <li><a href="/shop" className="hover:text-black transition-colors">CELLUBIOME</a></li>
-                <li><a href="/shop" className="hover:text-black transition-colors">CELLUNAD+</a></li>
-                <li><a href="/shop" className="hover:text-black transition-colors">CELLUNOVA</a></li>
+              <h5 className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-white">Shop</h5>
+              <ul className="space-y-2 text-[10px] font-mono font-medium text-white/40 uppercase list-none p-0">
+                <li><a href="/shop" className="hover:text-ar-teal transition-colors">CELLUBIOME</a></li>
+                <li><a href="/shop" className="hover:text-ar-teal transition-colors">CELLUNAD+</a></li>
+                <li><a href="/shop" className="hover:text-ar-teal transition-colors">CELLUNOVA</a></li>
               </ul>
             </div>
 
             <div className="space-y-4">
-              <h5 className="text-[10px] font-mono font-bold uppercase tracking-[0.22em]">Info</h5>
-              <ul className="space-y-2 text-[10px] font-mono font-medium text-black/50 uppercase list-none p-0">
-                <li><a href="#axis" className="hover:text-black transition-colors">The Axis</a></li>
-                <li><a href="#journal" className="hover:text-black transition-colors">Journal</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">References</a></li>
+              <h5 className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-white">Info</h5>
+              <ul className="space-y-2 text-[10px] font-mono font-medium text-white/40 uppercase list-none p-0">
+                <li><a href="#axis" className="hover:text-ar-teal transition-colors">The Axis</a></li>
+                <li><a href="#journal" className="hover:text-ar-teal transition-colors">Journal</a></li>
+                <li><a href="#" className="hover:text-ar-teal transition-colors">References</a></li>
               </ul>
             </div>
 
             <div className="space-y-4">
-              <h5 className="text-[10px] font-mono font-bold uppercase tracking-[0.22em]">Connect</h5>
-              <ul className="space-y-2 text-[10px] font-mono font-medium text-black/50 uppercase list-none p-0">
-                <li><a href="#" className="hover:text-black transition-colors">Instagram</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">X</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Contact</a></li>
+              <h5 className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-white">Connect</h5>
+              <ul className="space-y-2 text-[10px] font-mono font-medium text-white/40 uppercase list-none p-0">
+                <li><a href="#" className="hover:text-ar-teal transition-colors">Instagram</a></li>
+                <li><a href="#" className="hover:text-ar-teal transition-colors">X</a></li>
+                <li><a href="#" className="hover:text-ar-teal transition-colors">Contact</a></li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-black/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <span className="text-[9px] font-mono text-black/30 uppercase tracking-[0.22em]">© 2026 Age Revive</span>
-          <div className="flex gap-8 text-[9px] font-mono text-black/30 uppercase tracking-[0.22em]">
+        <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/[0.06] flex flex-col md:flex-row justify-between items-center gap-6">
+          <span className="text-[9px] font-mono text-white/25 uppercase tracking-[0.22em]">© 2026 Age Revive</span>
+          <div className="flex gap-8 text-[9px] font-mono text-white/25 uppercase tracking-[0.22em]">
             <a href="#">Privacy</a>
             <a href="#">Terms</a>
             <a href="#">Shipping</a>
