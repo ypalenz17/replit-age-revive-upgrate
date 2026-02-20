@@ -334,10 +334,10 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
         </div>
 
         <div className="w-full md:w-1/3 mt-16 md:mt-0 hero-panel">
-          <div className="bg-ar-paper p-8 rounded-ar-4xl shadow-float space-y-8 border border-black/5">
+          <div className="space-y-8">
             <div className="space-y-2">
-              <h3 className="text-xl font-sans font-extrabold uppercase tracking-[-0.02em] text-ar-navy">Protocol Selector</h3>
-              <p className="text-[10px] font-mono text-black/40 uppercase tracking-[0.22em]">Select your starting system</p>
+              <h3 className="text-xl font-sans font-extrabold uppercase tracking-[-0.02em] text-white">Protocol Selector</h3>
+              <p className="text-[10px] font-mono text-white/40 uppercase tracking-[0.22em]">Select your starting system</p>
             </div>
 
             <div className="space-y-4">
@@ -346,11 +346,11 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
               ))}
             </div>
 
-            <button className="w-full py-5 bg-ar-navy text-white rounded-full font-mono font-bold uppercase text-[10px] tracking-[0.22em] hover:bg-ar-ink transition-colors">
+            <button className="w-full py-5 bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[10px] tracking-[0.22em] hover:brightness-110 transition-all">
               Explore The Axis
             </button>
 
-            <p className="text-[10px] font-mono text-black/40 uppercase tracking-[0.22em]">
+            <p className="text-[10px] font-mono text-white/30 uppercase tracking-[0.22em]">
               Subscription cadence is selected at checkout.
             </p>
           </div>

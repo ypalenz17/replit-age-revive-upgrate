@@ -14,7 +14,7 @@ export default function ProtocolSelectorCard({ p }: { p: { slug: string; name: s
   return (
     <Link
       to={`/products/${p.slug}`}
-      className="group relative block p-6 bg-white border border-black/5 rounded-ar-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-ar-teal/40"
+      className="group relative block p-5 bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-ar-3xl overflow-hidden hover:bg-white/[0.12] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-ar-teal/40"
       aria-label={`View ${p.name}`}
       data-testid={`card-protocol-${p.slug}`}
     >
@@ -23,28 +23,28 @@ export default function ProtocolSelectorCard({ p }: { p: { slug: string; name: s
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{
-          background: `radial-gradient(650px 240px at 15% 0%, ${hexToRgba(p.color, 0.18)}, transparent 60%)`,
+          background: `radial-gradient(650px 240px at 15% 0%, ${hexToRgba(p.color, 0.25)}, transparent 60%)`,
         }}
       />
 
       <div className="relative z-10 flex items-start justify-between gap-4">
         <div className="flex items-start gap-4">
-          <div className="w-11 h-11 rounded-full overflow-hidden bg-ar-navy/5 ring-1 ring-black/5">
+          <div className="w-11 h-11 rounded-full overflow-hidden bg-white/10 ring-1 ring-white/15">
             <img
               src={p.image}
               alt=""
-              className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
           </div>
 
           <div className="space-y-1">
-            <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-black/45">
+            <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/45">
               {p.category}
             </p>
-            <h4 className="font-bold text-sm tracking-tight uppercase text-ar-navy">
+            <h4 className="font-bold text-sm tracking-tight uppercase text-white">
               {p.name}
             </h4>
-            <p className="text-[10px] font-mono font-medium text-black/55 leading-tight">
+            <p className="text-[10px] font-mono font-medium text-white/50 leading-tight">
               {p.tagline}
             </p>
           </div>
@@ -52,7 +52,7 @@ export default function ProtocolSelectorCard({ p }: { p: { slug: string; name: s
 
         <ArrowRight
           size={18}
-          className="mt-1 text-black/25 group-hover:translate-x-1 transition-transform"
+          className="mt-1 group-hover:translate-x-1 transition-transform"
           style={{ color: p.color }}
         />
       </div>
@@ -61,8 +61,8 @@ export default function ProtocolSelectorCard({ p }: { p: { slug: string; name: s
         {p.ingredients.map((ing) => (
           <span
             key={ing}
-            className="text-[9px] font-mono uppercase tracking-[0.18em] px-2 py-1 rounded-full border border-black/10 bg-black/[0.02]"
-            style={{ color: p.color }}
+            className="text-[9px] font-mono uppercase tracking-[0.18em] px-2 py-1 rounded-full border"
+            style={{ color: p.color, borderColor: hexToRgba(p.color, 0.3) }}
           >
             {ing}
           </span>
@@ -70,7 +70,7 @@ export default function ProtocolSelectorCard({ p }: { p: { slug: string; name: s
       </div>
 
       <div className="relative z-10 mt-5 flex items-center justify-between">
-        <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-black/45">
+        <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/35">
           {p.serving}
         </span>
         <span className="text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: p.color }}>
