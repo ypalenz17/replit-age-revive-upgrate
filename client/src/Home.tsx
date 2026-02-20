@@ -333,7 +333,7 @@ const TheAxis = ({ onOpenEvidence }) => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12">
+        <div className="grid md:grid-cols-3 gap-6">
           {[
             {
               name: 'Gut–Mito Axis',
@@ -354,16 +354,16 @@ const TheAxis = ({ onOpenEvidence }) => {
               steps: ['Short cycle', 'Defense layer', 'Return to base']
             }
           ].map((item, i) => (
-            <div key={i} className="space-y-8 reveal group">
-              <div className="w-16 h-16 rounded-ar-2xl bg-white/[0.06] border border-white/[0.08] text-white flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+            <div key={i} className="reveal group p-8 bg-white/[0.04] border border-white/[0.08] rounded-2xl hover:border-white/15 transition-all space-y-6">
+              <div className="w-14 h-14 rounded-xl bg-white/[0.06] border border-white/[0.08] text-white flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                 <span className="font-mono text-xs font-bold tracking-[0.14em]">{item.tag}</span>
               </div>
-              <div className="space-y-4">
-                <h3 className="text-2xl font-sans font-extrabold uppercase tracking-tight text-white">{item.name}</h3>
+              <div className="space-y-3">
+                <h3 className="text-xl font-sans font-extrabold uppercase tracking-tight text-white">{item.name}</h3>
                 <p className="text-sm font-medium text-white/50 leading-relaxed">{item.desc}</p>
               </div>
 
-              <ul className="space-y-3">
+              <ul className="space-y-2.5">
                 {item.steps.map((s) => (
                   <li key={s} className="flex items-center gap-3 text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-white/35">
                     <div className="w-1.5 h-1.5 rounded-full bg-ar-teal" /> {s}
@@ -373,7 +373,7 @@ const TheAxis = ({ onOpenEvidence }) => {
 
               <button
                 onClick={onOpenEvidence}
-                className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-ar-teal flex items-center gap-2 hover:gap-3 transition-all"
+                className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-ar-teal flex items-center gap-2 hover:gap-3 transition-all pt-2 border-t border-white/[0.06] w-full"
               >
                 View Evidence <ArrowRight size={14} />
               </button>
@@ -552,10 +552,14 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
+
       <TheAxis onOpenEvidence={() => setEvidencePanel(true)} />
 
+      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
+
       {/* Signature Micro-UI Bar */}
-      <section className="py-6 px-6 overflow-hidden border-y border-white/[0.06]">
+      <section className="py-6 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto flex justify-between items-center gap-12">
           <div className="flex items-center gap-4">
             <div className="w-2 h-2 rounded-full bg-ar-teal animate-pulse" />
@@ -569,8 +573,15 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
+
       <SixPillars />
+
+      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
+
       <Journal />
+
+      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
 
       {/* Final CTA */}
       <section className="py-40 px-6 text-white relative overflow-hidden">
