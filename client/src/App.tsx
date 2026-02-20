@@ -479,32 +479,14 @@ function ProductTemplate({ product }) {
         });
       });
 
-      const isMobile = window.matchMedia('(max-width: 768px)').matches;
-      const cards = gsap.utils.toArray('.archive-card');
-      cards.forEach((card, i) => {
-        ScrollTrigger.create({
-          trigger: card,
-          start: isMobile ? 'top 10%' : 'top top',
-          end: isMobile ? '+=80%' : '+=120%',
-          pin: true,
-          pinSpacing: isMobile,
-          invalidateOnRefresh: true
+      gsap.utils.toArray('.archive-card').forEach((card) => {
+        gsap.from(card, {
+          scrollTrigger: { trigger: card, start: 'top 85%' },
+          opacity: 0,
+          y: 40,
+          duration: 0.8,
+          ease: 'power3.out'
         });
-
-        if (i < cards.length - 1) {
-          gsap.to(card, {
-            scrollTrigger: {
-              trigger: cards[i + 1],
-              start: isMobile ? 'top 80%' : 'top 65%',
-              end: isMobile ? 'top 20%' : 'top 10%',
-              scrub: true
-            },
-            scale: 0.92,
-            opacity: 0.55,
-            filter: 'blur(18px)',
-            ease: 'none'
-          });
-        }
       });
 
       ScrollTrigger.refresh();
@@ -713,7 +695,7 @@ function ProductTemplate({ product }) {
           {product.mechanics.map((item, i) => {
             const ArchiveIcon = i === 0 ? Zap : i === 1 ? Activity : ShieldCheck;
             return (
-              <div key={i} className="archive-card min-h-[50vh] md:h-[62vh] w-full bg-ar-paper rounded-ar-4xl p-8 md:p-20 shadow-float flex flex-col justify-center items-center text-center overflow-hidden border border-black/5 relative">
+              <div key={i} className="archive-card w-full bg-ar-paper rounded-ar-4xl p-10 md:p-20 shadow-float flex flex-col justify-center items-center text-center overflow-hidden border border-black/5 relative">
                 <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
                   <svg width="100%" height="100%">
                     <pattern id={`p-${product.id}-${i}`} x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
