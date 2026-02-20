@@ -274,11 +274,9 @@ function ProtocolScheduler() {
   const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   const [current, setCurrent] = useState(1);
   const [confirmed, setConfirmed] = useState(false);
-  const [cursorIndex, setCursorIndex] = useState(1);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCursorIndex((i) => (i + 1) % 7);
       setCurrent((i) => (i + 1) % 7);
       setConfirmed(true);
     }, 2600);
@@ -307,7 +305,6 @@ function ProtocolScheduler() {
               key={i}
               onClick={() => {
                 setCurrent(i);
-                setCursorIndex(i);
                 setConfirmed(true);
               }}
               className={[
@@ -324,22 +321,6 @@ function ProtocolScheduler() {
           ))}
         </div>
 
-        {/* Automated SVG cursor (decorative) */}
-        <div
-          className="pointer-events-none absolute top-0 left-0 w-[calc((100%-12px)/7)] aspect-square"
-          style={{ transform: `translateX(calc(${cursorIndex} * (100% + 8px)))` }}
-          aria-hidden="true"
-        >
-          <div className="w-full h-full relative">
-            <div className="absolute -top-3 -right-3">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M5 3l7 17 2-7 7-2L5 3z" fill="rgba(33,37,53,0.85)" />
-                <path d="M5 3l7 17 2-7 7-2L5 3z" stroke="rgba(33,37,53,0.15)" strokeWidth="1" />
-              </svg>
-            </div>
-            <div className={confirmed ? 'absolute inset-0 rounded-xl ring-2 ring-[color:var(--accent)]/35' : 'absolute inset-0'} />
-          </div>
-        </div>
       </div>
     </div>
   );
