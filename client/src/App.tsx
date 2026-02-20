@@ -267,17 +267,17 @@ function IngredientPanel({ ingredients, accent }) {
 
 function TrustStats({ product }) {
   const stats = [
-    { value: String(product.ingredients.length), label: 'Standardized Actives' },
-    { value: 'Full', label: 'Dose Disclosure' },
-    { value: '3rd', label: 'Party Tested' },
+    { value: 'Actives', label: String(product.ingredients.length) },
+    { value: 'Dose', label: 'Clinical' },
+    { value: 'Tested', label: '3rd Party' },
   ];
 
   return (
     <div className="grid grid-cols-3 gap-3">
       {stats.map((stat, i) => (
         <div key={i} className="bg-white border border-black/5 rounded-2xl p-4 text-center flex flex-col items-center justify-center min-h-[88px]">
-          <p className="text-lg font-extrabold tracking-tight text-ar-navy whitespace-nowrap">{stat.value}</p>
-          <p className="text-[9px] font-mono font-medium uppercase tracking-[0.1em] text-black/35 mt-1 whitespace-nowrap">{stat.label}</p>
+          <p className="text-[9px] font-mono font-medium uppercase tracking-[0.12em] text-black/35 mb-1 whitespace-nowrap">{stat.value}</p>
+          <p className="text-lg font-extrabold tracking-tight text-ar-navy whitespace-nowrap">{stat.label}</p>
         </div>
       ))}
     </div>
