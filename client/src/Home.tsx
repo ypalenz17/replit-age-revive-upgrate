@@ -274,12 +274,13 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
   return (
     <section className="relative min-h-[100dvh] flex flex-col md:flex-row overflow-hidden">
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 px-6 pt-32 pb-12">
-        <div className="w-full md:w-1/2 space-y-10 hero-text">
+      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-center px-6 pt-40 pb-24 min-h-[100dvh]">
+        <div className="space-y-10 hero-text">
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-3">
               <div className="h-[1px] w-12 bg-ar-teal" />
               <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Protocol Infrastructure</span>
+              <div className="h-[1px] w-12 bg-ar-teal" />
             </div>
             <h1 className="text-6xl md:text-8xl font-sans font-extrabold text-white tracking-[-0.05em] leading-[0.85]">
               Cellular Energy.
@@ -288,60 +289,22 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             </h1>
           </div>
 
-          <p className="text-xl md:text-2xl text-white/70 font-medium max-w-xl leading-snug">
+          <p className="text-xl md:text-2xl text-white/70 font-medium max-w-2xl mx-auto leading-snug">
             Three protocols designed as a system: daily NAD+ support, the gut–mito signaling layer, and a 7-day monthly renewal cadence.
           </p>
 
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {[
-                'CELLUNAD+ daily NAD+ support*',
-                'CELLUBIOME gut–mito signaling support*',
-                'CELLUNOVA 7-day protocol cycle*'
-              ].map((o) => (
-                <div key={o} className="flex items-center gap-3 text-white/60 text-xs font-mono font-bold uppercase tracking-tight">
-                  <span className="w-1.5 h-1.5 rounded-full bg-ar-teal shrink-0" /> {o}
-                </div>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap gap-4 pt-4">
-              <button className="group relative px-10 py-5 bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[10px] tracking-[0.22em] overflow-hidden transition-transform hover:scale-105 active:scale-95">
-                <span className="relative z-10">Start Full Protocol</span>
-                <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-              </button>
-
-              <button
-                onClick={onOpenEvidence}
-                className="px-8 py-5 border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[10px] tracking-[0.22em] hover:bg-white/5 transition-all"
-              >
-                View Evidence
-              </button>
-            </div>
-
-          </div>
-        </div>
-
-        <div className="w-full md:w-1/3 mt-16 md:mt-0 hero-panel">
-          <div className="space-y-8">
-            <div className="space-y-2">
-              <h3 className="text-xl font-sans font-extrabold uppercase tracking-[-0.02em] text-white">Protocol Selector</h3>
-              <p className="text-[10px] font-mono text-white/40 uppercase tracking-[0.22em]">Select your starting system</p>
-            </div>
-
-            <div className="space-y-4">
-              {SELECTOR_PRODUCTS.map((p) => (
-                <ProtocolSelectorCard key={p.slug} p={p} />
-              ))}
-            </div>
-
-            <button className="w-full py-5 bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[10px] tracking-[0.22em] hover:brightness-110 transition-all">
-              Explore The Axis
+          <div className="flex flex-wrap justify-center gap-4 pt-4">
+            <button className="group relative px-10 py-5 bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[10px] tracking-[0.22em] overflow-hidden transition-transform hover:scale-105 active:scale-95">
+              <span className="relative z-10">Start Full Protocol</span>
+              <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </button>
 
-            <p className="text-[10px] font-mono text-white/30 uppercase tracking-[0.22em]">
-              Subscription cadence is selected at checkout.
-            </p>
+            <button
+              onClick={onOpenEvidence}
+              className="px-8 py-5 border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[10px] tracking-[0.22em] hover:bg-white/5 transition-all"
+            >
+              View Evidence
+            </button>
           </div>
         </div>
       </div>
@@ -548,6 +511,29 @@ export default function Home() {
         onOpenEvidence={() => setEvidencePanel(true)}
         onOpenProduct={(slug) => setActiveProduct(productBySlug[slug])}
       />
+
+      {/* Protocol Selector */}
+      <section className="py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-14 reveal">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-[1px] w-12 bg-ar-teal" />
+              <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Select Your Protocol</span>
+              <div className="h-[1px] w-12 bg-ar-teal" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-sans font-extrabold text-white tracking-[-0.04em] uppercase leading-tight">
+              The System
+            </h2>
+            <p className="text-sm text-white/40 font-mono uppercase tracking-[0.14em] mt-3">Choose your starting point</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {SELECTOR_PRODUCTS.map((p) => (
+              <ProtocolSelectorCard key={p.slug} p={p} />
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Proof Row */}
       <section className="bg-white border-y border-black/5 py-12 px-6">
