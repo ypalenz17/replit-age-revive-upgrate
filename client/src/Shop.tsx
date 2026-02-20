@@ -503,11 +503,24 @@ function ProductTemplate({ product }) {
 
       {/* Hero */}
       <section className="hero relative min-h-[100dvh] flex flex-col md:flex-row bg-ar-navy overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={product.heroImage} className="hero-bg w-full h-full object-cover opacity-60 grayscale-[35%]" alt="" decoding="async" fetchpriority="high" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ar-navy via-ar-navy/35 to-transparent" />
-          <div className="absolute inset-0 opacity-[0.25]" style={{ background: 'radial-gradient(900px 600px at 20% 85%, var(--accentGlow), transparent 60%)' }} />
+        <div className="absolute inset-0 z-0 bg-[#0f172a]">
+          <img
+            src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2400"
+            className="hero-bg w-full h-full object-cover grayscale opacity-30 mix-blend-screen"
+            alt=""
+            decoding="async"
+            fetchpriority="high"
+          />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
         </div>
+        <div
+          className="absolute inset-0 pointer-events-none z-[1] opacity-[0.04]"
+          style={{
+            backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
+            backgroundSize: '100px 100px'
+          }}
+        />
+        <div className="absolute inset-0 z-[2] opacity-[0.25]" style={{ background: 'radial-gradient(900px 600px at 20% 85%, var(--accentGlow), transparent 60%)' }} />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-12 px-6 pt-32 pb-12 items-end">
           <div className="w-full md:w-3/5 mb-12 md:mb-0 hero-content text-white">

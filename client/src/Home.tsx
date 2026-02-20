@@ -268,14 +268,21 @@ const TelemetryTypewriter = () => {
 const Hero = ({ onOpenEvidence, onOpenProduct }) => {
   return (
     <section className="relative min-h-[100dvh] flex flex-col md:flex-row bg-ar-navy overflow-hidden">
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-0 bg-[#0f172a]">
         <img
-          src="https://images.unsplash.com/photo-1579389083046-e3df9c2b3325?auto=format&fit=crop&q=80&w=2200"
-          className="w-full h-full object-cover opacity-45 grayscale-[25%]"
+          src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2400"
+          className="w-full h-full object-cover grayscale opacity-30 mix-blend-screen"
           alt=""
         />
-        <div className="absolute inset-0 bg-gradient-to-tr from-ar-navy via-ar-navy/45 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
       </div>
+      <div
+        className="absolute inset-0 pointer-events-none z-[1] opacity-[0.04]"
+        style={{
+          backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
+          backgroundSize: '100px 100px'
+        }}
+      />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 px-6 pt-32 pb-12">
         <div className="w-full md:w-1/2 space-y-10 hero-text">
