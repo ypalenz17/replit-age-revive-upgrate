@@ -268,9 +268,9 @@ function TrustStats({ product }) {
   return (
     <div className="grid grid-cols-3 gap-3">
       {stats.map((stat, i) => (
-        <div key={i} className="bg-white border border-black/5 rounded-2xl p-4 text-center flex flex-col items-center justify-center min-h-[88px]">
-          <p className="text-[9px] font-mono font-medium uppercase tracking-[0.12em] text-black/35 mb-1 whitespace-nowrap">{stat.value}</p>
-          <p className="text-lg font-extrabold tracking-tight text-ar-navy whitespace-nowrap">{stat.label}</p>
+        <div key={i} className="bg-white/[0.05] border border-white/[0.1] rounded-2xl p-4 text-center flex flex-col items-center justify-center min-h-[88px]">
+          <p className="text-[9px] font-mono font-medium uppercase tracking-[0.12em] text-white/40 mb-1 whitespace-nowrap">{stat.value}</p>
+          <p className="text-lg font-extrabold tracking-tight text-white whitespace-nowrap">{stat.label}</p>
         </div>
       ))}
     </div>
@@ -287,47 +287,38 @@ function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  return (
-    <nav
-      className={[
-        'fixed top-8 left-1/2 -translate-x-1/2 z-[150] w-[92%] max-w-6xl',
-        'rounded-full border px-8 py-4 flex items-center justify-between',
-        'transition-all duration-700',
-        scrolled ? 'bg-ar-paper/80 backdrop-blur-xl border-black/5 shadow-float' : 'bg-transparent border-white/10'
-      ].join(' ')}
-      aria-label="Primary navigation"
-    >
-      <a href="/" aria-label="Go to homepage">
-        <img
-          src={brandLogo}
-          alt="AGE REVIVE"
-          className={['h-8 md:h-9 w-auto transition-all duration-500', scrolled ? '' : 'brightness-0 invert'].join(' ')}
-        />
-      </a>
+  const navLinks = [
+    { label: 'Shop', href: '/shop' },
+    { label: 'Science', href: '/#pillars' },
+    { label: 'Journal', href: '/#journal' }
+  ];
 
-      <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[11px] tracking-[0.14em] uppercase">
-        {['Infrastructure', 'Protocols', 'Rationale', 'Journal'].map((link) => (
-          <a
-            key={link}
-            href="#"
-            className={[
-              'transition-colors',
-              scrolled ? 'text-black/55 hover:text-black' : 'text-white/55 hover:text-white',
-              'hover:text-[color:var(--accent)]'
-            ].join(' ')}
-          >
-            {link}
-          </a>
-        ))}
+  return (
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[150] w-[92%] max-w-6xl flex items-center justify-between px-2 py-3" aria-label="Primary navigation">
+      <div
+        className={[
+          'flex items-center gap-8 transition-all duration-700 rounded-full px-6 py-3',
+          scrolled ? 'bg-white/[0.06] backdrop-blur-xl shadow-float border border-white/[0.08]' : 'bg-transparent border border-transparent'
+        ].join(' ')}
+      >
+        <a href="/" aria-label="Go to homepage">
+          <img src={brandLogo} alt="AGE REVIVE" className="h-7 md:h-8 w-auto brightness-0 invert transition-all duration-500" />
+        </a>
+        <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[10px] uppercase tracking-[0.2em]">
+          {navLinks.map((l) => (
+            <a key={l.label} href={l.href} className="text-white/60 transition-all hover:text-ar-teal">{l.label}</a>
+          ))}
+        </div>
       </div>
 
-      <div className="flex items-center gap-3">
-        <button className={['p-2 rounded-full transition-colors', scrolled ? 'text-black hover:bg-black/5' : 'text-white hover:bg-white/10'].join(' ')} aria-label="Bag">
-          <ShoppingBag size={20} />
-        </button>
-        <button className={['md:hidden p-2 rounded-full transition-colors', scrolled ? 'text-black hover:bg-black/5' : 'text-white hover:bg-white/10'].join(' ')} aria-label="Menu">
-          <Menu size={20} />
-        </button>
+      <div
+        className={[
+          'flex items-center gap-5 transition-all duration-700 rounded-full px-5 py-3',
+          scrolled ? 'bg-white/[0.06] backdrop-blur-xl shadow-float border border-white/[0.08]' : 'bg-transparent border border-transparent'
+        ].join(' ')}
+      >
+        <button className="text-white transition-all" aria-label="Cart"><ShoppingBag size={18} /></button>
+        <button className="md:hidden text-white transition-all" aria-label="Menu"><Menu size={18} /></button>
       </div>
     </nav>
   );
@@ -413,16 +404,16 @@ function SideSheet({ open, title, onClose, children }) {
 
   return (
     <div ref={sheetRef} className="fixed inset-0 z-[100] flex justify-end" role="dialog" aria-modal="true" aria-label={title}>
-      <div data-overlay className="absolute inset-0 bg-ar-navy/45 backdrop-blur-sm" onClick={onClose} />
-      <div data-panel className="relative w-full max-w-md bg-ar-paper h-full shadow-float p-10 md:p-12 overflow-y-auto border-l border-black/5">
-        <button onClick={onClose} className="absolute top-7 right-7 p-2 rounded-full hover:bg-black/5 transition-colors" aria-label="Close panel">
+      <div data-overlay className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
+      <div data-panel className="relative w-full max-w-md bg-[#111827] h-full shadow-float p-10 md:p-12 overflow-y-auto border-l border-white/[0.08]">
+        <button onClick={onClose} className="absolute top-7 right-7 p-2 rounded-full hover:bg-white/10 transition-colors text-white" aria-label="Close panel">
           <X />
         </button>
 
         <div className="space-y-10">
           <div className="space-y-2">
-            <p className="text-[10px] font-mono font-medium uppercase tracking-[0.14em] text-black/40">Overlay</p>
-            <h3 className="text-3xl font-sans font-extrabold tracking-[-0.03em] uppercase">{title}</h3>
+            <p className="text-[10px] font-mono font-medium uppercase tracking-[0.14em] text-white/40">Overlay</p>
+            <h3 className="text-3xl font-sans font-extrabold tracking-[-0.03em] uppercase text-white">{title}</h3>
           </div>
 
           {children}
@@ -492,7 +483,7 @@ function ProductTemplate({ product }) {
   const accentGlow = hexToRgba(product.accent, 0.55);
 
   return (
-    <main ref={containerRef} style={{ '--accent': product.accent, '--accentGlow': accentGlow }} className="relative bg-[#0f172a] text-ar-navy">
+    <main ref={containerRef} style={{ '--accent': product.accent, '--accentGlow': accentGlow }} className="relative bg-[#0f172a] text-white">
       <div className="fixed inset-0 z-0 bg-[#0f172a]">
         <img
           src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2400"
@@ -553,21 +544,21 @@ function ProductTemplate({ product }) {
           </div>
 
           <div className="w-full md:w-2/5 buy-panel">
-            <div className="bg-ar-paper p-8 md:p-10 rounded-ar-4xl shadow-float space-y-8 border border-black/5 relative overflow-hidden" style={{ boxShadow: `0 40px 110px -65px ${hexToRgba(product.accent, 0.55)}` }}>
+            <div className="bg-white/[0.06] backdrop-blur-xl p-8 md:p-10 rounded-ar-4xl shadow-float space-y-8 border border-white/[0.1] relative overflow-hidden" style={{ boxShadow: `0 40px 110px -65px ${hexToRgba(product.accent, 0.55)}` }}>
               <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: 'var(--accent)' }} />
 
               <div className="space-y-2">
                 <div className="flex justify-between items-baseline gap-4">
-                  <h3 className="text-2xl font-sans font-extrabold tracking-[-0.03em] uppercase">{product.name}</h3>
-                  <span className="text-xl font-semibold">{product.price}</span>
+                  <h3 className="text-2xl font-sans font-extrabold tracking-[-0.03em] uppercase text-white">{product.name}</h3>
+                  <span className="text-xl font-semibold text-white">{product.price}</span>
                 </div>
-                <p className="text-sm text-black/55 leading-relaxed font-medium">{product.description}</p>
+                <p className="text-sm text-white/55 leading-relaxed font-medium">{product.description}</p>
               </div>
 
               {product.warnings && (
-                <div className="rounded-ar-2xl bg-black/[0.03] border border-black/5 p-4">
-                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-black/45">Note</p>
-                  <p className="text-sm font-semibold">{product.warnings}</p>
+                <div className="rounded-ar-2xl bg-white/[0.04] border border-white/[0.08] p-4">
+                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/45">Note</p>
+                  <p className="text-sm font-semibold text-white/80">{product.warnings}</p>
                 </div>
               )}
 
@@ -575,13 +566,13 @@ function ProductTemplate({ product }) {
                 {product.outcomes.map((item, i) => (
                   <div key={i} className="flex items-center gap-3 text-xs font-semibold tracking-tight">
                     <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: product.accent }} />
-                    <span className="text-black/80">{item}</span>
+                    <span className="text-white/70">{item}</span>
                   </div>
                 ))}
               </div>
 
               <MagneticButton
-                className="w-full py-5 bg-ar-navy text-ar-paper rounded-full font-mono font-bold tracking-[0.14em] text-xs uppercase flex items-center justify-center gap-3 active:scale-[0.99] transition-transform relative overflow-hidden group"
+                className="w-full py-5 bg-white/[0.1] text-white border border-white/[0.15] rounded-full font-mono font-bold tracking-[0.14em] text-xs uppercase flex items-center justify-center gap-3 active:scale-[0.99] transition-transform relative overflow-hidden group hover:bg-white/[0.15]"
                 onClick={() => {}}
               >
                 <span className="relative z-10">Add to Protocol Archive</span>
@@ -590,15 +581,15 @@ function ProductTemplate({ product }) {
               </MagneticButton>
 
               <div className="grid grid-cols-2 gap-4">
-                <button onClick={() => setActiveSidePanel('rationale')} className="py-3 border border-black/10 rounded-full text-[10px] uppercase font-mono font-bold tracking-[0.14em] hover:bg-black/[0.03] transition-colors flex items-center justify-center gap-2">
+                <button onClick={() => setActiveSidePanel('rationale')} className="py-3 border border-white/[0.12] rounded-full text-[10px] uppercase font-mono font-bold tracking-[0.14em] text-white/60 hover:bg-white/[0.05] transition-colors flex items-center justify-center gap-2">
                   Evidence <ArrowRight size={10} />
                 </button>
-                <button onClick={() => setActiveSidePanel('ingredients')} className="py-3 border border-black/10 rounded-full text-[10px] uppercase font-mono font-bold tracking-[0.14em] hover:bg-black/[0.03] transition-colors flex items-center justify-center gap-2">
+                <button onClick={() => setActiveSidePanel('ingredients')} className="py-3 border border-white/[0.12] rounded-full text-[10px] uppercase font-mono font-bold tracking-[0.14em] text-white/60 hover:bg-white/[0.05] transition-colors flex items-center justify-center gap-2">
                   Ingredients <ArrowRight size={10} />
                 </button>
               </div>
 
-              <p className="text-[10px] font-mono text-black/40 leading-relaxed uppercase tracking-[0.22em]">
+              <p className="text-[10px] font-mono text-white/30 leading-relaxed uppercase tracking-[0.22em]">
                 Subscription cadence is selected at checkout, not here.
               </p>
             </div>
@@ -607,13 +598,13 @@ function ProductTemplate({ product }) {
       </section>
 
       {/* De-risk Strip */}
-      <section className="border-y border-black/5 py-12 bg-white/40">
+      <section className="border-y border-white/[0.06] py-12">
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-center md:justify-between gap-x-8 gap-y-4">
           {['3rd Party Tested', 'Standardized Actives', 'Protocol Cadence', 'Quality Controls'].map((text, i) => (
             <div key={i} className="flex items-center gap-2.5" data-testid={`trust-badge-${i}`}>
               <span className="font-mono text-[10px] font-bold tracking-[0.14em] text-[color:var(--accent)]">{String(i + 1).padStart(2, '0')}</span>
-              <span className="w-px h-3 bg-black/10" />
-              <span className="text-[10px] font-mono font-medium uppercase tracking-[0.12em] text-black/40 whitespace-nowrap">{text}</span>
+              <span className="w-px h-3 bg-white/[0.12]" />
+              <span className="text-[10px] font-mono font-medium uppercase tracking-[0.12em] text-white/40 whitespace-nowrap">{text}</span>
             </div>
           ))}
         </div>
@@ -624,17 +615,17 @@ function ProductTemplate({ product }) {
         <div className="grid md:grid-cols-12 gap-16 items-start">
           <div className="md:col-span-5 space-y-8 reveal md:sticky md:top-32">
             <TypewriterTelemetry phrases={product.telemetry} />
-            <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] leading-[1.06]">
+            <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] leading-[1.06] text-white">
               Every dose, <span className="italic text-[color:var(--accent)]">fully disclosed</span>.
             </h2>
-            <p className="text-lg text-black/60 leading-relaxed font-medium">
+            <p className="text-lg text-white/55 leading-relaxed font-medium">
               No proprietary blends. No hidden fillers. Each active is standardized, dosed at clinical-range levels, and listed with its exact purpose.
             </p>
 
             <TrustStats product={product} />
 
             <div className="pt-2">
-              <p className="text-[10px] font-mono text-black/30 uppercase tracking-[0.14em] leading-relaxed">
+              <p className="text-[10px] font-mono text-white/30 uppercase tracking-[0.14em] leading-relaxed">
                 Certificate of Analysis available on request. All actives independently verified.
               </p>
             </div>
@@ -647,28 +638,28 @@ function ProductTemplate({ product }) {
       </section>
 
       {/* Timeline */}
-      <section className="py-32 bg-white">
+      <section className="py-32">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20 space-y-4 reveal">
             <span className="text-[10px] font-mono uppercase tracking-[0.32em] text-[color:var(--accent)]">Protocol Arc</span>
-            <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em]">What to expect over time</h2>
-            <p className="text-sm text-black/55 font-medium max-w-2xl mx-auto">This is a support protocol. Individual responses vary. Consistency is the point.</p>
+            <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] text-white">What to expect over time</h2>
+            <p className="text-sm text-white/50 font-medium max-w-2xl mx-auto">This is a support protocol. Individual responses vary. Consistency is the point.</p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">
             {product.timeline.map((step, i) => (
               <div key={i} className="relative group reveal">
-                <div className="timeline-card p-8 rounded-ar-2xl bg-ar-paper border border-black/5 transition-all duration-300 hover:shadow-soft hover:-translate-y-1">
+                <div className="timeline-card p-8 rounded-ar-2xl bg-white/[0.05] border border-white/[0.1] transition-all duration-300 hover:bg-white/[0.08] hover:-translate-y-1 hover:border-ar-teal/30 hover:shadow-[0_0_30px_rgba(25,179,166,0.08)]">
                   <p className="text-[10px] font-mono text-[color:var(--accent)] mb-2 uppercase tracking-[0.22em]">{step.time}</p>
-                  <h4 className="text-xl font-sans font-extrabold mb-3 tracking-[-0.02em]">{step.label}</h4>
-                  <p className="text-xs text-black/55 leading-relaxed font-medium mb-6">{step.desc}</p>
+                  <h4 className="text-xl font-sans font-extrabold mb-3 tracking-[-0.02em] text-white">{step.label}</h4>
+                  <p className="text-xs text-white/50 leading-relaxed font-medium mb-6">{step.desc}</p>
 
-                  <div className="h-1 bg-black/5 rounded-full overflow-hidden">
+                  <div className="h-1 bg-white/[0.08] rounded-full overflow-hidden">
                     <div className="h-full" style={{ width: `${(i + 1) * 25}%`, background: 'var(--accent)' }} />
                   </div>
 
                   <div className="mt-4">
-                    <span className="text-[10px] font-mono font-medium uppercase text-black/40 tracking-[0.18em]">{step.value}</span>
+                    <span className="text-[10px] font-mono font-medium uppercase text-white/35 tracking-[0.18em]">{step.value}</span>
                   </div>
                 </div>
               </div>
@@ -678,7 +669,7 @@ function ProductTemplate({ product }) {
       </section>
 
       {/* Mechanistic Rationale Archive */}
-      <section className="bg-ar-navy py-32 px-6">
+      <section className="py-32 px-6">
         <div className="max-w-4xl mx-auto space-y-24">
           <div className="text-center text-white mb-20 space-y-4 reveal">
             <span className="text-[10px] font-mono uppercase tracking-[0.32em] text-[color:var(--accent)]">Mechanistic Layering</span>
@@ -687,20 +678,20 @@ function ProductTemplate({ product }) {
           </div>
 
           {product.mechanics.map((item, i) => (
-              <div key={i} className="archive-card w-full bg-ar-paper rounded-ar-4xl p-10 md:p-16 shadow-float flex flex-col justify-center items-center text-center overflow-hidden border border-black/5 relative" data-testid={`rationale-card-${i}`}>
+              <div key={i} className="archive-card w-full bg-white/[0.05] backdrop-blur-sm rounded-ar-4xl p-10 md:p-16 shadow-float flex flex-col justify-center items-center text-center overflow-hidden border border-white/[0.1] relative hover:border-ar-teal/20 transition-all duration-300" data-testid={`rationale-card-${i}`}>
                 <div className="absolute inset-0 pointer-events-none opacity-[0.18]">
                   <div className="absolute top-[20%] left-0 right-0 h-[1px] animate-scan-x" style={{ background: 'linear-gradient(90deg, transparent, var(--accent), transparent)' }} />
                 </div>
 
                 <div className="relative z-10 max-w-xl space-y-6">
                   <div className="flex flex-col items-center gap-3">
-                    <span className="text-[40px] font-mono font-bold leading-none" style={{ color: hexToRgba(product.accent, 0.15) }}>{`${String(i + 1).padStart(2, '0')}`}</span>
+                    <span className="text-[40px] font-mono font-bold leading-none" style={{ color: hexToRgba(product.accent, 0.25) }}>{`${String(i + 1).padStart(2, '0')}`}</span>
                     <div className="w-10 h-[1.5px] rounded-full" style={{ background: product.accent }} />
                   </div>
 
-                  <h3 className="text-3xl md:text-4xl font-sans font-extrabold tracking-[-0.03em] uppercase leading-none">{item.title}</h3>
+                  <h3 className="text-3xl md:text-4xl font-sans font-extrabold tracking-[-0.03em] uppercase leading-none text-white">{item.title}</h3>
 
-                  <p className="text-lg md:text-xl font-medium text-black/55 leading-relaxed italic max-w-md mx-auto">“{item.text}”</p>
+                  <p className="text-lg md:text-xl font-medium text-white/50 leading-relaxed italic max-w-md mx-auto">“{item.text}”</p>
 
                   <div className="pt-4 flex flex-wrap justify-center gap-3">
                     {item.tags.map((tag, t) => (
@@ -708,8 +699,8 @@ function ProductTemplate({ product }) {
                         key={t}
                         className="px-4 py-1.5 rounded-full text-[10px] font-mono font-medium uppercase tracking-[0.12em]"
                         style={t === 0
-                          ? { border: '1px solid rgba(0,0,0,0.08)', color: 'rgba(0,0,0,0.4)' }
-                          : { border: `1px solid ${hexToRgba(product.accent, 0.25)}`, color: product.accent }
+                          ? { border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.4)' }
+                          : { border: `1px solid ${hexToRgba(product.accent, 0.3)}`, color: product.accent }
                         }
                       >{tag}</span>
                     ))}
@@ -722,7 +713,7 @@ function ProductTemplate({ product }) {
 
       {/* FAQ + Disclaimer */}
       <section className="py-32 px-6 max-w-4xl mx-auto">
-        <h2 className="text-4xl font-sans font-extrabold tracking-[-0.03em] mb-16 text-center">Protocol Inquiries</h2>
+        <h2 className="text-4xl font-sans font-extrabold tracking-[-0.03em] mb-16 text-center text-white">Protocol Inquiries</h2>
 
         <div className="space-y-4 mb-24">
           {[
@@ -730,17 +721,17 @@ function ProductTemplate({ product }) {
             { q: 'How is this different from basic supplement stacks?', a: 'Age Revive is designed as infrastructure: standardized inputs, defined cadence, and clean intent. No noisy kitchen-sink blends.' },
             { q: 'Can I stack these products together?', a: 'They are designed to layer across different support systems. If you are unsure, start with one base product and add one layer at a time.' }
           ].map((faq, i) => (
-            <details key={i} className="group bg-white border border-black/5 rounded-ar-2xl p-6 cursor-pointer hover:bg-black/[0.02] transition-colors">
-              <summary className="list-none flex justify-between items-center font-sans font-extrabold tracking-[0.08em] uppercase text-sm">
+            <details key={i} className="group bg-white/[0.05] border border-white/[0.1] rounded-ar-2xl p-6 cursor-pointer hover:bg-white/[0.08] transition-colors">
+              <summary className="list-none flex justify-between items-center font-sans font-extrabold tracking-[0.08em] uppercase text-sm text-white">
                 {faq.q}
-                <ChevronDown className="group-open:rotate-180 transition-transform text-black/30" />
+                <ChevronDown className="group-open:rotate-180 transition-transform text-white/30" />
               </summary>
-              <p className="mt-4 text-sm text-black/60 leading-relaxed font-medium">{faq.a}</p>
+              <p className="mt-4 text-sm text-white/50 leading-relaxed font-medium">{faq.a}</p>
             </details>
           ))}
         </div>
 
-        <div className="bg-ar-navy p-12 rounded-ar-4xl text-center space-y-8 relative overflow-hidden">
+        <div className="bg-white/[0.04] border border-white/[0.08] p-12 rounded-ar-4xl text-center space-y-8 relative overflow-hidden">
           <div className="absolute inset-0 opacity-[0.18]" style={{ background: 'radial-gradient(900px 700px at 50% -10%, var(--accentGlow), transparent 60%)' }} />
           <p className="relative z-10 text-[10px] font-mono text-white/45 leading-relaxed uppercase tracking-[0.22em] max-w-2xl mx-auto">
             * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
@@ -760,17 +751,23 @@ function ProductTemplate({ product }) {
       </section>
 
       {/* Footer */}
-      <footer className="py-24 pb-28 md:py-24 border-t border-black/5 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-          <img src={brandLogo} alt="AGE REVIVE" className="h-8 w-auto" />
-
-          <div className="flex gap-12 text-[10px] font-mono font-medium uppercase tracking-[0.14em] text-black/40">
-            <a href="#" className="hover:text-black transition-colors">Terms</a>
-            <a href="#" className="hover:text-black transition-colors">Quality</a>
-            <a href="#" className="hover:text-black transition-colors">Scientific Advisory</a>
+      <footer className="py-8 px-6 border-t border-white/[0.06]">
+        <div className="max-w-3xl mx-auto text-center">
+          <img src={brandLogo} alt="AGE REVIVE" className="h-6 w-auto brightness-0 invert mx-auto mb-5" />
+          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-5">
+            <a href="/shop" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Shop</a>
+            <a href="/#pillars" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Science</a>
+            <a href="/#journal" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Journal</a>
+            <a href="#" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Contact</a>
+          </nav>
+          <div className="border-t border-white/[0.06] pt-4 flex flex-col items-center gap-2">
+            <div className="flex flex-wrap justify-center gap-x-5 text-[8px] font-mono text-white/20 uppercase tracking-[0.22em]">
+              <a href="#" className="hover:text-white/40 transition-colors">Privacy</a>
+              <a href="#" className="hover:text-white/40 transition-colors">Terms</a>
+              <a href="#" className="hover:text-white/40 transition-colors">Shipping</a>
+            </div>
+            <p className="text-[7px] font-mono text-white/15 uppercase tracking-[0.18em] max-w-lg leading-relaxed">© 2026 Age Revive · *These statements have not been evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent any disease.</p>
           </div>
-
-          <div className="text-[10px] font-mono text-black/40 uppercase tracking-[0.22em]">© 2026 AGE REVIVE</div>
         </div>
       </footer>
       </div>
@@ -779,10 +776,10 @@ function ProductTemplate({ product }) {
       <SideSheet open={activeSidePanel === 'ingredients'} title="Full Ingredient Panel" onClose={() => setActiveSidePanel(null)}>
         <div className="space-y-6">
           {product.ingredients.map((ing, i) => (
-            <div key={i} className="flex justify-between items-baseline border-b border-black/5 pb-4 gap-4">
+            <div key={i} className="flex justify-between items-baseline border-b border-white/[0.08] pb-4 gap-4">
               <div className="space-y-1 min-w-0 flex-1">
-                <p className="font-sans font-extrabold text-sm tracking-[-0.01em] uppercase">{ing.name}</p>
-                <p className="text-[10px] font-mono text-black/45 uppercase tracking-[0.14em] leading-relaxed">{ing.purpose}</p>
+                <p className="font-sans font-extrabold text-sm tracking-[-0.01em] uppercase text-white">{ing.name}</p>
+                <p className="text-[10px] font-mono text-white/40 uppercase tracking-[0.14em] leading-relaxed">{ing.purpose}</p>
               </div>
               <span className="font-mono text-sm font-extrabold whitespace-nowrap shrink-0" style={{ color: product.accent }}>{ing.dose}</span>
             </div>
@@ -790,9 +787,9 @@ function ProductTemplate({ product }) {
         </div>
 
         {product.warnings && (
-          <div className="mt-10 p-6 bg-red-500/5 border border-red-500/10 rounded-ar-2xl">
-            <p className="text-[10px] font-mono font-bold text-red-600 uppercase tracking-[0.14em] mb-1">Warning</p>
-            <p className="text-sm font-semibold">{product.warnings}</p>
+          <div className="mt-10 p-6 bg-red-500/10 border border-red-500/20 rounded-ar-2xl">
+            <p className="text-[10px] font-mono font-bold text-red-400 uppercase tracking-[0.14em] mb-1">Warning</p>
+            <p className="text-sm font-semibold text-white/80">{product.warnings}</p>
           </div>
         )}
       </SideSheet>
@@ -802,17 +799,17 @@ function ProductTemplate({ product }) {
           {product.mechanics.map((mech, i) => (
             <div key={i} className="space-y-3">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-mono font-bold" style={{ background: hexToRgba(product.accent, 0.12), color: product.accent }}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-mono font-bold text-white" style={{ background: hexToRgba(product.accent, 0.12), color: product.accent }}>
                   {i + 1}
                 </div>
-                <h4 className="font-sans font-extrabold uppercase tracking-[0.12em]">{mech.title}</h4>
+                <h4 className="font-sans font-extrabold uppercase tracking-[0.12em] text-white">{mech.title}</h4>
               </div>
-              <p className="text-sm text-black/65 leading-relaxed font-medium pl-11">{mech.text}</p>
+              <p className="text-sm text-white/55 leading-relaxed font-medium pl-11">{mech.text}</p>
             </div>
           ))}
 
-          <div className="pt-8 border-t border-black/5">
-            <p className="text-xs text-black/45 italic leading-relaxed">Rationale summarizes peer-reviewed research directions. It is not medical advice.</p>
+          <div className="pt-8 border-t border-white/[0.08]">
+            <p className="text-xs text-white/40 italic leading-relaxed">Rationale summarizes peer-reviewed research directions. It is not medical advice.</p>
           </div>
         </div>
       </SideSheet>
@@ -841,14 +838,14 @@ export default function Shop() {
 
   return (
     <div className="min-h-screen">
-      <div className="fixed bottom-6 left-6 z-[85] flex gap-2 p-2 bg-white/80 backdrop-blur rounded-full shadow-soft border border-black/5">
+      <div className="fixed bottom-6 left-6 z-[85] flex gap-2 p-2 bg-white/[0.08] backdrop-blur-xl rounded-full shadow-float border border-white/[0.1]">
         {Object.values(PRODUCTS).map((p) => (
           <button
             key={p.id}
             onClick={() => setSlug(p.id)}
             className={[
               'px-4 py-2 rounded-full text-[10px] font-mono font-bold uppercase tracking-[0.14em] transition-all',
-              slug === p.id ? 'text-white' : 'hover:bg-black/5 text-ar-navy'
+              slug === p.id ? 'text-white' : 'hover:bg-white/[0.08] text-white/50'
             ].join(' ')}
             style={slug === p.id ? { background: p.accent } : undefined}
           >
