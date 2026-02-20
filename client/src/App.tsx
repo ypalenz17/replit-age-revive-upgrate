@@ -254,14 +254,14 @@ function DiagnosticShuffler() {
           key={idx}
           className={[
             'absolute inset-0 rounded-ar-2xl p-4 flex flex-col justify-between',
-            'bg-white/5 border border-white/10',
+            'bg-white border border-black/5 shadow-soft',
             'transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]',
             idx === active ? 'opacity-100 translate-y-0 scale-100 rotate-0' : 'opacity-0 translate-y-7 scale-95 rotate-2'
           ].join(' ')}
         >
-          <span className="text-[10px] uppercase font-mono tracking-tight text-white/40">{card.label}</span>
+          <span className="text-[10px] uppercase font-mono tracking-tight text-black/40">{card.label}</span>
           <div className="flex items-baseline gap-1">
-            <span className="text-2xl font-extrabold tracking-tight text-white">{card.value}</span>
+            <span className="text-2xl font-extrabold tracking-tight text-ar-navy">{card.value}</span>
             <span className="text-[10px] font-bold text-[color:var(--accent)]">{card.unit}</span>
           </div>
         </div>
@@ -292,10 +292,10 @@ function ProtocolScheduler() {
   }, [confirmed]);
 
   return (
-    <div className="bg-white/5 border border-white/10 rounded-ar-2xl p-4 relative overflow-hidden">
+    <div className="bg-white border border-black/5 rounded-ar-2xl p-4 relative overflow-hidden shadow-soft">
       <div className="flex justify-between items-center mb-4">
-        <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.22em]">Protocol Sync</span>
-        <span className={confirmed ? 'text-[10px] font-mono text-[color:var(--accent)]' : 'text-[10px] font-mono text-white/25'}>
+        <span className="text-[10px] font-mono text-black/40 uppercase tracking-[0.22em]">Protocol Sync</span>
+        <span className={confirmed ? 'text-[10px] font-mono text-[color:var(--accent)]' : 'text-[10px] font-mono text-black/25'}>
           {confirmed ? 'SAVED' : 'READY'}
         </span>
       </div>
@@ -314,8 +314,8 @@ function ProtocolScheduler() {
                 'w-full aspect-square flex items-center justify-center rounded-xl text-[10px] font-mono font-bold',
                 'transition-all select-none',
                 current === i
-                  ? 'bg-[color:var(--accent)] text-ar-navy scale-[1.06]'
-                  : 'bg-white/5 text-white/35 hover:bg-white/10'
+                  ? 'bg-[color:var(--accent)] text-white scale-[1.06]'
+                  : 'bg-black/[0.04] text-black/40 hover:bg-black/[0.08]'
               ].join(' ')}
               aria-label={`Select ${day}`}
             >
@@ -333,8 +333,8 @@ function ProtocolScheduler() {
           <div className="w-full h-full relative">
             <div className="absolute -top-3 -right-3">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M5 3l7 17 2-7 7-2L5 3z" fill="rgba(245,243,238,0.9)" />
-                <path d="M5 3l7 17 2-7 7-2L5 3z" stroke="rgba(33,37,53,0.45)" strokeWidth="1" />
+                <path d="M5 3l7 17 2-7 7-2L5 3z" fill="rgba(33,37,53,0.85)" />
+                <path d="M5 3l7 17 2-7 7-2L5 3z" stroke="rgba(33,37,53,0.15)" strokeWidth="1" />
               </svg>
             </div>
             <div className={confirmed ? 'absolute inset-0 rounded-xl ring-2 ring-[color:var(--accent)]/35' : 'absolute inset-0'} />
