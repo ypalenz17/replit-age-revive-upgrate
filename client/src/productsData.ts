@@ -1,3 +1,7 @@
+import imgCellubiome from '@assets/FRONT_RENDER_TRANSPARENT_1771623631843.png';
+import imgCellunad from '@assets/CELLUNAD_1771623812381.png';
+import imgCellunova from '@assets/CELLUNAD_CELLUNOVA_1771623812382.png';
+
 export const PRODUCTS = [
   {
     slug: 'cellubiome',
@@ -6,7 +10,7 @@ export const PRODUCTS = [
     tagline: 'The Gut–Mitochondria Axis, simplified.',
     serving: '2 enteric-coated capsules daily',
     color: '#6C5CE7',
-    image: 'https://images.unsplash.com/photo-1628595308665-ad528919623e?auto=format&fit=crop&q=80&w=900',
+    image: imgCellubiome,
     ingredients: ['Urolithin A 500 mg', 'Tributyrin 500 mg'],
   },
   {
@@ -16,7 +20,7 @@ export const PRODUCTS = [
     tagline: 'Precision NAD+ support with co-factors, not hype.',
     serving: '2 capsules daily',
     color: '#19B3A6',
-    image: 'https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&q=80&w=900',
+    image: imgCellunad,
     ingredients: ['NR 500 mg', 'TMG 250 mg', 'Apigenin 100 mg'],
   },
   {
@@ -26,7 +30,7 @@ export const PRODUCTS = [
     tagline: 'Seven days on. Designed as a cycle, not forever.',
     serving: '5 capsules daily for 7 days',
     color: '#212535',
-    image: 'https://images.unsplash.com/photo-1576086213369-97a306dca665?auto=format&fit=crop&q=80&w=900',
+    image: imgCellunova,
     ingredients: ['Resveratrol 500 mg', 'Quercetin 500 mg', 'EGCG 300 mg', 'PQQ 10 mg'],
   }
 ];

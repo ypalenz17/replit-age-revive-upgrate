@@ -8,6 +8,9 @@ import {
 
 import { gsap } from 'gsap';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
+import imgCellubiome from '@assets/FRONT_RENDER_TRANSPARENT_1771623631843.png';
+import imgCellunad from '@assets/CELLUNAD_1771623812381.png';
+import imgCellunova from '@assets/CELLUNAD_CELLUNOVA_1771623812382.png';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PRODUCTS as SELECTOR_PRODUCTS } from './productsData';
 import ProtocolSelectorCard from './components/ProtocolSelectorCard';
@@ -31,7 +34,7 @@ const PRODUCTS = [
       'Supports gut-derived short-chain fatty acid signaling*'
     ],
     color: '#6C5CE7',
-    image: 'https://images.unsplash.com/photo-1628595308665-ad528919623e?auto=format&fit=crop&q=80&w=800',
+    image: imgCellubiome,
     fullIngredients: [
       { name: 'Urolithin A (≥99%)', dose: '500 mg', purpose: 'Mitophagy support' },
       { name: 'Tributyrin', dose: '500 mg', purpose: 'Butyrate delivery support' }
@@ -55,7 +58,7 @@ const PRODUCTS = [
       'Supports healthy methylation pathways*'
     ],
     color: '#19B3A6',
-    image: 'https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&q=80&w=800',
+    image: imgCellunad,
     fullIngredients: [
       { name: 'Nicotinamide Riboside (NR)', dose: '500 mg', purpose: 'NAD+ precursor support' },
       { name: 'R-Lipoic Acid', dose: '200 mg', purpose: 'Redox balance support' },
@@ -86,7 +89,7 @@ const PRODUCTS = [
       'Supports oxidative stress defense*'
     ],
     color: '#212535',
-    image: 'https://images.unsplash.com/photo-1576086213369-97a306dca665?auto=format&fit=crop&q=80&w=800',
+    image: imgCellunova,
     fullIngredients: [
       { name: 'NAC', dose: '600 mg', purpose: 'Glutathione support' },
       { name: 'Trans-Resveratrol', dose: '500 mg', purpose: 'Polyphenol support' },

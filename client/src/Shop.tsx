@@ -11,6 +11,9 @@ import { useParams } from 'wouter';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
+import imgCellubiome from '@assets/FRONT_RENDER_TRANSPARENT_1771623631843.png';
+import imgCellunad from '@assets/CELLUNAD_1771623812381.png';
+import imgCellunova from '@assets/CELLUNAD_CELLUNOVA_1771623812382.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,8 +55,7 @@ const PRODUCTS = {
     price: '$92.00',
     serving: '2 capsules daily',
     accent: '#1e3a8a',
-    heroImage:
-      'https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&q=80&w=2200',
+    heroImage: imgCellunad,
     outcomes: [
       'Supports NAD+ metabolism',
       'Supports mitochondrial energy production',
@@ -94,8 +96,7 @@ const PRODUCTS = {
     price: '$110.00',
     serving: '2 enteric-coated capsules daily',
     accent: '#19B3A6',
-    heroImage:
-      'https://images.unsplash.com/photo-1628595308665-ad528919623e?auto=format&fit=crop&q=80&w=2200',
+    heroImage: imgCellubiome,
     outcomes: [
       'Supports mitophagy signaling',
       'Supports mitochondrial renewal pathways',
@@ -131,8 +132,7 @@ const PRODUCTS = {
     serving: '5 capsules daily for 7 consecutive days',
     warnings: 'Contains wheat (spermidine source).',
     accent: '#6C5CE7',
-    heroImage:
-      'https://images.unsplash.com/photo-1576086213369-97a306dca665?auto=format&fit=crop&q=80&w=2200',
+    heroImage: imgCellunova,
     outcomes: [
       'Supports autophagy pathways',
       'Supports cellular cleanup signaling',
