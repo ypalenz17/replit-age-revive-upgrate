@@ -208,11 +208,13 @@ const Navbar = () => {
         scrolled ? 'bg-ar-paper/80 backdrop-blur-xl border-black/5 shadow-float' : 'bg-transparent border-white/10'
       ].join(' ')}
     >
-      <img
-        src={brandLogo}
-        alt="AGE REVIVE"
-        className={['h-8 md:h-9 w-auto transition-all duration-500', scrolled ? '' : 'brightness-0 invert'].join(' ')}
-      />
+      <a href="/" aria-label="Go to homepage">
+        <img
+          src={brandLogo}
+          alt="AGE REVIVE"
+          className={['h-8 md:h-9 w-auto transition-all duration-500', scrolled ? '' : 'brightness-0 invert'].join(' ')}
+        />
+      </a>
 
       <div className="hidden md:flex items-center gap-10 font-mono font-medium text-[10px] uppercase tracking-[0.2em]">
         {[

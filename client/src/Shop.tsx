@@ -297,11 +297,13 @@ function Navbar() {
       ].join(' ')}
       aria-label="Primary navigation"
     >
-      <img
-        src={brandLogo}
-        alt="AGE REVIVE"
-        className={['h-8 md:h-9 w-auto transition-all duration-500', scrolled ? '' : 'brightness-0 invert'].join(' ')}
-      />
+      <a href="/" aria-label="Go to homepage">
+        <img
+          src={brandLogo}
+          alt="AGE REVIVE"
+          className={['h-8 md:h-9 w-auto transition-all duration-500', scrolled ? '' : 'brightness-0 invert'].join(' ')}
+        />
+      </a>
 
       <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[11px] tracking-[0.14em] uppercase">
         {['Infrastructure', 'Protocols', 'Rationale', 'Journal'].map((link) => (
