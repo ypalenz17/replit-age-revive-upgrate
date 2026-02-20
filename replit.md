@@ -14,7 +14,7 @@ Preferred communication style: Simple, everyday language.
 - **Component Library**: shadcn/ui (new-york style) — extensive set of Radix UI primitives in `client/src/components/ui/`
 - **Animations**: GSAP with ScrollTrigger plugin for scroll-based animations
 - **State Management**: TanStack React Query for server state; local React state otherwise
-- **Routing**: Currently a single-page app (`App.tsx` is the main view), with a `not-found.tsx` page available
+- **Routing**: Wouter-based routing in `App.tsx`. Routes: `/` → Home page (`Home.tsx`), `/shop` → Product detail page (`Shop.tsx`), fallback → `not-found.tsx`
 - **Path Aliases**: `@/` maps to `client/src/`, `@shared/` maps to `shared/`, `@assets/` maps to `attached_assets/`
 
 ## Backend
