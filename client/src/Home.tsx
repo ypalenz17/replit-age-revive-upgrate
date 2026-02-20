@@ -202,7 +202,6 @@ const Navbar = () => {
 
   const navLinks = [
     { label: 'Shop', href: '/shop' },
-    { label: 'The Axis', href: '#axis' },
     { label: 'Science', href: '#pillars' },
     { label: 'Journal', href: '#journal' }
   ];
