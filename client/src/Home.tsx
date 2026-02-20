@@ -324,9 +324,13 @@ const TheAxis = ({ onOpenEvidence }) => {
   return (
     <section id="axis" className="py-32 px-6">
       <div className="max-w-7xl mx-auto space-y-24">
-        <div className="max-w-2xl reveal">
-          <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">The Foundation</span>
-          <h2 className="text-6xl font-sans font-extrabold tracking-[-0.04em] uppercase mt-4 text-white">
+        <div className="text-center mb-14 reveal">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-[1px] w-12 bg-ar-teal" />
+            <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">The Foundation</span>
+            <div className="h-[1px] w-12 bg-ar-teal" />
+          </div>
+          <h2 className="text-5xl md:text-6xl font-sans font-extrabold tracking-[-0.04em] uppercase text-white leading-tight">
             The Age Revive
             <br />
             Systems Axis.
@@ -389,10 +393,14 @@ const SixPillars = () => {
   return (
     <section id="pillars" className="py-32 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-16">
-        <div className="text-center space-y-4 reveal">
-          <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Framework</span>
+        <div className="text-center mb-14 reveal">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-[1px] w-12 bg-ar-teal" />
+            <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Framework</span>
+            <div className="h-[1px] w-12 bg-ar-teal" />
+          </div>
           <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] uppercase text-white">6 Pillars of Systemic Aging</h2>
-          <p className="text-sm text-white/45 font-medium max-w-2xl mx-auto">
+          <p className="text-sm text-white/45 font-medium max-w-2xl mx-auto mt-3">
             A framework for mapping protocols to systems. Not medical advice.
           </p>
         </div>
@@ -426,14 +434,13 @@ const Journal = () => {
   return (
     <section id="journal" className="py-32 px-6">
       <div className="max-w-7xl mx-auto space-y-16">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-6 reveal">
-          <div className="space-y-4">
+        <div className="text-center mb-14 reveal">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-[1px] w-12 bg-ar-teal" />
             <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Scientific Literacy</span>
-            <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] uppercase text-white">The Age Revive Journal.</h2>
+            <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
-          <button className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] border-b border-white/20 pb-2 text-white/60 hover:text-ar-teal hover:border-ar-teal transition-all flex items-center gap-2">
-            Read the science <ArrowRight size={14} />
-          </button>
+          <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] uppercase text-white">The Age Revive Journal.</h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
