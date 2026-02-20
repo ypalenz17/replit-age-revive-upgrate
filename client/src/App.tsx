@@ -307,7 +307,7 @@ function Navbar() {
       <img
         src={brandLogo}
         alt="AGE REVIVE"
-        className={['h-5 md:h-6 w-auto transition-all duration-500', scrolled ? '' : 'brightness-0 invert'].join(' ')}
+        className={['h-8 md:h-9 w-auto transition-all duration-500', scrolled ? '' : 'brightness-0 invert'].join(' ')}
       />
 
       <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[11px] tracking-[0.14em] uppercase">
@@ -776,7 +776,7 @@ function ProductTemplate({ product }) {
       {/* Footer */}
       <footer className="py-20 pb-28 md:py-20 border-t border-black/5 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-          <img src={brandLogo} alt="AGE REVIVE" className="h-6 w-auto" />
+          <img src={brandLogo} alt="AGE REVIVE" className="h-8 w-auto" />
 
           <div className="flex gap-12 text-[10px] font-mono font-medium uppercase tracking-[0.14em] text-black/40">
             <a href="#" className="hover:text-black transition-colors">Terms</a>
