@@ -612,25 +612,19 @@ function ProductTemplate({ product }) {
       </section>
 
       {/* De-risk Strip */}
-      <section className="py-16 md:py-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-[10px] font-mono font-medium uppercase tracking-[0.22em] text-black/30 text-center mb-10">Built on verification, not marketing</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
-            {[
-              { Icon: ShieldCheck, label: '3rd Party', sub: 'Tested' },
-              { Icon: Zap, label: 'Standardized', sub: 'Actives' },
-              { Icon: Clock, label: 'Protocol', sub: 'Cadence' },
-              { Icon: Activity, label: 'Quality', sub: 'Controls' }
-            ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center text-center group" data-testid={`trust-badge-${i}`}>
-                <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 transition-opacity" style={{ border: `1.5px solid ${hexToRgba(product.accent, 0.18)}` }}>
-                  <item.Icon className="text-[color:var(--accent)]" size={20} strokeWidth={1.5} />
-                </div>
-                <span className="text-[11px] font-mono font-semibold uppercase tracking-[0.08em] text-ar-navy">{item.label}</span>
-                <span className="text-[10px] font-mono font-medium uppercase tracking-[0.1em] text-black/35 mt-0.5">{item.sub}</span>
-              </div>
-            ))}
-          </div>
+      <section className="border-y border-black/[0.04] py-5 md:py-6 bg-white/40">
+        <div className="max-w-5xl mx-auto px-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 md:gap-x-12">
+          {[
+            { Icon: ShieldCheck, text: '3rd Party Tested' },
+            { Icon: Zap, text: 'Standardized Actives' },
+            { Icon: Clock, text: 'Protocol Cadence' },
+            { Icon: Activity, text: 'Quality Controls' }
+          ].map((item, i) => (
+            <div key={i} className="flex items-center gap-2.5" data-testid={`trust-badge-${i}`}>
+              <item.Icon className="text-[color:var(--accent)] shrink-0" size={16} strokeWidth={1.8} />
+              <span className="text-[10px] font-mono font-medium uppercase tracking-[0.12em] text-black/40 whitespace-nowrap">{item.text}</span>
+            </div>
+          ))}
         </div>
       </section>
 
