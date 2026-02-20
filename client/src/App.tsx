@@ -8,12 +8,10 @@ import {
   Activity,
   Clock,
   FlaskConical,
-  Microscope,
   Menu,
   ShoppingBag,
   Star,
   Info,
-  Beaker,
   X
 } from 'lucide-react';
 
@@ -233,94 +231,54 @@ function TypewriterTelemetry({ phrases: inputPhrases }) {
   );
 }
 
-function DiagnosticShuffler() {
-  const [active, setActive] = useState(0);
-  const cards = [
-    { label: 'Protocol Consistency', value: 'High', unit: 'SIGNAL' },
-    { label: 'Cellular Energy', value: '+42', unit: '%' },
-    { label: 'Recovery Index', value: 'Stable', unit: 'TREND' }
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => setActive((a) => (a + 1) % cards.length), 3000);
-    return () => clearInterval(timer);
-  }, [cards.length]);
-
+function IngredientPanel({ ingredients, accent }) {
   return (
-    <div className="relative h-24 w-full">
-      {cards.map((card, idx) => (
-        <div
-          key={idx}
-          className={[
-            'absolute inset-0 rounded-ar-2xl p-4 flex flex-col justify-between',
-            'bg-white border border-black/5 shadow-soft',
-            'transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]',
-            idx === active ? 'opacity-100 translate-y-0 scale-100 rotate-0' : 'opacity-0 translate-y-7 scale-95 rotate-2'
-          ].join(' ')}
-        >
-          <span className="text-[10px] uppercase font-mono tracking-tight text-black/40">{card.label}</span>
-          <div className="flex items-baseline gap-1">
-            <span className="text-2xl font-extrabold tracking-tight text-ar-navy">{card.value}</span>
-            <span className="text-[10px] font-bold text-[color:var(--accent)]">{card.unit}</span>
+    <div className="bg-ar-navy rounded-ar-4xl p-8 md:p-10 shadow-float border border-white/10 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.15] pointer-events-none" style={{ background: `radial-gradient(800px 500px at 80% 0%, ${hexToRgba(accent, 0.6)}, transparent 60%)` }} />
+
+      <div className="relative z-10">
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 rounded-full animate-pulse-dot" style={{ background: accent }} />
+            <span className="text-[10px] font-mono font-medium uppercase tracking-[0.14em] text-white/50">Full Dose Disclosure</span>
           </div>
+          <span className="text-[10px] font-mono font-medium uppercase tracking-[0.14em]" style={{ color: accent }}>{ingredients.length} Actives</span>
         </div>
-      ))}
+
+        <div className="space-y-0">
+          {ingredients.map((ing, i) => (
+            <div key={i} className="group">
+              <div className="flex items-baseline justify-between py-3 gap-4">
+                <div className="flex-1 min-w-0">
+                  <p className="text-[13px] font-semibold text-white/90 leading-tight truncate">{ing.name}</p>
+                  <p className="text-[10px] font-mono text-white/30 mt-0.5 uppercase tracking-[0.08em]">{ing.purpose}</p>
+                </div>
+                <span className="text-[13px] font-mono font-bold shrink-0" style={{ color: accent }}>{ing.dose}</span>
+              </div>
+              {i < ingredients.length - 1 && <div className="h-px bg-white/[0.06]" />}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
 
-function ProtocolScheduler() {
-  const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-  const [current, setCurrent] = useState(1);
-  const [confirmed, setConfirmed] = useState(false);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((i) => (i + 1) % 7);
-      setConfirmed(true);
-    }, 2600);
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    if (!confirmed) return;
-    const t = setTimeout(() => setConfirmed(false), 900);
-    return () => clearTimeout(t);
-  }, [confirmed]);
+function TrustStats({ product }) {
+  const stats = [
+    { value: String(product.ingredients.length), label: 'Standardized Actives' },
+    { value: 'Full', label: 'Dose Disclosure' },
+    { value: '3rd Party', label: 'Tested & Verified' },
+  ];
 
   return (
-    <div className="bg-white border border-black/5 rounded-ar-2xl p-4 relative overflow-hidden shadow-soft">
-      <div className="flex justify-between items-center mb-4">
-        <span className="text-[10px] font-mono text-black/40 uppercase tracking-[0.22em]">Protocol Sync</span>
-        <span className={confirmed ? 'text-[10px] font-mono text-[color:var(--accent)]' : 'text-[10px] font-mono text-black/25'}>
-          {confirmed ? 'SAVED' : 'READY'}
-        </span>
-      </div>
-
-      <div className="relative">
-        <div className="grid grid-cols-7 gap-2">
-          {days.map((day, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                setCurrent(i);
-                setConfirmed(true);
-              }}
-              className={[
-                'w-full aspect-square flex items-center justify-center rounded-xl text-[10px] font-mono font-bold',
-                'transition-all select-none',
-                current === i
-                  ? 'bg-[color:var(--accent)] text-white scale-[1.06]'
-                  : 'bg-black/[0.04] text-black/40 hover:bg-black/[0.08]'
-              ].join(' ')}
-              aria-label={`Select ${day}`}
-            >
-              {day}
-            </button>
-          ))}
+    <div className="grid grid-cols-3 gap-3">
+      {stats.map((stat, i) => (
+        <div key={i} className="bg-white border border-black/5 rounded-2xl p-4 text-center">
+          <p className="text-lg font-extrabold tracking-tight text-ar-navy">{stat.value}</p>
+          <p className="text-[9px] font-mono font-medium uppercase tracking-[0.1em] text-black/35 mt-1">{stat.label}</p>
         </div>
-
-      </div>
+      ))}
     </div>
   );
 }
@@ -679,75 +637,29 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      {/* Micro-UI Dashboard */}
+      {/* What's Inside */}
       <section className="py-24 px-6 max-w-7xl mx-auto overflow-hidden">
-        <div className="grid md:grid-cols-12 gap-12 items-center">
-          <div className="md:col-span-5 space-y-8 reveal">
+        <div className="grid md:grid-cols-12 gap-16 items-start">
+          <div className="md:col-span-5 space-y-8 reveal md:sticky md:top-32">
             <TypewriterTelemetry phrases={product.telemetry} />
             <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] leading-[1.06]">
-              Clinical interfaces for <span className="italic text-[color:var(--accent)]">biological protocols</span>.
+              Every dose, <span className="italic text-[color:var(--accent)]">fully disclosed</span>.
             </h2>
             <p className="text-lg text-black/60 leading-relaxed font-medium">
-              Age Revive is built like infrastructure: clear inputs, consistent cadence, and a protocol-first approach that respects your routine.
+              No proprietary blends. No hidden fillers. Each active is standardized, dosed at clinical-range levels, and listed with its exact purpose.
             </p>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-6 bg-white rounded-ar-2xl border border-black/5 space-y-2 shadow-soft">
-                <Microscope size={24} className="text-ar-violet mb-2" />
-                <h4 className="font-sans font-extrabold text-sm tracking-[0.14em] uppercase">Standardized Inputs</h4>
-                <p className="text-xs text-black/45 font-medium">Built around standardized actives and tight protocol intent.</p>
-              </div>
-              <div className="p-6 bg-white rounded-ar-2xl border border-black/5 space-y-2 shadow-soft">
-                <Beaker size={24} className="text-[color:var(--accent)] mb-2" />
-                <h4 className="font-sans font-extrabold text-sm tracking-[0.14em] uppercase">Stack Logic</h4>
-                <p className="text-xs text-black/45 font-medium">Designed to layer without chaos. Base, cycle, signal.</p>
-              </div>
+            <TrustStats product={product} />
+
+            <div className="pt-2">
+              <p className="text-[10px] font-mono text-black/30 uppercase tracking-[0.14em] leading-relaxed">
+                Certificate of Analysis available on request. All actives independently verified.
+              </p>
             </div>
           </div>
 
-          <div className="md:col-span-6 md:offset-1 grid grid-cols-1 sm:grid-cols-2 gap-6 reveal">
-            <div className="space-y-6">
-              <div className="bg-ar-navy p-8 rounded-ar-4xl shadow-float space-y-6 h-[290px] flex flex-col justify-between border border-white/10 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-[0.22]" style={{ background: 'radial-gradient(900px 600px at 60% 10%, var(--accentGlow), transparent 60%)' }} />
-                <div className="relative z-10 flex justify-between items-start">
-                  <Activity className="text-[color:var(--accent)]" />
-                  <div className="text-right">
-                    <p className="text-[10px] font-mono text-white/40 uppercase tracking-[0.22em]">Signal</p>
-                    <p className="text-xs font-extrabold text-white uppercase tracking-[0.14em]">Protocol Output</p>
-                  </div>
-                </div>
-
-                <div className="relative z-10 flex gap-1 items-end h-20 group">
-                  {[40, 60, 45, 90, 80, 50, 70, 85, 95, 60, 40].map((h, i) => (
-                    <div key={i} className="flex-1 rounded-full relative overflow-hidden" style={{ height: `${h}%`, background: 'rgba(245,243,238,0.10)' }}>
-                      <div className="absolute inset-0 origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-500" style={{ background: hexToRgba(product.accent, 0.35) }} />
-                    </div>
-                  ))}
-                </div>
-
-                <div className="relative z-10 flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.22em] text-white/40">
-                  <span>Live</span>
-                  <span className="text-[color:var(--accent)]">Stable</span>
-                </div>
-              </div>
-
-              <DiagnosticShuffler />
-            </div>
-
-            <div className="space-y-6 pt-12 sm:pt-24">
-              <ProtocolScheduler />
-
-              <div className="bg-ar-navy p-6 rounded-ar-3xl border border-white/10 space-y-4 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-[0.18]" style={{ background: 'radial-gradient(700px 500px at 10% 0%, var(--accentGlow), transparent 55%)' }} />
-                <div className="relative z-10 w-10 h-10 rounded-full flex items-center justify-center" style={{ background: hexToRgba(product.accent, 0.18), color: product.accent }}>
-                  <ShieldCheck size={20} />
-                </div>
-                <div className="relative z-10">
-                  <h4 className="text-white font-sans font-extrabold tracking-[0.14em] text-sm uppercase">Privacy-first UX</h4>
-                  <p className="text-white/45 text-[11px] leading-relaxed font-medium">Built to feel clinical and calm. No noisy gimmicks.</p>
-                </div>
-              </div>
-            </div>
+          <div className="md:col-span-7 reveal">
+            <IngredientPanel ingredients={product.ingredients} accent={product.accent} />
           </div>
         </div>
       </section>
