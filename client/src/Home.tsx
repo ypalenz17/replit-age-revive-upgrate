@@ -610,46 +610,23 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-10 px-6 border-t border-white/[0.06]">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-8">
-            <img src={brandLogo} alt="AGE REVIVE" className="h-7 w-auto brightness-0 invert" />
-
-            <div className="flex flex-wrap gap-x-14 gap-y-6">
-              <div className="space-y-3">
-                <h5 className="text-[9px] font-mono font-bold uppercase tracking-[0.22em] text-white/60">Shop</h5>
-                <ul className="space-y-1.5 text-[9px] font-mono font-medium text-white/35 uppercase list-none p-0">
-                  <li><a href="/shop" className="hover:text-ar-teal transition-colors">CELLUBIOME</a></li>
-                  <li><a href="/shop" className="hover:text-ar-teal transition-colors">CELLUNAD+</a></li>
-                  <li><a href="/shop" className="hover:text-ar-teal transition-colors">CELLUNOVA</a></li>
-                </ul>
-              </div>
-              <div className="space-y-3">
-                <h5 className="text-[9px] font-mono font-bold uppercase tracking-[0.22em] text-white/60">Info</h5>
-                <ul className="space-y-1.5 text-[9px] font-mono font-medium text-white/35 uppercase list-none p-0">
-                  <li><a href="#pillars" className="hover:text-ar-teal transition-colors">Science</a></li>
-                  <li><a href="#journal" className="hover:text-ar-teal transition-colors">Journal</a></li>
-                  <li><a href="#" className="hover:text-ar-teal transition-colors">References</a></li>
-                </ul>
-              </div>
-              <div className="space-y-3">
-                <h5 className="text-[9px] font-mono font-bold uppercase tracking-[0.22em] text-white/60">Connect</h5>
-                <ul className="space-y-1.5 text-[9px] font-mono font-medium text-white/35 uppercase list-none p-0">
-                  <li><a href="#" className="hover:text-ar-teal transition-colors">Instagram</a></li>
-                  <li><a href="#" className="hover:text-ar-teal transition-colors">X</a></li>
-                  <li><a href="#" className="hover:text-ar-teal transition-colors">Contact</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 pt-6 border-t border-white/[0.06] flex flex-col md:flex-row justify-between items-center gap-4">
-            <span className="text-[8px] font-mono text-white/20 uppercase tracking-[0.22em]">© 2026 Age Revive · *These statements have not been evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent any disease.</span>
-            <div className="flex gap-6 text-[8px] font-mono text-white/20 uppercase tracking-[0.22em]">
+      <footer className="py-8 px-6 border-t border-white/[0.06]">
+        <div className="max-w-3xl mx-auto text-center">
+          <img src={brandLogo} alt="AGE REVIVE" className="h-6 w-auto brightness-0 invert mx-auto mb-5" />
+          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-5">
+            <a href="/shop" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Shop</a>
+            <a href="#pillars" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Science</a>
+            <a href="#journal" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Journal</a>
+            <a href="#" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Instagram</a>
+            <a href="#" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Contact</a>
+          </nav>
+          <div className="border-t border-white/[0.06] pt-4 flex flex-col items-center gap-2">
+            <div className="flex flex-wrap justify-center gap-x-5 text-[8px] font-mono text-white/20 uppercase tracking-[0.22em]">
               <a href="#" className="hover:text-white/40 transition-colors">Privacy</a>
               <a href="#" className="hover:text-white/40 transition-colors">Terms</a>
               <a href="#" className="hover:text-white/40 transition-colors">Shipping</a>
             </div>
+            <p className="text-[7px] font-mono text-white/15 uppercase tracking-[0.18em] max-w-lg leading-relaxed">© 2026 Age Revive · *These statements have not been evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent any disease.</p>
           </div>
         </div>
       </footer>
