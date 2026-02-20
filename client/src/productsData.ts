@@ -31,7 +31,7 @@ export const PRODUCTS = [
     serving: '5 capsules daily for 7 days',
     color: '#212535',
     image: imgCellunova,
-    ingredients: ['Resveratrol 500 mg', 'Quercetin 500 mg', 'EGCG 300 mg', 'PQQ 10 mg'],
+    ingredients: ['Fisetin', 'Spermidine', 'PQQ'],
   }
 ];
 
