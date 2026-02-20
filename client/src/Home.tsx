@@ -358,18 +358,18 @@ const TheAxis = ({ onOpenEvidence }) => {
               steps: ['Short cycle', 'Defense layer', 'Return to base']
             }
           ].map((item, i) => (
-            <div key={i} className="reveal group p-8 bg-white/[0.04] border border-white/[0.08] rounded-2xl hover:border-white/15 transition-all space-y-6">
-              <div className="w-14 h-14 rounded-xl bg-white/[0.06] border border-white/[0.08] text-white flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+            <div key={i} className="reveal group p-8 bg-white/[0.05] border border-white/[0.1] rounded-2xl hover:border-ar-teal/30 hover:bg-white/[0.07] transition-all duration-500 space-y-6 hover:shadow-[0_0_40px_rgba(25,179,166,0.06)]">
+              <div className="w-14 h-14 rounded-xl bg-ar-teal/10 border border-ar-teal/20 text-ar-teal flex items-center justify-center group-hover:scale-110 group-hover:bg-ar-teal/15 transition-all duration-500">
                 <span className="font-mono text-xs font-bold tracking-[0.14em]">{item.tag}</span>
               </div>
               <div className="space-y-3">
-                <h3 className="text-xl font-sans font-extrabold uppercase tracking-tight text-white">{item.name}</h3>
-                <p className="text-sm font-medium text-white/50 leading-relaxed">{item.desc}</p>
+                <h3 className="text-xl font-sans font-extrabold uppercase tracking-tight text-white group-hover:text-ar-teal transition-colors duration-300">{item.name}</h3>
+                <p className="text-sm font-medium text-white/60 leading-relaxed">{item.desc}</p>
               </div>
 
               <ul className="space-y-2.5">
                 {item.steps.map((s) => (
-                  <li key={s} className="flex items-center gap-3 text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-white/35">
+                  <li key={s} className="flex items-center gap-3 text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-white/50">
                     <div className="w-1.5 h-1.5 rounded-full bg-ar-teal" /> {s}
                   </li>
                 ))}
@@ -377,7 +377,7 @@ const TheAxis = ({ onOpenEvidence }) => {
 
               <button
                 onClick={onOpenEvidence}
-                className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-ar-teal flex items-center gap-2 hover:gap-3 transition-all pt-2 border-t border-white/[0.06] w-full"
+                className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-ar-teal flex items-center gap-2 hover:gap-3 transition-all pt-3 border-t border-white/[0.08] w-full"
               >
                 View Evidence <ArrowRight size={14} />
               </button>
@@ -407,12 +407,12 @@ const SixPillars = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {PILLARS.map((p) => (
-            <div key={p.title} className="reveal group p-10 bg-white/[0.04] rounded-ar-3xl border border-white/[0.08] hover:border-ar-teal/20 transition-all hover:-translate-y-1">
+            <div key={p.title} className="reveal group p-10 bg-white/[0.05] rounded-ar-3xl border border-white/[0.1] hover:border-ar-teal/30 hover:bg-white/[0.07] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(25,179,166,0.06)]">
               <div className="space-y-6">
-                <h4 className="text-xl font-sans font-extrabold uppercase tracking-tight text-white">{p.title}</h4>
-                <p className="text-xs font-medium text-white/40 leading-relaxed min-h-[46px]">{p.desc}</p>
-                <div className="pt-4 border-t border-white/[0.06] flex justify-between items-center">
-                  <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.22em]">Mapped Protocol</span>
+                <h4 className="text-xl font-sans font-extrabold uppercase tracking-tight text-white group-hover:text-ar-teal transition-colors duration-300">{p.title}</h4>
+                <p className="text-xs font-medium text-white/55 leading-relaxed min-h-[46px]">{p.desc}</p>
+                <div className="pt-4 border-t border-white/[0.08] flex justify-between items-center">
+                  <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.22em]">Mapped Protocol</span>
                   <span className="text-[10px] font-mono font-bold text-ar-teal uppercase tracking-[0.22em]">{p.protocol}</span>
                 </div>
               </div>
@@ -446,12 +446,12 @@ const Journal = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {posts.map((j) => (
             <div key={j.title} className="reveal group cursor-pointer space-y-6">
-              <div className="aspect-[4/5] overflow-hidden rounded-ar-3xl bg-white/[0.04] border border-white/[0.06]">
-                <img src={j.img} className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700" alt="" />
+              <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-white/[0.05] border border-white/[0.1] group-hover:border-ar-teal/30 transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(25,179,166,0.06)]">
+                <img src={j.img} className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" alt="" />
               </div>
               <div className="space-y-2">
-                <span className="font-mono text-[9px] text-white/30 uppercase tracking-[0.22em]">{j.cat}</span>
-                <h4 className="text-xl font-sans font-extrabold uppercase tracking-tight text-white group-hover:text-ar-teal transition-colors">{j.title}</h4>
+                <span className="font-mono text-[9px] text-white/40 uppercase tracking-[0.22em]">{j.cat}</span>
+                <h4 className="text-xl font-sans font-extrabold uppercase tracking-tight text-white group-hover:text-ar-teal transition-colors duration-300">{j.title}</h4>
               </div>
             </div>
           ))}
