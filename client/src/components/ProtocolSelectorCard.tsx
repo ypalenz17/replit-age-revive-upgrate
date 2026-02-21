@@ -32,7 +32,7 @@ export default function ProtocolSelectorCard({ p }: { p: { slug: string; name: s
           <img
             src={p.image}
             alt={p.name}
-            className="w-full h-auto max-h-[280px] object-contain group-hover:scale-105 transition-transform duration-500"
+            className="w-[80%] h-auto max-h-[320px] object-contain group-hover:scale-105 transition-transform duration-500"
             style={{ imageRendering: 'auto', filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.3))' }}
           />
         </div>
