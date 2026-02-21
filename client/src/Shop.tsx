@@ -559,13 +559,20 @@ function ProductTemplate({ product }) {
 
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-6 md:gap-12 px-4 md:px-6 pt-24 md:pt-32 pb-24 md:pb-12 items-center">
 
-          {/* Desktop left panel — hidden on mobile */}
-          <div className="hidden md:block w-3/5 hero-content text-white">
-            <h1 className="text-[clamp(3.25rem,7vw,6.5rem)] font-sans font-extrabold tracking-[-0.05em] mb-4 leading-[0.88]">{product.name}</h1>
+          {/* Mobile: product image */}
+          <div className="w-full md:hidden flex justify-center mb-2">
+            <div className="relative w-48 h-48">
+              <div className="absolute inset-0 opacity-[0.30] rounded-full" style={{ background: `radial-gradient(circle, ${product.accent}, transparent 65%)` }} />
+              <img src={product.heroImage} alt={product.name} className="relative z-10 w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
+            </div>
+          </div>
 
-            <p className="text-2xl font-medium text-white/80 max-w-xl mb-8 leading-tight">{product.tagline}</p>
+          <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left">
+            <h1 className="text-[clamp(2.5rem,7vw,6.5rem)] font-sans font-extrabold tracking-[-0.05em] mb-3 md:mb-4 leading-[0.88]">{product.name}</h1>
 
-            <div className="inline-flex items-stretch gap-0 rounded-xl border border-white/[0.08] bg-white/[0.03] overflow-hidden">
+            <p className="text-base md:text-2xl font-medium text-white/80 max-w-xl mb-6 md:mb-8 leading-tight mx-auto md:mx-0">{product.tagline}</p>
+
+            <div className="hidden md:inline-flex items-stretch gap-0 rounded-xl border border-white/[0.08] bg-white/[0.03] overflow-hidden">
               <div className="px-5 py-3.5">
                 <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">Protocol</p>
                 <p className="text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.serving}</p>
@@ -574,6 +581,19 @@ function ProductTemplate({ product }) {
               <div className="px-5 py-3.5">
                 <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">System Target</p>
                 <p className="text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.category}</p>
+              </div>
+            </div>
+
+            {/* Mobile: protocol / target row */}
+            <div className="flex md:hidden justify-center gap-6 text-center">
+              <div>
+                <p className="text-[8px] uppercase font-mono text-white/35 tracking-[0.22em] mb-0.5">Protocol</p>
+                <p className="text-[11px] font-semibold tracking-[0.06em] uppercase text-white/70">{product.serving}</p>
+              </div>
+              <div className="w-px bg-white/10" />
+              <div>
+                <p className="text-[8px] uppercase font-mono text-white/35 tracking-[0.22em] mb-0.5">Target</p>
+                <p className="text-[11px] font-semibold tracking-[0.06em] uppercase text-white/70">{product.category}</p>
               </div>
             </div>
           </div>
@@ -588,9 +608,10 @@ function ProductTemplate({ product }) {
               <div className="absolute inset-0 backdrop-blur-2xl" />
 
               <div className="relative z-10">
-                <div className="relative flex items-end justify-center px-6 pt-6 pb-2 md:px-10 md:pt-10 md:pb-4">
+                {/* Bottle image — desktop only (mobile shows it above) */}
+                <div className="hidden md:flex relative items-end justify-center px-10 pt-10 pb-4">
                   <div className="absolute inset-0 opacity-[0.25]" style={{ background: `radial-gradient(circle at 50% 55%, ${product.accent}, transparent 65%)` }} />
-                  <img src={product.heroImage} alt={product.name} className="relative z-10 w-[40%] md:w-[55%] max-h-[160px] md:max-h-none h-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]" />
+                  <img src={product.heroImage} alt={product.name} className="relative z-10 w-[55%] h-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]" />
                 </div>
 
                 <div className="px-5 pb-5 md:px-10 md:pb-10 space-y-3 md:space-y-4">
