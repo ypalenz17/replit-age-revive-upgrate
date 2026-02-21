@@ -589,15 +589,15 @@ function ProductTemplate({ product }) {
                   <span className="text-[28px] font-extrabold text-white leading-none">{product.price}</span>
                 </div>
 
-                <p className="text-[15px] text-white/70 leading-relaxed mb-8">{product.description}</p>
+                <p className="text-[15px] text-white leading-relaxed mb-8">{product.description}</p>
 
                 <div className="h-px bg-gradient-to-r from-transparent via-white/[0.1] to-transparent mb-7" />
 
                 <div className="space-y-4 mb-8">
                   {product.outcomes.map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/90 shrink-0 mt-[7px]" />
-                      <span className="text-[14px] text-white/90 leading-snug">{item}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0 mt-[7px]" />
+                      <span className="text-[14px] text-white leading-snug">{item}</span>
                     </div>
                   ))}
                 </div>
