@@ -528,7 +528,7 @@ function ProductTemplate({ product }) {
           </div>
 
           <div className="w-full md:w-2/5 buy-panel">
-            <div className="bg-[#1a2340]/90 backdrop-blur-xl p-8 md:p-10 rounded-ar-4xl shadow-float space-y-7 border border-white/[0.12] relative overflow-hidden" style={{ boxShadow: `0 0 0 1px ${hexToRgba(product.accent, 0.15)}, 0 40px 110px -45px ${hexToRgba(product.accent, 0.5)}` }}>
+            <div className="bg-white/[0.10] backdrop-blur-2xl p-8 md:p-10 rounded-ar-4xl shadow-float space-y-7 border border-white/[0.14] relative overflow-hidden" style={{ boxShadow: `0 0 0 1px ${hexToRgba(product.accent, 0.15)}, 0 40px 110px -45px ${hexToRgba(product.accent, 0.5)}` }}>
               <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: 'var(--accent)' }} />
 
               <div className="space-y-3">
