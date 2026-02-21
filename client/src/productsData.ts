@@ -16,7 +16,7 @@ export const PRODUCTS = [
   {
     slug: 'cellunad',
     name: 'CELLUNAD+',
-    category: 'Daily NAD+ Optimization',
+    category: 'NAD+ Optimization',
     tagline: 'Precision NAD+ support with co-factors, not hype.',
     serving: '2 capsules daily',
     color: '#19B3A6',
