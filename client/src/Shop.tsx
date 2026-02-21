@@ -579,13 +579,13 @@ function ProductTemplate({ product }) {
 
             {/* Mobile: two glass cards side by side */}
             <div className="grid grid-cols-2 gap-3 md:hidden">
-              <div className="rounded-2xl border border-white/[0.10] bg-white/[0.04] backdrop-blur-sm px-5 py-6 text-center">
-                <p className="text-[10px] uppercase font-mono text-white/40 tracking-[0.22em] mb-3">Protocol</p>
-                <p className="text-[17px] font-extrabold tracking-[0.04em] uppercase text-white/90 leading-snug">{product.serving}</p>
+              <div className="rounded-2xl border border-white/[0.10] bg-white/[0.04] backdrop-blur-sm px-3 py-5 text-center">
+                <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-2.5">Protocol</p>
+                <p className="text-[12px] font-bold tracking-[0.06em] uppercase text-white/80 leading-none whitespace-nowrap">{product.serving}</p>
               </div>
-              <div className="rounded-2xl border border-white/[0.10] bg-white/[0.04] backdrop-blur-sm px-5 py-6 text-center">
-                <p className="text-[10px] uppercase font-mono text-white/40 tracking-[0.22em] mb-3">Target</p>
-                <p className="text-[17px] font-extrabold tracking-[0.04em] uppercase text-white/90 leading-snug">{product.category}</p>
+              <div className="rounded-2xl border border-white/[0.10] bg-white/[0.04] backdrop-blur-sm px-3 py-5 text-center">
+                <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-2.5">Target</p>
+                <p className="text-[12px] font-bold tracking-[0.06em] uppercase text-white/80 leading-none whitespace-nowrap">{product.category}</p>
               </div>
             </div>
           </div>
