@@ -562,21 +562,16 @@ function ProductTemplate({ product }) {
 
             <p className="text-lg md:text-2xl font-medium text-white/80 max-w-xl mb-8 leading-tight">{product.tagline}</p>
 
-            <div className="flex flex-wrap gap-8 mb-8">
-              <div className="space-y-1">
-                <p className="text-[10px] uppercase font-mono text-white/40 tracking-[0.22em]">Protocol</p>
-                <p className="text-sm font-semibold tracking-[0.12em] uppercase">{product.serving}</p>
+            <div className="inline-flex items-stretch gap-0 rounded-xl border border-white/[0.08] bg-white/[0.03] overflow-hidden">
+              <div className="px-5 py-3.5">
+                <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">Protocol</p>
+                <p className="text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.serving}</p>
               </div>
-              <div className="space-y-1">
-                <p className="text-[10px] uppercase font-mono text-white/40 tracking-[0.22em]">System Target</p>
-                <p className="text-sm font-semibold tracking-[0.12em] uppercase">{product.category}</p>
+              <div className="w-px bg-white/[0.08]" />
+              <div className="px-5 py-3.5">
+                <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">System Target</p>
+                <p className="text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.category}</p>
               </div>
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              {product.ingredients.map((ing) => (
-                <span key={ing.name} className="text-[10px] font-mono uppercase tracking-[0.14em] px-3 py-1.5 rounded-full border border-white/[0.12] text-white/60 bg-white/[0.04]">{ing.name} · {ing.dose}</span>
-              ))}
             </div>
           </div>
 
