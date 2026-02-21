@@ -1,0 +1,71 @@
+The concrete reasons it didn’t fix it
+
+You’re not serving the React build at all
+Your / and /shop responses are not a React shell, they’re a full page of text content. That means Express is responding with a string or static file that contains the markdown copy, instead of serving dist output from Vite.
+
+If the server is returning the placeholder HTML, adding sitemap/robots/prerender does nothing.
+
+Your project is not set up for React Router v7 “Framework Mode” prerender
+Your app is not using React Router v7 framework setup right now (it was using wouter in the code I saw earlier). React Router prerender requires a very specific project structure and build pipeline (react-router.config.ts, framework mode build, output folders). If the agent “added a config file” but the build is still plain Vite + wouter, there is no prerendering happening.
+
+Even if prerender worked, the deployment has to serve the prerendered HTML
+Your plan explicitly says: “Ensure the deployed server serves the pre-rendered HTML files.” That is the step most people miss on Replit. If the server still serves the placeholder route handler, it will ignore the prerender output.
+
+Your acceptance test was never actually run
+The acceptance test is: curl https://<domain>/shop should return product grid HTML. It clearly does not. That means the deployment pipeline is still wrong, regardless of what code changes were made.
+
+What you should tell Replit instead (this is the real root fix)
+
+You need to tell the agent to do this in order:
+
+Phase 0: Stop serving placeholder content
+
+Search the server for the literal text “Systemic Biological Architecture” (or your markdown heading).
+
+Delete that response path or guard it behind a dev-only flag.
+
+Ensure /, /shop, and /product/* do NOT return that string.
+
+Phase 1: Serve the Vite build correctly
+
+client/index.html must be a real React entry shell (root div + script).
+
+The server must serve:
+
+static assets from the Vite build output directory
+
+SPA fallback to the built index.html for routes like /shop
+
+Phase 2 (optional): Make it “auditable without JS”
+
+Only after Phase 1 works:
+
+Implement SSR or prerender.
+
+Or accept that external tools will see a React shell and do UI review based on code.
+
+The simplest diagnosis in one sentence
+
+Your “auditability” plan didn’t work because you’re still stuck at the earlier step: the site is not serving the app, it’s serving a placeholder HTML page.
+
+The fastest way to prove where it’s failing
+
+Have Replit do this and send you the output:
+
+curl -s https://react-vite-starter.replit.app/shop | head -n 40
+
+If the output contains markdown headings and ingredient bullets, the server is still returning placeholder HTML.
+
+What to ask Replit to do, exactly (copy paste)
+
+If you want one tight instruction set:
+
+Remove any server route that returns the markdown placeholder HTML for / or /shop.
+
+Ensure client/index.html is a proper Vite React shell with div#root and module script to /src/main.
+
+Ensure the server serves Vite build output (assets + SPA fallback).
+
+Verify by checking View Source on /shop includes /assets/*.js bundle references.
+
+Once that’s true, I can actually see the real UI and then your original “auditability” work becomes relevant.
