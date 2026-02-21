@@ -5,12 +5,14 @@ export default function Footer() {
     <footer className="py-8 px-6 border-t border-white/[0.06]">
       <div className="max-w-3xl mx-auto text-center">
         <img src={brandLogo} alt="AGE REVIVE" className="h-6 w-auto brightness-0 invert mx-auto mb-5" />
-        <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-5">
+        <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-5" aria-label="Footer navigation">
           <a href="/shop" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Shop</a>
-          <a href="/#pillars" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Science</a>
-          <a href="/#journal" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Journal</a>
-          <a href="#" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Instagram</a>
-          <a href="#" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Contact</a>
+          <a href="/product/cellunad" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">CELLUNAD+</a>
+          <a href="/product/cellubiome" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">CELLUBIOME</a>
+          <a href="/product/cellunova" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">CELLUNOVA</a>
+          <a href="/science" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Science</a>
+          <a href="/quality" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Quality</a>
+          <a href="/faq" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">FAQ</a>
         </nav>
         <div className="border-t border-white/[0.06] pt-4 flex flex-col items-center gap-2">
           <div className="flex flex-wrap justify-center gap-x-5 text-[8px] font-mono text-white/20 uppercase tracking-[0.22em]">

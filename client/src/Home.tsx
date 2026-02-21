@@ -214,8 +214,10 @@ const Navbar = () => {
   const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'Shop', href: '/shop' },
-    { label: 'Science', href: '#pillars' },
-    { label: 'Journal', href: '#journal' }
+    { label: 'Science', href: '/science' },
+    { label: 'Journal', href: '#journal' },
+    { label: 'Quality', href: '/quality' },
+    { label: 'FAQ', href: '/faq' }
   ];
 
   return (

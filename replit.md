@@ -14,7 +14,8 @@ Preferred communication style: Simple, everyday language.
 - **Component Library**: shadcn/ui (new-york style) — extensive set of Radix UI primitives in `client/src/components/ui/`
 - **Animations**: GSAP with ScrollTrigger plugin for scroll-based animations
 - **State Management**: TanStack React Query for server state; local React state otherwise
-- **Routing**: Wouter-based routing in `App.tsx`. Routes: `/` → Home page (`Home.tsx`), `/shop` → Product detail page (`Shop.tsx`), fallback → `not-found.tsx`
+- **Routing**: Wouter-based routing in `App.tsx`. Routes: `/` → Home (`Home.tsx`), `/shop` → Shop (`Shop.tsx`), `/product/:slug` → Product detail (`Shop.tsx`), `/science` → Science (`pages/Science.tsx`), `/quality` → Quality (`pages/Quality.tsx`), `/faq` → FAQ (`pages/FAQ.tsx`), fallback → redirect to `/`
+- **Pre-rendering**: Server-side HTML injection via `server/prerender.ts` — every route returns real HTML content (not just a React shell) for bot/LLM scannability. Route handlers in `server/routes.ts` intercept page requests before Vite/static catch-all and inject per-route content, meta tags, and navigation.
 - **Path Aliases**: `@/` maps to `client/src/`, `@shared/` maps to `shared/`, `@assets/` maps to `attached_assets/`
 
 ## Backend

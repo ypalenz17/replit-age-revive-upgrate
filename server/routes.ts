@@ -1,6 +1,9 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import fs from "fs";
+import path from "path";
+import { injectContent, ALL_ROUTES } from "./prerender";
 
 const SITE_CONTENT = `# Age Revive — Systemic Biological Architecture
 
@@ -43,6 +46,16 @@ Three biological layers working together:
 ## Science & Transparency
 Every ingredient is chosen for its mechanistic evidence, not marketing trends. Age Revive publishes full dosing, sourcing, and rationale for every formula.
 
+## Pages
+- Home: https://agerevive.com/
+- Shop: https://agerevive.com/shop
+- CELLUNAD+: https://agerevive.com/product/cellunad
+- CELLUBIOME: https://agerevive.com/product/cellubiome
+- CELLUNOVA: https://agerevive.com/product/cellunova
+- Science: https://agerevive.com/science
+- Quality: https://agerevive.com/quality
+- FAQ: https://agerevive.com/faq
+
 ---
 Brand: Age Revive
 Website: https://agerevive.com
@@ -56,6 +69,36 @@ export async function registerRoutes(
     res.setHeader('Content-Type', 'text/markdown; charset=utf-8');
     res.send(SITE_CONTENT);
   });
+
+  const isDev = process.env.NODE_ENV !== "production";
+
+  for (const route of ALL_ROUTES) {
+    const expressRoute = route === "/" ? "/" : route;
+    app.get(expressRoute, (_req, res, next) => {
+      const templatePath = isDev
+        ? path.resolve(import.meta.dirname, "..", "client", "index.html")
+        : path.resolve(import.meta.dirname, "public", "index.html");
+
+      try {
+        if (!fs.existsSync(templatePath)) {
+          return next();
+        }
+        let html = fs.readFileSync(templatePath, "utf-8");
+
+        if (isDev) {
+          html = html.replace(
+            "</head>",
+            `<script type="module" src="/@vite/client"></script>\n</head>`
+          );
+        }
+
+        html = injectContent(html, route);
+        res.status(200).set({ "Content-Type": "text/html" }).send(html);
+      } catch {
+        next();
+      }
+    });
+  }
 
   return httpServer;
 }
