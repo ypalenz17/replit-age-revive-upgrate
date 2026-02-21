@@ -719,7 +719,7 @@ function ProductTemplate({ product }) {
       <section className="py-32 px-6">
         <div className="max-w-4xl mx-auto space-y-24">
           <div className="text-center text-white mb-20 space-y-4 reveal">
-            <span className="text-[10px] font-mono uppercase tracking-[0.32em] text-[color:var(--accent)]">Mechanistic Layering</span>
+            <span className="text-[10px] font-mono uppercase tracking-[0.32em] text-white/50">Mechanistic Layering</span>
             <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em]">Rationale, simplified</h2>
             <p className="text-sm text-white/55 font-medium max-w-2xl mx-auto">Clear intent. Clean inputs. Built to be scanned, not worshipped.</p>
           </div>
@@ -729,28 +729,24 @@ function ProductTemplate({ product }) {
                 <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02]" />
                 <div className="absolute inset-0 backdrop-blur-2xl" />
                 <div className="absolute inset-0 pointer-events-none opacity-[0.18]">
-                  <div className="absolute top-[20%] left-0 right-0 h-[1px] animate-scan-x" style={{ background: 'linear-gradient(90deg, transparent, var(--accent), transparent)' }} />
+                  <div className="absolute top-[20%] left-0 right-0 h-[1px] animate-scan-x" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)' }} />
                 </div>
 
                 <div className="relative z-10 p-10 md:p-16 flex flex-col justify-center items-center text-center max-w-xl mx-auto space-y-6">
                   <div className="flex flex-col items-center gap-3">
-                    <span className="text-[40px] font-mono font-bold leading-none" style={{ color: hexToRgba(product.accent, 0.25) }}>{`${String(i + 1).padStart(2, '0')}`}</span>
-                    <div className="w-10 h-[1.5px] rounded-full" style={{ background: product.accent }} />
+                    <span className="text-[40px] font-mono font-bold leading-none text-white/20">{`${String(i + 1).padStart(2, '0')}`}</span>
+                    <div className="w-10 h-[1.5px] rounded-full bg-white/30" />
                   </div>
 
                   <h3 className="text-3xl md:text-4xl font-sans font-extrabold tracking-[-0.03em] uppercase leading-none text-white">{item.title}</h3>
 
-                  <p className="text-lg md:text-xl font-medium text-white/50 leading-relaxed italic max-w-md mx-auto">“{item.text}”</p>
+                  <p className="text-lg md:text-xl font-medium text-white/70 leading-relaxed italic max-w-md mx-auto">“{item.text}”</p>
 
                   <div className="pt-4 flex flex-wrap justify-center gap-3">
                     {item.tags.map((tag, t) => (
                       <span
                         key={t}
-                        className="px-4 py-1.5 rounded-full text-[10px] font-mono font-medium uppercase tracking-[0.12em]"
-                        style={t === 0
-                          ? { border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.4)' }
-                          : { border: `1px solid ${hexToRgba(product.accent, 0.3)}`, color: product.accent }
-                        }
+                        className="px-4 py-1.5 rounded-full text-[10px] font-mono font-medium uppercase tracking-[0.12em] border border-white/[0.15] text-white/60"
                       >{tag}</span>
                     ))}
                   </div>
