@@ -227,10 +227,12 @@ function TypewriterTelemetry({ phrases: inputPhrases }) {
 
 function IngredientPanel({ ingredients, accent }) {
   return (
-    <div className="bg-ar-navy rounded-ar-4xl p-8 md:p-10 shadow-float border border-white/10 relative overflow-hidden">
+    <div className="relative overflow-hidden rounded-ar-4xl border border-white/[0.12]">
+      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02]" />
+      <div className="absolute inset-0 backdrop-blur-2xl" />
       <div className="absolute inset-0 opacity-[0.15] pointer-events-none" style={{ background: `radial-gradient(800px 500px at 80% 0%, ${hexToRgba(accent, 0.6)}, transparent 60%)` }} />
 
-      <div className="relative z-10">
+      <div className="relative z-10 p-8 md:p-10">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full animate-pulse-dot" style={{ background: accent }} />
@@ -268,9 +270,13 @@ function TrustStats({ product }) {
   return (
     <div className="grid grid-cols-3 gap-3">
       {stats.map((stat, i) => (
-        <div key={i} className="bg-white/[0.05] border border-white/[0.1] rounded-2xl p-4 text-center flex flex-col items-center justify-center min-h-[88px]">
-          <p className="text-[9px] font-mono font-medium uppercase tracking-[0.12em] text-white/40 mb-1 whitespace-nowrap">{stat.value}</p>
-          <p className="text-lg font-extrabold tracking-tight text-white whitespace-nowrap">{stat.label}</p>
+        <div key={i} className="relative overflow-hidden rounded-2xl border border-white/[0.12] min-h-[88px]">
+          <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02]" />
+          <div className="absolute inset-0 backdrop-blur-2xl" />
+          <div className="relative z-10 p-4 text-center flex flex-col items-center justify-center min-h-[88px]">
+            <p className="text-[9px] font-mono font-medium uppercase tracking-[0.12em] text-white/40 mb-1 whitespace-nowrap">{stat.value}</p>
+            <p className="text-lg font-extrabold tracking-tight text-white whitespace-nowrap">{stat.label}</p>
+          </div>
         </div>
       ))}
     </div>
@@ -637,17 +643,21 @@ function ProductTemplate({ product }) {
           <div className="grid md:grid-cols-4 gap-8">
             {product.timeline.map((step, i) => (
               <div key={i} className="relative group reveal">
-                <div className="timeline-card p-8 rounded-ar-2xl bg-white/[0.05] border border-white/[0.1] transition-all duration-300 hover:bg-white/[0.08] hover:-translate-y-1 hover:border-ar-teal/30 hover:shadow-[0_0_30px_rgba(25,179,166,0.08)]">
-                  <p className="text-[10px] font-mono text-[color:var(--accent)] mb-2 uppercase tracking-[0.22em]">{step.time}</p>
-                  <h4 className="text-xl font-sans font-extrabold mb-3 tracking-[-0.02em] text-white">{step.label}</h4>
-                  <p className="text-xs text-white/50 leading-relaxed font-medium mb-6">{step.desc}</p>
+                <div className="timeline-card relative overflow-hidden rounded-ar-2xl border border-white/[0.12] transition-all duration-300 hover:-translate-y-1 hover:border-ar-teal/30 hover:shadow-[0_0_30px_rgba(25,179,166,0.08)]">
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02] group-hover:from-white/[0.14] group-hover:via-white/[0.08] group-hover:to-white/[0.04] transition-all duration-300" />
+                  <div className="absolute inset-0 backdrop-blur-2xl" />
+                  <div className="relative z-10 p-8">
+                    <p className="text-[10px] font-mono text-[color:var(--accent)] mb-2 uppercase tracking-[0.22em]">{step.time}</p>
+                    <h4 className="text-xl font-sans font-extrabold mb-3 tracking-[-0.02em] text-white">{step.label}</h4>
+                    <p className="text-xs text-white/50 leading-relaxed font-medium mb-6">{step.desc}</p>
 
-                  <div className="h-1 bg-white/[0.08] rounded-full overflow-hidden">
-                    <div className="h-full" style={{ width: `${(i + 1) * 25}%`, background: 'var(--accent)' }} />
-                  </div>
+                    <div className="h-1 bg-white/[0.08] rounded-full overflow-hidden">
+                      <div className="h-full" style={{ width: `${(i + 1) * 25}%`, background: 'var(--accent)' }} />
+                    </div>
 
-                  <div className="mt-4">
-                    <span className="text-[10px] font-mono font-medium uppercase text-white/35 tracking-[0.18em]">{step.value}</span>
+                    <div className="mt-4">
+                      <span className="text-[10px] font-mono font-medium uppercase text-white/35 tracking-[0.18em]">{step.value}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -666,12 +676,14 @@ function ProductTemplate({ product }) {
           </div>
 
           {product.mechanics.map((item, i) => (
-              <div key={i} className="archive-card w-full bg-white/[0.05] backdrop-blur-sm rounded-ar-4xl p-10 md:p-16 shadow-float flex flex-col justify-center items-center text-center overflow-hidden border border-white/[0.1] relative hover:border-ar-teal/20 transition-all duration-300" data-testid={`rationale-card-${i}`}>
+              <div key={i} className="archive-card w-full relative overflow-hidden rounded-ar-4xl border border-white/[0.12] hover:border-ar-teal/20 transition-all duration-300" data-testid={`rationale-card-${i}`}>
+                <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02]" />
+                <div className="absolute inset-0 backdrop-blur-2xl" />
                 <div className="absolute inset-0 pointer-events-none opacity-[0.18]">
                   <div className="absolute top-[20%] left-0 right-0 h-[1px] animate-scan-x" style={{ background: 'linear-gradient(90deg, transparent, var(--accent), transparent)' }} />
                 </div>
 
-                <div className="relative z-10 max-w-xl space-y-6">
+                <div className="relative z-10 p-10 md:p-16 flex flex-col justify-center items-center text-center max-w-xl mx-auto space-y-6">
                   <div className="flex flex-col items-center gap-3">
                     <span className="text-[40px] font-mono font-bold leading-none" style={{ color: hexToRgba(product.accent, 0.25) }}>{`${String(i + 1).padStart(2, '0')}`}</span>
                     <div className="w-10 h-[1.5px] rounded-full" style={{ background: product.accent }} />
@@ -709,30 +721,36 @@ function ProductTemplate({ product }) {
             { q: 'How is this different from basic supplement stacks?', a: 'Age Revive is designed as infrastructure: standardized inputs, defined cadence, and clean intent. No noisy kitchen-sink blends.' },
             { q: 'Can I stack these products together?', a: 'They are designed to layer across different support systems. If you are unsure, start with one base product and add one layer at a time.' }
           ].map((faq, i) => (
-            <details key={i} className="group bg-white/[0.05] border border-white/[0.1] rounded-ar-2xl p-6 cursor-pointer hover:bg-white/[0.08] transition-colors">
-              <summary className="list-none flex justify-between items-center font-sans font-extrabold tracking-[0.08em] uppercase text-sm text-white">
+            <details key={i} className="group relative overflow-hidden rounded-ar-2xl border border-white/[0.12] cursor-pointer hover:border-ar-teal/20 transition-all">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02]" />
+              <div className="absolute inset-0 backdrop-blur-2xl" />
+              <summary className="relative z-10 list-none flex justify-between items-center font-sans font-extrabold tracking-[0.08em] uppercase text-sm text-white p-6">
                 {faq.q}
                 <ChevronDown className="group-open:rotate-180 transition-transform text-white/30" />
               </summary>
-              <p className="mt-4 text-sm text-white/50 leading-relaxed font-medium">{faq.a}</p>
+              <p className="relative z-10 px-6 pb-6 text-sm text-white/50 leading-relaxed font-medium">{faq.a}</p>
             </details>
           ))}
         </div>
 
-        <div className="bg-white/[0.04] border border-white/[0.08] p-12 rounded-ar-4xl text-center space-y-8 relative overflow-hidden">
+        <div className="relative overflow-hidden rounded-ar-4xl border border-white/[0.12] text-center">
+          <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02]" />
+          <div className="absolute inset-0 backdrop-blur-2xl" />
           <div className="absolute inset-0 opacity-[0.18]" style={{ background: 'radial-gradient(900px 700px at 50% -10%, var(--accentGlow), transparent 60%)' }} />
-          <p className="relative z-10 text-[10px] font-mono text-white/45 leading-relaxed uppercase tracking-[0.22em] max-w-2xl mx-auto">
-            * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
-          </p>
+          <div className="relative z-10 p-12 space-y-8">
+            <p className="text-[10px] font-mono text-white/45 leading-relaxed uppercase tracking-[0.22em] max-w-2xl mx-auto">
+              * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+            </p>
 
-          <div className="relative z-10 flex justify-center gap-12 border-t border-white/10 pt-8">
-            <div className="text-white">
-              <p className="text-lg font-sans font-extrabold">100%</p>
-              <p className="text-[10px] font-mono text-white/45 uppercase tracking-[0.22em]">Money-Back Guarantee</p>
-            </div>
-            <div className="text-white">
-              <p className="text-lg font-sans font-extrabold">Priority</p>
-              <p className="text-[10px] font-mono text-white/45 uppercase tracking-[0.22em]">Worldwide Dispatch</p>
+            <div className="flex justify-center gap-12 border-t border-white/10 pt-8">
+              <div className="text-white">
+                <p className="text-lg font-sans font-extrabold">100%</p>
+                <p className="text-[10px] font-mono text-white/45 uppercase tracking-[0.22em]">Money-Back Guarantee</p>
+              </div>
+              <div className="text-white">
+                <p className="text-lg font-sans font-extrabold">Priority</p>
+                <p className="text-[10px] font-mono text-white/45 uppercase tracking-[0.22em]">Worldwide Dispatch</p>
+              </div>
             </div>
           </div>
         </div>
@@ -826,7 +844,7 @@ export default function Shop() {
 
   return (
     <div className="min-h-screen">
-      <div className="fixed bottom-6 left-6 z-[85] flex gap-2 p-2 bg-white/[0.08] backdrop-blur-xl rounded-full shadow-float border border-white/[0.1]">
+      <div className="fixed bottom-6 left-6 z-[85] flex gap-2 p-2 bg-white/[0.08] backdrop-blur-xl rounded-full shadow-float border border-white/[0.12]">
         {Object.values(PRODUCTS).map((p) => (
           <button
             key={p.id}
