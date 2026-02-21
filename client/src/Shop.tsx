@@ -11,6 +11,7 @@ import { useParams } from 'wouter';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
+import Footer from './components/Footer';
 import imgCellubiome from '@assets/FRONT_RENDER_TRANSPARENT_1771623631843.png';
 import imgCellunad from '@assets/CELLUNAD_1771623812381.png';
 import imgCellunova from '@assets/CELLUNAD_CELLUNOVA_1771623812382.png';
@@ -778,49 +779,9 @@ function ProductTemplate({ product }) {
           ))}
         </div>
 
-        <div className="relative overflow-hidden rounded-ar-4xl border border-white/[0.12] text-center">
-          <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02]" />
-          <div className="absolute inset-0 backdrop-blur-2xl" />
-          <div className="absolute inset-0 opacity-[0.18]" style={{ background: 'radial-gradient(900px 700px at 50% -10%, var(--accentGlow), transparent 60%)' }} />
-          <div className="relative z-10 p-12 space-y-8">
-            <p className="text-[10px] font-mono text-white/45 leading-relaxed uppercase tracking-[0.22em] max-w-2xl mx-auto">
-              * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
-            </p>
-
-            <div className="flex justify-center gap-12 border-t border-white/10 pt-8">
-              <div className="text-white">
-                <p className="text-lg font-sans font-extrabold">100%</p>
-                <p className="text-[10px] font-mono text-white/45 uppercase tracking-[0.22em]">Money-Back Guarantee</p>
-              </div>
-              <div className="text-white">
-                <p className="text-lg font-sans font-extrabold">Priority</p>
-                <p className="text-[10px] font-mono text-white/45 uppercase tracking-[0.22em]">Worldwide Dispatch</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 px-6 border-t border-white/[0.06]">
-        <div className="max-w-3xl mx-auto text-center">
-          <img src={brandLogo} alt="AGE REVIVE" className="h-6 w-auto brightness-0 invert mx-auto mb-5" />
-          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-5">
-            <a href="/shop" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Shop</a>
-            <a href="/#pillars" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Science</a>
-            <a href="/#journal" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Journal</a>
-            <a href="#" className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.22em] hover:text-ar-teal transition-colors">Contact</a>
-          </nav>
-          <div className="border-t border-white/[0.06] pt-4 flex flex-col items-center gap-2">
-            <div className="flex flex-wrap justify-center gap-x-5 text-[8px] font-mono text-white/20 uppercase tracking-[0.22em]">
-              <a href="#" className="hover:text-white/40 transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white/40 transition-colors">Terms</a>
-              <a href="#" className="hover:text-white/40 transition-colors">Shipping</a>
-            </div>
-            <p className="text-[7px] font-mono text-white/15 uppercase tracking-[0.18em] max-w-lg leading-relaxed">© 2026 Age Revive · *These statements have not been evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent any disease.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
       </div>
 
       {/* Side Sheets */}
