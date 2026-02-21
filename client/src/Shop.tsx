@@ -55,7 +55,7 @@ const PRODUCTS = {
     price: '$92.00',
     serving: '2 capsules daily',
     accent: '#1e3a8a',
-    heroImage: imgCellunad,
+    heroImage: '/images/cellunad-trimmed.png',
     outcomes: [
       'Supports NAD+ metabolism',
       'Supports mitochondrial energy production',
@@ -96,7 +96,7 @@ const PRODUCTS = {
     price: '$110.00',
     serving: '2 enteric-coated capsules daily',
     accent: '#19B3A6',
-    heroImage: imgCellubiome,
+    heroImage: '/images/cellubiome-trimmed.png',
     outcomes: [
       'Supports mitophagy signaling',
       'Supports mitochondrial renewal pathways',
@@ -132,7 +132,7 @@ const PRODUCTS = {
     serving: '5 capsules daily for 7 consecutive days',
     warnings: 'Contains wheat (spermidine source).',
     accent: '#6C5CE7',
-    heroImage: imgCellunova,
+    heroImage: '/images/cellunova-trimmed.png',
     outcomes: [
       'Supports autophagy pathways',
       'Supports cellular cleanup signaling',
@@ -583,9 +583,9 @@ function ProductTemplate({ product }) {
               <div className="absolute inset-0 backdrop-blur-2xl" />
 
               <div className="relative z-10">
-                <div className="relative flex items-end justify-center px-4 pt-6 pb-2 min-h-[240px]">
+                <div className="relative flex items-end justify-center px-6 pt-8 pb-4">
                   <div className="absolute inset-0 opacity-[0.25]" style={{ background: `radial-gradient(circle at 50% 55%, ${product.accent}, transparent 65%)` }} />
-                  <img src={product.heroImage} alt={product.name} className="relative z-10 w-full max-w-[85%] h-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]" />
+                  <img src={product.heroImage} alt={product.name} className="relative z-10 w-[90%] h-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]" />
                 </div>
 
                 <div className="px-8 md:px-10 pb-8 md:pb-10 space-y-6">
