@@ -559,13 +559,14 @@ function ProductTemplate({ product }) {
 
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-6 md:gap-12 px-4 md:px-6 pt-20 md:pt-32 pb-20 md:pb-12 items-center">
 
-          {/* Desktop left panel */}
-          <div className="hidden md:block w-3/5 hero-content text-white">
-            <h1 className="text-[clamp(3.25rem,7vw,6.5rem)] font-sans font-extrabold tracking-[-0.05em] mb-4 leading-[0.88]">{product.name}</h1>
+          {/* Left panel — visible on both mobile and desktop */}
+          <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left">
+            <h1 className="text-[clamp(2.5rem,7vw,6.5rem)] font-sans font-extrabold tracking-[-0.05em] mb-3 md:mb-4 leading-[0.88]">{product.name}</h1>
 
-            <p className="text-2xl font-medium text-white/80 max-w-xl mb-8 leading-tight">{product.tagline}</p>
+            <p className="text-base md:text-2xl font-medium text-white/80 max-w-xl mb-6 md:mb-8 leading-tight mx-auto md:mx-0">{product.tagline}</p>
 
-            <div className="inline-flex items-stretch gap-0 rounded-xl border border-white/[0.08] bg-white/[0.03] overflow-hidden">
+            {/* Desktop: inline protocol/system cards */}
+            <div className="hidden md:inline-flex items-stretch gap-0 rounded-xl border border-white/[0.08] bg-white/[0.03] overflow-hidden">
               <div className="px-5 py-3.5">
                 <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">Protocol</p>
                 <p className="text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.serving}</p>
@@ -574,6 +575,19 @@ function ProductTemplate({ product }) {
               <div className="px-5 py-3.5">
                 <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">System Target</p>
                 <p className="text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.category}</p>
+              </div>
+            </div>
+
+            {/* Mobile: compact protocol/target row */}
+            <div className="flex md:hidden justify-center gap-6 text-center">
+              <div>
+                <p className="text-[8px] uppercase font-mono text-white/35 tracking-[0.22em] mb-0.5">Protocol</p>
+                <p className="text-[11px] font-semibold tracking-[0.06em] uppercase text-white/70">{product.serving}</p>
+              </div>
+              <div className="w-px bg-white/10" />
+              <div>
+                <p className="text-[8px] uppercase font-mono text-white/35 tracking-[0.22em] mb-0.5">Target</p>
+                <p className="text-[11px] font-semibold tracking-[0.06em] uppercase text-white/70">{product.category}</p>
               </div>
             </div>
           </div>
