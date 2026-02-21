@@ -1,0 +1,87 @@
+ROLE: Senior Frontend Engineer. Scope is strictly typography + product-name display text. No redesign.
+
+HARD RULES
+- Do NOT change layout, spacing, colors, animations, component structure, or copy (except adding ®).
+- Do NOT refactor components or reorganize files.
+- Only touch: font loading in src/index.css, font application for titles, and visible product name strings.
+
+GOAL
+1) Load Shopify font "FPHeadPro" locally and apply it to:
+   - every page title (H1)
+   - every section title (H2/H3 and any custom section heading classes)
+   - every visible product name label (CELLUNAD+, CELLUBIOME, CELLUNOVA)
+
+2) Add registered symbol:
+   - "CELLUNAD+" -> "CELLUNAD+®"
+   - "CELLUBIOME" -> "CELLUBIOME®"
+   - "CELLUNOVA" stays unchanged
+
+SOURCE FONT (local file)
+- font-family: FPHeadPro
+- file path (must exist): public/fonts/fonnts.com-FPHeadPro-Book.woff2
+
+IMPLEMENTATION (React Vite)
+
+A) Add the font file
+- Create folder: public/fonts/
+- Copy into it: fonnts.com-FPHeadPro-Book.woff2
+Do not duplicate if already present.
+
+B) Register the font globally (ONE place only)
+Edit: src/index.css
+Add this block near the top:
+
+@font-face {
+  font-family: "FPHeadPro";
+  src: url("/fonts/fonnts.com-FPHeadPro-Book.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+C) Apply FPHeadPro ONLY to titles (not body text)
+Still in src/index.css, add:
+
+/* Titles + section headings */
+h1, h2, h3,
+.page-title, .section-title, .product-title,
+.hero-title, .headline, .display-title,
+[data-role="page-title"], [data-role="section-title"], [data-role="product-name"] {
+  font-family: "FPHeadPro", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* If there are global heading resets elsewhere, do NOT delete them. Only override font-family. */
+
+D) Replace visible product name strings without breaking IDs/slugs
+Search the repo for occurrences of:
+- "CELLUNAD+"
+- "CELLUBIOME"
+- "CELLUNOVA"
+
+Rules:
+- Do NOT change keys/IDs/slugs/URLs like "cellunad", "cellubiome", "cellunova".
+- Only update what is user-facing text.
+
+Best practice:
+If product names are stored in a PRODUCT_DATA object used for rendering AND also used for IDs:
+- Keep id/slug/name fields unchanged for logic
+- Add displayName field for UI only
+
+Example:
+cellunad: { id:"cellunad", name:"CELLUNAD+", displayName:"CELLUNAD+®", ... }
+cellubiome: { id:"cellubiome", name:"CELLUBIOME", displayName:"CELLUBIOME®", ... }
+cellunova: { id:"cellunova", name:"CELLUNOVA", displayName:"CELLUNOVA", ... }
+
+Then replace UI rendering occurrences of product.name with product.displayName where appropriate.
+
+E) Verification checklist (must do)
+- Confirm headings render in FPHeadPro across all pages/sections.
+- Confirm product names render with ® for CELLUNAD+ and CELLUBIOME everywhere they appear to users.
+- Confirm routes/anchors/ids/slugs remain unchanged.
+- Confirm there were no design/layout changes.
+
+OUTPUT
+Return the list of modified files, then paste the FULL contents of each modified file (no diffs).
+Likely modified files:
+- src/index.css
+- any file(s) where product display names are rendered (and/or PRODUCT_DATA definition file)
