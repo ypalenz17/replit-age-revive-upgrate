@@ -559,14 +559,6 @@ function ProductTemplate({ product }) {
 
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-6 md:gap-12 px-4 md:px-6 pt-24 md:pt-32 pb-24 md:pb-12 items-center">
 
-          {/* Mobile: product image */}
-          <div className="w-full md:hidden flex justify-center mb-2">
-            <div className="relative w-48 h-48">
-              <div className="absolute inset-0 opacity-[0.30] rounded-full" style={{ background: `radial-gradient(circle, ${product.accent}, transparent 65%)` }} />
-              <img src={product.heroImage} alt={product.name} className="relative z-10 w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
-            </div>
-          </div>
-
           <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left">
             <h1 className="text-[clamp(2.5rem,7vw,6.5rem)] font-sans font-extrabold tracking-[-0.05em] mb-3 md:mb-4 leading-[0.88]">{product.name}</h1>
 
@@ -608,10 +600,10 @@ function ProductTemplate({ product }) {
               <div className="absolute inset-0 backdrop-blur-2xl" />
 
               <div className="relative z-10">
-                {/* Bottle image — desktop only (mobile shows it above) */}
-                <div className="hidden md:flex relative items-end justify-center px-10 pt-10 pb-4">
+                {/* Bottle image inside card */}
+                <div className="relative flex items-end justify-center px-6 pt-6 pb-2 md:px-10 md:pt-10 md:pb-4">
                   <div className="absolute inset-0 opacity-[0.25]" style={{ background: `radial-gradient(circle at 50% 55%, ${product.accent}, transparent 65%)` }} />
-                  <img src={product.heroImage} alt={product.name} className="relative z-10 w-[55%] h-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]" />
+                  <img src={product.heroImage} alt={product.name} className="relative z-10 w-[40%] md:w-[55%] max-h-[160px] md:max-h-none h-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]" />
                 </div>
 
                 <div className="px-5 pb-5 md:px-10 md:pb-10 space-y-3 md:space-y-4">
