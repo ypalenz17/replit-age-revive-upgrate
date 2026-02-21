@@ -661,7 +661,7 @@ function ProductTemplate({ product }) {
           <div className="md:col-span-5 space-y-8 reveal md:sticky md:top-32">
             <TypewriterTelemetry phrases={product.telemetry} />
             <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] leading-[1.06] text-white">
-              Every dose, <span className="italic" style={{ color: 'var(--accent)', textShadow: '0 0 30px var(--accent), 0 0 60px var(--accent)', filter: 'brightness(1.8)' }}>fully disclosed</span>.
+              Every dose,{' '}<span className="italic text-white/50 underline decoration-white/20 underline-offset-4 decoration-[1.5px]">fully disclosed</span>.
             </h2>
             <p className="text-lg text-white/55 leading-relaxed font-medium">
               No proprietary blends. No hidden fillers. Each active is standardized, dosed at clinical-range levels, and listed with its exact purpose.
