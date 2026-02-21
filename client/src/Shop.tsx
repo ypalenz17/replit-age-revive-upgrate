@@ -509,18 +509,8 @@ function ProductTemplate({ product }) {
       <section className="hero relative min-h-[100dvh] flex flex-col md:flex-row overflow-hidden">
         <div className="absolute inset-0 z-[2] opacity-[0.25]" style={{ background: 'radial-gradient(900px 600px at 20% 85%, var(--accentGlow), transparent 60%)' }} />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-12 px-6 pt-32 pb-12 items-end">
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-12 px-6 pt-32 pb-12 items-start">
           <div className="w-full md:w-3/5 mb-12 md:mb-0 hero-content text-white">
-            <div className="flex flex-wrap items-center gap-3 mb-7">
-              <span className="px-3 py-1 border border-white/18 rounded-full text-[10px] uppercase font-mono tracking-[0.22em] text-[color:var(--accent)]">In Stock</span>
-
-              <span className="font-mono text-[10px] font-bold tracking-[0.14em] text-[color:var(--accent)]">4.9 / 5.0</span>
-
-              <span className="hidden sm:inline text-[10px] font-mono text-white/35 uppercase tracking-[0.22em]">
-                Clinical boutique. Organic tech luxury.
-              </span>
-            </div>
-
             <h1 className="text-[clamp(3.25rem,7vw,6.5rem)] font-sans font-extrabold tracking-[-0.05em] mb-4 leading-[0.88]">{product.name}</h1>
 
             <p className="text-lg md:text-2xl font-medium text-white/80 max-w-xl mb-8 leading-tight">{product.tagline}</p>
@@ -534,12 +524,6 @@ function ProductTemplate({ product }) {
                 <p className="text-[10px] uppercase font-mono text-white/40 tracking-[0.22em]">System Target</p>
                 <p className="text-sm font-semibold tracking-[0.12em] uppercase">{product.category}</p>
               </div>
-            </div>
-
-            <div className="mt-10 inline-flex items-center gap-3 text-white/45">
-              <span className="text-[10px] font-mono uppercase tracking-[0.22em]">Scroll</span>
-              <div className="w-10 h-[1px] bg-white/20" />
-              <span className="text-[10px] font-mono uppercase tracking-[0.22em]">Protocol</span>
             </div>
           </div>
 
