@@ -285,6 +285,7 @@ function TrustStats({ product }) {
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 54);
@@ -293,40 +294,80 @@ function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
   const navLinks = [
+    { label: 'Home', href: '/' },
     { label: 'Shop', href: '/shop' },
     { label: 'Science', href: '/#pillars' },
     { label: 'Journal', href: '/#journal' }
   ];
 
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[150] w-[92%] max-w-6xl flex items-center justify-between px-2 py-3" aria-label="Primary navigation">
-      <div
-        className={[
-          'flex items-center gap-8 transition-all duration-700 rounded-full px-6 py-3',
-          scrolled ? 'bg-white/[0.06] backdrop-blur-xl shadow-float border border-white/[0.08]' : 'bg-transparent border border-transparent'
-        ].join(' ')}
-      >
-        <a href="/" aria-label="Go to homepage">
-          <img src={brandLogo} alt="AGE REVIVE" className="h-7 md:h-8 w-auto brightness-0 invert transition-all duration-500" />
-        </a>
-        <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[10px] uppercase tracking-[0.2em]">
-          {navLinks.map((l) => (
-            <a key={l.label} href={l.href} className="text-white/60 transition-all hover:text-ar-teal">{l.label}</a>
-          ))}
+    <>
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[150] w-[92%] max-w-6xl flex items-center justify-between px-2 py-3" aria-label="Primary navigation">
+        <div
+          className={[
+            'flex items-center gap-8 transition-all duration-700 rounded-full px-6 py-3',
+            scrolled ? 'bg-white/[0.06] backdrop-blur-xl shadow-float border border-white/[0.08]' : 'bg-transparent border border-transparent'
+          ].join(' ')}
+        >
+          <a href="/" aria-label="Go to homepage">
+            <img src={brandLogo} alt="AGE REVIVE" className="h-7 md:h-8 w-auto brightness-0 invert transition-all duration-500" />
+          </a>
+          <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[10px] uppercase tracking-[0.2em]">
+            {navLinks.map((l) => (
+              <a key={l.label} href={l.href} className="text-white/60 transition-all hover:text-ar-teal">{l.label}</a>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div
-        className={[
-          'flex items-center gap-5 transition-all duration-700 rounded-full px-5 py-3',
-          scrolled ? 'bg-white/[0.06] backdrop-blur-xl shadow-float border border-white/[0.08]' : 'bg-transparent border border-transparent'
-        ].join(' ')}
-      >
-        <button className="text-white transition-all" aria-label="Cart"><ShoppingBag size={18} /></button>
-        <button className="md:hidden text-white transition-all" aria-label="Menu"><Menu size={18} /></button>
-      </div>
-    </nav>
+        <div
+          className={[
+            'flex items-center gap-5 transition-all duration-700 rounded-full px-5 py-3',
+            scrolled ? 'bg-white/[0.06] backdrop-blur-xl shadow-float border border-white/[0.08]' : 'bg-transparent border border-transparent'
+          ].join(' ')}
+        >
+          <button className="text-white transition-all" aria-label="Cart"><ShoppingBag size={18} /></button>
+          <button
+            className="md:hidden text-white transition-all"
+            aria-label="Menu"
+            data-testid="mobile-menu-toggle-shop"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
+      </nav>
+
+      {mobileOpen && (
+        <div className="fixed inset-0 z-[140] md:hidden">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
+          <div className="absolute top-0 left-0 right-0 pt-24 pb-10 px-8 bg-[#0f172a]/95 backdrop-blur-xl border-b border-white/[0.08]">
+            <div className="flex flex-col gap-1">
+              {navLinks.map((l) => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="py-4 text-lg font-sans font-extrabold uppercase tracking-[0.08em] text-white/80 hover:text-ar-teal transition-colors border-b border-white/[0.06] last:border-0"
+                  data-testid={`mobile-nav-shop-${l.label.toLowerCase()}`}
+                >
+                  {l.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
