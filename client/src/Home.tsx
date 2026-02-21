@@ -25,6 +25,7 @@ const PRODUCTS = [
   {
     slug: 'cellubiome',
     name: 'CELLUBIOME',
+    displayName: 'CELLUBIOME\u00AE',
     category: 'Mitochondrial + Gut Signaling',
     tagline: 'The Gut–Mitochondria Axis, simplified.',
     serving: '2 enteric-coated capsules daily',
@@ -49,6 +50,7 @@ const PRODUCTS = [
   {
     slug: 'cellunad',
     name: 'CELLUNAD+',
+    displayName: 'CELLUNAD\u00AE+',
     category: 'Daily NAD+ Optimization',
     tagline: 'Precision NAD+ support with co-factors, not hype.',
     serving: '2 capsules daily',
@@ -79,6 +81,7 @@ const PRODUCTS = [
   {
     slug: 'cellunova',
     name: 'CELLUNOVA',
+    displayName: 'CELLUNOVA',
     category: '7-Day Autophagy + Senolytic Protocol',
     tagline: 'Seven days on. Designed as a cycle, not forever.',
     serving: '5 capsules daily for 7 consecutive days',
@@ -701,7 +704,7 @@ export default function Home() {
       </SideSheet>
 
       {/* Product SideSheet */}
-      <SideSheet isOpen={!!activeProduct} onClose={() => setActiveProduct(null)} title={activeProduct?.name || 'Protocol'}>
+      <SideSheet isOpen={!!activeProduct} onClose={() => setActiveProduct(null)} title={activeProduct?.displayName || 'Protocol'}>
         {activeProduct && (
           <div className="space-y-8">
             <div className="space-y-2">

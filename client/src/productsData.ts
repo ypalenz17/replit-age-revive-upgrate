@@ -6,6 +6,7 @@ export const PRODUCTS = [
   {
     slug: 'cellubiome',
     name: 'CELLUBIOME',
+    displayName: 'CELLUBIOME\u00AE',
     category: 'Mitochondrial + Gut Signaling',
     tagline: 'The Gut–Mitochondria Axis, simplified.',
     serving: '2 enteric-coated capsules daily',
@@ -16,6 +17,7 @@ export const PRODUCTS = [
   {
     slug: 'cellunad',
     name: 'CELLUNAD+',
+    displayName: 'CELLUNAD\u00AE+',
     category: 'NAD+ Optimization',
     tagline: 'Precision NAD+ support with co-factors, not hype.',
     serving: '2 capsules daily',
@@ -26,6 +28,7 @@ export const PRODUCTS = [
   {
     slug: 'cellunova',
     name: 'CELLUNOVA',
+    displayName: 'CELLUNOVA',
     category: '7-Day Autophagy + Protocol Cycle',
     tagline: 'Seven days on. Designed as a cycle, not forever.',
     serving: '5 capsules daily for 7 days',

@@ -49,6 +49,7 @@ const PRODUCTS = {
   cellunad: {
     id: 'cellunad',
     name: 'CELLUNAD+',
+    displayName: 'CELLUNAD\u00AE+',
     category: 'NAD+ Optimization',
     tagline: 'Daily NAD+ support, engineered for consistency.',
     description:
@@ -90,6 +91,7 @@ const PRODUCTS = {
   cellubiome: {
     id: 'cellubiome',
     name: 'CELLUBIOME',
+    displayName: 'CELLUBIOME\u00AE',
     category: 'Mitochondrial + Gut Signaling Support',
     tagline: 'Postbiotic signaling for the gut mitochondria axis.',
     description:
@@ -125,6 +127,7 @@ const PRODUCTS = {
   cellunova: {
     id: 'cellunova',
     name: 'CELLUNOVA',
+    displayName: 'CELLUNOVA',
     category: '7-Day Autophagy + Protocol Cycle',
     tagline: 'Seven days on. High-definition cellular maintenance.',
     description:
@@ -560,7 +563,7 @@ function ProductTemplate({ product }) {
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-6 md:gap-12 px-4 md:px-6 pt-32 md:pt-32 pb-10 md:pb-12 items-center">
 
           <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left">
-            <h1 className="text-[clamp(3rem,10vw,6.5rem)] font-sans font-extrabold tracking-[-0.04em] mb-4 md:mb-4 leading-[0.9]">{product.name}</h1>
+            <h1 className="text-[clamp(3rem,10vw,6.5rem)] font-sans font-extrabold tracking-[-0.04em] mb-4 md:mb-4 leading-[0.9]">{product.displayName}</h1>
 
             <p className="text-lg md:text-2xl font-medium text-white/70 max-w-xl mb-8 md:mb-8 leading-snug mx-auto md:mx-0">{product.tagline}</p>
 
@@ -611,7 +614,7 @@ function ProductTemplate({ product }) {
                   <div>
                     <span className="inline-block text-[9px] font-mono uppercase tracking-[0.18em] font-bold text-white/50 border border-white/[0.15] rounded-full px-3 py-1 mb-2 md:mb-3">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
                     <div className="flex items-baseline justify-between gap-4">
-                      <h3 className="text-[20px] md:text-[24px] font-sans font-extrabold tracking-[-0.03em] uppercase text-white leading-none">{product.name}</h3>
+                      <h3 className="text-[20px] md:text-[24px] font-sans font-extrabold tracking-[-0.03em] uppercase text-white leading-none">{product.displayName}</h3>
                       <span className="text-[18px] md:text-[20px] font-sans font-extrabold text-white leading-none">{product.price}</span>
                     </div>
                   </div>
@@ -885,7 +888,7 @@ export default function Shop() {
               ].join(' ')}
               style={slug === p.id ? { background: p.accent } : undefined}
             >
-              {p.name}
+              {p.displayName}
             </button>
           ))}
         </div>
