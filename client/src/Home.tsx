@@ -112,12 +112,12 @@ const PRODUCTS = [
 ];
 
 const PILLARS = [
-  { title: 'Genomic Stability', protocol: 'CELLUNAD+', desc: 'Supports DNA maintenance pathways as part of daily cellular resilience.*' },
-  { title: 'Telomere Integrity', protocol: 'CELLUNAD+', desc: 'Supports healthy cellular aging biology through consistent energy support.*' },
-  { title: 'Epigenetic Signaling', protocol: 'CELLUBIOME', desc: 'Supports signaling pathways tied to gut-derived metabolites and energy.*' },
-  { title: 'Nutrient Sensing', protocol: 'CELLUNOVA', desc: 'Supports cellular maintenance signals through cyclical protocol design.*' },
-  { title: 'Mitochondrial Function', protocol: 'CELLUBIOME', desc: 'Supports mitochondrial renewal signaling and energy efficiency.*' },
-  { title: 'Cellular Senescence', protocol: 'CELLUNOVA', desc: 'Supports cellular cleanup processes as part of a periodic cycle.*' }
+  { title: 'Genomic Stability', protocol: 'CELLUNAD+', desc: '"DNA maintenance pathways drive daily cellular resilience and repair."', tags: ['NAD+', 'Sirtuins'], accent: '#19B3A6' },
+  { title: 'Telomere Integrity', protocol: 'CELLUNAD+', desc: '"Telomere biology supports healthy cellular aging and replication fidelity."', tags: ['NMN', 'Longevity'], accent: '#19B3A6' },
+  { title: 'Epigenetic Signaling', protocol: 'CELLUBIOME', desc: '"Gut-derived metabolites modulate gene expression and energy homeostasis."', tags: ['Methylation', 'Gut Axis'], accent: '#6C5CE7' },
+  { title: 'Nutrient Sensing', protocol: 'CELLUNOVA', desc: '"Cellular maintenance signals activated through cyclical fasting-mimetic design."', tags: ['AMPK', 'mTOR'], accent: '#E17055' },
+  { title: 'Mitochondrial Function', protocol: 'CELLUBIOME', desc: '"Mitochondrial renewal signaling powers cellular energy efficiency."', tags: ['Mitophagy', 'ATP'], accent: '#6C5CE7' },
+  { title: 'Cellular Senescence', protocol: 'CELLUNOVA', desc: '"Periodic senolytic cycles support cellular cleanup and tissue renewal."', tags: ['Fisetin', 'Quercetin'], accent: '#E17055' }
 ];
 
 /* -----------------------------
@@ -437,30 +437,46 @@ const TheAxis = ({ onOpenEvidence }) => {
 const SixPillars = () => {
   return (
     <section id="pillars" className="py-20 px-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto space-y-16">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14 reveal">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-[1px] w-12 bg-ar-teal" />
             <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Framework</span>
             <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
-          <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] uppercase text-white">6 Pillars of Systemic Aging</h2>
-          <p className="text-sm text-white/45 font-medium max-w-2xl mx-auto mt-3">
+          <h2 className="text-4xl md:text-5xl font-sans font-extrabold tracking-[-0.04em] uppercase text-white">6 Pillars of Systemic Aging</h2>
+          <p className="text-sm text-white/40 font-medium max-w-xl mx-auto mt-3">
             A framework for mapping protocols to systems. Not medical advice.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {PILLARS.map((p) => (
-            <div key={p.title} className="reveal group relative overflow-hidden rounded-ar-3xl border border-white/[0.12] hover:border-ar-teal/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(25,179,166,0.08)]">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02] group-hover:from-white/[0.14] group-hover:via-white/[0.08] group-hover:to-white/[0.04] transition-all duration-500" />
-              <div className="absolute inset-0 backdrop-blur-2xl" />
-              <div className="relative z-10 p-10 space-y-6">
-                <h4 className="text-xl font-sans font-extrabold uppercase tracking-tight text-white group-hover:text-ar-teal transition-colors duration-300">{p.title}</h4>
-                <p className="text-xs font-medium text-white/55 leading-relaxed min-h-[46px]">{p.desc}</p>
-                <div className="pt-4 border-t border-white/[0.08] flex justify-between items-center">
-                  <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.22em]">Mapped Protocol</span>
-                  <span className="text-[10px] font-mono font-bold text-ar-teal uppercase tracking-[0.22em]">{p.protocol}</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {PILLARS.map((p, i) => (
+            <div
+              key={p.title}
+              className="reveal group relative overflow-hidden rounded-2xl border border-white/[0.08] hover:border-white/[0.20] transition-all duration-500 hover:-translate-y-0.5"
+              style={{ '--pill-accent': p.accent } as React.CSSProperties}
+            >
+              <div className="absolute inset-0 bg-white/[0.03]" />
+              <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: `linear-gradient(90deg, transparent, ${p.accent}, transparent)` }} />
+              <div className="absolute top-0 left-0 right-0 h-24 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: `radial-gradient(ellipse at 50% -20%, ${p.accent}22, transparent 70%)` }} />
+
+              <div className="relative z-10 p-6 flex flex-col gap-4">
+                <span className="font-mono text-[11px] font-bold tracking-[0.15em] opacity-30" style={{ color: p.accent }}>0{i + 1}</span>
+
+                <h4 className="text-lg font-sans font-extrabold uppercase tracking-[-0.01em] text-white group-hover:text-white transition-colors duration-300 leading-tight">{p.title}</h4>
+
+                <p className="text-[13px] font-serif italic text-white/50 leading-relaxed">{p.desc}</p>
+
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {p.tags.map(tag => (
+                    <span key={tag} className="text-[9px] font-mono uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border transition-colors duration-300" style={{ borderColor: `${p.accent}33`, color: `${p.accent}CC` }}>{tag}</span>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-2 pt-3 border-t border-white/[0.06]">
+                  <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: p.accent }} />
+                  <span className="text-[9px] font-mono font-bold uppercase tracking-[0.22em]" style={{ color: p.accent }}>{p.protocol}</span>
                 </div>
               </div>
             </div>
