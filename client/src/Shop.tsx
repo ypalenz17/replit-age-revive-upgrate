@@ -49,7 +49,7 @@ const PRODUCTS = {
   cellunad: {
     id: 'cellunad',
     name: 'CELLUNAD+',
-    category: 'Daily NAD+ Optimization Formula',
+    category: 'NAD+ Optimization',
     tagline: 'Daily NAD+ support, engineered for consistency.',
     description:
       'A molecular-grade daily protocol that supports NAD+ metabolism with redox and methylation cofactors. Built to feel precise, not noisy.',
