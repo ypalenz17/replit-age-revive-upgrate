@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
+import { BrandName } from "../productsData";
 
 function hexToRgba(hex: string, a = 1) {
   const h = (hex || "").replace("#", "").trim();
@@ -38,7 +39,7 @@ export default function ProtocolSelectorCard({ p }: { p: { slug: string; name: s
         </div>
 
         <p className="text-[9px] font-mono uppercase tracking-[0.22em] text-white/35 mb-1">{p.category}</p>
-        <h4 className="font-sans font-extrabold text-lg tracking-[-0.02em] uppercase text-white leading-tight text-center mb-3">{p.name}</h4>
+        <h4 className="font-head font-normal text-lg tracking-[-0.02em] uppercase text-white leading-tight text-center mb-3"><BrandName name={p.name} /></h4>
 
         <div className="flex flex-wrap justify-center gap-1.5 mb-4">
           {p.ingredients.map((ing) => (
