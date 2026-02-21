@@ -696,16 +696,16 @@ function ProductTemplate({ product }) {
                   <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02] group-hover:from-white/[0.14] group-hover:via-white/[0.08] group-hover:to-white/[0.04] transition-all duration-300" />
                   <div className="absolute inset-0 backdrop-blur-2xl" />
                   <div className="relative z-10 p-8">
-                    <p className="text-[10px] font-mono text-white/50 mb-2 uppercase tracking-[0.22em]">{step.time}</p>
+                    <p className="text-[10px] font-mono text-white/70 mb-2 uppercase tracking-[0.22em]">{step.time}</p>
                     <h4 className="text-xl font-sans font-extrabold mb-3 tracking-[-0.02em] text-white">{step.label}</h4>
-                    <p className="text-[13px] text-white/60 leading-relaxed font-medium mb-6">{step.desc}</p>
+                    <p className="text-[13px] text-white/70 leading-relaxed font-medium mb-6">{step.desc}</p>
 
-                    <div className="h-1 bg-white/[0.08] rounded-full overflow-hidden">
-                      <div className="h-full rounded-full bg-white/40" style={{ width: `${(i + 1) * 25}%` }} />
+                    <div className="h-1.5 bg-white/[0.1] rounded-full overflow-hidden">
+                      <div className="h-full rounded-full bg-white/70" style={{ width: `${(i + 1) * 25}%` }} />
                     </div>
 
                     <div className="mt-4">
-                      <span className="text-[10px] font-mono font-bold uppercase text-white/50 tracking-[0.18em]">{step.value}</span>
+                      <span className="text-[10px] font-mono font-bold uppercase text-white/70 tracking-[0.18em]">{step.value}</span>
                     </div>
                   </div>
                 </div>
