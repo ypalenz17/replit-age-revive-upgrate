@@ -176,7 +176,7 @@ const SideSheet = ({ isOpen, onClose, title, children }) => {
         <div className="space-y-8">
           <div className="space-y-2">
             <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ar-teal">Clinical Archive</p>
-            <h3 className="text-3xl md:text-4xl font-sans font-extrabold tracking-[-0.03em] uppercase">{title}</h3>
+            <h3 className="text-3xl md:text-4xl font-head font-normal tracking-[-0.03em] uppercase">{title}</h3>
           </div>
 
           <div className="text-sm text-black/60 font-medium leading-relaxed space-y-4">
@@ -334,7 +334,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
               <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Protocol Infrastructure</span>
               <div className="h-[1px] w-12 bg-ar-teal" />
             </div>
-            <h1 className="text-6xl md:text-8xl font-sans font-extrabold text-white tracking-[-0.05em] leading-[0.85]">
+            <h1 className="text-6xl md:text-8xl font-head font-normal text-white tracking-[-0.05em] leading-[0.85]">
               Cellular Energy.
               <br />
               Gut Resilience.
@@ -374,7 +374,7 @@ const TheAxis = ({ onOpenEvidence }) => {
             <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">The Foundation</span>
             <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
-          <h2 className="text-5xl md:text-6xl font-sans font-extrabold tracking-[-0.04em] uppercase text-white leading-tight">
+          <h2 className="text-5xl md:text-6xl font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight">
             The Age Revive
             <br />
             Systems Axis.
@@ -410,7 +410,7 @@ const TheAxis = ({ onOpenEvidence }) => {
                 <span className="font-mono text-xs font-bold tracking-[0.14em]">{item.tag}</span>
               </div>
               <div className="space-y-3">
-                <h3 className="text-xl font-sans font-extrabold uppercase tracking-tight text-white group-hover:text-ar-teal transition-colors duration-300">{item.name}</h3>
+                <h3 className="text-xl font-head font-normal uppercase tracking-tight text-white group-hover:text-ar-teal transition-colors duration-300">{item.name}</h3>
                 <p className="text-sm font-medium text-white/60 leading-relaxed">{item.desc}</p>
               </div>
 
@@ -447,7 +447,7 @@ const SixPillars = () => {
             <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Framework</span>
             <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-sans font-extrabold tracking-[-0.04em] uppercase text-white">6 Pillars of Systemic Aging</h2>
+          <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] uppercase text-white">6 Pillars of Systemic Aging</h2>
           <p className="text-sm text-white/40 font-medium max-w-xl mx-auto mt-3">
             A framework for mapping protocols to systems. Not medical advice.
           </p>
@@ -467,7 +467,7 @@ const SixPillars = () => {
               <div className="relative z-10 p-6 flex flex-col gap-4">
                 <span className="font-mono text-[11px] font-bold tracking-[0.15em] opacity-30" style={{ color: p.accent }}>0{i + 1}</span>
 
-                <h4 className="text-lg font-sans font-extrabold uppercase tracking-[-0.01em] text-white group-hover:text-white transition-colors duration-300 leading-tight">{p.title}</h4>
+                <h4 className="text-lg font-head font-normal uppercase tracking-[-0.01em] text-white group-hover:text-white transition-colors duration-300 leading-tight">{p.title}</h4>
 
                 <p className="text-[13px] font-serif italic text-white/50 leading-relaxed">{p.desc}</p>
 
@@ -506,7 +506,7 @@ const Journal = () => {
             <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Scientific Literacy</span>
             <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
-          <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] uppercase text-white">The Age Revive Journal.</h2>
+          <h2 className="text-5xl font-head font-normal tracking-[-0.04em] uppercase text-white">The Age Revive Journal.</h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -518,7 +518,7 @@ const Journal = () => {
               </div>
               <div className="space-y-2">
                 <span className="font-mono text-[9px] text-white/40 uppercase tracking-[0.22em]">{j.cat}</span>
-                <h4 className="text-xl font-sans font-extrabold uppercase tracking-tight text-white group-hover:text-ar-teal transition-colors duration-300">{j.title}</h4>
+                <h4 className="text-xl font-head font-normal uppercase tracking-tight text-white group-hover:text-ar-teal transition-colors duration-300">{j.title}</h4>
               </div>
             </div>
           ))}
@@ -603,7 +603,7 @@ export default function Home() {
               <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Select Your Protocol</span>
               <div className="h-[1px] w-12 bg-ar-teal" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-sans font-extrabold text-white tracking-[-0.04em] uppercase leading-tight">
+            <h2 className="text-4xl md:text-5xl font-head font-normal text-white tracking-[-0.04em] uppercase leading-tight">
               The System
             </h2>
             <p className="text-sm text-white/40 font-mono uppercase tracking-[0.14em] mt-3">Choose your starting point</p>
@@ -660,7 +660,7 @@ export default function Home() {
       {/* Final CTA */}
       <section className="py-24 px-6 text-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10 reveal">
-          <h2 className="text-6xl md:text-8xl font-sans font-extrabold tracking-[-0.05em] uppercase leading-[0.85]">
+          <h2 className="text-6xl md:text-8xl font-head font-normal tracking-[-0.05em] uppercase leading-[0.85]">
             Build your baseline.
           </h2>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
@@ -681,7 +681,7 @@ export default function Home() {
       <SideSheet isOpen={evidencePanel} onClose={() => setEvidencePanel(false)} title="Scientific Evidence & Rationale">
         <div className="space-y-6">
           <section className="space-y-2">
-            <h4 className="font-sans font-extrabold uppercase tracking-tight text-ar-navy">Designed as a system</h4>
+            <h4 className="font-head font-normal uppercase tracking-tight text-ar-navy">Designed as a system</h4>
             <p>
               Age Revive protocols are built around standardized actives, defined cadence, and quality controls.
               We keep claims clinically responsible and focus on repeatable execution.
@@ -689,7 +689,7 @@ export default function Home() {
           </section>
 
           <section className="space-y-2">
-            <h4 className="font-sans font-extrabold uppercase tracking-tight text-ar-navy">What you will see here</h4>
+            <h4 className="font-head font-normal uppercase tracking-tight text-ar-navy">What you will see here</h4>
             <p>
               This panel summarizes protocol intent. Full research references can be linked in the Science section when ready.
             </p>

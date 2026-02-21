@@ -12,6 +12,7 @@ module.exports = {
         'ar-ink': '#0B0D13',
       },
       fontFamily: {
+        head: ['FPHeadPro', 'Inter', 'ui-sans-serif', 'system-ui'],
         sans: ['Inter', 'ui-sans-serif', 'system-ui'],
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular'],
       },

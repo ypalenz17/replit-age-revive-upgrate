@@ -464,7 +464,7 @@ function SideSheet({ open, title, onClose, children }) {
         <div className="space-y-10">
           <div className="space-y-2">
             <p className="text-[10px] font-mono font-medium uppercase tracking-[0.14em] text-white/40">Overlay</p>
-            <h3 className="text-3xl font-sans font-extrabold tracking-[-0.03em] uppercase text-white">{title}</h3>
+            <h3 className="text-3xl font-head font-normal tracking-[-0.03em] uppercase text-white">{title}</h3>
           </div>
 
           {children}
@@ -563,7 +563,7 @@ function ProductTemplate({ product }) {
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-6 md:gap-12 px-4 md:px-6 pt-32 md:pt-32 pb-10 md:pb-12 items-center">
 
           <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left">
-            <h1 className="text-[clamp(3rem,10vw,6.5rem)] font-sans font-extrabold tracking-[-0.04em] mb-4 md:mb-4 leading-[0.9]">{product.displayName}</h1>
+            <h1 className="text-[clamp(3rem,10vw,6.5rem)] font-head font-normal tracking-[-0.04em] mb-4 md:mb-4 leading-[0.9]">{product.displayName}</h1>
 
             <p className="text-lg md:text-2xl font-medium text-white/70 max-w-xl mb-8 md:mb-8 leading-snug mx-auto md:mx-0">{product.tagline}</p>
 
@@ -614,7 +614,7 @@ function ProductTemplate({ product }) {
                   <div>
                     <span className="inline-block text-[9px] font-mono uppercase tracking-[0.18em] font-bold text-white/50 border border-white/[0.15] rounded-full px-3 py-1 mb-2 md:mb-3">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
                     <div className="flex items-baseline justify-between gap-4">
-                      <h3 className="text-[20px] md:text-[24px] font-sans font-extrabold tracking-[-0.03em] uppercase text-white leading-none">{product.displayName}</h3>
+                      <h3 className="text-[20px] md:text-[24px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-none">{product.displayName}</h3>
                       <span className="text-[18px] md:text-[20px] font-sans font-extrabold text-white leading-none">{product.price}</span>
                     </div>
                   </div>
@@ -681,7 +681,7 @@ function ProductTemplate({ product }) {
         <div className="grid md:grid-cols-12 gap-16 items-center">
           <div className="md:col-span-5 space-y-6 reveal">
             <TypewriterTelemetry phrases={product.telemetry} />
-            <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] leading-[1.06] text-white">
+            <h2 className="text-5xl font-head font-normal tracking-[-0.04em] leading-[1.06] text-white">
               Every dose,{' '}<span className="italic text-white/50 underline decoration-white/20 underline-offset-4 decoration-[1.5px]">fully disclosed</span>.
             </h2>
             <p className="text-lg text-white/55 leading-relaxed font-medium">
@@ -706,7 +706,7 @@ function ProductTemplate({ product }) {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20 space-y-4 reveal">
             <span className="text-[10px] font-mono uppercase tracking-[0.32em] text-white/50">Protocol Arc</span>
-            <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] text-white">What to expect over time</h2>
+            <h2 className="text-5xl font-head font-normal tracking-[-0.04em] text-white">What to expect over time</h2>
             <p className="text-sm text-white/50 font-medium max-w-2xl mx-auto">This is a support protocol. Individual responses vary. Consistency is the point.</p>
           </div>
 
@@ -718,7 +718,7 @@ function ProductTemplate({ product }) {
                   <div className="absolute inset-0 backdrop-blur-2xl" />
                   <div className="relative z-10 p-8">
                     <p className="text-[10px] font-mono text-white/70 mb-2 uppercase tracking-[0.22em]">{step.time}</p>
-                    <h4 className="text-xl font-sans font-extrabold mb-3 tracking-[-0.02em] text-white">{step.label}</h4>
+                    <h4 className="text-xl font-head font-normal mb-3 tracking-[-0.02em] text-white">{step.label}</h4>
                     <p className="text-[13px] text-white/70 leading-relaxed font-medium mb-6">{step.desc}</p>
 
                     <div className="h-1.5 bg-white/[0.1] rounded-full overflow-hidden">
@@ -741,7 +741,7 @@ function ProductTemplate({ product }) {
         <div className="max-w-4xl mx-auto space-y-24">
           <div className="text-center text-white mb-20 space-y-4 reveal">
             <span className="text-[10px] font-mono uppercase tracking-[0.32em] text-white/50">Mechanistic Layering</span>
-            <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em]">Rationale, simplified</h2>
+            <h2 className="text-5xl font-head font-normal tracking-[-0.04em]">Rationale, simplified</h2>
             <p className="text-sm text-white/55 font-medium max-w-2xl mx-auto">Clear intent. Clean inputs. Built to be scanned, not worshipped.</p>
           </div>
 
@@ -759,7 +759,7 @@ function ProductTemplate({ product }) {
                     <div className="w-10 h-[1.5px] rounded-full bg-white/30" />
                   </div>
 
-                  <h3 className="text-3xl md:text-4xl font-sans font-extrabold tracking-[-0.03em] uppercase leading-none text-white">{item.title}</h3>
+                  <h3 className="text-3xl md:text-4xl font-head font-normal tracking-[-0.03em] uppercase leading-none text-white">{item.title}</h3>
 
                   <p className="text-lg md:text-xl font-medium text-white/70 leading-relaxed italic max-w-md mx-auto">“{item.text}”</p>
 
@@ -779,7 +779,7 @@ function ProductTemplate({ product }) {
 
       {/* FAQ + Disclaimer */}
       <section className="py-32 px-6 max-w-4xl mx-auto">
-        <h2 className="text-4xl font-sans font-extrabold tracking-[-0.03em] mb-16 text-center text-white">Protocol Inquiries</h2>
+        <h2 className="text-4xl font-head font-normal tracking-[-0.03em] mb-16 text-center text-white">Protocol Inquiries</h2>
 
         <div className="space-y-4 mb-24">
           {[
@@ -834,7 +834,7 @@ function ProductTemplate({ product }) {
                 <div className="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-mono font-bold text-white" style={{ background: hexToRgba(product.accent, 0.12), color: product.accent }}>
                   {i + 1}
                 </div>
-                <h4 className="font-sans font-extrabold uppercase tracking-[0.12em] text-white">{mech.title}</h4>
+                <h4 className="font-head font-normal uppercase tracking-[0.12em] text-white">{mech.title}</h4>
               </div>
               <p className="text-sm text-white/55 leading-relaxed font-medium pl-11">{mech.text}</p>
             </div>
