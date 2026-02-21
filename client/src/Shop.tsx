@@ -588,7 +588,7 @@ function ProductTemplate({ product }) {
                   <img src={product.heroImage} alt={product.name} className="relative z-10 w-[55%] h-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]" />
                 </div>
 
-                <div className="px-8 md:px-10 pb-8 md:pb-10 space-y-6">
+                <div className="px-8 md:px-10 pb-8 md:pb-10 space-y-4">
                   <div>
                     <span className="inline-block text-[9px] font-mono uppercase tracking-[0.18em] font-bold text-white/50 border border-white/[0.15] rounded-full px-3 py-1 mb-3">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
                     <div className="flex items-baseline justify-between gap-4">
@@ -599,9 +599,7 @@ function ProductTemplate({ product }) {
 
                   <p className="text-[15px] text-white/80 leading-relaxed">{product.description}</p>
 
-                  <div className="h-px bg-gradient-to-r from-transparent via-white/[0.1] to-transparent" />
-
-                  <div className="space-y-3.5">
+                  <div className="space-y-2.5">
                     {product.outcomes.map((item, i) => (
                       <div key={i} className="flex items-start gap-3">
                         <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0 mt-[7px]" />
