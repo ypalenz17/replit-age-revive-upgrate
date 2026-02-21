@@ -684,7 +684,7 @@ function ProductTemplate({ product }) {
       <section className="py-32">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20 space-y-4 reveal">
-            <span className="text-[10px] font-mono uppercase tracking-[0.32em] text-[color:var(--accent)]">Protocol Arc</span>
+            <span className="text-[10px] font-mono uppercase tracking-[0.32em] text-white/50">Protocol Arc</span>
             <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] text-white">What to expect over time</h2>
             <p className="text-sm text-white/50 font-medium max-w-2xl mx-auto">This is a support protocol. Individual responses vary. Consistency is the point.</p>
           </div>
@@ -696,16 +696,16 @@ function ProductTemplate({ product }) {
                   <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02] group-hover:from-white/[0.14] group-hover:via-white/[0.08] group-hover:to-white/[0.04] transition-all duration-300" />
                   <div className="absolute inset-0 backdrop-blur-2xl" />
                   <div className="relative z-10 p-8">
-                    <p className="text-[10px] font-mono text-[color:var(--accent)] mb-2 uppercase tracking-[0.22em]">{step.time}</p>
+                    <p className="text-[10px] font-mono text-white/50 mb-2 uppercase tracking-[0.22em]">{step.time}</p>
                     <h4 className="text-xl font-sans font-extrabold mb-3 tracking-[-0.02em] text-white">{step.label}</h4>
-                    <p className="text-xs text-white/50 leading-relaxed font-medium mb-6">{step.desc}</p>
+                    <p className="text-[13px] text-white/60 leading-relaxed font-medium mb-6">{step.desc}</p>
 
                     <div className="h-1 bg-white/[0.08] rounded-full overflow-hidden">
-                      <div className="h-full" style={{ width: `${(i + 1) * 25}%`, background: 'var(--accent)' }} />
+                      <div className="h-full rounded-full bg-white/40" style={{ width: `${(i + 1) * 25}%` }} />
                     </div>
 
                     <div className="mt-4">
-                      <span className="text-[10px] font-mono font-medium uppercase text-white/35 tracking-[0.18em]">{step.value}</span>
+                      <span className="text-[10px] font-mono font-bold uppercase text-white/50 tracking-[0.18em]">{step.value}</span>
                     </div>
                   </div>
                 </div>
