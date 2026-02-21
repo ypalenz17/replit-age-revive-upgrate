@@ -112,12 +112,12 @@ const PRODUCTS = [
 ];
 
 const PILLARS = [
-  { title: 'Genomic Stability', protocol: 'CELLUNAD+', desc: '"DNA maintenance pathways drive daily cellular resilience and repair."', tags: ['NAD+', 'Sirtuins'], accent: '#19B3A6' },
-  { title: 'Telomere Integrity', protocol: 'CELLUNAD+', desc: '"Telomere biology supports healthy cellular aging and replication fidelity."', tags: ['NMN', 'Longevity'], accent: '#19B3A6' },
-  { title: 'Epigenetic Signaling', protocol: 'CELLUBIOME', desc: '"Gut-derived metabolites modulate gene expression and energy homeostasis."', tags: ['Methylation', 'Gut Axis'], accent: '#6C5CE7' },
-  { title: 'Nutrient Sensing', protocol: 'CELLUNOVA', desc: '"Cellular maintenance signals activated through cyclical fasting-mimetic design."', tags: ['AMPK', 'mTOR'], accent: '#E17055' },
-  { title: 'Mitochondrial Function', protocol: 'CELLUBIOME', desc: '"Mitochondrial renewal signaling powers cellular energy efficiency."', tags: ['Mitophagy', 'ATP'], accent: '#6C5CE7' },
-  { title: 'Cellular Senescence', protocol: 'CELLUNOVA', desc: '"Periodic senolytic cycles support cellular cleanup and tissue renewal."', tags: ['Fisetin', 'Quercetin'], accent: '#E17055' }
+  { title: 'Genomic Stability', protocol: 'CELLUNAD+', desc: '"DNA maintenance pathways drive daily cellular resilience and repair."', tags: ['NAD+', 'Sirtuins'], accent: '#3B82F6' },
+  { title: 'Telomere Integrity', protocol: 'CELLUNAD+', desc: '"Telomere biology supports healthy cellular aging and replication fidelity."', tags: ['NMN', 'Longevity'], accent: '#3B82F6' },
+  { title: 'Epigenetic Signaling', protocol: 'CELLUBIOME', desc: '"Gut-derived metabolites modulate gene expression and energy homeostasis."', tags: ['Methylation', 'Gut Axis'], accent: '#19B3A6' },
+  { title: 'Nutrient Sensing', protocol: 'CELLUNOVA', desc: '"Cellular maintenance signals activated through cyclical fasting-mimetic design."', tags: ['AMPK', 'mTOR'], accent: '#6C5CE7' },
+  { title: 'Mitochondrial Function', protocol: 'CELLUBIOME', desc: '"Mitochondrial renewal signaling powers cellular energy efficiency."', tags: ['Mitophagy', 'ATP'], accent: '#19B3A6' },
+  { title: 'Cellular Senescence', protocol: 'CELLUNOVA', desc: '"Periodic senolytic cycles support cellular cleanup and tissue renewal."', tags: ['Fisetin', 'Quercetin'], accent: '#6C5CE7' }
 ];
 
 /* -----------------------------
