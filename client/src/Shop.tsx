@@ -557,13 +557,14 @@ function ProductTemplate({ product }) {
       <section className="hero relative min-h-[100dvh] overflow-hidden">
         <div className="absolute inset-0 z-[2] opacity-[0.25]" style={{ background: 'radial-gradient(900px 600px at 20% 85%, var(--accentGlow), transparent 60%)' }} />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-6 md:gap-12 px-4 md:px-6 pt-24 md:pt-32 pb-24 md:pb-12 items-center">
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-6 md:gap-12 px-4 md:px-6 pt-32 md:pt-32 pb-10 md:pb-12 items-center">
 
           <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left">
-            <h1 className="text-[clamp(2.5rem,7vw,6.5rem)] font-sans font-extrabold tracking-[-0.05em] mb-3 md:mb-4 leading-[0.88]">{product.name}</h1>
+            <h1 className="text-[clamp(3rem,10vw,6.5rem)] font-sans font-extrabold tracking-[-0.04em] mb-4 md:mb-4 leading-[0.9]">{product.name}</h1>
 
-            <p className="text-base md:text-2xl font-medium text-white/80 max-w-xl mb-6 md:mb-8 leading-tight mx-auto md:mx-0">{product.tagline}</p>
+            <p className="text-lg md:text-2xl font-medium text-white/70 max-w-xl mb-8 md:mb-8 leading-snug mx-auto md:mx-0">{product.tagline}</p>
 
+            {/* Desktop: inline protocol/system cards */}
             <div className="hidden md:inline-flex items-stretch gap-0 rounded-xl border border-white/[0.08] bg-white/[0.03] overflow-hidden">
               <div className="px-5 py-3.5">
                 <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">Protocol</p>
@@ -576,16 +577,15 @@ function ProductTemplate({ product }) {
               </div>
             </div>
 
-            {/* Mobile: protocol / target row */}
-            <div className="flex md:hidden justify-center gap-6 text-center">
-              <div>
-                <p className="text-[8px] uppercase font-mono text-white/35 tracking-[0.22em] mb-0.5">Protocol</p>
-                <p className="text-[11px] font-semibold tracking-[0.06em] uppercase text-white/70">{product.serving}</p>
+            {/* Mobile: two glass cards side by side */}
+            <div className="grid grid-cols-2 gap-3 md:hidden">
+              <div className="rounded-xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm px-4 py-4 text-center">
+                <p className="text-[9px] uppercase font-mono text-white/40 tracking-[0.2em] mb-2">Protocol</p>
+                <p className="text-[14px] font-bold tracking-[0.06em] uppercase text-white/90 leading-tight">{product.serving}</p>
               </div>
-              <div className="w-px bg-white/10" />
-              <div>
-                <p className="text-[8px] uppercase font-mono text-white/35 tracking-[0.22em] mb-0.5">Target</p>
-                <p className="text-[11px] font-semibold tracking-[0.06em] uppercase text-white/70">{product.category}</p>
+              <div className="rounded-xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm px-4 py-4 text-center">
+                <p className="text-[9px] uppercase font-mono text-white/40 tracking-[0.2em] mb-2">Target</p>
+                <p className="text-[14px] font-bold tracking-[0.06em] uppercase text-white/90 leading-tight">{product.category}</p>
               </div>
             </div>
           </div>
