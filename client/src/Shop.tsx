@@ -528,29 +528,29 @@ function ProductTemplate({ product }) {
           </div>
 
           <div className="w-full md:w-2/5 buy-panel">
-            <div className="bg-white/[0.10] backdrop-blur-2xl p-8 md:p-10 rounded-ar-4xl shadow-float space-y-7 border border-white/[0.14] relative overflow-hidden" style={{ boxShadow: `0 0 0 1px ${hexToRgba(product.accent, 0.15)}, 0 40px 110px -45px ${hexToRgba(product.accent, 0.5)}` }}>
+            <div className="bg-[#f5f0eb]/95 backdrop-blur-2xl p-8 md:p-10 rounded-ar-4xl shadow-float space-y-7 border border-white/40 relative overflow-hidden" style={{ boxShadow: `0 0 0 1px ${hexToRgba(product.accent, 0.15)}, 0 40px 110px -45px ${hexToRgba(product.accent, 0.5)}` }}>
               <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: 'var(--accent)' }} />
 
               <div className="space-y-3">
                 <div className="flex justify-between items-baseline gap-4">
-                  <h3 className="text-2xl font-sans font-extrabold tracking-[-0.03em] uppercase text-white">{product.name}</h3>
-                  <span className="text-2xl font-extrabold text-white">{product.price}</span>
+                  <h3 className="text-2xl font-sans font-extrabold tracking-[-0.03em] uppercase text-ar-navy">{product.name}</h3>
+                  <span className="text-2xl font-extrabold text-ar-navy">{product.price}</span>
                 </div>
-                <p className="text-sm text-white/75 leading-relaxed">{product.description}</p>
+                <p className="text-sm text-ar-navy/65 leading-relaxed">{product.description}</p>
               </div>
 
               {product.warnings && (
-                <div className="rounded-ar-2xl bg-white/[0.06] border border-white/[0.1] p-4">
-                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/50">Note</p>
-                  <p className="text-sm font-semibold text-white/90">{product.warnings}</p>
+                <div className="rounded-ar-2xl bg-ar-navy/[0.05] border border-ar-navy/10 p-4">
+                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-ar-navy/45">Note</p>
+                  <p className="text-sm font-semibold text-ar-navy/80">{product.warnings}</p>
                 </div>
               )}
 
               <div className="space-y-3">
                 {product.outcomes.map((item, i) => (
                   <div key={i} className="flex items-center gap-3 text-sm tracking-tight">
-                    <span className="w-2 h-2 rounded-full shrink-0 ring-2 ring-offset-1 ring-offset-transparent" style={{ background: product.accent, boxShadow: `0 0 6px ${hexToRgba(product.accent, 0.5)}`, ringColor: product.accent }} />
-                    <span className="text-white/90 font-medium">{item}</span>
+                    <span className="w-2 h-2 rounded-full shrink-0" style={{ background: product.accent }} />
+                    <span className="text-ar-navy/85 font-medium">{item}</span>
                   </div>
                 ))}
               </div>
@@ -565,10 +565,10 @@ function ProductTemplate({ product }) {
               </MagneticButton>
 
               <div className="grid grid-cols-2 gap-4">
-                <button onClick={() => setActiveSidePanel('rationale')} className="py-3 border border-white/[0.15] rounded-full text-[10px] uppercase font-mono font-bold tracking-[0.14em] text-white/80 hover:bg-white/[0.08] hover:border-white/25 transition-colors flex items-center justify-center gap-2">
+                <button onClick={() => setActiveSidePanel('rationale')} className="py-3 border border-ar-navy/15 rounded-full text-[10px] uppercase font-mono font-bold tracking-[0.14em] text-ar-navy/60 hover:bg-ar-navy/[0.05] hover:border-ar-navy/25 transition-colors flex items-center justify-center gap-2">
                   Evidence <ArrowRight size={10} />
                 </button>
-                <button onClick={() => setActiveSidePanel('ingredients')} className="py-3 border border-white/[0.15] rounded-full text-[10px] uppercase font-mono font-bold tracking-[0.14em] text-white/80 hover:bg-white/[0.08] hover:border-white/25 transition-colors flex items-center justify-center gap-2">
+                <button onClick={() => setActiveSidePanel('ingredients')} className="py-3 border border-ar-navy/15 rounded-full text-[10px] uppercase font-mono font-bold tracking-[0.14em] text-ar-navy/60 hover:bg-ar-navy/[0.05] hover:border-ar-navy/25 transition-colors flex items-center justify-center gap-2">
                   Ingredients <ArrowRight size={10} />
                 </button>
               </div>
