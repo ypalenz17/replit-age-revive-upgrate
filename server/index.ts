@@ -2,6 +2,7 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
+import { injectContent } from "./prerender";
 
 const app = express();
 const httpServer = createServer(app);
@@ -75,9 +76,44 @@ app.use((req, res, next) => {
     return res.status(status).json({ message });
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
+  app.use((req, res, next) => {
+    if (req.method !== "GET" || req.path.startsWith("/api") || req.path.includes(".")) {
+      return next();
+    }
+    const routePath = req.path;
+    const originalEnd = res.end.bind(res);
+    const originalSend = res.send.bind(res);
+
+    res.send = function (body?: any) {
+      const contentType = res.getHeader("content-type");
+      if (
+        contentType &&
+        typeof contentType === "string" &&
+        contentType.includes("text/html") &&
+        typeof body === "string"
+      ) {
+        body = injectContent(body, routePath);
+      }
+      return originalSend(body);
+    } as any;
+
+    res.end = function (chunk?: any, ...args: any[]) {
+      const contentType = res.getHeader("content-type");
+      if (
+        contentType &&
+        typeof contentType === "string" &&
+        contentType.includes("text/html") &&
+        chunk
+      ) {
+        const str = typeof chunk === "string" ? chunk : chunk.toString("utf-8");
+        const injected = injectContent(str, routePath);
+        return (originalEnd as any)(injected, ...args);
+      }
+      return (originalEnd as any)(chunk, ...args);
+    } as any;
+    next();
+  });
+
   if (process.env.NODE_ENV === "production") {
     serveStatic(app);
   } else {

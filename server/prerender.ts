@@ -347,7 +347,7 @@ export function injectContent(html: string, routePath: string): string {
 
   result = result.replace(
     '<div id="root"></div>',
-    `<div id="root">${page.html}</div>`
+    `<div id="root"></div>\n<div id="prerender" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">${page.html}</div>`
   );
 
   return result;
