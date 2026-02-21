@@ -44,7 +44,7 @@ export function BrandName({ name, className }: { name: string; className?: strin
   return (
     <span className={className}>
       {name}
-      {needsR && <sup className="text-[0.45em] opacity-60 ml-[0.05em] align-super">{'\u00AE'}</sup>}
+      {needsR && <sup className="text-[0.55em] opacity-60 ml-[0.05em] align-super">{'\u00AE'}</sup>}
     </span>
   );
 }
