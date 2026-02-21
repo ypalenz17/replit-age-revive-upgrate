@@ -247,7 +247,7 @@ function IngredientPanel({ ingredients, accent }) {
               <div className="flex items-baseline justify-between py-3.5 gap-4">
                 <div className="flex-1 min-w-0">
                   <p className="text-[14px] font-bold text-white leading-tight truncate">{ing.name}</p>
-                  <p className="text-[10px] font-mono text-white/40 mt-1 uppercase tracking-[0.08em]">{ing.purpose}</p>
+                  <p className="text-[10px] font-mono text-ar-teal/70 mt-1 uppercase tracking-[0.12em]">{ing.purpose}</p>
                 </div>
                 <span className="text-[14px] font-mono font-bold text-white shrink-0">{ing.dose}</span>
               </div>
