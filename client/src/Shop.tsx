@@ -657,8 +657,8 @@ function ProductTemplate({ product }) {
 
       {/* What's Inside */}
       <section className="py-32 px-6 max-w-7xl mx-auto overflow-hidden">
-        <div className="grid md:grid-cols-12 gap-16 items-start">
-          <div className="md:col-span-5 space-y-8 reveal md:sticky md:top-32">
+        <div className="grid md:grid-cols-12 gap-16 items-center">
+          <div className="md:col-span-5 space-y-6 reveal">
             <TypewriterTelemetry phrases={product.telemetry} />
             <h2 className="text-5xl font-sans font-extrabold tracking-[-0.04em] leading-[1.06] text-white">
               Every dose,{' '}<span className="italic text-white/50 underline decoration-white/20 underline-offset-4 decoration-[1.5px]">fully disclosed</span>.
@@ -669,11 +669,9 @@ function ProductTemplate({ product }) {
 
             <TrustStats product={product} />
 
-            <div className="pt-2">
-              <p className="text-[10px] font-mono text-white/30 uppercase tracking-[0.14em] leading-relaxed">
-                Certificate of Analysis available on request. All actives independently verified.
-              </p>
-            </div>
+            <p className="text-[10px] font-mono text-white/30 uppercase tracking-[0.14em] leading-relaxed">
+              All actives third-party tested in an ISO-certified laboratory. Full certificates of analysis available.
+            </p>
           </div>
 
           <div className="md:col-span-7 reveal">
