@@ -357,7 +357,10 @@ const TheAxis = ({ onOpenEvidence }) => {
               steps: ['Short cycle', 'Defense layer', 'Return to base']
             }
           ].map((item, i) => (
-            <div key={i} className="reveal group p-8 bg-white/[0.05] border border-white/[0.1] rounded-2xl hover:border-ar-teal/30 hover:bg-white/[0.07] transition-all duration-500 space-y-6 hover:shadow-[0_0_40px_rgba(25,179,166,0.06)]">
+            <div key={i} className="reveal group relative overflow-hidden rounded-2xl border border-white/[0.12] hover:border-ar-teal/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(25,179,166,0.08)]">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02] group-hover:from-white/[0.14] group-hover:via-white/[0.08] group-hover:to-white/[0.04] transition-all duration-500" />
+              <div className="absolute inset-0 backdrop-blur-2xl" />
+              <div className="relative z-10 p-8 space-y-6">
               <div className="w-14 h-14 rounded-xl bg-ar-teal/10 border border-ar-teal/20 text-ar-teal flex items-center justify-center group-hover:scale-110 group-hover:bg-ar-teal/15 transition-all duration-500">
                 <span className="font-mono text-xs font-bold tracking-[0.14em]">{item.tag}</span>
               </div>
@@ -380,6 +383,7 @@ const TheAxis = ({ onOpenEvidence }) => {
               >
                 View Evidence <ArrowRight size={14} />
               </button>
+              </div>
             </div>
           ))}
         </div>
@@ -406,8 +410,10 @@ const SixPillars = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {PILLARS.map((p) => (
-            <div key={p.title} className="reveal group p-10 bg-white/[0.05] rounded-ar-3xl border border-white/[0.1] hover:border-ar-teal/30 hover:bg-white/[0.07] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(25,179,166,0.06)]">
-              <div className="space-y-6">
+            <div key={p.title} className="reveal group relative overflow-hidden rounded-ar-3xl border border-white/[0.12] hover:border-ar-teal/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(25,179,166,0.08)]">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02] group-hover:from-white/[0.14] group-hover:via-white/[0.08] group-hover:to-white/[0.04] transition-all duration-500" />
+              <div className="absolute inset-0 backdrop-blur-2xl" />
+              <div className="relative z-10 p-10 space-y-6">
                 <h4 className="text-xl font-sans font-extrabold uppercase tracking-tight text-white group-hover:text-ar-teal transition-colors duration-300">{p.title}</h4>
                 <p className="text-xs font-medium text-white/55 leading-relaxed min-h-[46px]">{p.desc}</p>
                 <div className="pt-4 border-t border-white/[0.08] flex justify-between items-center">
@@ -445,7 +451,8 @@ const Journal = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {posts.map((j) => (
             <div key={j.title} className="reveal group cursor-pointer space-y-6">
-              <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-white/[0.05] border border-white/[0.1] group-hover:border-ar-teal/30 transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(25,179,166,0.06)]">
+              <div className="aspect-[4/5] overflow-hidden rounded-2xl border border-white/[0.12] group-hover:border-ar-teal/30 transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(25,179,166,0.08)] relative">
+                <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02]" />
                 <img src={j.img} className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" alt="" />
               </div>
               <div className="space-y-2">
