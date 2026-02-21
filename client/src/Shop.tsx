@@ -556,13 +556,13 @@ function ProductTemplate({ product }) {
       <section className="hero relative min-h-[100dvh] flex flex-col md:flex-row overflow-hidden">
         <div className="absolute inset-0 z-[2] opacity-[0.25]" style={{ background: 'radial-gradient(900px 600px at 20% 85%, var(--accentGlow), transparent 60%)' }} />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-12 px-6 pt-32 pb-12 items-start">
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-12 px-6 pt-32 pb-12 items-center">
           <div className="w-full md:w-3/5 mb-12 md:mb-0 hero-content text-white">
             <h1 className="text-[clamp(3.25rem,7vw,6.5rem)] font-sans font-extrabold tracking-[-0.05em] mb-4 leading-[0.88]">{product.name}</h1>
 
             <p className="text-lg md:text-2xl font-medium text-white/80 max-w-xl mb-8 leading-tight">{product.tagline}</p>
 
-            <div className="flex flex-wrap gap-8">
+            <div className="flex flex-wrap gap-8 mb-8">
               <div className="space-y-1">
                 <p className="text-[10px] uppercase font-mono text-white/40 tracking-[0.22em]">Protocol</p>
                 <p className="text-sm font-semibold tracking-[0.12em] uppercase">{product.serving}</p>
@@ -571,6 +571,12 @@ function ProductTemplate({ product }) {
                 <p className="text-[10px] uppercase font-mono text-white/40 tracking-[0.22em]">System Target</p>
                 <p className="text-sm font-semibold tracking-[0.12em] uppercase">{product.category}</p>
               </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {product.ingredients.map((ing) => (
+                <span key={ing.name} className="text-[10px] font-mono uppercase tracking-[0.14em] px-3 py-1.5 rounded-full border border-white/[0.12] text-white/60 bg-white/[0.04]">{ing.name} · {ing.dose}</span>
+              ))}
             </div>
           </div>
 
