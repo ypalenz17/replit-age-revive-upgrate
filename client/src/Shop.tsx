@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowRight,
@@ -874,21 +875,24 @@ export default function Shop() {
 
   return (
     <div className="min-h-screen">
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-6 md:translate-x-0 z-[85] flex gap-1.5 md:gap-2 p-1.5 md:p-2 bg-white/[0.08] backdrop-blur-xl rounded-full shadow-float border border-white/[0.12]">
-        {Object.values(PRODUCTS).map((p) => (
-          <button
-            key={p.id}
-            onClick={() => setSlug(p.id)}
-            className={[
-              'px-4 py-2 rounded-full text-[10px] font-mono font-bold uppercase tracking-[0.14em] transition-all',
-              slug === p.id ? 'text-white' : 'hover:bg-white/[0.08] text-white/50'
-            ].join(' ')}
-            style={slug === p.id ? { background: p.accent } : undefined}
-          >
-            {p.name}
-          </button>
-        ))}
-      </div>
+      {createPortal(
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-6 md:translate-x-0 z-[9999] flex gap-1.5 md:gap-2 p-1.5 md:p-2 bg-[#0f172a]/80 backdrop-blur-xl rounded-full shadow-float border border-white/[0.12]">
+          {Object.values(PRODUCTS).map((p) => (
+            <button
+              key={p.id}
+              onClick={() => setSlug(p.id)}
+              className={[
+                'px-4 py-2 rounded-full text-[10px] font-mono font-bold uppercase tracking-[0.14em] transition-all',
+                slug === p.id ? 'text-white' : 'hover:bg-white/[0.08] text-white/50'
+              ].join(' ')}
+              style={slug === p.id ? { background: p.accent } : undefined}
+            >
+              {p.name}
+            </button>
+          ))}
+        </div>,
+        document.body
+      )}
 
       <ProductTemplate key={currentProduct.id} product={currentProduct} />
     </div>
