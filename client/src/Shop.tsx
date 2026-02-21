@@ -1,4 +1,3 @@
-import { createPortal } from 'react-dom';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowRight,
@@ -873,32 +872,50 @@ export default function Shop() {
     window.scrollTo(0, 0);
   }, [slug]);
 
+  const selectorRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = selectorRef.current;
+    if (!el) return;
+
+    const updatePosition = () => {
+      el.style.top = `${window.scrollY + window.innerHeight - el.offsetHeight - 24}px`;
+    };
+
+    updatePosition();
+    window.addEventListener('scroll', updatePosition, { passive: true });
+    window.addEventListener('resize', updatePosition, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', updatePosition);
+      window.removeEventListener('resize', updatePosition);
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen">
-      {createPortal(
+    <div className="min-h-screen relative">
+      <div
+        ref={selectorRef}
+        style={{ position: 'absolute', left: 0, right: 0, zIndex: 99999, display: 'flex', justifyContent: 'center', pointerEvents: 'none' }}
+      >
         <div
-          style={{ position: 'fixed', bottom: '24px', left: 0, right: 0, zIndex: 99999, display: 'flex', justifyContent: 'center', pointerEvents: 'none' }}
+          style={{ pointerEvents: 'auto', display: 'flex', gap: '6px', padding: '6px', background: 'rgba(15,23,42,0.90)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderRadius: '9999px', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
         >
-          <div
-            style={{ pointerEvents: 'auto', display: 'flex', gap: '6px', padding: '6px', background: 'rgba(15,23,42,0.85)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderRadius: '9999px', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
-          >
-            {Object.values(PRODUCTS).map((p) => (
-              <button
-                key={p.id}
-                onClick={() => setSlug(p.id)}
-                className={[
-                  'px-4 py-2 rounded-full text-[10px] font-mono font-bold uppercase tracking-[0.14em] transition-all',
-                  slug === p.id ? 'text-white' : 'hover:bg-white/[0.08] text-white/50'
-                ].join(' ')}
-                style={slug === p.id ? { background: p.accent } : undefined}
-              >
-                {p.name}
-              </button>
-            ))}
-          </div>
-        </div>,
-        document.body
-      )}
+          {Object.values(PRODUCTS).map((p) => (
+            <button
+              key={p.id}
+              onClick={() => setSlug(p.id)}
+              className={[
+                'px-4 py-2 rounded-full text-[10px] font-mono font-bold uppercase tracking-[0.14em] transition-all',
+                slug === p.id ? 'text-white' : 'hover:bg-white/[0.08] text-white/50'
+              ].join(' ')}
+              style={slug === p.id ? { background: p.accent } : undefined}
+            >
+              {p.name}
+            </button>
+          ))}
+        </div>
+      </div>
 
       <ProductTemplate key={currentProduct.id} product={currentProduct} />
     </div>
