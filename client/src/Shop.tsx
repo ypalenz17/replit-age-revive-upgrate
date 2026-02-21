@@ -554,73 +554,97 @@ function ProductTemplate({ product }) {
       <Navbar />
 
       {/* Hero */}
-      <section className="hero relative min-h-[100dvh] flex flex-col md:flex-row overflow-hidden">
+      <section className="hero relative min-h-[100dvh] overflow-hidden">
         <div className="absolute inset-0 z-[2] opacity-[0.25]" style={{ background: 'radial-gradient(900px 600px at 20% 85%, var(--accentGlow), transparent 60%)' }} />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-12 px-6 pt-32 pb-12 items-center">
-          <div className="w-full md:w-3/5 mb-12 md:mb-0 hero-content text-white">
-            <h1 className="text-[clamp(3.25rem,7vw,6.5rem)] font-sans font-extrabold tracking-[-0.05em] mb-4 leading-[0.88]">{product.name}</h1>
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-6 md:gap-12 px-4 md:px-6 pt-24 md:pt-32 pb-24 md:pb-12 items-center">
 
-            <p className="text-lg md:text-2xl font-medium text-white/80 max-w-xl mb-8 leading-tight">{product.tagline}</p>
+          {/* Mobile: product image first, then info below */}
+          <div className="w-full md:hidden flex justify-center mb-2">
+            <div className="relative w-48 h-48">
+              <div className="absolute inset-0 opacity-[0.30] rounded-full" style={{ background: `radial-gradient(circle, ${product.accent}, transparent 65%)` }} />
+              <img src={product.heroImage} alt={product.name} className="relative z-10 w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
+            </div>
+          </div>
 
-            <div className="flex flex-col sm:inline-flex sm:flex-row sm:items-stretch gap-0 rounded-xl border border-white/[0.08] bg-white/[0.03] overflow-hidden">
-              <div className="px-4 py-3 sm:px-5 sm:py-3.5">
+          <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left">
+            <h1 className="text-[clamp(2.5rem,7vw,6.5rem)] font-sans font-extrabold tracking-[-0.05em] mb-3 md:mb-4 leading-[0.88]">{product.name}</h1>
+
+            <p className="text-base md:text-2xl font-medium text-white/80 max-w-xl mb-6 md:mb-8 leading-tight mx-auto md:mx-0">{product.tagline}</p>
+
+            <div className="hidden md:inline-flex items-stretch gap-0 rounded-xl border border-white/[0.08] bg-white/[0.03] overflow-hidden">
+              <div className="px-5 py-3.5">
                 <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">Protocol</p>
-                <p className="text-[12px] sm:text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.serving}</p>
+                <p className="text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.serving}</p>
               </div>
-              <div className="h-px sm:h-auto sm:w-px bg-white/[0.08]" />
-              <div className="px-4 py-3 sm:px-5 sm:py-3.5">
+              <div className="w-px bg-white/[0.08]" />
+              <div className="px-5 py-3.5">
                 <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">System Target</p>
-                <p className="text-[12px] sm:text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.category}</p>
+                <p className="text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.category}</p>
+              </div>
+            </div>
+
+            {/* Mobile: compact info row */}
+            <div className="flex md:hidden justify-center gap-6 text-center">
+              <div>
+                <p className="text-[8px] uppercase font-mono text-white/35 tracking-[0.22em] mb-0.5">Protocol</p>
+                <p className="text-[11px] font-semibold tracking-[0.06em] uppercase text-white/70">{product.serving}</p>
+              </div>
+              <div className="w-px bg-white/10" />
+              <div>
+                <p className="text-[8px] uppercase font-mono text-white/35 tracking-[0.22em] mb-0.5">Target</p>
+                <p className="text-[11px] font-semibold tracking-[0.06em] uppercase text-white/70">{product.category}</p>
               </div>
             </div>
           </div>
 
+          {/* Desktop buy card */}
           <div className="w-full md:w-2/5 buy-panel">
             <div
-              className="relative overflow-hidden rounded-[28px] border border-white/[0.12]"
+              className="relative overflow-hidden rounded-[20px] md:rounded-[28px] border border-white/[0.12]"
               style={{ boxShadow: `0 0 0 1px ${hexToRgba(product.accent, 0.08)}, 0 4px 24px rgba(0,0,0,0.4), 0 40px 80px -30px ${hexToRgba(product.accent, 0.35)}` }}
             >
               <div className="absolute inset-0 bg-gradient-to-b from-white/[0.12] via-white/[0.06] to-white/[0.03]" />
               <div className="absolute inset-0 backdrop-blur-2xl" />
 
               <div className="relative z-10">
-                <div className="relative flex items-end justify-center px-10 pt-10 pb-4">
+                {/* Desktop bottle image */}
+                <div className="hidden md:flex relative items-end justify-center px-10 pt-10 pb-4">
                   <div className="absolute inset-0 opacity-[0.25]" style={{ background: `radial-gradient(circle at 50% 55%, ${product.accent}, transparent 65%)` }} />
                   <img src={product.heroImage} alt={product.name} className="relative z-10 w-[55%] h-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]" />
                 </div>
 
-                <div className="px-8 md:px-10 pb-8 md:pb-10 space-y-4">
+                <div className="px-5 pb-5 md:px-10 md:pb-10 space-y-3 md:space-y-4">
                   <div>
-                    <span className="inline-block text-[9px] font-mono uppercase tracking-[0.18em] font-bold text-white/50 border border-white/[0.15] rounded-full px-3 py-1 mb-3">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
+                    <span className="inline-block text-[9px] font-mono uppercase tracking-[0.18em] font-bold text-white/50 border border-white/[0.15] rounded-full px-3 py-1 mb-2 md:mb-3">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
                     <div className="flex items-baseline justify-between gap-4">
-                      <h3 className="text-[24px] font-sans font-extrabold tracking-[-0.03em] uppercase text-white leading-none">{product.name}</h3>
-                      <span className="text-[20px] font-sans font-extrabold text-white leading-none">{product.price}</span>
+                      <h3 className="text-[20px] md:text-[24px] font-sans font-extrabold tracking-[-0.03em] uppercase text-white leading-none">{product.name}</h3>
+                      <span className="text-[18px] md:text-[20px] font-sans font-extrabold text-white leading-none">{product.price}</span>
                     </div>
                   </div>
 
-                  <p className="text-[15px] text-white/80 leading-relaxed">{product.description}</p>
+                  <p className="text-[13px] md:text-[15px] text-white/80 leading-relaxed">{product.description}</p>
 
                   <div className="h-px bg-gradient-to-r from-transparent via-white/[0.12] to-transparent" />
 
-                  <div className="space-y-2.5">
+                  <div className="space-y-2">
                     {product.outcomes.map((item, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0 mt-[7px]" />
-                        <span className="text-[14px] text-white leading-snug">{item}</span>
+                      <div key={i} className="flex items-start gap-2.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0 mt-[6px]" />
+                        <span className="text-[12px] md:text-[14px] text-white leading-snug">{item}</span>
                       </div>
                     ))}
                   </div>
 
                   {product.warnings && (
-                    <div className="rounded-2xl bg-amber-500/[0.08] border border-amber-400/20 px-5 py-3.5 flex items-start gap-3">
+                    <div className="rounded-xl md:rounded-2xl bg-amber-500/[0.08] border border-amber-400/20 px-4 py-3 flex items-start gap-2.5">
                       <span className="text-amber-400 text-sm mt-0.5">⚠</span>
-                      <p className="text-[13px] text-amber-200/90 leading-snug">{product.warnings}</p>
+                      <p className="text-[12px] md:text-[13px] text-amber-200/90 leading-snug">{product.warnings}</p>
                     </div>
                   )}
 
                   <MagneticButton
-                    className="w-full py-4 text-white rounded-lg font-mono font-bold tracking-[0.12em] text-[11px] uppercase flex items-center justify-center gap-3 active:scale-[0.98] transition-all relative overflow-hidden group border border-white/20"
+                    className="w-full py-3.5 md:py-4 text-white rounded-lg font-mono font-bold tracking-[0.12em] text-[11px] uppercase flex items-center justify-center gap-3 active:scale-[0.98] transition-all relative overflow-hidden group border border-white/20"
                     style={{ background: `linear-gradient(135deg, ${product.accent}, ${hexToRgba(product.accent, 0.7)})`, boxShadow: `0 0 24px ${hexToRgba(product.accent, 0.4)}, inset 0 1px 0 rgba(255,255,255,0.15)` }}
                     onClick={() => {}}
                   >
@@ -628,11 +652,11 @@ function ProductTemplate({ product }) {
                     <ArrowRight size={15} className="relative z-10" />
                   </MagneticButton>
 
-                  <div className="grid grid-cols-2 gap-3">
-                    <button onClick={() => setActiveSidePanel('rationale')} className="py-3 rounded-xl text-[10px] uppercase font-mono font-bold tracking-[0.12em] text-white/80 bg-white/[0.08] border border-white/[0.14] hover:bg-white/[0.14] hover:text-white hover:border-white/[0.22] transition-all flex items-center justify-center gap-2">
+                  <div className="grid grid-cols-2 gap-2 md:gap-3">
+                    <button onClick={() => setActiveSidePanel('rationale')} className="py-2.5 md:py-3 rounded-xl text-[10px] uppercase font-mono font-bold tracking-[0.12em] text-white/80 bg-white/[0.08] border border-white/[0.14] hover:bg-white/[0.14] hover:text-white hover:border-white/[0.22] transition-all flex items-center justify-center gap-2">
                       Evidence <ArrowRight size={9} />
                     </button>
-                    <button onClick={() => setActiveSidePanel('ingredients')} className="py-3 rounded-xl text-[10px] uppercase font-mono font-bold tracking-[0.12em] text-white/80 bg-white/[0.08] border border-white/[0.14] hover:bg-white/[0.14] hover:text-white hover:border-white/[0.22] transition-all flex items-center justify-center gap-2">
+                    <button onClick={() => setActiveSidePanel('ingredients')} className="py-2.5 md:py-3 rounded-xl text-[10px] uppercase font-mono font-bold tracking-[0.12em] text-white/80 bg-white/[0.08] border border-white/[0.14] hover:bg-white/[0.14] hover:text-white hover:border-white/[0.22] transition-all flex items-center justify-center gap-2">
                       Ingredients <ArrowRight size={9} />
                     </button>
                   </div>
@@ -850,7 +874,7 @@ export default function Shop() {
 
   return (
     <div className="min-h-screen">
-      <div className="fixed bottom-6 left-6 z-[85] flex gap-2 p-2 bg-white/[0.08] backdrop-blur-xl rounded-full shadow-float border border-white/[0.12]">
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-6 md:translate-x-0 z-[85] flex gap-1.5 md:gap-2 p-1.5 md:p-2 bg-white/[0.08] backdrop-blur-xl rounded-full shadow-float border border-white/[0.12]">
         {Object.values(PRODUCTS).map((p) => (
           <button
             key={p.id}
