@@ -876,20 +876,26 @@ export default function Shop() {
   return (
     <div className="min-h-screen">
       {createPortal(
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-6 md:translate-x-0 z-[9999] flex gap-1.5 md:gap-2 p-1.5 md:p-2 bg-[#0f172a]/80 backdrop-blur-xl rounded-full shadow-float border border-white/[0.12]">
-          {Object.values(PRODUCTS).map((p) => (
-            <button
-              key={p.id}
-              onClick={() => setSlug(p.id)}
-              className={[
-                'px-4 py-2 rounded-full text-[10px] font-mono font-bold uppercase tracking-[0.14em] transition-all',
-                slug === p.id ? 'text-white' : 'hover:bg-white/[0.08] text-white/50'
-              ].join(' ')}
-              style={slug === p.id ? { background: p.accent } : undefined}
-            >
-              {p.name}
-            </button>
-          ))}
+        <div
+          style={{ position: 'fixed', bottom: '24px', left: 0, right: 0, zIndex: 99999, display: 'flex', justifyContent: 'center', pointerEvents: 'none' }}
+        >
+          <div
+            style={{ pointerEvents: 'auto', display: 'flex', gap: '6px', padding: '6px', background: 'rgba(15,23,42,0.85)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderRadius: '9999px', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
+          >
+            {Object.values(PRODUCTS).map((p) => (
+              <button
+                key={p.id}
+                onClick={() => setSlug(p.id)}
+                className={[
+                  'px-4 py-2 rounded-full text-[10px] font-mono font-bold uppercase tracking-[0.14em] transition-all',
+                  slug === p.id ? 'text-white' : 'hover:bg-white/[0.08] text-white/50'
+                ].join(' ')}
+                style={slug === p.id ? { background: p.accent } : undefined}
+              >
+                {p.name}
+              </button>
+            ))}
+          </div>
         </div>,
         document.body
       )}
