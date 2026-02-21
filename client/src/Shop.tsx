@@ -233,25 +233,25 @@ function IngredientPanel({ ingredients, accent }) {
       <div className="absolute inset-0 opacity-[0.15] pointer-events-none" style={{ background: `radial-gradient(800px 500px at 80% 0%, ${hexToRgba(accent, 0.6)}, transparent 60%)` }} />
 
       <div className="relative z-10 p-8 md:p-10">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 rounded-full animate-pulse-dot" style={{ background: accent }} />
-            <span className="text-[10px] font-mono font-medium uppercase tracking-[0.14em] text-white/50">Full Dose Disclosure</span>
+            <div className="w-2 h-2 rounded-full animate-pulse-dot bg-ar-teal" />
+            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.14em] text-white/70">Full Dose Disclosure</span>
           </div>
-          <span className="text-[10px] font-mono font-medium uppercase tracking-[0.14em]" style={{ color: accent }}>{ingredients.length} Actives</span>
+          <span className="text-[11px] font-mono font-bold uppercase tracking-[0.14em] text-ar-teal">{ingredients.length} Actives</span>
         </div>
 
         <div className="space-y-0">
           {ingredients.map((ing, i) => (
             <div key={i} className="group">
-              <div className="flex items-baseline justify-between py-3 gap-4">
+              <div className="flex items-baseline justify-between py-3.5 gap-4">
                 <div className="flex-1 min-w-0">
-                  <p className="text-[13px] font-semibold text-white/90 leading-tight truncate">{ing.name}</p>
-                  <p className="text-[10px] font-mono text-white/30 mt-0.5 uppercase tracking-[0.08em]">{ing.purpose}</p>
+                  <p className="text-[14px] font-bold text-white leading-tight truncate">{ing.name}</p>
+                  <p className="text-[10px] font-mono text-white/40 mt-1 uppercase tracking-[0.08em]">{ing.purpose}</p>
                 </div>
-                <span className="text-[13px] font-mono font-bold shrink-0" style={{ color: accent }}>{ing.dose}</span>
+                <span className="text-[14px] font-mono font-bold text-white shrink-0">{ing.dose}</span>
               </div>
-              {i < ingredients.length - 1 && <div className="h-px bg-white/[0.06]" />}
+              {i < ingredients.length - 1 && <div className="h-px bg-white/[0.08]" />}
             </div>
           ))}
         </div>
