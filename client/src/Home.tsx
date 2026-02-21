@@ -371,10 +371,10 @@ const TheAxis = ({ onOpenEvidence }) => {
             <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">The Foundation</span>
             <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
-          <h2 className="text-5xl md:text-6xl font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight">
-            The Age Revive
+          <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2.2rem, 7vw, 4.5rem)' }}>
+            Age Revive
             <br />
-            Systems Axis.
+            <span className="italic text-white/50">Systems Axis.</span>
           </h2>
         </div>
 
@@ -503,7 +503,11 @@ const Journal = () => {
             <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Scientific Literacy</span>
             <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
-          <h2 className="text-5xl font-head font-normal tracking-[-0.04em] uppercase text-white">The Age Revive Journal.</h2>
+          <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2.2rem, 7vw, 4.5rem)' }}>
+            Age Revive
+            <br />
+            <span className="italic text-white/50">Journal.</span>
+          </h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -657,8 +661,10 @@ export default function Home() {
       {/* Final CTA */}
       <section className="py-24 px-6 text-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10 reveal">
-          <h2 className="text-6xl md:text-8xl font-head font-normal tracking-[-0.05em] uppercase leading-[0.85]">
-            Build your baseline.
+          <h2 className="font-head font-normal tracking-[-0.05em] uppercase leading-[0.85]" style={{ fontSize: 'clamp(2.5rem, 9vw, 5.5rem)' }}>
+            Build your
+            <br />
+            <span className="italic text-white/50">baseline.</span>
           </h2>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <button className="px-12 py-6 bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-xs tracking-[0.22em] hover:scale-105 transition-all">
