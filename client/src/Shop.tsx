@@ -536,14 +536,10 @@ function ProductTemplate({ product }) {
               <div className="absolute inset-0 backdrop-blur-2xl" />
 
               <div className="relative z-10 p-8 md:p-10">
-                <div className="flex items-start justify-between gap-4 mb-2">
-                  <div>
-                    <p className="text-[10px] font-mono uppercase tracking-[0.22em] mb-2" style={{ color: product.accent }}>{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</p>
-                    <h3 className="text-[28px] font-sans font-extrabold tracking-[-0.03em] uppercase text-white leading-none">{product.name}</h3>
-                  </div>
-                  <div className="text-right shrink-0">
-                    <span className="text-[28px] font-extrabold text-white leading-none">{product.price}</span>
-                  </div>
+                <p className="text-[10px] font-mono uppercase tracking-[0.22em] mb-2" style={{ color: product.accent }}>{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</p>
+                <div className="flex items-baseline justify-between gap-4 mb-2">
+                  <h3 className="text-[28px] font-sans font-extrabold tracking-[-0.03em] uppercase text-white leading-none">{product.name}</h3>
+                  <span className="text-[28px] font-extrabold text-white leading-none">{product.price}</span>
                 </div>
 
                 <p className="text-[15px] text-white/70 leading-relaxed mb-8">{product.description}</p>
@@ -553,10 +549,7 @@ function ProductTemplate({ product }) {
                 <div className="space-y-4 mb-8">
                   {product.outcomes.map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <svg className="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="8" r="7" stroke={product.accent} strokeWidth="1.5" strokeOpacity="0.4" />
-                        <path d="M5 8l2.5 2.5L11 6" stroke={product.accent} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/90 shrink-0 mt-[7px]" />
                       <span className="text-[14px] text-white/90 leading-snug">{item}</span>
                     </div>
                   ))}
@@ -570,7 +563,7 @@ function ProductTemplate({ product }) {
                 )}
 
                 <MagneticButton
-                  className="w-full py-4.5 text-white rounded-full font-mono font-bold tracking-[0.12em] text-[11px] uppercase flex items-center justify-center gap-3 active:scale-[0.98] transition-all relative overflow-hidden group"
+                  className="w-full py-4 text-white rounded-xl font-mono font-bold tracking-[0.12em] text-[11px] uppercase flex items-center justify-center gap-3 active:scale-[0.98] transition-all relative overflow-hidden group"
                   style={{ background: `linear-gradient(135deg, ${product.accent}, ${hexToRgba(product.accent, 0.8)})`, boxShadow: `0 0 24px ${hexToRgba(product.accent, 0.4)}, inset 0 1px 0 rgba(255,255,255,0.15)` }}
                   onClick={() => {}}
                 >
@@ -579,10 +572,10 @@ function ProductTemplate({ product }) {
                 </MagneticButton>
 
                 <div className="grid grid-cols-2 gap-3 mt-4">
-                  <button onClick={() => setActiveSidePanel('rationale')} className="py-3 rounded-full text-[10px] uppercase font-mono font-semibold tracking-[0.12em] text-white/55 bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] hover:text-white/80 hover:border-white/[0.16] transition-all flex items-center justify-center gap-2">
+                  <button onClick={() => setActiveSidePanel('rationale')} className="py-3 rounded-xl text-[10px] uppercase font-mono font-bold tracking-[0.12em] text-white/80 bg-white/[0.08] border border-white/[0.14] hover:bg-white/[0.14] hover:text-white hover:border-white/[0.22] transition-all flex items-center justify-center gap-2">
                     Evidence <ArrowRight size={9} />
                   </button>
-                  <button onClick={() => setActiveSidePanel('ingredients')} className="py-3 rounded-full text-[10px] uppercase font-mono font-semibold tracking-[0.12em] text-white/55 bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] hover:text-white/80 hover:border-white/[0.16] transition-all flex items-center justify-center gap-2">
+                  <button onClick={() => setActiveSidePanel('ingredients')} className="py-3 rounded-xl text-[10px] uppercase font-mono font-bold tracking-[0.12em] text-white/80 bg-white/[0.08] border border-white/[0.14] hover:bg-white/[0.14] hover:text-white hover:border-white/[0.22] transition-all flex items-center justify-center gap-2">
                     Ingredients <ArrowRight size={9} />
                   </button>
                 </div>
