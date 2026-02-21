@@ -590,7 +590,7 @@ function ProductTemplate({ product }) {
 
                 <div className="px-8 md:px-10 pb-8 md:pb-10 space-y-6">
                   <div>
-                    <p className="text-[11px] font-mono uppercase tracking-[0.22em] mb-3 font-bold text-white/50">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</p>
+                    <span className="inline-block text-[9px] font-mono uppercase tracking-[0.18em] font-bold text-white/50 border border-white/[0.15] rounded-full px-3 py-1 mb-3">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
                     <div className="flex items-baseline justify-between gap-4">
                       <h3 className="text-[24px] font-sans font-extrabold tracking-[-0.03em] uppercase text-white leading-none">{product.name}</h3>
                       <span className="text-[20px] font-sans font-extrabold text-white leading-none">{product.price}</span>
