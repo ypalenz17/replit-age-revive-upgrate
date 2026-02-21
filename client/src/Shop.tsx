@@ -582,49 +582,55 @@ function ProductTemplate({ product }) {
               <div className="absolute inset-0 bg-gradient-to-b from-white/[0.12] via-white/[0.06] to-white/[0.03]" />
               <div className="absolute inset-0 backdrop-blur-2xl" />
 
-              <div className="relative z-10 p-8 md:p-10">
-                <p className="text-[11px] font-mono uppercase tracking-[0.22em] mb-2 font-bold text-white/50">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</p>
-                <div className="flex items-baseline justify-between gap-4 mb-2">
-                  <h3 className="text-[28px] font-sans font-extrabold tracking-[-0.03em] uppercase text-white leading-none">{product.name}</h3>
-                  <span className="text-[28px] font-extrabold text-white leading-none">{product.price}</span>
+              <div className="relative z-10">
+                <div className="flex items-center justify-center py-8 px-6">
+                  <img src={product.heroImage} alt={product.name} className="h-48 md:h-56 w-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
                 </div>
 
-                <p className="text-[15px] text-white leading-relaxed mb-8">{product.description}</p>
-
-                <div className="h-px bg-gradient-to-r from-transparent via-white/[0.1] to-transparent mb-7" />
-
-                <div className="space-y-4 mb-8">
-                  {product.outcomes.map((item, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0 mt-[7px]" />
-                      <span className="text-[14px] text-white leading-snug">{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {product.warnings && (
-                  <div className="rounded-2xl bg-amber-500/[0.08] border border-amber-400/20 px-5 py-3.5 mb-8 flex items-start gap-3">
-                    <span className="text-amber-400 text-sm mt-0.5">⚠</span>
-                    <p className="text-[13px] text-amber-200/90 leading-snug">{product.warnings}</p>
+                <div className="px-8 md:px-10 pb-8 md:pb-10 space-y-6">
+                  <div>
+                    <p className="text-[11px] font-mono uppercase tracking-[0.22em] mb-3 font-bold text-white/50">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</p>
+                    <h3 className="text-[28px] font-sans font-extrabold tracking-[-0.03em] uppercase text-white leading-none mb-2">{product.name}</h3>
+                    <span className="text-[22px] font-mono font-bold tracking-tight" style={{ color: product.accent }}>{product.price}</span>
                   </div>
-                )}
 
-                <MagneticButton
-                  className="w-full py-4 text-white rounded-lg font-mono font-bold tracking-[0.12em] text-[11px] uppercase flex items-center justify-center gap-3 active:scale-[0.98] transition-all relative overflow-hidden group border border-white/20"
-                  style={{ background: `linear-gradient(135deg, ${product.accent}, ${hexToRgba(product.accent, 0.7)})`, boxShadow: `0 0 24px ${hexToRgba(product.accent, 0.4)}, inset 0 1px 0 rgba(255,255,255,0.15)` }}
-                  onClick={() => {}}
-                >
-                  <span className="relative z-10">Add to Protocol Archive</span>
-                  <ArrowRight size={15} className="relative z-10" />
-                </MagneticButton>
+                  <p className="text-[15px] text-white leading-relaxed">{product.description}</p>
 
-                <div className="grid grid-cols-2 gap-3 mt-4">
-                  <button onClick={() => setActiveSidePanel('rationale')} className="py-3 rounded-xl text-[10px] uppercase font-mono font-bold tracking-[0.12em] text-white/80 bg-white/[0.08] border border-white/[0.14] hover:bg-white/[0.14] hover:text-white hover:border-white/[0.22] transition-all flex items-center justify-center gap-2">
-                    Evidence <ArrowRight size={9} />
-                  </button>
-                  <button onClick={() => setActiveSidePanel('ingredients')} className="py-3 rounded-xl text-[10px] uppercase font-mono font-bold tracking-[0.12em] text-white/80 bg-white/[0.08] border border-white/[0.14] hover:bg-white/[0.14] hover:text-white hover:border-white/[0.22] transition-all flex items-center justify-center gap-2">
-                    Ingredients <ArrowRight size={9} />
-                  </button>
+                  <div className="h-px bg-gradient-to-r from-transparent via-white/[0.1] to-transparent" />
+
+                  <div className="space-y-3.5">
+                    {product.outcomes.map((item, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0 mt-[7px]" />
+                        <span className="text-[14px] text-white leading-snug">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {product.warnings && (
+                    <div className="rounded-2xl bg-amber-500/[0.08] border border-amber-400/20 px-5 py-3.5 flex items-start gap-3">
+                      <span className="text-amber-400 text-sm mt-0.5">⚠</span>
+                      <p className="text-[13px] text-amber-200/90 leading-snug">{product.warnings}</p>
+                    </div>
+                  )}
+
+                  <MagneticButton
+                    className="w-full py-4 text-white rounded-lg font-mono font-bold tracking-[0.12em] text-[11px] uppercase flex items-center justify-center gap-3 active:scale-[0.98] transition-all relative overflow-hidden group border border-white/20"
+                    style={{ background: `linear-gradient(135deg, ${product.accent}, ${hexToRgba(product.accent, 0.7)})`, boxShadow: `0 0 24px ${hexToRgba(product.accent, 0.4)}, inset 0 1px 0 rgba(255,255,255,0.15)` }}
+                    onClick={() => {}}
+                  >
+                    <span className="relative z-10">Add to Protocol Archive</span>
+                    <ArrowRight size={15} className="relative z-10" />
+                  </MagneticButton>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <button onClick={() => setActiveSidePanel('rationale')} className="py-3 rounded-xl text-[10px] uppercase font-mono font-bold tracking-[0.12em] text-white/80 bg-white/[0.08] border border-white/[0.14] hover:bg-white/[0.14] hover:text-white hover:border-white/[0.22] transition-all flex items-center justify-center gap-2">
+                      Evidence <ArrowRight size={9} />
+                    </button>
+                    <button onClick={() => setActiveSidePanel('ingredients')} className="py-3 rounded-xl text-[10px] uppercase font-mono font-bold tracking-[0.12em] text-white/80 bg-white/[0.08] border border-white/[0.14] hover:bg-white/[0.14] hover:text-white hover:border-white/[0.22] transition-all flex items-center justify-center gap-2">
+                      Ingredients <ArrowRight size={9} />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
