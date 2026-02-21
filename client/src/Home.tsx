@@ -668,9 +668,6 @@ export default function Home() {
               Build your stack
             </button>
           </div>
-          <p className="text-[10px] font-mono text-white/40 uppercase tracking-[0.22em]">
-            *These statements have not been evaluated by the Food and Drug Administration. Not intended to diagnose, treat, cure, or prevent any disease.
-          </p>
         </div>
       </section>
 
