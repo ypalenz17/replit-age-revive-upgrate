@@ -573,9 +573,6 @@ function ProductTemplate({ product }) {
                 </button>
               </div>
 
-              <p className="text-[10px] font-mono text-white/35 leading-relaxed uppercase tracking-[0.22em]">
-                Subscription cadence is selected at checkout, not here.
-              </p>
             </div>
           </div>
         </div>
