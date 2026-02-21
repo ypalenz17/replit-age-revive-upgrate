@@ -557,22 +557,15 @@ function ProductTemplate({ product }) {
       <section className="hero relative min-h-[100dvh] overflow-hidden">
         <div className="absolute inset-0 z-[2] opacity-[0.25]" style={{ background: 'radial-gradient(900px 600px at 20% 85%, var(--accentGlow), transparent 60%)' }} />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-6 md:gap-12 px-4 md:px-6 pt-24 md:pt-32 pb-32 md:pb-12 items-center">
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-6 md:gap-12 px-4 md:px-6 pt-20 md:pt-32 pb-20 md:pb-12 items-center">
 
-          {/* Mobile: product image first, then info below */}
-          <div className="w-full md:hidden flex justify-center mb-2">
-            <div className="relative w-48 h-48">
-              <div className="absolute inset-0 opacity-[0.30] rounded-full" style={{ background: `radial-gradient(circle, ${product.accent}, transparent 65%)` }} />
-              <img src={product.heroImage} alt={product.name} className="relative z-10 w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
-            </div>
-          </div>
+          {/* Desktop left panel */}
+          <div className="hidden md:block w-3/5 hero-content text-white">
+            <h1 className="text-[clamp(3.25rem,7vw,6.5rem)] font-sans font-extrabold tracking-[-0.05em] mb-4 leading-[0.88]">{product.name}</h1>
 
-          <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left">
-            <h1 className="text-[clamp(2.5rem,7vw,6.5rem)] font-sans font-extrabold tracking-[-0.05em] mb-3 md:mb-4 leading-[0.88]">{product.name}</h1>
+            <p className="text-2xl font-medium text-white/80 max-w-xl mb-8 leading-tight">{product.tagline}</p>
 
-            <p className="text-base md:text-2xl font-medium text-white/80 max-w-xl mb-6 md:mb-8 leading-tight mx-auto md:mx-0">{product.tagline}</p>
-
-            <div className="hidden md:inline-flex items-stretch gap-0 rounded-xl border border-white/[0.08] bg-white/[0.03] overflow-hidden">
+            <div className="inline-flex items-stretch gap-0 rounded-xl border border-white/[0.08] bg-white/[0.03] overflow-hidden">
               <div className="px-5 py-3.5">
                 <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">Protocol</p>
                 <p className="text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.serving}</p>
@@ -583,22 +576,9 @@ function ProductTemplate({ product }) {
                 <p className="text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.category}</p>
               </div>
             </div>
-
-            {/* Mobile: compact info row */}
-            <div className="flex md:hidden justify-center gap-6 text-center">
-              <div>
-                <p className="text-[8px] uppercase font-mono text-white/35 tracking-[0.22em] mb-0.5">Protocol</p>
-                <p className="text-[11px] font-semibold tracking-[0.06em] uppercase text-white/70">{product.serving}</p>
-              </div>
-              <div className="w-px bg-white/10" />
-              <div>
-                <p className="text-[8px] uppercase font-mono text-white/35 tracking-[0.22em] mb-0.5">Target</p>
-                <p className="text-[11px] font-semibold tracking-[0.06em] uppercase text-white/70">{product.category}</p>
-              </div>
-            </div>
           </div>
 
-          {/* Desktop buy card */}
+          {/* Buy card — full width on mobile, 2/5 on desktop */}
           <div className="w-full md:w-2/5 buy-panel">
             <div
               className="relative overflow-hidden rounded-[20px] md:rounded-[28px] border border-white/[0.12]"
@@ -608,10 +588,9 @@ function ProductTemplate({ product }) {
               <div className="absolute inset-0 backdrop-blur-2xl" />
 
               <div className="relative z-10">
-                {/* Desktop bottle image */}
-                <div className="hidden md:flex relative items-end justify-center px-10 pt-10 pb-4">
+                <div className="relative flex items-end justify-center px-6 pt-6 pb-2 md:px-10 md:pt-10 md:pb-4">
                   <div className="absolute inset-0 opacity-[0.25]" style={{ background: `radial-gradient(circle at 50% 55%, ${product.accent}, transparent 65%)` }} />
-                  <img src={product.heroImage} alt={product.name} className="relative z-10 w-[55%] h-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]" />
+                  <img src={product.heroImage} alt={product.name} className="relative z-10 w-[40%] md:w-[55%] max-h-[160px] md:max-h-none h-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]" />
                 </div>
 
                 <div className="px-5 pb-5 md:px-10 md:pb-10 space-y-3 md:space-y-4">
@@ -872,31 +851,12 @@ export default function Shop() {
     window.scrollTo(0, 0);
   }, [slug]);
 
-  const selectorRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = selectorRef.current;
-    if (!el) return;
-
-    const updatePosition = () => {
-      el.style.top = `${window.scrollY + window.innerHeight - el.offsetHeight - 24}px`;
-    };
-
-    updatePosition();
-    window.addEventListener('scroll', updatePosition, { passive: true });
-    window.addEventListener('resize', updatePosition, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', updatePosition);
-      window.removeEventListener('resize', updatePosition);
-    };
-  }, []);
-
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen">
+      <ProductTemplate key={currentProduct.id} product={currentProduct} />
+
       <div
-        ref={selectorRef}
-        style={{ position: 'absolute', left: 0, right: 0, zIndex: 99999, display: 'flex', justifyContent: 'center', pointerEvents: 'none' }}
+        style={{ position: 'sticky', bottom: 0, zIndex: 99999, padding: '16px 0 24px', display: 'flex', justifyContent: 'center', pointerEvents: 'none', background: 'linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.6) 60%, transparent 100%)' }}
       >
         <div
           style={{ pointerEvents: 'auto', display: 'flex', gap: '6px', padding: '6px', background: 'rgba(15,23,42,0.90)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderRadius: '9999px', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
@@ -916,8 +876,6 @@ export default function Shop() {
           ))}
         </div>
       </div>
-
-      <ProductTemplate key={currentProduct.id} product={currentProduct} />
     </div>
   );
 }
