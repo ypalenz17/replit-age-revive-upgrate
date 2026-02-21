@@ -583,18 +583,21 @@ function ProductTemplate({ product }) {
               <div className="absolute inset-0 backdrop-blur-2xl" />
 
               <div className="relative z-10">
-                <div className="flex items-center justify-center py-8 px-6">
-                  <img src={product.heroImage} alt={product.name} className="h-48 md:h-56 w-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" />
+                <div className="relative flex items-center justify-center pt-10 pb-6 px-6 min-h-[280px] md:min-h-[320px]">
+                  <div className="absolute inset-0 opacity-[0.2]" style={{ background: `radial-gradient(circle at 50% 60%, ${product.accent}, transparent 70%)` }} />
+                  <img src={product.heroImage} alt={product.name} className="relative z-10 h-56 md:h-64 w-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]" />
                 </div>
 
                 <div className="px-8 md:px-10 pb-8 md:pb-10 space-y-6">
                   <div>
                     <p className="text-[11px] font-mono uppercase tracking-[0.22em] mb-3 font-bold text-white/50">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</p>
-                    <h3 className="text-[28px] font-sans font-extrabold tracking-[-0.03em] uppercase text-white leading-none mb-2">{product.name}</h3>
-                    <span className="text-[22px] font-mono font-bold tracking-tight" style={{ color: product.accent }}>{product.price}</span>
+                    <div className="flex items-baseline justify-between gap-4">
+                      <h3 className="text-[24px] font-sans font-extrabold tracking-[-0.03em] uppercase text-white leading-none">{product.name}</h3>
+                      <span className="text-[20px] font-sans font-extrabold text-white leading-none">{product.price}</span>
+                    </div>
                   </div>
 
-                  <p className="text-[15px] text-white leading-relaxed">{product.description}</p>
+                  <p className="text-[15px] text-white/80 leading-relaxed">{product.description}</p>
 
                   <div className="h-px bg-gradient-to-r from-transparent via-white/[0.1] to-transparent" />
 
