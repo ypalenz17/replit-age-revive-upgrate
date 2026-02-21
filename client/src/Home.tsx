@@ -331,7 +331,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
               <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Protocol Infrastructure</span>
               <div className="h-[1px] w-12 bg-ar-teal" />
             </div>
-            <h1 className="font-head font-normal text-white tracking-[-0.05em] leading-[0.85]" style={{ fontSize: 'clamp(2.5rem, 11vw, 8rem)' }}>
+            <h1 className="font-head font-normal text-white tracking-[-0.05em] leading-[0.85]" style={{ fontSize: 'clamp(2.5rem, 7.5vw, 5.5rem)' }}>
               Cellular Energy.
               <br />
               <span className="italic text-white/50">Gut Resilience.</span>
