@@ -583,9 +583,9 @@ function ProductTemplate({ product }) {
               <div className="absolute inset-0 backdrop-blur-2xl" />
 
               <div className="relative z-10">
-                <div className="relative flex items-end justify-center px-6 pt-8 pb-4">
+                <div className="relative flex items-end justify-center px-10 pt-10 pb-4">
                   <div className="absolute inset-0 opacity-[0.25]" style={{ background: `radial-gradient(circle at 50% 55%, ${product.accent}, transparent 65%)` }} />
-                  <img src={product.heroImage} alt={product.name} className="relative z-10 w-[90%] h-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]" />
+                  <img src={product.heroImage} alt={product.name} className="relative z-10 w-[65%] h-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]" />
                 </div>
 
                 <div className="px-8 md:px-10 pb-8 md:pb-10 space-y-6">
