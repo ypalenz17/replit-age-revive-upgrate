@@ -563,15 +563,15 @@ function ProductTemplate({ product }) {
 
             <p className="text-lg md:text-2xl font-medium text-white/80 max-w-xl mb-8 leading-tight">{product.tagline}</p>
 
-            <div className="inline-flex items-stretch gap-0 rounded-xl border border-white/[0.08] bg-white/[0.03] overflow-hidden">
-              <div className="px-5 py-3.5">
-                <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">Protocol</p>
-                <p className="text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.serving}</p>
+            <div className="inline-flex items-stretch gap-0 rounded-xl border border-white/[0.08] bg-white/[0.03] overflow-hidden max-w-full">
+              <div className="px-3.5 py-3 md:px-5 md:py-3.5 min-w-0 flex-shrink">
+                <p className="text-[8px] md:text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">Protocol</p>
+                <p className="text-[11px] md:text-[13px] font-semibold tracking-[0.06em] md:tracking-[0.1em] uppercase text-white/80 leading-snug">{product.serving}</p>
               </div>
-              <div className="w-px bg-white/[0.08]" />
-              <div className="px-5 py-3.5">
-                <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">System Target</p>
-                <p className="text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.category}</p>
+              <div className="w-px bg-white/[0.08] flex-shrink-0" />
+              <div className="px-3.5 py-3 md:px-5 md:py-3.5 min-w-0 flex-shrink">
+                <p className="text-[8px] md:text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">System Target</p>
+                <p className="text-[11px] md:text-[13px] font-semibold tracking-[0.06em] md:tracking-[0.1em] uppercase text-white/80 leading-snug">{product.category}</p>
               </div>
             </div>
           </div>
