@@ -13,7 +13,7 @@ module.exports = {
       },
       fontFamily: {
         head: ['FPHeadPro', 'Inter', 'ui-sans-serif', 'system-ui'],
-        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+        sans: ['"DM Sans"', 'Inter', 'ui-sans-serif', 'system-ui'],
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular'],
       },
       fontSize: {
