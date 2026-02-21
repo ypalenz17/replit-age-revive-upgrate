@@ -536,7 +536,7 @@ function ProductTemplate({ product }) {
               <div className="absolute inset-0 backdrop-blur-2xl" />
 
               <div className="relative z-10 p-8 md:p-10">
-                <p className="text-[10px] font-mono uppercase tracking-[0.22em] mb-2" style={{ color: product.accent }}>{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</p>
+                <p className="text-[11px] font-mono uppercase tracking-[0.22em] mb-2 font-bold text-white/50">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</p>
                 <div className="flex items-baseline justify-between gap-4 mb-2">
                   <h3 className="text-[28px] font-sans font-extrabold tracking-[-0.03em] uppercase text-white leading-none">{product.name}</h3>
                   <span className="text-[28px] font-extrabold text-white leading-none">{product.price}</span>
@@ -563,8 +563,8 @@ function ProductTemplate({ product }) {
                 )}
 
                 <MagneticButton
-                  className="w-full py-4 text-white rounded-xl font-mono font-bold tracking-[0.12em] text-[11px] uppercase flex items-center justify-center gap-3 active:scale-[0.98] transition-all relative overflow-hidden group"
-                  style={{ background: `linear-gradient(135deg, ${product.accent}, ${hexToRgba(product.accent, 0.8)})`, boxShadow: `0 0 24px ${hexToRgba(product.accent, 0.4)}, inset 0 1px 0 rgba(255,255,255,0.15)` }}
+                  className="w-full py-4 text-white rounded-lg font-mono font-bold tracking-[0.12em] text-[11px] uppercase flex items-center justify-center gap-3 active:scale-[0.98] transition-all relative overflow-hidden group border border-white/20"
+                  style={{ background: `linear-gradient(135deg, ${product.accent}, ${hexToRgba(product.accent, 0.7)})`, boxShadow: `0 0 24px ${hexToRgba(product.accent, 0.4)}, inset 0 1px 0 rgba(255,255,255,0.15)` }}
                   onClick={() => {}}
                 >
                   <span className="relative z-10">Add to Protocol Archive</span>
