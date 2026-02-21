@@ -599,6 +599,8 @@ function ProductTemplate({ product }) {
 
                   <p className="text-[15px] text-white/80 leading-relaxed">{product.description}</p>
 
+                  <div className="h-px bg-gradient-to-r from-transparent via-white/[0.12] to-transparent" />
+
                   <div className="space-y-2.5">
                     {product.outcomes.map((item, i) => (
                       <div key={i} className="flex items-start gap-3">
