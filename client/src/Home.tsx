@@ -222,11 +222,11 @@ const Navbar = () => {
         className={[
           'fixed top-0 left-0 right-0 z-[150] transition-all duration-500',
           scrolled
-            ? 'bg-ar-navy/85 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_2px_24px_rgba(0,0,0,0.25)]'
-            : 'bg-transparent border-b border-transparent'
+            ? 'bg-white/[0.05] backdrop-blur-md border-b border-white/[0.10] shadow-[0_1px_12px_rgba(0,0,0,0.2)]'
+            : 'bg-transparent border-b border-white/[0.04]'
         ].join(' ')}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 h-16">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 h-14">
           <a href="/" aria-label="Go to homepage">
             <img
               src={brandLogo}
@@ -235,37 +235,29 @@ const Navbar = () => {
             />
           </a>
 
-          <div className="hidden md:flex items-center gap-7 font-mono font-medium text-[12px] uppercase tracking-[0.16em]">
+          <div className="hidden md:flex items-center gap-7 font-mono font-medium text-[11px] uppercase tracking-[0.14em]">
             {navLinks.map((l) => (
-              <a key={l.label} href={l.href} className="text-white/60 hover:text-ar-teal transition-colors">
+              <a key={l.label} href={l.href} className="text-white/55 hover:text-teal-300 transition-colors">
                 {l.label}
               </a>
             ))}
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3">
-            <a
-              href="/shop"
-              className="flex items-center gap-2 px-4 sm:px-5 min-h-[44px] bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.14em] hover:bg-ar-teal/90 transition-colors"
-              data-testid="nav-shop-button"
-            >
-              Shop
-            </a>
-
-            <a href="/shop" className="relative min-w-[44px] min-h-[44px] flex items-center justify-center text-white/70 hover:text-ar-teal transition-colors" aria-label="Cart" data-testid="nav-cart">
-              <ShoppingBag size={20} />
-              <span className="absolute -top-0.5 -right-0.5 w-[18px] h-[18px] flex items-center justify-center bg-ar-teal text-ar-navy text-[12px] font-mono font-bold rounded-full leading-none">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <a href="/shop" className="relative min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-teal-300 transition-colors" aria-label="Cart" data-testid="nav-cart">
+              <ShoppingBag size={18} />
+              <span className="absolute -top-0.5 -right-0.5 w-[15px] h-[15px] flex items-center justify-center text-[9px] font-mono font-bold rounded-sm leading-none text-teal-300 border border-teal-300/40 bg-white/[0.04]">
                 {cartCount}
               </span>
             </a>
 
             <button
-              className="md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center text-white/70 hover:text-ar-teal transition-colors"
+              className="md:hidden min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-teal-300 transition-colors"
               aria-label="Menu"
               data-testid="mobile-menu-toggle"
               onClick={() => setMobileOpen(!mobileOpen)}
             >
-              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
@@ -274,27 +266,20 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="fixed inset-0 z-[140] md:hidden">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-          <div className="absolute top-0 left-0 right-0 pt-20 pb-8 px-6 bg-ar-navy/95 backdrop-blur-xl border-b border-white/[0.08]">
-            <div className="flex flex-col gap-0.5">
+          <div className="absolute top-0 left-0 right-0 pt-16 pb-6 px-6 bg-white/[0.04] backdrop-blur-xl border-b border-white/[0.08]">
+            <div className="flex flex-col gap-0">
               {navLinks.map((l) => (
                 <a
                   key={l.label}
                   href={l.href}
                   onClick={() => setMobileOpen(false)}
-                  className="py-3.5 min-h-[44px] flex items-center text-base font-mono font-bold uppercase tracking-[0.12em] text-white/75 hover:text-ar-teal transition-colors border-b border-white/[0.06] last:border-0"
+                  className="py-3 min-h-[44px] flex items-center text-[13px] font-mono font-bold uppercase tracking-[0.10em] text-white/70 hover:text-teal-300 transition-colors border-b border-white/[0.05] last:border-0"
                   data-testid={`mobile-nav-${l.label.toLowerCase()}`}
                 >
                   {l.label}
                 </a>
               ))}
             </div>
-            <a
-              href="/shop"
-              className="mt-6 w-full py-4 min-h-[48px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.14em]"
-              data-testid="mobile-shop-button"
-            >
-              Shop the System
-            </a>
           </div>
         </div>
       )}
