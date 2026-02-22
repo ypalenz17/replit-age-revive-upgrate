@@ -1,0 +1,71 @@
+Redesign the entire hero section (header through CTAs) to feel like a $150k engineered-luxury biotech brand. Keep the current palette and vibe, but tighten hierarchy, geometry, and materials. No new sections, just redesign within existing hero.
+
+GOALS
+- Hero content must feel staged on its own optical plane, not pasted on the grid.
+- Reduce “template” cues: big pills, big frosted rectangles, overly tall buttons.
+- Improve scan order: label -> headline -> subhead -> proof -> CTA.
+- Mobile-first, 375px and 390px must look perfect.
+
+TASKS
+
+1) Header geometry
+- Remove rounded-full on the SHOP button and other major UI.
+- Use a consistent radius system (rounded-lg).
+- Reduce SHOP button padding so it feels like a control surface, not a bubble.
+- Keep cart badge but ensure it’s aligned and not floating.
+
+2) Add hero scrim and lighting plane
+- Add a subtle hero-only background scrim behind the text cluster:
+  - radial gradient darkening behind the headline/subhead area
+  - optional faint noise overlay
+- Reduce grid interference behind hero content without changing the whole page:
+  - use a mask or overlay so grid is less visible under text.
+
+3) Label row refinement
+- Keep “PROTOCOL-GRADE SUPPLEMENTS” but reduce tracking slightly.
+- Make the side lines thinner and lower contrast, or shorten them.
+- Ensure perfect alignment.
+
+4) Headline refinement
+- Keep the 2-line headline but remove forced italic on line 2.
+- Use opacity and weight for hierarchy instead:
+  - Line 1: text-white
+  - Line 2: text-white/70–80
+- Tighten line-height and reduce excessive vertical space.
+
+5) Subhead
+- Constrain width (max-w) so line breaks are controlled and premium.
+- Slightly increase legibility (text-white/70–80).
+- Make key terms (NAD+, gut-mito, 7-day) subtly emphasized via opacity or underline, not color spam.
+
+6) Proof bar redesign (replace the current bullet box)
+- Replace the frosted bullet rectangle with a compact “Proof Bar”:
+  - either a single row with dividers or a 2-column micro-grid
+  - tiny square dots or micro icons, not large bullets
+  - tighter padding, smaller height
+  - higher legibility (text-white/75)
+- If COA library is not live, change the label to “COA library coming soon”.
+- If it is live, make it clickable.
+
+7) CTAs
+- Reduce button height (target 44–48px).
+- Use rounded-lg, not rounded-full.
+- Primary: teal system button with subtle inner highlight.
+- Secondary: dimmer glass outline, clearly secondary.
+- Reduce vertical gaps so CTA block is not dominating.
+
+8) Microcopy
+- Increase opacity to readable (text-white/60).
+- Bring it closer to CTAs.
+- Keep it one tight line.
+
+ACCEPTANCE TESTS
+- Hero feels like a staged product interface, not a landing page template.
+- Grid does not compete with text.
+- Proof bar looks intentional and compact.
+- Buttons feel engineered, not puffy.
+- Typography hierarchy is obvious within 1 second.
+
+DELIVERABLE
+- Implement and list edited files.
+- Confirm tested at 375px and 390px widths.
