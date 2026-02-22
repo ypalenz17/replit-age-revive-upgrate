@@ -13,6 +13,7 @@ export const PRODUCTS = [
     serving: '2 enteric-coated capsules daily',
     supply: '30-day supply',
     color: '#19B3A6',
+    textColor: '#5eead4',
     image: imgCellubiome,
     ingredients: ['Urolithin A 500 mg', 'Tributyrin 500 mg'],
   },
@@ -26,6 +27,7 @@ export const PRODUCTS = [
     serving: '2 capsules daily',
     supply: '30-day supply',
     color: '#1e3a8a',
+    textColor: '#60a5fa',
     image: imgCellunad,
     ingredients: ['NR 500 mg', 'TMG 250 mg', 'Apigenin 100 mg'],
   },
@@ -39,6 +41,7 @@ export const PRODUCTS = [
     serving: '5 capsules daily for 7 days',
     supply: '7-day cycle (monthly)',
     color: '#6C5CE7',
+    textColor: '#a78bfa',
     image: imgCellunova,
     ingredients: ['Fisetin', 'Spermidine', 'PQQ'],
   }

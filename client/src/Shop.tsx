@@ -51,6 +51,7 @@ const PRODUCTS = {
     price: '$92.00',
     serving: '2 capsules daily',
     accent: '#1e3a8a',
+    accentText: '#60a5fa',
     heroImage: '/images/cellunad-trimmed.png',
     outcomes: [
       'Supports NAD+ metabolism',
@@ -92,6 +93,7 @@ const PRODUCTS = {
     price: '$110.00',
     serving: '2 enteric-coated capsules daily',
     accent: '#19B3A6',
+    accentText: '#5eead4',
     heroImage: '/images/cellubiome-trimmed.png',
     outcomes: [
       'Supports mitophagy signaling',
@@ -128,6 +130,7 @@ const PRODUCTS = {
     serving: '5 capsules daily for 7 consecutive days',
     warnings: 'Contains wheat (spermidine source).',
     accent: '#6C5CE7',
+    accentText: '#a78bfa',
     heroImage: '/images/cellunova-trimmed.png',
     outcomes: [
       'Supports autophagy pathways',
@@ -517,8 +520,7 @@ function ProductTemplate({ product }) {
 
   const accent = product.accent;
   const accentGlow = hexToRgba(accent, 0.55);
-  const accentTextMap = { cellunad: '#60a5fa', cellubiome: '#5eead4', cellunova: '#a78bfa' };
-  const accentText = accentTextMap[product.id] || accent;
+  const accentText = product.accentText || accent;
 
   return (
     <main ref={containerRef} style={{ '--accent': accent, '--accentGlow': accentGlow }} className="relative bg-[#0f172a] text-white selection:bg-ar-teal selection:text-white">

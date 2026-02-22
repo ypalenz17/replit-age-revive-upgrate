@@ -22,6 +22,7 @@ interface ProductCardProps {
     serving: string;
     supply?: string;
     color: string;
+    textColor?: string;
     image: string;
     ingredients: string[];
   };
@@ -29,6 +30,7 @@ interface ProductCardProps {
 
 export default function ProtocolSelectorCard({ p }: ProductCardProps) {
   const accent = p.color;
+  const accentText = p.textColor || accent;
 
   return (
     <div className="flex flex-col items-center" data-testid={`card-protocol-${p.slug}`}>
@@ -62,7 +64,7 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
 
         <div className="relative z-10 px-5 pt-5 pb-5 flex flex-col">
 
-          <p className="text-[10px] font-mono uppercase tracking-[0.14em] mb-1" style={{ color: hexToRgba(accent, 0.7) }}>{p.category}</p>
+          <p className="text-[10px] font-mono uppercase tracking-[0.14em] mb-1" style={{ color: accentText }}>{p.category}</p>
 
           <h4 className="font-head font-normal text-[22px] sm:text-2xl tracking-[-0.03em] uppercase text-white leading-none mb-3">
             <BrandName name={p.name} />
@@ -76,7 +78,7 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
             <div className="flex flex-col gap-[6px] mb-4">
               {p.outcomes.slice(0, 3).map((o) => (
                 <span key={o} className="flex items-center gap-2 text-[13px] font-sans font-medium text-white">
-                  <Check size={13} strokeWidth={2.5} className="shrink-0" style={{ color: accent }} />
+                  <Check size={13} strokeWidth={2.5} className="shrink-0" style={{ color: accentText }} />
                   {o}
                 </span>
               ))}
