@@ -314,10 +314,10 @@ const Navbar = () => {
 
 const Hero = ({ onOpenEvidence, onOpenProduct }) => {
   return (
-    <section className="relative min-h-[100dvh] flex flex-col overflow-hidden">
+    <section className="relative md:min-h-[100dvh] flex flex-col overflow-hidden">
 
-      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-center px-5 pt-28 md:pt-40 pb-12 md:pb-24 min-h-[100dvh]">
-        <div className="space-y-6 md:space-y-10 hero-text">
+      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-center px-5 pt-24 md:pt-40 pb-14 md:pb-24 md:min-h-[100dvh]">
+        <div className="space-y-5 md:space-y-10 hero-text">
           <div className="space-y-3 md:space-y-4">
             <div className="flex items-center justify-center gap-3">
               <div className="h-[1px] w-8 md:w-12 bg-ar-teal" />
