@@ -47,7 +47,7 @@ const PRODUCTS = {
     category: 'NAD+ Optimization',
     tagline: 'Engineered daily NAD+ support.',
     description:
-      'A molecular-grade daily protocol that supports NAD+ metabolism with redox and methylation cofactors. Built to feel precise, not noisy.',
+      'NR with redox and methylation cofactors. 8 actives, clinically dosed.',
     price: '$92.00',
     serving: '2 capsules daily',
     accent: '#1e3a8a',
@@ -89,7 +89,7 @@ const PRODUCTS = {
     category: 'Mitochondrial + Gut Signaling Support',
     tagline: 'Enteric-coated postbiotic signaling.',
     description:
-      'Enteric-coated delivery of Urolithin A plus tributyrin to support mitochondrial recycling signals and short-chain fatty acid activity.',
+      'Urolithin A + tributyrin. Enteric-coated, 2-compound precision.',
     price: '$110.00',
     serving: '2 enteric-coated capsules daily',
     accent: '#19B3A6',
@@ -125,7 +125,7 @@ const PRODUCTS = {
     category: '7-Day Autophagy + Protocol Cycle',
     tagline: '7-day cellular maintenance cycle.',
     description:
-      'A cyclical protocol featuring polyphenols, antioxidants, and metabolic cofactors designed for short, intentional phases. Not a daily forever stack.',
+      'Polyphenol + senolytic stack. 10 actives, 7-day phase design.',
     price: '$145.00',
     serving: '5 capsules daily for 7 consecutive days',
     warnings: 'Contains wheat (spermidine source).',
@@ -587,58 +587,62 @@ function ProductTemplate({ product }) {
                   <img src={product.heroImage} alt={product.name} className="relative z-10 w-[45%] md:w-[55%] max-h-[180px] md:max-h-none h-auto object-contain" style={{ filter: `drop-shadow(0 8px 16px ${hexToRgba(accent, 0.2)}) drop-shadow(0 3px 6px rgba(0,0,0,0.35))` }} />
                 </div>
 
-                <div className="px-2 pb-2 md:px-4 md:pb-4 space-y-3">
+                <div className="px-2 pb-2 md:px-4 md:pb-4 space-y-2">
                   <div>
-                    <span className="inline-block text-[10px] font-mono uppercase tracking-[0.14em] font-bold mb-1.5" style={{ color: accentText }}>{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
+                    <span className="inline-block text-[10px] font-mono uppercase tracking-[0.14em] font-bold mb-1" style={{ color: accentText, textShadow: `0 0 12px ${hexToRgba(accent, 0.4)}` }}>{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
                     <div className="flex items-baseline justify-between gap-4">
                       <h3 className="text-[20px] md:text-[22px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-none"><BrandName name={product.name} /></h3>
-                      <span className="text-[20px] md:text-[22px] font-sans font-extrabold text-white leading-none tracking-[-0.02em]">{product.price}</span>
+                      <span className="text-[22px] md:text-[24px] font-sans font-black text-white leading-none tracking-[-0.03em]">{product.price}</span>
                     </div>
                   </div>
 
-                  <p className="text-[13px] md:text-[14px] text-white/60 leading-relaxed font-sans">{product.description}</p>
+                  <p className="text-[12px] md:text-[13px] text-white/50 leading-snug font-mono tracking-[-0.01em]">{product.description}</p>
 
-                  <div className="border-t border-white/[0.06] pt-3">
-                    <div className="flex flex-col gap-[3px]">
+                  <div className="border-t border-white/[0.06] pt-2">
+                    <div className="flex flex-col gap-0">
                       {product.outcomes.map((item, i) => (
-                        <div key={i} className="flex items-center gap-0">
-                          <span className="text-[12px] md:text-[13px] font-sans font-medium text-white/90 leading-relaxed">{item}</span>
-                        </div>
+                        <span key={i} className="text-[12px] font-sans font-medium text-white/80 leading-[1.6]">{item}</span>
                       ))}
                     </div>
                   </div>
 
-                  <div className="text-[10px] font-mono text-white/35 tracking-[0.04em] uppercase">Glass bottle · UV-protected</div>
+                  <div className="flex items-center gap-3 text-[10px] font-mono text-white/30 tracking-[0.06em] uppercase">
+                    <span>Glass bottle</span>
+                    <span className="w-px h-2.5 bg-white/10" />
+                    <span>UV-protected</span>
+                    <span className="w-px h-2.5 bg-white/10" />
+                    <span>{product.serving}</span>
+                  </div>
 
                   {product.warnings && (
-                    <div className="border-l-2 border-amber-400/30 pl-3 py-1.5">
-                      <p className="text-[11px] text-amber-200/70 leading-snug font-sans">{product.warnings}</p>
+                    <div className="border-l-2 border-amber-400/30 pl-3 py-1">
+                      <p className="text-[11px] text-amber-200/60 leading-snug font-sans">{product.warnings}</p>
                     </div>
                   )}
 
-                  <div className="space-y-3 pt-1">
+                  <div className="space-y-2.5 pt-0.5">
                     <MagneticButton
-                      className="w-full min-h-[48px] flex items-center justify-center gap-2 rounded-lg py-3 text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
-                      style={{ background: `linear-gradient(135deg, ${accent}, ${hexToRgba(accent, 0.7)})`, boxShadow: `0 0 16px ${hexToRgba(accent, 0.3)}, inset 0 1px 0 rgba(255,255,255,0.12)` }}
+                      className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
+                      style={{ background: `linear-gradient(135deg, ${accent}, ${hexToRgba(accent, 0.75)})`, boxShadow: `0 0 10px ${hexToRgba(accent, 0.2)}, inset 0 1px 0 rgba(255,255,255,0.10)` }}
                       onClick={() => {}}
                     >
                       <span className="relative z-10">Add to Stack</span>
                       <ArrowRight size={13} className="relative z-10" />
-                      <div className="absolute inset-0 bg-white/12 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                      <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                     </MagneticButton>
 
                     <div className="flex items-center justify-center gap-6">
                       <button
                         onClick={() => setActiveSidePanel('ingredients')}
-                        className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium text-white/40 hover:text-white/70 transition-colors duration-200"
+                        className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium text-white/35 hover:text-white/60 transition-colors duration-200"
                         data-testid="button-ingredients-pdp"
                       >
                         Ingredients
                       </button>
-                      <span className="w-px h-3 bg-white/10" />
+                      <span className="w-px h-3 bg-white/8" />
                       <button
                         onClick={() => setActiveSidePanel('rationale')}
-                        className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium text-white/40 hover:text-white/70 transition-colors duration-200"
+                        className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium text-white/35 hover:text-white/60 transition-colors duration-200"
                         data-testid="button-evidence-pdp"
                       >
                         Evidence
