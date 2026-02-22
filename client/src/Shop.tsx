@@ -228,7 +228,7 @@ function TypewriterTelemetry({ phrases: inputPhrases }) {
   }, []);
 
   return (
-    <div className="font-mono text-[11px] uppercase tracking-[0.14em] text-white/30">
+    <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-white/30 overflow-hidden whitespace-nowrap">
       {text}<span className="opacity-60">{cursor ? '_' : '\u00A0'}</span>
     </div>
   );
@@ -695,20 +695,20 @@ function ProductTemplate({ product }) {
       </section>
 
       <section className="relative py-16 md:py-24 px-5 md:px-8 max-w-7xl mx-auto overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1020]/50 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1020]/60 via-[#0a1020]/20 to-transparent pointer-events-none" />
         <div className="relative z-10">
           <div className="mb-14 md:mb-20 max-w-lg reveal">
-            <h2 className="text-2xl md:text-3xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">Telemetry</h2>
-            <p className="text-[13px] font-mono text-white/50 tracking-[-0.01em] mb-1">Quantified biological response</p>
+            <h2 className="text-2xl md:text-3xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1">Telemetry</h2>
+            <p className="text-[13px] font-mono text-white/55 tracking-[-0.01em] mb-0.5">Biological response, quantified</p>
             <TypewriterTelemetry phrases={product.telemetry} />
 
-            <div className="mt-7 flex flex-col gap-0">
+            <div className="mt-6 flex flex-col gap-0">
               {product.systems.map((sys, i) => (
-                <div key={i} className="flex items-start gap-5 py-2.5" data-testid={`telemetry-system-${i}`}>
-                  <span className="font-mono text-[14px] font-black tracking-[0.04em] shrink-0 w-6 text-right pt-px" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
-                  <div className="flex flex-col gap-px flex-1 border-b border-white/[0.05] pb-3">
-                    <span className="text-[13px] font-mono font-bold uppercase tracking-[0.06em] text-white/85">{sys.label}</span>
-                    <span className="text-[11px] font-mono text-white/45 tracking-[0.02em]">{sys.metric}</span>
+                <div key={i} className="flex items-baseline gap-4 py-2" data-testid={`telemetry-system-${i}`}>
+                  <span className="font-mono text-[14px] font-black tracking-[0.04em] shrink-0 w-6 text-right" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
+                  <div className="flex flex-col gap-0 flex-1 border-b border-white/[0.05] pb-3.5">
+                    <span className="text-[13px] font-mono font-bold uppercase tracking-[0.06em] text-white/90">{sys.label}</span>
+                    <span className="text-[11px] font-mono text-white/50 tracking-[0.02em] mt-px">{sys.metric}</span>
                   </div>
                 </div>
               ))}
