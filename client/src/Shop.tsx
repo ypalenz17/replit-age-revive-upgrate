@@ -656,11 +656,12 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <section className="pt-12 pb-14 md:pt-16 md:pb-20">
-        <div className="max-w-lg mx-auto px-6">
-          <div className="border-t border-white/[0.06] pt-8 md:pt-10">
-            <span className="block text-[10px] font-mono uppercase tracking-[0.18em] text-white/30 mb-6">Formulation Standards</span>
-            <div className="flex flex-col gap-4">
+      <section className="relative pt-8 pb-20 md:pt-10 md:pb-24">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1020]/60 via-transparent to-transparent pointer-events-none" />
+        <div className="relative z-10 max-w-lg mx-auto px-6">
+          <div className="border-t border-white/[0.08] pt-7 md:pt-9">
+            <span className="block text-[10px] font-mono uppercase tracking-[0.20em] text-white/40 font-semibold mb-5">Formulation Standards</span>
+            <div className="flex flex-col gap-5">
               {[
                 { label: 'Third-Party Tested', desc: 'Every batch verified for purity, potency, and heavy metals.' },
                 { label: 'Standardized Actives', desc: 'Clinically dosed with verified standardization percentages.' },
@@ -669,9 +670,9 @@ function ProductTemplate({ product }) {
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-5" data-testid={`trust-badge-${i}`}>
                   <span className="font-mono text-[15px] font-black tracking-[0.06em] shrink-0 w-7 text-right" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
-                  <div className="flex flex-col gap-0">
+                  <div className="flex flex-col gap-px">
                     <span className="text-[14px] font-mono font-semibold uppercase tracking-[0.08em] text-white/90">{item.label}</span>
-                    <span className="text-[12px] font-sans text-white/40 leading-snug">{item.desc}</span>
+                    <span className="text-[12px] font-sans text-white/50 leading-snug">{item.desc}</span>
                   </div>
                 </div>
               ))}
@@ -909,7 +910,7 @@ export default function Shop() {
             >
               <BrandName name={p.name} />
               {slug === p.id && (
-                <span className="absolute bottom-0 left-3 right-3 h-[2px]" style={{ background: p.accentText || p.accent }} />
+                <span className="absolute bottom-0 left-3 right-3 h-[1.5px]" style={{ background: p.accentText || p.accent, opacity: 0.8 }} />
               )}
             </button>
           ))}
