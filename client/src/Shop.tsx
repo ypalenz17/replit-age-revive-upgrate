@@ -656,13 +656,21 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <section className="border-y border-white/[0.06] py-10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-center md:justify-between gap-x-8 gap-y-4">
-          {['3rd Party Tested', 'Standardized Actives', 'Protocol Cadence', 'Quality Controls'].map((text, i) => (
-            <div key={i} className="flex items-center gap-2.5" data-testid={`trust-badge-${i}`}>
-              <span className="font-mono text-[12px] font-bold tracking-[0.14em] text-[color:var(--accent)]">{String(i + 1).padStart(2, '0')}</span>
-              <span className="w-px h-3 bg-white/[0.12]" />
-              <span className="text-[12px] font-mono font-medium uppercase tracking-[0.12em] text-white/55 whitespace-nowrap">{text}</span>
+      <section className="py-14 md:py-20">
+        <div className="max-w-xl mx-auto px-6 flex flex-col gap-5">
+          {[
+            { label: '3rd Party Tested', desc: 'Every batch independently verified for purity, potency, and heavy metals.' },
+            { label: 'Standardized Actives', desc: 'Clinically dosed compounds with verified standardization percentages.' },
+            { label: 'Protocol Cadence', desc: 'Defined dosing schedules — daily or cycled — not ad hoc supplementation.' },
+            { label: 'Quality Controls', desc: 'GMP-compliant manufacturing. Full certificates of analysis on file.' }
+          ].map((item, i) => (
+            <div key={i} className="flex items-start gap-4" data-testid={`trust-badge-${i}`}>
+              <span className="font-mono text-[13px] font-bold tracking-[0.10em] shrink-0 pt-0.5" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
+              <span className="w-px h-8 bg-white/[0.08] shrink-0 mt-0.5" />
+              <div className="flex flex-col gap-0.5">
+                <span className="text-[13px] font-mono font-semibold uppercase tracking-[0.10em] text-white/80">{item.label}</span>
+                <span className="text-[12px] font-sans text-white/40 leading-snug">{item.desc}</span>
+              </div>
             </div>
           ))}
         </div>
