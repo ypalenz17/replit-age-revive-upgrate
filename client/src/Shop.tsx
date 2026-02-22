@@ -577,81 +577,71 @@ function ProductTemplate({ product }) {
           </div>
 
           <div className="w-full md:w-2/5 buy-panel">
-            <div
-              className="relative overflow-hidden rounded-2xl border border-white/[0.10]"
-              style={{ boxShadow: `0 0 0 1px ${hexToRgba(accent, 0.06)}, 0 4px 24px rgba(0,0,0,0.35), 0 30px 60px -20px ${hexToRgba(accent, 0.25)}` }}
-            >
-              <div className="absolute inset-0 bg-[#0d1424]/80 backdrop-blur-lg" />
-              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01]" />
-              <div className="absolute inset-x-0 top-0 h-[1px]" style={{ background: `linear-gradient(90deg, transparent 10%, ${hexToRgba(accent, 0.35)} 50%, transparent 90%)` }} />
+            <div className="relative">
+              <div className="absolute inset-0 -inset-x-4 pointer-events-none" style={{ background: `radial-gradient(ellipse 90% 70% at 50% 45%, ${hexToRgba(accent, 0.12)}, transparent 70%)` }} />
 
               <div className="relative z-10">
-                <div className="relative flex items-end justify-center px-6 pt-6 pb-2 md:px-10 md:pt-8 md:pb-3">
+                <div className="relative flex items-end justify-center px-6 pt-4 pb-2 md:px-10 md:pt-6 md:pb-3">
                   <div className="absolute left-1/2 -translate-x-1/2 top-[15%] w-[80%] h-[70%] blur-[40px] opacity-20 pointer-events-none" style={{ background: `radial-gradient(ellipse at 50% 60%, ${hexToRgba(accent, 0.5)}, transparent 70%)` }} />
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40%] h-[6px] rounded-[50%] blur-sm opacity-50 pointer-events-none" style={{ background: 'rgba(0,0,0,0.7)' }} />
                   <img src={product.heroImage} alt={product.name} className="relative z-10 w-[45%] md:w-[55%] max-h-[180px] md:max-h-none h-auto object-contain" style={{ filter: `drop-shadow(0 8px 16px ${hexToRgba(accent, 0.2)}) drop-shadow(0 3px 6px rgba(0,0,0,0.35))` }} />
                 </div>
 
-                <div className="px-5 pb-5 md:px-8 md:pb-8 space-y-3">
+                <div className="px-2 pb-2 md:px-4 md:pb-4 space-y-3">
                   <div>
-                    <span className="inline-block text-[10px] font-mono uppercase tracking-[0.14em] font-bold mb-2" style={{ color: accentText }}>{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
+                    <span className="inline-block text-[10px] font-mono uppercase tracking-[0.14em] font-bold mb-1.5" style={{ color: accentText }}>{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
                     <div className="flex items-baseline justify-between gap-4">
                       <h3 className="text-[20px] md:text-[22px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-none"><BrandName name={product.name} /></h3>
-                      <span className="text-[18px] md:text-[20px] font-sans font-extrabold text-white leading-none">{product.price}</span>
+                      <span className="text-[20px] md:text-[22px] font-sans font-extrabold text-white leading-none tracking-[-0.02em]">{product.price}</span>
                     </div>
                   </div>
 
-                  <p className="text-[13px] md:text-[14px] text-white/70 leading-relaxed font-sans">{product.description}</p>
+                  <p className="text-[13px] md:text-[14px] text-white/60 leading-relaxed font-sans">{product.description}</p>
 
                   <div className="border-t border-white/[0.06] pt-3">
-                    <div className="flex flex-col gap-[5px]">
+                    <div className="flex flex-col gap-[3px]">
                       {product.outcomes.map((item, i) => (
-                        <div key={i} className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: accentText }} />
-                          <span className="text-[12px] md:text-[13px] font-sans font-medium text-white leading-snug">{item}</span>
+                        <div key={i} className="flex items-center gap-0">
+                          <span className="text-[12px] md:text-[13px] font-sans font-medium text-white/90 leading-relaxed">{item}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="pt-1">
-                    <div className="text-[10px] font-mono text-white/40 tracking-[0.04em] uppercase">Glass bottle · UV-protected</div>
-                  </div>
+                  <div className="text-[10px] font-mono text-white/35 tracking-[0.04em] uppercase">Glass bottle · UV-protected</div>
 
                   {product.warnings && (
-                    <div className="rounded-lg bg-amber-500/[0.06] border border-amber-400/15 px-3.5 py-2.5 flex items-start gap-2">
-                      <span className="text-amber-400 text-[11px] mt-0.5">⚠</span>
-                      <p className="text-[11px] text-amber-200/80 leading-snug font-sans">{product.warnings}</p>
+                    <div className="border-l-2 border-amber-400/30 pl-3 py-1.5">
+                      <p className="text-[11px] text-amber-200/70 leading-snug font-sans">{product.warnings}</p>
                     </div>
                   )}
 
-                  <div className="flex flex-col gap-1.5 pt-1">
+                  <div className="space-y-3 pt-1">
                     <MagneticButton
-                      className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
+                      className="w-full min-h-[48px] flex items-center justify-center gap-2 rounded-lg py-3 text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
                       style={{ background: `linear-gradient(135deg, ${accent}, ${hexToRgba(accent, 0.7)})`, boxShadow: `0 0 16px ${hexToRgba(accent, 0.3)}, inset 0 1px 0 rgba(255,255,255,0.12)` }}
                       onClick={() => {}}
                     >
-                      <span className="relative z-10">Add to Protocol Archive</span>
+                      <span className="relative z-10">Add to Stack</span>
                       <ArrowRight size={13} className="relative z-10" />
                       <div className="absolute inset-0 bg-white/12 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                     </MagneticButton>
 
-                    <div className="grid grid-cols-2 gap-1.5">
+                    <div className="flex items-center justify-center gap-6">
                       <button
                         onClick={() => setActiveSidePanel('ingredients')}
-                        className="min-h-[44px] flex items-center justify-center gap-1.5 rounded-lg py-2.5 font-mono uppercase text-[11px] tracking-[0.14em] font-medium text-white/50 hover:bg-white/[0.04] hover:text-white/70 transition-all duration-300"
-                        style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)' }}
+                        className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium text-white/40 hover:text-white/70 transition-colors duration-200"
                         data-testid="button-ingredients-pdp"
                       >
-                        Ingredients <ArrowRight size={9} />
+                        Ingredients
                       </button>
+                      <span className="w-px h-3 bg-white/10" />
                       <button
                         onClick={() => setActiveSidePanel('rationale')}
-                        className="min-h-[44px] flex items-center justify-center gap-1.5 rounded-lg py-2.5 font-mono uppercase text-[11px] tracking-[0.14em] font-medium text-white/50 hover:bg-white/[0.04] hover:text-white/70 transition-all duration-300"
-                        style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)' }}
+                        className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium text-white/40 hover:text-white/70 transition-colors duration-200"
                         data-testid="button-evidence-pdp"
                       >
-                        Evidence <ArrowRight size={9} />
+                        Evidence
                       </button>
                     </div>
                   </div>
@@ -889,20 +879,22 @@ export default function Shop() {
         style={{ position: 'sticky', bottom: 0, zIndex: 99999, padding: '16px 0 24px', display: 'flex', justifyContent: 'center', pointerEvents: 'none', background: 'linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.6) 60%, transparent 100%)' }}
       >
         <div
-          style={{ pointerEvents: 'auto', display: 'flex', gap: '6px', padding: '6px', background: 'rgba(15,23,42,0.90)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
+          style={{ pointerEvents: 'auto', display: 'flex', gap: '0', padding: '0 8px', background: 'rgba(15,23,42,0.92)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
         >
           {Object.values(PRODUCTS).map((p) => (
             <button
               key={p.id}
               onClick={() => setSlug(p.id)}
               className={[
-                'px-4 py-2 rounded-lg text-[12px] font-mono font-bold uppercase tracking-[0.14em] transition-all min-h-[44px]',
-                slug === p.id ? 'text-white' : 'hover:bg-white/[0.08] text-white/50'
+                'px-5 py-3 text-[11px] font-mono font-bold uppercase tracking-[0.14em] transition-all min-h-[44px] relative',
+                slug === p.id ? 'text-white' : 'text-white/40 hover:text-white/65'
               ].join(' ')}
-              style={slug === p.id ? { background: p.accent } : undefined}
               data-testid={`switcher-${p.id}`}
             >
               <BrandName name={p.name} />
+              {slug === p.id && (
+                <span className="absolute bottom-0 left-3 right-3 h-[2px]" style={{ background: p.accentText || p.accent }} />
+              )}
             </button>
           ))}
         </div>
