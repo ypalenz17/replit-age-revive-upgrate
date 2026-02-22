@@ -716,20 +716,27 @@ function ProductTemplate({ product }) {
           </div>
 
           <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
-            <div className="md:col-span-5 space-y-4 reveal">
-              <span className="block text-[10px] font-mono uppercase tracking-[0.20em] text-white/40 font-bold">Disclosure</span>
-              <h3 className="text-xl md:text-2xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight">
-                Full ingredient transparency
-              </h3>
-              <p className="text-[13px] md:text-[14px] text-white/55 leading-relaxed font-sans font-medium">
-                No proprietary blends. Each active standardized, clinically dosed, listed with exact purpose.
+            <div className="md:col-span-5 space-y-5 reveal">
+              <div>
+                <span className="block text-[10px] font-mono uppercase tracking-[0.20em] text-white/40 font-bold mb-2">Disclosure</span>
+                <h3 className="text-xl md:text-2xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight">Ingredient Architecture</h3>
+              </div>
+              <p className="text-[13px] text-white/50 leading-relaxed font-sans font-medium">
+                No proprietary blends. No undisclosed fillers. Every compound listed with exact dose and stated purpose.
               </p>
 
-              <TrustStats product={product} />
-
-              <p className="text-[11px] font-mono text-white/35 uppercase tracking-[0.10em] leading-relaxed">
-                All actives third-party tested · COAs on file
-              </p>
+              <div className="flex flex-col gap-2.5 pt-1">
+                {[
+                  { key: 'Actives', val: String(product.ingredients.length) },
+                  { key: 'Dosing Standard', val: 'Clinical' },
+                  { key: 'Verification', val: 'Third-Party' }
+                ].map((spec, i) => (
+                  <div key={i} className="flex items-baseline justify-between border-b border-white/[0.04] pb-2">
+                    <span className="text-[11px] font-mono uppercase tracking-[0.10em] text-white/40">{spec.key}</span>
+                    <span className="text-[13px] font-mono font-bold tracking-[0.04em] text-white/85">{spec.val}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="md:col-span-7 reveal">
