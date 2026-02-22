@@ -316,7 +316,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
   return (
     <section className="relative min-h-[100dvh] flex flex-col overflow-hidden">
 
-      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-center px-5 pt-32 md:pt-40 pb-16 md:pb-24 min-h-[100dvh]">
+      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center px-5 pt-20 md:pt-40 pb-16 md:pb-24 min-h-[100dvh] justify-start md:justify-center">
         <div className="space-y-7 md:space-y-10 hero-text">
           <div className="space-y-3 md:space-y-4">
             <div className="flex items-center justify-center gap-3">
@@ -324,7 +324,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
               <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em] md:tracking-[0.22em]">Protocol-Grade Supplements</span>
               <div className="h-[1px] w-8 md:w-12 bg-ar-teal" />
             </div>
-            <h1 className="font-head font-normal text-white tracking-[-0.05em] leading-[0.85]" style={{ fontSize: 'clamp(2.5rem, 7.5vw, 5.5rem)' }}>
+            <h1 className="font-head font-normal text-white tracking-[-0.05em] leading-[0.85]" style={{ fontSize: 'clamp(2.5rem, 9.5vw, 5.5rem)' }}>
               Cellular Energy.
               <br />
               <span className="italic text-white/50">Gut Resilience.</span>
