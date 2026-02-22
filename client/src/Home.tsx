@@ -295,7 +295,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
         <div className="absolute left-1/2 top-[35%] -translate-x-1/2 -translate-y-1/2 w-[min(95vw,650px)] h-[min(95vw,650px)] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(8,12,26,0.9)_0%,transparent_70%)]" />
       </div>
 
-      <div className="relative z-10 w-full max-w-3xl mx-auto flex flex-col justify-center text-center px-5 md:px-6 pt-20 md:pt-36 pb-10 md:pb-20 min-h-[100dvh]">
+      <div className="relative z-10 w-full max-w-3xl mx-auto flex flex-col justify-center text-center px-5 md:px-6 pt-20 md:pt-36 pb-6 md:pb-12 min-h-[100dvh]">
         <div className="flex flex-col hero-text w-full items-center">
 
           <div className="flex flex-col items-center md:items-start md:pl-[3%]">
@@ -609,7 +609,7 @@ export default function Home() {
       />
 
       {/* Protocol Selector */}
-      <section className="relative py-12 md:py-20 px-6">
+      <section className="relative pt-8 pb-12 md:pt-12 md:pb-20 px-6">
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 30%, rgba(30,58,138,0.06) 0%, transparent 70%)' }} />
         <div className="max-w-7xl mx-auto relative">
           <div className="text-center mb-8 md:mb-14 reveal-stagger">
