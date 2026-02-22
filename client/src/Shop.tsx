@@ -318,33 +318,31 @@ function TypewriterTelemetry({ phrases: inputPhrases }) {
   );
 }
 
-function CompoundRow({ ing, accent, isLast, index }) {
+function CompoundRow({ ing, accentText, isLast, index }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
     <div>
-      <div className="flex items-baseline justify-between py-3.5 gap-4">
+      <div className="flex items-baseline justify-between py-3 gap-4">
         <div className="flex-1 min-w-0">
           <p className="text-[13px] font-sans font-bold text-white leading-tight break-words">{ing.name}</p>
-          <div className="flex items-baseline gap-3 mt-0.5 flex-wrap">
-            <p className="text-[11px] font-mono text-white/50 uppercase tracking-[0.08em]">{ing.purpose}</p>
-            {ing.refs && (
-              <button
-                onClick={() => setExpanded(!expanded)}
-                className="text-[10px] font-mono tracking-[0.06em] shrink-0 hover:opacity-80"
-                style={{ color: accent }}
-                data-testid={`ref-toggle-${ing.name.replace(/\s+/g, '-').toLowerCase()}`}
-              >
-                {expanded ? 'Close' : 'References \u2192'}
-              </button>
-            )}
-          </div>
+          <p className="text-[11px] font-mono text-white/55 mt-0.5 uppercase tracking-[0.06em]">{ing.purpose}</p>
+          {ing.refs && (
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="text-[10px] font-mono tracking-[0.04em] mt-1 hover:opacity-80"
+              style={{ color: accentText, opacity: 0.7 }}
+              data-testid={`ref-toggle-${ing.name.replace(/\s+/g, '-').toLowerCase()}`}
+            >
+              {expanded ? 'Close' : 'References'}
+            </button>
+          )}
         </div>
-        <span className="text-[13px] font-mono font-bold text-white shrink-0">{ing.dose}</span>
+        <span className="text-[13px] font-mono font-bold text-white shrink-0 tabular-nums">{ing.dose}</span>
       </div>
 
       {expanded && (
-        <div className="pb-4 pt-1" data-testid={`ref-panel-${ing.name.replace(/\s+/g, '-').toLowerCase()}`}>
+        <div className="pb-3 pt-0.5" data-testid={`ref-panel-${ing.name.replace(/\s+/g, '-').toLowerCase()}`}>
           {ing.mechanism && (
             <div className="mb-3">
               <span className="text-[9px] font-mono font-bold uppercase tracking-[0.16em] text-white/35 block mb-1">Mechanism</span>
@@ -364,7 +362,7 @@ function CompoundRow({ ing, accent, isLast, index }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="ml-1 hover:opacity-80 break-all"
-                        style={{ color: accent }}
+                        style={{ color: accentText, opacity: 0.6 }}
                         data-testid={`doi-link-${index}-${ri}`}
                       >
                         doi:{ref.doi}
@@ -383,21 +381,21 @@ function CompoundRow({ ing, accent, isLast, index }) {
   );
 }
 
-function IngredientPanel({ ingredients, accent, serving }) {
+function IngredientPanel({ ingredients, accentText, serving }) {
   return (
     <div className="relative border-t border-white/[0.06]">
       <div className="py-6 md:py-8">
-        <div className="mb-1">
-          <span className="text-[10px] font-mono font-black uppercase tracking-[0.18em] text-white/50">Compound Specification</span>
+        <div className="mb-0.5">
+          <span className="text-[10px] font-mono font-black uppercase tracking-[0.18em] text-white/60">Compound Specification</span>
         </div>
         <div className="flex items-baseline gap-5 mb-5 text-[11px] font-mono uppercase tracking-[0.08em]">
-          <span className="text-white/40">Actives: <span className="text-white/75 font-bold">{ingredients.length}</span></span>
-          <span className="text-white/40">Serving: <span className="text-white/75 font-bold">{serving}</span></span>
+          <span className="text-white/45">Actives: <span className="text-white/80 font-bold">{ingredients.length}</span></span>
+          <span className="text-white/45">Serving: <span className="text-white/80 font-bold">{serving}</span></span>
         </div>
 
         <div className="space-y-0">
           {ingredients.map((ing, i) => (
-            <CompoundRow key={i} ing={ing} accent={accent} isLast={i === ingredients.length - 1} index={i} />
+            <CompoundRow key={i} ing={ing} accentText={accentText} isLast={i === ingredients.length - 1} index={i} />
           ))}
         </div>
 
@@ -688,7 +686,7 @@ function ProductTemplate({ product }) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
       </div>
       <div
-        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.013]"
+        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.011]"
         style={{
           backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
           backgroundSize: '100px 100px'
@@ -884,7 +882,7 @@ function ProductTemplate({ product }) {
             </div>
 
             <div className="md:col-span-7 reveal">
-              <IngredientPanel ingredients={product.ingredients} accent={accent} serving={product.serving} />
+              <IngredientPanel ingredients={product.ingredients} accentText={accentText} serving={product.serving} />
             </div>
           </div>
         </div>
