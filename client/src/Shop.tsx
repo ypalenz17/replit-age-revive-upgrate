@@ -188,7 +188,7 @@ const PRODUCTS = {
       'NR + cofactors. 8 actives. Clinically aligned.',
     price: '$92.00',
     serving: '2 capsules daily',
-    specRow: 'Glass bottle \u2022 UV-protected \u2022 2 caps daily',
+    specRow: 'Glass bottle \u2022 UV-protected',
     accent: '#1e3a8a',
     accentText: '#60a5fa',
     heroImage: '/images/cellunad-trimmed.png',
@@ -252,7 +252,7 @@ const PRODUCTS = {
       'Urolithin A + tributyrin. 2-compound precision.',
     price: '$110.00',
     serving: '2 enteric caps daily',
-    specRow: 'Glass bottle \u2022 UV-protected \u2022 2 enteric caps daily',
+    specRow: 'Glass bottle \u2022 UV-protected',
     accent: '#19B3A6',
     accentText: '#5eead4',
     heroImage: '/images/cellubiome-trimmed.png',
@@ -287,7 +287,7 @@ const PRODUCTS = {
       'Polyphenol + senolytic stack. 10 actives. 7-day cycle.',
     price: '$145.00',
     serving: '5 caps/day for 7 days',
-    specRow: 'Glass bottle \u2022 UV-protected \u2022 5 caps/day \u00d7 7 days',
+    specRow: 'Glass bottle \u2022 UV-protected',
     warnings: 'Contains wheat (spermidine source).',
     accent: '#6C5CE7',
     accentText: '#a78bfa',
@@ -729,15 +729,15 @@ function ProductTemplate({ product }) {
 
                   <p className="text-[13px] md:text-[14px] text-white/65 leading-snug font-sans tracking-[-0.01em]">{product.description}</p>
 
-                  <div className="border-t border-white/[0.06] pt-2.5 mt-1">
-                    <div className="flex flex-col gap-[2px]">
+                  <div className="border-t border-white/[0.06] pt-3 mt-2">
+                    <div className="flex flex-col gap-1">
                       {product.outcomes.map((item, i) => (
-                        <span key={i} className="text-[12px] font-sans font-medium text-white leading-[1.75]">{item}</span>
+                        <span key={i} className="text-[14px] font-sans font-medium text-white leading-[1.8]">{item}</span>
                       ))}
                     </div>
                   </div>
 
-                  <p className="text-[9px] font-mono text-white/30 tracking-[0.04em] uppercase whitespace-nowrap">{product.specRow}</p>
+                  <p className="text-[10px] font-mono text-white/50 tracking-[0.08em] uppercase whitespace-nowrap mt-1">{product.specRow}</p>
 
                   {product.warnings && (
                     <p className="text-[10px] font-mono text-white/60 tracking-[0.02em]">{product.warnings}</p>
