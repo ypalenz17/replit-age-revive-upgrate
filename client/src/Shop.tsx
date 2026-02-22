@@ -596,12 +596,12 @@ function ProductTemplate({ product }) {
                     </div>
                   </div>
 
-                  <p className="text-[12px] md:text-[13px] text-white/50 leading-snug font-mono tracking-[-0.01em]">{product.description}</p>
+                  <p className="text-[13px] md:text-[14px] text-white/60 leading-snug font-mono tracking-[-0.01em]">{product.description}</p>
 
-                  <div className="border-t border-white/[0.06] pt-2">
-                    <div className="flex flex-col gap-0">
+                  <div className="border-t border-white/[0.06] pt-2.5 mt-1">
+                    <div className="flex flex-col gap-[2px]">
                       {product.outcomes.map((item, i) => (
-                        <span key={i} className="text-[12px] font-sans font-medium text-white/80 leading-[1.6]">{item}</span>
+                        <span key={i} className="text-[12px] font-sans font-medium text-white/80 leading-[1.75]">{item}</span>
                       ))}
                     </div>
                   </div>
