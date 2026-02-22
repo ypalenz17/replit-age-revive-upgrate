@@ -53,7 +53,7 @@ export function BrandName({ name, className }: { name: string; className?: strin
   return (
     <span className={className}>
       {name}
-      {needsR && <sup className="text-[0.55em] opacity-60 ml-[0.05em] align-super">{'\u00AE'}</sup>}
+      {needsR && <span className="text-[0.45em] opacity-50 relative -top-[0.5em] -ml-[0.05em]">{'\u00AE'}</span>}
     </span>
   );
 }
