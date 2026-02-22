@@ -103,9 +103,9 @@ const PRODUCTS = {
         ]}
     ],
     mechanics: [
-      { title: 'NAD+ Pool Support', text: 'NR supports NAD+ pools as a daily input layer.', tags: ['Precursor delivery', 'Daily input'] },
-      { title: 'Redox Balance', text: 'R-Lipoic Acid supports mitochondrial redox balance for steady output.', tags: ['Mitochondrial', 'Steady state'] },
-      { title: 'Cofactor Alignment', text: 'Methylation cofactors support metabolic efficiency and daily consistency.', tags: ['Methylation', 'Consistency'] }
+      { title: 'NAD+ Pool Support', text: 'NR enters the salvage pathway as a direct NAD+ precursor. Daily substrate input.', tags: ['Precursor input', 'Daily modulation'] },
+      { title: 'Redox Balance', text: 'R-Lipoic Acid maintains mitochondrial redox equilibrium. Electron carrier stability.', tags: ['Mitochondrial', 'Steady state'] },
+      { title: 'Cofactor Alignment', text: 'B-vitamin methylation cofactors normalize one-carbon metabolism. Pathway consistency.', tags: ['Methylation', 'One-carbon cycle'] }
     ],
     timeline: [
       { phase: 'I', time: 'Days 1–3', label: 'Baseline Alignment', desc: 'System calibration. NAD+ precursors begin entering the salvage pathway. No perceptible output expected.', marker: 'Calibration' },
@@ -154,9 +154,9 @@ const PRODUCTS = {
         ]}
     ],
     mechanics: [
-      { title: 'Recycling Signal', text: 'Urolithin A supports mitochondrial recycling signaling (mitophagy support).', tags: ['Mitophagy', 'Signal layer'] },
-      { title: 'Postbiotic Support', text: 'Tributyrin supports short-chain fatty acid activity through butyrate delivery.', tags: ['SCFA delivery', 'Gut axis'] },
-      { title: 'Enteric Precision', text: 'Enteric-coated delivery supports release beyond the upper GI environment.', tags: ['Targeted release', 'Bioavailability'] }
+      { title: 'Recycling Signal', text: 'Urolithin A activates mitophagy signaling. Targeted mitochondrial turnover.', tags: ['Mitophagy', 'Signal layer'] },
+      { title: 'Postbiotic Delivery', text: 'Tributyrin delivers butyrate directly. Short-chain fatty acid substrate.', tags: ['SCFA input', 'Gut-barrier axis'] },
+      { title: 'Enteric Precision', text: 'Enteric coating bypasses upper GI. Active release in target environment.', tags: ['Targeted release', 'Bioavailability'] }
     ],
     telemetry: ['Gut Signaling', 'Mito Renewal', 'Postbiotic Support'],
     systems: [
@@ -245,9 +245,9 @@ const PRODUCTS = {
         ]}
     ],
     mechanics: [
-      { title: 'Phase Design', text: 'Designed for 7-day bursts to support cellular maintenance pathways intentionally.', tags: ['Cyclical protocol', '7-day burst'] },
-      { title: 'Polyphenol Stack', text: 'A focused blend of polyphenols and antioxidants for short-cycle intensity.', tags: ['Antioxidant', 'High density'] },
-      { title: 'Off-Cycle Matters', text: 'The off-cycle is part of the protocol. This is a cadence, not a constant.', tags: ['Recovery phase', 'Cadence'] }
+      { title: 'Phase Design', text: '7-day burst protocol. Intentional cycling supports autophagy pathway activation.', tags: ['Cyclical protocol', '7-day burst'] },
+      { title: 'Polyphenol Load', text: 'Concentrated polyphenol and spermidine input. High-density short-cycle delivery.', tags: ['Antioxidant density', 'Spermidine'] },
+      { title: 'Off-Cycle Architecture', text: 'Recovery phase is integral. Cadence, not chronic exposure.', tags: ['Recovery phase', 'Cadence design'] }
     ],
     telemetry: ['Autophagy Support', 'Cellular Cleanup', 'Phase Design'],
     systems: [
@@ -676,10 +676,10 @@ function ProductTemplate({ product }) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
       </div>
       <div
-        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.009]"
+        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.004]"
         style={{
           backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
-          backgroundSize: '100px 100px'
+          backgroundSize: '120px 120px'
         }}
       />
       <div className="relative z-[2]">
@@ -880,33 +880,34 @@ function ProductTemplate({ product }) {
 
       <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
 
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-12 md:mb-16 max-w-lg reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/40 block mb-2">Adaptation Model</span>
-            <h2 className="text-2xl md:text-3xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1">Measured Biological Adaptation</h2>
-            <p className="text-[13px] font-mono text-white/45 tracking-[-0.01em]">Response varies. Consistency compounds.</p>
+      <section className="relative py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.008] via-transparent to-transparent pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto px-6">
+          <div className="mb-14 md:mb-20 max-w-lg reveal">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-2">Adaptation Model</span>
+            <h2 className="text-2xl md:text-3xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">Measured Biological Adaptation</h2>
+            <p className="text-[13px] font-mono text-white/40 tracking-[-0.01em]">Consistency compounds. Timelines are directional, not guaranteed.</p>
           </div>
 
           <div className="relative">
-            <div className="absolute left-[7px] top-3 bottom-3 w-px bg-white/[0.06]" />
+            <div className="absolute left-[7px] top-4 bottom-4 w-px bg-white/[0.05]" />
 
             <div className="space-y-0">
               {product.timeline.map((step, i) => (
-                <div key={i} className="relative pl-8 py-5 reveal" data-testid={`adaptation-phase-${i}`}>
-                  <div className="absolute left-0 top-[26px] w-[15px] h-[15px] flex items-center justify-center">
-                    <div className="w-[7px] h-[7px] rounded-full border border-white/20 bg-white/[0.06]" />
+                <div key={i} className="relative pl-8 py-7 md:py-9 reveal" data-testid={`adaptation-phase-${i}`}>
+                  <div className="absolute left-0 top-[34px] w-[15px] h-[15px] flex items-center justify-center">
+                    <div className="w-[5px] h-[5px] rounded-full" style={{ backgroundColor: accentText, opacity: 0.45 }} />
                   </div>
 
-                  <div className="flex items-baseline gap-3 mb-1">
+                  <div className="flex items-baseline gap-3 mb-1.5">
                     <span className="text-[11px] font-mono font-black uppercase tracking-[0.06em]" style={{ color: accentText }}>Phase {step.phase}</span>
-                    <span className="text-[11px] font-mono text-white/35 uppercase tracking-[0.06em]">{step.time}</span>
+                    <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.08em]">{step.time}</span>
                   </div>
-                  <h4 className="text-[15px] md:text-[16px] font-sans font-bold text-white/90 tracking-[-0.01em] mb-1.5">{step.label}</h4>
-                  <p className="text-[12px] font-sans text-white/50 leading-relaxed max-w-lg">{step.desc}</p>
-                  <span className="text-[9px] font-mono font-bold uppercase tracking-[0.14em] text-white/25 mt-2 block">{step.marker}</span>
+                  <h4 className="text-[15px] md:text-[17px] font-sans font-bold text-white/90 tracking-[-0.01em] mb-1">{step.label}</h4>
+                  <p className="text-[12px] font-sans text-white/45 leading-relaxed max-w-md">{step.desc}</p>
+                  <span className="text-[9px] font-mono font-bold uppercase tracking-[0.14em] text-white/20 mt-2.5 block">{step.marker}</span>
 
-                  {i < product.timeline.length - 1 && <div className="h-px bg-white/[0.03] mt-5" />}
+                  {i < product.timeline.length - 1 && <div className="h-px bg-white/[0.03] mt-3" />}
                 </div>
               ))}
             </div>
@@ -914,25 +915,26 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
+      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" /></div>
 
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-12 md:mb-16 max-w-lg reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/40 block mb-2">System Architecture</span>
-            <h2 className="text-2xl md:text-3xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1">Rationale</h2>
-            <p className="text-[13px] font-mono text-white/45 tracking-[-0.01em]">Each layer serves a defined function. No redundancy.</p>
+      <section className="relative py-20 md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.005] to-transparent pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto px-6">
+          <div className="mb-14 md:mb-20 max-w-lg reveal">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-2">System Architecture</span>
+            <h2 className="text-2xl md:text-3xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">Rationale</h2>
+            <p className="text-[13px] font-mono text-white/40 tracking-[-0.01em]">Each layer serves a defined function. No redundancy.</p>
           </div>
 
           <div className="space-y-0">
             {product.mechanics.map((item, i) => (
               <div key={i} className="reveal" data-testid={`rationale-module-${i}`}>
-                <div className="flex items-start gap-5 md:gap-8 py-6 md:py-8">
-                  <span className="text-[18px] md:text-[22px] font-mono font-black leading-none text-white/25 shrink-0 w-8 text-right pt-0.5" style={{ color: accentText, opacity: 0.35 }}>{String(i + 1).padStart(2, '0')}</span>
+                <div className="flex items-start gap-5 md:gap-8 py-7 md:py-9">
+                  <span className="text-[18px] md:text-[22px] font-mono font-black leading-none shrink-0 w-8 text-right pt-0.5" style={{ color: accentText, opacity: 0.4 }}>{String(i + 1).padStart(2, '0')}</span>
                   <div className="flex-1 min-w-0">
                     <h3 className="text-[16px] md:text-[18px] font-sans font-bold tracking-[-0.01em] text-white/90 mb-1.5">{item.title}</h3>
-                    <p className="text-[12px] md:text-[13px] font-sans text-white/50 leading-relaxed max-w-lg mb-2.5">{item.text}</p>
-                    <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.06em]">{item.tags.join(' · ')}</span>
+                    <p className="text-[12px] md:text-[13px] font-sans text-white/45 leading-relaxed max-w-lg mb-3">{item.text}</p>
+                    <span className="text-[10px] font-mono text-white/35 uppercase tracking-[0.08em]">{item.tags.join(' · ')}</span>
                   </div>
                 </div>
                 {i < product.mechanics.length - 1 && <div className="h-px bg-white/[0.04] ml-[52px] md:ml-[64px]" />}
