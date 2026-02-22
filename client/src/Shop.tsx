@@ -54,10 +54,10 @@ const COPY_MAP = {
       label: 'What It Supports',
       headline: 'A cleaner baseline you can build on.',
       lines: [
-        'Supports cellular energy production and resilience',
-        'Supports NAD+ metabolism and daily replenishment',
-        'Supports healthy redox balance and mitochondrial function',
-        'Supports methylation cofactors for normal cellular processes'
+        'Cellular energy production and resilience',
+        'NAD+ metabolism and daily replenishment',
+        'Healthy redox balance and mitochondrial function',
+        'Methylation cofactors for normal cellular processes'
       ]
     },
     telemetry: {
@@ -101,10 +101,10 @@ const COPY_MAP = {
       label: 'What It Supports',
       headline: 'A steadier system signal.',
       lines: [
-        'Supports gut barrier integrity and digestive resilience',
-        'Supports mitochondrial efficiency and recovery support',
-        'Supports gut environment support (short-chain fatty acids)',
-        'Supports consistency across sleep, training, and daily output'
+        'Gut barrier integrity and digestive resilience',
+        'Mitochondrial efficiency and recovery support',
+        'Gut environment support (short-chain fatty acids)',
+        'Consistency across sleep, training, and daily output'
       ]
     },
     telemetry: {
@@ -148,10 +148,10 @@ const COPY_MAP = {
       label: 'What It Supports',
       headline: 'A reset you can actually repeat.',
       lines: [
-        'Supports cellular cleanup and renewal pathways',
-        'Supports antioxidant defense and oxidative balance',
-        'Supports healthy inflammatory response balance',
-        'Supports resilience during periods of higher load'
+        'Cellular cleanup and renewal pathways',
+        'Antioxidant defense and oxidative balance',
+        'Healthy inflammatory response balance',
+        'Resilience during periods of higher load'
       ]
     },
     telemetry: {
@@ -203,14 +203,14 @@ const PRODUCTS = {
       'NR + cofactors. 8 actives. Clinically aligned.',
     price: '$92.00',
     serving: '2 capsules daily',
+    specRow: 'Glass bottle \u2022 UV-protected \u2022 2 caps daily',
     accent: '#1e3a8a',
     accentText: '#60a5fa',
     heroImage: '/images/cellunad-trimmed.png',
     outcomes: [
-      'Supports cellular energy production and resilience',
-      'Supports NAD+ metabolism and daily replenishment',
-      'Supports healthy redox balance and mitochondrial function',
-      'Supports methylation cofactors for normal cellular processes'
+      'Cellular energy + resilience',
+      'NAD+ metabolism + replenishment',
+      'Redox + methylation support'
     ],
     ingredients: [
       { name: 'Nicotinamide Riboside (NR)', dose: '500 mg', purpose: 'NAD+ precursor support',
@@ -267,14 +267,14 @@ const PRODUCTS = {
       'Urolithin A + tributyrin. 2-compound precision.',
     price: '$110.00',
     serving: '2 enteric caps daily',
+    specRow: 'Glass bottle \u2022 UV-protected \u2022 2 enteric caps daily',
     accent: '#19B3A6',
     accentText: '#5eead4',
     heroImage: '/images/cellubiome-trimmed.png',
     outcomes: [
-      'Supports gut barrier integrity and digestive resilience',
-      'Supports mitochondrial efficiency and recovery support',
-      'Supports gut environment support (short-chain fatty acids)',
-      'Supports consistency across sleep, training, and daily output'
+      'Gut barrier integrity + digestive resilience',
+      'Mito efficiency + recovery support',
+      'Output consistency (sleep, training, daily)'
     ],
     ingredients: [
       { name: 'Urolithin A (≥99%)', dose: '500 mg', purpose: 'Mitochondrial recycling signal support',
@@ -299,18 +299,18 @@ const PRODUCTS = {
     category: 'Renewal Cadence + Cleanup',
     tagline: 'A 7-day monthly reset protocol designed for discipline, not extremes.',
     description:
-      'Polyphenol + senolytic stack. 10 actives, 7-day cycle.',
+      'Polyphenol + senolytic stack. 10 actives. 7-day cycle.',
     price: '$145.00',
     serving: '5 caps/day for 7 days',
+    specRow: 'Glass bottle \u2022 UV-protected \u2022 5 caps/day \u00d7 7 days',
     warnings: 'Contains wheat (spermidine source).',
     accent: '#6C5CE7',
     accentText: '#a78bfa',
     heroImage: '/images/cellunova-trimmed.png',
     outcomes: [
-      'Supports cellular cleanup and renewal pathways',
-      'Supports antioxidant defense and oxidative balance',
-      'Supports healthy inflammatory response balance',
-      'Supports resilience during periods of higher load'
+      'Cellular cleanup + renewal pathways',
+      'Oxidative balance + antioxidant defense',
+      'Resilience during higher load'
     ],
     ingredients: [
       { name: 'NAC', dose: '600 mg', purpose: 'Glutathione support',
@@ -721,7 +721,7 @@ function ProductTemplate({ product }) {
 
               <p className="text-[15px] md:text-[17px] font-sans font-medium text-white/70 max-w-md mb-3 leading-snug mx-auto md:mx-0">{copy.subtitle}</p>
 
-              <p className="text-[11px] font-mono text-white/40 tracking-[0.02em] max-w-md mx-auto md:mx-0" data-testid="text-micro-line">{copy.microLine}</p>
+              <p className="text-[11px] font-mono text-white/65 tracking-[0.01em] max-w-md mx-auto md:mx-0" data-testid="text-micro-line">{copy.microLine}</p>
             </div>
           </div>
 
@@ -737,12 +737,9 @@ function ProductTemplate({ product }) {
                 </div>
 
                 <div className="px-2 pb-2 md:px-4 md:pb-4 space-y-2">
-                  <div>
-                    <span className="inline-block text-[10px] font-mono uppercase tracking-[0.14em] font-bold mb-1" style={{ color: accentText, textShadow: `0 0 12px ${hexToRgba(accent, 0.4)}` }}>{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
-                    <div className="flex items-baseline justify-between gap-4">
-                      <h3 className="text-[20px] md:text-[22px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-none"><BrandName name={product.name} /></h3>
-                      <span className="text-[22px] md:text-[24px] font-sans font-black text-white leading-none tracking-[-0.03em]">{product.price}</span>
-                    </div>
+                  <div className="flex items-baseline justify-between gap-4">
+                    <span className="text-[10px] font-mono uppercase tracking-[0.10em] font-bold text-white/50">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
+                    <span className="text-[22px] md:text-[24px] font-sans font-black text-white leading-none tracking-[-0.03em]">{product.price}</span>
                   </div>
 
                   <p className="text-[13px] md:text-[14px] text-white/65 leading-snug font-sans tracking-[-0.01em]">{product.description}</p>
@@ -755,29 +752,21 @@ function ProductTemplate({ product }) {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 text-[10px] font-mono text-white/25 tracking-[0.06em] uppercase">
-                    <span>Glass bottle</span>
-                    <span className="w-px h-2.5 bg-white/8" />
-                    <span>UV-protected</span>
-                    <span className="w-px h-2.5 bg-white/8" />
-                    <span>{product.serving}</span>
-                  </div>
+                  <p className="text-[9px] font-mono text-white/30 tracking-[0.04em] uppercase whitespace-nowrap">{product.specRow}</p>
 
                   {product.warnings && (
-                    <div className="border-l-2 border-amber-400/30 pl-3 py-1">
-                      <p className="text-[11px] text-amber-200/60 leading-snug font-sans">{product.warnings}</p>
-                    </div>
+                    <p className="text-[10px] font-mono text-white/60 tracking-[0.02em]">{product.warnings}</p>
                   )}
 
                   <div className="space-y-2.5 pt-0.5">
                     <MagneticButton
-                      className="w-full min-h-[40px] flex items-center justify-center gap-2 rounded-lg py-2 text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
-                      style={{ background: `linear-gradient(145deg, ${hexToRgba(accent, 0.95)}, ${hexToRgba(accent, 0.65)})`, boxShadow: `0 0 8px ${hexToRgba(accent, 0.15)}, inset 0 1px 0 rgba(255,255,255,0.08)` }}
+                      className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
+                      style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06))', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.10), 0 1px 3px rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.10)' }}
                       onClick={() => {}}
                     >
                       <span className="relative z-10">Add to Stack</span>
                       <ArrowRight size={13} className="relative z-10" />
-                      <div className="absolute inset-0 bg-white/8 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                      <div className="absolute inset-0 bg-white/[0.06] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                     </MagneticButton>
 
                     <div className="flex items-center justify-center gap-6">
@@ -942,19 +931,18 @@ function ProductTemplate({ product }) {
 
             <div className="flex flex-col items-center gap-3">
               <MagneticButton
-                className="min-h-[44px] min-w-[200px] flex items-center justify-center gap-2 py-3 px-8 text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
-                style={{ background: `linear-gradient(145deg, ${hexToRgba(accent, 0.95)}, ${hexToRgba(accent, 0.65)})`, boxShadow: `0 0 8px ${hexToRgba(accent, 0.15)}, inset 0 1px 0 rgba(255,255,255,0.08)` }}
+                className="min-h-[44px] min-w-[200px] flex items-center justify-center gap-2 py-3 px-8 rounded-lg text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
+                style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06))', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.10), 0 1px 3px rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.10)' }}
                 onClick={() => {}}
               >
                 <span className="relative z-10">Add to Stack</span>
                 <ArrowRight size={13} className="relative z-10" />
-                <div className="absolute inset-0 bg-white/8 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-white/[0.06] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               </MagneticButton>
 
               <button
                 onClick={() => setActiveSidePanel('rationale')}
-                className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium hover:opacity-80 transition-opacity"
-                style={{ color: accentText }}
+                className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium text-white/40 hover:text-white/65 transition-colors duration-200"
                 data-testid="link-view-evidence"
               >
                 View Evidence →

@@ -1,0 +1,93 @@
+We are standardizing ALL three product hero sections (CELLUNAD+, CELLUBIOME, CELLUNOVA) to one elite template. Fix them as a system, not individually.
+
+NON-NEGOTIABLES
+- One consistent primary CTA style across all products (same color, same height, same radius).
+- No per-product CTA colors (remove teal CTA and purple CTA).
+- Remove duplicated product naming (product name should appear once per hero).
+- Micro protocol/target line must be readable (not ghost).
+- Benefit list must be compact (3 lines max, no repeated “Supports”).
+- Specs row must never wrap awkwardly.
+- Keep minimal luxury, no gimmicks.
+
+APPLY THIS TEMPLATE TO ALL THREE PRODUCTS:
+
+A) Top identity block (keep)
+Overline (readable): DAILY INPUT LAYER / SIGNALING LAYER / CYCLE LAYER (per product)
+Product name: large once only
+Subtitle: keep current but ensure max 2 lines and readable
+
+Micro line (make readable):
+- Cellunad: “Protocol: 2 caps daily • Target: energy + repair”
+- Cellubiome: “Protocol: 2 enteric caps daily • Target: gut–mito signaling”
+- Cellunova: “Protocol: 7 days • 5 caps/day • Target: renewal cadence”
+Increase opacity to ~text-white/60–70 and reduce tracking.
+
+B) Bottle stage (keep centered)
+- Keep bottle size consistent across products.
+- Add subtle hero vignette behind bottle so this section is a distinct chapter.
+
+C) Lower pricing block (fix duplication)
+- Keep only the price on the right.
+- Remove the repeated product name below (e.g., remove the second “CELLUBIOME / CELLUNOVA” line).
+- Keep only a small label (e.g., DAILY PROTOCOL / 7-DAY CYCLE) if needed.
+
+D) Short descriptor line under label (tighten)
+- Cellunad: “NR + cofactors. 8 actives. Clinically aligned.”
+- Cellubiome: “Urolithin A + tributyrin. 2-compound precision.”
+- Cellunova: “Polyphenol + senolytic stack. 10 actives. 7-day cycle.”
+Ensure it fits in 1–2 lines max.
+
+E) Benefit list (replace the 4 repeated “Supports…” lines)
+Use 3 compact lines max per product (no bullets, no repeated “Supports”):
+
+CELLUNAD+:
+- Cellular energy + resilience
+- NAD+ metabolism + replenishment
+- Redox + methylation support
+
+CELLUBIOME:
+- Gut barrier integrity + digestive resilience
+- Mito efficiency + recovery support
+- Output consistency (sleep, training, daily)
+
+CELLUNOVA:
+- Cellular cleanup + renewal pathways
+- Oxidative balance + antioxidant defense
+- Resilience during higher load
+
+F) Specs row (must be one line, no wrapping)
+Replace the current broken spec row with a single structured line that never wraps:
+- Cellunad: “Glass bottle • UV-protected • 2 caps daily”
+- Cellubiome: “Glass bottle • UV-protected • 2 enteric caps daily”
+- Cellunova: “Glass bottle • UV-protected • 5 caps/day × 7 days”
+If needed, reduce font size slightly and tighten tracking so it stays on one line.
+
+G) Wheat note (Cellunova only)
+Current styling is wrong. Replace with a calm, structured compliance note aligned to the content column:
+“Contains wheat (spermidine source).”
+No yellow highlight. No warning icon. Use text-white/60 and small label style.
+
+H) Primary CTA (one system style)
+Primary button text: “ADD TO STACK →”
+- Same button style for all products (no teal/purple variants)
+- Height 44–48px on mobile
+- Rounded-lg
+- Subtle inner highlight, no heavy gradient
+Secondary links below: “INGREDIENTS” and “EVIDENCE” as inline links (consistent styling)
+
+I) Bottom module selector rail spacing
+Ensure CTA area has breathing room above the fixed module rail, and the rail never overlaps content.
+
+ACCEPTANCE TESTS (375px width)
+- Product name appears once per hero.
+- CTA looks identical across all products.
+- Micro protocol line is readable.
+- Benefit list is compact and scannable.
+- Spec row never breaks awkwardly.
+- Cellunova wheat note is calm, aligned, and not highlighted.
+- Heroes feel like the same system, not three themes.
+
+DELIVERABLE
+- Implement changes in the product hero template component used by all three.
+- List files edited.
+- Confirm tested on all three modules by switching selector.
