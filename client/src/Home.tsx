@@ -335,14 +335,22 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             Three protocol-grade supplements built as one system: daily NAD+, daily gut-mito signaling, and a 7-day monthly reset.
           </p>
 
-          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center">
-            {[
-              'Full dosing disclosed',
-              'No proprietary blends',
-              'COA library available'
-            ].map((text, i) => (
-              <span key={i} className="font-mono text-[11px] text-white/70 uppercase tracking-[0.22em]">{text}</span>
-            ))}
+          <div className="w-full max-w-[420px] mx-auto bg-white/[0.05] border border-white/[0.10] backdrop-blur-sm rounded-lg px-4 py-3" data-testid="proof-bar">
+            <div className="flex flex-wrap items-center justify-center gap-y-2">
+              {[
+                'Full dosing disclosed',
+                'No proprietary blends',
+                'COA library available'
+              ].map((text, i) => (
+                <div key={i} className="flex items-center">
+                  {i > 0 && <span className="w-px h-4 bg-white/15 mx-3 hidden sm:block" aria-hidden="true" />}
+                  <span className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-sm bg-teal-300/90 shadow-[0_0_12px_rgba(45,212,191,0.35)] shrink-0" />
+                    <span className="text-[11px] text-white/75 uppercase tracking-[0.12em] leading-none font-medium">{text}</span>
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full max-w-[420px] mx-auto sm:w-auto sm:max-w-none md:justify-center">
