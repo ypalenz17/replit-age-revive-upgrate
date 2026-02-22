@@ -315,18 +315,12 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             Three protocol-grade supplements built as one system: daily <span className="text-white/95">NAD+</span>, daily <span className="text-white/95">gut-mito</span> signaling, and a <span className="text-white/95">7-day</span> monthly reset.
           </p>
 
-          <div className="mt-4 w-full max-w-[85%] mx-auto" data-testid="proof-bar">
-            <div className="flex items-center justify-center flex-wrap gap-y-1">
-              {[
-                'Full dosing disclosed',
-                'No proprietary blends',
-                'COA library coming soon'
-              ].map((text, i) => (
-                <span key={i} className="flex items-center">
-                  {i > 0 && <span className="mx-2.5 h-[3px] w-[3px] rounded-full bg-white/20 shrink-0" aria-hidden="true" />}
-                  <span className="text-[10px] sm:text-[11px] text-white/75 uppercase tracking-[0.03em] leading-none font-mono whitespace-nowrap">{text}</span>
-                </span>
-              ))}
+          <div className="mt-5 flex flex-col items-center gap-0" data-testid="proof-bar">
+            <div className="w-10 h-px bg-white/10 mb-3" />
+            <div className="flex flex-col items-center gap-[2px] leading-snug">
+              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Bioavailability First</span>
+              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Standardized Actives</span>
+              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Clinical Doses</span>
             </div>
           </div>
 
