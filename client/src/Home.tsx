@@ -635,10 +635,19 @@ export default function Home() {
             <p className="text-sm text-white/50 font-mono uppercase tracking-[0.12em] mt-3">Choose your starting point</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {SELECTOR_PRODUCTS.map((p) => (
-              <ProtocolSelectorCard key={p.slug} p={p} />
-            ))}
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-0 sm:gap-y-6">
+              {SELECTOR_PRODUCTS.map((p, i) => (
+                <div key={p.slug}>
+                  <ProtocolSelectorCard p={p} />
+                  {i < SELECTOR_PRODUCTS.length - 1 && (
+                    <div className="flex justify-center py-6 sm:hidden">
+                      <div className="w-[60%] h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
           <div className="max-w-5xl mx-auto grid grid-cols-2 gap-3 mt-8 md:mt-12 px-1">
             {['3rd Party Testing', 'Standardized Actives', 'Enteric Delivery', 'Quality Controls'].map((p, i) => (
