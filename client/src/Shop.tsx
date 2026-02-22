@@ -633,7 +633,7 @@ function ProductTemplate({ product }) {
                     <div className="grid grid-cols-2 gap-1.5">
                       <button
                         onClick={() => setActiveSidePanel('ingredients')}
-                        className="min-h-[44px] flex items-center justify-center gap-1.5 rounded-lg py-2.5 font-mono uppercase text-[10px] tracking-[0.12em] font-medium text-white/50 hover:bg-white/[0.04] hover:text-white/70 transition-all duration-300"
+                        className="min-h-[44px] flex items-center justify-center gap-1.5 rounded-lg py-2.5 font-mono uppercase text-[11px] tracking-[0.14em] font-medium text-white/50 hover:bg-white/[0.04] hover:text-white/70 transition-all duration-300"
                         style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)' }}
                         data-testid="button-ingredients-pdp"
                       >
@@ -641,7 +641,7 @@ function ProductTemplate({ product }) {
                       </button>
                       <button
                         onClick={() => setActiveSidePanel('rationale')}
-                        className="min-h-[44px] flex items-center justify-center gap-1.5 rounded-lg py-2.5 font-mono uppercase text-[10px] tracking-[0.12em] font-medium text-white/50 hover:bg-white/[0.04] hover:text-white/70 transition-all duration-300"
+                        className="min-h-[44px] flex items-center justify-center gap-1.5 rounded-lg py-2.5 font-mono uppercase text-[11px] tracking-[0.14em] font-medium text-white/50 hover:bg-white/[0.04] hover:text-white/70 transition-all duration-300"
                         style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)' }}
                         data-testid="button-evidence-pdp"
                       >

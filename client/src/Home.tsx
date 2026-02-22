@@ -160,7 +160,7 @@ const SideSheet = ({ isOpen, onClose, title, children }: { isOpen: boolean; onCl
   return (
     <div ref={sheetRef} className="fixed inset-0 z-[200] flex justify-end" role="dialog" aria-modal="true">
       <div data-overlay className="absolute inset-0 bg-ar-navy/60 backdrop-blur-sm" onClick={onClose} />
-      <div data-panel className="relative w-full max-w-xl bg-ar-paper h-full shadow-float p-10 md:p-12 overflow-y-auto border-l border-black/5 rounded-l-ar-3xl">
+      <div data-panel className="relative w-full max-w-xl bg-ar-paper h-full shadow-float p-10 md:p-12 overflow-y-auto border-l border-black/5 rounded-l-2xl">
         <button onClick={onClose} className="absolute top-7 right-7 z-10 p-2 rounded-lg hover:bg-black/5 transition-colors" aria-label="Close" data-testid="button-close-sidesheet">
           <X size={22} />
         </button>
@@ -236,7 +236,7 @@ const Navbar = () => {
 
           <div className="hidden md:flex items-center gap-7 font-mono font-medium text-[11px] uppercase tracking-[0.14em]">
             {navLinks.map((l) => (
-              <a key={l.label} href={l.href} className="text-white/55 hover:text-teal-300 transition-colors">
+              <a key={l.label} href={l.href} className="text-white/55 hover:text-teal-300 transition-colors" data-testid={`nav-link-${l.label.toLowerCase()}`}>
                 {l.label}
               </a>
             ))}
@@ -670,7 +670,7 @@ export default function Home() {
             </p>
           </section>
 
-          <div className="p-6 bg-ar-teal/5 border border-ar-teal/10 rounded-ar-xl">
+          <div className="p-6 bg-ar-teal/5 border border-ar-teal/10 rounded-xl">
             <p className="text-sm italic">
               "Science is the substrate. Purity is the standard. Design is the interface."
             </p>
@@ -687,7 +687,7 @@ export default function Home() {
               <p className="text-xl font-sans font-extrabold uppercase tracking-[-0.02em]">{activeProduct.tagline}</p>
               <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-black/40">{activeProduct.serving}</p>
               {activeProduct.warning && (
-                <div className="p-4 bg-red-500/5 border border-red-500/10 rounded-ar-xl">
+                <div className="p-4 bg-red-500/5 border border-red-500/10 rounded-xl">
                   <p className="text-[12px] font-mono font-bold text-red-600 uppercase tracking-[0.18em] mb-1">Warning</p>
                   <p className="text-sm font-medium">{activeProduct.warning}</p>
                 </div>
@@ -720,7 +720,7 @@ export default function Home() {
             <div className="space-y-3">
               <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-black/45">Rationale</p>
               {activeProduct.rationale.map((r) => (
-                <div key={r.title} className="rounded-ar-xl bg-white border border-black/5 p-4">
+                <div key={r.title} className="rounded-xl bg-white border border-black/5 p-4">
                   <p className="text-xs font-sans font-extrabold uppercase tracking-[0.12em]">{r.title}</p>
                   <p className="mt-2 text-sm text-black/60 font-medium leading-relaxed">{r.text}</p>
                 </div>
