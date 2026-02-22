@@ -50,7 +50,7 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
         />
       </div>
 
-      <div className="w-full max-w-[92%] mx-auto relative overflow-hidden rounded-t-2xl">
+      <div className="w-full max-w-[92%] mx-auto relative overflow-hidden rounded-2xl border border-white/[0.10]">
         <div className="absolute inset-0 bg-[#0d1424]/80 backdrop-blur-lg pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01] pointer-events-none" />
 
