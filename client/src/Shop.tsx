@@ -905,7 +905,7 @@ function ProductTemplate({ product }) {
                   </div>
                   <h4 className="text-[15px] md:text-[17px] font-sans font-bold text-white/90 tracking-[-0.01em] mb-1">{step.label}</h4>
                   <p className="text-[12px] font-sans text-white/45 leading-relaxed max-w-md">{step.desc}</p>
-                  <span className="text-[9px] font-mono font-bold uppercase tracking-[0.14em] text-white/20 mt-2.5 block">{step.marker}</span>
+                  <span className="text-[9px] font-mono font-bold uppercase tracking-[0.14em] text-white mt-2.5 block">{step.marker}</span>
 
                   {i < product.timeline.length - 1 && <div className="h-px bg-white/[0.03] mt-3" />}
                 </div>
@@ -934,7 +934,7 @@ function ProductTemplate({ product }) {
                   <div className="flex-1 min-w-0">
                     <h3 className="text-[16px] md:text-[18px] font-sans font-bold tracking-[-0.01em] text-white/90 mb-1">{item.title}</h3>
                     <p className="text-[12px] md:text-[13px] font-sans text-white/50 leading-relaxed max-w-lg mb-1.5">{item.text}</p>
-                    <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.08em]">{item.tags.join(' · ')}</span>
+                    <span className="text-[10px] font-mono text-white uppercase tracking-[0.08em]">{item.tags.join(' · ')}</span>
                   </div>
                 </div>
                 {i < product.mechanics.length - 1 && i % 2 === 0 && <div className="h-px bg-white/[0.04] ml-[52px] md:ml-[64px]" />}
