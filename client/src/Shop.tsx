@@ -799,7 +799,7 @@ function ProductTemplate({ product }) {
         )}
         <div className="relative z-[1] max-w-3xl mx-auto px-6">
           <div className="reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.16em] text-white/50 block mb-4" data-testid="text-narrative-label">{copy.narrative.label}</span>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.16em] block mb-4" style={{ color: accentText }} data-testid="text-narrative-label">{copy.narrative.label}</span>
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-5" data-testid="text-narrative-headline">{copy.narrative.headline}</h2>
             <div className="space-y-1" data-testid="text-narrative-body">
               {copy.narrative.bodyLines.map((line, i) => (
@@ -816,7 +816,7 @@ function ProductTemplate({ product }) {
         <div className="absolute inset-0 bg-[#0f172a]/20 pointer-events-none z-0" />
         <div className="relative z-[1] max-w-3xl mx-auto px-6">
           <div className="reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-2">Telemetry</span>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Telemetry</span>
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">{copy.telemetry.headline}</h2>
             <p className="text-[13px] font-sans text-white/55 leading-relaxed max-w-xl mb-6">{copy.telemetry.body}</p>
 
@@ -839,7 +839,7 @@ function ProductTemplate({ product }) {
       <section className="relative py-11 md:py-16" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.45) 8%, rgba(15,23,42,0.45) 92%, rgba(15,23,42,0) 100%)' }} data-testid="section-standards">
         <div className="max-w-3xl mx-auto px-6">
           <div className="reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-5">Formulation Standards</span>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-5" style={{ color: accentText }}>Formulation Standards</span>
             <div className="flex flex-col gap-4">
               {SHARED_STANDARDS.map((item, i) => (
                 <div key={i} className="flex items-start gap-5" data-testid={`standard-${i}`}>
@@ -860,7 +860,7 @@ function ProductTemplate({ product }) {
         <div className="absolute inset-0 bg-[#0f172a]/30 pointer-events-none z-0" />
         <div className="relative z-[1] max-w-3xl mx-auto px-6">
           <div className="reveal mb-6">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-2">Compound Specification</span>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Compound Specification</span>
             <p className="text-[12px] font-mono text-white/50 tracking-[0.04em] uppercase mb-1">{copy.spec.meta}</p>
             <p className="text-[13px] font-sans text-white/60 leading-relaxed max-w-lg mb-1">{copy.spec.reassurance}</p>
             <p className="text-[11px] font-mono text-white/45 tracking-[0.04em]">{copy.spec.declaration}</p>
@@ -883,7 +883,7 @@ function ProductTemplate({ product }) {
         <div className="absolute inset-0 bg-[#0f172a]/20 pointer-events-none z-0" />
         <div className="relative z-[1] max-w-3xl mx-auto px-6">
           <div className="reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-2">Protocol Arc</span>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Protocol Arc</span>
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">{copy.arc.headline}</h2>
             <p className="text-[13px] font-mono text-white/40 tracking-[-0.01em] mb-8">{copy.arc.subline}</p>
 
