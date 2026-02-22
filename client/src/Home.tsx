@@ -372,50 +372,62 @@ const TheAxis = ({ onOpenEvidence }) => {
               name: 'Gut–Mito Axis',
               tag: 'GMA',
               accent: 'rgba(25,179,166,0.5)',
+              accentBg: 'rgba(25,179,166,0.06)',
+              accentBorder: 'rgba(25,179,166,0.18)',
+              accentText: 'rgba(25,179,166,0.7)',
               desc: 'Postbiotic signaling and mitochondrial renewal support designed for daily repeatability.',
-              steps: ['Enteric delivery', 'Barrier support', 'Mitophagy signaling']
+              steps: ['Enteric delivery', 'Barrier support', 'Mitophagy signaling'],
+              primary: true
             },
             {
               name: 'NAD+ Infrastructure',
               tag: 'NAD',
               accent: 'rgba(30,58,138,0.6)',
+              accentBg: 'rgba(96,165,250,0.05)',
+              accentBorder: 'rgba(96,165,250,0.15)',
+              accentText: 'rgba(96,165,250,0.7)',
               desc: 'Daily NAD+ precursor support with co-factors for consistent pathway support.',
-              steps: ['NAD+ pools', 'Redox support', 'Methylation support']
+              steps: ['NAD+ pools', 'Redox support', 'Methylation support'],
+              primary: false
             },
             {
               name: 'Autophagy Pulse',
               tag: 'APC',
               accent: 'rgba(108,92,231,0.5)',
+              accentBg: 'rgba(108,92,231,0.05)',
+              accentBorder: 'rgba(108,92,231,0.15)',
+              accentText: 'rgba(108,92,231,0.7)',
               desc: 'A 7-day cyclical protocol designed to support cellular cleanup processes and resilience.',
-              steps: ['Short cycle', 'Defense layer', 'Return to base']
+              steps: ['Short cycle', 'Defense layer', 'Return to base'],
+              primary: false
             }
           ].map((item, i) => (
-            <div key={i} className="reveal-stagger group relative overflow-hidden rounded-lg border border-white/[0.06] hover:border-white/[0.10] transition-all duration-300">
+            <div key={i} className="reveal-stagger group relative overflow-hidden rounded-lg transition-all duration-300" style={{ border: `1px solid rgba(255,255,255,${item.primary ? 0.09 : 0.06})` }}>
               <div className="absolute top-0 left-0 right-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${item.accent}, transparent)` }} />
-              <div className="absolute inset-0 bg-white/[0.02]" />
-              <div className="relative z-10 px-4 pt-4 pb-3.5 flex flex-col gap-2.5">
+              <div className="absolute inset-0" style={{ background: item.primary ? 'rgba(255,255,255,0.035)' : 'rgba(255,255,255,0.018)' }} />
+              <div className="relative z-10 px-4 pt-4 pb-3.5 flex flex-col gap-2">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-7 h-7 rounded flex items-center justify-center border border-white/[0.08] bg-white/[0.04]">
-                    <span className="text-[8px] font-mono font-bold tracking-[0.08em] text-white/45">{item.tag}</span>
+                  <div className="w-7 h-7 rounded flex items-center justify-center" style={{ border: `1.5px solid ${item.accentBorder}`, background: item.accentBg }}>
+                    <span className="text-[8px] font-mono font-bold tracking-[0.08em]" style={{ color: item.accentText }}>{item.tag}</span>
                   </div>
-                  <h3 className="text-[14px] font-head font-normal uppercase tracking-[-0.01em] text-white/90">{item.name}</h3>
+                  <h3 className="text-[14px] font-head font-normal uppercase tracking-[-0.01em] text-white">{item.name}</h3>
                 </div>
 
-                <p className="text-[12px] font-sans text-white/45 leading-[1.5]">{item.desc}</p>
+                <p className="text-[12px] font-sans text-white/50 leading-[1.5]">{item.desc}</p>
 
-                <div className="flex flex-col gap-1 pt-0.5">
+                <div className="flex flex-col gap-[5px] pt-0.5">
                   {item.steps.map((s) => (
-                    <div key={s} className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.06em] text-white/40">
-                      <div className="w-[3px] h-[3px] bg-white/20 shrink-0" /> {s}
+                    <div key={s} className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.06em] text-white/45">
+                      <div className="w-[3px] h-[3px] bg-white/30 shrink-0" /> {s}
                     </div>
                   ))}
                 </div>
 
                 <button
                   onClick={onOpenEvidence}
-                  className="mt-0.5 self-start flex items-center gap-1.5 text-[10px] font-mono font-medium uppercase tracking-[0.08em] text-white/35 hover:text-white/60 transition-colors duration-300 group/cta"
+                  className="mt-1 self-start flex items-center gap-1.5 px-2.5 py-1.5 rounded text-[9px] font-mono font-bold uppercase tracking-[0.08em] text-white/40 hover:text-white/65 border border-white/[0.06] hover:border-white/[0.12] transition-all duration-300 group/cta"
                 >
-                  Evidence <ArrowRight size={10} className="group-hover/cta:translate-x-0.5 transition-transform" />
+                  Evidence <ArrowRight size={9} className="group-hover/cta:translate-x-0.5 transition-transform" />
                 </button>
               </div>
             </div>
