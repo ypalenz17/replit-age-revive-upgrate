@@ -1,0 +1,240 @@
+STOP redesign drift. We need an elite “system page” cleanup pass.
+
+Context:
+Shop page drifted away from elite: all sections look the same color, too much text, weak section separation, inconsistent alignment, and some copy is wrapping/clipping. Restore deeper navy tones and create clear section planes so the scroll becomes readable and inevitable.
+
+NON-NEGOTIABLES
+- Do NOT invent new colors. Use existing palette: deep navy base, off-white text, lighter accent blue/teal for indices/links/underlines only.
+- Do NOT add new UI patterns (no pills, no accordion cards, no chip badges).
+- Do NOT change design system components except to restore intended styling and fix bugs.
+- The page must remain compliant: no disease claims, no “treat/diagnose/cure/prevent/reverse,” no guaranteed outcomes.
+
+PHASE 1 — VISUAL SYSTEM RESET (fix the “everything blends” problem)
+1) Restore deeper navy “planes” between major sections.
+- Implement an alternating section background treatment (subtle only):
+  Plane A: deeper navy (darker) + grid faint
+  Plane B: slightly lighter navy + grid even fainter
+  Plane C: deep vignette (dark) for key headings
+- Apply these planes to MAJOR sections so the user can feel boundaries:
+  - Product Hero (Plane A)
+  - Why Daily Input Matters (Plane B)
+  - What It Supports (Plane A)
+  - Telemetry (Plane B)
+  - Formulation Standards (Plane A)
+  - Compound Specification (Plane C) (text-dense, needs most contrast)
+  - Protocol Arc (Plane B)
+  - Final CTA + Footer (Plane A)
+
+2) Grid control:
+- The grid must be atmospheric, not readable.
+- Reduce grid opacity further in text-dense planes (Compound Spec + Telemetry + Protocol Arc).
+- Do not let grid lines cut through paragraph text.
+
+3) Typography hierarchy:
+- Section label: readable (not ghost), consistent
+- Section headline: strong
+- Body: readable (not white/40)
+- Metadata: slightly dimmer
+- Ensure every section has a clear label + headline + 1–2 lines max where possible.
+
+PHASE 2 — LAYOUT + ALIGNMENT BUG FIXES (stop overlaps, drift, and repeated UI)
+4) Bottom module selector rail:
+- It must NEVER cover content. Add global bottom padding equal to rail height + safe-area inset.
+- If the rail is fixed, add `padding-bottom: calc(RAIL_HEIGHT + env(safe-area-inset-bottom) + 16px)` to the page wrapper.
+- Optionally hide the rail when footer is in view.
+
+5) Remove duplicate rails:
+- The module selector rail is appearing mid-page multiple times. There must be ONE instance only (fixed bottom), not repeated inside sections.
+
+6) Header icon colors:
+- Hamburger icon must be same white tone as other icons. No random teal hamburger.
+- Cart badge accent allowed, but subtle.
+
+7) Alignment discipline:
+- All section labels, headlines, and body text must share the same left gutter.
+- Dividers must align with content width (not full bleed if text is inset).
+- Fix any misaligned divider lines or drifting margins.
+
+8) Wrapping/clipping fixes:
+- Fix any missing spaces or typography errors (example: “CRASH.IT” must be “CRASH. IT”).
+- Prevent awkward wraps by shortening the few long lines listed in Phase 3 below.
+- Ensure metadata lines don’t wrap into 3 lines; keep to 1–2 lines max.
+
+PHASE 3 — EXACT TEXT REPLACEMENT (3 PRODUCTS) + SHORTENING RULES
+Implement a content map keyed by selected product/module. This is exact replacement. Do not “improve wording” beyond the specified short versions.
+
+GLOBAL SHORTENING RULE:
+- Any paragraph longer than 2 lines on mobile must be condensed to the provided short version.
+- Avoid jargon-first. Always provide the human meaning in the same sentence.
+
+A) CELLUNAD+ (module/slug: cellunad)
+Overline: DAILY INPUT LAYER
+Title: CELLUNAD+
+Subtitle: Daily NAD+ support engineered for consistency, not hype.
+Micro line (short): Protocol: 2 caps daily • Target: energy + repair
+
+WHY section:
+Label: WHY DAILY INPUT MATTERS
+Headline: ENERGY DOESN’T CRASH. IT QUIETLY LOSES EFFICIENCY.
+Body (short): Most people don’t notice the drift until output drops. CELLUNAD+ is a steady daily input supporting energy production and cellular maintenance.
+
+WHAT IT SUPPORTS:
+Label: WHAT IT SUPPORTS
+Headline: A CLEANER BASELINE YOU CAN BUILD ON.
+Lines (no bullets, max 4):
+- Supports cellular energy production and resilience
+- Supports NAD+ metabolism and daily replenishment
+- Supports healthy redox balance and mitochondrial function
+- Supports methylation cofactors for normal cellular processes
+
+TELEMETRY:
+Label: TELEMETRY
+Headline: BIOLOGICAL RESPONSE, QUANTIFIED.
+Body (short): If you can’t measure change, you’re guessing. Protocol inputs paired with measurable feedback.
+Rows:
+01 NAD+ Pathway Activity — substrate + cofactor alignment
+02 Redox Balance — steady-state output support
+03 Methylation Support — cofactor sufficiency cues
+
+FORMULATION STANDARDS (shared, see below)
+COMPOUND SPEC intro:
+Label: COMPOUND SPECIFICATION
+Meta: ACTIVES: 8 • SERVING: 2 CAPSULES DAILY
+Line: All dosages reflect clinically studied ranges and bioavailable forms.
+Line: No proprietary formulations.
+
+PROTOCOL ARC:
+Label: PROTOCOL ARC
+Headline: WHAT YOU MAY NOTICE OVER TIME.
+Subline: Response varies. Consistency compounds.
+Phase I — Calibration (Days 1–3): Routine locks in. Inputs become consistent.
+Phase II — Stabilization (Week 1–2): Steady daily support. Less “spike,” more baseline.
+Phase III — Integration (Week 3–4): Compounding effect. This becomes your default.
+
+CLOSE:
+Headline: BUILD A BASELINE THAT DOESN’T RELY ON MOTIVATION.
+Body: If you’re serious about longevity, consistency is the advantage.
+Primary CTA: Add to Stack
+Secondary link: View Evidence →
+
+B) CELLUBIOME (module/slug: cellubiome)
+Overline: SIGNALING LAYER
+Title: CELLUBIOME
+Subtitle: Daily gut-mito support designed to reinforce your foundation.
+Micro line (short): Protocol: 2 enteric caps daily • Target: gut–mito signaling
+
+WHY section:
+Label: WHY SIGNALING MATTERS
+Headline: YOUR GUT IS NOT SEPARATE FROM YOUR ENERGY.
+Body (short): When signaling is off, output feels noisy. CELLUBIOME supports the gut–mito connection with a focused daily input.
+
+WHAT IT SUPPORTS:
+Label: WHAT IT SUPPORTS
+Headline: A STEADIER SYSTEM SIGNAL.
+Lines:
+- Supports gut barrier integrity and digestive resilience
+- Supports mitochondrial efficiency and recovery support
+- Supports gut environment support (short-chain fatty acids)
+- Supports consistency across sleep, training, and daily output
+
+TELEMETRY:
+Label: TELEMETRY
+Headline: SIGNAL, MEASURED OVER TIME.
+Body (short): Signals show up before “feelings.” Measurable feedback reduces guesswork.
+Rows:
+01 Gut Resilience Signals — consistency + tolerance cues
+02 Mitochondrial Efficiency — recovery + output stability cues
+03 Inflammation Balance — resilience trend cues
+
+COMPOUND SPEC intro:
+Label: COMPOUND SPECIFICATION
+Meta: ACTIVES: 2 • SERVING: 2 ENTERIC CAPS DAILY
+Line: Full dosing disclosed. Focused inputs, no filler complexity.
+Line: No proprietary formulations.
+
+PROTOCOL ARC:
+Label: PROTOCOL ARC
+Headline: WHAT YOU MAY NOTICE OVER TIME.
+Subline: The signal stabilizes before it feels dramatic.
+Phase I — Calibration (Days 1–3): Routine locks in. Consistent input begins.
+Phase II — Stabilization (Week 1–2): Tolerance cues become clearer.
+Phase III — Integration (Week 3–4): More reliable output, less “noise.”
+
+CLOSE:
+Headline: FIX THE SIGNAL. THEN EVERYTHING PERFORMS BETTER.
+Body: Build the foundation you can actually stack on.
+Primary CTA: Add to Stack
+Secondary link: View Evidence →
+
+C) CELLUNOVA (module/slug: cellunova)
+Overline: CYCLE LAYER
+Title: CELLUNOVA
+Subtitle: A 7-day monthly reset protocol designed for discipline, not extremes.
+Micro line (short): Protocol: 7 days • 5 caps/day • Target: renewal cadence
+
+WHY section:
+Label: WHY A CYCLE EXISTS
+Headline: DAILY INPUTS BUILD. CYCLES RECALIBRATE.
+Body (short): Most people do nothing or do too much. CELLUNOVA is a controlled, repeatable 7-day cadence designed to support renewal pathways.
+
+WHAT IT SUPPORTS:
+Label: WHAT IT SUPPORTS
+Headline: A RESET YOU CAN ACTUALLY REPEAT.
+Lines:
+- Supports cellular cleanup and renewal pathways
+- Supports antioxidant defense and oxidative balance
+- Supports healthy inflammatory response balance
+- Supports resilience during periods of higher load
+
+TELEMETRY:
+Label: TELEMETRY
+Headline: CYCLES MAKE SIGNAL EASIER TO SEE.
+Body (short): A short window makes changes easier to observe and compare over time.
+Rows:
+01 Recovery Signal — sleep + training tolerance cues
+02 Inflammation Balance — resilience trend cues
+03 Output Stability — week-to-week consistency
+
+COMPOUND SPEC intro:
+Label: COMPOUND SPECIFICATION
+Meta: ACTIVES: 10 • PROTOCOL: 7 DAYS (5 CAPS DAILY)
+Line: Full dosing disclosed. Built as a cycle, not a daily stimulant.
+Line: No proprietary formulations.
+Micro note: Contains wheat (spermidine source).
+
+PROTOCOL ARC:
+Label: PROTOCOL ARC
+Headline: WHAT THE 7-DAY CYCLE FEELS LIKE.
+Subline: Keep the cadence. Don’t chase intensity.
+Days 1–2 — Initiation: You may feel different or feel nothing. Both are normal.
+Days 3–5 — Engagement: The cycle becomes steadier. Focus on routine.
+Days 6–7 — Completion: Finish clean. Consistency matters more than sensation.
+Post-cycle — Return: Resume your daily stack. Repeat monthly if it fits your system.
+
+CLOSE:
+Headline: THE RESET IS THE ADVANTAGE.
+Body: A short, repeatable cadence beats sporadic extremes.
+Primary CTA: Add to Stack
+Secondary link: View Evidence →
+
+SHARED “FORMULATION STANDARDS” (all products)
+Label: FORMULATION STANDARDS
+01 Third-Party Tested — Independent lab verification
+02 Standardized Actives — Precise concentration control
+03 Delivery Matters — Form + release designed per protocol
+04 Quality Control — Multi-stage review process
+
+PHASE 4 — FINAL ELITE CHECKLIST (must pass)
+- No section headings covered by the bottom rail.
+- No repeated rails mid-page.
+- No teal hamburger icon.
+- No faint unreadable micro text (labels must be readable).
+- No giant blocks of uninterrupted text; every section must have clear label/headline/short body.
+- No accidental wrapping on key micro lines; apply the short versions above.
+- Deeper navy planes must be visible between major sections so the scroll has “chapters”.
+
+DELIVERABLE
+- Implement the plane system + alignment fixes + text map exactly.
+- List files edited.
+- Confirm tested at 375px and 390px.
+- Confirm the page reads as distinct chapters and is easy to follow.

@@ -44,11 +44,11 @@ const COPY_MAP = {
   cellunad: {
     overline: 'Daily Input Layer',
     subtitle: 'Daily NAD+ support engineered for consistency, not hype.',
-    microLine: 'Protocol: 2 caps daily · Target: energy + repair',
+    microLine: 'Protocol: 2 caps daily \u2022 Target: energy + repair',
     why: {
       label: 'Why Daily Input Matters',
       headline: 'Energy doesn\'t crash. It quietly loses efficiency.',
-      body: 'Most people don\'t notice the drift until output drops. CELLUNAD+ is built as a steady daily input, supporting the pathways that keep energy production and cellular maintenance running clean.'
+      body: 'Most people don\'t notice the drift until output drops. CELLUNAD+ is a steady daily input supporting energy production and cellular maintenance.'
     },
     what: {
       label: 'What It Supports',
@@ -70,7 +70,7 @@ const COPY_MAP = {
       ]
     },
     spec: {
-      meta: 'Actives: 8 · Serving: 2 capsules daily',
+      meta: 'Actives: 8 \u2022 Serving: 2 capsules daily',
       reassurance: 'All dosages reflect clinically studied ranges and bioavailable forms.',
       declaration: 'No proprietary formulations.'
     },
@@ -78,9 +78,9 @@ const COPY_MAP = {
       headline: 'What you may notice over time.',
       subline: 'Response varies. Consistency compounds.',
       phases: [
-        { phase: 'I', label: 'Calibration', time: 'Days 1–3', desc: 'Routine locks in. Inputs become consistent.' },
-        { phase: 'II', label: 'Stabilization', time: 'Week 1–2', desc: 'Steady daily support. Less "spike," more baseline.' },
-        { phase: 'III', label: 'Integration', time: 'Week 3–4', desc: 'Compounding effect. This becomes your default.' }
+        { phase: 'I', label: 'Calibration', time: 'Days 1\u20133', desc: 'Routine locks in. Inputs become consistent.' },
+        { phase: 'II', label: 'Stabilization', time: 'Week 1\u20132', desc: 'Steady daily support. Less "spike," more baseline.' },
+        { phase: 'III', label: 'Integration', time: 'Week 3\u20134', desc: 'Compounding effect. This becomes your default.' }
       ]
     },
     close: {
@@ -91,25 +91,25 @@ const COPY_MAP = {
   cellubiome: {
     overline: 'Signaling Layer',
     subtitle: 'Daily gut-mito support designed to reinforce your foundation.',
-    microLine: 'Protocol: 2 enteric-coated capsules daily · System target: Gut–mito signaling + resilience',
+    microLine: 'Protocol: 2 enteric caps daily \u2022 Target: gut\u2013mito signaling',
     why: {
       label: 'Why Signaling Matters',
       headline: 'Your gut is not separate from your energy.',
-      body: 'When gut signaling is off, output feels noisy: energy, recovery, and consistency drift. CELLUBIOME supports the gut–mito connection with a focused, daily input.'
+      body: 'When signaling is off, output feels noisy. CELLUBIOME supports the gut\u2013mito connection with a focused daily input.'
     },
     what: {
       label: 'What It Supports',
       headline: 'A steadier system signal.',
       lines: [
         'Supports gut barrier integrity and digestive resilience',
-        'Supports mitochondrial renewal signals (cellular efficiency support)',
-        'Supports short-chain fatty acid activity for gut environment support',
+        'Supports mitochondrial efficiency and recovery support',
+        'Supports gut environment support (short-chain fatty acids)',
         'Supports consistency across sleep, training, and daily output'
       ]
     },
     telemetry: {
-      headline: 'Biological response, quantified.',
-      body: 'Signals show up before "feelings." Age Revive uses measurable feedback to reduce guesswork and keep the protocol honest.',
+      headline: 'Signal, measured over time.',
+      body: 'Signals show up before "feelings." Measurable feedback reduces guesswork.',
       rows: [
         { label: 'Gut Resilience Signals', metric: 'Consistency + tolerance cues' },
         { label: 'Mitochondrial Efficiency', metric: 'Recovery + output stability cues' },
@@ -117,7 +117,7 @@ const COPY_MAP = {
       ]
     },
     spec: {
-      meta: 'Actives: 2 · Serving: 2 enteric-coated capsules daily',
+      meta: 'Actives: 2 \u2022 Serving: 2 enteric caps daily',
       reassurance: 'Full dosing disclosed. Focused inputs, no filler complexity.',
       declaration: 'No proprietary formulations.'
     },
@@ -125,9 +125,9 @@ const COPY_MAP = {
       headline: 'What you may notice over time.',
       subline: 'The signal stabilizes before it feels dramatic.',
       phases: [
-        { phase: 'I', label: 'Calibration', time: 'Days 1–3', desc: 'Routine locks in. The system gets consistent input.' },
-        { phase: 'II', label: 'Stabilization', time: 'Week 1–2', desc: 'Digestion and tolerance cues become clearer.' },
-        { phase: 'III', label: 'Integration', time: 'Week 3–4', desc: 'More reliable output, less "noise."' }
+        { phase: 'I', label: 'Calibration', time: 'Days 1\u20133', desc: 'Routine locks in. Consistent input begins.' },
+        { phase: 'II', label: 'Stabilization', time: 'Week 1\u20132', desc: 'Tolerance cues become clearer.' },
+        { phase: 'III', label: 'Integration', time: 'Week 3\u20134', desc: 'More reliable output, less "noise."' }
       ]
     },
     close: {
@@ -138,11 +138,11 @@ const COPY_MAP = {
   cellunova: {
     overline: 'Cycle Layer',
     subtitle: 'A 7-day monthly reset protocol designed for discipline, not extremes.',
-    microLine: 'Protocol: 5 capsules daily for 7 days · System target: Renewal cadence + cleanup pathways',
+    microLine: 'Protocol: 7 days \u2022 5 caps/day \u2022 Target: renewal cadence',
     why: {
       label: 'Why a Cycle Exists',
       headline: 'Daily inputs build. Cycles recalibrate.',
-      body: 'Most people either do nothing or do too much. CELLUNOVA is a controlled cadence: a short, repeatable cycle designed to support renewal pathways without turning your life into a protocol.'
+      body: 'Most people do nothing or do too much. CELLUNOVA is a controlled, repeatable 7-day cadence designed to support renewal pathways.'
     },
     what: {
       label: 'What It Supports',
@@ -151,20 +151,20 @@ const COPY_MAP = {
         'Supports cellular cleanup and renewal pathways',
         'Supports antioxidant defense and oxidative balance',
         'Supports healthy inflammatory response balance',
-        'Supports resilience during periods of higher stress or load'
+        'Supports resilience during periods of higher load'
       ]
     },
     telemetry: {
-      headline: 'Cycles are where signal becomes obvious.',
-      body: 'A short protocol window makes changes easier to observe and compare over time. Age Revive uses feedback to keep cycles consistent and measurable.',
+      headline: 'Cycles make signal easier to see.',
+      body: 'A short window makes changes easier to observe and compare over time.',
       rows: [
         { label: 'Recovery Signal', metric: 'Sleep + training tolerance cues' },
         { label: 'Inflammation Balance', metric: 'Resilience trend cues' },
-        { label: 'Output Stability', metric: 'Consistency across the week' }
+        { label: 'Output Stability', metric: 'Week-to-week consistency' }
       ]
     },
     spec: {
-      meta: 'Actives: 10 · Protocol: 7 days (5 capsules daily)',
+      meta: 'Actives: 10 \u2022 Protocol: 7 days (5 caps daily)',
       reassurance: 'Full dosing disclosed. Built as a cycle, not a daily stimulant.',
       declaration: 'No proprietary formulations.',
       microNote: 'Contains wheat (spermidine source).'
@@ -173,10 +173,10 @@ const COPY_MAP = {
       headline: 'What the 7-day cycle feels like.',
       subline: 'Keep the cadence. Don\'t chase intensity.',
       phases: [
-        { phase: 'I', label: 'Initiation', time: 'Days 1–2', desc: 'You may feel "different" or feel nothing. Both are normal.' },
-        { phase: 'II', label: 'Engagement', time: 'Days 3–5', desc: 'The cycle becomes steadier. Focus on routine.' },
-        { phase: 'III', label: 'Completion', time: 'Days 6–7', desc: 'Finish clean. Consistency matters more than sensation.' },
-        { phase: 'IV', label: 'Return to Baseline', time: 'Post-cycle', desc: 'Resume your daily stack. Repeat monthly if it fits your system.' }
+        { phase: 'I', label: 'Initiation', time: 'Days 1\u20132', desc: 'You may feel different or feel nothing. Both are normal.' },
+        { phase: 'II', label: 'Engagement', time: 'Days 3\u20135', desc: 'The cycle becomes steadier. Focus on routine.' },
+        { phase: 'III', label: 'Completion', time: 'Days 6\u20137', desc: 'Finish clean. Consistency matters more than sensation.' },
+        { phase: 'IV', label: 'Return', time: 'Post-cycle', desc: 'Resume your daily stack. Repeat monthly if it fits your system.' }
       ]
     },
     close: {
@@ -264,16 +264,16 @@ const PRODUCTS = {
     category: 'Gut–Mito Signaling',
     tagline: 'Daily gut-mito support designed to reinforce your foundation.',
     description:
-      'Urolithin A + tributyrin. Enteric-coated, 2-compound precision.',
+      'Urolithin A + tributyrin. 2-compound precision.',
     price: '$110.00',
-    serving: '2 enteric-coated capsules daily',
+    serving: '2 enteric caps daily',
     accent: '#19B3A6',
     accentText: '#5eead4',
     heroImage: '/images/cellubiome-trimmed.png',
     outcomes: [
       'Supports gut barrier integrity and digestive resilience',
-      'Supports mitochondrial renewal signals (cellular efficiency support)',
-      'Supports short-chain fatty acid activity for gut environment support',
+      'Supports mitochondrial efficiency and recovery support',
+      'Supports gut environment support (short-chain fatty acids)',
       'Supports consistency across sleep, training, and daily output'
     ],
     ingredients: [
@@ -299,9 +299,9 @@ const PRODUCTS = {
     category: 'Renewal Cadence + Cleanup',
     tagline: 'A 7-day monthly reset protocol designed for discipline, not extremes.',
     description:
-      'Polyphenol + senolytic stack. 10 actives, 7-day phase design.',
+      'Polyphenol + senolytic stack. 10 actives, 7-day cycle.',
     price: '$145.00',
-    serving: '5 capsules daily for 7 consecutive days',
+    serving: '5 caps/day for 7 days',
     warnings: 'Contains wheat (spermidine source).',
     accent: '#6C5CE7',
     accentText: '#a78bfa',
@@ -310,7 +310,7 @@ const PRODUCTS = {
       'Supports cellular cleanup and renewal pathways',
       'Supports antioxidant defense and oxidative balance',
       'Supports healthy inflammatory response balance',
-      'Supports resilience during periods of higher stress or load'
+      'Supports resilience during periods of higher load'
     ],
     ingredients: [
       { name: 'NAC', dose: '600 mg', purpose: 'Glutathione support',
@@ -804,8 +804,8 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      {/* WHY */}
-      <section className="py-12 md:py-16" data-testid="section-why">
+      {/* WHY — Plane B (lighter) */}
+      <section className="relative py-14 md:py-20" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.25) 8%, rgba(15,23,42,0.25) 92%, rgba(15,23,42,0) 100%)' }} data-testid="section-why">
         <div className="max-w-3xl mx-auto px-6">
           <div className="reveal">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-2" data-testid="text-why-label">{copy.why.label}</span>
@@ -815,10 +815,8 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <div className="max-w-3xl mx-auto px-6"><div className="h-px bg-white/[0.06]" /></div>
-
-      {/* WHAT */}
-      <section className="py-12 md:py-16" data-testid="section-what">
+      {/* WHAT — Plane A (darker) */}
+      <section className="relative py-14 md:py-20" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.45) 8%, rgba(15,23,42,0.45) 92%, rgba(15,23,42,0) 100%)' }} data-testid="section-what">
         <div className="max-w-3xl mx-auto px-6">
           <div className="reveal">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-2" data-testid="text-what-label">{copy.what.label}</span>
@@ -832,11 +830,10 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <div className="max-w-3xl mx-auto px-6"><div className="h-px bg-white/[0.06]" /></div>
-
-      {/* TELEMETRY */}
-      <section className="py-12 md:py-16" data-testid="section-telemetry">
-        <div className="max-w-3xl mx-auto px-6">
+      {/* TELEMETRY — Plane B (lighter) */}
+      <section className="relative py-14 md:py-20" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.25) 8%, rgba(15,23,42,0.25) 92%, rgba(15,23,42,0) 100%)' }} data-testid="section-telemetry">
+        <div className="absolute inset-0 bg-[#0f172a]/20 pointer-events-none z-0" />
+        <div className="relative z-[1] max-w-3xl mx-auto px-6">
           <div className="reveal">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-2">Telemetry</span>
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">{copy.telemetry.headline}</h2>
@@ -857,10 +854,8 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <div className="max-w-3xl mx-auto px-6"><div className="h-px bg-white/[0.06]" /></div>
-
-      {/* STANDARDS */}
-      <section className="py-12 md:py-16" data-testid="section-standards">
+      {/* STANDARDS — Plane A (darker) */}
+      <section className="relative py-14 md:py-20" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.45) 8%, rgba(15,23,42,0.45) 92%, rgba(15,23,42,0) 100%)' }} data-testid="section-standards">
         <div className="max-w-3xl mx-auto px-6">
           <div className="reveal">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-5">Formulation Standards</span>
@@ -879,15 +874,14 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <div className="max-w-3xl mx-auto px-6"><div className="h-px bg-white/[0.06]" /></div>
-
-      {/* COMPOUND SPECIFICATION */}
-      <section className="py-12 md:py-16" data-testid="section-spec">
-        <div className="max-w-3xl mx-auto px-6">
+      {/* COMPOUND SPECIFICATION — Plane C (deep vignette) */}
+      <section className="relative py-14 md:py-20" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.7) 50%, rgba(15,23,42,0.55) 100%)' }} data-testid="section-spec">
+        <div className="absolute inset-0 bg-[#0f172a]/30 pointer-events-none z-0" />
+        <div className="relative z-[1] max-w-3xl mx-auto px-6">
           <div className="reveal mb-6">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-2">Compound Specification</span>
             <p className="text-[12px] font-mono text-white/50 tracking-[0.04em] uppercase mb-1">{copy.spec.meta}</p>
-            <p className="text-[13px] font-sans text-white/55 leading-relaxed max-w-lg mb-1">{copy.spec.reassurance}</p>
+            <p className="text-[13px] font-sans text-white/60 leading-relaxed max-w-lg mb-1">{copy.spec.reassurance}</p>
             <p className="text-[11px] font-mono text-white/45 tracking-[0.04em]">{copy.spec.declaration}</p>
             {copy.spec.microNote && <p className="text-[11px] font-mono text-amber-300/50 tracking-[0.04em] mt-1">{copy.spec.microNote}</p>}
           </div>
@@ -903,11 +897,10 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <div className="max-w-3xl mx-auto px-6"><div className="h-px bg-white/[0.06]" /></div>
-
-      {/* PROTOCOL ARC */}
-      <section className="py-12 md:py-16" data-testid="section-arc">
-        <div className="max-w-3xl mx-auto px-6">
+      {/* PROTOCOL ARC — Plane B (lighter) */}
+      <section className="relative py-14 md:py-20" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.25) 8%, rgba(15,23,42,0.25) 92%, rgba(15,23,42,0) 100%)' }} data-testid="section-arc">
+        <div className="absolute inset-0 bg-[#0f172a]/20 pointer-events-none z-0" />
+        <div className="relative z-[1] max-w-3xl mx-auto px-6">
           <div className="reveal">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-2">Protocol Arc</span>
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">{copy.arc.headline}</h2>
@@ -939,10 +932,8 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <div className="max-w-3xl mx-auto px-6"><div className="h-px bg-white/[0.06]" /></div>
-
-      {/* CLOSE */}
-      <section className="py-12 md:py-16" data-testid="section-close">
+      {/* CLOSE — Plane A (darker) */}
+      <section className="relative py-14 md:py-20" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.45) 8%, rgba(15,23,42,0.45) 92%, rgba(15,23,42,0) 100%)' }} data-testid="section-close">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <div className="reveal">
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-3" data-testid="text-close-headline">{copy.close.headline}</h2>
