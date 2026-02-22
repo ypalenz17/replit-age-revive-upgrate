@@ -45,7 +45,7 @@ const PRODUCTS = {
     id: 'cellunad',
     name: 'CELLUNAD+',
     category: 'NAD+ Optimization',
-    tagline: 'Daily NAD+ support, engineered for consistency.',
+    tagline: 'Engineered daily NAD+ support.',
     description:
       'A molecular-grade daily protocol that supports NAD+ metabolism with redox and methylation cofactors. Built to feel precise, not noisy.',
     price: '$92.00',
@@ -86,7 +86,7 @@ const PRODUCTS = {
     id: 'cellubiome',
     name: 'CELLUBIOME',
     category: 'Mitochondrial + Gut Signaling Support',
-    tagline: 'Postbiotic signaling for the gut mitochondria axis.',
+    tagline: 'Enteric-coated postbiotic signaling.',
     description:
       'Enteric-coated delivery of Urolithin A plus tributyrin to support mitochondrial recycling signals and short-chain fatty acid activity.',
     price: '$110.00',
@@ -121,7 +121,7 @@ const PRODUCTS = {
     id: 'cellunova',
     name: 'CELLUNOVA',
     category: '7-Day Autophagy + Protocol Cycle',
-    tagline: 'Seven days on. High-definition cellular maintenance.',
+    tagline: '7-day cellular maintenance cycle.',
     description:
       'A cyclical protocol featuring polyphenols, antioxidants, and metabolic cofactors designed for short, intentional phases. Not a daily forever stack.',
     price: '$145.00',
@@ -547,25 +547,24 @@ function ProductTemplate({ product }) {
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12 px-5 md:px-8 pt-28 md:pt-32 pb-10 md:pb-16 items-center">
 
           <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left">
-            <div className="flex items-center gap-2 justify-center md:justify-start mb-3">
-              <div className="h-px w-4 bg-white/10" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.10em]" style={{ color: hexToRgba(accent, 0.7) }}>{product.category}</span>
-              <div className="h-px w-4 bg-white/10" />
+            <div className="mb-3 flex flex-col items-center md:items-start gap-0.5">
+              <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/30">System Target</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.14em] font-bold" style={{ color: hexToRgba(accent, 0.75) }}>{product.category}</span>
             </div>
 
-            <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase mb-4" style={{ fontSize: 'clamp(2.8rem, 9vw, 5.5rem)' }}><BrandName name={product.name} /></h1>
+            <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase mb-3" style={{ fontSize: 'clamp(2.8rem, 9vw, 5.5rem)' }} data-testid="text-product-name"><BrandName name={product.name} /></h1>
 
-            <p className="text-[15px] md:text-lg font-sans font-medium text-white/65 max-w-xl mb-6 leading-snug mx-auto md:mx-0">{product.tagline}</p>
+            <p className="text-[14px] md:text-[15px] font-sans font-medium text-white/55 max-w-md mb-5 leading-snug mx-auto md:mx-0">{product.tagline}</p>
 
-            <div className="flex md:inline-flex rounded-lg border border-white/[0.08] bg-white/[0.03] overflow-hidden">
-              <div className="flex-1 md:flex-auto px-4 py-3 text-center md:text-left">
-                <p className="text-[10px] uppercase font-mono text-white/35 tracking-[0.14em] mb-1">Protocol</p>
-                <p className="text-[12px] font-mono font-bold tracking-[0.06em] uppercase text-white/80">{product.serving}</p>
+            <div className="flex md:inline-flex border border-white/10 overflow-hidden" data-testid="metadata-strip">
+              <div className="flex-1 md:flex-auto px-4 py-2.5 text-center md:text-left">
+                <p className="text-[9px] uppercase font-mono text-white/30 tracking-[0.18em] mb-0.5">Protocol</p>
+                <p className="text-[11px] font-mono font-bold tracking-[0.06em] uppercase text-white/85">{product.serving}</p>
               </div>
-              <div className="w-px bg-white/[0.08]" />
-              <div className="flex-1 md:flex-auto px-4 py-3 text-center md:text-left">
-                <p className="text-[10px] uppercase font-mono text-white/35 tracking-[0.14em] mb-1">System Target</p>
-                <p className="text-[12px] font-mono font-bold tracking-[0.06em] uppercase text-white/80">{product.category}</p>
+              <div className="w-px bg-white/10" />
+              <div className="flex-1 md:flex-auto px-4 py-2.5 text-center md:text-left">
+                <p className="text-[9px] uppercase font-mono text-white/30 tracking-[0.18em] mb-0.5">System Target</p>
+                <p className="text-[11px] font-mono font-bold tracking-[0.06em] uppercase text-white/85">{product.category}</p>
               </div>
             </div>
           </div>
