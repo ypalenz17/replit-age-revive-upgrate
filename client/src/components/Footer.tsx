@@ -26,7 +26,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-6 pt-4 border-t border-white/[0.06] text-center">
-          <img src={brandLogo} alt="AGE REVIVE" className="h-4 w-auto brightness-0 invert opacity-30 mx-auto mb-2.5" />
+          <img src={brandLogo} alt="AGE REVIVE" className="h-[21px] w-auto brightness-0 invert opacity-30 mx-auto mb-2.5" />
           <p className="text-[9px] font-mono text-white/25 uppercase tracking-[0.04em] leading-relaxed">
             © 2026 Age Revive · *These statements have not been evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent any disease.
           </p>
