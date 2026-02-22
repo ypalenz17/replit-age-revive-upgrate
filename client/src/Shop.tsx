@@ -656,23 +656,27 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <section className="py-14 md:py-20">
-        <div className="max-w-xl mx-auto px-6 flex flex-col gap-5">
-          {[
-            { label: '3rd Party Tested', desc: 'Every batch independently verified for purity, potency, and heavy metals.' },
-            { label: 'Standardized Actives', desc: 'Clinically dosed compounds with verified standardization percentages.' },
-            { label: 'Protocol Cadence', desc: 'Defined dosing schedules — daily or cycled — not ad hoc supplementation.' },
-            { label: 'Quality Controls', desc: 'GMP-compliant manufacturing. Full certificates of analysis on file.' }
-          ].map((item, i) => (
-            <div key={i} className="flex items-start gap-4" data-testid={`trust-badge-${i}`}>
-              <span className="font-mono text-[13px] font-bold tracking-[0.10em] shrink-0 pt-0.5" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
-              <span className="w-px h-8 bg-white/[0.08] shrink-0 mt-0.5" />
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[13px] font-mono font-semibold uppercase tracking-[0.10em] text-white/80">{item.label}</span>
-                <span className="text-[12px] font-sans text-white/40 leading-snug">{item.desc}</span>
-              </div>
+      <section className="pt-12 pb-14 md:pt-16 md:pb-20">
+        <div className="max-w-lg mx-auto px-6">
+          <div className="border-t border-white/[0.06] pt-8 md:pt-10">
+            <span className="block text-[10px] font-mono uppercase tracking-[0.18em] text-white/30 mb-6">Formulation Standards</span>
+            <div className="flex flex-col gap-4">
+              {[
+                { label: 'Third-Party Tested', desc: 'Every batch verified for purity, potency, and heavy metals.' },
+                { label: 'Standardized Actives', desc: 'Clinically dosed with verified standardization percentages.' },
+                { label: 'Protocol Cadence', desc: 'Defined dosing schedules — daily or cycled — not ad hoc.' },
+                { label: 'Quality Control', desc: 'GMP-compliant manufacturing. Full COAs on file.' }
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-5" data-testid={`trust-badge-${i}`}>
+                  <span className="font-mono text-[15px] font-black tracking-[0.06em] shrink-0 w-7 text-right" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
+                  <div className="flex flex-col gap-0">
+                    <span className="text-[14px] font-mono font-semibold uppercase tracking-[0.08em] text-white/90">{item.label}</span>
+                    <span className="text-[12px] font-sans text-white/40 leading-snug">{item.desc}</span>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
