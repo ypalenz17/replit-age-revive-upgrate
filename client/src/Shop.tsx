@@ -60,14 +60,47 @@ const PRODUCTS = {
       'Supports healthy methylation pathways'
     ],
     ingredients: [
-      { name: 'Nicotinamide Riboside (NR)', dose: '500 mg', purpose: 'NAD+ precursor support' },
-      { name: 'R-Lipoic Acid', dose: '200 mg', purpose: 'Mitochondrial redox balance support' },
-      { name: 'Apigenin', dose: '100 mg', purpose: 'NAD+ pathway support' },
-      { name: 'Betaine (TMG)', dose: '250 mg', purpose: 'Methylation support' },
-      { name: 'P-5-P (active B6)', dose: '10 mg', purpose: 'Cofactor support' },
-      { name: '5-MTHF', dose: '400 mcg DFE', purpose: 'Folate cycle support' },
-      { name: 'Methylcobalamin', dose: '1,000 mcg', purpose: 'B12 support' },
-      { name: 'BioPerine', dose: '5 mg', purpose: 'Bioavailability support' }
+      { name: 'Nicotinamide Riboside (NR)', dose: '500 mg', purpose: 'NAD+ precursor support',
+        mechanism: 'NR is phosphorylated by NR kinases to form NMN, then converted to NAD+ via the salvage pathway, bypassing rate-limiting NAMPT.',
+        refs: [
+          { title: 'Trammell SA et al. Nicotinamide riboside is uniquely and orally bioavailable in mice and humans. Nat Commun. 2016;7:12948.', doi: '10.1038/ncomms12948' },
+          { title: 'Martens CR et al. Chronic nicotinamide riboside supplementation is well-tolerated and elevates NAD+ in healthy middle-aged and older adults. Nat Commun. 2018;9:1286.', doi: '10.1038/s41467-018-03421-7' }
+        ]},
+      { name: 'R-Lipoic Acid', dose: '200 mg', purpose: 'Mitochondrial redox balance support',
+        mechanism: 'R-lipoic acid functions as a mitochondrial cofactor for pyruvate dehydrogenase and alpha-ketoglutarate dehydrogenase, regenerating endogenous antioxidants including glutathione and vitamin C.',
+        refs: [
+          { title: 'Shay KP et al. Alpha-lipoic acid as a dietary supplement: molecular mechanisms and therapeutic potential. Biochim Biophys Acta. 2009;1790(10):1149-1160.', doi: '10.1016/j.bbagen.2009.07.026' }
+        ]},
+      { name: 'Apigenin', dose: '100 mg', purpose: 'NAD+ pathway support',
+        mechanism: 'Apigenin inhibits CD38, a major NAD+-consuming enzyme, thereby preserving intracellular NAD+ pools and supporting sirtuin activity.',
+        refs: [
+          { title: 'Escande C et al. Flavonoid apigenin is an inhibitor of the NAD+ase CD38. J Biol Chem. 2013;288(15):10258-10266.', doi: '10.1074/jbc.M112.442103' }
+        ]},
+      { name: 'Betaine (TMG)', dose: '250 mg', purpose: 'Methylation support',
+        mechanism: 'TMG donates methyl groups to homocysteine via betaine-homocysteine methyltransferase (BHMT), supporting the methionine cycle and reducing homocysteine accumulation.',
+        refs: [
+          { title: 'Olthof MR et al. Effect of homocysteine-lowering nutrients on blood lipids: results from randomised placebo-controlled studies. PLoS Med. 2005;2(5):e135.', doi: '10.1371/journal.pmed.0020135' }
+        ]},
+      { name: 'P-5-P (active B6)', dose: '10 mg', purpose: 'Cofactor support',
+        mechanism: 'Pyridoxal-5\'-phosphate is the active coenzyme form of vitamin B6, required for over 100 enzymatic reactions including transamination, decarboxylation, and one-carbon metabolism.',
+        refs: [
+          { title: 'Leklem JE. Vitamin B-6: a status report. J Nutr. 1990;120(Suppl 11):1503-1507.', doi: '10.1093/jn/120.suppl_11.1503' }
+        ]},
+      { name: '5-MTHF', dose: '400 mcg DFE', purpose: 'Folate cycle support',
+        mechanism: '5-methyltetrahydrofolate is the primary circulating form of folate and the direct methyl donor for homocysteine remethylation to methionine via methionine synthase.',
+        refs: [
+          { title: 'Scaglione F, Panzavolta G. Folate, folic acid and 5-methyltetrahydrofolate are not the same thing. Xenobiotica. 2014;44(5):480-488.', doi: '10.3109/00498254.2013.845705' }
+        ]},
+      { name: 'Methylcobalamin', dose: '1,000 mcg', purpose: 'B12 support',
+        mechanism: 'Methylcobalamin serves as a cofactor for methionine synthase, directly participating in homocysteine remethylation and supporting myelin synthesis and neuronal function.',
+        refs: [
+          { title: 'Paul C, Brady DM. Comparative bioavailability and utilization of particular forms of B12 supplements. Integr Med (Encinitas). 2017;16(1):42-49.' }
+        ]},
+      { name: 'BioPerine', dose: '5 mg', purpose: 'Bioavailability support',
+        mechanism: 'Piperine inhibits hepatic and intestinal glucuronidation, extending the bioavailability window of co-administered compounds.',
+        refs: [
+          { title: 'Shoba G et al. Influence of piperine on the pharmacokinetics of curcumin in animals and human volunteers. Planta Med. 1998;64(4):353-356.', doi: '10.1055/s-2006-957450' }
+        ]}
     ],
     mechanics: [
       { title: 'NAD+ Pool Support', text: 'NR supports NAD+ pools as a daily input layer.', tags: ['Precursor delivery', 'Daily input'] },
@@ -108,8 +141,18 @@ const PRODUCTS = {
       'Supports cellular energy efficiency'
     ],
     ingredients: [
-      { name: 'Urolithin A (≥99%)', dose: '500 mg', purpose: 'Mitochondrial recycling signal support' },
-      { name: 'Tributyrin', dose: '500 mg', purpose: 'Postbiotic support (butyrate delivery)' }
+      { name: 'Urolithin A (≥99%)', dose: '500 mg', purpose: 'Mitochondrial recycling signal support',
+        mechanism: 'Urolithin A activates mitophagy via PINK1/Parkin-dependent and independent pathways, selectively clearing dysfunctional mitochondria and stimulating biogenesis of replacement organelles.',
+        refs: [
+          { title: 'Ryu D et al. Urolithin A induces mitophagy and prolongs lifespan in C. elegans and increases muscle function in rodents. Nat Med. 2016;22(8):879-888.', doi: '10.1038/nm.4132' },
+          { title: 'Andreux PA et al. The mitophagy activator urolithin A is safe and induces a molecular signature of improved mitochondrial and cellular health in humans. Nat Metab. 2019;1(6):595-603.', doi: '10.1038/s42255-019-0073-4' }
+        ]},
+      { name: 'Tributyrin', dose: '500 mg', purpose: 'Postbiotic support (butyrate delivery)',
+        mechanism: 'Tributyrin is a triglyceride pro-drug that releases butyrate in the intestinal lumen, supporting colonocyte energy metabolism, tight junction integrity, and HDAC inhibition-mediated anti-inflammatory signaling.',
+        refs: [
+          { title: 'Donohoe DR et al. The microbiome and butyrate regulate energy metabolism and autophagy in the mammalian colon. Cell Metab. 2011;13(5):517-526.', doi: '10.1016/j.cmet.2011.02.018' },
+          { title: 'Cresci GA et al. Tributyrin supplementation protects from diet-induced obesity and from intestinal inflammation. FASEB J. 2014;28(1 Suppl):372.7.' }
+        ]}
     ],
     mechanics: [
       { title: 'Recycling Signal', text: 'Urolithin A supports mitochondrial recycling signaling (mitophagy support).', tags: ['Mitophagy', 'Signal layer'] },
@@ -151,16 +194,57 @@ const PRODUCTS = {
       'Supports oxidative stress defense'
     ],
     ingredients: [
-      { name: 'NAC', dose: '600 mg', purpose: 'Glutathione support' },
-      { name: 'Trans-Resveratrol', dose: '500 mg', purpose: 'Polyphenol support' },
-      { name: 'Quercetin', dose: '500 mg', purpose: 'Cellular housekeeping support' },
-      { name: 'Fisetin', dose: '100 mg', purpose: 'Cellular maintenance support' },
-      { name: 'Green Tea Extract (50% EGCG)', dose: '300 mg', purpose: 'Antioxidant support' },
-      { name: 'Spermidine (wheat germ)', dose: '15 mg', purpose: 'Autophagy pathway support' },
-      { name: 'Astaxanthin', dose: '4 mg', purpose: 'Oxidative stress defense support' },
-      { name: 'PQQ', dose: '10 mg', purpose: 'Mitochondrial cofactor support' },
-      { name: 'Calcium Alpha-Ketoglutarate', dose: '300 mg', purpose: 'Metabolic support' },
-      { name: 'BioPerine', dose: '5 mg', purpose: 'Bioavailability support' }
+      { name: 'NAC', dose: '600 mg', purpose: 'Glutathione support',
+        mechanism: 'N-acetylcysteine provides cysteine for glutathione synthesis, the primary intracellular antioxidant, and directly scavenges reactive oxygen species.',
+        refs: [
+          { title: 'Mokhtari V et al. A review on various uses of N-acetyl cysteine. Cell J. 2017;19(1):11-17.', doi: '10.22074/cellj.2016.4872' }
+        ]},
+      { name: 'Trans-Resveratrol', dose: '500 mg', purpose: 'Polyphenol support',
+        mechanism: 'Trans-resveratrol activates SIRT1 and AMPK signaling, modulating mitochondrial biogenesis, autophagy, and inflammatory gene expression.',
+        refs: [
+          { title: 'Baur JA et al. Resveratrol improves health and survival of mice on a high-calorie diet. Nature. 2006;444(7117):337-342.', doi: '10.1038/nature05354' },
+          { title: 'Timmers S et al. Calorie restriction-like effects of 30 days of resveratrol supplementation on energy metabolism and metabolic profile in obese humans. Cell Metab. 2011;14(5):612-622.', doi: '10.1016/j.cmet.2011.10.002' }
+        ]},
+      { name: 'Quercetin', dose: '500 mg', purpose: 'Cellular housekeeping support',
+        mechanism: 'Quercetin acts as a senolytic agent by transiently disabling pro-survival networks in senescent cells, particularly the BCL-2/BCL-XL anti-apoptotic pathway.',
+        refs: [
+          { title: 'Zhu Y et al. The Achilles\' heel of senescent cells: from transcriptome to senolytic drugs. Aging Cell. 2015;14(4):644-658.', doi: '10.1111/acel.12344' }
+        ]},
+      { name: 'Fisetin', dose: '100 mg', purpose: 'Cellular maintenance support',
+        mechanism: 'Fisetin demonstrates senolytic activity by reducing senescence-associated secretory phenotype (SASP) factors and selectively inducing apoptosis in senescent cells.',
+        refs: [
+          { title: 'Yousefzadeh MJ et al. Fisetin is a senotherapeutic that extends health and lifespan. EBioMedicine. 2018;36:18-28.', doi: '10.1016/j.ebiom.2018.09.015' }
+        ]},
+      { name: 'Green Tea Extract (50% EGCG)', dose: '300 mg', purpose: 'Antioxidant support',
+        mechanism: 'EGCG modulates multiple signaling cascades including NF-kB, MAPK, and PI3K/Akt, while directly chelating metal ions and scavenging free radicals.',
+        refs: [
+          { title: 'Nagle DG et al. Epigallocatechin-3-gallate (EGCG): chemical and biomedical perspectives. Phytochemistry. 2006;67(17):1849-1855.', doi: '10.1016/j.phytochem.2006.06.020' }
+        ]},
+      { name: 'Spermidine (wheat germ)', dose: '15 mg', purpose: 'Autophagy pathway support',
+        mechanism: 'Spermidine induces autophagy through inhibition of EP300 acetyltransferase and hypusination of eIF5A, promoting cellular renewal and extending lifespan in model organisms.',
+        refs: [
+          { title: 'Eisenberg T et al. Cardioprotection and lifespan extension by the natural polyamine spermidine. Nat Med. 2016;22(12):1428-1438.', doi: '10.1038/nm.4222' }
+        ]},
+      { name: 'Astaxanthin', dose: '4 mg', purpose: 'Oxidative stress defense support',
+        mechanism: 'Astaxanthin spans the lipid bilayer, quenching singlet oxygen and peroxyl radicals in both the inner and outer membrane leaflets without pro-oxidant activity.',
+        refs: [
+          { title: 'Fassett RG, Coombes JS. Astaxanthin: a potential therapeutic agent in cardiovascular disease. Mar Drugs. 2011;9(3):447-465.', doi: '10.3390/md9030447' }
+        ]},
+      { name: 'PQQ', dose: '10 mg', purpose: 'Mitochondrial cofactor support',
+        mechanism: 'Pyrroloquinoline quinone activates PGC-1α signaling, promoting mitochondrial biogenesis and protecting against oxidative stress-induced mitochondrial dysfunction.',
+        refs: [
+          { title: 'Chowanadisai W et al. Pyrroloquinoline quinone stimulates mitochondrial biogenesis through cAMP response element-binding protein phosphorylation. J Biol Chem. 2010;285(1):142-152.', doi: '10.1074/jbc.M109.030130' }
+        ]},
+      { name: 'Calcium Alpha-Ketoglutarate', dose: '300 mg', purpose: 'Metabolic support',
+        mechanism: 'Alpha-ketoglutarate is a key TCA cycle intermediate and co-substrate for alpha-ketoglutarate-dependent dioxygenases including TET enzymes involved in DNA demethylation.',
+        refs: [
+          { title: 'Asadi Shahmirzadi A et al. Alpha-ketoglutarate, an endogenous metabolite, extends lifespan and compresses morbidity in aging mice. Cell Metab. 2020;32(3):447-456.', doi: '10.1016/j.cmet.2020.08.004' }
+        ]},
+      { name: 'BioPerine', dose: '5 mg', purpose: 'Bioavailability support',
+        mechanism: 'Piperine inhibits hepatic and intestinal glucuronidation, extending the bioavailability window of co-administered compounds.',
+        refs: [
+          { title: 'Shoba G et al. Influence of piperine on the pharmacokinetics of curcumin in animals and human volunteers. Planta Med. 1998;64(4):353-356.', doi: '10.1055/s-2006-957450' }
+        ]}
     ],
     mechanics: [
       { title: 'Phase Design', text: 'Designed for 7-day bursts to support cellular maintenance pathways intentionally.', tags: ['Cyclical protocol', '7-day burst'] },
@@ -234,6 +318,71 @@ function TypewriterTelemetry({ phrases: inputPhrases }) {
   );
 }
 
+function CompoundRow({ ing, accent, isLast, index }) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div>
+      <div className="flex items-baseline justify-between py-3.5 gap-4">
+        <div className="flex-1 min-w-0">
+          <p className="text-[13px] font-sans font-bold text-white leading-tight break-words">{ing.name}</p>
+          <div className="flex items-baseline gap-3 mt-0.5 flex-wrap">
+            <p className="text-[11px] font-mono text-white/50 uppercase tracking-[0.08em]">{ing.purpose}</p>
+            {ing.refs && (
+              <button
+                onClick={() => setExpanded(!expanded)}
+                className="text-[10px] font-mono tracking-[0.06em] shrink-0 hover:opacity-80"
+                style={{ color: accent }}
+                data-testid={`ref-toggle-${ing.name.replace(/\s+/g, '-').toLowerCase()}`}
+              >
+                {expanded ? 'Close' : 'References \u2192'}
+              </button>
+            )}
+          </div>
+        </div>
+        <span className="text-[13px] font-mono font-bold text-white shrink-0">{ing.dose}</span>
+      </div>
+
+      {expanded && (
+        <div className="pb-4 pt-1" data-testid={`ref-panel-${ing.name.replace(/\s+/g, '-').toLowerCase()}`}>
+          {ing.mechanism && (
+            <div className="mb-3">
+              <span className="text-[9px] font-mono font-bold uppercase tracking-[0.16em] text-white/35 block mb-1">Mechanism</span>
+              <p className="text-[11px] font-sans text-white/55 leading-relaxed">{ing.mechanism}</p>
+            </div>
+          )}
+          {ing.refs && ing.refs.length > 0 && (
+            <div>
+              <span className="text-[9px] font-mono font-bold uppercase tracking-[0.16em] text-white/35 block mb-1.5">Clinical Evidence</span>
+              <div className="space-y-1.5">
+                {ing.refs.map((ref, ri) => (
+                  <p key={ri} className="text-[10px] font-mono text-white/40 leading-relaxed break-words">
+                    [{ri + 1}] {ref.title}
+                    {ref.doi && (
+                      <a
+                        href={`https://doi.org/${ref.doi}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ml-1 hover:opacity-80 break-all"
+                        style={{ color: accent }}
+                        data-testid={`doi-link-${index}-${ri}`}
+                      >
+                        doi:{ref.doi}
+                      </a>
+                    )}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {!isLast && <div className="h-px bg-white/[0.03]" />}
+    </div>
+  );
+}
+
 function IngredientPanel({ ingredients, accent, serving }) {
   return (
     <div className="relative border-t border-white/[0.06]">
@@ -248,16 +397,7 @@ function IngredientPanel({ ingredients, accent, serving }) {
 
         <div className="space-y-0">
           {ingredients.map((ing, i) => (
-            <div key={i}>
-              <div className="flex items-baseline justify-between py-3.5 gap-4">
-                <div className="flex-1 min-w-0">
-                  <p className="text-[13px] font-sans font-bold text-white leading-tight truncate">{ing.name}</p>
-                  <p className="text-[11px] font-mono text-white/50 mt-0.5 uppercase tracking-[0.08em]">{ing.purpose}</p>
-                </div>
-                <span className="text-[13px] font-mono font-bold text-white shrink-0">{ing.dose}</span>
-              </div>
-              {i < ingredients.length - 1 && <div className="h-px bg-white/[0.03]" />}
-            </div>
+            <CompoundRow key={i} ing={ing} accent={accent} isLast={i === ingredients.length - 1} index={i} />
           ))}
         </div>
 
