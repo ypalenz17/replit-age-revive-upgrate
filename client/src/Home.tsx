@@ -220,67 +220,87 @@ const Navbar = () => {
     { label: 'FAQ', href: '/faq' }
   ];
 
+  const cartCount = 0;
+
   return (
     <>
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[150] w-[92%] max-w-6xl flex items-center justify-between px-2 py-3">
-        <div
-          className={[
-            'flex items-center gap-8 transition-all duration-700 rounded-full px-6 py-3',
-            scrolled ? 'bg-ar-paper/80 backdrop-blur-xl shadow-float border border-black/5' : 'bg-transparent border border-transparent'
-          ].join(' ')}
-        >
+      <nav
+        className={[
+          'fixed top-0 left-0 right-0 z-[150] transition-all duration-500',
+          scrolled
+            ? 'bg-ar-navy/85 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_2px_24px_rgba(0,0,0,0.25)]'
+            : 'bg-transparent border-b border-transparent'
+        ].join(' ')}
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 h-16">
           <a href="/" aria-label="Go to homepage">
             <img
               src={brandLogo}
               alt="AGE REVIVE"
-              className={['h-7 md:h-8 w-auto transition-all duration-500', scrolled ? 'opacity-60' : 'brightness-0 invert'].join(' ')}
+              className="h-7 md:h-8 w-auto brightness-0 invert transition-opacity duration-500"
             />
           </a>
 
-          <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[12px] uppercase tracking-[0.2em]">
+          <div className="hidden md:flex items-center gap-7 font-mono font-medium text-[12px] uppercase tracking-[0.16em]">
             {navLinks.map((l) => (
-              <a key={l.label} href={l.href} className={['transition-all hover:text-ar-teal', scrolled ? 'text-ar-navy/60' : 'text-white/60'].join(' ')}>
+              <a key={l.label} href={l.href} className="text-white/55 hover:text-ar-teal transition-colors">
                 {l.label}
               </a>
             ))}
           </div>
-        </div>
 
-        <div
-          className={[
-            'flex items-center gap-5 transition-all duration-700 rounded-full px-5 py-3',
-            scrolled ? 'bg-ar-paper/80 backdrop-blur-xl shadow-float border border-black/5' : 'bg-transparent border border-transparent'
-          ].join(' ')}
-        >
-          <button className={['transition-all', scrolled ? 'text-ar-navy' : 'text-white'].join(' ')} aria-label="Cart"><ShoppingBag size={18} /></button>
-          <button
-            className={['md:hidden transition-all', scrolled ? 'text-ar-navy' : 'text-white'].join(' ')}
-            aria-label="Menu"
-            data-testid="mobile-menu-toggle"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <a
+              href="/shop"
+              className="flex items-center gap-2 px-4 sm:px-5 min-h-[44px] bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.14em] hover:bg-ar-teal/90 transition-colors"
+              data-testid="nav-shop-button"
+            >
+              Shop
+            </a>
+
+            <a href="/shop" className="relative min-w-[44px] min-h-[44px] flex items-center justify-center text-white/70 hover:text-ar-teal transition-colors" aria-label="Cart" data-testid="nav-cart">
+              <ShoppingBag size={20} />
+              <span className="absolute -top-0.5 -right-0.5 w-[18px] h-[18px] flex items-center justify-center bg-ar-teal text-ar-navy text-[12px] font-mono font-bold rounded-full leading-none">
+                {cartCount}
+              </span>
+            </a>
+
+            <button
+              className="md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center text-white/70 hover:text-ar-teal transition-colors"
+              aria-label="Menu"
+              data-testid="mobile-menu-toggle"
+              onClick={() => setMobileOpen(!mobileOpen)}
+            >
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
       </nav>
 
       {mobileOpen && (
         <div className="fixed inset-0 z-[140] md:hidden">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-          <div className="absolute top-0 left-0 right-0 pt-24 pb-10 px-8 bg-[#0f172a]/95 backdrop-blur-xl border-b border-white/[0.08]">
-            <div className="flex flex-col gap-1">
+          <div className="absolute top-0 left-0 right-0 pt-20 pb-8 px-6 bg-ar-navy/95 backdrop-blur-xl border-b border-white/[0.08]">
+            <div className="flex flex-col gap-0.5">
               {navLinks.map((l) => (
                 <a
                   key={l.label}
                   href={l.href}
                   onClick={() => setMobileOpen(false)}
-                  className="py-4 text-lg font-sans font-extrabold uppercase tracking-[0.08em] text-white/80 hover:text-ar-teal transition-colors border-b border-white/[0.06] last:border-0"
+                  className="py-3.5 min-h-[44px] flex items-center text-base font-mono font-bold uppercase tracking-[0.12em] text-white/75 hover:text-ar-teal transition-colors border-b border-white/[0.06] last:border-0"
                   data-testid={`mobile-nav-${l.label.toLowerCase()}`}
                 >
                   {l.label}
                 </a>
               ))}
             </div>
+            <a
+              href="/shop"
+              className="mt-6 w-full py-4 min-h-[48px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.14em]"
+              data-testid="mobile-shop-button"
+            >
+              Shop the System
+            </a>
           </div>
         </div>
       )}
@@ -331,19 +351,20 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 pt-4">
-            <a href="/shop" className="group relative px-10 py-5 min-h-[48px] flex items-center bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.22em] overflow-hidden transition-transform hover:scale-105 active:scale-95" data-testid="button-start-protocol">
-              <span className="relative z-10">Start Full Protocol</span>
+            <a href="/shop" className="group relative px-10 py-5 min-h-[48px] flex items-center bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] overflow-hidden transition-transform hover:scale-105 active:scale-95" data-testid="button-shop-system">
+              <span className="relative z-10">Shop the System</span>
               <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </a>
 
             <button
               onClick={onOpenEvidence}
-              className="px-8 py-5 min-h-[48px] border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.22em] hover:bg-white/5 transition-all"
+              className="px-8 py-5 min-h-[48px] border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-white/5 transition-all"
               data-testid="button-view-evidence"
             >
               View Evidence
             </button>
           </div>
+          <p className="font-mono text-[12px] text-white/35 tracking-[0.1em] mt-3">Start with the bundle or choose a protocol.</p>
         </div>
       </div>
     </section>
@@ -636,13 +657,14 @@ export default function Home() {
             <span className="italic text-white/50">baseline.</span>
           </h2>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <a href="/shop" className="px-12 py-6 min-h-[48px] flex items-center bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:scale-105 transition-all" data-testid="button-cta-start-protocol">
-              Start Full Protocol
+            <a href="/shop" className="px-12 py-6 min-h-[48px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:scale-105 transition-all" data-testid="button-cta-shop-system">
+              Shop the System
             </a>
-            <a href="/shop" className="px-12 py-6 min-h-[48px] flex items-center border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-white/5 transition-all" data-testid="button-cta-build-stack">
+            <a href="/shop" className="px-12 py-6 min-h-[48px] flex items-center justify-center border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-white/5 transition-all" data-testid="button-cta-build-stack">
               Build your stack
             </a>
           </div>
+          <p className="font-mono text-[12px] text-white/35 tracking-[0.1em] mt-4">Start with the bundle or choose a protocol.</p>
         </div>
       </section>
 
