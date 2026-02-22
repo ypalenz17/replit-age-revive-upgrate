@@ -864,7 +864,7 @@ function ProductTemplate({ product }) {
             <p className="text-[12px] font-mono text-white/50 tracking-[0.04em] uppercase mb-1">{copy.spec.meta}</p>
             <p className="text-[13px] font-sans text-white/60 leading-relaxed max-w-lg mb-1">{copy.spec.reassurance}</p>
             <p className="text-[11px] font-mono text-white/45 tracking-[0.04em]">{copy.spec.declaration}</p>
-            {copy.spec.microNote && <p className="text-[11px] font-mono text-amber-300/50 tracking-[0.04em] mt-1">{copy.spec.microNote}</p>}
+            {copy.spec.microNote && <p className="text-[11px] font-mono text-white/40 tracking-[0.04em] mt-1">{copy.spec.microNote}</p>}
           </div>
 
           <div className="reveal border-t border-white/[0.06] pt-5">
@@ -963,10 +963,7 @@ function ProductTemplate({ product }) {
         </div>
 
         {product.warnings && (
-          <div className="mt-8 p-5 bg-red-500/[0.06] border border-red-500/15 rounded-lg">
-            <p className="text-[11px] font-mono font-bold text-red-400 uppercase tracking-[0.12em] mb-1">Warning</p>
-            <p className="text-[13px] font-sans font-medium text-white/75">{product.warnings}</p>
-          </div>
+          <p className="mt-6 text-[11px] font-mono text-white/45 tracking-[0.02em]">{product.warnings}</p>
         )}
       </SideSheet>
 
