@@ -1,0 +1,72 @@
+Deep refinement pass on the protocol modules (CELLUNAD+, CELLUBIOME, CELLUNOVA). The layout is clean but still feels generic/component-library. Do not redesign everything. Keep the structure, but upgrade composition, hierarchy, and “engineered luxury” details.
+
+Goals:
+1) Make bottle + panel feel like one staged product module.
+2) Reduce “terminal UI” typography and improve readability.
+3) Increase perceived cost through lighting, masking, and spacing rhythm.
+4) Introduce controlled per-protocol identity without breaking consistency.
+
+Required changes:
+
+A) Stage composition (tie bottle to panel)
+- Add a shared lighting system:
+  - radial backlight behind bottle
+  - subtle contact shadow under bottle (weight, not glow)
+  - thin top-edge highlight on the panel that visually connects to the bottle
+- The lighting must be subtle and consistent across products.
+
+B) Grid masking behind panel
+- The grid is bleeding through and adding noise.
+- Increase panel separation by one of:
+  - slightly higher panel opacity (still glass)
+  - or a scrim layer inside panel (bg-white/6 + blur)
+  - or a dedicated “panel backdrop” element that softens grid behind it
+- The panel must feel like a distinct surface.
+
+C) Typography system cleanup
+- Use mono + wide tracking ONLY for the micro label line at the top.
+- Product name: strongest.
+- Benefit: readable sans, slightly narrower line length on mobile (avoid awkward wraps).
+- Outcomes: readable sans (not mono), tight spacing.
+- Dosage/supply: quieter metadata (text-white/55, tracking normal).
+
+D) Hierarchy and spacing rhythm
+- Stop even spacing. Use deliberate rhythm:
+  - tight: micro label -> title
+  - medium: title -> benefit
+  - larger: benefit -> outcomes
+  - medium: outcomes -> metadata
+  - larger: metadata -> CTA
+- Reduce panel overall height by tightening gaps.
+
+E) Outcomes block
+- Standardize outcomes:
+  - max 3 items
+  - single column
+  - tighter spacing
+  - brighter check icons
+  - text-white/70
+
+F) CTA system (engineered, not bland)
+- Define a consistent button system:
+  - Primary: dark glass + subtle inner highlight + thin teal edge line (not purple)
+  - Secondary: outline glass, dimmer
+  - Both same height, not oversized
+- Remove any leftover purple CTA styling.
+
+G) Controlled per-protocol identity
+- Add a subtle per-product accent detail:
+  - a tiny accent line, icon, or edge tint in the panel top highlight
+  - keep it restrained (no loud gradients)
+- Keep layout identical, only accent changes.
+
+Acceptance tests:
+- Module no longer reads “template card.” It reads “staged product system.”
+- Grid is not visually competing inside the panel.
+- Typography is readable and less terminal-like.
+- CTAs feel engineered and premium.
+- Each product feels distinct but still part of one system.
+
+Deliverable:
+- Implement changes and list files edited.
+- Provide before/after notes on: lighting system, panel masking, typography rules, button system.

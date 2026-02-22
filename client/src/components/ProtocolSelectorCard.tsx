@@ -33,51 +33,58 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
   return (
     <div className="flex flex-col items-center" data-testid={`card-protocol-${p.slug}`}>
 
-      <div className="relative mb-3 sm:mb-4 flex items-center justify-center">
+      <div className="relative mb-2 sm:mb-3 flex items-center justify-center">
         <div
-          className="absolute left-1/2 -translate-x-1/2 top-[25%] w-[70%] h-[60%] blur-3xl opacity-25 pointer-events-none"
-          style={{ background: `radial-gradient(ellipse at center, ${hexToRgba(accent, 0.35)}, transparent 65%)` }}
+          className="absolute left-1/2 -translate-x-1/2 top-[15%] w-[80%] h-[70%] blur-[40px] opacity-20 pointer-events-none"
+          style={{ background: `radial-gradient(ellipse at 50% 60%, ${hexToRgba(accent, 0.5)}, transparent 70%)` }}
         />
         <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[50%] h-[8px] rounded-[50%] blur-md opacity-40 pointer-events-none"
-          style={{ background: 'rgba(0,0,0,0.6)' }}
+          className="absolute bottom-[-4px] left-1/2 -translate-x-1/2 w-[40%] h-[6px] rounded-[50%] blur-sm opacity-50 pointer-events-none"
+          style={{ background: 'rgba(0,0,0,0.7)' }}
         />
         <img
           src={p.image}
           alt={p.name}
           className="relative z-10 w-[168px] sm:w-[196px] max-w-[85vw] h-auto object-contain"
-          style={{ filter: `drop-shadow(0 12px 24px ${hexToRgba(accent, 0.25)}) drop-shadow(0 4px 8px rgba(0,0,0,0.4))` }}
+          style={{ filter: `drop-shadow(0 8px 16px ${hexToRgba(accent, 0.2)}) drop-shadow(0 3px 6px rgba(0,0,0,0.35))` }}
         />
       </div>
 
-      <div className="w-full max-w-[92%] mx-auto relative overflow-hidden rounded-t-3xl border-t border-white/[0.10] bg-gradient-to-b from-white/[0.06] to-white/[0.03]">
-        <div className="absolute inset-x-0 top-0 h-[20%] bg-gradient-to-b from-white/[0.10] to-transparent pointer-events-none" />
+      <div className="w-full max-w-[92%] mx-auto relative overflow-hidden rounded-t-2xl">
+        <div className="absolute inset-0 bg-[#0d1424]/80 backdrop-blur-lg pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01] pointer-events-none" />
 
-        <div className="relative z-10 px-6 py-6 flex flex-col">
+        <div
+          className="absolute inset-x-0 top-0 h-[1px] pointer-events-none"
+          style={{ background: `linear-gradient(90deg, transparent 10%, ${hexToRgba(accent, 0.4)} 50%, transparent 90%)` }}
+        />
+        <div className="absolute inset-x-0 top-[1px] h-[40%] bg-gradient-to-b from-white/[0.04] to-transparent pointer-events-none" />
 
-          <p className="text-[11px] font-mono uppercase tracking-[0.10em] text-white/55 mb-1.5">{p.category}</p>
+        <div className="relative z-10 px-5 pt-5 pb-5 flex flex-col">
 
-          <h4 className="font-head font-normal text-2xl tracking-[-0.03em] uppercase text-white leading-none mb-4">
+          <p className="text-[10px] font-mono uppercase tracking-[0.14em] mb-1" style={{ color: hexToRgba(accent, 0.7) }}>{p.category}</p>
+
+          <h4 className="font-head font-normal text-[22px] sm:text-2xl tracking-[-0.03em] uppercase text-white leading-none mb-3">
             <BrandName name={p.name} />
           </h4>
 
           {p.benefit && (
-            <p className="text-[15px] sm:text-base text-white/75 font-medium leading-snug mb-6">{p.benefit}</p>
+            <p className="text-[14px] sm:text-[15px] font-sans text-white/70 font-medium leading-[1.45] max-w-[28ch] mb-5">{p.benefit}</p>
           )}
 
           {p.outcomes && p.outcomes.length > 0 && (
-            <div className="flex flex-col gap-1.5 mb-5">
-              {p.outcomes.map((o) => (
-                <span key={o} className="flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.04em] text-white/75">
-                  <Check size={12} className="shrink-0 opacity-90" style={{ color: accent }} />
+            <div className="flex flex-col gap-[6px] mb-4">
+              {p.outcomes.slice(0, 3).map((o) => (
+                <span key={o} className="flex items-center gap-2 text-[13px] font-sans font-medium text-white/70">
+                  <Check size={13} strokeWidth={2.5} className="shrink-0" style={{ color: accent }} />
                   {o}
                 </span>
               ))}
             </div>
           )}
 
-          <div className="border-t border-white/[0.06] pt-4 mb-7">
-            <div className="grid grid-cols-2 gap-4 text-[12px] font-mono text-white/60 uppercase tracking-[0.04em]">
+          <div className="border-t border-white/[0.06] pt-3 mb-5">
+            <div className="grid grid-cols-2 gap-3 text-[11px] font-sans text-white/50 tracking-normal">
               <span>{p.serving}</span>
               {p.supply && <span className="text-right">{p.supply}</span>}
             </div>
@@ -86,19 +93,20 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
           <div className="flex flex-col gap-2">
             <Link
               to={`/product/${p.slug}`}
-              className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-3.5 font-mono font-bold uppercase text-[12px] tracking-[0.12em] transition-all duration-300 bg-white/[0.06] border border-white/[0.14] text-white hover:bg-white/[0.10] hover:border-white/[0.20]"
-              style={{ boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px ${hexToRgba(accent, 0.15)}` }}
+              className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-3 font-mono font-bold uppercase text-[11px] tracking-[0.14em] transition-all duration-300 bg-white/[0.07] text-white hover:bg-white/[0.11]"
+              style={{ boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08), inset 0 0 0 1px ${hexToRgba(accent, 0.18)}, 0 1px 3px rgba(0,0,0,0.2)` }}
               data-testid={`button-view-protocol-${p.slug}`}
             >
               View Protocol <ArrowRight size={13} />
             </Link>
 
             <button
-              className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-3 font-mono font-bold uppercase text-[12px] tracking-[0.12em] border border-white/[0.08] text-white/55 hover:bg-white/[0.05] hover:text-white/75 hover:border-white/[0.14] transition-all duration-300"
+              className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-3 font-mono uppercase text-[11px] tracking-[0.14em] font-medium text-white/45 hover:bg-white/[0.04] hover:text-white/65 transition-all duration-300"
+              style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)' }}
               data-testid={`button-add-stack-${p.slug}`}
               aria-label={`Add ${p.name} to stack`}
             >
-              <Plus size={14} /> Add to Stack
+              <Plus size={13} /> Add to Stack
             </button>
           </div>
         </div>
