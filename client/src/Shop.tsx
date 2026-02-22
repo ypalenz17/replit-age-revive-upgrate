@@ -535,7 +535,7 @@ function ProductTemplate({ product }) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
       </div>
       <div
-        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.02]"
+        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.015]"
         style={{
           backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
           backgroundSize: '100px 100px'
@@ -596,21 +596,21 @@ function ProductTemplate({ product }) {
                     </div>
                   </div>
 
-                  <p className="text-[13px] md:text-[14px] text-white/60 leading-snug font-mono tracking-[-0.01em]">{product.description}</p>
+                  <p className="text-[13px] md:text-[14px] text-white/65 leading-snug font-mono tracking-[-0.01em]">{product.description}</p>
 
                   <div className="border-t border-white/[0.06] pt-2.5 mt-1">
                     <div className="flex flex-col gap-[2px]">
                       {product.outcomes.map((item, i) => (
-                        <span key={i} className="text-[12px] font-sans font-medium text-white/80 leading-[1.75]">{item}</span>
+                        <span key={i} className="text-[12px] font-sans font-medium text-white/75 leading-[1.75]">{item}</span>
                       ))}
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 text-[10px] font-mono text-white/30 tracking-[0.06em] uppercase">
+                  <div className="flex items-center gap-3 text-[10px] font-mono text-white/25 tracking-[0.06em] uppercase">
                     <span>Glass bottle</span>
-                    <span className="w-px h-2.5 bg-white/10" />
+                    <span className="w-px h-2.5 bg-white/8" />
                     <span>UV-protected</span>
-                    <span className="w-px h-2.5 bg-white/10" />
+                    <span className="w-px h-2.5 bg-white/8" />
                     <span>{product.serving}</span>
                   </div>
 
@@ -622,13 +622,13 @@ function ProductTemplate({ product }) {
 
                   <div className="space-y-2.5 pt-0.5">
                     <MagneticButton
-                      className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
-                      style={{ background: `linear-gradient(135deg, ${accent}, ${hexToRgba(accent, 0.75)})`, boxShadow: `0 0 10px ${hexToRgba(accent, 0.2)}, inset 0 1px 0 rgba(255,255,255,0.10)` }}
+                      className="w-full min-h-[40px] flex items-center justify-center gap-2 rounded-lg py-2 text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
+                      style={{ background: `linear-gradient(145deg, ${hexToRgba(accent, 0.95)}, ${hexToRgba(accent, 0.65)})`, boxShadow: `0 0 8px ${hexToRgba(accent, 0.15)}, inset 0 1px 0 rgba(255,255,255,0.08)` }}
                       onClick={() => {}}
                     >
                       <span className="relative z-10">Add to Stack</span>
                       <ArrowRight size={13} className="relative z-10" />
-                      <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                      <div className="absolute inset-0 bg-white/8 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                     </MagneticButton>
 
                     <div className="flex items-center justify-center gap-6">
@@ -639,7 +639,7 @@ function ProductTemplate({ product }) {
                       >
                         Ingredients
                       </button>
-                      <span className="w-px h-3 bg-white/8" />
+                      <span className="w-px h-3 bg-white/6" />
                       <button
                         onClick={() => setActiveSidePanel('rationale')}
                         className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium text-white/35 hover:text-white/60 transition-colors duration-200"
@@ -656,23 +656,23 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <section className="relative pt-8 pb-20 md:pt-10 md:pb-24">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1020]/60 via-transparent to-transparent pointer-events-none" />
+      <section className="relative pt-8 pb-16 md:pt-10 md:pb-20">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1020]/70 via-[#0a1020]/30 to-transparent pointer-events-none" />
         <div className="relative z-10 max-w-lg mx-auto px-6">
           <div className="border-t border-white/[0.08] pt-7 md:pt-9">
-            <span className="block text-[10px] font-mono uppercase tracking-[0.20em] text-white/40 font-semibold mb-5">Formulation Standards</span>
-            <div className="flex flex-col gap-5">
+            <span className="block text-[10px] font-mono uppercase tracking-[0.20em] text-white/45 font-bold mb-5">Formulation Standards</span>
+            <div className="flex flex-col gap-4">
               {[
-                { label: 'Third-Party Tested', desc: 'Every batch verified for purity, potency, and heavy metals.' },
-                { label: 'Standardized Actives', desc: 'Clinically dosed with verified standardization percentages.' },
-                { label: 'Protocol Cadence', desc: 'Defined dosing schedules — daily or cycled — not ad hoc.' },
-                { label: 'Quality Control', desc: 'GMP-compliant manufacturing. Full COAs on file.' }
+                { label: 'Third-Party Tested', desc: 'Every batch verified for purity, potency, and heavy metals' },
+                { label: 'Standardized Actives', desc: 'Clinically dosed with verified standardization percentages' },
+                { label: 'Protocol Cadence', desc: 'Defined dosing schedules — daily or cycled — not ad hoc' },
+                { label: 'Quality Control', desc: 'GMP-compliant manufacturing — full COAs on file' }
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-5" data-testid={`trust-badge-${i}`}>
-                  <span className="font-mono text-[15px] font-black tracking-[0.06em] shrink-0 w-7 text-right" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
-                  <div className="flex flex-col gap-px">
-                    <span className="text-[14px] font-mono font-semibold uppercase tracking-[0.08em] text-white/90">{item.label}</span>
-                    <span className="text-[12px] font-sans text-white/50 leading-snug">{item.desc}</span>
+                  <span className="font-mono text-[16px] font-black tracking-[0.04em] shrink-0 w-7 text-right" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
+                  <div className="flex flex-col">
+                    <span className="text-[14px] font-mono font-bold uppercase tracking-[0.08em] text-white/90">{item.label}</span>
+                    <span className="text-[12px] font-sans text-white/55 leading-snug">{item.desc}</span>
                   </div>
                 </div>
               ))}
@@ -681,15 +681,15 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 px-5 md:px-8 max-w-7xl mx-auto overflow-hidden">
+      <section className="py-20 md:py-28 px-5 md:px-8 max-w-7xl mx-auto overflow-hidden">
         <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
           <div className="md:col-span-5 space-y-5 reveal">
             <TypewriterTelemetry phrases={product.telemetry} />
             <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] leading-[1.06] text-white">
-              Every dose,{' '}<span className="text-white/50">fully disclosed</span>.
+              Every dose,{' '}<span className="text-white/45">fully disclosed</span>.
             </h2>
-            <p className="text-[14px] md:text-[15px] text-white/55 leading-relaxed font-sans font-medium">
-              No proprietary blends. No hidden fillers. Each active is standardized, dosed at clinical-range levels, and listed with its exact purpose.
+            <p className="text-[14px] md:text-[15px] text-white/60 leading-relaxed font-sans font-medium">
+              No proprietary blends. No hidden fillers. Each active standardized, clinically dosed, listed with exact purpose.
             </p>
 
             <TrustStats product={product} />
@@ -910,7 +910,7 @@ export default function Shop() {
             >
               <BrandName name={p.name} />
               {slug === p.id && (
-                <span className="absolute bottom-0 left-3 right-3 h-[1.5px]" style={{ background: p.accentText || p.accent, opacity: 0.8 }} />
+                <span className="absolute bottom-0 left-3 right-3 h-[1.5px]" style={{ background: p.accentText || p.accent, opacity: 0.6 }} />
               )}
             </button>
           ))}

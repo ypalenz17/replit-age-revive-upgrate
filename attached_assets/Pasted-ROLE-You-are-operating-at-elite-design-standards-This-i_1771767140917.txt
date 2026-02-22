@@ -1,0 +1,97 @@
+ROLE: You are operating at elite design standards. This is not a redesign. This is a surgical refinement pass to elevate the Shop page from premium DTC to institutional biotech.
+
+Objective:
+Increase perceived authority, contrast control, and structural inevitability.
+Remove remaining mid-tier cues.
+Tighten rhythm.
+Refine hierarchy.
+Improve transitions.
+
+DO NOT:
+- Add new components.
+- Add heavy effects.
+- Add more glow.
+- Reintroduce cards.
+- Add trendy UI.
+- Make it busier.
+
+PHASE 1 — CONTRAST CONTROL (LEGIBILITY + AUTHORITY)
+
+1) Reduce grid interference in content zones by ~20%.
+   - Slightly darken background behind text-heavy sections.
+   - Do NOT remove grid entirely.
+   - The grid should support, not compete.
+
+2) Increase contrast hierarchy:
+   - Section labels (e.g., FORMULATION STANDARDS) increase opacity slightly.
+   - Titles slightly brighter.
+   - Body copy slightly more legible (text-white/75–80).
+   - Metadata slightly dimmer (text-white/55–60).
+
+3) Increase weight of structural numbers (01–04) slightly.
+   - They must feel architectural.
+   - Not decorative.
+
+PHASE 2 — VERTICAL RHYTHM DISCIPLINE
+
+4) Refine spacing rhythm:
+   - Slightly tighter spacing between title and description.
+   - Slightly more separation between sections.
+   - Avoid equal vertical spacing everywhere.
+   - Introduce subtle hierarchy through spacing contrast.
+
+5) Improve transition from “Formulation Standards” to next headline.
+   - Add slightly more breathing room before “Every dose, fully disclosed.”
+   - Make the transition feel intentional, not stacked.
+
+PHASE 3 — ELIMINATE APP ENERGY
+
+6) Refine product selector tabs:
+   - Slightly reduce underline brightness.
+   - Make active state feel deliberate, not neon.
+   - Maintain thin rail system.
+
+7) Refine CTA:
+   - Slightly reduce button height by 4–6px.
+   - Reduce gradient intensity slightly.
+   - Keep it dominant but restrained.
+   - It should feel precise, not flashy.
+
+PHASE 4 — TYPOGRAPHIC REFINEMENT
+
+8) Tighten hero description language to eliminate any remaining marketing softness.
+   - Keep declarative tone.
+   - Remove filler words.
+   - Reduce sentence length where possible.
+
+9) Remove periods in micro descriptive lines where cleaner.
+   - Keep tone clinical, not conversational.
+
+PHASE 5 — FINAL ALIGNMENT CHECK
+
+10) Perform strict alignment audit:
+   - Left edges must align across all modules.
+   - Dividers must match content width.
+   - No floating misalignments.
+   - No micro drift.
+
+ACCEPTANCE TEST:
+
+The page should feel:
+- Engineered
+- Institutional
+- Inevitable
+- Structured
+- Confident
+
+It must NOT feel:
+- Startup-y
+- Trendy
+- App-like
+- SaaS component-based
+- Influencer wellness
+
+Deliver:
+- List of refined adjustments made.
+- Confirmation of mobile check at 375px and 390px.
+- Confirmation that no new design patterns were introduced.
