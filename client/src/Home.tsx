@@ -366,7 +366,7 @@ const TheAxis = ({ onOpenEvidence }) => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-4">
           {[
             {
               name: 'Gut–Mito Axis',
@@ -387,33 +387,31 @@ const TheAxis = ({ onOpenEvidence }) => {
               steps: ['Short cycle', 'Defense layer', 'Return to base']
             }
           ].map((item, i) => (
-            <div key={i} className="reveal-stagger group relative overflow-hidden rounded-ar-xl border border-white/[0.10] hover:border-white/[0.18] transition-all duration-500 hover:-translate-y-1">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] via-white/[0.04] to-white/[0.02] group-hover:from-white/[0.12] group-hover:via-white/[0.06] group-hover:to-white/[0.03] transition-all duration-500" />
-              <div className="absolute inset-0 backdrop-blur-2xl" />
-              <div className="absolute inset-0 shadow-card-edge pointer-events-none" />
-              <div className="relative z-10 p-8 space-y-6">
-              <div className="w-14 h-14 rounded-ar-lg bg-ar-teal/10 border border-ar-teal/20 text-ar-teal flex items-center justify-center group-hover:scale-110 group-hover:bg-ar-teal/15 transition-all duration-500">
-                <span className="font-mono text-xs font-bold tracking-[0.14em]">{item.tag}</span>
-              </div>
-              <div className="space-y-3">
-                <h3 className="text-xl font-head font-normal uppercase tracking-tight text-white group-hover:text-ar-teal transition-colors duration-300">{item.name}</h3>
-                <p className="text-sm font-medium text-white/60 leading-relaxed">{item.desc}</p>
-              </div>
+            <div key={i} className="reveal-stagger group relative overflow-hidden rounded-xl border border-white/[0.07] hover:border-white/[0.12] transition-all duration-400">
+              <div className="absolute inset-0 bg-white/[0.03] group-hover:bg-white/[0.05] transition-all duration-400" />
+              <div className="relative z-10 px-5 py-5 flex flex-col gap-3">
+                <div className="flex items-baseline gap-2">
+                  <h3 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white">{item.name}</h3>
+                  <span className="text-[9px] font-mono font-bold tracking-[0.12em] text-white/30 uppercase">({item.tag})</span>
+                </div>
 
-              <ul className="space-y-2.5">
-                {item.steps.map((s) => (
-                  <li key={s} className="flex items-center gap-3 text-[12px] font-mono font-bold uppercase tracking-[0.18em] text-white/55">
-                    <div className="w-1.5 h-1.5 rounded-full bg-ar-teal" /> {s}
-                  </li>
-                ))}
-              </ul>
+                <p className="text-[13px] font-sans text-white/55 leading-[1.45]">{item.desc}</p>
 
-              <button
-                onClick={onOpenEvidence}
-                className="text-[12px] font-mono font-bold uppercase tracking-[0.18em] text-ar-teal flex items-center gap-2 hover:gap-3 transition-all pt-3 border-t border-white/[0.08] w-full min-h-[44px]"
-              >
-                View Evidence <ArrowRight size={14} />
-              </button>
+                <div className="flex flex-col gap-1.5 pt-1">
+                  {item.steps.map((s) => (
+                    <div key={s} className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.08em] text-white/50">
+                      <div className="w-1 h-1 rounded-sm bg-white/25 shrink-0" /> {s}
+                    </div>
+                  ))}
+                </div>
+
+                <button
+                  onClick={onOpenEvidence}
+                  className="mt-1 w-full min-h-[38px] flex items-center justify-center gap-2 rounded-lg text-[10px] font-mono font-bold uppercase tracking-[0.12em] text-white/50 hover:text-white/75 transition-all duration-300"
+                  style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.07)' }}
+                >
+                  View Evidence <ArrowRight size={12} />
+                </button>
               </div>
             </div>
           ))}
