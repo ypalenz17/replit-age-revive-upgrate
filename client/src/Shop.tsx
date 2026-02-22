@@ -722,21 +722,25 @@ function ProductTemplate({ product }) {
                 <h3 className="text-xl md:text-2xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight">Ingredient Architecture</h3>
               </div>
               <p className="text-[13px] text-white/50 leading-relaxed font-sans font-medium">
-                No proprietary blends. No undisclosed fillers. Every compound listed with exact dose and stated purpose.
+                Open formulation. Every active listed with exact dose, functional role, and clinical reference range.
               </p>
 
-              <div className="flex flex-col gap-2.5 pt-1">
+              <div className="flex flex-col gap-2 pt-1">
                 {[
                   { key: 'Actives', val: String(product.ingredients.length) },
                   { key: 'Dosing Standard', val: 'Clinical' },
                   { key: 'Verification', val: 'Third-Party' }
                 ].map((spec, i) => (
                   <div key={i} className="flex items-baseline justify-between border-b border-white/[0.04] pb-2">
-                    <span className="text-[11px] font-mono uppercase tracking-[0.10em] text-white/40">{spec.key}</span>
+                    <span className="text-[11px] font-mono uppercase tracking-[0.10em] text-white/45">{spec.key}</span>
                     <span className="text-[13px] font-mono font-bold tracking-[0.04em] text-white/85">{spec.val}</span>
                   </div>
                 ))}
               </div>
+
+              <p className="text-[11px] font-mono text-white/35 tracking-[0.06em] leading-relaxed">
+                Manufactured in GMP-certified facilities. Each batch independently verified for purity and heavy metals.
+              </p>
             </div>
 
             <div className="md:col-span-7 reveal">
