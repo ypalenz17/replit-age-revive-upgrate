@@ -1,0 +1,141 @@
+We are redesigning the product narrative sections for CELLUNAD+, CELLUBIOME, and CELLUNOVA.
+
+DO NOT change the overall layout system.
+DO NOT change fonts.
+DO NOT change brand colors.
+Only refine structure, spacing, and content.
+
+GOALS:
+- Reduce text density
+- Improve visual separation between sections
+- Create architectural differentiation between the three products
+- Maintain compliance (structure/function language only)
+- Make the page feel premium, strategic, and controlled
+
+========================
+CONTENT REPLACEMENTS
+========================
+
+CELLUNAD+
+
+Replace narrative section with:
+
+Label:
+FOUNDATION LAYER
+
+Headline:
+Your Energy System Has a Supply Chain.
+
+Subhead:
+CELLUNAD+ restores daily NAD+ input so your cells don’t run on deficit.
+
+Replace feature bullets with 3 structured blocks:
+
+DAILY NAD+ INPUT
+Maintains NAD+ availability for repair and energy metabolism.
+
+REDOX BALANCE
+Stabilizes mitochondrial electron flow for steady output.
+
+METHYLATION ALIGNMENT
+Provides active B-vitamin cofactors to keep pathways synchronized.
+
+Replace “Why Daily Input Matters” section with:
+
+Energy rarely disappears overnight.
+It erodes.
+
+When NAD+ pools decline, repair slows.
+When repair slows, output drifts.
+When output drifts, everything feels harder.
+
+CELLUNAD+ keeps the baseline intact.
+
+
+========================
+
+CELLUBIOME
+
+Label:
+SIGNAL STABILITY
+
+Headline:
+Your Gut Is an Energy Organ.
+
+Subhead:
+CELLUBIOME reinforces the gut–mitochondria axis so output stays clean.
+
+Feature structure:
+
+BARRIER INTEGRITY
+Supports epithelial resilience and postbiotic signaling.
+
+MITOCHONDRIAL RECOVERY
+Urolithin A promotes mitophagy and cellular renewal.
+
+SIGNAL CLARITY
+Tributyrin supports short-chain fatty acid pathways that influence energy balance.
+
+Replace “Why Signaling Matters” with:
+
+When gut signaling is unstable,
+energy feels noisy.
+
+Not exhausted.
+Unstable.
+
+CELLUBIOME restores signal precision.
+
+
+========================
+
+CELLUNOVA
+
+Label:
+CONTROLLED RESET
+
+Headline:
+Progress Requires Renewal.
+
+Subhead:
+CELLUNOVA is a 7-day autophagy-aligned cycle designed to clear accumulated stress without extremes.
+
+Feature structure:
+
+CELLULAR CLEANUP
+Supports pathways associated with autophagy signaling.
+
+OXIDATIVE DEFENSE
+Polyphenols support redox balance during higher demand periods.
+
+SENESCENCE MODULATION
+Fisetin included within a structured, repeatable cadence.
+
+Replace “Why a Cycle Exists” with:
+
+Daily inputs build.
+Cycles recalibrate.
+
+CELLUNOVA introduces structured renewal
+without impulsive restriction.
+
+
+========================
+DESIGN REFINEMENTS
+========================
+
+1. Reduce top padding of each section by 20–25%.
+2. Increase space between headline and first feature block.
+3. Increase space before CTA area.
+4. Remove redundant dividers where not needed.
+5. Introduce subtle background variation per product:
+   - CELLUNAD+: deeper navy gradient with subtle cool glow
+   - CELLUBIOME: navy with faint teal radial depth
+   - CELLUNOVA: navy with faint violet undertone
+6. Keep text lines under 2–3 lines maximum to avoid wrapping.
+7. Ensure no section visually blends into the next.
+
+Return:
+- Files modified
+- Spacing changes summary
+- Confirmation no layout structure was broken
