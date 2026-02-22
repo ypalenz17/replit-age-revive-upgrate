@@ -1,0 +1,65 @@
+STOP redesigning. This is a targeted mobile layout fix only.
+
+Scope: Home page hero section ONLY.
+Do not change copy. Do not change colors. Do not change overall layout structure.
+Only update Tailwind classes / CSS to make the hero section readable and properly responsive on mobile.
+
+Problem (from screenshot):
+- Trust strip text is too faint and looks like a background artifact.
+- CTA row is cramped on mobile.
+- Vertical spacing is off; elements feel crowded and misaligned.
+- We need a clean, expensive-looking mobile layout.
+
+Rules:
+- No refactors.
+- No new sections.
+- Only edit the hero component styles.
+- Use responsive classes to fix mobile < 420px.
+- After changes, provide the exact file paths edited.
+
+Required Mobile Behavior (Acceptance Tests):
+1) On iPhone width (375px):
+   - Headline fits without awkward line breaks.
+   - Subcopy wraps cleanly (no orphan single words).
+   - Trust strip is readable (at least text-white/60) and wraps into 2 lines max.
+   - CTAs stack vertically: primary full-width, secondary full-width, 12px gap.
+   - Microcopy under CTAs is readable (text-white/60 or stronger).
+2) Nothing overlaps. No absolute positioning that causes collision.
+3) The trust strip MUST NOT sit on top of the grid as faint ghost text.
+
+Implementation Instructions:
+A) Hero container
+- Ensure a normal document flow layout: flex-col + gap, NO fixed heights, NO absolute positioning for hero content.
+- Add padding tuned for mobile: px-5 or px-6, pt-16 (accounting for header), pb-10.
+
+B) Headline
+- Use clamp for font sizing and tighter leading on mobile:
+  text-[clamp(40px,10vw,56px)] leading-[0.95]
+- Reduce aggressive italics/opacity tricks that harm readability.
+- Secondary line (Gut Resilience) should remain visually distinct via opacity, not unreadable color.
+
+C) Trust strip
+- Make it a flex-wrap row so it doesn’t look like a single faint line:
+  flex flex-wrap gap-x-6 gap-y-2
+- Increase legibility:
+  text-white/70 (minimum) and text-[11px] tracking-[0.22em]
+- If you’re using separators, ensure they don’t break alignment on wrap.
+- Keep it to 2 lines max on 375px.
+
+D) CTA row
+- Stack on mobile:
+  flex flex-col sm:flex-row
+  w-full
+  gap-3
+- Buttons should be full-width on mobile:
+  w-full sm:w-auto
+- Ensure button labels remain centered and readable.
+
+E) Microcopy under CTAs
+- Increase opacity:
+  text-white/60
+- Use text-sm and normal tracking; do not use ultra-wide tracking here.
+
+Deliverable:
+- Commit the class changes.
+- List edited files and the specific hero section blocks updated.

@@ -316,50 +316,50 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
   return (
     <section className="relative min-h-[100dvh] flex flex-col overflow-hidden">
 
-      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-start md:items-center text-left md:text-center px-5 pt-20 md:pt-40 pb-16 md:pb-24 min-h-[100dvh] justify-center">
-        <div className="space-y-5 md:space-y-10 hero-text w-full">
-          <div className="space-y-3 md:space-y-4">
+      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col justify-center text-left md:text-center px-5 md:px-6 pt-16 md:pt-40 pb-10 md:pb-24 min-h-[100dvh]">
+        <div className="flex flex-col gap-6 md:gap-10 hero-text w-full md:items-center">
+          <div className="flex flex-col gap-3 md:gap-4">
             <div className="flex items-center gap-3 justify-start md:justify-center">
               <div className="h-[1px] w-8 md:w-12 bg-ar-teal" />
               <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em] md:tracking-[0.22em]">Protocol-Grade Supplements</span>
               <div className="h-[1px] w-8 md:w-12 bg-ar-teal hidden md:block" />
             </div>
-            <h1 className="font-head font-normal text-white tracking-[-0.05em] leading-[0.85]" style={{ fontSize: 'clamp(2.5rem, 9.5vw, 5.5rem)' }}>
+            <h1 className="font-head font-normal text-white tracking-[-0.05em] leading-[0.95]" style={{ fontSize: 'clamp(40px, 10vw, 56px)' }}>
               Cellular Energy.
               <br />
-              <span className="italic text-white/50">Gut Resilience.</span>
+              <span className="italic text-white/60">Gut Resilience.</span>
             </h1>
           </div>
 
-          <p className="text-[14px] md:text-xl text-white/70 font-medium max-w-2xl leading-relaxed md:mx-auto">
+          <p className="text-[15px] md:text-xl text-white/70 font-medium max-w-2xl leading-relaxed md:mx-auto">
             Three protocol-grade supplements built as one system: daily NAD+, daily gut-mito signaling, and a 7-day monthly reset.
           </p>
 
-          <div className="flex items-center gap-x-4 flex-wrap justify-start md:justify-center">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-start md:justify-center">
             {[
               'Full dosing disclosed',
               'No proprietary blends',
               'COA library available'
             ].map((text, i) => (
-              <span key={i} className="font-mono text-[11px] text-white/50 uppercase tracking-[0.08em]">{text}</span>
+              <span key={i} className="font-mono text-[11px] text-white/70 uppercase tracking-[0.22em]">{text}</span>
             ))}
           </div>
 
-          <div className="flex gap-3 md:gap-4 md:justify-center">
-            <a href="/shop" className="group relative px-6 md:px-10 py-3.5 md:py-5 min-h-[48px] flex items-center bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.14em] md:tracking-[0.18em] overflow-hidden transition-transform hover:scale-105 active:scale-95 whitespace-nowrap" data-testid="button-shop-system">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto md:justify-center">
+            <a href="/shop" className="group relative w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 min-h-[48px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] overflow-hidden transition-transform hover:scale-105 active:scale-95" data-testid="button-shop-system">
               <span className="relative z-10">Shop the System</span>
               <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </a>
 
             <button
               onClick={onOpenEvidence}
-              className="px-5 md:px-8 py-3.5 md:py-5 min-h-[48px] border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.14em] md:tracking-[0.18em] hover:bg-white/5 transition-all whitespace-nowrap"
+              className="w-full sm:w-auto px-8 md:px-8 py-4 md:py-5 min-h-[48px] border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-white/5 transition-all"
               data-testid="button-view-evidence"
             >
               View Evidence
             </button>
           </div>
-          <p className="font-mono text-[12px] text-white/35 tracking-[0.08em]">Start with the bundle or choose a protocol.</p>
+          <p className="text-sm text-white/60 tracking-normal">Start with the bundle or choose a protocol.</p>
         </div>
       </div>
     </section>
