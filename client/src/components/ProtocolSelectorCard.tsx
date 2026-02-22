@@ -83,17 +83,17 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
             </div>
           )}
 
-          <div className="border-t border-white/[0.06] pt-3 mb-5">
+          <div className="border-t border-white/[0.06] pt-3 mb-3">
             <div className="grid grid-cols-2 gap-3 text-[11px] font-sans text-white/50 tracking-normal">
               <span>{p.serving}</span>
               {p.supply && <span className="text-right">{p.supply}</span>}
             </div>
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-1.5">
             <Link
               to={`/product/${p.slug}`}
-              className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-3 font-mono font-bold uppercase text-[11px] tracking-[0.14em] transition-all duration-300 bg-white/[0.07] text-white hover:bg-white/[0.11]"
+              className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 font-mono font-bold uppercase text-[11px] tracking-[0.14em] transition-all duration-300 bg-white/[0.07] text-white hover:bg-white/[0.11]"
               style={{ boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08), inset 0 0 0 1px ${hexToRgba(accent, 0.18)}, 0 1px 3px rgba(0,0,0,0.2)` }}
               data-testid={`button-view-protocol-${p.slug}`}
             >
@@ -101,7 +101,7 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
             </Link>
 
             <button
-              className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-3 font-mono uppercase text-[11px] tracking-[0.14em] font-medium text-white/45 hover:bg-white/[0.04] hover:text-white/65 transition-all duration-300"
+              className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 font-mono uppercase text-[11px] tracking-[0.14em] font-medium text-white/45 hover:bg-white/[0.04] hover:text-white/65 transition-all duration-300"
               style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)' }}
               data-testid={`button-add-stack-${p.slug}`}
               aria-label={`Add ${p.name} to stack`}
