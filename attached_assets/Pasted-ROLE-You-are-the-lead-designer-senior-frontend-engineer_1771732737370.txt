@@ -1,0 +1,137 @@
+ROLE: You are the lead designer + senior frontend engineer. Apply the exact design system + UX improvements we implemented on the Home page to the Shop page. This is not a new design. This is replication + consistency. Do not invent new UI patterns.
+
+NON-NEGOTIABLES
+- NO redesign thrash. Use the Home page as source-of-truth for spacing, typography, contrast, corners, and “engineered luxury” style.
+- Remove all SaaS/chip/accordion/2012 DTC patterns from Shop.
+- No rounded-full for major UI. Engineered corners only.
+- No truncated labels with “…”.
+- No low-contrast ghost text that becomes unreadable on mobile.
+- No “random extra air”. Density and rhythm must match Home.
+- Do not invent certifications/claims. Use the copy we already have, only change styling and layout. If any proof claims exist, keep them accurate.
+
+PHASE 1 — STRUCTURE + UX (make it correct before pretty)
+1) SHOP PAGE LAYOUT CONSISTENCY
+- Use the same header treatment as Home (glass control strip, minimal, engineered).
+- Same max-width container rules, same padding, same section spacing rhythm.
+- Fix any dead zones between sections (target 48–64px between major blocks on mobile).
+
+2) CTA LANGUAGE + HIERARCHY
+- Primary actions must be commerce-native and consistent with Home:
+  - Primary: “Shop Protocol Stack” or “Shop the System”
+  - Secondary: “Explore Individual Protocols” (as a link, not a big second button)
+- No purple primary CTAs. Teal system accent is primary. Secondary stays glass/outline.
+
+3) PRODUCT CARD SYSTEM (CRITICAL)
+- Replace any generic product tiles with the Home-approved “Product Stage + Panel” module:
+  - Large bottle/jar above
+  - Panel underneath (rounded consistently on all corners)
+  - Clear hierarchy: micro label -> product name -> 1-line benefit -> outcomes -> dosage/supply -> CTA(s)
+  - No overlap hacks that cover text. If bottle sits above panel, keep consistent gap and ensure no collision.
+- CTAs in cards:
+  - Two stacked buttons (no weird + square button):
+    - Primary: View Protocol
+    - Secondary: Add to Stack (or Add to Cart if cart exists)
+  - Button height 44–48px on mobile, engineered corners (rounded-lg), tight gaps.
+
+4) STANDARDS / PROOF SECTION
+- Remove chip-grid/rounded tag UI.
+- Use the Home-approved “Standards list” layout (architectural list):
+  01 THIRD-PARTY TESTED
+     Independent lab verification
+  02 STANDARDIZED ACTIVES
+     Precise concentration, no variability
+  03 ENTERIC DELIVERY
+     Targeted absorption
+  04 QUALITY CONTROL
+     Multi-stage review process
+- Alignment rules:
+  - Clean left edge alignment with surrounding content
+  - Dividers align to the text block width (not wider)
+  - Titles high contrast, descriptions slightly dimmer
+  - No periods at end of descriptions if it makes tone cleaner (optional, but keep consistent)
+
+5) 6 PILLARS / FRAMEWORK UI (IF PRESENT ON SHOP)
+- If Shop includes any “framework” section, it must match the Home “6 pillars” redesign:
+  - NO accordion cards
+  - NO progress step bars
+  - Present as stacked architectural layers:
+    01 TITLE
+    1–2 line explanation
+    mechanisms | linked protocol →
+  - Thin separators, strong titles, readable body text, integrated protocol link.
+
+PHASE 2 — VISUAL SYSTEM + PREMIUM FINISH (engineered luxury)
+Apply the Home design tokens and rules across Shop:
+
+A) CORNERS / GEOMETRY
+- Remove rounded-full from:
+  - buttons, pills, tags, containers
+- Radius system:
+  - buttons/toggles: rounded-lg
+  - panels/cards: rounded-2xl
+  - sheets/modals: rounded-2xl
+- Make corner treatment consistent (no rounded top with square bottom unless it’s intentionally docked; default is fully rounded).
+
+B) CONTRAST + READABILITY
+- Increase legibility to match Home:
+  - Titles near-white
+  - Body text white/70–80 (not white/40)
+  - Metadata white/55–65
+- Kill muddy dark-on-dark combos.
+- Ensure small text never drops below readable on mobile.
+
+C) GRID MANAGEMENT + PANEL MASKING
+- Grid must be felt, not read.
+- Where panels sit over grid, add subtle masking:
+  - slightly higher panel opacity or scrim
+  - keep glass feel but reduce interference behind text.
+
+D) LIGHTING + DEPTH (SUBTLE)
+- Use the same lighting logic as Home:
+  - subtle radial backlight behind product bottle
+  - faint contact shadow to ground object
+  - subtle top-edge highlight on panels
+- No neon glow. No “gaming RGB”.
+
+E) TYPOGRAPHY RULES
+- Mono/extra tracking only for micro labels or indices (01/02/03).
+- Main copy uses normal tracking for readability.
+- Tighten spacing rhythm: avoid equal gap everywhere.
+
+PHASE 3 — POLISH + CONSISTENCY CHECKLIST (do not skip)
+1) ALIGNMENT AUDIT
+- Ensure:
+  - left edges align consistently between sections
+  - dividers line up with content blocks
+  - indices and titles share consistent baselines
+- Fix any “looks slightly off” spacing by snapping to an 8px spacing scale.
+
+2) BUTTON SYSTEM CONSISTENCY
+- Primary button always teal system style.
+- Secondary always glass outline.
+- No random third styles.
+
+3) MOBILE OPTIMIZATION
+- Verify at 375px and 390px:
+  - no clipped text
+  - no overflow
+  - no truncation
+  - no dead zones
+  - tap targets >= 44px
+
+4) REMOVE ANY PROTOTYPE ARTIFACTS
+- No placeholder text visible
+- No broken images
+- No debug strings
+
+DELIVERABLE
+- Implement changes on Shop page.
+- Tell me exactly which files were edited.
+- Confirm you compared Home vs Shop side-by-side and matched:
+  - corners
+  - spacing rhythm
+  - button styles
+  - standards list styling
+  - product module layout
+  - typography/contrast
+- Provide screenshots at 375px width for Shop page key sections after changes.
