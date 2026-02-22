@@ -35,8 +35,12 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
 
       <div className="relative mb-3 sm:mb-4 flex items-center justify-center">
         <div
-          className="absolute left-1/2 -translate-x-1/2 top-[25%] w-[70%] h-[60%] blur-3xl opacity-30 pointer-events-none"
-          style={{ background: `radial-gradient(ellipse at center, ${hexToRgba(accent, 0.4)}, transparent 65%)` }}
+          className="absolute left-1/2 -translate-x-1/2 top-[25%] w-[70%] h-[60%] blur-3xl opacity-25 pointer-events-none"
+          style={{ background: `radial-gradient(ellipse at center, ${hexToRgba(accent, 0.35)}, transparent 65%)` }}
+        />
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[50%] h-[8px] rounded-[50%] blur-md opacity-40 pointer-events-none"
+          style={{ background: 'rgba(0,0,0,0.6)' }}
         />
         <img
           src={p.image}
@@ -46,34 +50,34 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
         />
       </div>
 
-      <div className="w-full rounded-t-3xl border-t border-white/[0.10] bg-gradient-to-b from-white/[0.06] to-white/[0.03]">
-        <div className="px-6 py-6 flex flex-col">
+      <div className="w-full max-w-[92%] mx-auto relative overflow-hidden rounded-t-3xl border-t border-white/[0.10] bg-gradient-to-b from-white/[0.06] to-white/[0.03]">
+        <div className="absolute inset-x-0 top-0 h-[20%] bg-gradient-to-b from-white/[0.10] to-transparent pointer-events-none" />
 
-          <div className="mb-3">
-            <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-white/55 mb-1">{p.category}</p>
-          </div>
+        <div className="relative z-10 px-6 py-6 flex flex-col">
+
+          <p className="text-[11px] font-mono uppercase tracking-[0.10em] text-white/55 mb-1.5">{p.category}</p>
 
           <h4 className="font-head font-normal text-2xl tracking-[-0.03em] uppercase text-white leading-none mb-4">
             <BrandName name={p.name} />
           </h4>
 
           {p.benefit && (
-            <p className="text-[15px] sm:text-base text-white/75 font-medium leading-snug mb-5">{p.benefit}</p>
+            <p className="text-[15px] sm:text-base text-white/75 font-medium leading-snug mb-6">{p.benefit}</p>
           )}
 
           {p.outcomes && p.outcomes.length > 0 && (
-            <div className="flex flex-col gap-2 mb-4">
+            <div className="flex flex-col gap-1.5 mb-5">
               {p.outcomes.map((o) => (
-                <span key={o} className="flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.06em] text-white/75">
-                  <Check size={12} className="shrink-0" style={{ color: accent }} />
+                <span key={o} className="flex items-center gap-2 text-[12px] font-mono uppercase tracking-[0.04em] text-white/75">
+                  <Check size={12} className="shrink-0 opacity-90" style={{ color: accent }} />
                   {o}
                 </span>
               ))}
             </div>
           )}
 
-          <div className="border-t border-white/[0.06] pt-4 mb-6">
-            <div className="grid grid-cols-2 gap-4 text-[12px] font-mono text-white/60 uppercase tracking-[0.06em]">
+          <div className="border-t border-white/[0.06] pt-4 mb-7">
+            <div className="grid grid-cols-2 gap-4 text-[12px] font-mono text-white/60 uppercase tracking-[0.04em]">
               <span>{p.serving}</span>
               {p.supply && <span className="text-right">{p.supply}</span>}
             </div>
@@ -82,8 +86,8 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
           <div className="flex flex-col gap-2">
             <Link
               to={`/product/${p.slug}`}
-              className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-3.5 font-mono font-bold uppercase text-[12px] tracking-[0.12em] transition-all duration-300 bg-white/[0.08] border border-white/[0.12] text-white hover:bg-white/[0.12] hover:border-white/[0.18]"
-              style={{ boxShadow: `inset 0 1px 0 rgba(255,255,255,0.06), 0 0 0 1px ${hexToRgba(accent, 0.12)}` }}
+              className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-3.5 font-mono font-bold uppercase text-[12px] tracking-[0.12em] transition-all duration-300 bg-white/[0.06] border border-white/[0.14] text-white hover:bg-white/[0.10] hover:border-white/[0.20]"
+              style={{ boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px ${hexToRgba(accent, 0.15)}` }}
               data-testid={`button-view-protocol-${p.slug}`}
             >
               View Protocol <ArrowRight size={13} />
