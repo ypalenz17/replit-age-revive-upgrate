@@ -314,17 +314,17 @@ const Navbar = () => {
 
 const Hero = ({ onOpenEvidence, onOpenProduct }) => {
   return (
-    <section className="relative md:min-h-[100dvh] flex flex-col overflow-hidden">
+    <section className="relative min-h-[100dvh] flex flex-col overflow-hidden">
 
-      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-center px-5 pt-24 md:pt-40 pb-14 md:pb-24 md:min-h-[100dvh]">
-        <div className="space-y-5 md:space-y-10 hero-text">
+      <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center justify-center text-center px-5 pt-32 md:pt-40 pb-16 md:pb-24 min-h-[100dvh]">
+        <div className="space-y-7 md:space-y-10 hero-text">
           <div className="space-y-3 md:space-y-4">
             <div className="flex items-center justify-center gap-3">
               <div className="h-[1px] w-8 md:w-12 bg-ar-teal" />
-              <span className="font-mono text-[11px] md:text-[12px] text-ar-teal uppercase tracking-[0.18em] md:tracking-[0.22em]">Protocol-Grade Supplements</span>
+              <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em] md:tracking-[0.22em]">Protocol-Grade Supplements</span>
               <div className="h-[1px] w-8 md:w-12 bg-ar-teal" />
             </div>
-            <h1 className="font-head font-normal text-white tracking-[-0.05em] leading-[0.85]" style={{ fontSize: 'clamp(2.2rem, 7.5vw, 5.5rem)' }}>
+            <h1 className="font-head font-normal text-white tracking-[-0.05em] leading-[0.85]" style={{ fontSize: 'clamp(2.5rem, 7.5vw, 5.5rem)' }}>
               Cellular Energy.
               <br />
               <span className="italic text-white/50">Gut Resilience.</span>
@@ -347,7 +347,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             ))}
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4 pt-2 md:pt-4">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
             <a href="/shop" className="group relative px-8 md:px-10 py-4 md:py-5 min-h-[48px] flex items-center bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] overflow-hidden transition-transform hover:scale-105 active:scale-95" data-testid="button-shop-system">
               <span className="relative z-10">Shop the System</span>
               <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
@@ -361,7 +361,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
               View Evidence
             </button>
           </div>
-          <p className="font-mono text-[11px] md:text-[12px] text-white/35 tracking-[0.1em]">Start with the bundle or choose a protocol.</p>
+          <p className="font-mono text-[12px] text-white/35 tracking-[0.1em]">Start with the bundle or choose a protocol.</p>
         </div>
       </div>
     </section>
