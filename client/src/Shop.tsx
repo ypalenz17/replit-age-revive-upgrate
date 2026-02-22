@@ -1,20 +1,21 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowRight,
+  ChevronDown,
   Menu,
   ShoppingBag,
-  X,
-  Check
+  X
 } from 'lucide-react';
 import { useParams } from 'wouter';
-import { Link } from 'wouter';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import Footer from './components/Footer';
-import { PRODUCTS as SELECTOR_PRODUCTS, BrandName } from './productsData';
-import ProtocolSelectorCard from './components/ProtocolSelectorCard';
+import imgCellubiome from '@assets/cellubiome_cropped.png';
+import imgCellunad from '@assets/cellunad_cropped.png';
+import imgCellunova from '@assets/cellunova_cropped.png';
+import { BrandName } from './productsData';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,7 +28,19 @@ function hexToRgba(hex, alpha = 1) {
   return `rgba(${r},${g},${b},${alpha})`;
 }
 
-const PDP_PRODUCTS = {
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const onChange = () => setReduced(mq.matches);
+    setReduced(mq.matches);
+    mq.addEventListener?.('change', onChange);
+    return () => mq.removeEventListener?.('change', onChange);
+  }, []);
+  return reduced;
+}
+
+const PRODUCTS = {
   cellunad: {
     id: 'cellunad',
     name: 'CELLUNAD+',
@@ -37,7 +50,6 @@ const PDP_PRODUCTS = {
       'A molecular-grade daily protocol that supports NAD+ metabolism with redox and methylation cofactors. Built to feel precise, not noisy.',
     price: '$92.00',
     serving: '2 capsules daily',
-    supply: '30-day supply',
     accent: '#1e3a8a',
     heroImage: '/images/cellunad-trimmed.png',
     outcomes: [
@@ -62,11 +74,12 @@ const PDP_PRODUCTS = {
       { title: 'Cofactor Alignment', text: 'Methylation cofactors support metabolic efficiency and daily consistency.', tags: ['Methylation', 'Consistency'] }
     ],
     timeline: [
-      { time: 'Days 1–3', label: 'Protocol Onboarding', desc: 'Routine locks in. Many people notice the first shift as consistency, not a spike.' },
-      { time: 'Week 1', label: 'Stability Layer', desc: 'Daily inputs become predictable. The goal is steady, repeatable adherence.' },
-      { time: 'Month 1', label: 'Compounding', desc: 'Consistency becomes the product. This is where protocols start to feel "owned."' },
-      { time: 'Months 2–3', label: 'Infrastructure', desc: 'Sustained routine typically feels smoother than intermittent intensity.' }
-    ]
+      { time: 'Days 1–3', label: 'Protocol Onboarding', desc: 'Routine locks in. Many people notice the first shift as consistency, not a spike.', value: 'Foundation' },
+      { time: 'Week 1', label: 'Stability Layer', desc: 'Daily inputs become predictable. The goal is steady, repeatable adherence.', value: 'Cadence' },
+      { time: 'Month 1', label: 'Compounding', desc: 'Consistency becomes the product. This is where protocols start to feel "owned."', value: 'Momentum' },
+      { time: 'Months 2–3', label: 'Infrastructure', desc: 'Sustained routine typically feels smoother than intermittent intensity.', value: 'Durability' }
+    ],
+    telemetry: ['NAD+ Support', 'Cellular Energy', 'Redox Balance']
   },
 
   cellubiome: {
@@ -78,7 +91,6 @@ const PDP_PRODUCTS = {
       'Enteric-coated delivery of Urolithin A plus tributyrin to support mitochondrial recycling signals and short-chain fatty acid activity.',
     price: '$110.00',
     serving: '2 enteric-coated capsules daily',
-    supply: '30-day supply',
     accent: '#19B3A6',
     heroImage: '/images/cellubiome-trimmed.png',
     outcomes: [
@@ -96,11 +108,12 @@ const PDP_PRODUCTS = {
       { title: 'Postbiotic Support', text: 'Tributyrin supports short-chain fatty acid activity through butyrate delivery.', tags: ['SCFA delivery', 'Gut axis'] },
       { title: 'Enteric Precision', text: 'Enteric-coated delivery supports release beyond the upper GI environment.', tags: ['Targeted release', 'Bioavailability'] }
     ],
+    telemetry: ['Gut Signaling', 'Mito Renewal', 'Postbiotic Support'],
     timeline: [
-      { time: 'Days 1–3', label: 'Comfort + Consistency', desc: 'Enteric delivery supports a smoother start, especially for sensitive routines.' },
-      { time: 'Week 1', label: 'Signal Support', desc: 'Daily inputs support signaling layers that benefit from repetition.' },
-      { time: 'Month 1', label: 'Sustained Routine', desc: 'Support tends to feel more stable when it is truly daily.' },
-      { time: 'Months 2–3', label: 'Compounding', desc: 'Consistency is the unlock. Protocols compound when adherence is effortless.' }
+      { time: 'Days 1–3', label: 'Comfort + Consistency', desc: 'Enteric delivery supports a smoother start, especially for sensitive routines.', value: 'Settle In' },
+      { time: 'Week 1', label: 'Signal Support', desc: 'Daily inputs support signaling layers that benefit from repetition.', value: 'Alignment' },
+      { time: 'Month 1', label: 'Sustained Routine', desc: 'Support tends to feel more stable when it is truly daily.', value: 'Stability' },
+      { time: 'Months 2–3', label: 'Compounding', desc: 'Consistency is the unlock. Protocols compound when adherence is effortless.', value: 'Momentum' }
     ]
   },
 
@@ -113,7 +126,6 @@ const PDP_PRODUCTS = {
       'A cyclical protocol featuring polyphenols, antioxidants, and metabolic cofactors designed for short, intentional phases. Not a daily forever stack.',
     price: '$145.00',
     serving: '5 capsules daily for 7 consecutive days',
-    supply: '7-day cycle (monthly)',
     warnings: 'Contains wheat (spermidine source).',
     accent: '#6C5CE7',
     heroImage: '/images/cellunova-trimmed.png',
@@ -140,26 +152,129 @@ const PDP_PRODUCTS = {
       { title: 'Polyphenol Stack', text: 'A focused blend of polyphenols and antioxidants for short-cycle intensity.', tags: ['Antioxidant', 'High density'] },
       { title: 'Off-Cycle Matters', text: 'The off-cycle is part of the protocol. This is a cadence, not a constant.', tags: ['Recovery phase', 'Cadence'] }
     ],
+    telemetry: ['Autophagy Support', 'Cellular Cleanup', 'Phase Design'],
     timeline: [
-      { time: 'Days 1–2', label: 'Ramp', desc: 'Phase begins. Keep hydration and routine tight. Consistency beats force.' },
-      { time: 'Days 3–5', label: 'Peak Week', desc: 'This is the center of the cycle. Keep variables stable and boring.' },
-      { time: 'Days 6–7', label: 'Finish', desc: 'Complete the cycle as designed. Do not extend just to "feel more."' },
-      { time: 'Weeks 2–4', label: 'Off-Cycle', desc: 'Return to your base protocol. Consolidation is part of the strategy.' }
+      { time: 'Days 1–2', label: 'Ramp', desc: 'Phase begins. Keep hydration and routine tight. Consistency beats force.', value: 'Initiate' },
+      { time: 'Days 3–5', label: 'Peak Week', desc: 'This is the center of the cycle. Keep variables stable and boring.', value: 'Center' },
+      { time: 'Days 6–7', label: 'Finish', desc: 'Complete the cycle as designed. Do not extend just to "feel more."', value: 'Complete' },
+      { time: 'Weeks 2–4', label: 'Off-Cycle', desc: 'Return to your base protocol. Consolidation is part of the strategy.', value: 'Reset' }
     ]
   }
 };
 
-const NoiseOverlay = () => (
-  <div className="fixed inset-0 z-[50] pointer-events-none opacity-[0.035]" aria-hidden="true">
-    <svg width="100%" height="100%">
-      <filter id="shopNoise">
-        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" />
-        <feColorMatrix type="saturate" values="0" />
-      </filter>
-      <rect width="100%" height="100%" filter="url(#shopNoise)" />
-    </svg>
-  </div>
-);
+function NoiseOverlay() {
+  return (
+    <div className="fixed inset-0 pointer-events-none z-[50] opacity-[0.035]" aria-hidden="true">
+      <svg width="100%" height="100%">
+        <filter id="shopNoise">
+          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#shopNoise)" />
+      </svg>
+    </div>
+  );
+}
+
+function TypewriterTelemetry({ phrases: inputPhrases }) {
+  const phrases = useMemo(() => inputPhrases || ['NAD+ Support', 'Cellular Energy', 'Redox Balance'], [inputPhrases]);
+
+  const [text, setText] = useState('');
+  const [cursor, setCursor] = useState(true);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    setIndex(0);
+    setText('');
+  }, [phrases]);
+
+  useEffect(() => {
+    let charIdx = 0;
+    const interval = setInterval(() => {
+      setText(phrases[index].slice(0, charIdx));
+      charIdx++;
+      if (charIdx > phrases[index].length + 8) {
+        setIndex((prev) => (prev + 1) % phrases.length);
+        charIdx = 0;
+      }
+    }, 75);
+    return () => clearInterval(interval);
+  }, [index, phrases]);
+
+  useEffect(() => {
+    const cursorInterval = setInterval(() => setCursor((c) => !c), 450);
+    return () => clearInterval(cursorInterval);
+  }, []);
+
+  return (
+    <div className="font-mono text-[12px] uppercase tracking-[0.18em] flex items-center gap-2">
+      <span className="opacity-40">[TELEMETRY]</span>
+      <span className="text-[color:var(--accent)] inline-flex items-center gap-2">
+        <span className="inline-block w-1.5 h-1.5 rounded-full bg-[color:var(--accent)] animate-pulse-dot" />
+        {text}
+        <span className="opacity-80">{cursor ? '_' : ' '}</span>
+      </span>
+    </div>
+  );
+}
+
+function IngredientPanel({ ingredients, accent }) {
+  return (
+    <div className="relative overflow-hidden rounded-2xl border border-white/[0.10]">
+      <div className="absolute inset-0 bg-[#0d1424]/80 backdrop-blur-lg" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01]" />
+      <div className="absolute inset-x-0 top-0 h-[1px]" style={{ background: `linear-gradient(90deg, transparent 10%, ${hexToRgba(accent, 0.3)} 50%, transparent 90%)` }} />
+      <div className="absolute inset-0 opacity-[0.12] pointer-events-none" style={{ background: `radial-gradient(800px 500px at 80% 0%, ${hexToRgba(accent, 0.5)}, transparent 60%)` }} />
+
+      <div className="relative z-10 p-6 md:p-8">
+        <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center gap-2.5">
+            <div className="w-1.5 h-1.5 rounded-full animate-pulse-dot bg-ar-teal" />
+            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.12em] text-white/60">Full Dose Disclosure</span>
+          </div>
+          <span className="text-[11px] font-mono font-bold uppercase tracking-[0.12em] text-ar-teal">{ingredients.length} Actives</span>
+        </div>
+
+        <div className="space-y-0">
+          {ingredients.map((ing, i) => (
+            <div key={i}>
+              <div className="flex items-baseline justify-between py-3 gap-4">
+                <div className="flex-1 min-w-0">
+                  <p className="text-[13px] font-sans font-bold text-white leading-tight truncate">{ing.name}</p>
+                  <p className="text-[11px] font-mono text-white/50 mt-0.5 uppercase tracking-[0.10em]">{ing.purpose}</p>
+                </div>
+                <span className="text-[13px] font-mono font-bold text-white shrink-0">{ing.dose}</span>
+              </div>
+              {i < ingredients.length - 1 && <div className="h-px bg-white/[0.06]" />}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TrustStats({ product }) {
+  const stats = [
+    { value: 'Actives', label: String(product.ingredients.length) },
+    { value: 'Dose', label: 'Clinical' },
+    { value: 'Tested', label: '3rd Party' },
+  ];
+
+  return (
+    <div className="grid grid-cols-3 gap-2">
+      {stats.map((stat, i) => (
+        <div key={i} className="relative overflow-hidden rounded-lg border border-white/[0.08] min-h-[72px]">
+          <div className="absolute inset-0 bg-white/[0.03]" />
+          <div className="relative z-10 p-3 text-center flex flex-col items-center justify-center min-h-[72px]">
+            <p className="text-[10px] font-mono font-medium uppercase tracking-[0.10em] text-white/40 mb-1 whitespace-nowrap">{stat.value}</p>
+            <p className="text-base font-sans font-extrabold tracking-tight text-white whitespace-nowrap">{stat.label}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -202,7 +317,7 @@ function Navbar() {
 
           <div className="hidden md:flex items-center gap-7 font-mono font-medium text-[11px] uppercase tracking-[0.14em]">
             {navLinks.map((l) => (
-              <a key={l.label} href={l.href} className="text-white/55 hover:text-teal-300 transition-colors" data-testid={`nav-link-${l.label.toLowerCase()}`}>{l.label}</a>
+              <a key={l.label} href={l.href} className="text-white/55 hover:text-teal-300 transition-colors" data-testid={`nav-link-shop-${l.label.toLowerCase()}`}>{l.label}</a>
             ))}
           </div>
 
@@ -247,46 +362,98 @@ function Navbar() {
   );
 }
 
+function MagneticButton({ className = '', children, onClick, type = 'button', style = {} }) {
+  const btnRef = useRef(null);
+  const reducedMotion = usePrefersReducedMotion();
+
+  useEffect(() => {
+    if (reducedMotion) return;
+    const el = btnRef.current;
+    if (!el) return;
+
+    const ctx = gsap.context(() => {
+      const xTo = gsap.quickTo(el, 'x', { duration: 0.35, ease: 'power3.out' });
+      const yTo = gsap.quickTo(el, 'y', { duration: 0.35, ease: 'power3.out' });
+
+      const onMove = (e) => {
+        const r = el.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        xTo(dx * 0.06);
+        yTo(dy * 0.10);
+      };
+
+      const onLeave = () => {
+        xTo(0);
+        yTo(0);
+      };
+
+      el.addEventListener('mousemove', onMove);
+      el.addEventListener('mouseleave', onLeave);
+
+      return () => {
+        el.removeEventListener('mousemove', onMove);
+        el.removeEventListener('mouseleave', onLeave);
+      };
+    }, btnRef);
+
+    return () => ctx.revert();
+  }, [reducedMotion]);
+
+  return (
+    <button ref={btnRef} type={type} onClick={onClick} className={className} style={style}>
+      {children}
+    </button>
+  );
+}
+
 function SideSheet({ open, title, onClose, children }) {
+  const reducedMotion = usePrefersReducedMotion();
   const sheetRef = useRef(null);
 
   useEffect(() => {
     if (!open) return;
+
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
-    const handleEsc = (e) => { if (e.key === 'Escape') onClose(); };
-    window.addEventListener('keydown', handleEsc);
+    if (!reducedMotion && sheetRef.current) {
+      const el = sheetRef.current;
+      const panel = el.querySelector('[data-panel]');
+      const overlay = el.querySelector('[data-overlay]');
 
-    const ctx = gsap.context(() => {
-      const panel = sheetRef.current?.querySelector('[data-panel]');
-      const overlay = sheetRef.current?.querySelector('[data-overlay]');
-      if (!panel || !overlay) return;
-      gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' });
-      gsap.fromTo(panel, { x: 28, opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: 'power3.out' });
-    }, sheetRef);
+      const ctx = gsap.context(() => {
+        gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' });
+        gsap.fromTo(panel, { x: 28, opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: 'power3.out' });
+      }, sheetRef);
+
+      return () => {
+        ctx.revert();
+        document.body.style.overflow = prev;
+      };
+    }
 
     return () => {
-      window.removeEventListener('keydown', handleEsc);
-      ctx.revert();
       document.body.style.overflow = prev;
     };
-  }, [open, onClose]);
+  }, [open, reducedMotion]);
 
   if (!open) return null;
 
   return (
-    <div ref={sheetRef} className="fixed inset-0 z-[200] flex justify-end" role="dialog" aria-modal="true" aria-label={typeof title === 'string' ? title : undefined}>
+    <div ref={sheetRef} className="fixed inset-0 z-[200] flex justify-end" role="dialog" aria-modal="true" aria-label={title}>
       <div data-overlay className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
       <div data-panel className="relative w-full max-w-md bg-[#111827] h-full shadow-float p-10 md:p-12 overflow-y-auto border-l border-white/[0.08] rounded-l-2xl">
         <button onClick={onClose} className="absolute top-7 right-7 p-2 rounded-lg hover:bg-white/10 transition-colors text-white min-h-[44px]" aria-label="Close panel" data-testid="button-close-sidesheet-shop">
           <X />
         </button>
+
         <div className="space-y-10">
           <div className="space-y-2">
-            <p className="text-[12px] font-mono font-medium uppercase tracking-[0.14em] text-white/40">Protocol Details</p>
+            <p className="text-[12px] font-mono font-medium uppercase tracking-[0.14em] text-white/40">Overlay</p>
             <h3 className="text-3xl font-head font-normal tracking-[-0.03em] uppercase text-white">{title}</h3>
           </div>
+
           {children}
         </div>
       </div>
@@ -294,201 +461,47 @@ function SideSheet({ open, title, onClose, children }) {
   );
 }
 
-function ShopCatalog() {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-    ScrollTrigger.getAll().forEach((t) => t.kill());
-
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) return;
-
-    const ctx = gsap.context(() => {
-      gsap.from('.shop-hero-text', { opacity: 0, y: 20, duration: 1, ease: 'power3.out' });
-
-      gsap.utils.toArray('.reveal-stagger').forEach((el, i) => {
-        gsap.from(el, {
-          scrollTrigger: { trigger: el, start: 'top 88%' },
-          opacity: 0,
-          y: 16,
-          duration: 0.8,
-          delay: i * 0.06,
-          ease: 'power3.out'
-        });
-      });
-    }, containerRef);
-
-    return () => {
-      ctx.revert();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
-
-  return (
-    <main ref={containerRef} className="relative bg-[#0f172a] text-white selection:bg-ar-teal selection:text-white">
-      <div className="fixed inset-0 z-0 bg-[#0f172a]">
-        <img
-          src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2400"
-          className="w-full h-full object-cover grayscale opacity-30 mix-blend-screen"
-          alt=""
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
-      </div>
-      <div
-        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.02]"
-        style={{
-          backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
-          backgroundSize: '100px 100px'
-        }}
-      />
-      <div className="relative z-[2]">
-        <NoiseOverlay />
-        <Navbar />
-
-        <section className="relative pt-28 md:pt-36 pb-12 md:pb-16 px-5 md:px-6 text-center">
-          <div className="max-w-3xl mx-auto shop-hero-text">
-            <div className="flex items-center justify-center gap-2 mb-3">
-              <div className="h-px w-4 bg-white/10" />
-              <span className="font-mono text-[10px] text-ar-teal/75 uppercase tracking-[0.10em]">The Protocol System</span>
-              <div className="h-px w-4 bg-white/10" />
-            </div>
-            <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase" style={{ fontSize: 'clamp(36px, 9vw, 52px)' }}>
-              Shop the
-              <br />
-              <span className="text-white/70">System.</span>
-            </h1>
-            <p className="mt-5 text-[14px] md:text-[16px] text-white/65 font-sans font-medium max-w-[38ch] leading-[1.5] mx-auto">
-              Three protocols designed to layer across NAD+, gut-mito signaling, and cellular cleanup. Start with one or build the full stack.
-            </p>
-            <div className="mt-5 flex flex-col items-center gap-0" data-testid="shop-proof-bar">
-              <div className="w-10 h-px bg-white/10 mb-3" />
-              <div className="flex flex-col items-center gap-[2px] leading-snug">
-                <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Standardized Actives</span>
-                <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Clinical Doses</span>
-                <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Glass Packaging</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="relative pt-4 pb-12 md:pt-8 md:pb-20 px-6">
-          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 30%, rgba(30,58,138,0.06) 0%, transparent 70%)' }} />
-          <div className="max-w-7xl mx-auto relative">
-            <div className="text-center mb-8 md:mb-14 reveal-stagger">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <div className="h-[1px] w-12 bg-ar-teal" />
-                <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Select Your Protocol</span>
-                <div className="h-[1px] w-12 bg-ar-teal" />
-              </div>
-              <h2 className="text-4xl md:text-5xl font-head font-normal text-white tracking-[-0.04em] uppercase leading-tight">
-                The System
-              </h2>
-              <p className="text-sm text-white/50 font-mono uppercase tracking-[0.12em] mt-3">Choose your starting point</p>
-            </div>
-
-            <div className="max-w-5xl mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-0 sm:gap-y-6">
-                {SELECTOR_PRODUCTS.map((p, i) => (
-                  <div key={p.slug} className="reveal-stagger">
-                    <ProtocolSelectorCard p={p} />
-                    {i < SELECTOR_PRODUCTS.length - 1 && (
-                      <div className="flex justify-center py-6 sm:hidden">
-                        <div className="w-[60%] h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="max-w-sm mx-auto mt-10 md:mt-14 pt-3 px-2">
-              <div className="border-t border-white/[0.06]">
-                {[
-                  { title: 'Third-Party Tested', desc: 'Independent lab verification' },
-                  { title: 'Standardized Actives', desc: 'Precise concentration, no variability' },
-                  { title: 'Enteric Delivery', desc: 'Targeted absorption' },
-                  { title: 'Quality Control', desc: 'Multi-stage review process' },
-                ].map((s, i) => (
-                  <div key={s.title} className="flex items-start gap-3 py-3 border-b border-white/[0.06] reveal-stagger" data-testid={`shop-standard-${i}`}>
-                    <span className="font-mono text-[13px] font-bold tabular-nums text-ar-teal/80 shrink-0 pt-px w-5">0{i + 1}</span>
-                    <div className="flex-1 min-w-0">
-                      <span className="text-[12px] font-mono font-bold uppercase tracking-[0.06em] text-white/95 leading-tight block">{s.title}</span>
-                      <span className="text-[11px] font-sans text-white/55 leading-snug block mt-0.5">{s.desc}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
-
-        <section className="relative py-10 md:py-14 px-6 text-white overflow-hidden">
-          <div className="max-w-2xl mx-auto text-center relative z-10 reveal-stagger">
-            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2rem, 7vw, 3.5rem)' }}>
-              Activate your
-              <br />
-              <span className="text-white/45">system.</span>
-            </h2>
-            <p className="mt-3 text-[13px] text-white/50 font-sans max-w-md mx-auto leading-relaxed">
-              Start with one protocol or build the full stack. Each product is designed to layer without interference.
-            </p>
-            <div className="mt-5 flex flex-col sm:flex-row gap-2 w-full max-w-[340px] mx-auto sm:w-auto sm:max-w-none justify-center">
-              <a href="#" className="group relative w-full sm:w-auto px-7 min-h-[40px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.10em] overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="button-shop-stack">
-                <span className="relative z-10">Shop Protocol Stack</span>
-                <div className="absolute inset-0 bg-white/12 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-              </a>
-            </div>
-            <div className="mt-3">
-              <a href="/science" className="text-[10px] font-mono uppercase tracking-[0.08em] text-white/50 hover:text-white/70 transition-colors inline-flex items-center gap-1" data-testid="button-explore-science">
-                Explore the Science <ArrowRight size={9} />
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <div className="max-w-2xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" /></div>
-
-        <Footer />
-      </div>
-    </main>
-  );
-}
-
 function ProductTemplate({ product }) {
   const containerRef = useRef(null);
   const [activeSidePanel, setActiveSidePanel] = useState(null);
+  const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
+    if (reducedMotion) return;
     if (!containerRef.current) return;
-    ScrollTrigger.getAll().forEach((t) => t.kill());
 
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) return;
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+    ScrollTrigger.clearScrollMemory?.();
 
     const ctx = gsap.context(() => {
-      gsap.from('.hero-content', { opacity: 0, y: 20, duration: 1, ease: 'power3.out', delay: 0.18 });
-      gsap.from('.buy-panel', { opacity: 0, x: 24, duration: 1, ease: 'power3.out', delay: 0.28 });
+      gsap.from('.hero-content', { opacity: 0, y: 46, duration: 1.05, ease: 'power4.out', delay: 0.18 });
+      gsap.from('.buy-panel', { opacity: 0, x: 34, duration: 1.05, ease: 'power4.out', delay: 0.28 });
 
       gsap.utils.toArray('.reveal').forEach((el) => {
         gsap.from(el, {
           scrollTrigger: { trigger: el, start: 'top 85%' },
           opacity: 0,
-          y: 16,
-          duration: 0.8,
+          y: 28,
+          duration: 0.9,
           ease: 'power3.out'
         });
       });
 
-      gsap.utils.toArray('.reveal-stagger').forEach((el, i) => {
-        gsap.from(el, {
-          scrollTrigger: { trigger: el, start: 'top 88%' },
+      gsap.utils.toArray('.timeline-card').forEach((card) => {
+        ScrollTrigger.create({
+          trigger: card,
+          start: 'top 60%',
+          end: 'bottom 55%',
+          toggleClass: { targets: card, className: 'is-active' }
+        });
+      });
+
+      gsap.utils.toArray('.archive-card').forEach((card) => {
+        gsap.from(card, {
+          scrollTrigger: { trigger: card, start: 'top 85%' },
           opacity: 0,
-          y: 16,
+          y: 40,
           duration: 0.8,
-          delay: i * 0.06,
           ease: 'power3.out'
         });
       });
@@ -500,17 +513,20 @@ function ProductTemplate({ product }) {
       ctx.revert();
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, [product.id]);
+  }, [product.id, reducedMotion]);
 
   const accent = product.accent;
+  const accentGlow = hexToRgba(accent, 0.55);
 
   return (
-    <main ref={containerRef} style={{ '--accent': accent }} className="relative bg-[#0f172a] text-white selection:bg-ar-teal selection:text-white">
+    <main ref={containerRef} style={{ '--accent': accent, '--accentGlow': accentGlow }} className="relative bg-[#0f172a] text-white selection:bg-ar-teal selection:text-white">
       <div className="fixed inset-0 z-0 bg-[#0f172a]">
         <img
           src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2400"
           className="w-full h-full object-cover grayscale opacity-30 mix-blend-screen"
           alt=""
+          decoding="async"
+          fetchpriority="high"
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
       </div>
@@ -522,321 +538,280 @@ function ProductTemplate({ product }) {
         }}
       />
       <div className="relative z-[2]">
-        <NoiseOverlay />
-        <Navbar />
+      <NoiseOverlay />
+      <Navbar />
 
-        <section className="relative min-h-[85dvh] md:min-h-[90dvh] overflow-hidden">
-          <div className="absolute inset-0 z-[2] opacity-[0.20] pointer-events-none" style={{ background: `radial-gradient(700px 500px at 20% 75%, ${hexToRgba(accent, 0.5)}, transparent 60%)` }} />
+      <section className="hero relative min-h-[100dvh] overflow-hidden">
+        <div className="absolute inset-0 z-[2] opacity-[0.20] pointer-events-none" style={{ background: `radial-gradient(700px 500px at 20% 75%, ${accentGlow}, transparent 60%)` }} />
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12 px-5 md:px-8 pt-28 md:pt-32 pb-10 md:pb-16 items-center">
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12 px-5 md:px-8 pt-28 md:pt-32 pb-10 md:pb-16 items-center">
 
-            <div className="w-full md:w-3/5 hero-content text-center md:text-left">
-              <div className="flex items-center gap-2 justify-center md:justify-start mb-3">
-                <div className="h-px w-4 bg-white/10" />
-                <span className="font-mono text-[10px] uppercase tracking-[0.10em]" style={{ color: hexToRgba(accent, 0.7) }}>{product.category}</span>
-                <div className="h-px w-4 bg-white/10" />
-              </div>
-
-              <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase mb-4" style={{ fontSize: 'clamp(2.8rem, 9vw, 5.5rem)' }}>
-                <BrandName name={product.name} />
-              </h1>
-
-              <p className="text-[15px] md:text-lg font-sans font-medium text-white/65 max-w-xl mb-6 leading-snug mx-auto md:mx-0">{product.tagline}</p>
-
-              <div className="flex md:inline-flex rounded-lg border border-white/[0.08] bg-white/[0.03] overflow-hidden">
-                <div className="flex-1 md:flex-auto px-4 py-3 text-center md:text-left">
-                  <p className="text-[10px] uppercase font-mono text-white/35 tracking-[0.14em] mb-1">Protocol</p>
-                  <p className="text-[12px] font-mono font-bold tracking-[0.06em] uppercase text-white/80">{product.serving}</p>
-                </div>
-                <div className="w-px bg-white/[0.08]" />
-                <div className="flex-1 md:flex-auto px-4 py-3 text-center md:text-left">
-                  <p className="text-[10px] uppercase font-mono text-white/35 tracking-[0.14em] mb-1">Supply</p>
-                  <p className="text-[12px] font-mono font-bold tracking-[0.06em] uppercase text-white/80">{product.supply}</p>
-                </div>
-              </div>
+          <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left">
+            <div className="flex items-center gap-2 justify-center md:justify-start mb-3">
+              <div className="h-px w-4 bg-white/10" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.10em]" style={{ color: hexToRgba(accent, 0.7) }}>{product.category}</span>
+              <div className="h-px w-4 bg-white/10" />
             </div>
 
-            <div className="w-full md:w-2/5 buy-panel">
-              <div
-                className="relative overflow-hidden rounded-2xl border border-white/[0.10]"
-                style={{ boxShadow: `0 0 0 1px ${hexToRgba(accent, 0.06)}, 0 4px 24px rgba(0,0,0,0.35), 0 30px 60px -20px ${hexToRgba(accent, 0.25)}` }}
-              >
-                <div className="absolute inset-0 bg-[#0d1424]/80 backdrop-blur-lg" />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01]" />
-                <div className="absolute inset-x-0 top-0 h-[1px]" style={{ background: `linear-gradient(90deg, transparent 10%, ${hexToRgba(accent, 0.35)} 50%, transparent 90%)` }} />
+            <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase mb-4" style={{ fontSize: 'clamp(2.8rem, 9vw, 5.5rem)' }}><BrandName name={product.name} /></h1>
 
-                <div className="relative z-10">
-                  <div className="relative flex items-end justify-center px-6 pt-6 pb-2 md:px-10 md:pt-8 md:pb-3">
-                    <div className="absolute left-1/2 -translate-x-1/2 top-[15%] w-[80%] h-[70%] blur-[40px] opacity-20 pointer-events-none" style={{ background: `radial-gradient(ellipse at 50% 60%, ${hexToRgba(accent, 0.5)}, transparent 70%)` }} />
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40%] h-[6px] rounded-[50%] blur-sm opacity-50 pointer-events-none" style={{ background: 'rgba(0,0,0,0.7)' }} />
-                    <img src={product.heroImage} alt={product.name} className="relative z-10 w-[45%] md:w-[55%] max-h-[180px] md:max-h-none h-auto object-contain" style={{ filter: `drop-shadow(0 8px 16px ${hexToRgba(accent, 0.2)}) drop-shadow(0 3px 6px rgba(0,0,0,0.35))` }} />
-                  </div>
+            <p className="text-[15px] md:text-lg font-sans font-medium text-white/65 max-w-xl mb-6 leading-snug mx-auto md:mx-0">{product.tagline}</p>
 
-                  <div className="px-5 pb-5 md:px-8 md:pb-8 space-y-3">
-                    <div>
-                      <span className="inline-block text-[10px] font-mono uppercase tracking-[0.14em] font-bold mb-2" style={{ color: hexToRgba(accent, 0.7) }}>{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
-                      <div className="flex items-baseline justify-between gap-4">
-                        <h3 className="text-[20px] md:text-[22px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-none"><BrandName name={product.name} /></h3>
-                        <span className="text-[18px] md:text-[20px] font-sans font-extrabold text-white leading-none">{product.price}</span>
-                      </div>
-                    </div>
-
-                    <p className="text-[13px] md:text-[14px] text-white/70 leading-relaxed font-sans">{product.description}</p>
-
-                    <div className="border-t border-white/[0.06] pt-3">
-                      <div className="flex flex-col gap-[5px]">
-                        {product.outcomes.slice(0, 4).map((item, i) => (
-                          <div key={i} className="flex items-center gap-2">
-                            <Check size={12} strokeWidth={2.5} className="shrink-0" style={{ color: accent }} />
-                            <span className="text-[12px] md:text-[13px] font-sans font-medium text-white leading-snug">{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="pt-1">
-                      <div className="text-[10px] font-mono text-white/40 tracking-[0.04em] uppercase">Glass bottle · UV-protected</div>
-                    </div>
-
-                    {product.warnings && (
-                      <div className="rounded-lg bg-amber-500/[0.06] border border-amber-400/15 px-3.5 py-2.5 flex items-start gap-2">
-                        <span className="text-amber-400 text-[11px] mt-0.5">⚠</span>
-                        <p className="text-[11px] text-amber-200/80 leading-snug font-sans">{product.warnings}</p>
-                      </div>
-                    )}
-
-                    <div className="flex flex-col gap-1.5 pt-1">
-                      <button
-                        className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 font-mono font-bold uppercase text-[11px] tracking-[0.14em] transition-all duration-300 text-white"
-                        style={{
-                          background: `linear-gradient(135deg, ${accent}, ${hexToRgba(accent, 0.7)})`,
-                          boxShadow: `0 0 16px ${hexToRgba(accent, 0.3)}, inset 0 1px 0 rgba(255,255,255,0.12)`
-                        }}
-                        data-testid="button-add-cart-pdp"
-                      >
-                        Add to Cart <ArrowRight size={13} />
-                      </button>
-
-                      <div className="grid grid-cols-2 gap-1.5">
-                        <button
-                          onClick={() => setActiveSidePanel('ingredients')}
-                          className="min-h-[44px] flex items-center justify-center gap-1.5 rounded-lg py-2.5 font-mono uppercase text-[10px] tracking-[0.12em] font-medium text-white/50 hover:bg-white/[0.04] hover:text-white/70 transition-all duration-300"
-                          style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)' }}
-                          data-testid="button-ingredients-pdp"
-                        >
-                          Ingredients <ArrowRight size={9} />
-                        </button>
-                        <button
-                          onClick={() => setActiveSidePanel('rationale')}
-                          className="min-h-[44px] flex items-center justify-center gap-1.5 rounded-lg py-2.5 font-mono uppercase text-[10px] tracking-[0.12em] font-medium text-white/50 hover:bg-white/[0.04] hover:text-white/70 transition-all duration-300"
-                          style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)' }}
-                          data-testid="button-evidence-pdp"
-                        >
-                          Evidence <ArrowRight size={9} />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div className="flex md:inline-flex rounded-lg border border-white/[0.08] bg-white/[0.03] overflow-hidden">
+              <div className="flex-1 md:flex-auto px-4 py-3 text-center md:text-left">
+                <p className="text-[10px] uppercase font-mono text-white/35 tracking-[0.14em] mb-1">Protocol</p>
+                <p className="text-[12px] font-mono font-bold tracking-[0.06em] uppercase text-white/80">{product.serving}</p>
+              </div>
+              <div className="w-px bg-white/[0.08]" />
+              <div className="flex-1 md:flex-auto px-4 py-3 text-center md:text-left">
+                <p className="text-[10px] uppercase font-mono text-white/35 tracking-[0.14em] mb-1">System Target</p>
+                <p className="text-[12px] font-mono font-bold tracking-[0.06em] uppercase text-white/80">{product.category}</p>
               </div>
             </div>
           </div>
-        </section>
 
-        <section className="py-16 md:py-24 px-5 md:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
-              <div className="md:col-span-5 space-y-5 reveal">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="h-[1px] w-8 bg-ar-teal" />
-                  <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">What's Inside</span>
-                </div>
-                <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] leading-[1.06] text-white">
-                  Every dose,{' '}<span className="text-white/50">fully disclosed</span>.
-                </h2>
-                <p className="text-[14px] md:text-[15px] text-white/55 leading-relaxed font-sans font-medium">
-                  No proprietary blends. No hidden fillers. Each active is standardized, dosed at clinical-range levels, and listed with its exact purpose.
-                </p>
+          <div className="w-full md:w-2/5 buy-panel">
+            <div
+              className="relative overflow-hidden rounded-2xl border border-white/[0.10]"
+              style={{ boxShadow: `0 0 0 1px ${hexToRgba(accent, 0.06)}, 0 4px 24px rgba(0,0,0,0.35), 0 30px 60px -20px ${hexToRgba(accent, 0.25)}` }}
+            >
+              <div className="absolute inset-0 bg-[#0d1424]/80 backdrop-blur-lg" />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01]" />
+              <div className="absolute inset-x-0 top-0 h-[1px]" style={{ background: `linear-gradient(90deg, transparent 10%, ${hexToRgba(accent, 0.35)} 50%, transparent 90%)` }} />
 
-                <div className="grid grid-cols-3 gap-2 pt-2">
-                  {[
-                    { value: 'Actives', label: String(product.ingredients.length) },
-                    { value: 'Dose', label: 'Clinical' },
-                    { value: 'Tested', label: '3rd Party' },
-                  ].map((stat, i) => (
-                    <div key={i} className="relative overflow-hidden rounded-lg border border-white/[0.08] min-h-[72px]">
-                      <div className="absolute inset-0 bg-white/[0.03]" />
-                      <div className="relative z-10 p-3 text-center flex flex-col items-center justify-center min-h-[72px]">
-                        <p className="text-[10px] font-mono font-medium uppercase tracking-[0.10em] text-white/40 mb-1">{stat.value}</p>
-                        <p className="text-base font-sans font-extrabold tracking-tight text-white">{stat.label}</p>
-                      </div>
-                    </div>
-                  ))}
+              <div className="relative z-10">
+                <div className="relative flex items-end justify-center px-6 pt-6 pb-2 md:px-10 md:pt-8 md:pb-3">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-[15%] w-[80%] h-[70%] blur-[40px] opacity-20 pointer-events-none" style={{ background: `radial-gradient(ellipse at 50% 60%, ${hexToRgba(accent, 0.5)}, transparent 70%)` }} />
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40%] h-[6px] rounded-[50%] blur-sm opacity-50 pointer-events-none" style={{ background: 'rgba(0,0,0,0.7)' }} />
+                  <img src={product.heroImage} alt={product.name} className="relative z-10 w-[45%] md:w-[55%] max-h-[180px] md:max-h-none h-auto object-contain" style={{ filter: `drop-shadow(0 8px 16px ${hexToRgba(accent, 0.2)}) drop-shadow(0 3px 6px rgba(0,0,0,0.35))` }} />
                 </div>
 
-                <p className="text-[11px] font-mono text-white/40 uppercase tracking-[0.10em] leading-relaxed">
-                  All actives third-party tested. Full certificates of analysis available.
-                </p>
-              </div>
-
-              <div className="md:col-span-7 reveal">
-                <div className="relative overflow-hidden rounded-2xl border border-white/[0.10]">
-                  <div className="absolute inset-0 bg-[#0d1424]/80 backdrop-blur-lg" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01]" />
-                  <div className="absolute inset-x-0 top-0 h-[1px]" style={{ background: `linear-gradient(90deg, transparent 10%, ${hexToRgba(accent, 0.3)} 50%, transparent 90%)` }} />
-                  <div className="absolute inset-0 opacity-[0.12] pointer-events-none" style={{ background: `radial-gradient(800px 500px at 80% 0%, ${hexToRgba(accent, 0.5)}, transparent 60%)` }} />
-
-                  <div className="relative z-10 p-6 md:p-8">
-                    <div className="flex items-center justify-between mb-5">
-                      <div className="flex items-center gap-2.5">
-                        <div className="w-1.5 h-1.5 rounded-full animate-pulse bg-ar-teal" />
-                        <span className="text-[11px] font-mono font-bold uppercase tracking-[0.12em] text-white/60">Full Dose Disclosure</span>
-                      </div>
-                      <span className="text-[11px] font-mono font-bold uppercase tracking-[0.12em] text-ar-teal">{product.ingredients.length} Actives</span>
+                <div className="px-5 pb-5 md:px-8 md:pb-8 space-y-3">
+                  <div>
+                    <span className="inline-block text-[10px] font-mono uppercase tracking-[0.14em] font-bold mb-2" style={{ color: hexToRgba(accent, 0.7) }}>{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
+                    <div className="flex items-baseline justify-between gap-4">
+                      <h3 className="text-[20px] md:text-[22px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-none"><BrandName name={product.name} /></h3>
+                      <span className="text-[18px] md:text-[20px] font-sans font-extrabold text-white leading-none">{product.price}</span>
                     </div>
+                  </div>
 
-                    <div className="space-y-0">
-                      {product.ingredients.map((ing, i) => (
-                        <div key={i}>
-                          <div className="flex items-baseline justify-between py-3 gap-4">
-                            <div className="flex-1 min-w-0">
-                              <p className="text-[13px] font-sans font-bold text-white leading-tight">{ing.name}</p>
-                              <p className="text-[11px] font-mono text-white/50 mt-0.5 uppercase tracking-[0.10em]">{ing.purpose}</p>
-                            </div>
-                            <span className="text-[13px] font-mono font-bold text-white shrink-0">{ing.dose}</span>
-                          </div>
-                          {i < product.ingredients.length - 1 && <div className="h-px bg-white/[0.06]" />}
+                  <p className="text-[13px] md:text-[14px] text-white/70 leading-relaxed font-sans">{product.description}</p>
+
+                  <div className="border-t border-white/[0.06] pt-3">
+                    <div className="flex flex-col gap-[5px]">
+                      {product.outcomes.map((item, i) => (
+                        <div key={i} className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: accent }} />
+                          <span className="text-[12px] md:text-[13px] font-sans font-medium text-white leading-snug">{item}</span>
                         </div>
                       ))}
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
+                  <div className="pt-1">
+                    <div className="text-[10px] font-mono text-white/40 tracking-[0.04em] uppercase">Glass bottle · UV-protected</div>
+                  </div>
 
-        <section className="py-16 md:py-24 px-5 md:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12 md:mb-16 reveal">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <div className="h-[1px] w-12 bg-ar-teal" />
-                <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">Protocol Arc</span>
-                <div className="h-[1px] w-12 bg-ar-teal" />
-              </div>
-              <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] text-white uppercase">What to expect</h2>
-              <p className="text-[13px] text-white/50 font-sans max-w-md mx-auto mt-3">Individual responses vary. Consistency is the point.</p>
-            </div>
+                  {product.warnings && (
+                    <div className="rounded-lg bg-amber-500/[0.06] border border-amber-400/15 px-3.5 py-2.5 flex items-start gap-2">
+                      <span className="text-amber-400 text-[11px] mt-0.5">⚠</span>
+                      <p className="text-[11px] text-amber-200/80 leading-snug font-sans">{product.warnings}</p>
+                    </div>
+                  )}
 
-            <div className="max-w-2xl mx-auto border-t border-white/[0.08]">
-              {product.timeline.map((step, i) => (
-                <div key={i} className="border-b border-white/[0.08] py-4 reveal-stagger" data-testid={`timeline-step-${i}`}>
-                  <div className="flex items-start gap-4">
-                    <span className="font-mono text-[11px] font-bold tracking-[0.10em] text-white/40 pt-0.5 shrink-0 w-5">0{i + 1}</span>
-                    <div className="flex-1 min-w-0 border-l-[2px] pl-3.5" style={{ borderColor: `${hexToRgba(accent, 0.3)}` }}>
-                      <div className="flex items-baseline gap-3 mb-1">
-                        <span className="text-[10px] font-mono uppercase tracking-[0.08em] text-white/45">{step.time}</span>
-                      </div>
-                      <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white">{step.label}</h4>
-                      <p className="text-[12.5px] font-sans text-white/55 leading-[1.5] mt-1">{step.desc}</p>
+                  <div className="flex flex-col gap-1.5 pt-1">
+                    <MagneticButton
+                      className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
+                      style={{ background: `linear-gradient(135deg, ${accent}, ${hexToRgba(accent, 0.7)})`, boxShadow: `0 0 16px ${hexToRgba(accent, 0.3)}, inset 0 1px 0 rgba(255,255,255,0.12)` }}
+                      onClick={() => {}}
+                    >
+                      <span className="relative z-10">Add to Protocol Archive</span>
+                      <ArrowRight size={13} className="relative z-10" />
+                      <div className="absolute inset-0 bg-white/12 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                    </MagneticButton>
+
+                    <div className="grid grid-cols-2 gap-1.5">
+                      <button
+                        onClick={() => setActiveSidePanel('ingredients')}
+                        className="min-h-[44px] flex items-center justify-center gap-1.5 rounded-lg py-2.5 font-mono uppercase text-[10px] tracking-[0.12em] font-medium text-white/50 hover:bg-white/[0.04] hover:text-white/70 transition-all duration-300"
+                        style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)' }}
+                        data-testid="button-ingredients-pdp"
+                      >
+                        Ingredients <ArrowRight size={9} />
+                      </button>
+                      <button
+                        onClick={() => setActiveSidePanel('rationale')}
+                        className="min-h-[44px] flex items-center justify-center gap-1.5 rounded-lg py-2.5 font-mono uppercase text-[10px] tracking-[0.12em] font-medium text-white/50 hover:bg-white/[0.04] hover:text-white/70 transition-all duration-300"
+                        style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)' }}
+                        data-testid="button-evidence-pdp"
+                      >
+                        Evidence <ArrowRight size={9} />
+                      </button>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
-
-        <section className="py-16 md:py-24 px-5 md:px-8">
-          <div className="max-w-2xl mx-auto">
-            <div className="text-center mb-10 reveal">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <div className="h-[1px] w-12 bg-ar-teal" />
-                <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">Mechanistic Layering</span>
-                <div className="h-[1px] w-12 bg-ar-teal" />
-              </div>
-              <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] text-white uppercase">Rationale</h2>
-              <p className="text-[13px] text-white/50 font-sans max-w-md mx-auto mt-3">Clear intent. Clean inputs. Built to be scanned, not worshipped.</p>
-            </div>
-
-            <div className="border-t border-white/[0.08]">
-              {product.mechanics.map((item, i) => (
-                <div key={i} className="border-b border-white/[0.08] py-4 reveal-stagger" data-testid={`rationale-${i}`}>
-                  <div className="flex items-start gap-4">
-                    <span className="font-mono text-[11px] font-bold tracking-[0.10em] text-white/40 pt-0.5 shrink-0 w-5">0{i + 1}</span>
-                    <div className="flex-1 min-w-0 border-l-[2px] pl-3.5" style={{ borderColor: `${hexToRgba(accent, 0.3)}` }}>
-                      <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white">{item.title}</h4>
-                      <p className="text-[12.5px] font-sans text-white/55 leading-[1.5] mt-1">{item.text}</p>
-                      <div className="flex items-center gap-2 mt-1.5">
-                        {item.tags.map((tag, t) => (
-                          <span key={t} className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/45">{tag}{t < item.tags.length - 1 ? ' —' : ''}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
-
-        <section className="py-16 md:py-24 px-5 md:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-10 reveal">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <div className="h-[1px] w-12 bg-ar-teal" />
-                <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">Other Protocols</span>
-                <div className="h-[1px] w-12 bg-ar-teal" />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-head font-normal tracking-[-0.04em] text-white uppercase">Explore the System</h2>
-            </div>
-
-            <div className="max-w-5xl mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-0 sm:gap-y-6">
-                {SELECTOR_PRODUCTS.filter(p => p.slug !== product.id).map((p, i) => (
-                  <div key={p.slug} className="reveal-stagger">
-                    <ProtocolSelectorCard p={p} />
-                    {i < SELECTOR_PRODUCTS.filter(pp => pp.slug !== product.id).length - 1 && (
-                      <div className="flex justify-center py-6 sm:hidden">
-                        <div className="w-[60%] h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
-                      </div>
-                    )}
-                  </div>
-                ))}
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
+      <section className="border-y border-white/[0.06] py-10">
+        <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-center md:justify-between gap-x-8 gap-y-4">
+          {['3rd Party Tested', 'Standardized Actives', 'Protocol Cadence', 'Quality Controls'].map((text, i) => (
+            <div key={i} className="flex items-center gap-2.5" data-testid={`trust-badge-${i}`}>
+              <span className="font-mono text-[12px] font-bold tracking-[0.14em] text-[color:var(--accent)]">{String(i + 1).padStart(2, '0')}</span>
+              <span className="w-px h-3 bg-white/[0.12]" />
+              <span className="text-[12px] font-mono font-medium uppercase tracking-[0.12em] text-white/55 whitespace-nowrap">{text}</span>
+            </div>
+          ))}
+        </div>
+      </section>
 
-        <section className="relative py-10 md:py-14 px-6 text-white overflow-hidden">
-          <div className="max-w-2xl mx-auto text-center relative z-10 reveal">
-            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2rem, 7vw, 3.5rem)' }}>
-              Activate your
-              <br />
-              <span className="text-white/45">system.</span>
+      <section className="py-16 md:py-24 px-5 md:px-8 max-w-7xl mx-auto overflow-hidden">
+        <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
+          <div className="md:col-span-5 space-y-5 reveal">
+            <TypewriterTelemetry phrases={product.telemetry} />
+            <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] leading-[1.06] text-white">
+              Every dose,{' '}<span className="text-white/50">fully disclosed</span>.
             </h2>
-            <a href="/shop" className="mt-5 inline-flex items-center justify-center px-8 py-3 min-h-[44px] bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] hover:bg-ar-teal/90 transition-colors" data-testid="button-cta-shop-pdp">
-              Shop Protocol Stack
-            </a>
-            <div className="mt-3">
-              <a href="/science" className="text-[10px] font-mono uppercase tracking-[0.08em] text-white/50 hover:text-white/70 transition-colors inline-flex items-center gap-1" data-testid="button-cta-explore-pdp">
-                Explore the Science <ArrowRight size={9} />
-              </a>
-            </div>
+            <p className="text-[14px] md:text-[15px] text-white/55 leading-relaxed font-sans font-medium">
+              No proprietary blends. No hidden fillers. Each active is standardized, dosed at clinical-range levels, and listed with its exact purpose.
+            </p>
+
+            <TrustStats product={product} />
+
+            <p className="text-[11px] font-mono text-white/40 uppercase tracking-[0.10em] leading-relaxed">
+              All actives third-party tested. Full certificates of analysis available.
+            </p>
           </div>
-        </section>
 
-        <div className="max-w-2xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" /></div>
+          <div className="md:col-span-7 reveal">
+            <IngredientPanel ingredients={product.ingredients} accent={accent} />
+          </div>
+        </div>
+      </section>
 
-        <Footer />
+      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
+
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12 md:mb-16 space-y-3 reveal">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-[1px] w-12 bg-ar-teal" />
+              <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Protocol Arc</span>
+              <div className="h-[1px] w-12 bg-ar-teal" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] text-white uppercase">What to expect</h2>
+            <p className="text-[13px] text-white/50 font-sans max-w-md mx-auto">Individual responses vary. Consistency is the point.</p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-5 md:gap-6">
+            {product.timeline.map((step, i) => (
+              <div key={i} className="relative group reveal">
+                <div className="timeline-card relative overflow-hidden rounded-2xl border border-white/[0.10] transition-all duration-300 hover:-translate-y-1 hover:border-white/[0.18]">
+                  <div className="absolute inset-0 bg-[#0d1424]/80 backdrop-blur-lg" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01] group-hover:from-white/[0.10] group-hover:via-white/[0.05] group-hover:to-white/[0.02] transition-all duration-300" />
+                  <div className="absolute inset-x-0 top-0 h-[1px]" style={{ background: `linear-gradient(90deg, transparent 10%, ${hexToRgba(accent, 0.25)} 50%, transparent 90%)` }} />
+
+                  <div className="relative z-10 p-6 md:p-7">
+                    <p className="text-[11px] font-mono text-white/60 mb-2 uppercase tracking-[0.14em]">{step.time}</p>
+                    <h4 className="text-lg font-head font-normal mb-2 tracking-[-0.02em] text-white">{step.label}</h4>
+                    <p className="text-[12px] text-white/60 leading-relaxed font-sans font-medium mb-5">{step.desc}</p>
+
+                    <div className="h-1 bg-white/[0.08] rounded-full overflow-hidden">
+                      <div className="h-full rounded-full" style={{ width: `${(i + 1) * 25}%`, background: `linear-gradient(90deg, ${hexToRgba(accent, 0.6)}, ${hexToRgba(accent, 0.3)})` }} />
+                    </div>
+
+                    <div className="mt-3">
+                      <span className="text-[11px] font-mono font-bold uppercase text-white/60 tracking-[0.14em]">{step.value}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
+
+      <section className="py-16 md:py-24 px-6">
+        <div className="max-w-4xl mx-auto space-y-16">
+          <div className="text-center text-white mb-12 space-y-3 reveal">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-[1px] w-12 bg-ar-teal" />
+              <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Mechanistic Layering</span>
+              <div className="h-[1px] w-12 bg-ar-teal" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] uppercase">Rationale</h2>
+            <p className="text-[13px] text-white/50 font-sans max-w-md mx-auto">Clear intent. Clean inputs. Built to be scanned, not worshipped.</p>
+          </div>
+
+          {product.mechanics.map((item, i) => (
+            <div key={i} className="archive-card w-full relative overflow-hidden rounded-2xl border border-white/[0.10] hover:border-white/[0.18] transition-all duration-300" data-testid={`rationale-card-${i}`}>
+              <div className="absolute inset-0 bg-[#0d1424]/80 backdrop-blur-lg" />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01]" />
+              <div className="absolute inset-x-0 top-0 h-[1px]" style={{ background: `linear-gradient(90deg, transparent 10%, ${hexToRgba(accent, 0.25)} 50%, transparent 90%)` }} />
+
+              <div className="relative z-10 p-8 md:p-12 flex flex-col justify-center items-center text-center max-w-xl mx-auto space-y-5">
+                <div className="flex flex-col items-center gap-2">
+                  <span className="text-[36px] font-mono font-bold leading-none text-white/15">{`${String(i + 1).padStart(2, '0')}`}</span>
+                  <div className="w-8 h-[1px] bg-white/30" />
+                </div>
+
+                <h3 className="text-2xl md:text-3xl font-head font-normal tracking-[-0.03em] uppercase leading-none text-white">{item.title}</h3>
+
+                <p className="text-[14px] md:text-[15px] font-sans font-medium text-white/60 leading-relaxed max-w-md mx-auto">{item.text}</p>
+
+                <div className="pt-3 flex flex-wrap justify-center gap-2">
+                  {item.tags.map((tag, t) => (
+                    <span
+                      key={t}
+                      className="px-3 py-1 rounded-lg text-[11px] font-mono font-medium uppercase tracking-[0.10em] border border-white/[0.08] bg-white/[0.04] text-white/60"
+                    >{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
+
+      <section className="py-16 md:py-24 px-6 max-w-4xl mx-auto">
+        <div className="text-center mb-10 reveal">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-[1px] w-12 bg-ar-teal" />
+            <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Protocol Inquiries</span>
+            <div className="h-[1px] w-12 bg-ar-teal" />
+          </div>
+          <h2 className="text-4xl font-head font-normal tracking-[-0.03em] text-white uppercase">Questions</h2>
+        </div>
+
+        <div className="space-y-3 mb-16">
+          {[
+            { q: 'Is this protocol suitable for sensitive routines?', a: 'Start with the labeled serving. For sensitive systems, take with food and keep other variables stable for the first week.' },
+            { q: 'How is this different from basic supplement stacks?', a: 'Age Revive is designed as infrastructure: standardized inputs, defined cadence, and clean intent. No noisy kitchen-sink blends.' },
+            { q: 'Can I stack these products together?', a: 'They are designed to layer across different support systems. If you are unsure, start with one base product and add one layer at a time.' }
+          ].map((faq, i) => (
+            <details key={i} className="group relative overflow-hidden rounded-2xl border border-white/[0.10] cursor-pointer hover:border-white/[0.18] transition-all" data-testid={`faq-item-${i}`}>
+              <div className="absolute inset-0 bg-[#0d1424]/80 backdrop-blur-lg" />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01]" />
+              <summary className="relative z-10 list-none flex justify-between items-center font-sans font-bold tracking-[0.04em] uppercase text-[12px] text-white p-5 min-h-[44px]">
+                {faq.q}
+                <ChevronDown size={16} className="group-open:rotate-180 transition-transform text-white/40 shrink-0 ml-3" />
+              </summary>
+              <p className="relative z-10 px-5 pb-5 text-[13px] text-white/55 leading-relaxed font-sans font-medium">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <div className="max-w-2xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" /></div>
+
+      <Footer />
       </div>
 
       <SideSheet open={activeSidePanel === 'ingredients'} title="Full Ingredient Panel" onClose={() => setActiveSidePanel(null)}>
@@ -886,14 +861,46 @@ function ProductTemplate({ product }) {
 
 export default function Shop() {
   const params = useParams<{ slug?: string }>();
+  const initialSlug = (params.slug && PRODUCTS[params.slug]) ? params.slug : 'cellunad';
+  const [slug, setSlug] = useState(initialSlug);
+  const currentProduct = PRODUCTS[slug];
+
+  useEffect(() => {
+    if (params.slug && PRODUCTS[params.slug] && params.slug !== slug) {
+      setSlug(params.slug);
+    }
+  }, [params.slug]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [params.slug]);
+  }, [slug]);
 
-  if (params.slug && PDP_PRODUCTS[params.slug]) {
-    return <ProductTemplate key={params.slug} product={PDP_PRODUCTS[params.slug]} />;
-  }
+  return (
+    <div className="min-h-screen">
+      <ProductTemplate key={currentProduct.id} product={currentProduct} />
 
-  return <ShopCatalog />;
+      <div
+        style={{ position: 'sticky', bottom: 0, zIndex: 99999, padding: '16px 0 24px', display: 'flex', justifyContent: 'center', pointerEvents: 'none', background: 'linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.6) 60%, transparent 100%)' }}
+      >
+        <div
+          style={{ pointerEvents: 'auto', display: 'flex', gap: '6px', padding: '6px', background: 'rgba(15,23,42,0.90)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
+        >
+          {Object.values(PRODUCTS).map((p) => (
+            <button
+              key={p.id}
+              onClick={() => setSlug(p.id)}
+              className={[
+                'px-4 py-2 rounded-lg text-[12px] font-mono font-bold uppercase tracking-[0.14em] transition-all min-h-[44px]',
+                slug === p.id ? 'text-white' : 'hover:bg-white/[0.08] text-white/50'
+              ].join(' ')}
+              style={slug === p.id ? { background: p.accent } : undefined}
+              data-testid={`switcher-${p.id}`}
+            >
+              <BrandName name={p.name} />
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
