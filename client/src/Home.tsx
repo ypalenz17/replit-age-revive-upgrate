@@ -32,7 +32,7 @@ const PRODUCTS = [
       'Supports mitochondrial renewal pathways*',
       'Supports gut-derived short-chain fatty acid signaling*'
     ],
-    color: '#6C5CE7',
+    color: '#19B3A6',
     image: '/images/cellubiome-trimmed.png',
     fullIngredients: [
       { name: 'Urolithin A (≥99%)', dose: '500 mg', purpose: 'Mitophagy support' },
@@ -56,7 +56,7 @@ const PRODUCTS = [
       'Supports mitochondrial energy production*',
       'Supports healthy methylation pathways*'
     ],
-    color: '#19B3A6',
+    color: '#1e3a8a',
     image: '/images/cellunad-trimmed.png',
     fullIngredients: [
       { name: 'Nicotinamide Riboside (NR)', dose: '500 mg', purpose: 'NAD+ precursor support' },
@@ -87,7 +87,7 @@ const PRODUCTS = [
       'Supports cellular cleanup processes*',
       'Supports oxidative stress defense*'
     ],
-    color: '#212535',
+    color: '#6C5CE7',
     image: '/images/cellunova-trimmed.png',
     fullIngredients: [
       { name: 'NAC', dose: '600 mg', purpose: 'Glutathione support' },
