@@ -413,13 +413,13 @@ const TheAxis = ({ onOpenEvidence }) => {
                   <h3 className="text-[14px] font-head font-normal uppercase tracking-[-0.01em] text-white">{item.name}</h3>
                 </div>
 
-                <p className="text-[12.5px] font-sans text-white/55 leading-[1.5]">{item.desc}</p>
+                <p className="text-[12.5px] font-sans text-white leading-[1.5]">{item.desc}</p>
 
                 <div className="flex items-start gap-2 pt-0.5">
                   <div className="w-px h-full min-h-[40px] shrink-0" style={{ background: `linear-gradient(180deg, ${item.accentBorder}, transparent)` }} />
                   <div className="flex flex-col gap-[3px]">
                     {item.steps.map((s) => (
-                      <span key={s} className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/50">{s}</span>
+                      <span key={s} className="text-[10px] font-mono uppercase tracking-[0.06em] text-white">{s}</span>
                     ))}
                   </div>
                 </div>
