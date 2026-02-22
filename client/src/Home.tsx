@@ -22,7 +22,7 @@ const PRODUCTS = [
   {
     slug: 'cellubiome',
     name: 'CELLUBIOME',
-    category: 'Mitochondrial + Gut Signaling',
+    category: 'Gut + Mito Signaling',
     tagline: 'The Gut–Mitochondria Axis, simplified.',
     serving: '2 enteric-coated capsules daily',
     ingredientsBadges: ['Urolithin A 500 mg', 'Tributyrin 500 mg'],
@@ -78,7 +78,7 @@ const PRODUCTS = [
   {
     slug: 'cellunova',
     name: 'CELLUNOVA',
-    category: '7-Day Autophagy + Senolytic Protocol',
+    category: '7-Day Autophagy Pulse',
     tagline: 'Seven days on. Designed as a cycle, not forever.',
     serving: '5 capsules daily for 7 consecutive days',
     warning: 'Contains wheat (spermidine source).',
@@ -112,12 +112,12 @@ const PRODUCTS = [
 ];
 
 const PILLARS = [
-  { title: 'Genomic Stability', what: 'NAD+ fuels enzymes that repair damaged DNA and maintain chromosomal integrity.', why: 'Without daily NAD+ replenishment, repair enzymes slow and mutations accumulate.', protocol: 'CELLUNAD+', slug: 'cellunad', tags: ['NAD+', 'Sirtuins'], accent: '#3B82F6' },
-  { title: 'Telomere Integrity', what: 'Telomere-protective pathways preserve the replication fidelity of every cell division.', why: 'Shortened telomeres accelerate biological aging and reduce tissue regeneration.', protocol: 'CELLUNAD+', slug: 'cellunad', tags: ['NR', 'Longevity'], accent: '#3B82F6' },
-  { title: 'Epigenetic Signaling', what: 'Gut-derived metabolites like butyrate modulate gene expression across tissues.', why: 'Disrupted gut signaling silences protective genes and amplifies inflammatory ones.', protocol: 'CELLUBIOME', slug: 'cellubiome', tags: ['Methylation', 'Gut Axis'], accent: '#19B3A6' },
-  { title: 'Nutrient Sensing', what: 'AMPK and mTOR pathways detect energy status and trigger cellular maintenance.', why: 'Chronically active mTOR suppresses autophagy, letting damaged proteins accumulate.', protocol: 'CELLUNOVA', slug: 'cellunova', tags: ['AMPK', 'mTOR'], accent: '#6C5CE7' },
-  { title: 'Mitochondrial Function', what: 'Urolithin A activates mitophagy, clearing damaged mitochondria for new ones.', why: 'Dysfunctional mitochondria leak free radicals, draining cellular energy output.', protocol: 'CELLUBIOME', slug: 'cellubiome', tags: ['Mitophagy', 'ATP'], accent: '#19B3A6' },
-  { title: 'Cellular Senescence', what: 'Fisetin-driven senolytic cycles clear zombie cells that secrete inflammatory signals.', why: 'Senescent cell accumulation drives chronic inflammation and tissue breakdown.', protocol: 'CELLUNOVA', slug: 'cellunova', tags: ['Fisetin', 'Senolytic'], accent: '#6C5CE7' }
+  { title: 'Genomic Stability', what: 'NAD+ supports enzymes involved in DNA maintenance and cell resilience.', why: 'Without daily NAD+ replenishment, repair enzymes slow and mutations accumulate.', protocol: 'CELLUNAD+', slug: 'cellunad', tags: ['NAD+', 'Sirtuins'], accent: '#3B82F6' },
+  { title: 'Telomere Integrity', what: 'Support telomere pathways that help cells divide cleanly over time.', why: 'Shortened telomeres accelerate biological aging and reduce tissue regeneration.', protocol: 'CELLUNAD+', slug: 'cellunad', tags: ['NR', 'Longevity'], accent: '#3B82F6' },
+  { title: 'Epigenetic Signaling', what: 'Gut-derived signals help regulate gene expression across the body.', why: 'Disrupted gut signaling silences protective genes and amplifies inflammatory ones.', protocol: 'CELLUBIOME', slug: 'cellubiome', tags: ['Methylation', 'Gut Axis'], accent: '#19B3A6' },
+  { title: 'Nutrient Sensing', what: 'Cells sense fuel levels and shift into maintenance when needed.', why: 'Chronically active mTOR suppresses autophagy, letting damaged proteins accumulate.', protocol: 'CELLUNOVA', slug: 'cellunova', tags: ['AMPK', 'mTOR'], accent: '#6C5CE7' },
+  { title: 'Mitochondrial Function', what: 'Support mitochondrial renewal so energy output stays strong.', why: 'Dysfunctional mitochondria leak free radicals, draining cellular energy output.', protocol: 'CELLUBIOME', slug: 'cellubiome', tags: ['Mitophagy', 'ATP'], accent: '#19B3A6' },
+  { title: 'Cellular Senescence', what: 'Support healthy aging by helping manage senescence-related stress signals.', why: 'Senescent cell accumulation drives chronic inflammation and tissue breakdown.', protocol: 'CELLUNOVA', slug: 'cellunova', tags: ['Fisetin', 'Senescence'], accent: '#6C5CE7' }
 ];
 
 const NoiseOverlay = () => (
@@ -314,16 +314,16 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
           </div>
 
           <p className="mt-5 md:mt-6 text-[14px] md:text-[16px] text-white/75 font-sans font-medium max-w-[32ch] md:max-w-[42ch] leading-[1.5] mx-auto md:ml-[3%] md:mr-auto md:text-left">
-            One system. Three protocols. Daily <span className="text-white/95">NAD+</span>, daily <span className="text-white/95">gut-mito</span> repair, and a <span className="text-white/95">7-day</span> monthly reset.
+            One system. Three protocols. <span className="text-white/95">NAD+</span> support, <span className="text-white/95">gut-mito</span> support, and a <span className="text-white/95">7-day</span> monthly pulse.
           </p>
 
           <div className="mt-5 flex flex-col items-center gap-0" data-testid="proof-bar">
             <div className="w-10 h-px bg-white/10 mb-3" />
             <div className="flex flex-col items-center gap-[2px] leading-snug">
-              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Bioavailability First</span>
-              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Standardized Actives</span>
-              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Clinical Doses</span>
-              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Glass Packaging</span>
+              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">ABSORPTION FIRST</span>
+              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">VERIFIED POTENCY</span>
+              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">CLINICAL-LEVEL DOSING</span>
+              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">UV-PROTECTED GLASS</span>
             </div>
           </div>
 
@@ -343,7 +343,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             </button>
           </div>
 
-          <p className="mt-2 text-[11px] text-white/40 font-sans tracking-normal">Start with the bundle or choose a protocol.</p>
+          <p className="mt-2 text-[11px] text-white/40 font-sans tracking-normal">Start now. Consistency compounds.</p>
         </div>
       </div>
     </section>
@@ -377,8 +377,8 @@ const TheAxis = ({ onOpenEvidence }) => {
               accentBg: 'rgba(25,179,166,0.08)',
               accentBorder: 'rgba(25,179,166,0.25)',
               accentText: 'rgba(25,179,166,0.8)',
-              desc: 'Postbiotic signaling and mitochondrial renewal support designed for daily repeatability.',
-              steps: ['Enteric delivery', 'Barrier support', 'Mitophagy signaling'],
+              desc: 'Support gut-mito communication for steady energy and digestive resilience.',
+              steps: ['Enteric delivery', 'Barrier support', 'Mito renewal'],
               primary: true
             },
             {
@@ -388,8 +388,8 @@ const TheAxis = ({ onOpenEvidence }) => {
               accentBg: 'rgba(96,165,250,0.06)',
               accentBorder: 'rgba(96,165,250,0.20)',
               accentText: 'rgba(96,165,250,0.75)',
-              desc: 'Daily NAD+ precursor support with co-factors for consistent pathway support.',
-              steps: ['NAD+ pools', 'Redox support', 'Methylation support'],
+              desc: 'Daily NAD+ support with cofactors for consistent cellular energy.',
+              steps: ['NAD+ support', 'Oxidative balance', 'Methylation support'],
               primary: false
             },
             {
@@ -399,8 +399,8 @@ const TheAxis = ({ onOpenEvidence }) => {
               accentBg: 'rgba(108,92,231,0.06)',
               accentBorder: 'rgba(108,92,231,0.20)',
               accentText: 'rgba(108,92,231,0.75)',
-              desc: 'A 7-day cyclical protocol designed to support cellular cleanup processes and resilience.',
-              steps: ['Short cycle', 'Defense layer', 'Return to base'],
+              desc: 'A 7-day monthly pulse designed to support cellular renewal and resilience.',
+              steps: ['Short cycle', 'Cleanup support', 'Return to base'],
               primary: false
             }
           ].map((item, i) => (
@@ -457,7 +457,7 @@ const SixPillars = () => {
           </div>
           <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] uppercase text-white">6 Pillars of Systemic Aging</h2>
           <p className="text-[13px] text-white/50 font-sans max-w-md mx-auto mt-3 leading-relaxed">
-            A framework for mapping protocols to systems. Not medical advice.
+            A map from science to your routine. Not medical advice.
           </p>
         </div>
 
@@ -474,7 +474,7 @@ const SixPillars = () => {
                   <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white">{p.title}</h4>
                   <p className="text-[12.5px] font-sans text-white/55 leading-[1.5] mt-1">{p.what}</p>
                   <div className="flex items-center gap-3 mt-1.5">
-                    <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/45">{p.tags.join(' — ')}</span>
+                    <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/45">{p.tags.join(' • ')}</span>
                     <div className="h-[10px] w-px bg-white/12" />
                     <a
                       href={`/product/${p.slug}`}
@@ -583,7 +583,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-head font-normal text-white tracking-[-0.04em] uppercase leading-tight">
               The System
             </h2>
-            <p className="text-sm text-white/50 font-mono uppercase tracking-[0.12em] mt-3">Choose your starting point</p>
+            <p className="text-sm text-white/50 font-mono uppercase tracking-[0.12em] mt-3">START WHERE YOU FEEL IT</p>
           </div>
 
           <div className="max-w-5xl mx-auto">
@@ -604,9 +604,9 @@ export default function Home() {
             <div className="border-t border-white/[0.06]">
               {[
                 { title: 'Third-Party Tested', desc: 'Independent lab verification' },
-                { title: 'Standardized Actives', desc: 'Precise concentration, no variability' },
-                { title: 'Enteric Delivery', desc: 'Targeted absorption' },
-                { title: 'Quality Control', desc: 'Multi-stage review process' },
+                { title: 'Standardized Actives', desc: 'Consistent potency, every batch' },
+                { title: 'Enteric Delivery', desc: 'Absorbs where it matters' },
+                { title: 'Quality Control', desc: 'Batch-by-batch review' },
               ].map((s, i) => (
                 <div key={s.title} className="flex items-start gap-3 py-3 border-b border-white/[0.06]">
                   <span className="font-mono text-[13px] font-bold tabular-nums text-ar-teal/80 shrink-0 pt-px w-5">0{i + 1}</span>

@@ -134,7 +134,7 @@ const PAGE_CONTENT: Record<
     html: `
 <article>
   <h1>Age Revive — Cellular Energy. Gut Resilience.</h1>
-  <p>Three protocols designed as a system: daily NAD+ support, the gut–mito signaling layer, and a 7-day monthly renewal cadence.</p>
+  <p>One system. Three protocols. NAD+ support, gut-mito support, and a 7-day monthly pulse.</p>
   ${NAV_LINKS}
 
   <h2>The Age Revive Product Line</h2>
@@ -176,7 +176,7 @@ const PAGE_CONTENT: Record<
 <article>
   <h1>Shop — Age Revive Protocol System</h1>
   ${NAV_LINKS}
-  <p>Three protocols designed as a system. Choose individual products or build your full protocol stack.</p>
+  <p>One system. Three protocols. NAD+ support, gut-mito support, and a 7-day monthly pulse.</p>
   ${PRODUCTS.map(productToHtml).join("\n")}
   ${FOOTER_HTML}
 </article>`,

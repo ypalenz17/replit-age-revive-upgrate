@@ -4,7 +4,7 @@ import { storage } from "./storage";
 
 const SITE_CONTENT = `# Age Revive — Systemic Biological Architecture
 
-Protocol-grade cellular support. Three protocols designed as a system: daily NAD+ support, the gut–mito signaling layer, and a 7-day monthly renewal cadence.
+Protocol-grade cellular support. One system. Three protocols. NAD+ support, gut-mito support, and a 7-day monthly pulse.
 
 ## Products
 
@@ -15,13 +15,13 @@ Precision NAD+ support with co-factors, not hype.
 - Apigenin 100 mg
 Serving: 2 capsules daily
 
-### CELLUBIOME — Mitochondrial + Gut Signaling
+### CELLUBIOME — Gut + Mito Signaling
 The Gut–Mitochondria Axis, simplified.
 - Urolithin A 500 mg
 - Tributyrin 500 mg
 Serving: 2 enteric-coated capsules daily
 
-### CELLUNOVA — 7-Day Autophagy + Protocol Cycle
+### CELLUNOVA — 7-Day Autophagy Pulse
 Seven days on. Designed as a cycle, not forever.
 - Fisetin
 - Spermidine

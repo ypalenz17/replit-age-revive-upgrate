@@ -1,0 +1,173 @@
+You are updating the Age Revive homepage copy.
+Your job is to replace text only. The design must not change.
+
+HARD CONSTRAINTS:
+
+ZERO design changes. Do not alter layout, spacing, CSS, Tailwind classes, typography, colors, components, DOM structure, animations, images, buttons, links, or section order.
+
+Do not add or remove any elements.
+
+Change only existing text strings in-place.
+
+Keep the new copy equal or shorter than current wherever possible. If any line wraps or overflows, use the shorter fallback alternatives provided.
+
+Do not change product names (CELLUBIOME, CELLUNAD+, CELLUNOVA).
+
+Do not change navigation or footer links unless explicitly listed below.
+
+Output should be identical visually except for the words.
+
+IMPLEMENTATION STEPS:
+
+Locate the homepage file(s) and any constants/data objects that store homepage copy.
+
+Replace the exact strings according to the “TEXT REPLACEMENTS” list below.
+
+Verify the diff shows only text edits.
+
+TEXT REPLACEMENTS:
+
+HERO
+
+Replace body paragraph with:
+"One system. Three protocols. NAD+ support, gut-mito support, and a 7-day monthly pulse."
+
+Replace the four value lines with:
+"ABSORPTION FIRST"
+"VERIFIED POTENCY"
+"CLINICAL-LEVEL DOSING"
+"UV-PROTECTED GLASS"
+
+Replace the micro line under buttons with:
+"Start now. Consistency compounds."
+If wrapping occurs, use:
+"Start now. Build momentum."
+
+SYSTEM HEADER
+
+Replace "CHOOSE YOUR STARTING POINT" with:
+"START WHERE YOU FEEL IT"
+If wrapping occurs, use:
+"START HERE"
+
+CELLUBIOME CARD
+
+Replace category line with:
+"GUT + MITO SIGNALING"
+
+Replace description with:
+"Daily gut-mito support for steady energy."
+
+Replace bullets with:
+"Steady energy"
+"Gut barrier"
+"Mito renewal"
+
+CELLUNAD+ CARD
+
+Replace description with:
+"Protocol-grade NAD+ support with key cofactors."
+
+Replace bullets with:
+"NAD+ support"
+"DNA maintenance"
+"Cell energy"
+
+CELLUNOVA CARD
+
+Replace category line with:
+"7-DAY AUTOPHAGY PULSE"
+
+Replace description with:
+"Monthly 7-day pulse to support cellular renewal."
+
+Replace bullets with:
+"Cell renewal"
+"Autophagy support"
+"Resilience"
+
+QUALITY LIST
+
+Replace "Precise concentration, no variability" with:
+"Consistent potency, every batch"
+
+Replace "Targeted absorption" with:
+"Absorbs where it matters"
+
+Replace "Multi-stage review process" with:
+"Batch-by-batch review"
+
+GUT-MITO AXIS CARD
+
+Replace paragraph with:
+"Support gut-mito communication for steady energy and digestive resilience."
+
+Replace tags with:
+"ENTERIC DELIVERY"
+"BARRIER SUPPORT"
+"MITO RENEWAL"
+
+NAD+ INFRASTRUCTURE CARD
+
+Replace paragraph with:
+"Daily NAD+ support with cofactors for consistent cellular energy."
+
+Replace tags with:
+"NAD+ SUPPORT"
+"OXIDATIVE BALANCE"
+"METHYLATION SUPPORT"
+
+AUTOPHAGY PULSE CARD
+
+Replace paragraph with:
+"A 7-day monthly pulse designed to support cellular renewal and resilience."
+
+Replace tags with:
+"SHORT CYCLE"
+"CLEANUP SUPPORT"
+"RETURN TO BASE"
+
+FRAMEWORK SUBTEXT
+
+Replace "A framework for mapping protocols to systems. Not medical advice." with:
+"A map from science to your routine. Not medical advice."
+
+6 PILLARS LIST
+
+GENOMIC STABILITY paragraph:
+"NAD+ supports enzymes involved in DNA maintenance and cell resilience."
+tag line:
+"NAD+ • SIRTUINS"
+
+TELOMERE INTEGRITY paragraph:
+"Support telomere pathways that help cells divide cleanly over time."
+tag line:
+"NR • LONGEVITY"
+
+EPIGENETIC SIGNALING paragraph:
+"Gut-derived signals help regulate gene expression across the body."
+tag line:
+"METHYLATION • GUT AXIS"
+
+NUTRIENT SENSING paragraph:
+"Cells sense fuel levels and shift into maintenance when needed."
+tag line:
+"AMPK • MTOR"
+
+MITOCHONDRIAL FUNCTION paragraph:
+"Support mitochondrial renewal so energy output stays strong."
+tag line:
+"MITOPHAGY • ATP"
+
+CELLULAR SENESCENCE paragraph:
+"Support healthy aging by helping manage senescence-related stress signals."
+tag line:
+"FISETIN • SENESCENCE"
+
+FINAL CHECK:
+
+Confirm no CSS/class/layout changes.
+
+Confirm only copy changed.
+
+If any text wraps badly, swap to the shorter alternatives without changing design.
