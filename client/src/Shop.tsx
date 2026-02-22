@@ -706,7 +706,7 @@ function ProductTemplate({ product }) {
       <NoiseOverlay />
       <Navbar />
 
-      <section className="hero relative min-h-[100dvh] overflow-hidden">
+      <section className="hero relative min-h-[100dvh] overflow-hidden" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.5) 0%, rgba(15,23,42,0.25) 40%, transparent 100%)' }}>
         <div className="absolute inset-0 z-[2] opacity-[0.20] pointer-events-none" style={{ background: `radial-gradient(700px 500px at 20% 75%, ${accentGlow}, transparent 60%)` }} />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12 px-5 md:px-8 pt-28 md:pt-32 pb-10 md:pb-16 items-center">
