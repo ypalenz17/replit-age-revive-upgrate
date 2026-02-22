@@ -80,7 +80,13 @@ const PRODUCTS = {
       { time: 'Month 1', label: 'Compounding', desc: 'Consistency becomes the product. This is where protocols start to feel "owned."', value: 'Momentum' },
       { time: 'Months 2–3', label: 'Infrastructure', desc: 'Sustained routine typically feels smoother than intermittent intensity.', value: 'Durability' }
     ],
-    telemetry: ['NAD+ Support', 'Cellular Energy', 'Redox Balance']
+    telemetry: ['NAD+ Support', 'Cellular Energy', 'Redox Balance'],
+    systems: [
+      { label: 'NAD+ Pathway Activity', metric: 'Precursor input · cofactor alignment' },
+      { label: 'Methylation Efficiency', metric: 'B-vitamin cycling · methyl group delivery' },
+      { label: 'Cellular Resilience Markers', metric: 'Redox balance · mitochondrial output' },
+      { label: 'Protocol Adherence', metric: 'Daily input consistency · cadence tracking' }
+    ]
   },
 
   cellubiome: {
@@ -111,6 +117,12 @@ const PRODUCTS = {
       { title: 'Enteric Precision', text: 'Enteric-coated delivery supports release beyond the upper GI environment.', tags: ['Targeted release', 'Bioavailability'] }
     ],
     telemetry: ['Gut Signaling', 'Mito Renewal', 'Postbiotic Support'],
+    systems: [
+      { label: 'Mitophagy Signal Output', metric: 'Urolithin A activation · recycling pathway' },
+      { label: 'SCFA Delivery Rate', metric: 'Butyrate release · gut-barrier signaling' },
+      { label: 'Mitochondrial Turnover', metric: 'Renewal cycling · energy efficiency' },
+      { label: 'Enteric Delivery Precision', metric: 'Targeted release · bioavailability index' }
+    ],
     timeline: [
       { time: 'Days 1–3', label: 'Comfort + Consistency', desc: 'Enteric delivery supports a smoother start, especially for sensitive routines.', value: 'Settle In' },
       { time: 'Week 1', label: 'Signal Support', desc: 'Daily inputs support signaling layers that benefit from repetition.', value: 'Alignment' },
@@ -156,6 +168,12 @@ const PRODUCTS = {
       { title: 'Off-Cycle Matters', text: 'The off-cycle is part of the protocol. This is a cadence, not a constant.', tags: ['Recovery phase', 'Cadence'] }
     ],
     telemetry: ['Autophagy Support', 'Cellular Cleanup', 'Phase Design'],
+    systems: [
+      { label: 'Autophagy Pathway Activation', metric: 'Polyphenol load · spermidine input' },
+      { label: 'Senescent Cell Clearance', metric: 'Fisetin + quercetin signaling' },
+      { label: 'Oxidative Stress Defense', metric: 'Antioxidant capacity · astaxanthin load' },
+      { label: 'Phase Cycle Integrity', metric: '7-day on · 21-day off · cadence discipline' }
+    ],
     timeline: [
       { time: 'Days 1–2', label: 'Ramp', desc: 'Phase begins. Keep hydration and routine tight. Consistency beats force.', value: 'Initiate' },
       { time: 'Days 3–5', label: 'Peak Week', desc: 'This is the center of the cycle. Keep variables stable and boring.', value: 'Center' },
@@ -681,26 +699,49 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <section className="py-20 md:py-28 px-5 md:px-8 max-w-7xl mx-auto overflow-hidden">
-        <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
-          <div className="md:col-span-5 space-y-5 reveal">
-            <TypewriterTelemetry phrases={product.telemetry} />
-            <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] leading-[1.06] text-white">
-              Every dose,{' '}<span className="text-white/45">fully disclosed</span>.
-            </h2>
-            <p className="text-[14px] md:text-[15px] text-white/60 leading-relaxed font-sans font-medium">
-              No proprietary blends. No hidden fillers. Each active standardized, clinically dosed, listed with exact purpose.
-            </p>
+      <section className="relative py-16 md:py-24 px-5 md:px-8 max-w-7xl mx-auto overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1020]/50 via-transparent to-transparent pointer-events-none" />
+        <div className="relative z-10">
+          <div className="mb-14 md:mb-20 max-w-lg reveal">
+            <div className="flex items-center gap-3 mb-4">
+              <TypewriterTelemetry phrases={product.telemetry} />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-2">Telemetry</h2>
+            <p className="text-[13px] font-mono text-white/45 tracking-[-0.01em]">Measured biological response</p>
 
-            <TrustStats product={product} />
-
-            <p className="text-[11px] font-mono text-white/40 uppercase tracking-[0.10em] leading-relaxed">
-              All actives third-party tested. Full certificates of analysis available.
-            </p>
+            <div className="mt-8 flex flex-col gap-3">
+              {product.systems.map((sys, i) => (
+                <div key={i} className="flex items-start gap-5" data-testid={`telemetry-system-${i}`}>
+                  <span className="font-mono text-[14px] font-black tracking-[0.04em] shrink-0 w-6 text-right pt-0.5" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
+                  <div className="flex flex-col border-b border-white/[0.04] pb-3 flex-1">
+                    <span className="text-[13px] font-mono font-bold uppercase tracking-[0.06em] text-white/85">{sys.label}</span>
+                    <span className="text-[11px] font-mono text-white/40 tracking-[0.02em]">{sys.metric}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="md:col-span-7 reveal">
-            <IngredientPanel ingredients={product.ingredients} accent={accent} />
+          <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
+            <div className="md:col-span-5 space-y-4 reveal">
+              <span className="block text-[10px] font-mono uppercase tracking-[0.20em] text-white/40 font-bold">Disclosure</span>
+              <h3 className="text-xl md:text-2xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight">
+                Full ingredient transparency
+              </h3>
+              <p className="text-[13px] md:text-[14px] text-white/55 leading-relaxed font-sans font-medium">
+                No proprietary blends. Each active standardized, clinically dosed, listed with exact purpose.
+              </p>
+
+              <TrustStats product={product} />
+
+              <p className="text-[11px] font-mono text-white/35 uppercase tracking-[0.10em] leading-relaxed">
+                All actives third-party tested · COAs on file
+              </p>
+            </div>
+
+            <div className="md:col-span-7 reveal">
+              <IngredientPanel ingredients={product.ingredients} accent={accent} />
+            </div>
           </div>
         </div>
       </section>
