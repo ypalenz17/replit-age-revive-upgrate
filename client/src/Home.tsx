@@ -597,7 +597,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="max-w-md mx-auto mt-10 md:mt-14 pt-3">
+          <div className="max-w-sm mx-auto mt-10 md:mt-14 pt-3 px-2">
             <div className="border-t border-white/[0.06]">
               {[
                 { title: 'Third-Party Tested', desc: 'Independent lab verification' },
