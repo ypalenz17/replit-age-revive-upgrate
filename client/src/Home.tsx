@@ -462,21 +462,21 @@ const SixPillars = () => {
           {PILLARS.map((p, i) => (
             <div
               key={p.title}
-              className="border-b border-white/[0.08] py-4 md:py-5 reveal-stagger"
+              className="border-b border-white/[0.08] py-3.5 md:py-4 reveal-stagger"
               data-testid={`pillar-${i}`}
             >
               <div className="flex items-start gap-4">
-                <span className="font-mono text-[11px] font-bold tracking-[0.1em] text-white/25 pt-0.5 shrink-0 w-5">0{i + 1}</span>
-                <div className="flex-1 min-w-0">
+                <span className="font-mono text-[11px] font-bold tracking-[0.1em] text-white/40 pt-0.5 shrink-0 w-5">0{i + 1}</span>
+                <div className="flex-1 min-w-0 border-l-[2px] pl-3.5" style={{ borderColor: `${p.accent}30` }}>
                   <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white">{p.title}</h4>
-                  <p className="text-[12.5px] font-sans text-white/55 leading-[1.5] mt-1.5">{p.what}</p>
-                  <div className="flex items-center gap-4 mt-2.5">
-                    <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/35">{p.tags.join(' · ')}</span>
-                    <div className="h-[10px] w-px bg-white/10" />
+                  <p className="text-[12.5px] font-sans text-white/55 leading-[1.5] mt-1">{p.what}</p>
+                  <div className="flex items-center gap-3 mt-1.5">
+                    <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/45">{p.tags.join(' — ')}</span>
+                    <div className="h-[10px] w-px bg-white/12" />
                     <a
                       href={`/product/${p.slug}`}
                       className="text-[10px] font-mono font-bold uppercase tracking-[0.08em] transition-colors duration-200 flex items-center gap-1"
-                      style={{ color: `${p.accent}AA` }}
+                      style={{ color: `${p.accent}BB` }}
                       data-testid={`pillar-link-${p.slug}`}
                     >
                       {p.protocol} <ArrowRight size={9} />
