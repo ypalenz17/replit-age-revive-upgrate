@@ -75,7 +75,7 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
           {p.outcomes && p.outcomes.length > 0 && (
             <div className="flex flex-col gap-[6px] mb-4">
               {p.outcomes.slice(0, 3).map((o) => (
-                <span key={o} className="flex items-center gap-2 text-[13px] font-sans font-medium text-white/70">
+                <span key={o} className="flex items-center gap-2 text-[13px] font-sans font-medium text-white">
                   <Check size={13} strokeWidth={2.5} className="shrink-0" style={{ color: accent }} />
                   {o}
                 </span>
