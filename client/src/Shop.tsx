@@ -517,6 +517,8 @@ function ProductTemplate({ product }) {
 
   const accent = product.accent;
   const accentGlow = hexToRgba(accent, 0.55);
+  const accentTextMap = { cellunad: '#60a5fa', cellubiome: '#5eead4', cellunova: '#a78bfa' };
+  const accentText = accentTextMap[product.id] || accent;
 
   return (
     <main ref={containerRef} style={{ '--accent': accent, '--accentGlow': accentGlow }} className="relative bg-[#0f172a] text-white selection:bg-ar-teal selection:text-white">
@@ -551,7 +553,7 @@ function ProductTemplate({ product }) {
             <div className="relative">
               <div className="mb-2.5 flex flex-col items-center md:items-start gap-0.5">
                 <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/65">System Target</span>
-                <span className="font-mono text-[11px] uppercase tracking-[0.14em] font-bold text-ar-teal">{product.category}</span>
+                <span className="font-mono text-[11px] uppercase tracking-[0.14em] font-bold" style={{ color: accentText }}>{product.category}</span>
               </div>
 
               <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase mb-2" style={{ fontSize: 'clamp(2.8rem, 9vw, 5.5rem)' }} data-testid="text-product-name"><BrandName name={product.name} /></h1>
@@ -590,7 +592,7 @@ function ProductTemplate({ product }) {
 
                 <div className="px-5 pb-5 md:px-8 md:pb-8 space-y-3">
                   <div>
-                    <span className="inline-block text-[10px] font-mono uppercase tracking-[0.14em] font-bold text-ar-teal mb-2">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
+                    <span className="inline-block text-[10px] font-mono uppercase tracking-[0.14em] font-bold mb-2" style={{ color: accentText }}>{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
                     <div className="flex items-baseline justify-between gap-4">
                       <h3 className="text-[20px] md:text-[22px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-none"><BrandName name={product.name} /></h3>
                       <span className="text-[18px] md:text-[20px] font-sans font-extrabold text-white leading-none">{product.price}</span>
@@ -603,7 +605,7 @@ function ProductTemplate({ product }) {
                     <div className="flex flex-col gap-[5px]">
                       {product.outcomes.map((item, i) => (
                         <div key={i} className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full shrink-0 bg-ar-teal" />
+                          <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: accentText }} />
                           <span className="text-[12px] md:text-[13px] font-sans font-medium text-white leading-snug">{item}</span>
                         </div>
                       ))}
