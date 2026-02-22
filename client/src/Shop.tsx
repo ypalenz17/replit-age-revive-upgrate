@@ -784,10 +784,10 @@ function ProductTemplate({ product }) {
         className="relative py-14 md:py-[72px]"
         style={{
           background: product.id === 'cellunad'
-            ? 'linear-gradient(180deg, rgba(15,23,42,0.6) 0%, rgba(15,23,42,0.75) 50%, rgba(15,23,42,0.6) 100%)'
+            ? 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.75) 8%, rgba(15,23,42,0.75) 92%, rgba(15,23,42,0) 100%)'
             : product.id === 'cellubiome'
-              ? 'linear-gradient(180deg, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.7) 50%, rgba(15,23,42,0.55) 100%)'
-              : 'linear-gradient(180deg, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.7) 50%, rgba(15,23,42,0.55) 100%)'
+              ? 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.7) 8%, rgba(15,23,42,0.7) 92%, rgba(15,23,42,0) 100%)'
+              : 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.7) 8%, rgba(15,23,42,0.7) 92%, rgba(15,23,42,0) 100%)'
         }}
         data-testid="section-narrative"
       >
