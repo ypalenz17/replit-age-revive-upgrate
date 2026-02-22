@@ -747,7 +747,7 @@ function ProductTemplate({ product }) {
                   <div className="border-t border-white/[0.06] pt-2.5 mt-1">
                     <div className="flex flex-col gap-[2px]">
                       {product.outcomes.map((item, i) => (
-                        <span key={i} className="text-[12px] font-sans font-medium text-white/75 leading-[1.75]">{item}</span>
+                        <span key={i} className="text-[12px] font-sans font-medium text-white leading-[1.75]">{item}</span>
                       ))}
                     </div>
                   </div>
