@@ -326,12 +326,12 @@ function CompoundRow({ ing, accentText, isLast, index }) {
       <div className="flex items-baseline justify-between py-3 gap-4">
         <div className="flex-1 min-w-0">
           <p className="text-[13px] font-sans font-bold text-white leading-tight break-words">{ing.name}</p>
-          <p className="text-[11px] font-mono text-white/60 mt-0.5 uppercase tracking-[0.04em]">{ing.purpose}</p>
+          <p className="text-[11px] font-mono text-white/65 mt-0.5 uppercase tracking-[0.03em]">{ing.purpose}</p>
           {ing.refs && (
             <button
               onClick={() => setExpanded(!expanded)}
-              className="text-[9px] font-mono tracking-[0.04em] mt-0.5 hover:opacity-80"
-              style={{ color: accentText, opacity: 0.65 }}
+              className="text-[8px] font-mono tracking-[0.04em] mt-0.5 hover:opacity-80"
+              style={{ color: accentText, opacity: 0.6 }}
               data-testid={`ref-toggle-${ing.name.replace(/\s+/g, '-').toLowerCase()}`}
             >
               {expanded ? 'Close' : 'References'}
@@ -376,7 +376,7 @@ function CompoundRow({ ing, accentText, isLast, index }) {
         </div>
       )}
 
-      {!isLast && <div className="h-px bg-white/[0.03]" />}
+      {!isLast && <div className="h-px bg-white/[0.025]" />}
     </div>
   );
 }
@@ -386,13 +386,13 @@ function IngredientPanel({ ingredients, accentText, serving }) {
     <div className="relative border-t border-white/[0.06]">
       <div className="py-6 md:py-8">
         <div className="mb-0.5">
-          <span className="text-[10px] font-mono font-black uppercase tracking-[0.18em] text-white/60">Compound Specification</span>
+          <span className="text-[11px] font-mono font-black uppercase tracking-[0.18em] text-white/70">Compound Specification</span>
         </div>
-        <div className="flex items-baseline gap-5 mb-1 text-[11px] font-mono uppercase tracking-[0.08em]">
+        <div className="flex items-baseline gap-5 mb-0.5 text-[11px] font-mono uppercase tracking-[0.08em]">
           <span className="text-white/45">Actives: <span className="text-white/80 font-bold">{ingredients.length}</span></span>
           <span className="text-white/45">Serving: <span className="text-white/80 font-bold">{serving}</span></span>
         </div>
-        <p className="text-[10px] font-mono text-white/35 tracking-[0.06em] mb-5">No proprietary formulations</p>
+        <p className="text-[10px] font-mono text-white/40 tracking-[0.06em] mb-5">No proprietary formulations · Clinically aligned with published human studies</p>
 
         <div className="space-y-0">
           {ingredients.map((ing, i) => (
@@ -687,7 +687,7 @@ function ProductTemplate({ product }) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
       </div>
       <div
-        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.010]"
+        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.009]"
         style={{
           backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
           backgroundSize: '100px 100px'
