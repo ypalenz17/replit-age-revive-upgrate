@@ -331,10 +331,8 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             </h1>
           </div>
 
-          <p className="text-base md:text-xl text-white/70 font-medium max-w-2xl mx-auto leading-relaxed">
-            Three protocol-grade supplements built as one system:
-            <br className="hidden sm:block" />
-            daily NAD+, daily gut-mito signaling, and a 7-day monthly reset.
+          <p className="text-[15px] md:text-xl text-white/70 font-medium max-w-2xl mx-auto leading-relaxed text-left md:text-center">
+            Three protocol-grade supplements built as one system: daily NAD+, daily gut-mito signaling, and a 7-day monthly reset.
           </p>
 
           <div className="flex items-center justify-center gap-2 flex-wrap">
