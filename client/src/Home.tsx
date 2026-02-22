@@ -310,61 +310,61 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
         <div className="absolute left-1/2 top-[35%] -translate-x-1/2 -translate-y-1/2 w-[min(90vw,600px)] h-[min(90vw,600px)] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(10,15,30,0.85)_0%,transparent_70%)]" />
       </div>
 
-      <div className="relative z-10 w-full max-w-3xl mx-auto flex flex-col justify-center text-center px-5 md:px-6 pt-20 md:pt-40 pb-10 md:pb-24 min-h-[100dvh]">
-        <div className="flex flex-col gap-5 md:gap-7 hero-text w-full items-center">
+      <div className="relative z-10 w-full max-w-3xl mx-auto flex flex-col justify-center text-center px-5 md:px-6 pt-20 md:pt-36 pb-10 md:pb-20 min-h-[100dvh]">
+        <div className="flex flex-col hero-text w-full items-center">
 
-          <div className="flex flex-col gap-3 items-center">
-            <div className="flex items-center gap-2.5 justify-center">
-              <div className="h-px w-6 md:w-8 bg-white/20" />
-              <span className="font-mono text-[11px] text-ar-teal uppercase tracking-[0.14em]">Protocol-Grade Supplements</span>
-              <div className="h-px w-6 md:w-8 bg-white/20" />
+          <div className="flex flex-col items-center">
+            <div className="flex items-center gap-2.5 justify-center mb-3">
+              <div className="h-px w-5 bg-white/15" />
+              <span className="font-mono text-[10px] text-ar-teal/90 uppercase tracking-[0.12em]">Protocol-Grade Supplements</span>
+              <div className="h-px w-5 bg-white/15" />
             </div>
-            <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.92] uppercase" style={{ fontSize: 'clamp(38px, 9.5vw, 54px)' }}>
+            <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.90] uppercase" style={{ fontSize: 'clamp(36px, 9vw, 52px)' }}>
               Cellular Energy.
               <br />
-              <span className="text-white/75">Gut Resilience.</span>
+              <span className="text-white/70">Gut Resilience.</span>
             </h1>
           </div>
 
-          <p className="text-[14px] md:text-[17px] text-white/65 font-sans font-medium max-w-[34ch] md:max-w-[44ch] leading-[1.55] mx-auto">
-            Three protocol-grade supplements built as one system: daily <span className="text-white/85">NAD+</span>, daily <span className="text-white/85">gut-mito</span> signaling, and a <span className="text-white/85">7-day</span> monthly reset.
+          <p className="mt-5 md:mt-6 text-[14px] md:text-[16px] text-white/70 font-sans font-medium max-w-[32ch] md:max-w-[42ch] leading-[1.5] mx-auto">
+            Three protocol-grade supplements built as one system: daily <span className="text-white/90">NAD+</span>, daily <span className="text-white/90">gut-mito</span> signaling, and a <span className="text-white/90">7-day</span> monthly reset.
           </p>
 
-          <div className="w-full max-w-[400px] mx-auto rounded-lg px-3 py-2.5" style={{ background: 'rgba(255,255,255,0.03)', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.07)' }} data-testid="proof-bar">
-            <div className="flex items-center justify-center gap-0">
+          <div className="mt-5 w-full max-w-[340px] sm:max-w-none sm:w-auto mx-auto rounded-md overflow-hidden" style={{ background: 'rgba(255,255,255,0.025)', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)' }} data-testid="proof-bar">
+            <div className="flex items-center justify-center px-3 py-2 gap-0 flex-wrap sm:flex-nowrap">
               {[
                 'Full dosing disclosed',
                 'No proprietary blends',
                 'COA library coming soon'
               ].map((text, i) => (
-                <div key={i} className="flex items-center">
-                  {i > 0 && <span className="w-px h-3 bg-white/10 mx-2.5 shrink-0" aria-hidden="true" />}
-                  <span className="flex items-center gap-1.5">
-                    <span className="h-1 w-1 rounded-[2px] bg-ar-teal/80 shrink-0" />
-                    <span className="text-[10px] text-white/60 uppercase tracking-[0.08em] leading-none font-mono whitespace-nowrap">{text}</span>
+                <div key={i} className="flex items-center shrink-0">
+                  {i > 0 && <span className="w-px h-2.5 bg-white/8 mx-2 shrink-0 hidden sm:block" aria-hidden="true" />}
+                  <span className="flex items-center gap-1.5 px-0.5">
+                    <span className="h-[3px] w-[3px] rounded-[1px] bg-ar-teal/70 shrink-0" />
+                    <span className="text-[9px] sm:text-[10px] text-white/55 uppercase tracking-[0.06em] leading-none font-mono">{text}</span>
                   </span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-2.5 w-full max-w-[380px] mx-auto sm:w-auto sm:max-w-none md:justify-center">
-            <a href="/shop" className="group relative w-full sm:w-auto px-7 md:px-8 min-h-[44px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.2)' }} data-testid="button-shop-system">
+          <div className="mt-6 flex flex-col sm:flex-row gap-2 w-full max-w-[340px] mx-auto sm:w-auto sm:max-w-none md:justify-center">
+            <a href="/shop" className="group relative w-full sm:w-auto px-7 min-h-[42px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.12em] overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.18)' }} data-testid="button-shop-system">
               <span className="relative z-10">Shop the System</span>
               <div className="absolute inset-0 bg-white/15 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </a>
 
             <button
               onClick={onOpenEvidence}
-              className="w-full sm:w-auto px-7 md:px-8 min-h-[44px] text-white/70 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] hover:bg-white/[0.04] hover:text-white/90 transition-all"
-              style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.12)' }}
+              className="w-full sm:w-auto px-7 min-h-[42px] text-white/60 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.12em] hover:bg-white/[0.04] hover:text-white/85 transition-all"
+              style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.08)' }}
               data-testid="button-view-evidence"
             >
               View Evidence
             </button>
           </div>
 
-          <p className="text-[12px] text-white/45 font-sans tracking-normal -mt-1">Start with the bundle or choose a protocol.</p>
+          <p className="mt-3 text-[11px] text-white/50 font-sans tracking-normal">Start with the bundle or choose a protocol.</p>
         </div>
       </div>
     </section>
