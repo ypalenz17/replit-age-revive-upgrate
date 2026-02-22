@@ -172,7 +172,7 @@ const SideSheet = ({ isOpen, onClose, title, children }: { isOpen: boolean; onCl
         </button>
         <div className="space-y-8">
           <div className="space-y-2">
-            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ar-teal">Clinical Archive</p>
+            <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-ar-teal">Clinical Archive</p>
             <h3 className="text-3xl md:text-4xl font-head font-normal tracking-[-0.03em] uppercase">{title}</h3>
           </div>
 
@@ -181,8 +181,8 @@ const SideSheet = ({ isOpen, onClose, title, children }: { isOpen: boolean; onCl
           </div>
 
           <div className="pt-10 border-t border-black/10">
-            <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-black/35 mb-3">Supporting Data</p>
-            <ul className="space-y-2 text-[11px] font-mono text-black/45 list-none p-0">
+            <p className="text-[12px] font-mono uppercase tracking-[0.22em] text-black/35 mb-3">Supporting Data</p>
+            <ul className="space-y-2 text-[12px] font-mono text-black/45 list-none p-0">
               <li>[01] References available upon request</li>
               <li>[02] Full science library lives in the Science section</li>
             </ul>
@@ -237,7 +237,7 @@ const Navbar = () => {
             />
           </a>
 
-          <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[10px] uppercase tracking-[0.2em]">
+          <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[12px] uppercase tracking-[0.2em]">
             {navLinks.map((l) => (
               <a key={l.label} href={l.href} className={['transition-all hover:text-ar-teal', scrolled ? 'text-ar-navy/60' : 'text-white/60'].join(' ')}>
                 {l.label}
@@ -291,35 +291,6 @@ const Navbar = () => {
 /* -----------------------------
    Sections
 ------------------------------ */
-const TelemetryTypewriter = () => {
-  const [text, setText] = useState('');
-  const phrases = useMemo(
-    () => [
-      'THE_AXIS: ONLINE',
-      'MITO_SIGNAL: ACTIVE',
-      'NAD_LAYER: STABLE',
-      'CYCLE: 7_DAY_RESET',
-      'ADHERENCE: LOCKED'
-    ],
-    []
-  );
-  const [idx, setIdx] = useState(0);
-
-  useEffect(() => {
-    let charIdx = 0;
-    const t = setInterval(() => {
-      setText(phrases[idx].slice(0, charIdx));
-      charIdx++;
-      if (charIdx > phrases[idx].length + 12) {
-        setIdx((prev) => (prev + 1) % phrases.length);
-        charIdx = 0;
-      }
-    }, 75);
-    return () => clearInterval(t);
-  }, [idx, phrases]);
-
-  return <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.2em]">{text}_</span>;
-};
 
 const Hero = ({ onOpenEvidence, onOpenProduct }) => {
   return (
@@ -330,7 +301,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
           <div className="space-y-4">
             <div className="flex items-center justify-center gap-3">
               <div className="h-[1px] w-12 bg-ar-teal" />
-              <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Protocol Infrastructure</span>
+              <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Protocol-Grade Supplements</span>
               <div className="h-[1px] w-12 bg-ar-teal" />
             </div>
             <h1 className="font-head font-normal text-white tracking-[-0.05em] leading-[0.85]" style={{ fontSize: 'clamp(2.5rem, 7.5vw, 5.5rem)' }}>
@@ -340,19 +311,35 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             </h1>
           </div>
 
-          <p className="text-xl md:text-2xl text-white/70 font-medium max-w-2xl mx-auto leading-snug">
-            Three protocols designed as a system: daily NAD+ support, the gut–mito signaling layer, and a 7-day monthly renewal cadence.
+          <p className="text-lg md:text-xl text-white/70 font-medium max-w-2xl mx-auto leading-relaxed">
+            Three protocol-grade supplements built as one system:
+            <br className="hidden sm:block" />
+            daily NAD+, daily gut-mito signaling, and a 7-day monthly reset.
           </p>
 
+          <div className="flex items-center justify-center gap-6 md:gap-8 flex-wrap">
+            {[
+              { text: 'Full dosing disclosed' },
+              { text: 'No proprietary blends' },
+              { text: 'COA library available' }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-ar-teal/60" />
+                <span className="font-mono text-[12px] text-white/50 uppercase tracking-[0.14em]">{item.text}</span>
+              </div>
+            ))}
+          </div>
+
           <div className="flex flex-wrap justify-center gap-4 pt-4">
-            <button className="group relative px-10 py-5 bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[10px] tracking-[0.22em] overflow-hidden transition-transform hover:scale-105 active:scale-95">
+            <a href="/shop" className="group relative px-10 py-5 min-h-[48px] flex items-center bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.22em] overflow-hidden transition-transform hover:scale-105 active:scale-95" data-testid="button-start-protocol">
               <span className="relative z-10">Start Full Protocol</span>
               <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-            </button>
+            </a>
 
             <button
               onClick={onOpenEvidence}
-              className="px-8 py-5 border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[10px] tracking-[0.22em] hover:bg-white/5 transition-all"
+              className="px-8 py-5 min-h-[48px] border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.22em] hover:bg-white/5 transition-all"
+              data-testid="button-view-evidence"
             >
               View Evidence
             </button>
@@ -370,7 +357,7 @@ const TheAxis = ({ onOpenEvidence }) => {
         <div className="text-center mb-14 reveal">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-[1px] w-12 bg-ar-teal" />
-            <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">The Foundation</span>
+            <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">The Foundation</span>
             <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
           <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2.2rem, 7vw, 4.5rem)' }}>
@@ -415,7 +402,7 @@ const TheAxis = ({ onOpenEvidence }) => {
 
               <ul className="space-y-2.5">
                 {item.steps.map((s) => (
-                  <li key={s} className="flex items-center gap-3 text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-white/50">
+                  <li key={s} className="flex items-center gap-3 text-[12px] font-mono font-bold uppercase tracking-[0.18em] text-white/50">
                     <div className="w-1.5 h-1.5 rounded-full bg-ar-teal" /> {s}
                   </li>
                 ))}
@@ -423,7 +410,7 @@ const TheAxis = ({ onOpenEvidence }) => {
 
               <button
                 onClick={onOpenEvidence}
-                className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-ar-teal flex items-center gap-2 hover:gap-3 transition-all pt-3 border-t border-white/[0.08] w-full"
+                className="text-[12px] font-mono font-bold uppercase tracking-[0.18em] text-ar-teal flex items-center gap-2 hover:gap-3 transition-all pt-3 border-t border-white/[0.08] w-full min-h-[44px]"
               >
                 View Evidence <ArrowRight size={14} />
               </button>
@@ -443,7 +430,7 @@ const SixPillars = () => {
         <div className="text-center mb-14 reveal">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-[1px] w-12 bg-ar-teal" />
-            <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Framework</span>
+            <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Framework</span>
             <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
           <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] uppercase text-white">6 Pillars of Systemic Aging</h2>
@@ -464,7 +451,7 @@ const SixPillars = () => {
               <div className="absolute top-0 left-0 right-0 h-24 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: `radial-gradient(ellipse at 50% -20%, ${p.accent}22, transparent 70%)` }} />
 
               <div className="relative z-10 p-6 flex flex-col gap-4">
-                <span className="font-mono text-[11px] font-bold tracking-[0.15em] opacity-30" style={{ color: p.accent }}>0{i + 1}</span>
+                <span className="font-mono text-[12px] font-bold tracking-[0.15em] opacity-30" style={{ color: p.accent }}>0{i + 1}</span>
 
                 <h4 className="text-lg font-head font-normal uppercase tracking-[-0.01em] text-white group-hover:text-white transition-colors duration-300 leading-tight">{p.title}</h4>
 
@@ -472,13 +459,13 @@ const SixPillars = () => {
 
                 <div className="flex flex-wrap gap-2 mt-auto">
                   {p.tags.map(tag => (
-                    <span key={tag} className="text-[9px] font-mono uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border transition-colors duration-300" style={{ borderColor: `${p.accent}33`, color: `${p.accent}CC` }}>{tag}</span>
+                    <span key={tag} className="text-[12px] font-mono uppercase tracking-[0.14em] px-3 py-1.5 rounded-full border transition-colors duration-300" style={{ borderColor: `${p.accent}33`, color: `${p.accent}CC` }}>{tag}</span>
                   ))}
                 </div>
 
                 <div className="flex items-center gap-2 pt-3 border-t border-white/[0.06]">
                   <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: p.accent }} />
-                  <span className="text-[9px] font-mono font-bold uppercase tracking-[0.22em]" style={{ color: p.accent }}>{p.protocol}</span>
+                  <span className="text-[12px] font-mono font-bold uppercase tracking-[0.18em]" style={{ color: p.accent }}>{p.protocol}</span>
                 </div>
               </div>
             </div>
@@ -502,7 +489,7 @@ const Journal = () => {
         <div className="text-center mb-14 reveal">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-[1px] w-12 bg-ar-teal" />
-            <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Scientific Literacy</span>
+            <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Scientific Literacy</span>
             <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
           <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2.2rem, 7vw, 4.5rem)' }}>
@@ -520,16 +507,13 @@ const Journal = () => {
                 <img src={j.img} className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" alt="" />
               </div>
               <div className="space-y-2">
-                <span className="font-mono text-[9px] text-white/40 uppercase tracking-[0.22em]">{j.cat}</span>
+                <span className="font-mono text-[12px] text-white/40 uppercase tracking-[0.18em]">{j.cat}</span>
                 <h4 className="text-xl font-head font-normal uppercase tracking-tight text-white group-hover:text-ar-teal transition-colors duration-300">{j.title}</h4>
               </div>
             </div>
           ))}
         </div>
 
-        <p className="text-[10px] font-mono text-white/30 uppercase tracking-[0.22em]">
-          Editorial placeholders. Replace with real posts when ready.
-        </p>
       </div>
     </section>
   );
@@ -603,13 +587,13 @@ export default function Home() {
           <div className="text-center mb-14 reveal">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="h-[1px] w-12 bg-ar-teal" />
-              <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Select Your Protocol</span>
+              <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Select Your Protocol</span>
               <div className="h-[1px] w-12 bg-ar-teal" />
             </div>
             <h2 className="text-4xl md:text-5xl font-head font-normal text-white tracking-[-0.04em] uppercase leading-tight">
               The System
             </h2>
-            <p className="text-sm text-white/40 font-mono uppercase tracking-[0.14em] mt-3">Choose your starting point</p>
+            <p className="text-sm text-white/40 font-mono uppercase tracking-[0.12em] mt-3">Choose your starting point</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -620,9 +604,9 @@ export default function Home() {
           <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-3 mt-12">
             {['3rd Party Testing', 'Standardized Actives', 'Enteric Delivery', 'Quality Controls'].map((p, i) => (
               <div key={p} className="flex items-center justify-center gap-2 bg-white/[0.06] border border-white/[0.1] rounded-full px-3 py-2">
-                <span className="font-mono text-[9px] font-bold text-ar-teal tracking-[0.14em]">{String(i + 1).padStart(2, '0')}</span>
+                <span className="font-mono text-[12px] font-bold text-ar-teal tracking-[0.14em]">{String(i + 1).padStart(2, '0')}</span>
                 <span className="w-px h-3 bg-white/20" />
-                <span className="text-[9px] font-mono font-bold uppercase tracking-[0.14em] text-white/60 whitespace-nowrap">{p}</span>
+                <span className="text-[12px] font-mono font-bold uppercase tracking-[0.1em] text-white/60 whitespace-nowrap">{p}</span>
               </div>
             ))}
           </div>
@@ -632,23 +616,6 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
 
       <TheAxis onOpenEvidence={() => setEvidencePanel(true)} />
-
-      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
-
-      {/* Signature Micro-UI Bar */}
-      <section className="py-6 px-6 overflow-hidden">
-        <div className="max-w-7xl mx-auto flex justify-between items-center gap-12">
-          <div className="flex items-center gap-4">
-            <div className="w-2 h-2 rounded-full bg-ar-teal animate-pulse" />
-            <TelemetryTypewriter />
-          </div>
-          <div className="hidden md:flex gap-12 items-center font-mono text-[9px] text-white/25 uppercase tracking-[0.3em]">
-            <span>Latency: 24ms</span>
-            <span>Sync: Stable</span>
-            <span>Cadence: Locked</span>
-          </div>
-        </div>
-      </section>
 
       <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
 
@@ -669,12 +636,12 @@ export default function Home() {
             <span className="italic text-white/50">baseline.</span>
           </h2>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <button className="px-12 py-6 bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-xs tracking-[0.22em] hover:scale-105 transition-all">
+            <a href="/shop" className="px-12 py-6 min-h-[48px] flex items-center bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:scale-105 transition-all" data-testid="button-cta-start-protocol">
               Start Full Protocol
-            </button>
-            <button className="px-12 py-6 border border-white/20 text-white rounded-full font-mono font-bold uppercase text-xs tracking-[0.22em] hover:bg-white/5 transition-all">
+            </a>
+            <a href="/shop" className="px-12 py-6 min-h-[48px] flex items-center border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-white/5 transition-all" data-testid="button-cta-build-stack">
               Build your stack
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -713,19 +680,19 @@ export default function Home() {
         {activeProduct && (
           <div className="space-y-8">
             <div className="space-y-2">
-              <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-black/45">{activeProduct.category}</p>
+              <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-black/45">{activeProduct.category}</p>
               <p className="text-xl font-sans font-extrabold uppercase tracking-[-0.02em]">{activeProduct.tagline}</p>
-              <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-black/40">{activeProduct.serving}</p>
+              <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-black/40">{activeProduct.serving}</p>
               {activeProduct.warning && (
                 <div className="p-4 bg-red-500/5 border border-red-500/10 rounded-ar-2xl">
-                  <p className="text-[10px] font-mono font-bold text-red-600 uppercase tracking-[0.22em] mb-1">Warning</p>
+                  <p className="text-[12px] font-mono font-bold text-red-600 uppercase tracking-[0.18em] mb-1">Warning</p>
                   <p className="text-sm font-medium">{activeProduct.warning}</p>
                 </div>
               )}
             </div>
 
             <div className="space-y-3">
-              <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-black/45">Key outcomes</p>
+              <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-black/45">Key outcomes</p>
               {activeProduct.outcomes.map((o) => (
                 <div key={o} className="flex items-center gap-3 text-sm font-medium">
                   <span className="w-1.5 h-1.5 rounded-full bg-ar-teal shrink-0" />
@@ -735,12 +702,12 @@ export default function Home() {
             </div>
 
             <div className="space-y-4">
-              <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-black/45">Full ingredient panel</p>
+              <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-black/45">Full ingredient panel</p>
               {activeProduct.fullIngredients.map((ing) => (
                 <div key={ing.name} className="flex justify-between items-end border-b border-black/10 pb-3 gap-6">
                   <div className="space-y-1">
                     <p className="font-sans font-extrabold text-sm uppercase tracking-[-0.01em]">{ing.name}</p>
-                    <p className="text-[10px] font-mono text-black/45 uppercase tracking-[0.22em]">{ing.purpose}</p>
+                    <p className="text-[12px] font-mono text-black/45 uppercase tracking-[0.18em]">{ing.purpose}</p>
                   </div>
                   <span className="font-mono text-sm font-bold text-ar-teal">{ing.dose}</span>
                 </div>
@@ -748,7 +715,7 @@ export default function Home() {
             </div>
 
             <div className="space-y-3">
-              <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-black/45">Rationale</p>
+              <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-black/45">Rationale</p>
               {activeProduct.rationale.map((r) => (
                 <div key={r.title} className="rounded-ar-2xl bg-white border border-black/5 p-4">
                   <p className="text-xs font-sans font-extrabold uppercase tracking-[0.12em]">{r.title}</p>
@@ -757,11 +724,11 @@ export default function Home() {
               ))}
             </div>
 
-            <button className="w-full py-5 bg-ar-navy text-white rounded-full font-mono font-bold uppercase text-[10px] tracking-[0.22em] hover:bg-ar-ink transition-colors flex items-center justify-center gap-2">
+            <button className="w-full py-5 min-h-[48px] bg-ar-navy text-white rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-ar-ink transition-colors flex items-center justify-center gap-2" data-testid="button-add-to-cart">
               Add to Cart <ArrowRight size={14} />
             </button>
 
-            <p className="text-[10px] font-mono text-black/40 uppercase tracking-[0.22em]">
+            <p className="text-[12px] font-mono text-black/40 uppercase tracking-[0.18em]">
               *These statements have not been evaluated by the FDA.
             </p>
           </div>

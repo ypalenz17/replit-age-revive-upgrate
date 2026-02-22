@@ -38,14 +38,14 @@ export default function ProtocolSelectorCard({ p }: { p: { slug: string; name: s
           />
         </div>
 
-        <p className="text-[9px] font-mono uppercase tracking-[0.22em] text-white/35 mb-1">{p.category}</p>
+        <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-white/35 mb-1">{p.category}</p>
         <h4 className="font-head font-normal text-lg tracking-[-0.02em] uppercase text-white leading-tight text-center mb-3"><BrandName name={p.name} /></h4>
 
         <div className="flex flex-wrap justify-center gap-1.5 mb-4">
           {p.ingredients.map((ing) => (
             <span
               key={ing}
-              className="text-[8px] font-mono uppercase tracking-[0.14em] px-2.5 py-1 rounded-full"
+              className="text-[12px] font-mono uppercase tracking-[0.1em] px-2.5 py-1 rounded-full"
               style={{ color: badgeColor, background: hexToRgba(badgeColor, 0.12) }}
             >
               {ing}
@@ -53,10 +53,10 @@ export default function ProtocolSelectorCard({ p }: { p: { slug: string; name: s
           ))}
         </div>
 
-        <div className="flex items-center justify-between w-full pt-2 border-t border-white/[0.06]">
-          <span className="text-[9px] font-mono uppercase tracking-[0.14em] text-white/30">{p.serving}</span>
-          <span className="text-[9px] font-mono font-bold uppercase tracking-[0.14em] flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300" style={{ color: badgeColor }}>
-            View <ArrowRight size={11} />
+        <div className="flex items-center justify-between w-full pt-2 border-t border-white/[0.06] min-h-[44px]">
+          <span className="text-[12px] font-mono uppercase tracking-[0.1em] text-white/30">{p.serving}</span>
+          <span className="text-[12px] font-mono font-bold uppercase tracking-[0.1em] flex items-center gap-1.5 group-hover:gap-2.5 transition-all duration-300" style={{ color: badgeColor }}>
+            View <ArrowRight size={14} />
           </span>
         </div>
       </div>

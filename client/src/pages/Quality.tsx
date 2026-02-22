@@ -21,7 +21,7 @@ export default function Quality() {
           <a href="/" aria-label="Go to homepage">
             <img src={brandLogo} alt="AGE REVIVE" className="h-7 md:h-8 w-auto brightness-0 invert" />
           </a>
-          <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[10px] uppercase tracking-[0.2em]">
+          <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[12px] uppercase tracking-[0.2em]">
             <a href="/" className="text-white/60 hover:text-ar-teal transition-all">Home</a>
             <a href="/shop" className="text-white/60 hover:text-ar-teal transition-all">Shop</a>
             <a href="/science" className="text-white/60 hover:text-ar-teal transition-all">Science</a>
@@ -35,7 +35,7 @@ export default function Quality() {
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <div className="flex items-center justify-center gap-3">
             <div className="h-[1px] w-12 bg-ar-teal" />
-            <span className="font-mono text-[10px] text-ar-teal uppercase tracking-[0.22em]">Standards</span>
+            <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">Standards</span>
             <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
           <h1 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2.2rem, 7vw, 4.5rem)' }}>

@@ -216,7 +216,7 @@ function TypewriterTelemetry({ phrases: inputPhrases }) {
   }, []);
 
   return (
-    <div className="font-mono text-[11px] uppercase tracking-[0.22em] flex items-center gap-2">
+    <div className="font-mono text-[12px] uppercase tracking-[0.18em] flex items-center gap-2">
       <span className="opacity-40">[TELEMETRY]</span>
       <span className="text-[color:var(--accent)] inline-flex items-center gap-2">
         <span className="inline-block w-1.5 h-1.5 rounded-full bg-[color:var(--accent)] animate-pulse-dot" />
@@ -238,9 +238,9 @@ function IngredientPanel({ ingredients, accent }) {
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full animate-pulse-dot bg-ar-teal" />
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.14em] text-white/70">Full Dose Disclosure</span>
+            <span className="text-[12px] font-mono font-bold uppercase tracking-[0.14em] text-white/70">Full Dose Disclosure</span>
           </div>
-          <span className="text-[11px] font-mono font-bold uppercase tracking-[0.14em] text-ar-teal">{ingredients.length} Actives</span>
+          <span className="text-[12px] font-mono font-bold uppercase tracking-[0.14em] text-ar-teal">{ingredients.length} Actives</span>
         </div>
 
         <div className="space-y-0">
@@ -249,7 +249,7 @@ function IngredientPanel({ ingredients, accent }) {
               <div className="flex items-baseline justify-between py-3.5 gap-4">
                 <div className="flex-1 min-w-0">
                   <p className="text-[14px] font-bold text-white leading-tight truncate">{ing.name}</p>
-                  <p className="text-[10px] font-mono text-white/55 mt-1 uppercase tracking-[0.12em]">{ing.purpose}</p>
+                  <p className="text-[12px] font-mono text-white/55 mt-1 uppercase tracking-[0.12em]">{ing.purpose}</p>
                 </div>
                 <span className="text-[14px] font-mono font-bold text-white shrink-0">{ing.dose}</span>
               </div>
@@ -276,7 +276,7 @@ function TrustStats({ product }) {
           <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02]" />
           <div className="absolute inset-0 backdrop-blur-2xl" />
           <div className="relative z-10 p-4 text-center flex flex-col items-center justify-center min-h-[88px]">
-            <p className="text-[9px] font-mono font-medium uppercase tracking-[0.12em] text-white/40 mb-1 whitespace-nowrap">{stat.value}</p>
+            <p className="text-[12px] font-mono font-medium uppercase tracking-[0.12em] text-white/40 mb-1 whitespace-nowrap">{stat.value}</p>
             <p className="text-lg font-extrabold tracking-tight text-white whitespace-nowrap">{stat.label}</p>
           </div>
         </div>
@@ -324,7 +324,7 @@ function Navbar() {
           <a href="/" aria-label="Go to homepage">
             <img src={brandLogo} alt="AGE REVIVE" className="h-7 md:h-8 w-auto brightness-0 invert transition-all duration-500" />
           </a>
-          <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[10px] uppercase tracking-[0.2em]">
+          <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[12px] uppercase tracking-[0.2em]">
             {navLinks.map((l) => (
               <a key={l.label} href={l.href} className="text-white/60 transition-all hover:text-ar-teal">{l.label}</a>
             ))}
@@ -337,9 +337,9 @@ function Navbar() {
             scrolled ? 'bg-white/[0.06] backdrop-blur-xl shadow-float border border-white/[0.08]' : 'bg-transparent border border-transparent'
           ].join(' ')}
         >
-          <button className="text-white transition-all" aria-label="Cart"><ShoppingBag size={18} /></button>
+          <button className="text-white transition-all min-h-[44px]" aria-label="Cart"><ShoppingBag size={18} /></button>
           <button
-            className="md:hidden text-white transition-all"
+            className="md:hidden text-white transition-all min-h-[44px]"
             aria-label="Menu"
             data-testid="mobile-menu-toggle-shop"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -359,7 +359,7 @@ function Navbar() {
                   key={l.label}
                   href={l.href}
                   onClick={() => setMobileOpen(false)}
-                  className="py-4 text-lg font-sans font-extrabold uppercase tracking-[0.08em] text-white/80 hover:text-ar-teal transition-colors border-b border-white/[0.06] last:border-0"
+                  className="py-4 text-lg font-sans font-extrabold uppercase tracking-[0.08em] text-white/80 hover:text-ar-teal transition-colors border-b border-white/[0.06] last:border-0 min-h-[44px]"
                   data-testid={`mobile-nav-shop-${l.label.toLowerCase()}`}
                 >
                   {l.label}
@@ -455,13 +455,13 @@ function SideSheet({ open, title, onClose, children }) {
     <div ref={sheetRef} className="fixed inset-0 z-[100] flex justify-end" role="dialog" aria-modal="true" aria-label={title}>
       <div data-overlay className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
       <div data-panel className="relative w-full max-w-md bg-[#111827] h-full shadow-float p-10 md:p-12 overflow-y-auto border-l border-white/[0.08]">
-        <button onClick={onClose} className="absolute top-7 right-7 p-2 rounded-full hover:bg-white/10 transition-colors text-white" aria-label="Close panel">
+        <button onClick={onClose} className="absolute top-7 right-7 p-2 rounded-full hover:bg-white/10 transition-colors text-white min-h-[44px]" aria-label="Close panel">
           <X />
         </button>
 
         <div className="space-y-10">
           <div className="space-y-2">
-            <p className="text-[10px] font-mono font-medium uppercase tracking-[0.14em] text-white/40">Overlay</p>
+            <p className="text-[12px] font-mono font-medium uppercase tracking-[0.14em] text-white/40">Overlay</p>
             <h3 className="text-3xl font-head font-normal tracking-[-0.03em] uppercase text-white">{title}</h3>
           </div>
 
@@ -568,12 +568,12 @@ function ProductTemplate({ product }) {
             {/* Desktop: inline protocol/system cards */}
             <div className="hidden md:inline-flex items-stretch gap-0 rounded-xl border border-white/[0.08] bg-white/[0.03] overflow-hidden">
               <div className="px-5 py-3.5">
-                <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">Protocol</p>
+                <p className="text-[12px] uppercase font-mono text-white/35 tracking-[0.18em] mb-1">Protocol</p>
                 <p className="text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.serving}</p>
               </div>
               <div className="w-px bg-white/[0.08]" />
               <div className="px-5 py-3.5">
-                <p className="text-[9px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1">System Target</p>
+                <p className="text-[12px] uppercase font-mono text-white/35 tracking-[0.18em] mb-1">System Target</p>
                 <p className="text-[13px] font-semibold tracking-[0.1em] uppercase text-white/80">{product.category}</p>
               </div>
             </div>
@@ -581,13 +581,13 @@ function ProductTemplate({ product }) {
             {/* Mobile: single card with divider */}
             <div className="flex md:hidden rounded-2xl border border-white/[0.10] bg-white/[0.04] backdrop-blur-sm overflow-hidden">
               <div className="flex-1 px-2 py-4 text-center">
-                <p className="text-[8px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1.5">Protocol</p>
-                <p className="text-[10px] font-bold tracking-[0.04em] uppercase text-white/80 leading-none whitespace-nowrap">{product.serving}</p>
+                <p className="text-[12px] uppercase font-mono text-white/35 tracking-[0.18em] mb-1.5">Protocol</p>
+                <p className="text-[12px] font-bold tracking-[0.04em] uppercase text-white/80 leading-none whitespace-nowrap">{product.serving}</p>
               </div>
               <div className="w-px bg-white/[0.08] my-2.5" />
               <div className="flex-1 px-2 py-4 text-center">
-                <p className="text-[8px] uppercase font-mono text-white/35 tracking-[0.22em] mb-1.5">Target</p>
-                <p className="text-[10px] font-bold tracking-[0.04em] uppercase text-white/80 leading-none whitespace-nowrap">{product.category}</p>
+                <p className="text-[12px] uppercase font-mono text-white/35 tracking-[0.18em] mb-1.5">Target</p>
+                <p className="text-[12px] font-bold tracking-[0.04em] uppercase text-white/80 leading-none whitespace-nowrap">{product.category}</p>
               </div>
             </div>
           </div>
@@ -610,7 +610,7 @@ function ProductTemplate({ product }) {
 
                 <div className="px-5 pb-5 md:px-10 md:pb-10 space-y-3 md:space-y-4">
                   <div>
-                    <span className="inline-block text-[9px] font-mono uppercase tracking-[0.18em] font-bold text-white/50 border border-white/[0.15] rounded-full px-3 py-1 mb-2 md:mb-3">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
+                    <span className="inline-block text-[12px] font-mono uppercase tracking-[0.18em] font-bold text-white/50 border border-white/[0.15] rounded-full px-3 py-1 mb-2 md:mb-3">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
                     <div className="flex items-baseline justify-between gap-4">
                       <h3 className="text-[20px] md:text-[24px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-none"><BrandName name={product.name} /></h3>
                       <span className="text-[18px] md:text-[20px] font-sans font-extrabold text-white leading-none">{product.price}</span>
@@ -638,7 +638,7 @@ function ProductTemplate({ product }) {
                   )}
 
                   <MagneticButton
-                    className="w-full py-3.5 md:py-4 text-white rounded-lg font-mono font-bold tracking-[0.12em] text-[11px] uppercase flex items-center justify-center gap-3 active:scale-[0.98] transition-all relative overflow-hidden group border border-white/20"
+                    className="w-full py-3.5 md:py-4 text-white rounded-lg font-mono font-bold tracking-[0.12em] text-[12px] uppercase flex items-center justify-center gap-3 active:scale-[0.98] transition-all relative overflow-hidden group border border-white/20 min-h-[44px]"
                     style={{ background: `linear-gradient(135deg, ${product.accent}, ${hexToRgba(product.accent, 0.7)})`, boxShadow: `0 0 24px ${hexToRgba(product.accent, 0.4)}, inset 0 1px 0 rgba(255,255,255,0.15)` }}
                     onClick={() => {}}
                   >
@@ -647,10 +647,10 @@ function ProductTemplate({ product }) {
                   </MagneticButton>
 
                   <div className="grid grid-cols-2 gap-2 md:gap-3">
-                    <button onClick={() => setActiveSidePanel('rationale')} className="py-2.5 md:py-3 rounded-xl text-[10px] uppercase font-mono font-bold tracking-[0.12em] text-white/80 bg-white/[0.08] border border-white/[0.14] hover:bg-white/[0.14] hover:text-white hover:border-white/[0.22] transition-all flex items-center justify-center gap-2">
+                    <button onClick={() => setActiveSidePanel('rationale')} className="py-2.5 md:py-3 rounded-xl text-[12px] uppercase font-mono font-bold tracking-[0.12em] text-white/80 bg-white/[0.08] border border-white/[0.14] hover:bg-white/[0.14] hover:text-white hover:border-white/[0.22] transition-all flex items-center justify-center gap-2 min-h-[44px]">
                       Evidence <ArrowRight size={9} />
                     </button>
-                    <button onClick={() => setActiveSidePanel('ingredients')} className="py-2.5 md:py-3 rounded-xl text-[10px] uppercase font-mono font-bold tracking-[0.12em] text-white/80 bg-white/[0.08] border border-white/[0.14] hover:bg-white/[0.14] hover:text-white hover:border-white/[0.22] transition-all flex items-center justify-center gap-2">
+                    <button onClick={() => setActiveSidePanel('ingredients')} className="py-2.5 md:py-3 rounded-xl text-[12px] uppercase font-mono font-bold tracking-[0.12em] text-white/80 bg-white/[0.08] border border-white/[0.14] hover:bg-white/[0.14] hover:text-white hover:border-white/[0.22] transition-all flex items-center justify-center gap-2 min-h-[44px]">
                       Ingredients <ArrowRight size={9} />
                     </button>
                   </div>
@@ -666,9 +666,9 @@ function ProductTemplate({ product }) {
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-center md:justify-between gap-x-8 gap-y-4">
           {['3rd Party Tested', 'Standardized Actives', 'Protocol Cadence', 'Quality Controls'].map((text, i) => (
             <div key={i} className="flex items-center gap-2.5" data-testid={`trust-badge-${i}`}>
-              <span className="font-mono text-[10px] font-bold tracking-[0.14em] text-[color:var(--accent)]">{String(i + 1).padStart(2, '0')}</span>
+              <span className="font-mono text-[12px] font-bold tracking-[0.14em] text-[color:var(--accent)]">{String(i + 1).padStart(2, '0')}</span>
               <span className="w-px h-3 bg-white/[0.12]" />
-              <span className="text-[10px] font-mono font-medium uppercase tracking-[0.12em] text-white/40 whitespace-nowrap">{text}</span>
+              <span className="text-[12px] font-mono font-medium uppercase tracking-[0.12em] text-white/40 whitespace-nowrap">{text}</span>
             </div>
           ))}
         </div>
@@ -688,7 +688,7 @@ function ProductTemplate({ product }) {
 
             <TrustStats product={product} />
 
-            <p className="text-[10px] font-mono text-white/30 uppercase tracking-[0.14em] leading-relaxed">
+            <p className="text-[12px] font-mono text-white/30 uppercase tracking-[0.14em] leading-relaxed">
               All actives third-party tested in an ISO-certified laboratory. Full certificates of analysis available.
             </p>
           </div>
@@ -703,7 +703,7 @@ function ProductTemplate({ product }) {
       <section className="py-32">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20 space-y-4 reveal">
-            <span className="text-[10px] font-mono uppercase tracking-[0.32em] text-white/50">Protocol Arc</span>
+            <span className="text-[12px] font-mono uppercase tracking-[0.24em] text-white/50">Protocol Arc</span>
             <h2 className="text-5xl font-head font-normal tracking-[-0.04em] text-white">What to expect over time</h2>
             <p className="text-sm text-white/50 font-medium max-w-2xl mx-auto">This is a support protocol. Individual responses vary. Consistency is the point.</p>
           </div>
@@ -715,7 +715,7 @@ function ProductTemplate({ product }) {
                   <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02] group-hover:from-white/[0.14] group-hover:via-white/[0.08] group-hover:to-white/[0.04] transition-all duration-300" />
                   <div className="absolute inset-0 backdrop-blur-2xl" />
                   <div className="relative z-10 p-8">
-                    <p className="text-[10px] font-mono text-white/70 mb-2 uppercase tracking-[0.22em]">{step.time}</p>
+                    <p className="text-[12px] font-mono text-white/70 mb-2 uppercase tracking-[0.18em]">{step.time}</p>
                     <h4 className="text-xl font-head font-normal mb-3 tracking-[-0.02em] text-white">{step.label}</h4>
                     <p className="text-[13px] text-white/70 leading-relaxed font-medium mb-6">{step.desc}</p>
 
@@ -724,7 +724,7 @@ function ProductTemplate({ product }) {
                     </div>
 
                     <div className="mt-4">
-                      <span className="text-[10px] font-mono font-bold uppercase text-white/70 tracking-[0.18em]">{step.value}</span>
+                      <span className="text-[12px] font-mono font-bold uppercase text-white/70 tracking-[0.18em]">{step.value}</span>
                     </div>
                   </div>
                 </div>
@@ -738,7 +738,7 @@ function ProductTemplate({ product }) {
       <section className="py-32 px-6">
         <div className="max-w-4xl mx-auto space-y-24">
           <div className="text-center text-white mb-20 space-y-4 reveal">
-            <span className="text-[10px] font-mono uppercase tracking-[0.32em] text-white/50">Mechanistic Layering</span>
+            <span className="text-[12px] font-mono uppercase tracking-[0.24em] text-white/50">Mechanistic Layering</span>
             <h2 className="text-5xl font-head font-normal tracking-[-0.04em]">Rationale, simplified</h2>
             <p className="text-sm text-white/55 font-medium max-w-2xl mx-auto">Clear intent. Clean inputs. Built to be scanned, not worshipped.</p>
           </div>
@@ -765,7 +765,7 @@ function ProductTemplate({ product }) {
                     {item.tags.map((tag, t) => (
                       <span
                         key={t}
-                        className="px-4 py-1.5 rounded-full text-[10px] font-mono font-medium uppercase tracking-[0.12em] border border-white/[0.15] text-white/60"
+                        className="px-4 py-1.5 rounded-full text-[12px] font-mono font-medium uppercase tracking-[0.12em] border border-white/[0.15] text-white/60"
                       >{tag}</span>
                     ))}
                   </div>
@@ -809,7 +809,7 @@ function ProductTemplate({ product }) {
             <div key={i} className="flex justify-between items-baseline border-b border-white/[0.08] pb-4 gap-4">
               <div className="space-y-1 min-w-0 flex-1">
                 <p className="font-sans font-extrabold text-sm tracking-[-0.01em] uppercase text-white">{ing.name}</p>
-                <p className="text-[10px] font-mono text-white/40 uppercase tracking-[0.14em] leading-relaxed">{ing.purpose}</p>
+                <p className="text-[12px] font-mono text-white/40 uppercase tracking-[0.14em] leading-relaxed">{ing.purpose}</p>
               </div>
               <span className="font-mono text-sm font-extrabold whitespace-nowrap shrink-0" style={{ color: product.accent }}>{ing.dose}</span>
             </div>
@@ -818,7 +818,7 @@ function ProductTemplate({ product }) {
 
         {product.warnings && (
           <div className="mt-10 p-6 bg-red-500/10 border border-red-500/20 rounded-ar-2xl">
-            <p className="text-[10px] font-mono font-bold text-red-400 uppercase tracking-[0.14em] mb-1">Warning</p>
+            <p className="text-[12px] font-mono font-bold text-red-400 uppercase tracking-[0.14em] mb-1">Warning</p>
             <p className="text-sm font-semibold text-white/80">{product.warnings}</p>
           </div>
         )}
@@ -829,7 +829,7 @@ function ProductTemplate({ product }) {
           {product.mechanics.map((mech, i) => (
             <div key={i} className="space-y-3">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-mono font-bold text-white" style={{ background: hexToRgba(product.accent, 0.12), color: product.accent }}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-[12px] font-mono font-bold text-white" style={{ background: hexToRgba(product.accent, 0.12), color: product.accent }}>
                   {i + 1}
                 </div>
                 <h4 className="font-head font-normal uppercase tracking-[0.12em] text-white">{mech.title}</h4>
@@ -881,7 +881,7 @@ export default function Shop() {
               key={p.id}
               onClick={() => setSlug(p.id)}
               className={[
-                'px-4 py-2 rounded-full text-[10px] font-mono font-bold uppercase tracking-[0.14em] transition-all',
+                'px-4 py-2 rounded-full text-[12px] font-mono font-bold uppercase tracking-[0.14em] transition-all min-h-[44px]',
                 slug === p.id ? 'text-white' : 'hover:bg-white/[0.08] text-white/50'
               ].join(' ')}
               style={slug === p.id ? { background: p.accent } : undefined}
