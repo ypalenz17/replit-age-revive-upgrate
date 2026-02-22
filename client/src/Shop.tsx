@@ -546,25 +546,28 @@ function ProductTemplate({ product }) {
 
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12 px-5 md:px-8 pt-28 md:pt-32 pb-10 md:pb-16 items-center">
 
-          <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left">
-            <div className="mb-3 flex flex-col items-center md:items-start gap-0.5">
-              <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/30">System Target</span>
-              <span className="font-mono text-[11px] uppercase tracking-[0.14em] font-bold" style={{ color: hexToRgba(accent, 0.75) }}>{product.category}</span>
-            </div>
-
-            <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase mb-3" style={{ fontSize: 'clamp(2.8rem, 9vw, 5.5rem)' }} data-testid="text-product-name"><BrandName name={product.name} /></h1>
-
-            <p className="text-[14px] md:text-[15px] font-sans font-medium text-white/55 max-w-md mb-5 leading-snug mx-auto md:mx-0">{product.tagline}</p>
-
-            <div className="flex md:inline-flex border border-white/10 overflow-hidden" data-testid="metadata-strip">
-              <div className="flex-1 md:flex-auto px-4 py-2.5 text-center md:text-left">
-                <p className="text-[9px] uppercase font-mono text-white/30 tracking-[0.18em] mb-0.5">Protocol</p>
-                <p className="text-[11px] font-mono font-bold tracking-[0.06em] uppercase text-white/85">{product.serving}</p>
+          <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left relative">
+            <div className="absolute -inset-x-8 -inset-y-4 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 40%, rgba(15,23,42,0.65) 0%, transparent 100%)' }} />
+            <div className="relative">
+              <div className="mb-2.5 flex flex-col items-center md:items-start gap-0.5">
+                <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/65">System Target</span>
+                <span className="font-mono text-[11px] uppercase tracking-[0.14em] font-bold" style={{ color: hexToRgba(accent, 0.9) }}>{product.category}</span>
               </div>
-              <div className="w-px bg-white/10" />
-              <div className="flex-1 md:flex-auto px-4 py-2.5 text-center md:text-left">
-                <p className="text-[9px] uppercase font-mono text-white/30 tracking-[0.18em] mb-0.5">System Target</p>
-                <p className="text-[11px] font-mono font-bold tracking-[0.06em] uppercase text-white/85">{product.category}</p>
+
+              <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase mb-2" style={{ fontSize: 'clamp(2.8rem, 9vw, 5.5rem)' }} data-testid="text-product-name"><BrandName name={product.name} /></h1>
+
+              <p className="text-[14px] md:text-[15px] font-sans font-medium text-white/55 max-w-md mb-4 leading-snug mx-auto md:mx-0">{product.tagline}</p>
+
+              <div className="flex md:inline-flex border border-white/10 overflow-hidden max-w-sm" data-testid="metadata-strip">
+                <div className="flex-1 md:flex-auto px-4 py-2.5 text-center md:text-left">
+                  <p className="text-[9px] uppercase font-mono text-white/50 tracking-[0.18em] mb-0.5">Protocol</p>
+                  <p className="text-[11px] font-mono font-bold tracking-[0.06em] uppercase text-white/85">{product.serving}</p>
+                </div>
+                <div className="w-px bg-white/10" />
+                <div className="flex-1 md:flex-auto px-4 py-2.5 text-center md:text-left">
+                  <p className="text-[9px] uppercase font-mono text-white/50 tracking-[0.18em] mb-0.5">System Target</p>
+                  <p className="text-[11px] font-mono font-bold tracking-[0.06em] uppercase text-white/85">{product.category}</p>
+                </div>
               </div>
             </div>
           </div>
