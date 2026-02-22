@@ -917,27 +917,27 @@ function ProductTemplate({ product }) {
 
       <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" /></div>
 
-      <section className="relative py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.005] to-transparent pointer-events-none" />
+      <section className="relative py-16 md:py-20">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.003] to-transparent pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-6">
-          <div className="mb-14 md:mb-20 max-w-lg reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-2">System Architecture</span>
-            <h2 className="text-2xl md:text-3xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">Rationale</h2>
+          <div className="mb-10 md:mb-14 max-w-lg reveal">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-1.5">System Architecture</span>
+            <h2 className="text-[26px] md:text-[32px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1">Rationale</h2>
             <p className="text-[13px] font-mono text-white/40 tracking-[-0.01em]">Each layer serves a defined function. No redundancy.</p>
           </div>
 
           <div className="space-y-0">
             {product.mechanics.map((item, i) => (
               <div key={i} className="reveal" data-testid={`rationale-module-${i}`}>
-                <div className="flex items-start gap-5 md:gap-8 py-7 md:py-9">
+                <div className="flex items-start gap-5 md:gap-8 py-5 md:py-6">
                   <span className="text-[18px] md:text-[22px] font-mono font-black leading-none shrink-0 w-8 text-right pt-0.5" style={{ color: accentText, opacity: 0.4 }}>{String(i + 1).padStart(2, '0')}</span>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-[16px] md:text-[18px] font-sans font-bold tracking-[-0.01em] text-white/90 mb-1.5">{item.title}</h3>
-                    <p className="text-[12px] md:text-[13px] font-sans text-white/45 leading-relaxed max-w-lg mb-3">{item.text}</p>
-                    <span className="text-[10px] font-mono text-white/35 uppercase tracking-[0.08em]">{item.tags.join(' · ')}</span>
+                    <h3 className="text-[16px] md:text-[18px] font-sans font-bold tracking-[-0.01em] text-white/90 mb-1">{item.title}</h3>
+                    <p className="text-[12px] md:text-[13px] font-sans text-white/50 leading-relaxed max-w-lg mb-1.5">{item.text}</p>
+                    <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.08em]">{item.tags.join(' · ')}</span>
                   </div>
                 </div>
-                {i < product.mechanics.length - 1 && <div className="h-px bg-white/[0.04] ml-[52px] md:ml-[64px]" />}
+                {i < product.mechanics.length - 1 && i % 2 === 0 && <div className="h-px bg-white/[0.04] ml-[52px] md:ml-[64px]" />}
               </div>
             ))}
           </div>
@@ -1046,7 +1046,7 @@ export default function Shop() {
       <ProductTemplate key={currentProduct.id} product={currentProduct} />
 
       <div
-        style={{ position: 'sticky', bottom: 0, zIndex: 99999, padding: '16px 0 24px', display: 'flex', justifyContent: 'center', pointerEvents: 'none', background: 'linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.6) 60%, transparent 100%)' }}
+        style={{ position: 'sticky', bottom: 0, zIndex: 99999, padding: '12px 0 20px', display: 'flex', justifyContent: 'center', pointerEvents: 'none', background: 'linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.6) 60%, transparent 100%)' }}
       >
         <div
           style={{ pointerEvents: 'auto', display: 'flex', gap: '0', padding: '0 8px', background: 'rgba(15,23,42,0.92)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
