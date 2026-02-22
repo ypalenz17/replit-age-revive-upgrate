@@ -315,17 +315,17 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             Three protocol-grade supplements built as one system: daily <span className="text-white/95">NAD+</span>, daily <span className="text-white/95">gut-mito</span> signaling, and a <span className="text-white/95">7-day</span> monthly reset.
           </p>
 
-          <div className="mt-4 max-w-[90%] mx-auto" data-testid="proof-bar">
-            <div className="flex items-center justify-center gap-0">
+          <div className="mt-4 w-full max-w-[85%] mx-auto" data-testid="proof-bar">
+            <div className="flex items-center justify-center flex-wrap gap-y-1">
               {[
                 'Full dosing disclosed',
                 'No proprietary blends',
                 'COA library coming soon'
               ].map((text, i) => (
-                <div key={i} className="flex items-center shrink-0">
-                  {i > 0 && <span className="w-px h-3 bg-white/[0.12] mx-3 shrink-0" aria-hidden="true" />}
-                  <span className="text-[10px] sm:text-[11px] text-white/70 uppercase tracking-[0.04em] leading-none font-mono">{text}</span>
-                </div>
+                <span key={i} className="flex items-center">
+                  {i > 0 && <span className="mx-2.5 h-[3px] w-[3px] rounded-full bg-white/20 shrink-0" aria-hidden="true" />}
+                  <span className="text-[10px] sm:text-[11px] text-white/75 uppercase tracking-[0.03em] leading-none font-mono whitespace-nowrap">{text}</span>
+                </span>
               ))}
             </div>
           </div>
