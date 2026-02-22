@@ -238,12 +238,12 @@ function IngredientPanel({ ingredients, accent, serving }) {
   return (
     <div className="relative border-t border-white/[0.06]">
       <div className="py-6 md:py-8">
-        <div className="flex items-baseline justify-between mb-1.5">
-          <span className="text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-white/40">Compound Specification</span>
+        <div className="mb-1">
+          <span className="text-[10px] font-mono font-black uppercase tracking-[0.18em] text-white/50">Compound Specification</span>
         </div>
-        <div className="flex items-baseline gap-5 mb-6 text-[11px] font-mono uppercase tracking-[0.08em]">
-          <span className="text-white/35">Actives: <span className="text-white/70 font-bold">{ingredients.length}</span></span>
-          <span className="text-white/35">Serving: <span className="text-white/70 font-bold">{serving}</span></span>
+        <div className="flex items-baseline gap-5 mb-5 text-[11px] font-mono uppercase tracking-[0.08em]">
+          <span className="text-white/40">Actives: <span className="text-white/75 font-bold">{ingredients.length}</span></span>
+          <span className="text-white/40">Serving: <span className="text-white/75 font-bold">{serving}</span></span>
         </div>
 
         <div className="space-y-0">
@@ -252,16 +252,19 @@ function IngredientPanel({ ingredients, accent, serving }) {
               <div className="flex items-baseline justify-between py-3.5 gap-4">
                 <div className="flex-1 min-w-0">
                   <p className="text-[13px] font-sans font-bold text-white leading-tight truncate">{ing.name}</p>
-                  <p className="text-[11px] font-mono text-white/55 mt-0.5 uppercase tracking-[0.10em]">{ing.purpose}</p>
+                  <p className="text-[11px] font-mono text-white/50 mt-0.5 uppercase tracking-[0.08em]">{ing.purpose}</p>
                 </div>
                 <span className="text-[13px] font-mono font-bold text-white shrink-0">{ing.dose}</span>
               </div>
-              {i < ingredients.length - 1 && <div className="h-px bg-white/[0.04]" />}
+              {i < ingredients.length - 1 && <div className="h-px bg-white/[0.03]" />}
             </div>
           ))}
         </div>
 
-        <p className="text-[10px] font-mono text-white/30 tracking-[0.06em] mt-5 leading-relaxed">All dosages reflect clinically studied ranges</p>
+        <div className="mt-5 space-y-1">
+          <p className="text-[10px] font-mono text-white/40 tracking-[0.06em] leading-relaxed">All dosages reflect clinically studied ranges</p>
+          <p className="text-[10px] font-mono text-white/40 tracking-[0.06em] leading-relaxed">All compounds listed in bioavailable forms</p>
+        </div>
       </div>
     </div>
   );
@@ -545,7 +548,7 @@ function ProductTemplate({ product }) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
       </div>
       <div
-        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.015]"
+        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.013]"
         style={{
           backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
           backgroundSize: '100px 100px'
