@@ -307,7 +307,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
     <section className="relative min-h-[100dvh] flex flex-col overflow-hidden">
 
       <div className="absolute inset-0 z-[1] pointer-events-none" aria-hidden="true">
-        <div className="absolute left-1/2 top-[35%] -translate-x-1/2 -translate-y-1/2 w-[min(90vw,600px)] h-[min(90vw,600px)] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(10,15,30,0.85)_0%,transparent_70%)]" />
+        <div className="absolute left-1/2 top-[35%] -translate-x-1/2 -translate-y-1/2 w-[min(95vw,650px)] h-[min(95vw,650px)] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(8,12,26,0.9)_0%,transparent_70%)]" />
       </div>
 
       <div className="relative z-10 w-full max-w-3xl mx-auto flex flex-col justify-center text-center px-5 md:px-6 pt-20 md:pt-36 pb-10 md:pb-20 min-h-[100dvh]">
@@ -319,10 +319,10 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
               <span className="font-mono text-[10px] text-ar-teal/75 uppercase tracking-[0.10em]">Protocol-Grade Supplements</span>
               <div className="h-px w-4 bg-white/10" />
             </div>
-            <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase" style={{ fontSize: 'clamp(36px, 9vw, 52px)' }}>
+            <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase" style={{ fontSize: 'clamp(38px, 9.5vw, 56px)' }}>
               Cellular Energy.
               <br />
-              <span className="text-white/60">Gut Resilience.</span>
+              <span className="text-white/70">Gut Resilience.</span>
             </h1>
           </div>
 
@@ -330,7 +330,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             Three protocol-grade supplements built as one system: daily <span className="text-white/95">NAD+</span>, daily <span className="text-white/95">gut-mito</span> signaling, and a <span className="text-white/95">7-day</span> monthly reset.
           </p>
 
-          <div className="mt-4 w-full max-w-[340px] sm:max-w-none sm:w-auto mx-auto md:ml-[3%] md:mr-auto rounded-md" style={{ background: 'rgba(255,255,255,0.02)', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.05)' }} data-testid="proof-bar">
+          <div className="mt-4 w-full max-w-[340px] sm:max-w-none sm:w-auto mx-auto md:ml-[3%] md:mr-auto rounded-md" style={{ background: 'rgba(255,255,255,0.03)', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.07)' }} data-testid="proof-bar">
             <div className="flex items-center justify-center md:justify-start px-3 py-[6px] gap-0 flex-wrap sm:flex-nowrap">
               {[
                 'Full dosing disclosed',
@@ -338,18 +338,18 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
                 'COA library coming soon'
               ].map((text, i) => (
                 <div key={i} className="flex items-center shrink-0">
-                  {i > 0 && <span className="w-px h-2 bg-white/[0.06] mx-2 shrink-0 hidden sm:block" aria-hidden="true" />}
+                  {i > 0 && <span className="w-px h-2 bg-white/[0.08] mx-2 shrink-0 hidden sm:block" aria-hidden="true" />}
                   <span className="flex items-center gap-1 px-0.5">
-                    <span className="h-[2px] w-[2px] rounded-[1px] bg-ar-teal/55 shrink-0" />
-                    <span className="text-[9px] sm:text-[10px] text-white/50 uppercase tracking-[0.03em] leading-none font-mono">{text}</span>
+                    <span className="h-[2px] w-[2px] rounded-[1px] bg-ar-teal/65 shrink-0" />
+                    <span className="text-[9px] sm:text-[10px] text-white/55 uppercase tracking-[0.03em] leading-none font-mono">{text}</span>
                   </span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="mt-5 flex flex-col sm:flex-row gap-2 w-full max-w-[340px] mx-auto sm:w-auto sm:max-w-none md:justify-start md:ml-[3%] md:mr-auto">
-            <a href="/shop" className="group relative w-full sm:w-auto px-7 min-h-[40px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.10em] overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15)' }} data-testid="button-shop-system">
+          <div className="mt-5 flex flex-col sm:flex-row gap-2 w-full max-w-[340px] mx-auto sm:w-auto sm:max-w-none md:justify-center">
+            <a href="/shop" className="group relative w-full sm:w-auto px-7 min-h-[40px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.10em] overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="button-shop-system">
               <span className="relative z-10">Shop the System</span>
               <div className="absolute inset-0 bg-white/12 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </a>
@@ -364,7 +364,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             </button>
           </div>
 
-          <p className="mt-2 text-[11px] text-white/40 font-sans tracking-normal md:ml-[3%] md:mr-auto md:text-left">Start with the bundle or choose a protocol.</p>
+          <p className="mt-2 text-[11px] text-white/40 font-sans tracking-normal">Start with the bundle or choose a protocol.</p>
         </div>
       </div>
     </section>
