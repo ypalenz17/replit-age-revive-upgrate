@@ -1,0 +1,195 @@
+ROLE: Elite conversion copywriter + senior UX engineer. Update the Shop page to tell a persuasive, minimal-luxury narrative for ALL three products: CELLUNAD+, CELLUBIOME, CELLUNOVA. The page must guide an average person to understand what the product is for and feel compelled to buy by end of scroll. Keep it compliant: no disease claims, no “treat/diagnose/cure/prevent/reverse,” no guaranteed outcomes.
+
+GLOBAL RULES
+- Keep sections tight: 1 headline + max 2 lines body whenever possible.
+- No pill/tag UI. No rounded-full for major elements.
+- High contrast. No faint ghost text that becomes unreadable on mobile.
+- Avoid jargon without a plain-English line. If technical words appear, include a simple translation nearby.
+- The narrative must flow: WHY → WHAT → TELEMETRY → STANDARDS → SPEC → ARC → CLOSE.
+- Do not increase page length dramatically; reuse existing section components.
+
+PHASE 1 — CONTENT + NARRATIVE (IMPLEMENT FIRST)
+1) Implement a product copy map keyed by slug/selected module:
+- cellunad
+- cellubiome
+- cellunova
+
+2) Replace the copy in the existing sections with the VERBATIM text below for each product.
+3) Ensure headings, labels, and CTAs match exactly.
+
+CELLUNAD+ COPY (slug: cellunad)
+A) Product identity block:
+Overline: DAILY INPUT LAYER
+Title: CELLUNAD+
+Subtitle: Daily NAD+ support engineered for consistency, not hype.
+Micro line: Protocol: 2 capsules daily • System target: Cellular energy + repair pathways
+
+B) Why this exists:
+Label: WHY DAILY INPUT MATTERS
+Headline: Energy doesn’t crash. It quietly loses efficiency.
+Body: Most people don’t notice the drift until output drops. CELLUNAD+ is built as a steady daily input, supporting the pathways that keep energy production and cellular maintenance running clean.
+
+C) What it supports:
+Label: WHAT IT SUPPORTS
+Headline: A cleaner baseline you can build on.
+Lines (no bullets):
+- Supports cellular energy production and resilience
+- Supports NAD+ metabolism and daily replenishment
+- Supports healthy redox balance and mitochondrial function
+- Supports methylation cofactors for normal cellular processes
+
+D) Telemetry:
+Label: TELEMETRY
+Headline: Biological response, quantified.
+Body: If you can’t measure change, you’re guessing. Age Revive pairs protocol inputs with measurable feedback, so decisions get smarter over time.
+Rows:
+01 NAD+ Pathway Activity — substrate + cofactor alignment
+02 Redox Balance — steady-state output support
+03 Methylation Support — cofactor sufficiency cues
+
+E) Standards label (shared below)
+
+F) Compound specification intro:
+Label: COMPOUND SPECIFICATION
+Meta line: ACTIVES: 8 • SERVING: 2 capsules daily
+Reassurance line: All dosages reflect clinically studied ranges and bioavailable forms.
+Declaration line: No proprietary formulations.
+
+G) Protocol arc:
+Label: PROTOCOL ARC
+Headline: What you may notice over time.
+Subline: Response varies. Consistency compounds.
+Phase I — Calibration (Days 1–3): Routine locks in. Inputs become consistent.
+Phase II — Stabilization (Week 1–2): Steady daily support. Less “spike,” more baseline.
+Phase III — Integration (Week 3–4): Compounding effect. This becomes your default.
+
+H) Close:
+Headline: Build a baseline that doesn’t rely on motivation.
+Body: If you’re serious about longevity, consistency is the advantage.
+Primary CTA: Add to Stack
+Secondary link: View Evidence →
+
+CELLUBIOME COPY (slug: cellubiome)
+A) Product identity block:
+Overline: SIGNALING LAYER
+Title: CELLUBIOME
+Subtitle: Daily gut-mito support designed to reinforce your foundation.
+Micro line: Protocol: 2 enteric-coated capsules daily • System target: Gut–mito signaling + resilience
+
+B) Why this exists:
+Label: WHY SIGNALING MATTERS
+Headline: Your gut is not separate from your energy.
+Body: When gut signaling is off, output feels noisy: energy, recovery, and consistency drift. CELLUBIOME supports the gut–mito connection with a focused, daily input.
+
+C) What it supports:
+Label: WHAT IT SUPPORTS
+Headline: A steadier system signal.
+Lines (no bullets):
+- Supports gut barrier integrity and digestive resilience
+- Supports mitochondrial renewal signals (cellular efficiency support)
+- Supports short-chain fatty acid activity for gut environment support
+- Supports consistency across sleep, training, and daily output
+
+D) Telemetry:
+Label: TELEMETRY
+Headline: Biological response, quantified.
+Body: Signals show up before “feelings.” Age Revive uses measurable feedback to reduce guesswork and keep the protocol honest.
+Rows:
+01 Gut Resilience Signals — consistency + tolerance cues
+02 Mitochondrial Efficiency — recovery + output stability cues
+03 Inflammation Balance — resilience trend cues
+
+F) Compound specification intro:
+Label: COMPOUND SPECIFICATION
+Meta line: ACTIVES: 2 • SERVING: 2 enteric-coated capsules daily
+Reassurance line: Full dosing disclosed. Focused inputs, no filler complexity.
+Declaration line: No proprietary formulations.
+
+G) Protocol arc:
+Label: PROTOCOL ARC
+Headline: What you may notice over time.
+Subline: The signal stabilizes before it feels dramatic.
+Phase I — Calibration (Days 1–3): Routine locks in. The system gets consistent input.
+Phase II — Stabilization (Week 1–2): Digestion and tolerance cues become clearer.
+Phase III — Integration (Week 3–4): More reliable output, less “noise.”
+
+H) Close:
+Headline: Fix the signal. Then everything performs better.
+Body: Build the foundation you can actually stack on.
+Primary CTA: Add to Stack
+Secondary link: View Evidence →
+
+CELLUNOVA COPY (slug: cellunova)
+A) Product identity block:
+Overline: CYCLE LAYER
+Title: CELLUNOVA
+Subtitle: A 7-day monthly reset protocol designed for discipline, not extremes.
+Micro line: Protocol: 5 capsules daily for 7 days • System target: Renewal cadence + cleanup pathways
+
+B) Why this exists:
+Label: WHY A CYCLE EXISTS
+Headline: Daily inputs build. Cycles recalibrate.
+Body: Most people either do nothing or do too much. CELLUNOVA is a controlled cadence: a short, repeatable cycle designed to support renewal pathways without turning your life into a protocol.
+
+C) What it supports:
+Label: WHAT IT SUPPORTS
+Headline: A reset you can actually repeat.
+Lines (no bullets):
+- Supports cellular cleanup and renewal pathways
+- Supports antioxidant defense and oxidative balance
+- Supports healthy inflammatory response balance
+- Supports resilience during periods of higher stress or load
+
+D) Telemetry:
+Label: TELEMETRY
+Headline: Cycles are where signal becomes obvious.
+Body: A short protocol window makes changes easier to observe and compare over time. Age Revive uses feedback to keep cycles consistent and measurable.
+Rows:
+01 Recovery Signal — sleep + training tolerance cues
+02 Inflammation Balance — resilience trend cues
+03 Output Stability — consistency across the week
+
+F) Compound specification intro:
+Label: COMPOUND SPECIFICATION
+Meta line: ACTIVES: 10 • PROTOCOL: 7 days (5 capsules daily)
+Reassurance line: Full dosing disclosed. Built as a cycle, not a daily stimulant.
+Declaration line: No proprietary formulations.
+Micro note: Contains wheat (spermidine source).
+
+G) Protocol arc:
+Label: PROTOCOL ARC
+Headline: What the 7-day cycle feels like.
+Subline: Keep the cadence. Don’t chase intensity.
+Days 1–2 — Initiation: You may feel “different” or feel nothing. Both are normal.
+Days 3–5 — Engagement: The cycle becomes steadier. Focus on routine.
+Days 6–7 — Completion: Finish clean. Consistency matters more than sensation.
+Post-cycle — Return to baseline: Resume your daily stack. Repeat monthly if it fits your system.
+
+H) Close:
+Headline: The reset is the advantage.
+Body: A short, repeatable cadence beats sporadic extremes.
+Primary CTA: Add to Stack
+Secondary link: View Evidence →
+
+SHARED STANDARDS (use for ALL products)
+Label: FORMULATION STANDARDS
+01 Third-Party Tested — Independent lab verification
+02 Standardized Actives — Precise concentration control
+03 Delivery Matters — Form + release designed per protocol
+04 Quality Control — Multi-stage review process
+
+PHASE 2 — DESIGN CONSISTENCY (MATCH HOME SYSTEM)
+- Use Home’s engineered corner system (no rounded-full for major UI).
+- Ensure all labels and links meet contrast requirements (use the lighter accent blue already used on Shop).
+- Keep interactive “References →” links clearly visible and subordinate (smaller than body copy).
+- Ensure section spacing doesn’t create dead zones; target 48–64px between major sections on mobile.
+
+PHASE 3 — POLISH + MOBILE CHECK
+- Check 375px and 390px: no clipping, no truncation, no low-contrast ghost text.
+- Ensure each product’s narrative fits without adding new sections.
+- Confirm the product selector rail updates the copy map correctly when switching modules.
+
+DELIVERABLE
+- Implement the copy map and replace text across the Shop page accordingly.
+- List the files edited.
+- Confirm it renders correctly for: /shop/cellunad, /shop/cellubiome, /shop/cellunova (or your existing routing).

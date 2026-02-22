@@ -40,12 +40,165 @@ function usePrefersReducedMotion() {
   return reduced;
 }
 
+const COPY_MAP = {
+  cellunad: {
+    overline: 'Daily Input Layer',
+    subtitle: 'Daily NAD+ support engineered for consistency, not hype.',
+    microLine: 'Protocol: 2 capsules daily · System target: Cellular energy + repair pathways',
+    why: {
+      label: 'Why Daily Input Matters',
+      headline: 'Energy doesn\'t crash. It quietly loses efficiency.',
+      body: 'Most people don\'t notice the drift until output drops. CELLUNAD+ is built as a steady daily input, supporting the pathways that keep energy production and cellular maintenance running clean.'
+    },
+    what: {
+      label: 'What It Supports',
+      headline: 'A cleaner baseline you can build on.',
+      lines: [
+        'Supports cellular energy production and resilience',
+        'Supports NAD+ metabolism and daily replenishment',
+        'Supports healthy redox balance and mitochondrial function',
+        'Supports methylation cofactors for normal cellular processes'
+      ]
+    },
+    telemetry: {
+      headline: 'Biological response, quantified.',
+      body: 'If you can\'t measure change, you\'re guessing. Age Revive pairs protocol inputs with measurable feedback, so decisions get smarter over time.',
+      rows: [
+        { label: 'NAD+ Pathway Activity', metric: 'Substrate + cofactor alignment' },
+        { label: 'Redox Balance', metric: 'Steady-state output support' },
+        { label: 'Methylation Support', metric: 'Cofactor sufficiency cues' }
+      ]
+    },
+    spec: {
+      meta: 'Actives: 8 · Serving: 2 capsules daily',
+      reassurance: 'All dosages reflect clinically studied ranges and bioavailable forms.',
+      declaration: 'No proprietary formulations.'
+    },
+    arc: {
+      headline: 'What you may notice over time.',
+      subline: 'Response varies. Consistency compounds.',
+      phases: [
+        { phase: 'I', label: 'Calibration', time: 'Days 1–3', desc: 'Routine locks in. Inputs become consistent.' },
+        { phase: 'II', label: 'Stabilization', time: 'Week 1–2', desc: 'Steady daily support. Less "spike," more baseline.' },
+        { phase: 'III', label: 'Integration', time: 'Week 3–4', desc: 'Compounding effect. This becomes your default.' }
+      ]
+    },
+    close: {
+      headline: 'Build a baseline that doesn\'t rely on motivation.',
+      body: 'If you\'re serious about longevity, consistency is the advantage.'
+    }
+  },
+  cellubiome: {
+    overline: 'Signaling Layer',
+    subtitle: 'Daily gut-mito support designed to reinforce your foundation.',
+    microLine: 'Protocol: 2 enteric-coated capsules daily · System target: Gut–mito signaling + resilience',
+    why: {
+      label: 'Why Signaling Matters',
+      headline: 'Your gut is not separate from your energy.',
+      body: 'When gut signaling is off, output feels noisy: energy, recovery, and consistency drift. CELLUBIOME supports the gut–mito connection with a focused, daily input.'
+    },
+    what: {
+      label: 'What It Supports',
+      headline: 'A steadier system signal.',
+      lines: [
+        'Supports gut barrier integrity and digestive resilience',
+        'Supports mitochondrial renewal signals (cellular efficiency support)',
+        'Supports short-chain fatty acid activity for gut environment support',
+        'Supports consistency across sleep, training, and daily output'
+      ]
+    },
+    telemetry: {
+      headline: 'Biological response, quantified.',
+      body: 'Signals show up before "feelings." Age Revive uses measurable feedback to reduce guesswork and keep the protocol honest.',
+      rows: [
+        { label: 'Gut Resilience Signals', metric: 'Consistency + tolerance cues' },
+        { label: 'Mitochondrial Efficiency', metric: 'Recovery + output stability cues' },
+        { label: 'Inflammation Balance', metric: 'Resilience trend cues' }
+      ]
+    },
+    spec: {
+      meta: 'Actives: 2 · Serving: 2 enteric-coated capsules daily',
+      reassurance: 'Full dosing disclosed. Focused inputs, no filler complexity.',
+      declaration: 'No proprietary formulations.'
+    },
+    arc: {
+      headline: 'What you may notice over time.',
+      subline: 'The signal stabilizes before it feels dramatic.',
+      phases: [
+        { phase: 'I', label: 'Calibration', time: 'Days 1–3', desc: 'Routine locks in. The system gets consistent input.' },
+        { phase: 'II', label: 'Stabilization', time: 'Week 1–2', desc: 'Digestion and tolerance cues become clearer.' },
+        { phase: 'III', label: 'Integration', time: 'Week 3–4', desc: 'More reliable output, less "noise."' }
+      ]
+    },
+    close: {
+      headline: 'Fix the signal. Then everything performs better.',
+      body: 'Build the foundation you can actually stack on.'
+    }
+  },
+  cellunova: {
+    overline: 'Cycle Layer',
+    subtitle: 'A 7-day monthly reset protocol designed for discipline, not extremes.',
+    microLine: 'Protocol: 5 capsules daily for 7 days · System target: Renewal cadence + cleanup pathways',
+    why: {
+      label: 'Why a Cycle Exists',
+      headline: 'Daily inputs build. Cycles recalibrate.',
+      body: 'Most people either do nothing or do too much. CELLUNOVA is a controlled cadence: a short, repeatable cycle designed to support renewal pathways without turning your life into a protocol.'
+    },
+    what: {
+      label: 'What It Supports',
+      headline: 'A reset you can actually repeat.',
+      lines: [
+        'Supports cellular cleanup and renewal pathways',
+        'Supports antioxidant defense and oxidative balance',
+        'Supports healthy inflammatory response balance',
+        'Supports resilience during periods of higher stress or load'
+      ]
+    },
+    telemetry: {
+      headline: 'Cycles are where signal becomes obvious.',
+      body: 'A short protocol window makes changes easier to observe and compare over time. Age Revive uses feedback to keep cycles consistent and measurable.',
+      rows: [
+        { label: 'Recovery Signal', metric: 'Sleep + training tolerance cues' },
+        { label: 'Inflammation Balance', metric: 'Resilience trend cues' },
+        { label: 'Output Stability', metric: 'Consistency across the week' }
+      ]
+    },
+    spec: {
+      meta: 'Actives: 10 · Protocol: 7 days (5 capsules daily)',
+      reassurance: 'Full dosing disclosed. Built as a cycle, not a daily stimulant.',
+      declaration: 'No proprietary formulations.',
+      microNote: 'Contains wheat (spermidine source).'
+    },
+    arc: {
+      headline: 'What the 7-day cycle feels like.',
+      subline: 'Keep the cadence. Don\'t chase intensity.',
+      phases: [
+        { phase: 'I', label: 'Initiation', time: 'Days 1–2', desc: 'You may feel "different" or feel nothing. Both are normal.' },
+        { phase: 'II', label: 'Engagement', time: 'Days 3–5', desc: 'The cycle becomes steadier. Focus on routine.' },
+        { phase: 'III', label: 'Completion', time: 'Days 6–7', desc: 'Finish clean. Consistency matters more than sensation.' },
+        { phase: 'IV', label: 'Return to Baseline', time: 'Post-cycle', desc: 'Resume your daily stack. Repeat monthly if it fits your system.' }
+      ]
+    },
+    close: {
+      headline: 'The reset is the advantage.',
+      body: 'A short, repeatable cadence beats sporadic extremes.'
+    }
+  }
+};
+
+const SHARED_STANDARDS = [
+  { label: 'Third-Party Tested', desc: 'Independent lab verification' },
+  { label: 'Standardized Actives', desc: 'Precise concentration control' },
+  { label: 'Delivery Matters', desc: 'Form + release designed per protocol' },
+  { label: 'Quality Control', desc: 'Multi-stage review process' }
+];
+
 const PRODUCTS = {
   cellunad: {
     id: 'cellunad',
     name: 'CELLUNAD+',
     category: 'NAD+ Optimization',
-    tagline: 'Engineered daily NAD+ support.',
+    tagline: 'Daily NAD+ support engineered for consistency, not hype.',
     description:
       'NR with redox and methylation cofactors. 8 actives, clinically dosed.',
     price: '$92.00',
@@ -54,10 +207,10 @@ const PRODUCTS = {
     accentText: '#60a5fa',
     heroImage: '/images/cellunad-trimmed.png',
     outcomes: [
-      'Supports NAD+ metabolism',
-      'Supports mitochondrial energy production',
-      'Supports cellular resilience',
-      'Supports healthy methylation pathways'
+      'Supports cellular energy production and resilience',
+      'Supports NAD+ metabolism and daily replenishment',
+      'Supports healthy redox balance and mitochondrial function',
+      'Supports methylation cofactors for normal cellular processes'
     ],
     ingredients: [
       { name: 'Nicotinamide Riboside (NR)', dose: '500 mg', purpose: 'NAD+ precursor support',
@@ -102,30 +255,14 @@ const PRODUCTS = {
           { title: 'Shoba G et al. Influence of piperine on the pharmacokinetics of curcumin in animals and human volunteers. Planta Med. 1998;64(4):353-356.', doi: '10.1055/s-2006-957450' }
         ]}
     ],
-    mechanics: [
-      { title: 'NAD+ Pool Support', text: 'NR enters the salvage pathway as a direct NAD+ precursor. Daily substrate input.', tags: ['Precursor input', 'Daily modulation'] },
-      { title: 'Redox Balance', text: 'R-Lipoic Acid maintains mitochondrial redox equilibrium. Electron carrier stability.', tags: ['Mitochondrial', 'Steady state'] },
-      { title: 'Cofactor Alignment', text: 'B-vitamin methylation cofactors normalize one-carbon metabolism. Pathway consistency.', tags: ['Methylation', 'One-carbon cycle'] }
-    ],
-    timeline: [
-      { phase: 'I', time: 'Days 1–3', label: 'Baseline Alignment', desc: 'System calibration. NAD+ precursors begin entering the salvage pathway. No perceptible output expected.', marker: 'Calibration' },
-      { phase: 'II', time: 'Week 1–2', label: 'Pathway Stabilization', desc: 'Cofactor cycling normalizes. Methylation and redox inputs reach steady-state availability.', marker: 'Steady State' },
-      { phase: 'III', time: 'Week 3–4', label: 'System Integration', desc: 'Compounding begins. Sustained input consistency produces measurable metabolic infrastructure.', marker: 'Integration' }
-    ],
-    telemetry: ['NAD+ Support', 'Cellular Energy', 'Redox Balance'],
-    systems: [
-      { label: 'NAD+ Pathway Activity', metric: 'Precursor input · cofactor alignment' },
-      { label: 'Methylation Efficiency', metric: 'B-vitamin cycling · methyl group delivery' },
-      { label: 'Cellular Resilience Markers', metric: 'Redox balance · mitochondrial output' },
-      { label: 'Protocol Adherence', metric: 'Daily input consistency · cadence tracking' }
-    ]
+    telemetry: ['NAD+ Support', 'Cellular Energy', 'Redox Balance']
   },
 
   cellubiome: {
     id: 'cellubiome',
     name: 'CELLUBIOME',
-    category: 'Mitochondrial + Gut Signaling Support',
-    tagline: 'Enteric-coated postbiotic signaling.',
+    category: 'Gut–Mito Signaling',
+    tagline: 'Daily gut-mito support designed to reinforce your foundation.',
     description:
       'Urolithin A + tributyrin. Enteric-coated, 2-compound precision.',
     price: '$110.00',
@@ -134,10 +271,10 @@ const PRODUCTS = {
     accentText: '#5eead4',
     heroImage: '/images/cellubiome-trimmed.png',
     outcomes: [
-      'Supports mitophagy signaling',
-      'Supports mitochondrial renewal pathways',
-      'Supports gut-derived short-chain fatty acid signaling',
-      'Supports cellular energy efficiency'
+      'Supports gut barrier integrity and digestive resilience',
+      'Supports mitochondrial renewal signals (cellular efficiency support)',
+      'Supports short-chain fatty acid activity for gut environment support',
+      'Supports consistency across sleep, training, and daily output'
     ],
     ingredients: [
       { name: 'Urolithin A (≥99%)', dose: '500 mg', purpose: 'Mitochondrial recycling signal support',
@@ -153,30 +290,14 @@ const PRODUCTS = {
           { title: 'Cresci GA et al. Tributyrin supplementation protects from diet-induced obesity and from intestinal inflammation. FASEB J. 2014;28(1 Suppl):372.7.' }
         ]}
     ],
-    mechanics: [
-      { title: 'Recycling Signal', text: 'Urolithin A activates mitophagy signaling. Targeted mitochondrial turnover.', tags: ['Mitophagy', 'Signal layer'] },
-      { title: 'Postbiotic Delivery', text: 'Tributyrin delivers butyrate directly. Short-chain fatty acid substrate.', tags: ['SCFA input', 'Gut-barrier axis'] },
-      { title: 'Enteric Precision', text: 'Enteric coating bypasses upper GI. Active release in target environment.', tags: ['Targeted release', 'Bioavailability'] }
-    ],
     telemetry: ['Gut Signaling', 'Mito Renewal', 'Postbiotic Support'],
-    systems: [
-      { label: 'Mitophagy Signal Output', metric: 'Urolithin A activation · recycling pathway' },
-      { label: 'SCFA Delivery Rate', metric: 'Butyrate release · gut-barrier signaling' },
-      { label: 'Mitochondrial Turnover', metric: 'Renewal cycling · energy efficiency' },
-      { label: 'Enteric Delivery Precision', metric: 'Targeted release · bioavailability index' }
-    ],
-    timeline: [
-      { phase: 'I', time: 'Days 1–3', label: 'Baseline Alignment', desc: 'Enteric-coated delivery initiates. Urolithin A enters mitophagy signaling pathways. Tributyrin begins butyrate release.', marker: 'Calibration' },
-      { phase: 'II', time: 'Week 1–2', label: 'Pathway Stabilization', desc: 'Mitochondrial recycling signals normalize. Gut-barrier integrity markers begin responding to sustained SCFA input.', marker: 'Steady State' },
-      { phase: 'III', time: 'Week 3–4', label: 'System Integration', desc: 'Dual-axis support compounds. Mitophagy cycling and postbiotic signaling reach operational consistency.', marker: 'Integration' }
-    ]
   },
 
   cellunova: {
     id: 'cellunova',
     name: 'CELLUNOVA',
-    category: '7-Day Autophagy + Protocol Cycle',
-    tagline: '7-day cellular maintenance cycle.',
+    category: 'Renewal Cadence + Cleanup',
+    tagline: 'A 7-day monthly reset protocol designed for discipline, not extremes.',
     description:
       'Polyphenol + senolytic stack. 10 actives, 7-day phase design.',
     price: '$145.00',
@@ -186,10 +307,10 @@ const PRODUCTS = {
     accentText: '#a78bfa',
     heroImage: '/images/cellunova-trimmed.png',
     outcomes: [
-      'Supports autophagy pathways',
-      'Supports cellular cleanup signaling',
-      'Supports healthy aging biology',
-      'Supports oxidative stress defense'
+      'Supports cellular cleanup and renewal pathways',
+      'Supports antioxidant defense and oxidative balance',
+      'Supports healthy inflammatory response balance',
+      'Supports resilience during periods of higher stress or load'
     ],
     ingredients: [
       { name: 'NAC', dose: '600 mg', purpose: 'Glutathione support',
@@ -244,24 +365,7 @@ const PRODUCTS = {
           { title: 'Shoba G et al. Influence of piperine on the pharmacokinetics of curcumin in animals and human volunteers. Planta Med. 1998;64(4):353-356.', doi: '10.1055/s-2006-957450' }
         ]}
     ],
-    mechanics: [
-      { title: 'Phase Design', text: '7-day burst protocol. Intentional cycling supports autophagy pathway activation.', tags: ['Cyclical protocol', '7-day burst'] },
-      { title: 'Polyphenol Load', text: 'Concentrated polyphenol and spermidine input. High-density short-cycle delivery.', tags: ['Antioxidant density', 'Spermidine'] },
-      { title: 'Off-Cycle Architecture', text: 'Recovery phase is integral. Cadence, not chronic exposure.', tags: ['Recovery phase', 'Cadence design'] }
-    ],
-    telemetry: ['Autophagy Support', 'Cellular Cleanup', 'Phase Design'],
-    systems: [
-      { label: 'Autophagy Pathway Activation', metric: 'Polyphenol load · spermidine input' },
-      { label: 'Senescent Cell Clearance', metric: 'Fisetin + quercetin signaling' },
-      { label: 'Oxidative Stress Defense', metric: 'Antioxidant capacity · astaxanthin load' },
-      { label: 'Phase Cycle Integrity', metric: '7-day on · 21-day off · cadence discipline' }
-    ],
-    timeline: [
-      { phase: 'I', time: 'Days 1–2', label: 'Phase Loading', desc: 'Polyphenol and senolytic compounds reach intracellular concentrations. Autophagy signaling pathways begin activation.', marker: 'Initiation' },
-      { phase: 'II', time: 'Days 3–5', label: 'Peak Clearance Window', desc: 'Senescent cell clearance signals at maximum. Fisetin and quercetin concentrations support sustained SASP reduction.', marker: 'Peak Phase' },
-      { phase: 'III', time: 'Days 6–7', label: 'Cycle Completion', desc: 'Protocol completes as designed. Remaining compound activity tapers. Do not extend.', marker: 'Completion' },
-      { phase: 'IV', time: 'Weeks 2–4', label: 'Off-Cycle Consolidation', desc: 'Recovery and reconsolidation period. Return to base protocol. The off-cycle is part of the architecture.', marker: 'Consolidation' }
-    ]
+    telemetry: ['Autophagy Support', 'Cellular Cleanup', 'Phase Design']
   }
 };
 
@@ -279,42 +383,6 @@ function NoiseOverlay() {
   );
 }
 
-function TypewriterTelemetry({ phrases: inputPhrases }) {
-  const phrases = useMemo(() => inputPhrases || ['NAD+ Support', 'Cellular Energy', 'Redox Balance'], [inputPhrases]);
-
-  const [text, setText] = useState('');
-  const [cursor, setCursor] = useState(true);
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    setIndex(0);
-    setText('');
-  }, [phrases]);
-
-  useEffect(() => {
-    let charIdx = 0;
-    const interval = setInterval(() => {
-      setText(phrases[index].slice(0, charIdx));
-      charIdx++;
-      if (charIdx > phrases[index].length + 8) {
-        setIndex((prev) => (prev + 1) % phrases.length);
-        charIdx = 0;
-      }
-    }, 75);
-    return () => clearInterval(interval);
-  }, [index, phrases]);
-
-  useEffect(() => {
-    const cursorInterval = setInterval(() => setCursor((c) => !c), 450);
-    return () => clearInterval(cursorInterval);
-  }, []);
-
-  return (
-    <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-white/30 overflow-hidden whitespace-nowrap">
-      {text}<span className="opacity-60">{cursor ? '_' : '\u00A0'}</span>
-    </div>
-  );
-}
 
 function CompoundRow({ ing, accentText, isLast, index }) {
   const [expanded, setExpanded] = useState(false);
@@ -407,27 +475,6 @@ function IngredientPanel({ ingredients, accentText, serving }) {
   );
 }
 
-function TrustStats({ product }) {
-  const stats = [
-    { value: 'Actives', label: String(product.ingredients.length) },
-    { value: 'Dose', label: 'Clinical' },
-    { value: 'Tested', label: '3rd Party' },
-  ];
-
-  return (
-    <div className="grid grid-cols-3 gap-2">
-      {stats.map((stat, i) => (
-        <div key={i} className="relative overflow-hidden rounded-lg border border-white/[0.08] min-h-[72px]">
-          <div className="absolute inset-0 bg-white/[0.03]" />
-          <div className="relative z-10 p-3 text-center flex flex-col items-center justify-center min-h-[72px]">
-            <p className="text-[10px] font-mono font-medium uppercase tracking-[0.10em] text-white/40 mb-1 whitespace-nowrap">{stat.value}</p>
-            <p className="text-base font-sans font-extrabold tracking-tight text-white whitespace-nowrap">{stat.label}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -640,16 +687,6 @@ function ProductTemplate({ product }) {
         });
       });
 
-      gsap.utils.toArray('.archive-card').forEach((card) => {
-        gsap.from(card, {
-          scrollTrigger: { trigger: card, start: 'top 85%' },
-          opacity: 0,
-          y: 40,
-          duration: 0.8,
-          ease: 'power3.out'
-        });
-      });
-
       ScrollTrigger.refresh();
     }, containerRef);
 
@@ -662,6 +699,7 @@ function ProductTemplate({ product }) {
   const accent = product.accent;
   const accentGlow = hexToRgba(accent, 0.55);
   const accentText = product.accentText || accent;
+  const copy = COPY_MAP[product.id];
 
   return (
     <main ref={containerRef} style={{ '--accent': accent, '--accentGlow': accentGlow }} className="relative bg-[#0f172a] text-white selection:bg-ar-teal selection:text-white">
@@ -694,26 +732,13 @@ function ProductTemplate({ product }) {
           <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left relative">
             <div className="absolute -inset-x-8 -inset-y-4 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 40%, rgba(15,23,42,0.65) 0%, transparent 100%)' }} />
             <div className="relative">
-              <div className="mb-2.5 flex flex-col items-center md:items-start gap-0.5">
-                <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/65">System Target</span>
-                <span className="font-mono text-[11px] uppercase tracking-[0.14em] font-bold" style={{ color: accentText }}>{product.category}</span>
-              </div>
+              <span className="inline-block font-mono text-[10px] uppercase tracking-[0.18em] font-bold mb-3" style={{ color: accentText }} data-testid="text-overline">{copy.overline}</span>
 
-              <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase mb-2" style={{ fontSize: 'clamp(2.8rem, 9vw, 5.5rem)' }} data-testid="text-product-name"><BrandName name={product.name} /></h1>
+              <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase mb-3" style={{ fontSize: 'clamp(2.8rem, 9vw, 5.5rem)' }} data-testid="text-product-name"><BrandName name={product.name} /></h1>
 
-              <p className="text-[14px] md:text-[15px] font-sans font-medium text-white/55 max-w-md mb-4 leading-snug mx-auto md:mx-0">{product.tagline}</p>
+              <p className="text-[15px] md:text-[17px] font-sans font-medium text-white/70 max-w-md mb-3 leading-snug mx-auto md:mx-0">{copy.subtitle}</p>
 
-              <div className="flex md:inline-flex border border-white/10 overflow-hidden max-w-sm" data-testid="metadata-strip">
-                <div className="flex-1 md:flex-auto px-4 py-2.5 text-center md:text-left">
-                  <p className="text-[9px] uppercase font-mono text-white/50 tracking-[0.18em] mb-0.5">Protocol</p>
-                  <p className="text-[11px] font-mono font-bold tracking-[0.06em] uppercase text-white/85">{product.serving}</p>
-                </div>
-                <div className="w-px bg-white/10" />
-                <div className="flex-1 md:flex-auto px-4 py-2.5 text-center md:text-left">
-                  <p className="text-[9px] uppercase font-mono text-white/50 tracking-[0.18em] mb-0.5">System Target</p>
-                  <p className="text-[11px] font-mono font-bold tracking-[0.06em] uppercase text-white/85">{product.category}</p>
-                </div>
-              </div>
+              <p className="text-[11px] font-mono text-white/40 tracking-[0.02em] max-w-md mx-auto md:mx-0" data-testid="text-micro-line">{copy.microLine}</p>
             </div>
           </div>
 
@@ -797,23 +822,51 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <section className="relative pt-8 pb-16 md:pt-10 md:pb-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1020]/70 via-[#0a1020]/30 to-transparent pointer-events-none" />
-        <div className="relative z-10 max-w-lg mx-auto px-6">
-          <div className="border-t border-white/[0.08] pt-7 md:pt-9">
-            <span className="block text-[10px] font-mono uppercase tracking-[0.20em] text-white/45 font-bold mb-5">Formulation Standards</span>
-            <div className="flex flex-col gap-4">
-              {[
-                { label: 'Third-Party Tested', desc: 'Every batch verified for purity, potency, and heavy metals' },
-                { label: 'Standardized Actives', desc: 'Clinically dosed with verified standardization percentages' },
-                { label: 'Protocol Cadence', desc: 'Defined dosing schedules — daily or cycled — not ad hoc' },
-                { label: 'Quality Control', desc: 'GMP-compliant manufacturing — full COAs on file' }
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-5" data-testid={`trust-badge-${i}`}>
-                  <span className="font-mono text-[16px] font-black tracking-[0.04em] shrink-0 w-7 text-right" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
-                  <div className="flex flex-col">
-                    <span className="text-[14px] font-mono font-bold uppercase tracking-[0.08em] text-white/90">{item.label}</span>
-                    <span className="text-[12px] font-sans text-white/55 leading-snug">{item.desc}</span>
+      {/* WHY */}
+      <section className="py-12 md:py-16" data-testid="section-why">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="reveal">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-2" data-testid="text-why-label">{copy.why.label}</span>
+            <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-3" data-testid="text-why-headline">{copy.why.headline}</h2>
+            <p className="text-[14px] md:text-[15px] font-sans text-white/65 leading-relaxed max-w-xl" data-testid="text-why-body">{copy.why.body}</p>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-3xl mx-auto px-6"><div className="h-px bg-white/[0.06]" /></div>
+
+      {/* WHAT */}
+      <section className="py-12 md:py-16" data-testid="section-what">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="reveal">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-2" data-testid="text-what-label">{copy.what.label}</span>
+            <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-4" data-testid="text-what-headline">{copy.what.headline}</h2>
+            <div className="flex flex-col gap-1">
+              {copy.what.lines.map((line, i) => (
+                <span key={i} className="text-[13px] md:text-[14px] font-sans font-medium text-white leading-[1.8]" data-testid={`what-line-${i}`}>{line}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-3xl mx-auto px-6"><div className="h-px bg-white/[0.06]" /></div>
+
+      {/* TELEMETRY */}
+      <section className="py-12 md:py-16" data-testid="section-telemetry">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="reveal">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-2">Telemetry</span>
+            <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">{copy.telemetry.headline}</h2>
+            <p className="text-[13px] font-sans text-white/55 leading-relaxed max-w-xl mb-6">{copy.telemetry.body}</p>
+
+            <div className="flex flex-col gap-0">
+              {copy.telemetry.rows.map((row, i) => (
+                <div key={i} className="flex items-baseline gap-4 py-2.5" data-testid={`telemetry-row-${i}`}>
+                  <span className="font-mono text-[14px] font-black tracking-[0.04em] shrink-0 w-6 text-right" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
+                  <div className="flex flex-col gap-0 flex-1 border-b border-white/[0.05] pb-3">
+                    <span className="text-[13px] font-sans font-bold text-white/90">{row.label}</span>
+                    <span className="text-[11px] font-mono text-white/45 tracking-[0.02em] mt-0.5">{row.metric}</span>
                   </div>
                 </div>
               ))}
@@ -822,160 +875,115 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <section className="relative py-16 md:py-24 px-5 md:px-8 max-w-7xl mx-auto overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1020]/60 via-[#0a1020]/20 to-transparent pointer-events-none" />
-        <div className="relative z-10">
-          <div className="mb-14 md:mb-20 max-w-lg reveal">
-            <h2 className="text-2xl md:text-3xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1">Telemetry</h2>
-            <p className="text-[13px] font-mono text-white/55 tracking-[-0.01em] mb-0.5">Biological response, quantified</p>
-            <TypewriterTelemetry phrases={product.telemetry} />
+      <div className="max-w-3xl mx-auto px-6"><div className="h-px bg-white/[0.06]" /></div>
 
-            <div className="mt-6 flex flex-col gap-0">
-              {product.systems.map((sys, i) => (
-                <div key={i} className="flex items-baseline gap-4 py-2" data-testid={`telemetry-system-${i}`}>
+      {/* STANDARDS */}
+      <section className="py-12 md:py-16" data-testid="section-standards">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="reveal">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-5">Formulation Standards</span>
+            <div className="flex flex-col gap-4">
+              {SHARED_STANDARDS.map((item, i) => (
+                <div key={i} className="flex items-start gap-5" data-testid={`standard-${i}`}>
                   <span className="font-mono text-[14px] font-black tracking-[0.04em] shrink-0 w-6 text-right" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
-                  <div className="flex flex-col gap-0 flex-1 border-b border-white/[0.05] pb-3.5">
-                    <span className="text-[13px] font-mono font-bold uppercase tracking-[0.06em] text-white/90">{sys.label}</span>
-                    <span className="text-[11px] font-mono text-white/50 tracking-[0.02em] mt-px">{sys.metric}</span>
+                  <div className="flex flex-col">
+                    <span className="text-[13px] font-sans font-bold text-white/90">{item.label}</span>
+                    <span className="text-[12px] font-sans text-white/50 leading-snug">{item.desc}</span>
                   </div>
                 </div>
               ))}
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
-            <div className="md:col-span-5 space-y-5 reveal">
-              <div>
-                <span className="block text-[10px] font-mono uppercase tracking-[0.20em] text-white/40 font-bold mb-2">Disclosure</span>
-                <h3 className="text-xl md:text-2xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight">Ingredient Architecture</h3>
-              </div>
-              <p className="text-[13px] text-white/50 leading-relaxed font-sans font-medium">
-                Open formulation. Every active listed with exact dose, functional role, and clinical reference range.
-              </p>
+      <div className="max-w-3xl mx-auto px-6"><div className="h-px bg-white/[0.06]" /></div>
 
-              <div className="flex flex-col gap-2 pt-1">
-                {[
-                  { key: 'Actives', val: String(product.ingredients.length) },
-                  { key: 'Dosing Standard', val: 'Clinical' },
-                  { key: 'Verification', val: 'Third-Party' }
-                ].map((spec, i) => (
-                  <div key={i} className="flex items-baseline justify-between border-b border-white/[0.04] pb-2">
-                    <span className="text-[11px] font-mono uppercase tracking-[0.10em] text-white/45">{spec.key}</span>
-                    <span className="text-[13px] font-mono font-bold tracking-[0.04em] text-white/85">{spec.val}</span>
+      {/* COMPOUND SPECIFICATION */}
+      <section className="py-12 md:py-16" data-testid="section-spec">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="reveal mb-8">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-2">Compound Specification</span>
+            <p className="text-[12px] font-mono text-white/60 tracking-[0.04em] uppercase mb-1">{copy.spec.meta}</p>
+            <p className="text-[13px] font-sans text-white/55 leading-relaxed max-w-lg mb-1">{copy.spec.reassurance}</p>
+            <p className="text-[11px] font-mono text-white/40 tracking-[0.04em]">{copy.spec.declaration}</p>
+            {copy.spec.microNote && <p className="text-[11px] font-mono text-amber-300/60 tracking-[0.04em] mt-1">{copy.spec.microNote}</p>}
+          </div>
+
+          <div className="reveal">
+            <IngredientPanel ingredients={product.ingredients} accentText={accentText} serving={product.serving} />
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-3xl mx-auto px-6"><div className="h-px bg-white/[0.06]" /></div>
+
+      {/* PROTOCOL ARC */}
+      <section className="py-12 md:py-16" data-testid="section-arc">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="reveal">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-2">Protocol Arc</span>
+            <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">{copy.arc.headline}</h2>
+            <p className="text-[13px] font-mono text-white/40 tracking-[-0.01em] mb-8">{copy.arc.subline}</p>
+
+            <div className="relative">
+              <div className="absolute left-[7px] top-3 bottom-3 w-px bg-white/[0.05]" />
+
+              <div className="space-y-0">
+                {copy.arc.phases.map((step, i) => (
+                  <div key={i} className="relative pl-8 py-5 md:py-6 reveal" data-testid={`arc-phase-${i}`}>
+                    <div className="absolute left-0 top-[26px] w-[15px] h-[15px] flex items-center justify-center">
+                      <div className="w-[5px] h-[5px] rounded-full" style={{ backgroundColor: accentText, opacity: 0.45 }} />
+                    </div>
+
+                    <div className="flex items-baseline gap-3 mb-1">
+                      <span className="text-[11px] font-mono font-black uppercase tracking-[0.06em]" style={{ color: accentText }}>Phase {step.phase}</span>
+                      <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.08em]">{step.time}</span>
+                    </div>
+                    <h4 className="text-[15px] md:text-[16px] font-sans font-bold text-white/90 tracking-[-0.01em] mb-1">{step.label}</h4>
+                    <p className="text-[13px] font-sans text-white/55 leading-relaxed max-w-md">{step.desc}</p>
+
+                    {i < copy.arc.phases.length - 1 && <div className="h-px bg-white/[0.03] mt-4" />}
                   </div>
                 ))}
               </div>
-
-              <p className="text-[11px] font-mono text-white/35 tracking-[0.06em] leading-relaxed">
-                Manufactured in GMP-certified facilities. Each batch independently verified for purity and heavy metals.
-              </p>
-            </div>
-
-            <div className="md:col-span-7 reveal">
-              <IngredientPanel ingredients={product.ingredients} accentText={accentText} serving={product.serving} />
             </div>
           </div>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
+      <div className="max-w-3xl mx-auto px-6"><div className="h-px bg-white/[0.06]" /></div>
 
-      <section className="relative py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.008] via-transparent to-transparent pointer-events-none" />
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="mb-14 md:mb-20 max-w-lg reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-2">Adaptation Model</span>
-            <h2 className="text-2xl md:text-3xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">Measured Biological Adaptation</h2>
-            <p className="text-[13px] font-mono text-white/40 tracking-[-0.01em]">Consistency compounds. Timelines are directional, not guaranteed.</p>
-          </div>
+      {/* CLOSE */}
+      <section className="py-16 md:py-20" data-testid="section-close">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <div className="reveal">
+            <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-3" data-testid="text-close-headline">{copy.close.headline}</h2>
+            <p className="text-[14px] font-sans text-white/55 leading-relaxed max-w-md mx-auto mb-6">{copy.close.body}</p>
 
-          <div className="relative">
-            <div className="absolute left-[7px] top-4 bottom-4 w-px bg-white/[0.05]" />
+            <div className="flex flex-col items-center gap-3">
+              <MagneticButton
+                className="min-h-[44px] min-w-[200px] flex items-center justify-center gap-2 py-3 px-8 text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
+                style={{ background: `linear-gradient(145deg, ${hexToRgba(accent, 0.95)}, ${hexToRgba(accent, 0.65)})`, boxShadow: `0 0 8px ${hexToRgba(accent, 0.15)}, inset 0 1px 0 rgba(255,255,255,0.08)` }}
+                onClick={() => {}}
+              >
+                <span className="relative z-10">Add to Stack</span>
+                <ArrowRight size={13} className="relative z-10" />
+                <div className="absolute inset-0 bg-white/8 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              </MagneticButton>
 
-            <div className="space-y-0">
-              {product.timeline.map((step, i) => (
-                <div key={i} className="relative pl-8 py-7 md:py-9 reveal" data-testid={`adaptation-phase-${i}`}>
-                  <div className="absolute left-0 top-[34px] w-[15px] h-[15px] flex items-center justify-center">
-                    <div className="w-[5px] h-[5px] rounded-full" style={{ backgroundColor: accentText, opacity: 0.45 }} />
-                  </div>
-
-                  <div className="flex items-baseline gap-3 mb-1.5">
-                    <span className="text-[11px] font-mono font-black uppercase tracking-[0.06em]" style={{ color: accentText }}>Phase {step.phase}</span>
-                    <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.08em]">{step.time}</span>
-                  </div>
-                  <h4 className="text-[15px] md:text-[17px] font-sans font-bold text-white/90 tracking-[-0.01em] mb-1">{step.label}</h4>
-                  <p className="text-[12px] font-sans text-white/45 leading-relaxed max-w-md">{step.desc}</p>
-                  <span className="text-[9px] font-mono font-bold uppercase tracking-[0.14em] text-white mt-2.5 block">{step.marker}</span>
-
-                  {i < product.timeline.length - 1 && <div className="h-px bg-white/[0.03] mt-3" />}
-                </div>
-              ))}
+              <button
+                onClick={() => setActiveSidePanel('ingredients')}
+                className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium hover:opacity-80 transition-opacity"
+                style={{ color: accentText }}
+                data-testid="link-view-evidence"
+              >
+                View Evidence →
+              </button>
             </div>
           </div>
         </div>
       </section>
-
-      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" /></div>
-
-      <section className="relative py-16 md:py-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.003] to-transparent pointer-events-none" />
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="mb-10 md:mb-14 max-w-lg reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-1.5">System Architecture</span>
-            <h2 className="text-[26px] md:text-[32px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1">Rationale</h2>
-            <p className="text-[13px] font-mono text-white/40 tracking-[-0.01em]">Each layer serves a defined function. No redundancy.</p>
-          </div>
-
-          <div className="space-y-0">
-            {product.mechanics.map((item, i) => (
-              <div key={i} className="reveal" data-testid={`rationale-module-${i}`}>
-                <div className="flex items-start gap-5 md:gap-8 py-5 md:py-6">
-                  <span className="text-[18px] md:text-[22px] font-mono font-black leading-none shrink-0 w-8 text-right pt-0.5" style={{ color: accentText, opacity: 0.4 }}>{String(i + 1).padStart(2, '0')}</span>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-[16px] md:text-[18px] font-sans font-bold tracking-[-0.01em] text-white/90 mb-1">{item.title}</h3>
-                    <p className="text-[12px] md:text-[13px] font-sans text-white/50 leading-relaxed max-w-lg mb-1.5">{item.text}</p>
-                    <span className="text-[10px] font-mono text-white uppercase tracking-[0.08em]">{item.tags.join(' · ')}</span>
-                  </div>
-                </div>
-                {i < product.mechanics.length - 1 && i % 2 === 0 && <div className="h-px bg-white/[0.04] ml-[52px] md:ml-[64px]" />}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
-
-      <section className="py-16 md:py-24 px-6 max-w-4xl mx-auto">
-        <div className="text-center mb-10 reveal">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-[1px] w-12 bg-ar-teal" />
-            <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Protocol Inquiries</span>
-            <div className="h-[1px] w-12 bg-ar-teal" />
-          </div>
-          <h2 className="text-4xl font-head font-normal tracking-[-0.03em] text-white uppercase">Questions</h2>
-        </div>
-
-        <div className="space-y-3 mb-16">
-          {[
-            { q: 'Is this protocol suitable for sensitive routines?', a: 'Start with the labeled serving. For sensitive systems, take with food and keep other variables stable for the first week.' },
-            { q: 'How is this different from basic supplement stacks?', a: 'Age Revive is designed as infrastructure: standardized inputs, defined cadence, and clean intent. No noisy kitchen-sink blends.' },
-            { q: 'Can I stack these products together?', a: 'They are designed to layer across different support systems. If you are unsure, start with one base product and add one layer at a time.' }
-          ].map((faq, i) => (
-            <details key={i} className="group relative overflow-hidden rounded-2xl border border-white/[0.10] cursor-pointer hover:border-white/[0.18] transition-all" data-testid={`faq-item-${i}`}>
-              <div className="absolute inset-0 bg-[#0d1424]/80 backdrop-blur-lg" />
-              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01]" />
-              <summary className="relative z-10 list-none flex justify-between items-center font-sans font-bold tracking-[0.04em] uppercase text-[12px] text-white p-5 min-h-[44px]">
-                {faq.q}
-                <ChevronDown size={16} className="group-open:rotate-180 transition-transform text-white/40 shrink-0 ml-3" />
-              </summary>
-              <p className="relative z-10 px-5 pb-5 text-[13px] text-white/55 leading-relaxed font-sans font-medium">{faq.a}</p>
-            </details>
-          ))}
-        </div>
-      </section>
-
-      <div className="max-w-2xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" /></div>
 
       <Footer />
       </div>
@@ -1006,18 +1014,18 @@ function ProductTemplate({ product }) {
 
       <SideSheet open={activeSidePanel === 'rationale'} title="Evidence" onClose={() => setActiveSidePanel(null)}>
         <div className="space-y-6">
-          {product.mechanics.map((mech, i) => (
+          {copy.telemetry.rows.map((row, i) => (
             <div key={i} className="space-y-2">
               <div className="flex items-center gap-3">
                 <span className="font-mono text-[11px] font-bold tracking-[0.10em] text-white/40 shrink-0 w-5">0{i + 1}</span>
-                <h4 className="font-head font-normal uppercase tracking-[-0.01em] text-white text-[15px]">{mech.title}</h4>
+                <h4 className="font-head font-normal uppercase tracking-[-0.01em] text-white text-[15px]">{row.label}</h4>
               </div>
-              <p className="text-[13px] text-white/55 leading-relaxed font-sans font-medium pl-8">{mech.text}</p>
+              <p className="text-[13px] text-white/55 leading-relaxed font-sans font-medium pl-8">{row.metric}</p>
             </div>
           ))}
 
           <div className="pt-6 border-t border-white/[0.06]">
-            <p className="text-[11px] text-white/35 font-mono uppercase tracking-[0.08em] leading-relaxed">Rationale summarizes peer-reviewed research directions. It is not medical advice.</p>
+            <p className="text-[11px] text-white/35 font-mono uppercase tracking-[0.08em] leading-relaxed">Evidence summarizes peer-reviewed research directions. It is not medical advice.</p>
           </div>
         </div>
       </SideSheet>
