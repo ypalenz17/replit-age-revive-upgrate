@@ -312,7 +312,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
           </div>
 
           <p className="mt-5 md:mt-6 text-[14px] md:text-[16px] text-white/75 font-sans font-medium max-w-[32ch] md:max-w-[42ch] leading-[1.5] mx-auto md:ml-[3%] md:mr-auto md:text-left">
-            Three protocol-grade supplements built as one system: daily <span className="text-white/95">NAD+</span>, daily <span className="text-white/95">gut-mito</span> signaling, and a <span className="text-white/95">7-day</span> monthly reset.
+            One system. Three protocols. Daily <span className="text-white/95">NAD+</span>, daily <span className="text-white/95">gut-mito</span> repair, and a <span className="text-white/95">7-day</span> monthly reset.
           </p>
 
           <div className="mt-5 flex flex-col items-center gap-0" data-testid="proof-bar">
