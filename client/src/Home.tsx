@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowRight,
+  ChevronDown,
   Menu,
   ShoppingBag,
   X
@@ -112,12 +113,12 @@ const PRODUCTS = [
 ];
 
 const PILLARS = [
-  { title: 'Genomic Stability', protocol: 'CELLUNAD+', desc: '"DNA maintenance pathways drive daily cellular resilience and repair."', tags: ['NAD+', 'Sirtuins'], accent: '#3B82F6' },
-  { title: 'Telomere Integrity', protocol: 'CELLUNAD+', desc: '"Telomere biology supports healthy cellular aging and replication fidelity."', tags: ['NMN', 'Longevity'], accent: '#3B82F6' },
-  { title: 'Epigenetic Signaling', protocol: 'CELLUBIOME', desc: '"Gut-derived metabolites modulate gene expression and energy homeostasis."', tags: ['Methylation', 'Gut Axis'], accent: '#19B3A6' },
-  { title: 'Nutrient Sensing', protocol: 'CELLUNOVA', desc: '"Cellular maintenance signals activated through cyclical fasting-mimetic design."', tags: ['AMPK', 'mTOR'], accent: '#6C5CE7' },
-  { title: 'Mitochondrial Function', protocol: 'CELLUBIOME', desc: '"Mitochondrial renewal signaling powers cellular energy efficiency."', tags: ['Mitophagy', 'ATP'], accent: '#19B3A6' },
-  { title: 'Cellular Senescence', protocol: 'CELLUNOVA', desc: '"Periodic senolytic cycles support cellular cleanup and tissue renewal."', tags: ['Fisetin', 'Quercetin'], accent: '#6C5CE7' }
+  { title: 'Genomic Stability', what: 'NAD+ fuels enzymes that repair damaged DNA and maintain chromosomal integrity.', why: 'Without daily NAD+ replenishment, repair enzymes slow and mutations accumulate.', protocol: 'CELLUNAD+', slug: 'cellunad', tags: ['NAD+', 'Sirtuins'], accent: '#3B82F6' },
+  { title: 'Telomere Integrity', what: 'Telomere-protective pathways preserve the replication fidelity of every cell division.', why: 'Shortened telomeres accelerate biological aging and reduce tissue regeneration.', protocol: 'CELLUNAD+', slug: 'cellunad', tags: ['NR', 'Longevity'], accent: '#3B82F6' },
+  { title: 'Epigenetic Signaling', what: 'Gut-derived metabolites like butyrate modulate gene expression across tissues.', why: 'Disrupted gut signaling silences protective genes and amplifies inflammatory ones.', protocol: 'CELLUBIOME', slug: 'cellubiome', tags: ['Methylation', 'Gut Axis'], accent: '#19B3A6' },
+  { title: 'Nutrient Sensing', what: 'AMPK and mTOR pathways detect energy status and trigger cellular maintenance.', why: 'Chronically active mTOR suppresses autophagy, letting damaged proteins accumulate.', protocol: 'CELLUNOVA', slug: 'cellunova', tags: ['AMPK', 'mTOR'], accent: '#6C5CE7' },
+  { title: 'Mitochondrial Function', what: 'Urolithin A activates mitophagy, clearing damaged mitochondria for new ones.', why: 'Dysfunctional mitochondria leak free radicals, draining cellular energy output.', protocol: 'CELLUBIOME', slug: 'cellubiome', tags: ['Mitophagy', 'ATP'], accent: '#19B3A6' },
+  { title: 'Cellular Senescence', what: 'Fisetin-driven senolytic cycles clear zombie cells that secrete inflammatory signals.', why: 'Senescent cell accumulation drives chronic inflammation and tissue breakdown.', protocol: 'CELLUNOVA', slug: 'cellunova', tags: ['Fisetin', 'Senolytic'], accent: '#6C5CE7' }
 ];
 
 /* -----------------------------
@@ -215,7 +216,6 @@ const Navbar = () => {
     { label: 'Home', href: '/' },
     { label: 'Shop', href: '/shop' },
     { label: 'Science', href: '/science' },
-    { label: 'Journal', href: '#journal' },
     { label: 'Quality', href: '/quality' },
     { label: 'FAQ', href: '/faq' }
   ];
@@ -445,100 +445,108 @@ const TheAxis = ({ onOpenEvidence }) => {
 };
 
 const SixPillars = () => {
+  const [openIdx, setOpenIdx] = useState(0);
+
   return (
     <section id="pillars" className="py-20 px-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14 reveal">
+      <div className="max-w-3xl mx-auto">
+        <div className="text-center mb-10 reveal">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-[1px] w-12 bg-ar-teal" />
-            <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Framework</span>
+            <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">Framework</span>
             <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
           <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] uppercase text-white">6 Pillars of Systemic Aging</h2>
-          <p className="text-sm text-white/40 font-medium max-w-xl mx-auto mt-3">
+          <p className="text-sm text-white/50 font-medium max-w-xl mx-auto mt-3">
             A framework for mapping protocols to systems. Not medical advice.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {PILLARS.map((p, i) => (
-            <div
-              key={p.title}
-              className="reveal group relative overflow-hidden rounded-2xl border border-white/[0.08] hover:border-white/[0.20] transition-all duration-500 hover:-translate-y-0.5"
-              style={{ '--pill-accent': p.accent } as React.CSSProperties}
-            >
-              <div className="absolute inset-0 bg-white/[0.03]" />
-              <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: `linear-gradient(90deg, transparent, ${p.accent}, transparent)` }} />
-              <div className="absolute top-0 left-0 right-0 h-24 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: `radial-gradient(ellipse at 50% -20%, ${p.accent}22, transparent 70%)` }} />
+        <div className="flex items-center justify-center gap-1.5 mb-8">
+          {PILLARS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setOpenIdx(i)}
+              className={[
+                'w-8 h-1.5 rounded-full transition-all duration-300',
+                i === openIdx ? 'bg-ar-teal' : 'bg-white/15 hover:bg-white/25'
+              ].join(' ')}
+              aria-label={`Pillar ${i + 1}`}
+              data-testid={`pillar-dot-${i}`}
+            />
+          ))}
+          <span className="ml-3 font-mono text-[12px] text-white/40 tracking-[0.1em]">{openIdx + 1}/6</span>
+        </div>
 
-              <div className="relative z-10 p-6 flex flex-col gap-4">
-                <span className="font-mono text-[12px] font-bold tracking-[0.15em] opacity-30" style={{ color: p.accent }}>0{i + 1}</span>
+        <div className="space-y-2">
+          {PILLARS.map((p, i) => {
+            const isOpen = i === openIdx;
+            return (
+              <div
+                key={p.title}
+                className={[
+                  'relative overflow-hidden rounded-xl border transition-all duration-400',
+                  isOpen ? 'border-white/[0.15] bg-white/[0.05]' : 'border-white/[0.06] bg-white/[0.02] hover:border-white/[0.10]'
+                ].join(' ')}
+                data-testid={`pillar-${i}`}
+              >
+                <div
+                  className="absolute top-0 left-0 right-0 h-[2px] transition-opacity duration-300"
+                  style={{ background: `linear-gradient(90deg, transparent, ${p.accent}, transparent)`, opacity: isOpen ? 1 : 0 }}
+                />
 
-                <h4 className="text-lg font-head font-normal uppercase tracking-[-0.01em] text-white group-hover:text-white transition-colors duration-300 leading-tight">{p.title}</h4>
+                <button
+                  onClick={() => setOpenIdx(i)}
+                  className="w-full flex items-center gap-4 px-5 py-4 min-h-[56px] text-left"
+                  data-testid={`pillar-toggle-${i}`}
+                >
+                  <span className="font-mono text-[12px] font-bold tracking-[0.15em] shrink-0" style={{ color: isOpen ? p.accent : `${p.accent}55` }}>0{i + 1}</span>
+                  <h4 className={['text-base md:text-lg font-head font-normal uppercase tracking-[-0.01em] leading-tight flex-1 transition-colors duration-300', isOpen ? 'text-white' : 'text-white/60'].join(' ')}>{p.title}</h4>
+                  <ChevronDown size={18} className={['text-white/40 shrink-0 transition-transform duration-300', isOpen ? 'rotate-180' : ''].join(' ')} />
+                </button>
 
-                <p className="text-[13px] font-serif italic text-white/50 leading-relaxed">{p.desc}</p>
+                <div
+                  className="overflow-hidden transition-all duration-400 ease-out"
+                  style={{ maxHeight: isOpen ? '400px' : '0px', opacity: isOpen ? 1 : 0 }}
+                >
+                  <div className="px-5 pb-5 space-y-4">
+                    <div className="space-y-3 pl-9">
+                      <div>
+                        <p className="font-mono text-[12px] text-white/40 uppercase tracking-[0.12em] mb-1">What it is</p>
+                        <p className="text-sm text-white/75 font-medium leading-relaxed">{p.what}</p>
+                      </div>
+                      <div>
+                        <p className="font-mono text-[12px] text-white/40 uppercase tracking-[0.12em] mb-1">Why it matters</p>
+                        <p className="text-sm text-white/75 font-medium leading-relaxed">{p.why}</p>
+                      </div>
+                    </div>
 
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {p.tags.map(tag => (
-                    <span key={tag} className="text-[12px] font-mono uppercase tracking-[0.14em] px-3 py-1.5 rounded-full border transition-colors duration-300" style={{ borderColor: `${p.accent}33`, color: `${p.accent}CC` }}>{tag}</span>
-                  ))}
-                </div>
-
-                <div className="flex items-center gap-2 pt-3 border-t border-white/[0.06]">
-                  <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: p.accent }} />
-                  <span className="text-[12px] font-mono font-bold uppercase tracking-[0.18em]" style={{ color: p.accent }}>{p.protocol}</span>
+                    <div className="flex items-center justify-between pl-9 pt-3 border-t border-white/[0.06]">
+                      <div className="flex flex-wrap gap-2">
+                        {p.tags.map(tag => (
+                          <span key={tag} className="text-[12px] font-mono uppercase tracking-[0.1em] px-3 py-1 rounded-full border" style={{ borderColor: `${p.accent}33`, color: `${p.accent}CC` }}>{tag}</span>
+                        ))}
+                      </div>
+                      <a
+                        href={`/product/${p.slug}`}
+                        className="flex items-center gap-1.5 text-[12px] font-mono font-bold uppercase tracking-[0.12em] min-h-[44px] px-3 transition-colors hover:brightness-125"
+                        style={{ color: p.accent }}
+                        data-testid={`pillar-link-${p.slug}`}
+                      >
+                        {p.protocol} <ArrowRight size={14} />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
   );
 };
 
-const Journal = () => {
-  const posts = [
-    { title: 'Mitophagy Signaling', cat: 'System', img: 'https://images.unsplash.com/photo-1579389083395-4507e9f4a171?auto=format&fit=crop&q=80&w=800' },
-    { title: 'NAD+ Metabolism', cat: 'Mechanism', img: 'https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&q=80&w=800' },
-    { title: 'Autophagy Cadence', cat: 'Protocol', img: 'https://images.unsplash.com/photo-1576086213369-97a306dca665?auto=format&fit=crop&q=80&w=800' }
-  ];
-
-  return (
-    <section id="journal" className="py-20 px-6">
-      <div className="max-w-7xl mx-auto space-y-16">
-        <div className="text-center mb-14 reveal">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-[1px] w-12 bg-ar-teal" />
-            <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Scientific Literacy</span>
-            <div className="h-[1px] w-12 bg-ar-teal" />
-          </div>
-          <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2.2rem, 7vw, 4.5rem)' }}>
-            Age Revive
-            <br />
-            <span className="italic text-white/50">Journal.</span>
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {posts.map((j) => (
-            <div key={j.title} className="reveal group cursor-pointer space-y-6">
-              <div className="aspect-[4/5] overflow-hidden rounded-2xl border border-white/[0.12] group-hover:border-ar-teal/30 transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(25,179,166,0.08)] relative">
-                <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02]" />
-                <img src={j.img} className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" alt="" />
-              </div>
-              <div className="space-y-2">
-                <span className="font-mono text-[12px] text-white/40 uppercase tracking-[0.18em]">{j.cat}</span>
-                <h4 className="text-xl font-head font-normal uppercase tracking-tight text-white group-hover:text-ar-teal transition-colors duration-300">{j.title}</h4>
-              </div>
-            </div>
-          ))}
-        </div>
-
-      </div>
-    </section>
-  );
-};
 
 /* -----------------------------
    App
@@ -641,10 +649,6 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
 
       <SixPillars />
-
-      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
-
-      <Journal />
 
       <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
 
