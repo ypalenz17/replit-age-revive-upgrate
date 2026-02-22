@@ -405,7 +405,7 @@ const TheAxis = ({ onOpenEvidence }) => {
             <div key={i} className="reveal-stagger group relative overflow-hidden rounded-lg transition-all duration-300" style={{ border: `1px solid rgba(255,255,255,${item.primary ? 0.10 : 0.05})` }}>
               <div className="absolute top-0 left-0 right-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${item.accent}, transparent)` }} />
               <div className="absolute inset-0" style={{ background: item.primary ? 'rgba(255,255,255,0.045)' : 'rgba(255,255,255,0.015)' }} />
-              <div className="relative z-10 px-3.5 pt-3.5 pb-3 flex flex-col gap-2">
+              <div className="relative z-10 px-[17px] pt-[17px] pb-[14px] flex flex-col gap-2">
                 <div className="flex items-center gap-2.5">
                   <div className="w-7 h-7 rounded flex items-center justify-center" style={{ border: `2px solid ${item.accentBorder}`, background: item.accentBg }}>
                     <span className="text-[8px] font-mono font-bold tracking-[0.06em]" style={{ color: item.accentText }}>{item.tag}</span>
