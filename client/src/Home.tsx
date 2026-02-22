@@ -315,19 +315,16 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             Three protocol-grade supplements built as one system: daily <span className="text-white/95">NAD+</span>, daily <span className="text-white/95">gut-mito</span> signaling, and a <span className="text-white/95">7-day</span> monthly reset.
           </p>
 
-          <div className="mt-4 w-full max-w-[340px] sm:max-w-none sm:w-auto mx-auto md:ml-[3%] md:mr-auto rounded-md" style={{ background: 'rgba(255,255,255,0.03)', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.07)' }} data-testid="proof-bar">
-            <div className="flex items-center justify-center md:justify-start px-3 py-[6px] gap-0 flex-wrap sm:flex-nowrap">
+          <div className="mt-4 max-w-[90%] mx-auto" data-testid="proof-bar">
+            <div className="flex items-center justify-center gap-0">
               {[
                 'Full dosing disclosed',
                 'No proprietary blends',
                 'COA library coming soon'
               ].map((text, i) => (
                 <div key={i} className="flex items-center shrink-0">
-                  {i > 0 && <span className="w-px h-2 bg-white/[0.08] mx-2 shrink-0 hidden sm:block" aria-hidden="true" />}
-                  <span className="flex items-center gap-1 px-0.5">
-                    <span className="h-[2px] w-[2px] rounded-[1px] bg-ar-teal/65 shrink-0" />
-                    <span className="text-[9px] sm:text-[10px] text-white/55 uppercase tracking-[0.03em] leading-none font-mono">{text}</span>
-                  </span>
+                  {i > 0 && <span className="w-px h-3 bg-white/[0.12] mx-3 shrink-0" aria-hidden="true" />}
+                  <span className="text-[10px] sm:text-[11px] text-white/70 uppercase tracking-[0.04em] leading-none font-mono">{text}</span>
                 </div>
               ))}
             </div>
