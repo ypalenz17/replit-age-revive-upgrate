@@ -597,12 +597,19 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="max-w-5xl mx-auto grid grid-cols-2 gap-3 mt-8 md:mt-12 px-1">
-            {['3rd Party Testing', 'Standardized Actives', 'Enteric Delivery', 'Quality Controls'].map((p, i) => (
-              <div key={p} className="flex items-center gap-2 rounded-lg border border-white/[0.12] bg-white/[0.05] px-3 py-2.5 overflow-hidden">
-                <span className="text-[12px] font-medium text-teal-300/90 tabular-nums shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                <span className="w-px h-4 bg-white/15 shrink-0" />
-                <span className="text-[12px] tracking-[0.08em] uppercase text-white/70 leading-none truncate">{p}</span>
+          <div className="max-w-lg mx-auto mt-8 md:mt-12 border-t border-white/[0.08]">
+            {[
+              { title: 'Third-Party Tested', desc: 'Independent lab verification.' },
+              { title: 'Standardized Actives', desc: 'Precise concentration, no variability.' },
+              { title: 'Enteric Delivery', desc: 'Targeted absorption.' },
+              { title: 'Quality Control', desc: 'Multi-stage review process.' },
+            ].map((s, i) => (
+              <div key={s.title} className="flex items-start gap-3 py-3 border-b border-white/[0.08]">
+                <span className="font-mono text-[13px] font-bold tabular-nums text-ar-teal/70 shrink-0 pt-px w-5">0{i + 1}</span>
+                <div className="flex-1 min-w-0">
+                  <span className="text-[12px] font-mono font-bold uppercase tracking-[0.06em] text-white/85 leading-tight block">{s.title}</span>
+                  <span className="text-[11px] font-sans text-white/55 leading-snug block mt-1">{s.desc}</span>
+                </div>
               </div>
             ))}
           </div>

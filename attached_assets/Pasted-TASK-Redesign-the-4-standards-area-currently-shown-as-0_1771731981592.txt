@@ -1,0 +1,92 @@
+TASK: Redesign the “4 standards” area (currently shown as 01/02/03/04 rounded chips with truncated text like “3RD PARTY TEST…”) into a premium, structured “Formulation Standards” block.
+
+GOAL:
+- Remove the generic SaaS chip/tag look.
+- Remove ellipses/truncation completely.
+- Make it feel like engineered standards: dense, authoritative, architectural.
+
+SCOPE:
+- Only redesign the standards block (the 4 items).
+- Do not change other sections on the page.
+- Keep the existing brand palette (navy + off-white + teal accent).
+- No new heavy effects (no big glows, no giant blur cards).
+
+REMOVE:
+- Rounded pill containers for each item.
+- Any “…” truncation.
+- Any grid-of-chips layout.
+- Any large glass card wrapping the whole thing (unless it’s extremely subtle and not rounded).
+
+REPLACE WITH THIS EXACT COPY (verbatim):
+01  THIRD-PARTY TESTED
+Independent lab verification.
+
+02  STANDARDIZED ACTIVES
+Precise concentration, no variability.
+
+03  ENTERIC DELIVERY
+Targeted absorption.
+
+04  QUALITY CONTROL
+Multi-stage review process.
+
+LAYOUT (MOBILE FIRST):
+- Vertical stack of 4 rows (not 2x2).
+- Each row is a compact “module line item”:
+  - Left: the index number (01, 02, 03, 04).
+  - Right: the title + description stacked.
+- Add a thin divider between rows (border-white/10).
+- Tight spacing. No airy padding.
+
+TYPOGRAPHY + HIERARCHY:
+1) Index number (01/02/03/04)
+- Slightly larger than body text.
+- Use tabular numbers if available (or a mono style ONLY for the number).
+- Color: subtle teal accent (not bright neon).
+- Example intent: “system index,” not decoration.
+
+2) Title (THIRD-PARTY TESTED, etc.)
+- Uppercase.
+- Strongest text in the block after the number.
+- Color: text-white/85 to text-white/90.
+- Tracking: slight (NOT excessive).
+- Keep line height tight.
+
+3) Description (Independent lab verification.)
+- Sentence case exactly as provided.
+- Smaller than title.
+- Color: text-white/60 to text-white/70.
+- Tight line height, 1 line preferred.
+
+COMPONENT STYLE RULES:
+- No rounded boxes per item.
+- No pills.
+- No truncation.
+- No big background container that makes it feel like a card UI component.
+- If you add a background behind the whole standards block, it must be extremely subtle:
+  - bg-white/3 to bg-white/5 max
+  - border-white/10
+  - rounded-lg only (not rounded-2xl)
+  - padding small (px-4 py-3)
+  - The block must still read like a structured list, not a “card.”
+
+SPACING TARGETS (so it feels expensive, not template):
+- Between rows: 14–18px total vertical breathing room including divider.
+- Title to description: 4–6px.
+- Whole block should be compact enough to read in 2 seconds.
+
+RESPONSIVE:
+- Mobile (<= 420px): index + text stack should align cleanly, no wrapping chaos.
+- Desktop: keep the same vertical structure or optionally switch to 2 columns ONLY if it still reads like a standards panel (but mobile is priority).
+
+ACCEPTANCE TESTS:
+- No “…” anywhere.
+- All four titles fully visible on iPhone width.
+- Block feels like “Formulation Standards” (architectural) not UI tags.
+- Readable at a glance: strong title contrast, softer descriptions.
+- Dividers are subtle and consistent.
+
+DELIVERABLE:
+- Implement the redesign in the code.
+- Tell me the exact file(s) you edited and where this block lives (component name).
+- Confirm you checked it at 375px and 390px widths.
