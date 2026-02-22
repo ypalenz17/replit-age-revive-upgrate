@@ -31,87 +31,85 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
   const accent = p.color;
 
   return (
-    <div
-      className="group relative flex flex-col rounded-ar-xl overflow-hidden border border-white/[0.10] hover:border-white/[0.20] transition-all duration-500 hover:-translate-y-1"
-      data-testid={`card-protocol-${p.slug}`}
-    >
-      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.07] via-white/[0.04] to-white/[0.02] group-hover:from-white/[0.10] group-hover:via-white/[0.06] group-hover:to-white/[0.03] transition-all duration-500" />
-      <div className="absolute inset-0 backdrop-blur-xl" />
-      <div className="absolute inset-0 shadow-card-edge pointer-events-none" />
+    <div className="relative mt-[90px] sm:mt-[110px]" data-testid={`card-protocol-${p.slug}`}>
 
       <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-        style={{
-          background: `radial-gradient(300px 300px at 50% 30%, ${hexToRgba(accent, 0.10)}, transparent 70%)`,
-        }}
-      />
+        className="absolute left-1/2 -translate-x-1/2 -top-[90px] sm:-top-[110px] z-20 pointer-events-none"
+      >
+        <div
+          className="absolute inset-0 z-10 blur-3xl opacity-40 scale-110 pointer-events-none"
+          style={{ background: `radial-gradient(ellipse at center, ${hexToRgba(accent, 0.45)}, transparent 65%)` }}
+        />
+        <img
+          src={p.image}
+          alt={p.name}
+          className="relative z-20 w-[180px] sm:w-[220px] h-auto object-contain"
+          style={{ filter: `drop-shadow(0 12px 24px ${hexToRgba(accent, 0.3)}) drop-shadow(0 4px 8px rgba(0,0,0,0.4))` }}
+        />
+      </div>
 
-      <div className="relative z-10 flex flex-col h-full">
-        <div className="relative flex items-center justify-center px-4 pt-6 pb-2">
-          <div
-            className="absolute inset-x-8 bottom-2 h-[60%] rounded-[50%] blur-2xl opacity-40 pointer-events-none"
-            style={{ background: `radial-gradient(ellipse at center, ${hexToRgba(accent, 0.35)}, transparent 70%)` }}
-          />
-          <div
-            className="absolute bottom-0 inset-x-12 h-4 rounded-[50%] blur-md opacity-30 pointer-events-none"
-            style={{ background: hexToRgba(accent, 0.2) }}
-          />
-          <img
-            src={p.image}
-            alt={p.name}
-            className="relative z-10 w-[55%] h-auto max-h-[180px] object-contain group-hover:scale-105 transition-transform duration-500"
-            style={{ filter: `drop-shadow(0 8px 20px ${hexToRgba(accent, 0.25)})` }}
-          />
-        </div>
+      <div
+        className="group relative z-10 rounded-2xl border border-white/[0.10] hover:border-white/[0.20] overflow-hidden transition-all duration-500 hover:-translate-y-1"
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] via-white/[0.04] to-white/[0.02] group-hover:from-white/[0.12] group-hover:via-white/[0.06] group-hover:to-white/[0.03] transition-all duration-500" />
+        <div className="absolute inset-0 backdrop-blur-xl" />
 
-        <div className="px-5 pb-5 flex flex-col gap-3 flex-1">
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+          style={{ background: `radial-gradient(300px 300px at 50% 20%, ${hexToRgba(accent, 0.10)}, transparent 70%)` }}
+        />
+
+        <div className="relative z-10 pt-16 sm:pt-20 px-5 pb-5 flex flex-col gap-3">
+
           <div>
-            <p className="text-[12px] font-mono uppercase tracking-[0.14em] text-white/45 mb-1">{p.category}</p>
-            <h4 className="font-head font-normal text-lg tracking-[-0.02em] uppercase text-white leading-tight">
+            <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-white/60 mb-1.5">{p.category}</p>
+            <h4 className="font-head font-normal text-2xl tracking-[-0.03em] uppercase text-white leading-none">
               <BrandName name={p.name} />
             </h4>
           </div>
 
           {p.benefit && (
-            <p className="text-sm text-white/60 font-medium leading-snug">{p.benefit}</p>
+            <p className="text-[15px] sm:text-base text-white/75 font-medium leading-snug">{p.benefit}</p>
           )}
 
           {p.outcomes && p.outcomes.length > 0 && (
-            <div className="flex flex-wrap gap-1.5">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
               {p.outcomes.map((o) => (
-                <span key={o} className="flex items-center gap-1.5 text-[12px] font-mono uppercase tracking-[0.08em] text-white/60">
-                  <Check size={12} className="text-ar-teal shrink-0" />
+                <span key={o} className="flex items-center gap-1.5 text-[12px] font-mono uppercase tracking-[0.06em] text-white/70">
+                  <Check size={12} className="shrink-0" style={{ color: accent }} />
                   {o}
                 </span>
               ))}
             </div>
           )}
 
-          <div className="flex items-center gap-3 text-[12px] font-mono text-white/45 uppercase tracking-[0.1em]">
-            <span>{p.serving}</span>
-            {p.supply && (
-              <>
-                <span className="w-px h-3 bg-white/15" />
-                <span>{p.supply}</span>
-              </>
-            )}
+          <div className="border-t border-white/[0.08] pt-3 mt-1">
+            <div className="grid grid-cols-2 gap-4 text-[12px] font-mono text-white/55 uppercase tracking-[0.08em]">
+              <span>{p.serving}</span>
+              {p.supply && <span className="text-right">{p.supply}</span>}
+            </div>
           </div>
 
-          <div className="flex flex-col gap-2 mt-auto pt-3">
+          <div className="flex gap-2 mt-1">
             <Link
               to={`/product/${p.slug}`}
-              className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.14em] transition-all duration-300 hover:scale-[1.02]"
-              style={{ backgroundColor: hexToRgba(accent, 0.15), color: accent, borderWidth: '1px', borderColor: hexToRgba(accent, 0.2) }}
+              className="flex-1 min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-3.5 font-mono font-bold uppercase text-[12px] tracking-[0.12em] transition-all duration-300 hover:brightness-110"
+              style={{
+                background: `linear-gradient(135deg, ${accent}, ${hexToRgba(accent, 0.7)})`,
+                color: '#fff',
+                boxShadow: `inset 0 1px 0 rgba(255,255,255,0.15), 0 2px 12px ${hexToRgba(accent, 0.25)}`,
+              }}
               data-testid={`button-view-protocol-${p.slug}`}
             >
-              View Protocol <ArrowRight size={14} />
+              View Protocol <ArrowRight size={13} />
             </Link>
 
             <button
-              className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg border border-white/[0.12] text-white/65 font-mono font-bold uppercase text-[12px] tracking-[0.14em] hover:bg-white/[0.06] hover:text-white/85 hover:border-white/[0.18] transition-all duration-300"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg border border-white/[0.12] text-white/65 hover:bg-white/[0.06] hover:text-white/85 hover:border-white/[0.18] transition-all duration-300"
               data-testid={`button-add-stack-${p.slug}`}
+              aria-label={`Add ${p.name} to stack`}
             >
-              <Plus size={14} /> Add to Stack
+              <Plus size={18} />
             </button>
           </div>
         </div>

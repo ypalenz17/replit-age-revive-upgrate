@@ -1,0 +1,94 @@
+We need to redesign the protocol product card component to look expensive and be easy to scan on mobile.
+
+GOAL
+- Make the product image (bottle/jar) larger and visually dominant.
+- Place the product image OUTSIDE the info card (overlapping it) so the card becomes a clean “info console”.
+- Improve hierarchy so info is aesthetic and scannable.
+
+SCOPE
+- ProtocolSelectorCard (or whatever component renders each product in “Select Your Protocol”).
+- Keep existing copy and data. Do not invent claims.
+- Keep the existing color palette and glow effect.
+
+STRUCTURE CHANGE (required)
+1) Make a parent wrapper: `relative`
+2) Create the info card as a separate element:
+   - Card container: `relative z-10`
+3) Place product image as a positioned element ABOVE the card:
+   - Image wrapper: `absolute left-1/2 -translate-x-1/2 -top-10 z-20`
+   - Make it bigger on mobile:
+     - img class like `w-[180px] sm:w-[220px]` (tune until it feels premium)
+   - Keep the glow behind the image (your new glow), but ensure it is behind the image:
+     - glow layer z-10, img z-20
+
+CARD DESIGN (make it “engineered luxury”)
+A) Card material
+- Replace pill softness:
+  - Card radius: `rounded-2xl`
+  - Border: `border border-white/10`
+  - Background: `bg-white/5` + optional `backdrop-blur-md`
+  - Add subtle internal gradient:
+    - use bg gradient: `bg-gradient-to-b from-white/8 to-white/3` (or equivalent)
+
+B) Card spacing (reduce dead space, improve rhythm)
+- Add top padding to account for the overlapping bottle:
+  - `pt-16` (so content starts below the bottle)
+- Normal padding:
+  - `px-5 pb-5`
+
+INFORMATION HIERARCHY (fix readability)
+Inside the card, reorder into 5 clean blocks:
+
+1) Micro label (small)
+   - “MITOCHONDRIAL + GUT SIGNALING”
+   - Use: text-white/60, tracking moderate (not huge), text-[11px]
+
+2) Product name (dominant)
+   - “CELLUBIOME”
+   - Strong contrast, tight leading
+
+3) One-line benefit (readable)
+   - “Restores gut–mito signaling for sustained energy”
+   - Make this 16px+, text-white/75
+
+4) Outcomes (3 items max, tight)
+   - Use a 2-column grid so it reads fast:
+     wrapper: `grid grid-cols-2 gap-x-4 gap-y-2`
+   - Each item: icon + label, no long lines
+   - Increase contrast: text-white/70
+
+5) Dosage + supply (two columns)
+   - Left: “2 enteric-coated capsules daily”
+   - Right: “30-day supply”
+   - Use: `grid grid-cols-2 gap-4 text-[12px] text-white/60`
+   - Add a thin divider line or subtle border-top above this block.
+
+CTA DESIGN (make it premium and not confusing)
+- Replace “VIEW PROTOCOL →” and “+ ADD TO STACK” with two clear buttons:
+  - Primary: “View Protocol”
+  - Secondary: “Add to Stack”
+- Buttons should be engineered corners (no rounded-full):
+  - `rounded-lg`
+- Reduce height:
+  - `py-3.5`
+- Make primary higher contrast than secondary.
+- Add subtle inner highlight to primary (not neon).
+
+RESPONSIVE + POLISH RULES
+- No element should overflow the card.
+- No huge empty spaces. Keep vertical gaps to gap-3 / gap-4.
+- Reduce excessive tracking everywhere (especially the trust/micro labels).
+- The bottle must feel like it is “sitting” in the UI:
+  - Add a faint shadow under it (in addition to the glow) so it’s grounded.
+- Ensure tap targets are 44px minimum.
+
+ACCEPTANCE TESTS (must pass)
+1) On iPhone width, bottle is at least 25–35% larger than current and overlaps the card.
+2) Card content starts below the bottle and is easy to scan in 3 seconds.
+3) Outcomes are in a neat grid, not a wandering text block.
+4) Buttons look premium (not pill, not cheap outline) and are not overly tall.
+5) No weird dead space above/below the card.
+
+DELIVERABLE
+- Implement in the component that renders product cards.
+- Tell me the file path and the exact classes you changed.
