@@ -1,0 +1,67 @@
+Targeted mobile layout fix. Stop redesigning. No copy changes. No new sections.
+
+Problems (from screenshots):
+1) Excessive empty vertical space between blocks. Feels like giant padding/min-heights/gaps.
+2) The 4 key proof chips (01–04: 3RD PARTY TESTING, etc.) are misaligned and some text/numbers are drifting outside their “boxes”.
+3) Overall: spacing rhythm is inconsistent and looks unprofessional on mobile.
+
+Scope:
+- Home page only.
+- Only adjust Tailwind classes/CSS for spacing, wrapping, and chip layout.
+- Do NOT change brand colors, fonts, or component structure. No refactors beyond class edits.
+
+ACCEPTANCE TESTS (must pass on 375px and 390px widths)
+A) Vertical rhythm:
+- No section should have giant dead space above/below unless intentionally a hero break.
+- Between major sections: ~48–64px (not 100px+).
+- Within sections: consistent gap scale (gap-4 / gap-6), not random.
+B) Proof chips (01–04):
+- All chips must be fully inside their container.
+- Numbers must align consistently (left side inside the chip).
+- Text must not overflow or clip.
+- Chips must lay out as a clean 2x2 grid on mobile.
+C) No overflow:
+- No element should extend past the card/container bounds.
+- No horizontal scrolling.
+
+IMPLEMENTATION INSTRUCTIONS
+
+1) Kill the dead space (most likely causes)
+Search for any of these in the Home page sections and reduce them:
+- py-20 / py-24 / py-28  -> replace with py-12 or py-14 on mobile
+- mt-20 / mb-20 / space-y-16 -> reduce to mt-10/mb-10/space-y-10
+- min-h-[...] used for sections -> remove for mobile (keep only for desktop if needed)
+- gap-12 / gap-16 inside mobile stacks -> reduce to gap-6
+
+Do it with responsive overrides:
+- Example: `py-16 sm:py-24` (mobile tighter, desktop can breathe)
+
+2) Fix the key proof chips layout (01–04)
+Wherever the 4 chips are rendered:
+- Replace current layout with a strict grid on mobile:
+  wrapper: `grid grid-cols-2 gap-3 w-full`
+- Each chip must be a self-contained flex row:
+  chip: `flex items-center gap-2 rounded-lg border border-white/12 bg-white/5 px-3 py-2`
+- Number badge must be inside the chip and never absolute:
+  number: `text-teal-300/90 text-[12px] font-medium tabular-nums`
+- Label text must truncate safely instead of overflowing:
+  label: `text-white/70 text-[12px] tracking-[0.12em] uppercase leading-none truncate`
+- Ensure parent container is NOT using overflow-visible if it causes drift.
+- Remove any absolute positioning, negative margins, or translate hacks from the chips.
+
+3) Fix the protocol card spacing
+In the protocol selector cards, reduce wasted vertical space:
+- Remove or reduce any `min-h-*` or large `py-*` on the image container.
+- Add a tight, consistent internal spacing scale:
+  card content stack: `flex flex-col gap-4`
+- Ensure buttons and chips sit directly under content, not floating with huge margins.
+
+4) Verify no “random pushes”
+Search for:
+- `translate-y-*`, `-mt-*`, `top-*` used for layout (not effects)
+If any of those are used to position chips or key info, remove them and use normal flow.
+
+DELIVERABLE
+- Implement changes.
+- Tell me exactly which file(s) you edited.
+- Confirm tested at 375px and 390px and that the 01–04 chips are a clean 2x2 grid with no overflow.

@@ -376,9 +376,9 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
 
 const TheAxis = ({ onOpenEvidence }) => {
   return (
-    <section id="axis" className="py-20 px-6">
+    <section id="axis" className="py-12 md:py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-14 reveal">
+        <div className="text-center mb-8 md:mb-14 reveal">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-[1px] w-12 bg-ar-teal" />
             <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">The Foundation</span>
@@ -451,7 +451,7 @@ const SixPillars = () => {
   const [openIdx, setOpenIdx] = useState(0);
 
   return (
-    <section id="pillars" className="py-20 px-6 overflow-hidden">
+    <section id="pillars" className="py-12 md:py-20 px-6 overflow-hidden">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10 reveal">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -614,9 +614,9 @@ export default function Home() {
       />
 
       {/* Protocol Selector */}
-      <section className="py-20 px-6">
+      <section className="py-12 md:py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14 reveal">
+          <div className="text-center mb-8 md:mb-14 reveal">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="h-[1px] w-12 bg-ar-teal" />
               <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Select Your Protocol</span>
@@ -633,12 +633,12 @@ export default function Home() {
               <ProtocolSelectorCard key={p.slug} p={p} />
             ))}
           </div>
-          <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-3 mt-12">
+          <div className="max-w-5xl mx-auto grid grid-cols-2 gap-3 mt-8 md:mt-12 px-1">
             {['3rd Party Testing', 'Standardized Actives', 'Enteric Delivery', 'Quality Controls'].map((p, i) => (
-              <div key={p} className="flex items-center justify-center gap-2 bg-white/[0.06] border border-white/[0.1] rounded-full px-3 py-2">
-                <span className="font-mono text-[12px] font-bold text-ar-teal tracking-[0.14em]">{String(i + 1).padStart(2, '0')}</span>
-                <span className="w-px h-3 bg-white/20" />
-                <span className="text-[12px] font-mono font-bold uppercase tracking-[0.1em] text-white/60 whitespace-nowrap">{p}</span>
+              <div key={p} className="flex items-center gap-2 rounded-lg border border-white/[0.12] bg-white/[0.05] px-3 py-2.5 overflow-hidden">
+                <span className="text-[12px] font-medium text-teal-300/90 tabular-nums shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                <span className="w-px h-4 bg-white/15 shrink-0" />
+                <span className="text-[12px] tracking-[0.08em] uppercase text-white/70 leading-none truncate">{p}</span>
               </div>
             ))}
           </div>
@@ -656,22 +656,22 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
 
       {/* Final CTA */}
-      <section className="py-24 px-6 text-white relative overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10 reveal">
+      <section className="py-14 md:py-24 px-6 text-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center space-y-8 md:space-y-12 relative z-10 reveal">
           <h2 className="font-head font-normal tracking-[-0.05em] uppercase leading-[0.85]" style={{ fontSize: 'clamp(2.5rem, 9vw, 5.5rem)' }}>
             Build your
             <br />
             <span className="italic text-white/50">baseline.</span>
           </h2>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <a href="/shop" className="px-12 py-6 min-h-[48px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:scale-105 transition-all" data-testid="button-cta-shop-system">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 w-full max-w-[420px] mx-auto sm:w-auto sm:max-w-none">
+            <a href="/shop" className="w-full sm:w-auto px-10 py-4 min-h-[48px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:scale-105 transition-all" data-testid="button-cta-shop-system">
               Shop the System
             </a>
-            <a href="/shop" className="px-12 py-6 min-h-[48px] flex items-center justify-center border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-white/5 transition-all" data-testid="button-cta-build-stack">
+            <a href="/shop" className="w-full sm:w-auto px-10 py-4 min-h-[48px] flex items-center justify-center border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-white/5 transition-all" data-testid="button-cta-build-stack">
               Build your stack
             </a>
           </div>
-          <p className="font-mono text-[12px] text-white/35 tracking-[0.1em] mt-4">Start with the bundle or choose a protocol.</p>
+          <p className="text-sm text-white/60 tracking-normal mt-2">Start with the bundle or choose a protocol.</p>
         </div>
       </section>
 

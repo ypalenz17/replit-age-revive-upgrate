@@ -47,7 +47,7 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
           <img
             src={p.image}
             alt={p.name}
-            className="w-[70%] h-auto max-h-[220px] object-contain group-hover:scale-105 transition-transform duration-500"
+            className="w-[60%] h-auto max-h-[180px] object-contain group-hover:scale-105 transition-transform duration-500"
             style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.3))' }}
           />
         </div>
