@@ -1,6 +1,6 @@
-import imgCellubiome from '@assets/FRONT_RENDER_TRANSPARENT_1771623631843.png';
-import imgCellunad from '@assets/CELLUNAD_1771623812381.png';
-import imgCellunova from '@assets/CELLUNAD_CELLUNOVA_1771623812382.png';
+import imgCellubiome from '@assets/cellubiome_cropped.png';
+import imgCellunad from '@assets/cellunad_cropped.png';
+import imgCellunova from '@assets/cellunova_cropped.png';
 
 export const PRODUCTS = [
   {

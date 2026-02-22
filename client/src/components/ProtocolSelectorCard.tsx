@@ -31,35 +31,31 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
   const accent = p.color;
 
   return (
-    <div className="relative mt-[90px] sm:mt-[110px]" data-testid={`card-protocol-${p.slug}`}>
+    <div className="relative mt-[160px] sm:mt-[180px] lg:mt-[200px]" data-testid={`card-protocol-${p.slug}`}>
 
-      <div
-        className="absolute left-1/2 -translate-x-1/2 -top-[90px] sm:-top-[110px] z-20 pointer-events-none"
-      >
+      <div className="absolute left-1/2 -translate-x-1/2 -top-[140px] sm:-top-[160px] lg:-top-[180px] z-20 pointer-events-none flex flex-col items-center">
         <div
-          className="absolute inset-0 z-10 blur-3xl opacity-40 scale-110 pointer-events-none"
-          style={{ background: `radial-gradient(ellipse at center, ${hexToRgba(accent, 0.45)}, transparent 65%)` }}
+          className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[80%] h-[70%] blur-3xl opacity-50 pointer-events-none"
+          style={{ background: `radial-gradient(ellipse at center, ${hexToRgba(accent, 0.5)}, transparent 65%)` }}
         />
         <img
           src={p.image}
           alt={p.name}
-          className="relative z-20 w-[180px] sm:w-[220px] h-auto object-contain"
-          style={{ filter: `drop-shadow(0 12px 24px ${hexToRgba(accent, 0.3)}) drop-shadow(0 4px 8px rgba(0,0,0,0.4))` }}
+          className="relative z-20 w-[220px] sm:w-[260px] lg:w-[280px] h-auto object-contain"
+          style={{ filter: `drop-shadow(0 16px 32px ${hexToRgba(accent, 0.35)}) drop-shadow(0 6px 12px rgba(0,0,0,0.5))` }}
         />
       </div>
 
-      <div
-        className="group relative z-10 rounded-2xl border border-white/[0.10] hover:border-white/[0.20] overflow-hidden transition-all duration-500 hover:-translate-y-1"
-      >
+      <div className="group relative z-10 rounded-2xl border border-white/[0.10] hover:border-white/[0.20] overflow-hidden transition-all duration-500 hover:-translate-y-1">
         <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] via-white/[0.04] to-white/[0.02] group-hover:from-white/[0.12] group-hover:via-white/[0.06] group-hover:to-white/[0.03] transition-all duration-500" />
         <div className="absolute inset-0 backdrop-blur-xl" />
 
         <div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-          style={{ background: `radial-gradient(300px 300px at 50% 20%, ${hexToRgba(accent, 0.10)}, transparent 70%)` }}
+          style={{ background: `radial-gradient(300px 300px at 50% 15%, ${hexToRgba(accent, 0.10)}, transparent 70%)` }}
         />
 
-        <div className="relative z-10 pt-16 sm:pt-20 px-5 pb-5 flex flex-col gap-3">
+        <div className="relative z-10 pt-[80px] sm:pt-[90px] lg:pt-[100px] px-5 pb-5 flex flex-col gap-3">
 
           <div>
             <p className="text-[11px] font-mono uppercase tracking-[0.12em] text-white/60 mb-1.5">{p.category}</p>
