@@ -620,25 +620,25 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
 
       {/* Final CTA */}
-      <section className="relative py-14 md:py-24 px-6 text-white overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(25,179,166,0.05) 0%, transparent 70%)' }} />
-        <div className="max-w-4xl mx-auto text-center space-y-8 md:space-y-12 relative z-10 reveal">
-          <h2 className="font-head font-normal tracking-[-0.05em] uppercase leading-[0.85]" style={{ fontSize: 'clamp(2.5rem, 9vw, 5.5rem)' }}>
-            Build your
+      <section className="relative py-10 md:py-14 px-6 text-white overflow-hidden">
+        <div className="max-w-2xl mx-auto text-center relative z-10 reveal">
+          <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2rem, 7vw, 3.5rem)' }}>
+            Activate your
             <br />
-            <span className="text-white/55">baseline.</span>
+            <span className="text-white/45">system.</span>
           </h2>
-          <div className="flex flex-col sm:flex-row justify-center gap-3 w-full max-w-[420px] mx-auto sm:w-auto sm:max-w-none">
-            <a href="/shop" className="w-full sm:w-auto px-10 py-4 min-h-[48px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:scale-[1.02] transition-all" data-testid="button-cta-shop-system">
-              Shop the System
-            </a>
-            <a href="/shop" className="w-full sm:w-auto px-10 py-4 min-h-[48px] flex items-center justify-center border border-white/20 text-white rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-white/5 hover:border-white/30 transition-all" data-testid="button-cta-build-stack">
-              Build your stack
+          <a href="/shop" className="mt-6 inline-flex items-center justify-center px-8 py-3 min-h-[44px] bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] hover:bg-ar-teal/90 transition-colors" data-testid="button-cta-shop-system">
+            Shop Protocol Stack
+          </a>
+          <div className="mt-3">
+            <a href="/shop" className="text-[10px] font-mono uppercase tracking-[0.08em] text-white/40 hover:text-white/65 transition-colors inline-flex items-center gap-1" data-testid="button-cta-explore">
+              Explore Individual Protocols <ArrowRight size={9} />
             </a>
           </div>
-          <p className="text-sm text-white/60 tracking-normal mt-2">Start with the bundle or choose a protocol.</p>
         </div>
       </section>
+
+      <div className="max-w-2xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" /></div>
 
       <Footer />
       </div>
