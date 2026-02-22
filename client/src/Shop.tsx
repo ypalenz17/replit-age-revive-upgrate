@@ -447,30 +447,12 @@ function CompoundRow({ ing, accentText, isLast, index }) {
   );
 }
 
-function IngredientPanel({ ingredients, accentText, serving }) {
+function IngredientPanel({ ingredients, accentText }) {
   return (
-    <div className="relative border-t border-white/[0.06]">
-      <div className="py-6 md:py-8">
-        <div className="mb-0.5">
-          <span className="text-[11px] font-mono font-black uppercase tracking-[0.18em] text-white/70">Compound Specification</span>
-        </div>
-        <div className="flex items-baseline gap-5 mb-0.5 text-[11px] font-mono uppercase tracking-[0.08em]">
-          <span className="text-white/45">Actives: <span className="text-white/80 font-bold">{ingredients.length}</span></span>
-          <span className="text-white/45">Serving: <span className="text-white/80 font-bold">{serving}</span></span>
-        </div>
-        <p className="text-[10px] font-mono text-white/40 tracking-[0.06em] mb-5">No proprietary formulations · Clinically aligned with published human studies</p>
-
-        <div className="space-y-0">
-          {ingredients.map((ing, i) => (
-            <CompoundRow key={i} ing={ing} accentText={accentText} isLast={i === ingredients.length - 1} index={i} />
-          ))}
-        </div>
-
-        <div className="mt-5 space-y-1">
-          <p className="text-[10px] font-mono text-white/45 tracking-[0.06em] leading-relaxed">All dosages reflect clinically studied ranges</p>
-          <p className="text-[10px] font-mono text-white/45 tracking-[0.06em] leading-relaxed">All compounds listed in bioavailable forms</p>
-        </div>
-      </div>
+    <div className="space-y-0">
+      {ingredients.map((ing, i) => (
+        <CompoundRow key={i} ing={ing} accentText={accentText} isLast={i === ingredients.length - 1} index={i} />
+      ))}
     </div>
   );
 }
@@ -767,7 +749,7 @@ function ProductTemplate({ product }) {
                   <div className="border-t border-white/[0.06] pt-2.5 mt-1">
                     <div className="flex flex-col gap-[2px]">
                       {product.outcomes.map((item, i) => (
-                        <span key={i} className="text-[12px] font-sans font-medium text-white leading-[1.75]">{item}</span>
+                        <span key={i} className="text-[12px] font-sans font-medium text-white/75 leading-[1.75]">{item}</span>
                       ))}
                     </div>
                   </div>
@@ -843,7 +825,7 @@ function ProductTemplate({ product }) {
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-4" data-testid="text-what-headline">{copy.what.headline}</h2>
             <div className="flex flex-col gap-1">
               {copy.what.lines.map((line, i) => (
-                <span key={i} className="text-[13px] md:text-[14px] font-sans font-medium text-white leading-[1.8]" data-testid={`what-line-${i}`}>{line}</span>
+                <span key={i} className="text-[13px] md:text-[14px] font-sans font-medium text-white/70 leading-[1.8]" data-testid={`what-line-${i}`}>{line}</span>
               ))}
             </div>
           </div>
@@ -901,17 +883,22 @@ function ProductTemplate({ product }) {
 
       {/* COMPOUND SPECIFICATION */}
       <section className="py-12 md:py-16" data-testid="section-spec">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="reveal mb-8">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="reveal mb-6">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-2">Compound Specification</span>
-            <p className="text-[12px] font-mono text-white/60 tracking-[0.04em] uppercase mb-1">{copy.spec.meta}</p>
+            <p className="text-[12px] font-mono text-white/50 tracking-[0.04em] uppercase mb-1">{copy.spec.meta}</p>
             <p className="text-[13px] font-sans text-white/55 leading-relaxed max-w-lg mb-1">{copy.spec.reassurance}</p>
-            <p className="text-[11px] font-mono text-white/40 tracking-[0.04em]">{copy.spec.declaration}</p>
-            {copy.spec.microNote && <p className="text-[11px] font-mono text-amber-300/60 tracking-[0.04em] mt-1">{copy.spec.microNote}</p>}
+            <p className="text-[11px] font-mono text-white/35 tracking-[0.04em]">{copy.spec.declaration}</p>
+            {copy.spec.microNote && <p className="text-[11px] font-mono text-amber-300/50 tracking-[0.04em] mt-1">{copy.spec.microNote}</p>}
           </div>
 
-          <div className="reveal">
-            <IngredientPanel ingredients={product.ingredients} accentText={accentText} serving={product.serving} />
+          <div className="reveal border-t border-white/[0.06] pt-5">
+            <IngredientPanel ingredients={product.ingredients} accentText={accentText} />
+          </div>
+
+          <div className="mt-5 space-y-1">
+            <p className="text-[10px] font-mono text-white/35 tracking-[0.06em] leading-relaxed">All dosages reflect clinically studied ranges</p>
+            <p className="text-[10px] font-mono text-white/35 tracking-[0.06em] leading-relaxed">All compounds listed in bioavailable forms</p>
           </div>
         </div>
       </section>
@@ -955,7 +942,7 @@ function ProductTemplate({ product }) {
       <div className="max-w-3xl mx-auto px-6"><div className="h-px bg-white/[0.06]" /></div>
 
       {/* CLOSE */}
-      <section className="py-16 md:py-20" data-testid="section-close">
+      <section className="py-12 md:py-16" data-testid="section-close">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <div className="reveal">
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-3" data-testid="text-close-headline">{copy.close.headline}</h2>
@@ -973,7 +960,7 @@ function ProductTemplate({ product }) {
               </MagneticButton>
 
               <button
-                onClick={() => setActiveSidePanel('ingredients')}
+                onClick={() => setActiveSidePanel('rationale')}
                 className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium hover:opacity-80 transition-opacity"
                 style={{ color: accentText }}
                 data-testid="link-view-evidence"
