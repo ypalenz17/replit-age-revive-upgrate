@@ -627,11 +627,11 @@ export default function Home() {
             <br />
             <span className="text-white/45">system.</span>
           </h2>
-          <a href="/shop" className="mt-6 inline-flex items-center justify-center px-8 py-3 min-h-[44px] bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] hover:bg-ar-teal/90 transition-colors" data-testid="button-cta-shop-system">
+          <a href="/shop" className="mt-5 inline-flex items-center justify-center px-8 py-3 min-h-[44px] bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] hover:bg-ar-teal/90 transition-colors" data-testid="button-cta-shop-system">
             Shop Protocol Stack
           </a>
           <div className="mt-3">
-            <a href="/shop" className="text-[10px] font-mono uppercase tracking-[0.08em] text-white/40 hover:text-white/65 transition-colors inline-flex items-center gap-1" data-testid="button-cta-explore">
+            <a href="/shop" className="text-[10px] font-mono uppercase tracking-[0.08em] text-white/50 hover:text-white/70 transition-colors inline-flex items-center gap-1" data-testid="button-cta-explore">
               Explore Individual Protocols <ArrowRight size={9} />
             </a>
           </div>
