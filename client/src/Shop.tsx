@@ -44,7 +44,7 @@ const COPY_MAP = {
   cellunad: {
     overline: 'Daily Input Layer',
     subtitle: 'Daily NAD+ support engineered for consistency, not hype.',
-    microLine: 'Protocol: 2 capsules daily · System target: Cellular energy + repair pathways',
+    microLine: 'Protocol: 2 caps daily · Target: energy + repair',
     why: {
       label: 'Why Daily Input Matters',
       headline: 'Energy doesn\'t crash. It quietly loses efficiency.',
@@ -62,7 +62,7 @@ const COPY_MAP = {
     },
     telemetry: {
       headline: 'Biological response, quantified.',
-      body: 'If you can\'t measure change, you\'re guessing. Age Revive pairs protocol inputs with measurable feedback, so decisions get smarter over time.',
+      body: 'If you can\'t measure change, you\'re guessing. Protocol inputs paired with measurable feedback.',
       rows: [
         { label: 'NAD+ Pathway Activity', metric: 'Substrate + cofactor alignment' },
         { label: 'Redox Balance', metric: 'Steady-state output support' },
@@ -200,7 +200,7 @@ const PRODUCTS = {
     category: 'NAD+ Optimization',
     tagline: 'Daily NAD+ support engineered for consistency, not hype.',
     description:
-      'NR with redox and methylation cofactors. 8 actives, clinically dosed.',
+      'NR + cofactors. 8 actives. Clinically aligned.',
     price: '$92.00',
     serving: '2 capsules daily',
     accent: '#1e3a8a',
@@ -509,7 +509,7 @@ function Navbar() {
               <span className="absolute -top-0.5 -right-0.5 w-[15px] h-[15px] flex items-center justify-center text-[9px] font-mono font-bold rounded-sm leading-none text-teal-300 border border-teal-300/40 bg-white/[0.04]">0</span>
             </a>
             <button
-              className="md:hidden min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-teal-300 transition-colors"
+              className="md:hidden min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-white transition-colors"
               aria-label="Menu"
               data-testid="mobile-menu-toggle-shop"
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -714,7 +714,7 @@ function ProductTemplate({ product }) {
           <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left relative">
             <div className="absolute -inset-x-8 -inset-y-4 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 40%, rgba(15,23,42,0.65) 0%, transparent 100%)' }} />
             <div className="relative">
-              <span className="inline-block font-mono text-[10px] uppercase tracking-[0.18em] font-bold mb-3" style={{ color: accentText }} data-testid="text-overline">{copy.overline}</span>
+              <span className="inline-block font-mono text-[10px] uppercase tracking-[0.18em] font-bold mb-3 opacity-90" style={{ color: accentText }} data-testid="text-overline">{copy.overline}</span>
 
               <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase mb-3" style={{ fontSize: 'clamp(2.8rem, 9vw, 5.5rem)' }} data-testid="text-product-name"><BrandName name={product.name} /></h1>
 
@@ -808,7 +808,7 @@ function ProductTemplate({ product }) {
       <section className="py-12 md:py-16" data-testid="section-why">
         <div className="max-w-3xl mx-auto px-6">
           <div className="reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-2" data-testid="text-why-label">{copy.why.label}</span>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-2" data-testid="text-why-label">{copy.why.label}</span>
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-3" data-testid="text-why-headline">{copy.why.headline}</h2>
             <p className="text-[14px] md:text-[15px] font-sans text-white/65 leading-relaxed max-w-xl" data-testid="text-why-body">{copy.why.body}</p>
           </div>
@@ -821,7 +821,7 @@ function ProductTemplate({ product }) {
       <section className="py-12 md:py-16" data-testid="section-what">
         <div className="max-w-3xl mx-auto px-6">
           <div className="reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-2" data-testid="text-what-label">{copy.what.label}</span>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-2" data-testid="text-what-label">{copy.what.label}</span>
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-4" data-testid="text-what-headline">{copy.what.headline}</h2>
             <div className="flex flex-col gap-1">
               {copy.what.lines.map((line, i) => (
@@ -838,7 +838,7 @@ function ProductTemplate({ product }) {
       <section className="py-12 md:py-16" data-testid="section-telemetry">
         <div className="max-w-3xl mx-auto px-6">
           <div className="reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-2">Telemetry</span>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-2">Telemetry</span>
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">{copy.telemetry.headline}</h2>
             <p className="text-[13px] font-sans text-white/55 leading-relaxed max-w-xl mb-6">{copy.telemetry.body}</p>
 
@@ -863,7 +863,7 @@ function ProductTemplate({ product }) {
       <section className="py-12 md:py-16" data-testid="section-standards">
         <div className="max-w-3xl mx-auto px-6">
           <div className="reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-5">Formulation Standards</span>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-5">Formulation Standards</span>
             <div className="flex flex-col gap-4">
               {SHARED_STANDARDS.map((item, i) => (
                 <div key={i} className="flex items-start gap-5" data-testid={`standard-${i}`}>
@@ -885,10 +885,10 @@ function ProductTemplate({ product }) {
       <section className="py-12 md:py-16" data-testid="section-spec">
         <div className="max-w-3xl mx-auto px-6">
           <div className="reveal mb-6">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-2">Compound Specification</span>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-2">Compound Specification</span>
             <p className="text-[12px] font-mono text-white/50 tracking-[0.04em] uppercase mb-1">{copy.spec.meta}</p>
             <p className="text-[13px] font-sans text-white/55 leading-relaxed max-w-lg mb-1">{copy.spec.reassurance}</p>
-            <p className="text-[11px] font-mono text-white/35 tracking-[0.04em]">{copy.spec.declaration}</p>
+            <p className="text-[11px] font-mono text-white/45 tracking-[0.04em]">{copy.spec.declaration}</p>
             {copy.spec.microNote && <p className="text-[11px] font-mono text-amber-300/50 tracking-[0.04em] mt-1">{copy.spec.microNote}</p>}
           </div>
 
@@ -897,8 +897,8 @@ function ProductTemplate({ product }) {
           </div>
 
           <div className="mt-5 space-y-1">
-            <p className="text-[10px] font-mono text-white/35 tracking-[0.06em] leading-relaxed">All dosages reflect clinically studied ranges</p>
-            <p className="text-[10px] font-mono text-white/35 tracking-[0.06em] leading-relaxed">All compounds listed in bioavailable forms</p>
+            <p className="text-[10px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All dosages reflect clinically studied ranges</p>
+            <p className="text-[10px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All compounds listed in bioavailable forms</p>
           </div>
         </div>
       </section>
@@ -909,7 +909,7 @@ function ProductTemplate({ product }) {
       <section className="py-12 md:py-16" data-testid="section-arc">
         <div className="max-w-3xl mx-auto px-6">
           <div className="reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/50 block mb-2">Protocol Arc</span>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-2">Protocol Arc</span>
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">{copy.arc.headline}</h2>
             <p className="text-[13px] font-mono text-white/40 tracking-[-0.01em] mb-8">{copy.arc.subline}</p>
 
@@ -1024,7 +1024,9 @@ export default function Shop() {
   const params = useParams<{ slug?: string }>();
   const initialSlug = (params.slug && PRODUCTS[params.slug]) ? params.slug : 'cellunad';
   const [slug, setSlug] = useState(initialSlug);
+  const [railVisible, setRailVisible] = useState(true);
   const currentProduct = PRODUCTS[slug];
+  const footerSentinelRef = useRef(null);
 
   useEffect(() => {
     if (params.slug && PRODUCTS[params.slug] && params.slug !== slug) {
@@ -1036,15 +1038,40 @@ export default function Shop() {
     window.scrollTo(0, 0);
   }, [slug]);
 
+  useEffect(() => {
+    const el = footerSentinelRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => setRailVisible(!entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [slug]);
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" style={{ paddingBottom: 'calc(76px + env(safe-area-inset-bottom, 0px))' }}>
       <ProductTemplate key={currentProduct.id} product={currentProduct} />
+      <div ref={footerSentinelRef} className="h-px" />
 
       <div
-        style={{ position: 'sticky', bottom: 0, zIndex: 99999, padding: '12px 0 20px', display: 'flex', justifyContent: 'center', pointerEvents: 'none', background: 'linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.6) 60%, transparent 100%)' }}
+        className="transition-opacity duration-300"
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 99999,
+          padding: '0 0 max(12px, env(safe-area-inset-bottom))',
+          display: 'flex',
+          justifyContent: 'center',
+          background: 'linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.6) 60%, transparent 100%)',
+          opacity: railVisible ? 1 : 0,
+          pointerEvents: 'none'
+        }}
       >
         <div
-          style={{ pointerEvents: 'auto', display: 'flex', gap: '0', padding: '0 8px', background: 'rgba(15,23,42,0.92)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
+          style={{ pointerEvents: railVisible ? 'auto' : 'none', display: 'flex', gap: '0', padding: '0 8px', background: 'rgba(15,23,42,0.92)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)', borderBottom: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
         >
           {Object.values(PRODUCTS).map((p) => (
             <button

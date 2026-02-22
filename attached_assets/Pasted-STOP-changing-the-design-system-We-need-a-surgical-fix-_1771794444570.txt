@@ -1,0 +1,109 @@
+STOP changing the design system. We need a surgical fix pass across the Shop page.
+
+Context:
+After content updates, the agent drifted styles: colors changed, alignment/padding broke, the module selector rail is covering content, and some copy is too long causing layout issues. Fix ONLY wiring/layout/typography, and condense specific lines where needed.
+
+GLOBAL NON-NEGOTIABLES (restore design system)
+1) Color system:
+- Keep background navy + subtle grid.
+- Accent ONLY: the lighter accent blue/teal used for links/indices/underlines.
+- Do NOT introduce new blues/teals for icons or random elements.
+- Header icons must be consistent: white/low-contrast white, with accent only for tiny active indicators (cart count/underline). The hamburger icon must NOT become teal.
+
+2) Typography system:
+- Labels and micro text must be readable (no ghost text).
+- Maintain consistent left alignment within sections (no drifting margins).
+- No truncated text, no accidental missing spaces (e.g., “CRASH.IT”).
+
+3) Layout rules:
+- No section may be covered by the bottom module selector rail.
+- Every section must have proper bottom padding equal to rail height + safe area.
+
+PHASE 1 — FIX THE BIG BROKEN THINGS (alignment + overlays)
+A) Bottom Module Selector Rail (biggest issue)
+Problem (seen in multiple screenshots): the CELLUNAD+/CELLUBIOME/CELLUNOVA rail is overlaying/covering content (headlines and body copy).
+Fix:
+- Make the rail height fixed and known (e.g., 64px).
+- Add global content padding at the bottom of the page: padding-bottom = rail height + env(safe-area-inset-bottom) + 12px.
+- Ensure the rail has a subtle top divider and does not visually collide with content.
+- If the rail is position:fixed, ensure it NEVER overlaps text. If needed, increase bottom padding further.
+- Optional: hide the rail when user reaches the footer CTA + footer area to avoid stacking UI.
+
+B) Restore header icon colors (screenshot shows hamburger turned teal)
+- Force header icons to use consistent white/white-80 styling.
+- Only the cart count badge can have accent.
+
+C) Fix spacing and alignment drift
+- Ensure all sections share the same horizontal gutters (same px on mobile).
+- Ensure section labels, headlines, and body copy align to the same left edge.
+- Remove any accidental extra padding that makes sections drift right/left.
+
+PHASE 2 — FIX COPY THAT IS TOO LONG OR BROKEN
+Only change the specific lines below (do not rewrite everything).
+
+1) Fix missing space typo (seen screenshot: “ENERGY DOESN’T CRASH.IT”):
+Change to:
+“ENERGY DOESN’T CRASH. IT QUIETLY LOSES EFFICIENCY.”
+
+2) Shorten the micro line under the hero title (it’s too long/faint):
+Current:
+“Protocol: 2 capsules daily • System target: Cellular energy + repair pathways”
+Replace with:
+“Protocol: 2 caps daily • Target: energy + repair”
+
+3) Shorten the short spec line under price area (if it wraps awkwardly):
+Current:
+“NR with redox and methylation cofactors. 8 actives, clinically dosed.”
+Replace with:
+“NR + cofactors. 8 actives. Clinically aligned.”
+
+4) Telemetry intro paragraph (keep meaning but reduce to 2 lines max):
+Current:
+“If you can't measure change, you're guessing. Age Revive pairs protocol inputs with measurable feedback, so decisions get smarter over time.”
+Replace with:
+“If you can’t measure change, you’re guessing. Protocol inputs paired with measurable feedback.”
+
+5) Compound specification reinforcement lines at bottom are too faint and feel misaligned:
+Keep the two lines but ensure they are readable (increase contrast slightly) and aligned to the main text column.
+
+PHASE 3 — SECTION-BY-SECTION FIXES BASED ON SCREENSHOTS
+(1) Hero + product stage (first screenshot)
+- Ensure “DAILY INPUT LAYER” label is readable (raise opacity slightly).
+- Ensure hero block doesn’t feel over-spaced.
+- Ensure bottle stage is centered and not pushed down by excessive padding.
+
+(2) Benefit list + CTA block (second screenshot)
+- Ensure the benefit lines aren’t cut by the header.
+- Ensure “Ingredients | Evidence” row is aligned and readable.
+- Keep one primary CTA only and ensure button color matches the established CTA style (no random new blue).
+
+(3) “Why daily input matters” section (second screenshot)
+- Fix the “CRASH. IT” typo.
+- Ensure headline line-breaks are clean and not covered by the bottom rail.
+
+(4) “What it supports” and Telemetry transition (third screenshot)
+- Reduce dead space between “What it supports” and Telemetry.
+- Ensure Telemetry indices (01/02/03) align perfectly.
+- Ensure the bottom rail does not cover the 03 line.
+
+(5) “Formulation standards” + “Compound specification” header (fourth screenshot)
+- Ensure section label contrast is consistent and not too faint.
+- Ensure “No proprietary formulations.” line aligns correctly and doesn’t float awkwardly.
+- Ensure the rail does not overlap the next section header.
+
+(6) Ingredient list with “References” links (fifth screenshot)
+- Keep “References” using the lighter accent blue with adequate contrast.
+- Ensure “References” sits consistently under each compound (same spacing).
+- Ensure hamburger icon is not teal.
+
+(7) Protocol arc + final CTA + footer (sixth/seventh screenshots)
+- Ensure the bottom rail does not cover “Protocol Arc” headline.
+- Ensure the final CTA section is aligned and the primary CTA uses the correct system button style (not a random solid blue block).
+- Ensure footer columns are aligned and readable.
+- Optionally hide the bottom rail when footer is in view.
+
+DELIVERABLE
+- Implement these fixes with minimal code changes.
+- List files edited.
+- Confirm tested on iPhone width 375px and 390px.
+- Confirm: no content is covered by the bottom module selector rail anywhere on the page.
