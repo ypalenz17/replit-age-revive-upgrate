@@ -108,10 +108,9 @@ const PRODUCTS = {
       { title: 'Cofactor Alignment', text: 'Methylation cofactors support metabolic efficiency and daily consistency.', tags: ['Methylation', 'Consistency'] }
     ],
     timeline: [
-      { time: 'Days 1–3', label: 'Protocol Onboarding', desc: 'Routine locks in. Many people notice the first shift as consistency, not a spike.', value: 'Foundation' },
-      { time: 'Week 1', label: 'Stability Layer', desc: 'Daily inputs become predictable. The goal is steady, repeatable adherence.', value: 'Cadence' },
-      { time: 'Month 1', label: 'Compounding', desc: 'Consistency becomes the product. This is where protocols start to feel "owned."', value: 'Momentum' },
-      { time: 'Months 2–3', label: 'Infrastructure', desc: 'Sustained routine typically feels smoother than intermittent intensity.', value: 'Durability' }
+      { phase: 'I', time: 'Days 1–3', label: 'Baseline Alignment', desc: 'System calibration. NAD+ precursors begin entering the salvage pathway. No perceptible output expected.', marker: 'Calibration' },
+      { phase: 'II', time: 'Week 1–2', label: 'Pathway Stabilization', desc: 'Cofactor cycling normalizes. Methylation and redox inputs reach steady-state availability.', marker: 'Steady State' },
+      { phase: 'III', time: 'Week 3–4', label: 'System Integration', desc: 'Compounding begins. Sustained input consistency produces measurable metabolic infrastructure.', marker: 'Integration' }
     ],
     telemetry: ['NAD+ Support', 'Cellular Energy', 'Redox Balance'],
     systems: [
@@ -167,10 +166,9 @@ const PRODUCTS = {
       { label: 'Enteric Delivery Precision', metric: 'Targeted release · bioavailability index' }
     ],
     timeline: [
-      { time: 'Days 1–3', label: 'Comfort + Consistency', desc: 'Enteric delivery supports a smoother start, especially for sensitive routines.', value: 'Settle In' },
-      { time: 'Week 1', label: 'Signal Support', desc: 'Daily inputs support signaling layers that benefit from repetition.', value: 'Alignment' },
-      { time: 'Month 1', label: 'Sustained Routine', desc: 'Support tends to feel more stable when it is truly daily.', value: 'Stability' },
-      { time: 'Months 2–3', label: 'Compounding', desc: 'Consistency is the unlock. Protocols compound when adherence is effortless.', value: 'Momentum' }
+      { phase: 'I', time: 'Days 1–3', label: 'Baseline Alignment', desc: 'Enteric-coated delivery initiates. Urolithin A enters mitophagy signaling pathways. Tributyrin begins butyrate release.', marker: 'Calibration' },
+      { phase: 'II', time: 'Week 1–2', label: 'Pathway Stabilization', desc: 'Mitochondrial recycling signals normalize. Gut-barrier integrity markers begin responding to sustained SCFA input.', marker: 'Steady State' },
+      { phase: 'III', time: 'Week 3–4', label: 'System Integration', desc: 'Dual-axis support compounds. Mitophagy cycling and postbiotic signaling reach operational consistency.', marker: 'Integration' }
     ]
   },
 
@@ -259,10 +257,10 @@ const PRODUCTS = {
       { label: 'Phase Cycle Integrity', metric: '7-day on · 21-day off · cadence discipline' }
     ],
     timeline: [
-      { time: 'Days 1–2', label: 'Ramp', desc: 'Phase begins. Keep hydration and routine tight. Consistency beats force.', value: 'Initiate' },
-      { time: 'Days 3–5', label: 'Peak Week', desc: 'This is the center of the cycle. Keep variables stable and boring.', value: 'Center' },
-      { time: 'Days 6–7', label: 'Finish', desc: 'Complete the cycle as designed. Do not extend just to "feel more."', value: 'Complete' },
-      { time: 'Weeks 2–4', label: 'Off-Cycle', desc: 'Return to your base protocol. Consolidation is part of the strategy.', value: 'Reset' }
+      { phase: 'I', time: 'Days 1–2', label: 'Phase Loading', desc: 'Polyphenol and senolytic compounds reach intracellular concentrations. Autophagy signaling pathways begin activation.', marker: 'Initiation' },
+      { phase: 'II', time: 'Days 3–5', label: 'Peak Clearance Window', desc: 'Senescent cell clearance signals at maximum. Fisetin and quercetin concentrations support sustained SASP reduction.', marker: 'Peak Phase' },
+      { phase: 'III', time: 'Days 6–7', label: 'Cycle Completion', desc: 'Protocol completes as designed. Remaining compound activity tapers. Do not extend.', marker: 'Completion' },
+      { phase: 'IV', time: 'Weeks 2–4', label: 'Off-Cycle Consolidation', desc: 'Recovery and reconsolidation period. Return to base protocol. The off-cycle is part of the architecture.', marker: 'Consolidation' }
     ]
   }
 };
@@ -642,15 +640,6 @@ function ProductTemplate({ product }) {
         });
       });
 
-      gsap.utils.toArray('.timeline-card').forEach((card) => {
-        ScrollTrigger.create({
-          trigger: card,
-          start: 'top 60%',
-          end: 'bottom 55%',
-          toggleClass: { targets: card, className: 'is-active' }
-        });
-      });
-
       gsap.utils.toArray('.archive-card').forEach((card) => {
         gsap.from(card, {
           scrollTrigger: { trigger: card, start: 'top 85%' },
@@ -893,40 +882,34 @@ function ProductTemplate({ product }) {
 
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12 md:mb-16 space-y-3 reveal">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-[1px] w-12 bg-ar-teal" />
-              <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Protocol Arc</span>
-              <div className="h-[1px] w-12 bg-ar-teal" />
-            </div>
-            <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] text-white uppercase">What to expect</h2>
-            <p className="text-[13px] text-white/50 font-sans max-w-md mx-auto">Individual responses vary. Consistency is the point.</p>
+          <div className="mb-12 md:mb-16 max-w-lg reveal">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/40 block mb-2">Adaptation Model</span>
+            <h2 className="text-2xl md:text-3xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1">Measured Biological Adaptation</h2>
+            <p className="text-[13px] font-mono text-white/45 tracking-[-0.01em]">Response varies. Consistency compounds.</p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-5 md:gap-6">
-            {product.timeline.map((step, i) => (
-              <div key={i} className="relative group reveal">
-                <div className="timeline-card relative overflow-hidden rounded-2xl border border-white/[0.10] transition-all duration-300 hover:-translate-y-1 hover:border-white/[0.18]">
-                  <div className="absolute inset-0 bg-[#0d1424]/80 backdrop-blur-lg" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01] group-hover:from-white/[0.10] group-hover:via-white/[0.05] group-hover:to-white/[0.02] transition-all duration-300" />
-                  <div className="absolute inset-x-0 top-0 h-[1px]" style={{ background: `linear-gradient(90deg, transparent 10%, ${hexToRgba(accent, 0.25)} 50%, transparent 90%)` }} />
+          <div className="relative">
+            <div className="absolute left-[7px] top-3 bottom-3 w-px bg-white/[0.06]" />
 
-                  <div className="relative z-10 p-6 md:p-7">
-                    <p className="text-[11px] font-mono text-white/60 mb-2 uppercase tracking-[0.14em]">{step.time}</p>
-                    <h4 className="text-lg font-head font-normal mb-2 tracking-[-0.02em] text-white">{step.label}</h4>
-                    <p className="text-[12px] text-white/60 leading-relaxed font-sans font-medium mb-5">{step.desc}</p>
-
-                    <div className="h-1 bg-white/[0.08] rounded-full overflow-hidden">
-                      <div className="h-full rounded-full" style={{ width: `${(i + 1) * 25}%`, background: `linear-gradient(90deg, ${hexToRgba(accent, 0.6)}, ${hexToRgba(accent, 0.3)})` }} />
-                    </div>
-
-                    <div className="mt-3">
-                      <span className="text-[11px] font-mono font-bold uppercase text-white/60 tracking-[0.14em]">{step.value}</span>
-                    </div>
+            <div className="space-y-0">
+              {product.timeline.map((step, i) => (
+                <div key={i} className="relative pl-8 py-5 reveal" data-testid={`adaptation-phase-${i}`}>
+                  <div className="absolute left-0 top-[26px] w-[15px] h-[15px] flex items-center justify-center">
+                    <div className="w-[7px] h-[7px] rounded-full border border-white/20 bg-white/[0.06]" />
                   </div>
+
+                  <div className="flex items-baseline gap-3 mb-1">
+                    <span className="text-[11px] font-mono font-black uppercase tracking-[0.06em]" style={{ color: accentText }}>Phase {step.phase}</span>
+                    <span className="text-[11px] font-mono text-white/35 uppercase tracking-[0.06em]">{step.time}</span>
+                  </div>
+                  <h4 className="text-[15px] md:text-[16px] font-sans font-bold text-white/90 tracking-[-0.01em] mb-1.5">{step.label}</h4>
+                  <p className="text-[12px] font-sans text-white/50 leading-relaxed max-w-lg">{step.desc}</p>
+                  <span className="text-[9px] font-mono font-bold uppercase tracking-[0.14em] text-white/25 mt-2 block">{step.marker}</span>
+
+                  {i < product.timeline.length - 1 && <div className="h-px bg-white/[0.03] mt-5" />}
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
