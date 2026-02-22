@@ -696,7 +696,7 @@ function ProductTemplate({ product }) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
       </div>
       <div
-        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.004]"
+        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.012]"
         style={{
           backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
           backgroundSize: '120px 120px'
