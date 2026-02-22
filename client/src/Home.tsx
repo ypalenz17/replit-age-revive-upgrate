@@ -19,9 +19,6 @@ import Footer from './components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* -----------------------------
-   Data: Real Age Revive SKUs
------------------------------- */
 const PRODUCTS = [
   {
     slug: 'cellubiome',
@@ -121,11 +118,8 @@ const PILLARS = [
   { title: 'Cellular Senescence', what: 'Fisetin-driven senolytic cycles clear zombie cells that secrete inflammatory signals.', why: 'Senescent cell accumulation drives chronic inflammation and tissue breakdown.', protocol: 'CELLUNOVA', slug: 'cellunova', tags: ['Fisetin', 'Senolytic'], accent: '#6C5CE7' }
 ];
 
-/* -----------------------------
-   Small helpers
------------------------------- */
 const NoiseOverlay = () => (
-  <div className="fixed inset-0 z-[50] pointer-events-none opacity-[0.045]" aria-hidden="true">
+  <div className="fixed inset-0 z-[50] pointer-events-none opacity-[0.035]" aria-hidden="true">
     <svg width="100%" height="100%">
       <filter id="noise">
         <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" />
@@ -167,8 +161,8 @@ const SideSheet = ({ isOpen, onClose, title, children }: { isOpen: boolean; onCl
   return (
     <div ref={sheetRef} className="fixed inset-0 z-[200] flex justify-end" role="dialog" aria-modal="true">
       <div data-overlay className="absolute inset-0 bg-ar-navy/60 backdrop-blur-sm" onClick={onClose} />
-      <div data-panel className="relative w-full max-w-xl bg-ar-paper h-full shadow-float p-10 md:p-12 overflow-y-auto border-l border-black/5">
-        <button onClick={onClose} className="absolute top-7 right-7 z-10 p-2 rounded-full hover:bg-black/5 transition-colors" aria-label="Close" data-testid="button-close-sidesheet">
+      <div data-panel className="relative w-full max-w-xl bg-ar-paper h-full shadow-float p-10 md:p-12 overflow-y-auto border-l border-black/5 rounded-l-ar-3xl">
+        <button onClick={onClose} className="absolute top-7 right-7 z-10 p-2 rounded-lg hover:bg-black/5 transition-colors" aria-label="Close" data-testid="button-close-sidesheet">
           <X size={22} />
         </button>
         <div className="space-y-8">
@@ -243,7 +237,7 @@ const Navbar = () => {
 
           <div className="hidden md:flex items-center gap-7 font-mono font-medium text-[12px] uppercase tracking-[0.16em]">
             {navLinks.map((l) => (
-              <a key={l.label} href={l.href} className="text-white/55 hover:text-ar-teal transition-colors">
+              <a key={l.label} href={l.href} className="text-white/60 hover:text-ar-teal transition-colors">
                 {l.label}
               </a>
             ))}
@@ -252,7 +246,7 @@ const Navbar = () => {
           <div className="flex items-center gap-2 sm:gap-3">
             <a
               href="/shop"
-              className="flex items-center gap-2 px-4 sm:px-5 min-h-[44px] bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.14em] hover:bg-ar-teal/90 transition-colors"
+              className="flex items-center gap-2 px-4 sm:px-5 min-h-[44px] bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.14em] hover:bg-ar-teal/90 transition-colors"
               data-testid="nav-shop-button"
             >
               Shop
@@ -308,10 +302,6 @@ const Navbar = () => {
   );
 };
 
-/* -----------------------------
-   Sections
------------------------------- */
-
 const Hero = ({ onOpenEvidence, onOpenProduct }) => {
   return (
     <section className="relative min-h-[100dvh] flex flex-col overflow-hidden">
@@ -327,7 +317,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             <h1 className="font-head font-normal text-white tracking-[-0.05em] leading-[0.95]" style={{ fontSize: 'clamp(40px, 10vw, 56px)' }}>
               Cellular Energy.
               <br />
-              <span className="italic text-white/60">Gut Resilience.</span>
+              <span className="text-white/65">Gut Resilience.</span>
             </h1>
           </div>
 
@@ -354,14 +344,14 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full max-w-[420px] mx-auto sm:w-auto sm:max-w-none md:justify-center">
-            <a href="/shop" className="group relative w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 min-h-[48px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] overflow-hidden transition-transform hover:scale-105 active:scale-95" data-testid="button-shop-system">
+            <a href="/shop" className="group relative w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 min-h-[48px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.18em] overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98]" data-testid="button-shop-system">
               <span className="relative z-10">Shop the System</span>
-              <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </a>
 
             <button
               onClick={onOpenEvidence}
-              className="w-full sm:w-auto px-8 md:px-8 py-4 md:py-5 min-h-[48px] border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-white/5 transition-all"
+              className="w-full sm:w-auto px-8 md:px-8 py-4 md:py-5 min-h-[48px] border border-white/20 text-white rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-white/5 hover:border-white/30 transition-all"
               data-testid="button-view-evidence"
             >
               View Evidence
@@ -376,9 +366,10 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
 
 const TheAxis = ({ onOpenEvidence }) => {
   return (
-    <section id="axis" className="py-12 md:py-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8 md:mb-14 reveal">
+    <section id="axis" className="relative py-12 md:py-20 px-6">
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 40%, rgba(25,179,166,0.04) 0%, transparent 70%)' }} />
+      <div className="max-w-7xl mx-auto relative">
+        <div className="text-center mb-8 md:mb-14 reveal-stagger">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-[1px] w-12 bg-ar-teal" />
             <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">The Foundation</span>
@@ -387,7 +378,7 @@ const TheAxis = ({ onOpenEvidence }) => {
           <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2.2rem, 7vw, 4.5rem)' }}>
             Age Revive
             <br />
-            <span className="italic text-white/50">Systems Axis.</span>
+            <span className="text-white/50">Systems Axis.</span>
           </h2>
         </div>
 
@@ -412,11 +403,12 @@ const TheAxis = ({ onOpenEvidence }) => {
               steps: ['Short cycle', 'Defense layer', 'Return to base']
             }
           ].map((item, i) => (
-            <div key={i} className="reveal group relative overflow-hidden rounded-2xl border border-white/[0.12] hover:border-ar-teal/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(25,179,166,0.08)]">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.10] via-white/[0.05] to-white/[0.02] group-hover:from-white/[0.14] group-hover:via-white/[0.08] group-hover:to-white/[0.04] transition-all duration-500" />
+            <div key={i} className="reveal-stagger group relative overflow-hidden rounded-ar-xl border border-white/[0.10] hover:border-white/[0.18] transition-all duration-500 hover:-translate-y-1">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.08] via-white/[0.04] to-white/[0.02] group-hover:from-white/[0.12] group-hover:via-white/[0.06] group-hover:to-white/[0.03] transition-all duration-500" />
               <div className="absolute inset-0 backdrop-blur-2xl" />
+              <div className="absolute inset-0 shadow-card-edge pointer-events-none" />
               <div className="relative z-10 p-8 space-y-6">
-              <div className="w-14 h-14 rounded-xl bg-ar-teal/10 border border-ar-teal/20 text-ar-teal flex items-center justify-center group-hover:scale-110 group-hover:bg-ar-teal/15 transition-all duration-500">
+              <div className="w-14 h-14 rounded-ar-lg bg-ar-teal/10 border border-ar-teal/20 text-ar-teal flex items-center justify-center group-hover:scale-110 group-hover:bg-ar-teal/15 transition-all duration-500">
                 <span className="font-mono text-xs font-bold tracking-[0.14em]">{item.tag}</span>
               </div>
               <div className="space-y-3">
@@ -426,7 +418,7 @@ const TheAxis = ({ onOpenEvidence }) => {
 
               <ul className="space-y-2.5">
                 {item.steps.map((s) => (
-                  <li key={s} className="flex items-center gap-3 text-[12px] font-mono font-bold uppercase tracking-[0.18em] text-white/50">
+                  <li key={s} className="flex items-center gap-3 text-[12px] font-mono font-bold uppercase tracking-[0.18em] text-white/55">
                     <div className="w-1.5 h-1.5 rounded-full bg-ar-teal" /> {s}
                   </li>
                 ))}
@@ -451,16 +443,17 @@ const SixPillars = () => {
   const [openIdx, setOpenIdx] = useState(0);
 
   return (
-    <section id="pillars" className="py-12 md:py-20 px-6 overflow-hidden">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-10 reveal">
+    <section id="pillars" className="relative py-12 md:py-20 px-6 overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(108,92,231,0.04) 0%, transparent 70%)' }} />
+      <div className="max-w-3xl mx-auto relative">
+        <div className="text-center mb-10 reveal-stagger">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-[1px] w-12 bg-ar-teal" />
             <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">Framework</span>
             <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
           <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] uppercase text-white">6 Pillars of Systemic Aging</h2>
-          <p className="text-sm text-white/50 font-medium max-w-xl mx-auto mt-3">
+          <p className="text-sm text-white/55 font-medium max-w-xl mx-auto mt-3">
             A framework for mapping protocols to systems. Not medical advice.
           </p>
         </div>
@@ -471,14 +464,14 @@ const SixPillars = () => {
               key={i}
               onClick={() => setOpenIdx(i)}
               className={[
-                'w-8 h-1.5 rounded-full transition-all duration-300',
+                'w-8 h-1.5 rounded-sm transition-all duration-300',
                 i === openIdx ? 'bg-ar-teal' : 'bg-white/15 hover:bg-white/25'
               ].join(' ')}
               aria-label={`Pillar ${i + 1}`}
               data-testid={`pillar-dot-${i}`}
             />
           ))}
-          <span className="ml-3 font-mono text-[12px] text-white/40 tracking-[0.1em]">{openIdx + 1}/6</span>
+          <span className="ml-3 font-mono text-[12px] text-white/50 tracking-[0.1em]">{openIdx + 1}/6</span>
         </div>
 
         <div className="space-y-2">
@@ -488,11 +481,12 @@ const SixPillars = () => {
               <div
                 key={p.title}
                 className={[
-                  'relative overflow-hidden rounded-xl border transition-all duration-400',
-                  isOpen ? 'border-white/[0.15] bg-white/[0.05]' : 'border-white/[0.06] bg-white/[0.02] hover:border-white/[0.10]'
+                  'relative overflow-hidden rounded-ar-xl border transition-all duration-400',
+                  isOpen ? 'border-white/[0.15] bg-white/[0.06]' : 'border-white/[0.06] bg-white/[0.02] hover:border-white/[0.10]'
                 ].join(' ')}
                 data-testid={`pillar-${i}`}
               >
+                {isOpen && <div className="absolute inset-0 shadow-card-edge pointer-events-none" />}
                 <div
                   className="absolute top-0 left-0 right-0 h-[2px] transition-opacity duration-300"
                   style={{ background: `linear-gradient(90deg, transparent, ${p.accent}, transparent)`, opacity: isOpen ? 1 : 0 }}
@@ -515,11 +509,11 @@ const SixPillars = () => {
                   <div className="px-5 pb-5 space-y-4">
                     <div className="space-y-3 pl-9">
                       <div>
-                        <p className="font-mono text-[12px] text-white/40 uppercase tracking-[0.12em] mb-1">What it is</p>
+                        <p className="font-mono text-[12px] text-white/50 uppercase tracking-[0.12em] mb-1">What it is</p>
                         <p className="text-sm text-white/75 font-medium leading-relaxed">{p.what}</p>
                       </div>
                       <div>
-                        <p className="font-mono text-[12px] text-white/40 uppercase tracking-[0.12em] mb-1">Why it matters</p>
+                        <p className="font-mono text-[12px] text-white/50 uppercase tracking-[0.12em] mb-1">Why it matters</p>
                         <p className="text-sm text-white/75 font-medium leading-relaxed">{p.why}</p>
                       </div>
                     </div>
@@ -527,7 +521,7 @@ const SixPillars = () => {
                     <div className="flex items-center justify-between pl-9 pt-3 border-t border-white/[0.06]">
                       <div className="flex flex-wrap gap-2">
                         {p.tags.map(tag => (
-                          <span key={tag} className="text-[12px] font-mono uppercase tracking-[0.1em] px-3 py-1 rounded-full border" style={{ borderColor: `${p.accent}33`, color: `${p.accent}CC` }}>{tag}</span>
+                          <span key={tag} className="text-[12px] font-mono uppercase tracking-[0.1em] px-3 py-1.5 rounded-md border bg-white/[0.04]" style={{ borderColor: `${p.accent}30`, color: `${p.accent}CC` }}>{tag}</span>
                         ))}
                       </div>
                       <a
@@ -551,9 +545,6 @@ const SixPillars = () => {
 };
 
 
-/* -----------------------------
-   App
------------------------------- */
 export default function Home() {
   const containerRef = useRef(null);
   const [evidencePanel, setEvidencePanel] = useState(false);
@@ -564,16 +555,31 @@ export default function Home() {
 
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
+
     const ctx = gsap.context(() => {
-      gsap.from('.hero-text', { opacity: 0, x: -50, duration: 1.2, ease: 'power4.out' });
-      gsap.from('.hero-panel', { opacity: 0, x: 50, duration: 1.2, ease: 'power4.out', delay: 0.2 });
+      if (prefersReduced) return;
+
+      gsap.from('.hero-text', { opacity: 0, y: 20, duration: 1, ease: 'power3.out' });
+
+      gsap.utils.toArray('.reveal-stagger').forEach((el, i) => {
+        gsap.from(el, {
+          scrollTrigger: { trigger: el, start: 'top 88%' },
+          opacity: 0,
+          y: 16,
+          duration: 0.8,
+          delay: i * 0.06,
+          ease: 'power3.out'
+        });
+      });
 
       gsap.utils.toArray('.reveal').forEach((el) => {
         gsap.from(el, {
           scrollTrigger: { trigger: el, start: 'top 85%' },
           opacity: 0,
-          y: 30,
-          duration: 0.9,
+          y: 16,
+          duration: 0.8,
           ease: 'power3.out'
         });
       });
@@ -598,7 +604,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
       </div>
       <div
-        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.04]"
+        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.02]"
         style={{
           backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
           backgroundSize: '100px 100px'
@@ -614,9 +620,10 @@ export default function Home() {
       />
 
       {/* Protocol Selector */}
-      <section className="py-12 md:py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8 md:mb-14 reveal">
+      <section className="relative py-12 md:py-20 px-6">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 30%, rgba(30,58,138,0.06) 0%, transparent 70%)' }} />
+        <div className="max-w-7xl mx-auto relative">
+          <div className="text-center mb-8 md:mb-14 reveal-stagger">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="h-[1px] w-12 bg-ar-teal" />
               <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Select Your Protocol</span>
@@ -625,7 +632,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-head font-normal text-white tracking-[-0.04em] uppercase leading-tight">
               The System
             </h2>
-            <p className="text-sm text-white/40 font-mono uppercase tracking-[0.12em] mt-3">Choose your starting point</p>
+            <p className="text-sm text-white/50 font-mono uppercase tracking-[0.12em] mt-3">Choose your starting point</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -656,18 +663,19 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
 
       {/* Final CTA */}
-      <section className="py-14 md:py-24 px-6 text-white relative overflow-hidden">
+      <section className="relative py-14 md:py-24 px-6 text-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(25,179,166,0.05) 0%, transparent 70%)' }} />
         <div className="max-w-4xl mx-auto text-center space-y-8 md:space-y-12 relative z-10 reveal">
           <h2 className="font-head font-normal tracking-[-0.05em] uppercase leading-[0.85]" style={{ fontSize: 'clamp(2.5rem, 9vw, 5.5rem)' }}>
             Build your
             <br />
-            <span className="italic text-white/50">baseline.</span>
+            <span className="text-white/55">baseline.</span>
           </h2>
           <div className="flex flex-col sm:flex-row justify-center gap-3 w-full max-w-[420px] mx-auto sm:w-auto sm:max-w-none">
-            <a href="/shop" className="w-full sm:w-auto px-10 py-4 min-h-[48px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:scale-105 transition-all" data-testid="button-cta-shop-system">
+            <a href="/shop" className="w-full sm:w-auto px-10 py-4 min-h-[48px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:scale-[1.02] transition-all" data-testid="button-cta-shop-system">
               Shop the System
             </a>
-            <a href="/shop" className="w-full sm:w-auto px-10 py-4 min-h-[48px] flex items-center justify-center border border-white/20 text-white rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-white/5 transition-all" data-testid="button-cta-build-stack">
+            <a href="/shop" className="w-full sm:w-auto px-10 py-4 min-h-[48px] flex items-center justify-center border border-white/20 text-white rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-white/5 hover:border-white/30 transition-all" data-testid="button-cta-build-stack">
               Build your stack
             </a>
           </div>
@@ -696,7 +704,7 @@ export default function Home() {
             </p>
           </section>
 
-          <div className="p-6 bg-ar-teal/5 border border-ar-teal/10 rounded-ar-2xl">
+          <div className="p-6 bg-ar-teal/5 border border-ar-teal/10 rounded-ar-xl">
             <p className="text-sm italic">
               "Science is the substrate. Purity is the standard. Design is the interface."
             </p>
@@ -713,7 +721,7 @@ export default function Home() {
               <p className="text-xl font-sans font-extrabold uppercase tracking-[-0.02em]">{activeProduct.tagline}</p>
               <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-black/40">{activeProduct.serving}</p>
               {activeProduct.warning && (
-                <div className="p-4 bg-red-500/5 border border-red-500/10 rounded-ar-2xl">
+                <div className="p-4 bg-red-500/5 border border-red-500/10 rounded-ar-xl">
                   <p className="text-[12px] font-mono font-bold text-red-600 uppercase tracking-[0.18em] mb-1">Warning</p>
                   <p className="text-sm font-medium">{activeProduct.warning}</p>
                 </div>
@@ -736,7 +744,7 @@ export default function Home() {
                 <div key={ing.name} className="flex justify-between items-end border-b border-black/10 pb-3 gap-6">
                   <div className="space-y-1">
                     <p className="font-sans font-extrabold text-sm uppercase tracking-[-0.01em]">{ing.name}</p>
-                    <p className="text-[12px] font-mono text-black/45 uppercase tracking-[0.18em]">{ing.purpose}</p>
+                    <p className="text-[12px] font-mono text-black/50 uppercase tracking-[0.18em]">{ing.purpose}</p>
                   </div>
                   <span className="font-mono text-sm font-bold text-ar-teal">{ing.dose}</span>
                 </div>
@@ -746,18 +754,18 @@ export default function Home() {
             <div className="space-y-3">
               <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-black/45">Rationale</p>
               {activeProduct.rationale.map((r) => (
-                <div key={r.title} className="rounded-ar-2xl bg-white border border-black/5 p-4">
+                <div key={r.title} className="rounded-ar-xl bg-white border border-black/5 p-4">
                   <p className="text-xs font-sans font-extrabold uppercase tracking-[0.12em]">{r.title}</p>
                   <p className="mt-2 text-sm text-black/60 font-medium leading-relaxed">{r.text}</p>
                 </div>
               ))}
             </div>
 
-            <button className="w-full py-5 min-h-[48px] bg-ar-navy text-white rounded-full font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-ar-ink transition-colors flex items-center justify-center gap-2" data-testid="button-add-to-cart">
+            <button className="w-full py-5 min-h-[48px] bg-ar-navy text-white rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-ar-ink transition-colors flex items-center justify-center gap-2" data-testid="button-add-to-cart">
               Add to Cart <ArrowRight size={14} />
             </button>
 
-            <p className="text-[12px] font-mono text-black/40 uppercase tracking-[0.18em]">
+            <p className="text-[12px] font-mono text-black/45 uppercase tracking-[0.18em]">
               *These statements have not been evaluated by the FDA.
             </p>
           </div>

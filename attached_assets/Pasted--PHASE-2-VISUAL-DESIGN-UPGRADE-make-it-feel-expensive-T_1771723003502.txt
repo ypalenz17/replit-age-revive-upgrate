@@ -1,0 +1,71 @@
+
+PHASE 2: VISUAL DESIGN UPGRADE (make it feel expensive)
+This phase starts ONLY after Phase 1 is clean.
+
+A) FIX THE “PILL PROBLEM” (engineered corners)
+- Remove excessive rounded-full usage across buttons, nav containers, and ingredient tags.
+- Establish a consistent radius system:
+  - Buttons and small UI: rounded-md or rounded-lg
+  - Cards: rounded-xl
+  - Sheets/modals: rounded-2xl
+- Use rounded-full only for tiny circular dots or badges, not major components.
+
+B) CONTRAST + LUMINOSITY (premium legibility)
+- Ingredient tags currently look muddy (dark text on dark background).
+- Update tag styling pattern to: translucent background + luminous text + subtle border.
+  Example: bg-[accent]/12 text-white/80 border border-white/10
+- Raise low-opacity text (text-white/30 and /40) to at least text-white/60 where it matters (footer, pillar microcopy, ingredient lines).
+
+C) GROUND THE PRODUCT RENDERS (stop “floating asset syndrome”)
+- Add an ambient colored shadow behind each product image:
+  - subtle drop-shadow plus a radial backlight glow behind the jar
+  - per-product accent tint (teal, violet, blue)
+- Add a faint shadow under the jar to anchor it to the card.
+
+D) PUSH THE GRID BACK (subtlety)
+- Reduce grid opacity (it is competing with text and cards).
+- Target: grid should be felt, not read. Cut its opacity roughly in half.
+- Add atmospheric depth: radial gradients behind key sections so the grid recedes naturally.
+
+E) TYPOGRAPHY REFINEMENT (less forced, more editorial)
+- The heavy italics on “Gut Resilience.” and “Systems Axis.” feel forced.
+- Remove forced italics on large headline lines.
+- Create hierarchy using color and opacity instead:
+  - Primary headline: text-white
+  - Secondary headline: text-white/65 to /75
+- Reduce tracking on small all-caps labels and ensure minimum readable size on mobile.
+
+F) GLASS + EDGE LIGHTING (expensive UI, not gaming)
+- Upgrade cards with:
+  - subtle internal gradient (top slightly lighter)
+  - faint glass blur where appropriate (backdrop-filter) with fallbacks
+  - thin edge highlight border (border-white/10) plus a very subtle accent edge on active/hover
+
+G) MOTION (cinematic, subtle)
+- Add staggered reveal animations per section (fade + translateY 12-20px) with smooth easing:
+  cubic-bezier(0.16, 1, 0.3, 1)
+- Add very subtle parallax on the background grid (1-2% movement).
+- Respect prefers-reduced-motion. No motion for users who opt out.
+
+IMPLEMENTATION NOTES (Tailwind)
+- Create a small “design tokens” layer in tailwind.config (borderRadius scale, shadows, accent colors).
+- Create reusable components:
+  - Button (primary/secondary/ghost)
+  - Tag/Pill (but squared corners)
+  - Card shell (glass + border + gradient)
+  - SectionHeading
+- Replace one-off class chaos with consistent component styling.
+
+ACCEPTANCE TESTS (must pass)
+- No dev text, no broken image icons, no empty Journal container.
+- Hero communicates what is sold in 5 seconds and CTA says “Shop”.
+- Product cards have clear buttons and do not rely on tiny “VIEW →”.
+- Ingredient tags are readable and high contrast.
+- Grid is subtle and does not fight content.
+- Product jars feel grounded (ambient glow + shadow).
+- 6 Pillars is interactive (accordion or swipe), not endless scroll.
+- Overall page looks engineered-luxury, not gaming UI.
+
+DELIVERABLE
+- Implement changes and list the files modified.
+- Provide before/after notes describing the design system (radius, typography, shadows, motion).

@@ -17,18 +17,19 @@ export default function Science() {
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-white">
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[150] w-[92%] max-w-6xl flex items-center justify-between px-2 py-3">
-        <div className="flex items-center gap-8 bg-transparent border border-transparent rounded-full px-6 py-3">
+      <nav className="fixed top-0 left-0 right-0 z-[150] bg-transparent border-b border-transparent">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 h-16">
           <a href="/" aria-label="Go to homepage">
             <img src={brandLogo} alt="AGE REVIVE" className="h-7 md:h-8 w-auto brightness-0 invert" />
           </a>
-          <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[12px] uppercase tracking-[0.2em]">
-            <a href="/" className="text-white/60 hover:text-ar-teal transition-all">Home</a>
-            <a href="/shop" className="text-white/60 hover:text-ar-teal transition-all">Shop</a>
-            <a href="/science" className="text-ar-teal transition-all">Science</a>
-            <a href="/quality" className="text-white/60 hover:text-ar-teal transition-all">Quality</a>
-            <a href="/faq" className="text-white/60 hover:text-ar-teal transition-all">FAQ</a>
+          <div className="hidden md:flex items-center gap-7 font-mono font-medium text-[12px] uppercase tracking-[0.16em]">
+            <a href="/" className="text-white/60 hover:text-ar-teal transition-colors">Home</a>
+            <a href="/shop" className="text-white/60 hover:text-ar-teal transition-colors">Shop</a>
+            <a href="/science" className="text-ar-teal transition-colors">Science</a>
+            <a href="/quality" className="text-white/60 hover:text-ar-teal transition-colors">Quality</a>
+            <a href="/faq" className="text-white/60 hover:text-ar-teal transition-colors">FAQ</a>
           </div>
+          <a href="/shop" className="flex items-center gap-2 px-4 sm:px-5 min-h-[44px] bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.14em] hover:bg-ar-teal/90 transition-colors">Shop</a>
         </div>
       </nav>
 
@@ -42,9 +43,9 @@ export default function Science() {
           <h1 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2.2rem, 7vw, 4.5rem)' }}>
             Age Revive
             <br />
-            <span className="italic text-white/50">Science.</span>
+            <span className="text-white/55">Science.</span>
           </h1>
-          <p className="text-white/50 max-w-2xl mx-auto text-lg leading-relaxed">
+          <p className="text-white/60 max-w-2xl mx-auto text-lg leading-relaxed">
             Every ingredient is chosen for its mechanistic evidence, not marketing trends. We publish full dosing, sourcing, and rationale.
           </p>
         </div>
@@ -55,15 +56,15 @@ export default function Science() {
           <h2 className="font-head text-2xl uppercase tracking-[-0.03em] mb-10 text-white/80">Hallmarks of Aging</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {HALLMARKS.map((h) => (
-              <div key={h.title} className="border border-white/[0.08] rounded-2xl p-6 space-y-3 bg-white/[0.02]">
+              <div key={h.title} className="border border-white/[0.08] rounded-ar-xl p-6 space-y-3 bg-white/[0.04]">
                 <div className="flex items-center gap-3">
                   <h3 className="font-head text-lg uppercase tracking-[-0.02em]">{h.title}</h3>
                 </div>
                 <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-ar-teal">{h.protocol}</p>
-                <p className="text-white/50 text-sm leading-relaxed">{h.desc}</p>
+                <p className="text-white/60 text-sm leading-relaxed">{h.desc}</p>
                 <div className="flex gap-2">
                   {h.tags.map((t) => (
-                    <span key={t} className="px-3 py-1 rounded-full border border-white/10 text-[12px] font-mono text-white/40 uppercase tracking-[0.15em]">{t}</span>
+                    <span key={t} className="px-3 py-1 rounded-md bg-white/[0.04] border border-white/10 text-[12px] font-mono text-white/65 uppercase tracking-[0.15em]">{t}</span>
                   ))}
                 </div>
               </div>
@@ -75,17 +76,17 @@ export default function Science() {
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto space-y-8">
           <h2 className="font-head text-2xl uppercase tracking-[-0.03em] text-white/80">The Systems Axis</h2>
-          <div className="space-y-6 text-white/50 leading-relaxed">
+          <div className="space-y-6 text-white/60 leading-relaxed">
             <p>The Age Revive protocol addresses aging through three coordinated biological layers, each targeting distinct but interconnected cellular mechanisms.</p>
-            <div className="border border-white/[0.08] rounded-2xl p-6 bg-white/[0.02] space-y-4">
+            <div className="border border-white/[0.08] rounded-ar-xl p-6 bg-white/[0.04] space-y-4">
               <h3 className="font-head text-lg uppercase text-white/70">NAD+ Metabolism</h3>
               <p>Nicotinamide Riboside (NR) serves as a precursor to NAD+, essential for energy metabolism, DNA repair, and sirtuin activation. Supported by TMG and methylated B vitamins for complete pathway coverage.</p>
             </div>
-            <div className="border border-white/[0.08] rounded-2xl p-6 bg-white/[0.02] space-y-4">
+            <div className="border border-white/[0.08] rounded-ar-xl p-6 bg-white/[0.04] space-y-4">
               <h3 className="font-head text-lg uppercase text-white/70">Gut–Mitochondria Signaling</h3>
               <p>Urolithin A supports mitophagy (mitochondrial recycling) while tributyrin provides butyrate for gut barrier integrity. Enteric-coated for precision delivery beyond the upper GI.</p>
             </div>
-            <div className="border border-white/[0.08] rounded-2xl p-6 bg-white/[0.02] space-y-4">
+            <div className="border border-white/[0.08] rounded-ar-xl p-6 bg-white/[0.04] space-y-4">
               <h3 className="font-head text-lg uppercase text-white/70">Autophagy & Cellular Maintenance</h3>
               <p>Cyclical 7-day protocols with polyphenols (fisetin, quercetin, resveratrol) and cellular cofactors (PQQ, spermidine) support periodic cellular cleanup. The off-cycle is part of the design.</p>
             </div>

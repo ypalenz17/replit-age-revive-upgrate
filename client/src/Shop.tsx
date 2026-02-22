@@ -173,7 +173,7 @@ const PRODUCTS = {
 ------------------------------ */
 function NoiseOverlay() {
   return (
-    <div className="hidden md:block fixed inset-0 pointer-events-none z-[50] opacity-[0.045]" aria-hidden="true">
+    <div className="hidden md:block fixed inset-0 pointer-events-none z-[50] opacity-[0.035]" aria-hidden="true">
       <svg width="100%" height="100%">
         <filter id="noise">
           <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
@@ -249,7 +249,7 @@ function IngredientPanel({ ingredients, accent }) {
               <div className="flex items-baseline justify-between py-3.5 gap-4">
                 <div className="flex-1 min-w-0">
                   <p className="text-[14px] font-bold text-white leading-tight truncate">{ing.name}</p>
-                  <p className="text-[12px] font-mono text-white/55 mt-1 uppercase tracking-[0.12em]">{ing.purpose}</p>
+                    <p className="text-[12px] font-mono text-white/60 mt-1 uppercase tracking-[0.12em]">{ing.purpose}</p>
                 </div>
                 <span className="text-[14px] font-mono font-bold text-white shrink-0">{ing.dose}</span>
               </div>
@@ -314,38 +314,35 @@ function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[150] w-[92%] max-w-6xl flex items-center justify-between px-2 py-3" aria-label="Primary navigation">
-        <div
-          className={[
-            'flex items-center gap-8 transition-all duration-700 rounded-full px-6 py-3',
-            scrolled ? 'bg-white/[0.06] backdrop-blur-xl shadow-float border border-white/[0.08]' : 'bg-transparent border border-transparent'
-          ].join(' ')}
-        >
+      <nav
+        className={[
+          'fixed top-0 left-0 right-0 z-[150] transition-all duration-500',
+          scrolled
+            ? 'bg-ar-navy/85 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_2px_24px_rgba(0,0,0,0.25)]'
+            : 'bg-transparent border-b border-transparent'
+        ].join(' ')}
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 h-16">
           <a href="/" aria-label="Go to homepage">
             <img src={brandLogo} alt="AGE REVIVE" className="h-7 md:h-8 w-auto brightness-0 invert transition-all duration-500" />
           </a>
-          <div className="hidden md:flex items-center gap-8 font-mono font-medium text-[12px] uppercase tracking-[0.2em]">
+          <div className="hidden md:flex items-center gap-7 font-mono font-medium text-[12px] uppercase tracking-[0.16em]">
             {navLinks.map((l) => (
-              <a key={l.label} href={l.href} className="text-white/60 transition-all hover:text-ar-teal">{l.label}</a>
+              <a key={l.label} href={l.href} className="text-white/60 hover:text-ar-teal transition-colors">{l.label}</a>
             ))}
           </div>
-        </div>
-
-        <div
-          className={[
-            'flex items-center gap-5 transition-all duration-700 rounded-full px-5 py-3',
-            scrolled ? 'bg-white/[0.06] backdrop-blur-xl shadow-float border border-white/[0.08]' : 'bg-transparent border border-transparent'
-          ].join(' ')}
-        >
-          <button className="text-white transition-all min-h-[44px]" aria-label="Cart"><ShoppingBag size={18} /></button>
-          <button
-            className="md:hidden text-white transition-all min-h-[44px]"
-            aria-label="Menu"
-            data-testid="mobile-menu-toggle-shop"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <a href="/shop" className="flex items-center gap-2 px-4 sm:px-5 min-h-[44px] bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.14em] hover:bg-ar-teal/90 transition-colors" data-testid="nav-shop-button-pdp">Shop</a>
+            <button className="relative min-w-[44px] min-h-[44px] flex items-center justify-center text-white/70 hover:text-ar-teal transition-colors" aria-label="Cart"><ShoppingBag size={20} /></button>
+            <button
+              className="md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center text-white/70 hover:text-ar-teal transition-colors"
+              aria-label="Menu"
+              data-testid="mobile-menu-toggle-shop"
+              onClick={() => setMobileOpen(!mobileOpen)}
+            >
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -454,8 +451,8 @@ function SideSheet({ open, title, onClose, children }) {
   return (
     <div ref={sheetRef} className="fixed inset-0 z-[100] flex justify-end" role="dialog" aria-modal="true" aria-label={title}>
       <div data-overlay className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      <div data-panel className="relative w-full max-w-md bg-[#111827] h-full shadow-float p-10 md:p-12 overflow-y-auto border-l border-white/[0.08]">
-        <button onClick={onClose} className="absolute top-7 right-7 p-2 rounded-full hover:bg-white/10 transition-colors text-white min-h-[44px]" aria-label="Close panel">
+      <div data-panel className="relative w-full max-w-md bg-[#111827] h-full shadow-float p-10 md:p-12 overflow-y-auto border-l border-white/[0.08] rounded-l-ar-3xl">
+        <button onClick={onClose} className="absolute top-7 right-7 p-2 rounded-lg hover:bg-white/10 transition-colors text-white min-h-[44px]" aria-label="Close panel">
           <X />
         </button>
 
@@ -544,7 +541,7 @@ function ProductTemplate({ product }) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
       </div>
       <div
-        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.04]"
+        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.02]"
         style={{
           backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
           backgroundSize: '100px 100px'
@@ -610,7 +607,7 @@ function ProductTemplate({ product }) {
 
                 <div className="px-5 pb-5 md:px-10 md:pb-10 space-y-3 md:space-y-4">
                   <div>
-                    <span className="inline-block text-[12px] font-mono uppercase tracking-[0.18em] font-bold text-white/50 border border-white/[0.15] rounded-full px-3 py-1 mb-2 md:mb-3">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
+                    <span className="inline-block text-[12px] font-mono uppercase tracking-[0.18em] font-bold text-white/60 border border-white/[0.15] bg-white/[0.04] rounded-md px-3 py-1.5 mb-2 md:mb-3">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
                     <div className="flex items-baseline justify-between gap-4">
                       <h3 className="text-[20px] md:text-[24px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-none"><BrandName name={product.name} /></h3>
                       <span className="text-[18px] md:text-[20px] font-sans font-extrabold text-white leading-none">{product.price}</span>
@@ -668,7 +665,7 @@ function ProductTemplate({ product }) {
             <div key={i} className="flex items-center gap-2.5" data-testid={`trust-badge-${i}`}>
               <span className="font-mono text-[12px] font-bold tracking-[0.14em] text-[color:var(--accent)]">{String(i + 1).padStart(2, '0')}</span>
               <span className="w-px h-3 bg-white/[0.12]" />
-              <span className="text-[12px] font-mono font-medium uppercase tracking-[0.12em] text-white/40 whitespace-nowrap">{text}</span>
+              <span className="text-[12px] font-mono font-medium uppercase tracking-[0.12em] text-white/55 whitespace-nowrap">{text}</span>
             </div>
           ))}
         </div>
@@ -680,7 +677,7 @@ function ProductTemplate({ product }) {
           <div className="md:col-span-5 space-y-6 reveal">
             <TypewriterTelemetry phrases={product.telemetry} />
             <h2 className="text-5xl font-head font-normal tracking-[-0.04em] leading-[1.06] text-white">
-              Every dose,{' '}<span className="italic text-white/50 underline decoration-white/20 underline-offset-4 decoration-[1.5px]">fully disclosed</span>.
+              Every dose,{' '}<span className="text-white/60 underline decoration-white/20 underline-offset-4 decoration-[1.5px]">fully disclosed</span>.
             </h2>
             <p className="text-lg text-white/55 leading-relaxed font-medium">
               No proprietary blends. No hidden fillers. Each active is standardized, dosed at clinical-range levels, and listed with its exact purpose.
@@ -688,7 +685,7 @@ function ProductTemplate({ product }) {
 
             <TrustStats product={product} />
 
-            <p className="text-[12px] font-mono text-white/30 uppercase tracking-[0.14em] leading-relaxed">
+            <p className="text-[12px] font-mono text-white/45 uppercase tracking-[0.14em] leading-relaxed">
               All actives third-party tested in an ISO-certified laboratory. Full certificates of analysis available.
             </p>
           </div>
@@ -754,7 +751,7 @@ function ProductTemplate({ product }) {
                 <div className="relative z-10 p-10 md:p-16 flex flex-col justify-center items-center text-center max-w-xl mx-auto space-y-6">
                   <div className="flex flex-col items-center gap-3">
                     <span className="text-[40px] font-mono font-bold leading-none text-white/20">{`${String(i + 1).padStart(2, '0')}`}</span>
-                    <div className="w-10 h-[1.5px] rounded-full bg-white/30" />
+                    <div className="w-10 h-[1.5px] rounded-full bg-white/40" />
                   </div>
 
                   <h3 className="text-3xl md:text-4xl font-head font-normal tracking-[-0.03em] uppercase leading-none text-white">{item.title}</h3>
@@ -765,7 +762,7 @@ function ProductTemplate({ product }) {
                     {item.tags.map((tag, t) => (
                       <span
                         key={t}
-                        className="px-4 py-1.5 rounded-full text-[12px] font-mono font-medium uppercase tracking-[0.12em] border border-white/[0.15] text-white/60"
+                        className="px-4 py-1.5 rounded-md text-[12px] font-mono font-medium uppercase tracking-[0.12em] border border-white/[0.12] bg-white/[0.04] text-white/70"
                       >{tag}</span>
                     ))}
                   </div>
@@ -790,7 +787,7 @@ function ProductTemplate({ product }) {
               <div className="absolute inset-0 backdrop-blur-2xl" />
               <summary className="relative z-10 list-none flex justify-between items-center font-sans font-extrabold tracking-[0.08em] uppercase text-sm text-white p-6">
                 {faq.q}
-                <ChevronDown className="group-open:rotate-180 transition-transform text-white/30" />
+                <ChevronDown className="group-open:rotate-180 transition-transform text-white/50" />
               </summary>
               <p className="relative z-10 px-6 pb-6 text-sm text-white/50 leading-relaxed font-medium">{faq.a}</p>
             </details>
@@ -874,14 +871,14 @@ export default function Shop() {
         style={{ position: 'sticky', bottom: 0, zIndex: 99999, padding: '16px 0 24px', display: 'flex', justifyContent: 'center', pointerEvents: 'none', background: 'linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.6) 60%, transparent 100%)' }}
       >
         <div
-          style={{ pointerEvents: 'auto', display: 'flex', gap: '6px', padding: '6px', background: 'rgba(15,23,42,0.90)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderRadius: '9999px', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
+          style={{ pointerEvents: 'auto', display: 'flex', gap: '6px', padding: '6px', background: 'rgba(15,23,42,0.90)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
         >
           {Object.values(PRODUCTS).map((p) => (
             <button
               key={p.id}
               onClick={() => setSlug(p.id)}
               className={[
-                'px-4 py-2 rounded-full text-[12px] font-mono font-bold uppercase tracking-[0.14em] transition-all min-h-[44px]',
+                'px-4 py-2 rounded-lg text-[12px] font-mono font-bold uppercase tracking-[0.14em] transition-all min-h-[44px]',
                 slug === p.id ? 'text-white' : 'hover:bg-white/[0.08] text-white/50'
               ].join(' ')}
               style={slug === p.id ? { background: p.accent } : undefined}
