@@ -9,6 +9,7 @@ const STANDARDS = [
   { title: 'Standardized Extracts', desc: 'Where applicable, we use standardized extracts (e.g., 50% EGCG, ≥99% Urolithin A) for consistent potency.' },
   { title: 'Bioavailability Enhanced', desc: 'Strategic use of BioPerine and enteric coating technology to optimize absorption and targeted delivery.' },
   { title: 'Clinically Relevant Dosing', desc: 'Ingredient doses are set at levels supported by published research, not minimum effective quantities for label claims.' },
+  { title: 'Glass Packaging', desc: 'Every product ships in glass bottles with full-coverage silk-printed labels for UV protection. No plastic containers, no chemical leaching, no compromises on stability.' },
 ];
 
 export default function Quality() {

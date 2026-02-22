@@ -88,6 +88,7 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
               <span>{p.serving}</span>
               {p.supply && <span className="text-right">{p.supply}</span>}
             </div>
+            <div className="mt-1.5 text-[10px] font-mono text-white/40 tracking-[0.04em] uppercase">Glass bottle · UV-protected</div>
           </div>
 
           <div className="flex flex-col gap-1.5">
