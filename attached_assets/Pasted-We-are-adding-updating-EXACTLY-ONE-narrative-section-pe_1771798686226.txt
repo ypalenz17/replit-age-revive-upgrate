@@ -1,0 +1,66 @@
+We are adding/updating EXACTLY ONE narrative section per SKU on the Shop page.
+Do NOT create additional sections. Do NOT change other sections.
+Only replace the existing “Why X matters / What it supports” block for each SKU with the single section below.
+
+GLOBAL RULES (apply to all 3 sections)
+- One section only per SKU.
+- Left-aligned.
+- Headline max 3 lines on mobile.
+- Body max 4 short lines (no paragraphs).
+- No bullets. No pills. No cards.
+- Add one thin divider line at the end of the section.
+- Give each section a subtle background “plane” so they don’t blend:
+  - Cellunad: deepest navy
+  - Cellubiome: slightly darker with faint teal wash
+  - Cellunova: slightly darker with faint violet wash
+- Keep typography consistent with the rest of the page (no new fonts).
+
+=========================
+SKU 1: CELLUNAD+ — Foundation Layer
+Replace the existing narrative block with:
+
+Label: FOUNDATION LAYER
+Headline: Your energy system has a supply chain.
+Body (4 lines max):
+Energy rarely collapses overnight. It erodes.
+When NAD+ pools decline, repair slows.
+When repair slows, output drifts.
+CELLUNAD+ keeps the baseline intact.
+
+=========================
+SKU 2: CELLUBIOME — Signal Stability
+Replace the existing narrative block with:
+
+Label: SIGNAL STABILITY
+Headline: Your gut is an energy organ.
+Body (4 lines max):
+When gut signaling is unstable, energy feels noisy.
+Not exhausted.
+Unstable.
+CELLUBIOME restores signal precision.
+
+=========================
+SKU 3: CELLUNOVA — Controlled Reset
+Replace the existing narrative block with:
+
+Label: CONTROLLED RESET
+Headline: Progress requires renewal.
+Body (4 lines max):
+Daily inputs build.
+Cycles recalibrate.
+CELLUNOVA introduces structured renewal
+without extremes.
+
+=========================
+DESIGN REQUIREMENTS
+- Label: small uppercase, readable (not ghost), slight tracking.
+- Headline: strong contrast (near-white).
+- Body: readable (text-white/70+), line-height comfortable.
+- Divider: border-white/10, aligned to content width.
+- Add section padding top/bottom so it reads as a chapter (mobile: ~56–72px total vertical padding).
+
+ACCEPTANCE TEST (375px width)
+- No wrapping beyond rules.
+- Each SKU shows only its one section.
+- Sections are visually distinct due to subtle background plane shifts.
+- No extra UI patterns introduced.

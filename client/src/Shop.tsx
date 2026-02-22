@@ -45,27 +45,14 @@ const COPY_MAP = {
     overline: 'Foundation Layer',
     subtitle: 'CELLUNAD+ restores daily NAD+ input so your cells don\u2019t run on deficit.',
     microLine: 'Protocol: 2 caps daily \u2022 Target: energy + repair',
-    why: {
+    narrative: {
       label: 'Foundation Layer',
-      headline: 'Your Energy System Has a Supply Chain.',
+      headline: 'Your energy system has a supply chain.',
       bodyLines: [
-        'Energy rarely disappears overnight.',
-        'It erodes.',
-        '',
+        'Energy rarely collapses overnight. It erodes.',
         'When NAD+ pools decline, repair slows.',
         'When repair slows, output drifts.',
-        'When output drifts, everything feels harder.',
-        '',
         'CELLUNAD+ keeps the baseline intact.'
-      ]
-    },
-    what: {
-      label: 'What It Supports',
-      headline: 'Your Energy System Has a Supply Chain.',
-      blocks: [
-        { title: 'Daily NAD+ Input', desc: 'Maintains NAD+ availability for repair and energy metabolism.' },
-        { title: 'Redox Balance', desc: 'Stabilizes mitochondrial electron flow for steady output.' },
-        { title: 'Methylation Alignment', desc: 'Provides active B-vitamin cofactors to keep pathways synchronized.' }
       ]
     },
     telemetry: {
@@ -100,26 +87,14 @@ const COPY_MAP = {
     overline: 'Signal Stability',
     subtitle: 'CELLUBIOME reinforces the gut\u2013mitochondria axis so output stays clean.',
     microLine: 'Protocol: 2 enteric caps daily \u2022 Target: gut\u2013mito signaling',
-    why: {
+    narrative: {
       label: 'Signal Stability',
-      headline: 'Your Gut Is an Energy Organ.',
+      headline: 'Your gut is an energy organ.',
       bodyLines: [
-        'When gut signaling is unstable,',
-        'energy feels noisy.',
-        '',
+        'When gut signaling is unstable, energy feels noisy.',
         'Not exhausted.',
         'Unstable.',
-        '',
         'CELLUBIOME restores signal precision.'
-      ]
-    },
-    what: {
-      label: 'What It Supports',
-      headline: 'Your Gut Is an Energy Organ.',
-      blocks: [
-        { title: 'Barrier Integrity', desc: 'Supports epithelial resilience and postbiotic signaling.' },
-        { title: 'Mitochondrial Recovery', desc: 'Urolithin A promotes mitophagy and cellular renewal.' },
-        { title: 'Signal Clarity', desc: 'Tributyrin supports short-chain fatty acid pathways that influence energy balance.' }
       ]
     },
     telemetry: {
@@ -154,24 +129,14 @@ const COPY_MAP = {
     overline: 'Controlled Reset',
     subtitle: 'CELLUNOVA is a 7-day autophagy-aligned cycle designed to clear accumulated stress without extremes.',
     microLine: 'Protocol: 7 days \u2022 5 caps/day \u2022 Target: renewal cadence',
-    why: {
+    narrative: {
       label: 'Controlled Reset',
-      headline: 'Progress Requires Renewal.',
+      headline: 'Progress requires renewal.',
       bodyLines: [
         'Daily inputs build.',
         'Cycles recalibrate.',
-        '',
         'CELLUNOVA introduces structured renewal',
-        'without impulsive restriction.'
-      ]
-    },
-    what: {
-      label: 'What It Supports',
-      headline: 'Progress Requires Renewal.',
-      blocks: [
-        { title: 'Cellular Cleanup', desc: 'Supports pathways associated with autophagy signaling.' },
-        { title: 'Oxidative Defense', desc: 'Polyphenols support redox balance during higher demand periods.' },
-        { title: 'Senescence Modulation', desc: 'Fisetin included within a structured, repeatable cadence.' }
+        'without extremes.'
       ]
     },
     telemetry: {
@@ -814,40 +779,34 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      {/* WHY — Plane B (lighter) */}
-      <section className="relative py-11 md:py-16" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.25) 8%, rgba(15,23,42,0.25) 92%, rgba(15,23,42,0) 100%)' }} data-testid="section-why">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 80% 60% at 50% 40%, ${hexToRgba(accent, 0.04)}, transparent 70%)` }} />
+      {/* NARRATIVE — single section per SKU */}
+      <section
+        className="relative py-14 md:py-[72px]"
+        style={{
+          background: product.id === 'cellunad'
+            ? 'linear-gradient(180deg, rgba(15,23,42,0.6) 0%, rgba(15,23,42,0.75) 50%, rgba(15,23,42,0.6) 100%)'
+            : product.id === 'cellubiome'
+              ? 'linear-gradient(180deg, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.7) 50%, rgba(15,23,42,0.55) 100%)'
+              : 'linear-gradient(180deg, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.7) 50%, rgba(15,23,42,0.55) 100%)'
+        }}
+        data-testid="section-narrative"
+      >
+        {product.id === 'cellubiome' && (
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(25,179,166,0.04), transparent 70%)' }} />
+        )}
+        {product.id === 'cellunova' && (
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(108,92,231,0.04), transparent 70%)' }} />
+        )}
         <div className="relative z-[1] max-w-3xl mx-auto px-6">
           <div className="reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-3" data-testid="text-why-label">{copy.why.label}</span>
-            <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-6" data-testid="text-why-headline">{copy.why.headline}</h2>
-            <div className="space-y-0" data-testid="text-why-body">
-              {copy.why.bodyLines.map((line, i) => (
-                line === '' ? <div key={i} className="h-4" /> : <p key={i} className="text-[14px] md:text-[15px] font-sans text-white/60 leading-[1.7]">{line}</p>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.16em] text-white/50 block mb-4" data-testid="text-narrative-label">{copy.narrative.label}</span>
+            <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-5" data-testid="text-narrative-headline">{copy.narrative.headline}</h2>
+            <div className="space-y-1" data-testid="text-narrative-body">
+              {copy.narrative.bodyLines.map((line, i) => (
+                <p key={i} className="text-[14px] md:text-[15px] font-sans text-white/70 leading-[1.75]">{line}</p>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHAT — Plane A (darker) */}
-      <section className="relative py-11 md:py-16" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.45) 8%, rgba(15,23,42,0.45) 92%, rgba(15,23,42,0) 100%)' }} data-testid="section-what">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 70% 50% at 50% 60%, ${hexToRgba(accent, 0.03)}, transparent 70%)` }} />
-        <div className="relative z-[1] max-w-3xl mx-auto px-6">
-          <div className="reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/60 block mb-3" data-testid="text-what-label">{copy.what.label}</span>
-            <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-8" data-testid="text-what-headline">{copy.what.headline}</h2>
-            <div className="flex flex-col gap-6">
-              {copy.what.blocks.map((block, i) => (
-                <div key={i} className="flex items-start gap-5" data-testid={`what-block-${i}`}>
-                  <span className="font-mono text-[14px] font-black tracking-[0.04em] shrink-0 w-6 text-right" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[13px] font-mono font-bold uppercase tracking-[0.08em] text-white/90">{block.title}</span>
-                    <span className="text-[13px] font-sans text-white/55 leading-relaxed">{block.desc}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <div className="border-b border-white/10 mt-8" />
           </div>
         </div>
       </section>
