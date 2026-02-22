@@ -916,45 +916,29 @@ function ProductTemplate({ product }) {
 
       <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
 
-      <section className="py-16 md:py-24 px-6">
-        <div className="max-w-4xl mx-auto space-y-16">
-          <div className="text-center text-white mb-12 space-y-3 reveal">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-[1px] w-12 bg-ar-teal" />
-              <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Mechanistic Layering</span>
-              <div className="h-[1px] w-12 bg-ar-teal" />
-            </div>
-            <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] uppercase">Rationale</h2>
-            <p className="text-[13px] text-white/50 font-sans max-w-md mx-auto">Clear intent. Clean inputs. Built to be scanned, not worshipped.</p>
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-12 md:mb-16 max-w-lg reveal">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] text-white/40 block mb-2">System Architecture</span>
+            <h2 className="text-2xl md:text-3xl font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1">Rationale</h2>
+            <p className="text-[13px] font-mono text-white/45 tracking-[-0.01em]">Each layer serves a defined function. No redundancy.</p>
           </div>
 
-          {product.mechanics.map((item, i) => (
-            <div key={i} className="archive-card w-full relative overflow-hidden rounded-2xl border border-white/[0.10] hover:border-white/[0.18] transition-all duration-300" data-testid={`rationale-card-${i}`}>
-              <div className="absolute inset-0 bg-[#0d1424]/80 backdrop-blur-lg" />
-              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.07] via-white/[0.03] to-white/[0.01]" />
-              <div className="absolute inset-x-0 top-0 h-[1px]" style={{ background: `linear-gradient(90deg, transparent 10%, ${hexToRgba(accent, 0.25)} 50%, transparent 90%)` }} />
-
-              <div className="relative z-10 p-8 md:p-12 flex flex-col justify-center items-center text-center max-w-xl mx-auto space-y-5">
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-[36px] font-mono font-bold leading-none text-white/15">{`${String(i + 1).padStart(2, '0')}`}</span>
-                  <div className="w-8 h-[1px] bg-white/30" />
+          <div className="space-y-0">
+            {product.mechanics.map((item, i) => (
+              <div key={i} className="reveal" data-testid={`rationale-module-${i}`}>
+                <div className="flex items-start gap-5 md:gap-8 py-6 md:py-8">
+                  <span className="text-[18px] md:text-[22px] font-mono font-black leading-none text-white/25 shrink-0 w-8 text-right pt-0.5" style={{ color: accentText, opacity: 0.35 }}>{String(i + 1).padStart(2, '0')}</span>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-[16px] md:text-[18px] font-sans font-bold tracking-[-0.01em] text-white/90 mb-1.5">{item.title}</h3>
+                    <p className="text-[12px] md:text-[13px] font-sans text-white/50 leading-relaxed max-w-lg mb-2.5">{item.text}</p>
+                    <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.06em]">{item.tags.join(' · ')}</span>
+                  </div>
                 </div>
-
-                <h3 className="text-2xl md:text-3xl font-head font-normal tracking-[-0.03em] uppercase leading-none text-white">{item.title}</h3>
-
-                <p className="text-[14px] md:text-[15px] font-sans font-medium text-white/60 leading-relaxed max-w-md mx-auto">{item.text}</p>
-
-                <div className="pt-3 flex flex-wrap justify-center gap-2">
-                  {item.tags.map((tag, t) => (
-                    <span
-                      key={t}
-                      className="px-3 py-1 rounded-lg text-[11px] font-mono font-medium uppercase tracking-[0.10em] border border-white/[0.08] bg-white/[0.04] text-white/60"
-                    >{tag}</span>
-                  ))}
-                </div>
+                {i < product.mechanics.length - 1 && <div className="h-px bg-white/[0.04] ml-[52px] md:ml-[64px]" />}
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
