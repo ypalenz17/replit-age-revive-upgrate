@@ -721,13 +721,13 @@ function ProductTemplate({ product }) {
                   <img src={product.heroImage} alt={product.name} className="relative z-10 w-[45%] md:w-[55%] max-h-[180px] md:max-h-none h-auto object-contain" style={{ filter: `drop-shadow(0 8px 16px ${hexToRgba(accent, 0.2)}) drop-shadow(0 3px 6px rgba(0,0,0,0.35))` }} />
                 </div>
 
-                <div className="px-2 pb-2 md:px-4 md:pb-4 space-y-2">
+                <div className="px-3 pb-3 md:px-4 md:pb-4 space-y-2.5">
                   <div className="flex items-baseline justify-between gap-4">
-                    <span className="text-[10px] font-mono uppercase tracking-[0.10em] font-bold text-white/50">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
+                    <span className="text-[11px] font-mono uppercase tracking-[0.10em] font-bold text-white/50">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
                     <span className="text-[22px] md:text-[24px] font-sans font-black text-white leading-none tracking-[-0.03em]">{product.price}</span>
                   </div>
 
-                  <p className="text-[13px] md:text-[14px] text-white/65 leading-snug font-sans tracking-[-0.01em]">{product.description}</p>
+                  <p className="text-[14px] md:text-[15px] text-white/65 leading-snug font-sans tracking-[-0.01em]">{product.description}</p>
 
                   <div className="border-t border-white/[0.06] pt-3 mt-2">
                     <div className="flex flex-col gap-1">
@@ -800,7 +800,7 @@ function ProductTemplate({ product }) {
         <div className="relative z-[1] max-w-3xl mx-auto px-6">
           <div className="reveal">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.16em] block mb-4" style={{ color: accentText }} data-testid="text-narrative-label">{copy.narrative.label}</span>
-            <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-5" data-testid="text-narrative-headline">{copy.narrative.headline}</h2>
+            <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-6" data-testid="text-narrative-headline">{copy.narrative.headline}</h2>
             <div className="space-y-1" data-testid="text-narrative-body">
               {copy.narrative.bodyLines.map((line, i) => (
                 <p key={i} className="text-[14px] md:text-[15px] font-sans text-white/70 leading-[1.75]">{line}</p>
@@ -817,8 +817,8 @@ function ProductTemplate({ product }) {
         <div className="relative z-[1] max-w-3xl mx-auto px-6">
           <div className="reveal">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Telemetry</span>
-            <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">{copy.telemetry.headline}</h2>
-            <p className="text-[13px] font-sans text-white/55 leading-relaxed max-w-xl mb-6">{copy.telemetry.body}</p>
+            <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-3">{copy.telemetry.headline}</h2>
+            <p className="text-[14px] font-sans text-white/60 leading-relaxed max-w-xl mb-6">{copy.telemetry.body}</p>
 
             <div className="flex flex-col gap-0">
               {copy.telemetry.rows.map((row, i) => (
@@ -826,7 +826,7 @@ function ProductTemplate({ product }) {
                   <span className="font-mono text-[14px] font-black tracking-[0.04em] shrink-0 w-6 text-right" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
                   <div className="flex flex-col gap-0 flex-1 border-b border-white/[0.05] pb-3">
                     <span className="text-[13px] font-sans font-bold text-white/90">{row.label}</span>
-                    <span className="text-[11px] font-mono text-white/45 tracking-[0.02em] mt-0.5">{row.metric}</span>
+                    <span className="text-[12px] font-mono text-white/45 tracking-[0.02em] mt-0.5">{row.metric}</span>
                   </div>
                 </div>
               ))}
@@ -846,7 +846,7 @@ function ProductTemplate({ product }) {
                   <span className="font-mono text-[14px] font-black tracking-[0.04em] shrink-0 w-6 text-right" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
                   <div className="flex flex-col">
                     <span className="text-[13px] font-sans font-bold text-white/90">{item.label}</span>
-                    <span className="text-[12px] font-sans text-white/50 leading-snug">{item.desc}</span>
+                    <span className="text-[13px] font-sans text-white/55 leading-snug">{item.desc}</span>
                   </div>
                 </div>
               ))}
@@ -856,14 +856,14 @@ function ProductTemplate({ product }) {
       </section>
 
       {/* COMPOUND SPECIFICATION — Plane C (deep vignette) */}
-      <section className="relative py-11 md:py-16" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.7) 50%, rgba(15,23,42,0.55) 100%)' }} data-testid="section-spec">
+      <section className="relative py-11 md:py-16" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.7) 8%, rgba(15,23,42,0.7) 92%, rgba(15,23,42,0) 100%)' }} data-testid="section-spec">
         <div className="absolute inset-0 bg-[#0f172a]/30 pointer-events-none z-0" />
         <div className="relative z-[1] max-w-3xl mx-auto px-6">
           <div className="reveal mb-6">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Compound Specification</span>
-            <p className="text-[12px] font-mono text-white/50 tracking-[0.04em] uppercase mb-1">{copy.spec.meta}</p>
-            <p className="text-[13px] font-sans text-white/60 leading-relaxed max-w-lg mb-1">{copy.spec.reassurance}</p>
-            <p className="text-[11px] font-mono text-white/45 tracking-[0.04em]">{copy.spec.declaration}</p>
+            <p className="text-[12px] font-mono text-white/50 tracking-[0.04em] uppercase mb-1.5">{copy.spec.meta}</p>
+            <p className="text-[14px] font-sans text-white/60 leading-relaxed max-w-lg mb-1.5">{copy.spec.reassurance}</p>
+            <p className="text-[12px] font-mono text-white/45 tracking-[0.04em]">{copy.spec.declaration}</p>
             {copy.spec.microNote && <p className="text-[11px] font-mono text-white/40 tracking-[0.04em] mt-1">{copy.spec.microNote}</p>}
           </div>
 
@@ -872,8 +872,8 @@ function ProductTemplate({ product }) {
           </div>
 
           <div className="mt-5 space-y-1">
-            <p className="text-[10px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All dosages reflect clinically studied ranges</p>
-            <p className="text-[10px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All compounds listed in bioavailable forms</p>
+            <p className="text-[11px] font-mono text-white/45 tracking-[0.06em] leading-relaxed">All dosages reflect clinically studied ranges</p>
+            <p className="text-[11px] font-mono text-white/45 tracking-[0.06em] leading-relaxed">All compounds listed in bioavailable forms</p>
           </div>
         </div>
       </section>
@@ -899,10 +899,10 @@ function ProductTemplate({ product }) {
 
                     <div className="flex items-baseline gap-3 mb-1">
                       <span className="text-[11px] font-mono font-black uppercase tracking-[0.06em]" style={{ color: accentText }}>Phase {step.phase}</span>
-                      <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.08em]">{step.time}</span>
+                      <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.08em]">{step.time}</span>
                     </div>
                     <h4 className="text-[15px] md:text-[16px] font-sans font-bold text-white/90 tracking-[-0.01em] mb-1">{step.label}</h4>
-                    <p className="text-[13px] font-sans text-white/55 leading-relaxed max-w-md">{step.desc}</p>
+                    <p className="text-[14px] font-sans text-white/60 leading-relaxed max-w-md">{step.desc}</p>
 
                     {i < copy.arc.phases.length - 1 && <div className="h-px bg-white/[0.03] mt-4" />}
                   </div>
@@ -918,7 +918,7 @@ function ProductTemplate({ product }) {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <div className="reveal">
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-3" data-testid="text-close-headline">{copy.close.headline}</h2>
-            <p className="text-[14px] font-sans text-white/55 leading-relaxed max-w-md mx-auto mb-6">{copy.close.body}</p>
+            <p className="text-[14px] font-sans text-white/60 leading-relaxed max-w-md mx-auto mb-8">{copy.close.body}</p>
 
             <div className="flex flex-col items-center gap-3">
               <MagneticButton
