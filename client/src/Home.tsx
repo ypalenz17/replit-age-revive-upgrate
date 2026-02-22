@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowRight,
-  ChevronDown,
   Menu,
   ShoppingBag,
   X
@@ -443,12 +442,10 @@ const TheAxis = ({ onOpenEvidence }) => {
 };
 
 const SixPillars = () => {
-  const [openIdx, setOpenIdx] = useState(0);
-
   return (
     <section id="pillars" className="relative py-12 md:py-20 px-6 overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(108,92,231,0.04) 0%, transparent 70%)' }} />
-      <div className="max-w-3xl mx-auto relative">
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(108,92,231,0.03) 0%, transparent 70%)' }} />
+      <div className="max-w-2xl mx-auto relative">
         <div className="text-center mb-10 reveal-stagger">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-[1px] w-12 bg-ar-teal" />
@@ -456,91 +453,39 @@ const SixPillars = () => {
             <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
           <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] uppercase text-white">6 Pillars of Systemic Aging</h2>
-          <p className="text-sm text-white/55 font-medium max-w-xl mx-auto mt-3">
+          <p className="text-[13px] text-white/50 font-sans max-w-md mx-auto mt-3 leading-relaxed">
             A framework for mapping protocols to systems. Not medical advice.
           </p>
         </div>
 
-        <div className="flex items-center justify-center gap-1.5 mb-8">
-          {PILLARS.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setOpenIdx(i)}
-              className={[
-                'w-8 h-1.5 rounded-sm transition-all duration-300',
-                i === openIdx ? 'bg-ar-teal' : 'bg-white/15 hover:bg-white/25'
-              ].join(' ')}
-              aria-label={`Pillar ${i + 1}`}
-              data-testid={`pillar-dot-${i}`}
-            />
-          ))}
-          <span className="ml-3 font-mono text-[12px] text-white/50 tracking-[0.1em]">{openIdx + 1}/6</span>
-        </div>
-
-        <div className="space-y-2">
-          {PILLARS.map((p, i) => {
-            const isOpen = i === openIdx;
-            return (
-              <div
-                key={p.title}
-                className={[
-                  'relative overflow-hidden rounded-ar-xl border transition-all duration-400',
-                  isOpen ? 'border-white/[0.15] bg-white/[0.06]' : 'border-white/[0.06] bg-white/[0.02] hover:border-white/[0.10]'
-                ].join(' ')}
-                data-testid={`pillar-${i}`}
-              >
-                {isOpen && <div className="absolute inset-0 shadow-card-edge pointer-events-none" />}
-                <div
-                  className="absolute top-0 left-0 right-0 h-[2px] transition-opacity duration-300"
-                  style={{ background: `linear-gradient(90deg, transparent, ${p.accent}, transparent)`, opacity: isOpen ? 1 : 0 }}
-                />
-
-                <button
-                  onClick={() => setOpenIdx(i)}
-                  className="w-full flex items-center gap-4 px-5 py-4 min-h-[56px] text-left"
-                  data-testid={`pillar-toggle-${i}`}
-                >
-                  <span className="font-mono text-[12px] font-bold tracking-[0.15em] shrink-0" style={{ color: isOpen ? p.accent : `${p.accent}55` }}>0{i + 1}</span>
-                  <h4 className={['text-base md:text-lg font-head font-normal uppercase tracking-[-0.01em] leading-tight flex-1 transition-colors duration-300', isOpen ? 'text-white' : 'text-white/60'].join(' ')}>{p.title}</h4>
-                  <ChevronDown size={18} className={['text-white/40 shrink-0 transition-transform duration-300', isOpen ? 'rotate-180' : ''].join(' ')} />
-                </button>
-
-                <div
-                  className="overflow-hidden transition-all duration-400 ease-out"
-                  style={{ maxHeight: isOpen ? '400px' : '0px', opacity: isOpen ? 1 : 0 }}
-                >
-                  <div className="px-5 pb-5 space-y-4">
-                    <div className="space-y-3 pl-9">
-                      <div>
-                        <p className="font-mono text-[12px] text-white/50 uppercase tracking-[0.12em] mb-1">What it is</p>
-                        <p className="text-sm text-white/75 font-medium leading-relaxed">{p.what}</p>
-                      </div>
-                      <div>
-                        <p className="font-mono text-[12px] text-white/50 uppercase tracking-[0.12em] mb-1">Why it matters</p>
-                        <p className="text-sm text-white/75 font-medium leading-relaxed">{p.why}</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between pl-9 pt-3 border-t border-white/[0.06]">
-                      <div className="flex flex-wrap gap-2">
-                        {p.tags.map(tag => (
-                          <span key={tag} className="text-[12px] font-mono uppercase tracking-[0.1em] px-3 py-1.5 rounded-md border bg-white/[0.04]" style={{ borderColor: `${p.accent}30`, color: `${p.accent}CC` }}>{tag}</span>
-                        ))}
-                      </div>
-                      <a
-                        href={`/product/${p.slug}`}
-                        className="flex items-center gap-1.5 text-[12px] font-mono font-bold uppercase tracking-[0.12em] min-h-[44px] px-3 transition-colors hover:brightness-125"
-                        style={{ color: p.accent }}
-                        data-testid={`pillar-link-${p.slug}`}
-                      >
-                        {p.protocol} <ArrowRight size={14} />
-                      </a>
-                    </div>
+        <div className="border-t border-white/[0.08]">
+          {PILLARS.map((p, i) => (
+            <div
+              key={p.title}
+              className="border-b border-white/[0.08] py-4 md:py-5 reveal-stagger"
+              data-testid={`pillar-${i}`}
+            >
+              <div className="flex items-start gap-4">
+                <span className="font-mono text-[11px] font-bold tracking-[0.1em] text-white/25 pt-0.5 shrink-0 w-5">0{i + 1}</span>
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white">{p.title}</h4>
+                  <p className="text-[12.5px] font-sans text-white/55 leading-[1.5] mt-1.5">{p.what}</p>
+                  <div className="flex items-center gap-4 mt-2.5">
+                    <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/35">{p.tags.join(' · ')}</span>
+                    <div className="h-[10px] w-px bg-white/10" />
+                    <a
+                      href={`/product/${p.slug}`}
+                      className="text-[10px] font-mono font-bold uppercase tracking-[0.08em] transition-colors duration-200 flex items-center gap-1"
+                      style={{ color: `${p.accent}AA` }}
+                      data-testid={`pillar-link-${p.slug}`}
+                    >
+                      {p.protocol} <ArrowRight size={9} />
+                    </a>
                   </div>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>
