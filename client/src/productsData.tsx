@@ -1,7 +1,3 @@
-import imgCellubiome from '@assets/cellubiome_cropped.png';
-import imgCellunad from '@assets/cellunad_cropped.png';
-import imgCellunova from '@assets/cellunova_cropped.png';
-
 export const PRODUCTS = [
   {
     slug: 'cellunad',
@@ -14,7 +10,7 @@ export const PRODUCTS = [
     supply: '30-day supply',
     color: '#1e3a8a',
     textColor: '#60a5fa',
-    image: imgCellunad,
+    image: '/images/cellunad_cropped.png',
     ingredients: ['NR 500 mg', 'TMG 250 mg', 'Apigenin 100 mg'],
   },
   {
@@ -28,7 +24,7 @@ export const PRODUCTS = [
     supply: '30-day supply',
     color: '#19B3A6',
     textColor: '#5eead4',
-    image: imgCellubiome,
+    image: '/images/cellubiome_cropped.png',
     ingredients: ['Urolithin A 500 mg', 'Tributyrin 500 mg'],
   },
   {
@@ -42,7 +38,7 @@ export const PRODUCTS = [
     supply: '7-day cycle (monthly)',
     color: '#6C5CE7',
     textColor: '#a78bfa',
-    image: imgCellunova,
+    image: '/images/cellunova_cropped.png',
     ingredients: ['Fisetin', 'Spermidine', 'PQQ'],
   }
 ];
