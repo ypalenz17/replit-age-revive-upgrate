@@ -35,7 +35,7 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
   return (
     <div className="flex flex-col h-full" data-testid={`card-protocol-${p.slug}`}>
 
-      <div className="relative mb-2 sm:mb-3 flex items-end justify-center h-[180px] sm:h-[200px]">
+      <div className="relative mb-2 sm:mb-3 flex items-end justify-center h-[180px] sm:h-[200px] mt-6 sm:mt-0">
         <div
           className="absolute left-1/2 -translate-x-1/2 top-[15%] w-[80%] h-[70%] blur-[40px] opacity-20 pointer-events-none"
           style={{ background: `radial-gradient(ellipse at 50% 60%, ${hexToRgba(accent, 0.5)}, transparent 70%)` }}
