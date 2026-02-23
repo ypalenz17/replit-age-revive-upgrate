@@ -581,7 +581,7 @@ export default function Home() {
           className="w-full h-full object-cover grayscale opacity-30 mix-blend-screen"
           alt=""
         />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#131b2e_0%,_#0b1120_120%)] opacity-80" />
       </div>
       <div
         className="fixed inset-0 pointer-events-none z-[1] opacity-[0.02]"
