@@ -306,7 +306,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
       <div className="relative z-10 w-full max-w-3xl lg:max-w-7xl mx-auto flex flex-col justify-center text-center lg:text-left px-5 md:px-6 lg:px-12 pt-20 md:pt-36 lg:pt-44 pb-6 md:pb-12 lg:pb-20 min-h-[100dvh]">
         <div className="lg:grid lg:grid-cols-12 lg:gap-8 lg:items-center">
 
-        <div className="flex flex-col hero-text w-full items-center lg:items-start lg:col-span-6">
+        <div className="flex flex-col hero-text w-full items-center lg:items-start lg:col-span-7">
 
           <div className="flex flex-col items-center md:items-start md:pl-[3%] lg:pl-0">
             <div className="flex items-center gap-2 justify-center lg:justify-start mb-3">
@@ -371,28 +371,6 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
           <p className="mt-2 text-[11px] text-white/40 font-sans tracking-normal lg:hidden">Start with the bundle or choose a protocol.</p>
         </div>
 
-        <div className="hidden lg:flex lg:col-span-6 relative items-center justify-center min-h-[450px]">
-          <div className="relative w-full h-[480px]">
-            <img
-              src={imgCellunad}
-              alt=""
-              className="absolute left-[10%] top-[8%] w-[38%] h-auto object-contain z-[3] hero-text"
-              style={{ filter: 'drop-shadow(0 12px 28px rgba(30,58,138,0.3)) drop-shadow(0 4px 10px rgba(0,0,0,0.4))' }}
-            />
-            <img
-              src={imgCellubiome}
-              alt=""
-              className="absolute left-[32%] top-[18%] w-[38%] h-auto object-contain z-[2] hero-text"
-              style={{ filter: 'drop-shadow(0 12px 28px rgba(25,179,166,0.25)) drop-shadow(0 4px 10px rgba(0,0,0,0.35))' }}
-            />
-            <img
-              src={imgCellunova}
-              alt=""
-              className="absolute left-[54%] top-[6%] w-[38%] h-auto object-contain z-[1] hero-text"
-              style={{ filter: 'drop-shadow(0 12px 28px rgba(108,92,231,0.25)) drop-shadow(0 4px 10px rgba(0,0,0,0.35))' }}
-            />
-          </div>
-        </div>
 
         </div>
       </div>
