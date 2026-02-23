@@ -299,8 +299,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
         loop
         muted
         playsInline
-        className="absolute inset-[-5%] w-[110%] h-[110%] object-cover z-0"
-        style={{ objectPosition: '60% center' }}
+        className="absolute inset-0 w-full h-full object-cover z-0 scale-[1.05] translate-x-[2.5%]"
         src={heroVideo}
       />
       <div className="absolute inset-0 z-[1] pointer-events-none" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.5) 0%, rgba(15,23,42,0.35) 40%, rgba(15,23,42,0.6) 80%, rgba(15,23,42,0.9) 100%)' }} />
