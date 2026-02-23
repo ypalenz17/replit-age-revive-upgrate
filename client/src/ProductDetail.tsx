@@ -279,12 +279,13 @@ function Accordion({ items }: { items: { q: string; a: string }[] }) {
   );
 }
 
-function SectionLabel({ label }: { label: string }) {
+function SectionLabel({ label, color, align = 'center' }: { label: string; color?: string; align?: 'center' | 'left' }) {
+  const c = color || '#2dd4bf';
   return (
-    <div className="flex items-center justify-center gap-3 mb-2">
-      <div className="h-[1px] w-10 bg-ar-teal" />
-      <span className="font-mono text-[11px] text-ar-teal uppercase tracking-[0.18em]">{label}</span>
-      <div className="h-[1px] w-10 bg-ar-teal" />
+    <div className={`flex items-center gap-3 ${align === 'center' ? 'justify-center' : ''}`}>
+      <div className="h-[1px] w-8" style={{ background: c }} />
+      <span className="font-mono text-[12px] uppercase tracking-[0.18em]" style={{ color: c }}>{label}</span>
+      <div className="h-[1px] w-8" style={{ background: c }} />
     </div>
   );
 }
@@ -428,20 +429,25 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
         </div>
       </section>
 
-      {/* ───── BENEFIT HIGHLIGHTS STRIP ───── */}
-      <section className="pdp-reveal py-12 md:py-16 border-y border-white/[0.05] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-[60px]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* ───── BENEFIT HIGHLIGHTS ───── */}
+      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
+        <div className="max-w-7xl mx-auto space-y-14">
+          <div className="text-center space-y-3">
+            <SectionLabel label="Key Benefits" color={accentColor} />
+            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>What it does</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {data.benefitHighlights.map((h, i) => {
               const Icon = getIcon(h.icon);
               return (
-                <div key={i} className="flex gap-4 items-start" data-testid={`highlight-${i}`}>
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: `${data.accent}15`, border: `1px solid ${accentColor}25` }}>
-                    <Icon size={18} style={{ color: accentColor }} />
+                <div key={i} className="p-6 md:p-7 border border-white/[0.06] bg-white/[0.02] space-y-4 group hover:border-white/[0.10] transition-all rounded-lg" data-testid={`highlight-${i}`}>
+                  <div className="flex items-center gap-3">
+                    <Icon size={16} style={{ color: `${accentColor}` }} />
+                    <span className="font-mono text-[10px] font-bold uppercase text-white/40">0{i + 1}</span>
                   </div>
-                  <div>
-                    <p className="text-[13px] font-sans font-semibold text-white mb-1">{h.title}</p>
-                    <p className="text-[12px] text-white/45 font-sans leading-snug">{h.desc}</p>
+                  <div className="space-y-2">
+                    <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white">{h.title}</h4>
+                    <p className="text-[13px] text-white/50 leading-relaxed font-sans font-medium">{h.desc}</p>
                   </div>
                 </div>
               );
@@ -451,88 +457,90 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── SCIENCE SECTION ───── */}
-      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="space-y-6">
-            <div>
-              <SectionLabel label="The Science" />
-              <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>{data.scienceSection.headline}</h2>
+      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="space-y-8">
+              <div className="space-y-3">
+                <SectionLabel label="The Science" color={accentColor} align="left" />
+                <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>{data.scienceSection.headline}</h2>
+              </div>
+              <div className="space-y-6 text-white/55 text-[16px] md:text-[18px] leading-relaxed font-sans font-medium">
+                {data.scienceSection.paragraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
             </div>
-            <div className="space-y-5 text-white/55 text-[15px] md:text-[17px] leading-relaxed font-sans">
-              {data.scienceSection.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </div>
-          </div>
 
-          <div className="relative p-8 md:p-12 bg-white/[0.02] border border-white/[0.06] rounded-xl flex flex-col justify-center items-center overflow-hidden">
-            <div className="absolute top-4 left-4 font-mono text-[9px] text-white/20 uppercase tracking-[0.14em]">{data.scienceSection.diagramLabel}</div>
-            {data.scienceSection.diagramCenter ? (
-              <div className="flex flex-col md:flex-row items-center gap-8 md:gap-10 relative w-full pt-6">
-                <div className="w-24 h-24 md:w-28 md:h-28 rounded-full border flex flex-col items-center justify-center text-center p-4" style={{ borderColor: `${accentColor}40`, background: `${data.accent}10` }}>
-                  {data.scienceSection.diagramCenter.icon && (() => { const Ic = getIcon(data.scienceSection.diagramCenter.icon); return <Ic size={22} style={{ color: accentColor }} className="mb-1" />; })()}
-                  <p className="font-mono text-[9px] font-bold uppercase" style={{ color: accentColor }}>{data.scienceSection.diagramCenter.label}</p>
-                </div>
-                <ArrowRight size={20} className="text-white/10 hidden md:block" />
-                <div className="flex flex-col gap-2.5 w-full md:w-auto">
-                  {data.scienceSection.diagramNodes.map((n, i) => {
-                    const Ic = getIcon(n.icon);
-                    return (
-                      <div key={i} className="flex items-center gap-3 p-3 border border-white/[0.06] bg-white/[0.02] rounded-lg w-full md:w-56">
-                        <Ic size={14} style={{ color: `${accentColor}80` }} />
-                        <span className="font-mono text-[10px] uppercase font-bold tracking-[0.08em]">{n.label}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            ) : (
-              <div className="flex flex-col items-center gap-5 relative w-full pt-6">
-                <div className="w-full grid grid-cols-3 gap-3">
-                  {data.scienceSection.diagramNodes.map((n, i) => {
-                    const Ic = getIcon(n.icon);
-                    return (
-                      <div key={i} className="flex flex-col items-center gap-2 p-4 md:p-5 border border-white/[0.06] bg-white/[0.02] text-center rounded-lg">
-                        <Ic size={20} style={{ color: `${accentColor}80` }} />
-                        <span className="font-mono text-[9px] uppercase font-bold tracking-[0.08em]">{n.label}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-                {data.scienceSection.diagramFooter && (
-                  <div className="p-4 border w-full text-center rounded-lg" style={{ borderColor: `${accentColor}30`, background: `${data.accent}08` }}>
-                    <p className="font-mono text-[10px] font-bold uppercase mb-1" style={{ color: accentColor }}>{data.scienceSection.diagramFooter.label}</p>
-                    <p className="text-[12px] text-white/40">{data.scienceSection.diagramFooter.text}</p>
+            <div className="relative p-8 md:p-12 bg-[#0b1120] border border-white/10 flex flex-col justify-center items-center overflow-hidden">
+              <div className="absolute top-4 left-4 font-mono text-[9px] text-white/20 uppercase tracking-[0.14em]">{data.scienceSection.diagramLabel}</div>
+              {data.scienceSection.diagramCenter ? (
+                <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 relative w-full pt-6">
+                  <div className="w-28 h-28 md:w-32 md:h-32 rounded-full border flex flex-col items-center justify-center text-center p-4" style={{ borderColor: `${accentColor}40`, background: `${data.accent}10` }}>
+                    {data.scienceSection.diagramCenter.icon && (() => { const Ic = getIcon(data.scienceSection.diagramCenter.icon); return <Ic size={24} style={{ color: accentColor }} className="mb-2" />; })()}
+                    <p className="font-mono text-[10px] font-bold uppercase" style={{ color: accentColor }}>{data.scienceSection.diagramCenter.label}</p>
                   </div>
-                )}
-              </div>
-            )}
+                  <ArrowRight size={24} className="text-white/10 hidden md:block" />
+                  <div className="flex flex-col gap-3 w-full md:w-auto">
+                    {data.scienceSection.diagramNodes.map((n, i) => {
+                      const Ic = getIcon(n.icon);
+                      return (
+                        <div key={i} className="flex items-center gap-4 p-3.5 border border-white/10 bg-white/[0.03] w-full md:w-60">
+                          <Ic size={16} style={{ color: `${accentColor}80` }} />
+                          <span className="font-mono text-[10px] uppercase font-bold tracking-[0.10em]">{n.label}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : (
+                <div className="flex flex-col items-center gap-6 relative w-full pt-6">
+                  <div className="w-full grid grid-cols-3 gap-3">
+                    {data.scienceSection.diagramNodes.map((n, i) => {
+                      const Ic = getIcon(n.icon);
+                      return (
+                        <div key={i} className="flex flex-col items-center gap-3 p-4 md:p-6 border border-white/10 bg-white/[0.03] text-center">
+                          <Ic size={22} style={{ color: `${accentColor}80` }} />
+                          <span className="font-mono text-[9px] uppercase font-bold tracking-[0.10em]">{n.label}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  {data.scienceSection.diagramFooter && (
+                    <div className="p-4 border w-full text-center" style={{ borderColor: `${accentColor}30`, background: `${data.accent}08` }}>
+                      <p className="font-mono text-[11px] font-bold uppercase mb-1.5" style={{ color: accentColor }}>{data.scienceSection.diagramFooter.label}</p>
+                      <p className="text-[12px] text-white/40">{data.scienceSection.diagramFooter.text}</p>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ───── DELIVERY RATIONALE (CELLUBIOME only) ───── */}
       {data.deliveryRationale && (
-        <section className="pdp-reveal py-12 md:py-16 px-5 md:px-10 lg:px-[60px] text-center border-y border-white/[0.05]">
-          <div className="max-w-xl mx-auto space-y-4">
+        <section className="pdp-reveal py-16 md:py-20 px-5 md:px-10 lg:px-[60px] text-center">
+          <div className="max-w-2xl mx-auto space-y-6">
             <div className="inline-flex items-center justify-center p-3 rounded-full" style={{ background: `${data.accent}10`, border: `1px solid ${accentColor}20` }}>
-              <FlaskConical size={18} style={{ color: accentColor }} />
+              <FlaskConical size={20} style={{ color: accentColor }} />
             </div>
-            <h3 className="font-head font-normal uppercase tracking-[-0.02em] text-white text-xl md:text-2xl">{data.deliveryRationale.headline}</h3>
-            <p className="text-white/50 text-[14px] leading-relaxed font-sans max-w-md mx-auto">{data.deliveryRationale.text}</p>
+            <h3 className="font-head font-normal uppercase tracking-[-0.02em] text-white leading-tight" style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)' }}>{data.deliveryRationale.headline}</h3>
+            <p className="text-white/50 text-[15px] leading-relaxed font-sans font-medium max-w-lg mx-auto">{data.deliveryRationale.text}</p>
           </div>
         </section>
       )}
 
       {/* ───── BENEFITS TIMELINE ───── */}
-      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.02]">
-        <div className="max-w-4xl mx-auto space-y-10">
-          <div className="text-center">
-            <SectionLabel label="Results Over Time" />
-            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>
-              Benefits that build over time
+      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
+        <div className="max-w-4xl mx-auto space-y-12">
+          <div className="text-center space-y-3">
+            <SectionLabel label="Results Over Time" color={accentColor} />
+            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>
+              Benefits that build
             </h2>
-            <p className="text-[14px] text-white/40 font-sans mt-2">What to expect with consistent use.*</p>
+            <p className="text-[14px] text-white/40 font-sans font-medium">What to expect with consistent use.*</p>
           </div>
 
           <div className="flex flex-wrap justify-center gap-2 md:gap-3">
@@ -540,11 +548,11 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
               <button
                 key={i}
                 onClick={() => setActiveTimeline(i)}
-                className={`px-4 py-2 rounded-full font-mono text-[11px] font-bold uppercase tracking-[0.08em] transition-all min-h-[36px] ${
-                  activeTimeline === i
-                    ? 'bg-ar-teal text-ar-navy'
-                    : 'bg-white/[0.04] text-white/50 hover:bg-white/[0.08]'
-                }`}
+                className="font-mono text-[10px] font-bold uppercase tracking-[0.10em] transition-all min-h-[36px] px-5 py-2"
+                style={activeTimeline === i
+                  ? { background: accentColor, color: '#0b1120', borderRadius: '999px' }
+                  : { background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.5)', borderRadius: '999px' }
+                }
                 data-testid={`timeline-tab-${i}`}
               >
                 {t.time}
@@ -552,13 +560,13 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
             ))}
           </div>
 
-          <div className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-6 md:p-10 min-h-[180px]">
-            <h3 className="font-head font-normal uppercase tracking-tight text-white text-lg mb-4">{data.benefitsTimeline[activeTimeline].time}</h3>
-            <ul className="space-y-3">
+          <div className="border border-white/[0.08] bg-white/[0.02] p-8 md:p-10 min-h-[180px]">
+            <h3 className="font-head font-normal uppercase tracking-tight text-white text-lg mb-6" style={{ color: accentColor }}>{data.benefitsTimeline[activeTimeline].time}</h3>
+            <ul className="space-y-4">
               {data.benefitsTimeline[activeTimeline].items.map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <Check size={16} className="shrink-0 mt-0.5" style={{ color: accentColor }} />
-                  <span className="text-[14px] text-white/60 font-sans leading-snug">{item}</span>
+                  <span className="text-[15px] text-white/60 font-sans font-medium leading-snug">{item}</span>
                 </li>
               ))}
             </ul>
@@ -567,22 +575,22 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── HOW TO USE ───── */}
-      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div className="rounded-xl overflow-hidden aspect-[4/3]">
+      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="overflow-hidden aspect-[4/3]">
             <img src="/images/how-to-use.jpg" alt="How to use" loading="lazy" className="w-full h-full object-cover" />
           </div>
-          <div className="space-y-6">
-            <div>
-              <SectionLabel label="How to Use" />
-              <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.2rem)' }}>Simple daily routine</h2>
-            </div>
-            <p className="text-lg text-white/70 font-sans font-medium leading-relaxed">{data.howToUse.instruction}</p>
+          <div className="space-y-8">
             <div className="space-y-3">
+              <SectionLabel label="How to Use" color={accentColor} align="left" />
+              <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>Simple routine</h2>
+            </div>
+            <p className="text-[17px] text-white/60 font-sans font-medium leading-relaxed">{data.howToUse.instruction}</p>
+            <div className="space-y-4">
               {data.howToUse.tips.map((tip, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full" style={{ background: accentColor }} />
-                  <span className="text-[14px] text-white/50 font-sans">{tip}</span>
+                <div key={i} className="flex items-center gap-4">
+                  <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: accentColor }} />
+                  <span className="text-[15px] text-white/50 font-sans font-medium">{tip}</span>
                 </div>
               ))}
             </div>
@@ -591,41 +599,42 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── INGREDIENT DEEP DIVE ───── */}
-      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.02] border-y border-white/[0.05]">
-        <div className="max-w-5xl mx-auto space-y-12">
-          <div className="text-center">
-            <SectionLabel label="Ingredients" />
-            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>
-              What's inside
-            </h2>
+      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
+        <div className="max-w-7xl mx-auto space-y-14">
+          <div className="space-y-3">
+            <SectionLabel label="Key Ingredients" color={accentColor} align="left" />
+            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>What's inside</h2>
           </div>
-
-          <div className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {data.ingredientGroups.map((group, i) => (
-              <div key={i} className="border border-white/[0.06] bg-white/[0.02] rounded-xl p-6 md:p-8 space-y-4">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-                  <h3 className="text-[15px] font-head font-normal uppercase tracking-tight text-white">{group.category}</h3>
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-[0.10em] px-3 py-1 rounded-full" style={{ color: accentColor, background: `${data.accent}15` }}>
-                    {group.totalDose}
-                  </span>
+              <div key={i} className="p-7 md:p-8 border border-white/[0.06] bg-white/[0.02] space-y-5 flex flex-col justify-between hover:bg-white/[0.04] transition-all rounded-lg">
+                <div className="space-y-3">
+                  <div className="flex justify-between items-start gap-3">
+                    <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white max-w-[70%]">{group.category}</h4>
+                    <span className="font-mono text-[10px] font-bold uppercase shrink-0" style={{ color: accentColor }}>{group.totalDose}</span>
+                  </div>
+                  <p className="text-sm text-white/50 leading-relaxed font-sans font-medium">{group.desc}</p>
                 </div>
-                <p className="text-[13px] text-white/45 font-sans leading-relaxed">{group.desc}</p>
-                <div className="border-t border-white/[0.05] pt-3">
-                  <p className="font-mono text-[9px] text-white/25 uppercase tracking-[0.12em] mb-2">Ingredients</p>
-                  <div className="flex flex-wrap gap-x-6 gap-y-1.5">
+                <div className="pt-4 border-t border-white/[0.05]">
+                  <p className="font-mono text-[9px] text-white/25 uppercase tracking-[0.12em] mb-3">Compounds</p>
+                  <div className="space-y-2">
                     {group.ingredients.map((ing, j) => (
-                      <span key={j} className="text-[13px] text-white/60 font-sans">{ing}</span>
+                      <p key={j} className="text-[13px] text-white/55 font-sans">{ing}</p>
                     ))}
                   </div>
+                </div>
+                <div className="flex items-center gap-2 opacity-20 pt-2">
+                  <div className="h-[1px] flex-1 bg-white" />
+                  <Microscope size={14} />
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center">
+          <div className="text-center pt-2">
             <button
               onClick={() => setIsFactsOpen(true)}
-              className="inline-flex items-center gap-2 font-mono text-[11px] uppercase font-bold tracking-[0.12em] text-white/40 hover:text-white/70 transition-all"
+              className="inline-flex items-center gap-2.5 font-mono text-[11px] uppercase font-bold tracking-[0.12em] text-white/40 hover:text-white/70 transition-all"
               data-testid="view-full-label"
             >
               <FileText size={14} /> View Full Supplement Facts
@@ -635,13 +644,13 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── QUALITY BADGES ───── */}
-      <section className="pdp-reveal py-12 md:py-16 px-5 md:px-10 lg:px-[60px]">
+      <section className="pdp-reveal py-10 md:py-14 px-5 md:px-10 lg:px-[60px] border-y border-white/[0.05]">
         <div className="max-w-5xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
             {data.qualityBadges.map((badge, i) => (
-              <div key={i} className="flex items-center gap-2 px-4 py-2.5 bg-white/[0.03] border border-white/[0.06] rounded-full" data-testid={`badge-${i}`}>
-                <BadgeCheck size={14} style={{ color: accentColor }} />
-                <span className="font-mono text-[10px] uppercase font-bold tracking-[0.08em] text-white/50">{badge}</span>
+              <div key={i} className="flex items-center gap-2" data-testid={`badge-${i}`}>
+                <Check size={12} style={{ color: accentColor }} />
+                <span className="font-mono text-[10px] uppercase font-bold tracking-[0.12em] text-white/35">{badge}</span>
               </div>
             ))}
           </div>
@@ -649,35 +658,35 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── COMPARISON TABLE ───── */}
-      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.02] border-y border-white/[0.05]">
-        <div className="max-w-4xl mx-auto space-y-10">
-          <div className="text-center">
-            <SectionLabel label="Compare" />
-            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>
+      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
+        <div className="max-w-4xl mx-auto space-y-12">
+          <div className="text-center space-y-3">
+            <SectionLabel label="Compare" color={accentColor} />
+            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>
               How {data.name} compares
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 md:gap-6">
-            <div className="space-y-4">
-              <div className="text-center pb-3 border-b border-white/[0.06]">
-                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.10em]" style={{ color: accentColor }}>{data.name}</span>
+          <div className="grid grid-cols-2 gap-6 md:gap-10">
+            <div className="space-y-5">
+              <div className="pb-4 border-b" style={{ borderColor: `${accentColor}30` }}>
+                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.12em]" style={{ color: accentColor }}>{data.name}</span>
               </div>
               {data.comparison.us.map((item, i) => (
-                <div key={i} className="flex items-start gap-2.5">
-                  <Check size={14} className="shrink-0 mt-0.5" style={{ color: accentColor }} />
-                  <span className="text-[13px] text-white/60 font-sans leading-snug">{item}</span>
+                <div key={i} className="flex items-start gap-3">
+                  <Check size={15} className="shrink-0 mt-0.5" style={{ color: accentColor }} />
+                  <span className="text-[14px] text-white/60 font-sans font-medium leading-snug">{item}</span>
                 </div>
               ))}
             </div>
-            <div className="space-y-4">
-              <div className="text-center pb-3 border-b border-white/[0.06]">
-                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.10em] text-white/30">Other Brands</span>
+            <div className="space-y-5">
+              <div className="pb-4 border-b border-white/[0.06]">
+                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-white/25">Other Brands</span>
               </div>
               {data.comparison.them.map((item, i) => (
-                <div key={i} className="flex items-start gap-2.5">
-                  <X size={14} className="shrink-0 mt-0.5 text-white/20" />
-                  <span className="text-[13px] text-white/35 font-sans leading-snug">{item}</span>
+                <div key={i} className="flex items-start gap-3">
+                  <X size={15} className="shrink-0 mt-0.5 text-white/15" />
+                  <span className="text-[14px] text-white/30 font-sans leading-snug">{item}</span>
                 </div>
               ))}
             </div>
@@ -686,30 +695,30 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── WHO IT'S FOR ───── */}
-      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div className="space-y-6">
-            <div>
-              <SectionLabel label="Suitability" />
-              <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>Who it's for</h2>
+      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="space-y-8">
+            <div className="space-y-3">
+              <SectionLabel label="Suitability" color={accentColor} align="left" />
+              <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>Who it's for</h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-4">
               {data.suitability.map((item, i) => (
-                <div key={i} className="flex gap-3 items-center p-3 bg-white/[0.02] border border-white/[0.05] rounded-lg">
-                  <Check size={14} style={{ color: accentColor }} />
-                  <span className="text-[13px] font-sans text-white/60">{item}</span>
+                <div key={i} className="flex gap-4 items-center p-4 border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all rounded-lg">
+                  <Check size={15} style={{ color: accentColor }} />
+                  <span className="text-[14px] font-sans font-medium text-white/60">{item}</span>
                 </div>
               ))}
             </div>
           </div>
-          <div className="p-6 md:p-8 border border-white/[0.06] bg-white/[0.02] rounded-xl space-y-4">
-            <div className="flex items-center gap-3 text-white/40">
+          <div className="p-8 md:p-10 border border-white/[0.08] bg-[#0b1120] space-y-5">
+            <div className="flex items-center gap-3 text-white/35">
               <Info size={16} />
-              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.10em]">Important</p>
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em]">Important</p>
             </div>
-            <p className="text-white/45 text-[14px] leading-relaxed font-sans">{data.safetyNote}</p>
+            <p className="text-white/45 text-[15px] leading-relaxed font-sans font-medium">{data.safetyNote}</p>
             {data.allergenDisclosure && (
-              <div className="p-3 border rounded-lg text-[11px] font-mono uppercase tracking-[0.10em]" style={{ borderColor: `${accentColor}30`, background: `${data.accent}08`, color: accentColor }}>
+              <div className="p-4 border text-[11px] font-mono uppercase tracking-[0.10em]" style={{ borderColor: `${accentColor}30`, background: `${data.accent}08`, color: accentColor }}>
                 {data.allergenDisclosure}
               </div>
             )}
@@ -718,29 +727,29 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── STACKING / PAIRS WELL WITH ───── */}
-      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.02] border-y border-white/[0.05]">
-        <div className="max-w-5xl mx-auto space-y-10">
-          <div className="text-center">
-            <SectionLabel label="Works Together" />
-            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>Pairs well with</h2>
+      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
+        <div className="max-w-5xl mx-auto space-y-12">
+          <div className="text-center space-y-3">
+            <SectionLabel label="Works Together" color={accentColor} />
+            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>Pairs well with</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {data.stack.map((item, i) => (
-              <div key={i} className="border border-white/[0.06] bg-white/[0.03] p-6 md:p-8 rounded-xl space-y-4 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-24 h-24 blur-[50px] transition-all" style={{ background: `${data.accent}08` }} />
-                <div className="relative z-10 space-y-2">
-                  <div className="flex justify-between items-center gap-3">
-                    <h4 className="text-lg font-head font-normal uppercase tracking-tight">{item.name}</h4>
-                    <span className="font-mono text-[9px] border px-2 py-1 rounded-full uppercase shrink-0" style={{ color: accentColor, borderColor: `${accentColor}30` }}>{item.role}</span>
+              <div key={i} className="border border-white/[0.06] bg-white/[0.02] p-7 md:p-8 space-y-5 relative overflow-hidden group hover:border-white/[0.10] transition-all rounded-lg">
+                <div className="absolute top-0 right-0 w-32 h-32 blur-[60px] pointer-events-none" style={{ background: `${data.accent}06` }} />
+                <div className="relative z-10 space-y-3">
+                  <div className="flex justify-between items-start gap-3">
+                    <h4 className="text-lg font-head font-normal uppercase tracking-[-0.02em]">{item.name}</h4>
+                    <span className="font-mono text-[9px] border px-2.5 py-1 uppercase shrink-0" style={{ color: accentColor, borderColor: `${accentColor}30` }}>{item.role}</span>
                   </div>
-                  <p className="text-[13px] text-white/50 font-sans leading-relaxed">{item.add}</p>
+                  <p className="text-[14px] text-white/50 font-sans font-medium leading-relaxed">{item.add}</p>
                 </div>
-                <div className="flex items-center gap-2 font-mono text-[9px] text-white/30 uppercase tracking-[0.12em] relative z-10">
+                <div className="flex items-center gap-2 font-mono text-[9px] text-white/25 uppercase tracking-[0.12em] relative z-10">
                   <Clock size={11} /> {item.when}
                 </div>
-                <div className="flex gap-3 pt-1 relative z-10">
-                  <a href={`/product/${item.slug}`} className="flex-1 py-3 border border-white/10 rounded-lg font-mono text-[10px] font-bold uppercase tracking-[0.08em] hover:bg-white/[0.04] transition-all text-center min-h-[40px] flex items-center justify-center" data-testid={`stack-view-${item.slug}`}>Learn More</a>
-                  <button className="flex-1 py-3 bg-ar-teal text-ar-navy rounded-lg font-mono text-[10px] font-bold uppercase tracking-[0.08em] hover:bg-ar-teal/90 transition-all min-h-[40px]" data-testid={`stack-add-${item.slug}`}>Add to Cart</button>
+                <div className="flex gap-3 pt-2 relative z-10">
+                  <a href={`/product/${item.slug}`} className="flex-1 py-3 border border-white/10 font-mono text-[10px] font-bold uppercase tracking-[0.08em] hover:bg-white/[0.04] transition-all text-center min-h-[40px] flex items-center justify-center" data-testid={`stack-view-${item.slug}`}>Learn More</a>
+                  <button className="flex-1 py-3 font-mono text-[10px] font-bold uppercase tracking-[0.08em] transition-all min-h-[40px]" style={{ background: accentColor, color: '#0b1120' }} data-testid={`stack-add-${item.slug}`}>Add to Cart</button>
                 </div>
               </div>
             ))}
@@ -749,64 +758,67 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── TESTING & QUALITY ───── */}
-      <section className="pdp-reveal py-12 md:py-16 px-5 md:px-10 lg:px-[60px]">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="flex gap-4 items-start p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl">
-            <ShieldCheck size={20} style={{ color: accentColor }} className="shrink-0 mt-0.5" />
+      <section className="pdp-reveal py-16 md:py-20 px-5 md:px-10 lg:px-[60px]">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="flex gap-4 items-start p-6 border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all rounded-lg">
+            <ShieldCheck size={18} style={{ color: accentColor }} className="shrink-0 mt-0.5" />
             <div>
-              <p className="text-[13px] font-sans font-semibold text-white mb-1">Full label disclosure</p>
-              <p className="text-[12px] text-white/40 font-sans leading-snug">Every ingredient and dose is listed. No proprietary blends.</p>
+              <p className="text-[14px] font-sans font-semibold text-white mb-1.5">Full label disclosure</p>
+              <p className="text-[13px] text-white/40 font-sans leading-relaxed">Every ingredient and dose is listed. No proprietary blends.</p>
             </div>
           </div>
-          <div className="flex gap-4 items-start p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl">
-            <FlaskConical size={20} style={{ color: accentColor }} className="shrink-0 mt-0.5" />
+          <div className="flex gap-4 items-start p-6 border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all rounded-lg">
+            <FlaskConical size={18} style={{ color: accentColor }} className="shrink-0 mt-0.5" />
             <div>
-              <p className="text-[13px] font-sans font-semibold text-white mb-1">Third-party tested</p>
-              <p className="text-[12px] text-white/40 font-sans leading-snug">Tested for purity, potency, and contaminants by independent labs.</p>
+              <p className="text-[14px] font-sans font-semibold text-white mb-1.5">Third-party tested</p>
+              <p className="text-[13px] text-white/40 font-sans leading-relaxed">Tested for purity, potency, and contaminants by independent labs.</p>
             </div>
           </div>
-          <div className="flex gap-4 items-start p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl">
-            <Microscope size={20} style={{ color: accentColor }} className="shrink-0 mt-0.5" />
+          <div className="flex gap-4 items-start p-6 border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all rounded-lg">
+            <Microscope size={18} style={{ color: accentColor }} className="shrink-0 mt-0.5" />
             <div>
-              <p className="text-[13px] font-sans font-semibold text-white mb-1">Clinically studied doses</p>
-              <p className="text-[12px] text-white/40 font-sans leading-snug">Doses match or exceed amounts used in published clinical research.</p>
+              <p className="text-[14px] font-sans font-semibold text-white mb-1.5">Clinically studied doses</p>
+              <p className="text-[13px] text-white/40 font-sans leading-relaxed">Doses match or exceed amounts used in published clinical research.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ───── FAQ ───── */}
-      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.02] border-y border-white/[0.05]">
-        <div className="max-w-3xl mx-auto space-y-8">
-          <div className="text-center">
-            <SectionLabel label="FAQ" />
-            <h3 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>Questions? We're here to help.</h3>
+      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
+        <div className="max-w-3xl mx-auto space-y-10">
+          <div className="text-center space-y-3">
+            <SectionLabel label="FAQ" color={accentColor} />
+            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>Common questions</h2>
           </div>
           <Accordion items={data.faq} />
         </div>
       </section>
 
       {/* ───── FINAL CTA ───── */}
-      <section className="relative py-16 md:py-24 px-6 text-white overflow-hidden">
-        <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse at center, ${data.accent}12 0%, transparent 70%)` }} />
-        <div className="max-w-2xl mx-auto text-center relative z-10 space-y-5">
-          <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2rem, 6vw, 3rem)' }}>
+      <section className="relative py-10 md:py-14 px-6 text-white overflow-hidden">
+        <div className="max-w-2xl mx-auto text-center relative z-10">
+          <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2rem, 7vw, 3.5rem)' }}>
             {data.ctaHeadline[0]}
             <br />
-            <span className="text-white/40">{data.ctaHeadline[1]}</span>
+            <span className="text-white/45">{data.ctaHeadline[1]}</span>
           </h2>
-          <p className="text-[14px] text-white/45 font-sans max-w-md mx-auto leading-relaxed">{data.ctaBody}</p>
-          <button className="inline-flex items-center justify-center px-10 py-4 min-h-[48px] bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.12em] hover:bg-ar-teal/90 transition-colors gap-2" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="final-cta">
-            {data.ctaButton} <ArrowRight size={14} />
-          </button>
-          <p className="text-[11px] text-white/30 font-sans">30-day satisfaction guarantee. Free shipping on subscriptions.</p>
+          <p className="mt-3 text-[13px] text-white/50 font-sans max-w-md mx-auto leading-relaxed">{data.ctaBody}</p>
+          <a href={`/product/${slug}/purchase`} className="mt-5 inline-flex items-center justify-center px-8 py-3 min-h-[44px] bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] hover:bg-ar-teal/90 transition-colors" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="final-cta">
+            {data.ctaButton}
+          </a>
+          <div className="mt-3">
+            <a href="/shop" className="text-[10px] font-mono uppercase tracking-[0.08em] text-white/50 hover:text-white/70 transition-colors inline-flex items-center gap-1">
+              Browse all products <ArrowRight size={9} />
+            </a>
+          </div>
         </div>
       </section>
 
-      <div className="max-w-2xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" /></div>
+      <div className="max-w-2xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" /></div>
 
       <div className="py-8 px-6">
-        <p className="font-mono text-[10px] text-white/15 uppercase tracking-[0.08em] leading-relaxed text-center max-w-3xl mx-auto">
+        <p className="font-mono text-[10px] text-white/20 uppercase tracking-[0.10em] leading-relaxed text-center max-w-3xl mx-auto">
           * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
         </p>
       </div>
