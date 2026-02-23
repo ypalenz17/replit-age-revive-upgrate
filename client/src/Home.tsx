@@ -483,7 +483,7 @@ const SixPillars = () => {
             <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">Framework</span>
             <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] uppercase text-white">6 Pillars of Systemic Aging</h2>
+          <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white whitespace-nowrap" style={{ fontSize: 'clamp(1.6rem, 5vw, 3rem)' }}>6 Pillars of Systemic Aging</h2>
           <p className="text-[13px] text-white/50 font-sans max-w-md mx-auto mt-3 leading-relaxed">
             A framework for mapping protocols to systems. Not medical advice.
           </p>
