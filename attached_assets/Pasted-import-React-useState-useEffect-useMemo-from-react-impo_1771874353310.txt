@@ -1,0 +1,651 @@
+import React, { useState, useEffect, useMemo } from 'react';
+import { 
+  ShoppingBag, 
+  ArrowRight, 
+  Check, 
+  Activity,
+  Zap,
+  Clock,
+  Microscope,
+  ChevronDown,
+  ShieldCheck,
+  Dna,
+  Beaker,
+  Layers,
+  FlaskConical,
+  Target,
+  Plus,
+  Minus,
+  Info,
+  Shield,
+  X,
+  FileText
+} from 'lucide-react';
+
+/**
+ * SYSTEM DATA: CELLUNAD+
+ */
+const PRODUCT_DATA = {
+  name: "CELLUNAD+",
+  subtitle: "Daily NAD+ Support for Energy + DNA Maintenance",
+  form: "Capsules",
+  serving: "2 capsules daily with a meal (morning or afternoon)",
+  servingsPerContainer: 30,
+  priceOneTime: 79.99,
+  priceSubscribe: 67.99,
+  heroClaims: [
+    "Supports NAD+ levels*",
+    "Supports cellular energy*",
+    "Supports DNA maintenance pathways*",
+    "Supports methylation balance*"
+  ],
+  supplementFacts: {
+    servingSize: "2 Capsules",
+    servingsPerContainer: "30",
+    items: [
+      { name: "Vitamin B6 (as P-5-P)", amount: "10 mg", dv: "588%" },
+      { name: "Folate (5-MTHF)", amount: "400 mcg DFE", dv: "100%" },
+      { name: "Vitamin B12 (Methylcobalamin)", amount: "1,000 mcg", dv: "41,667%" },
+      { name: "Betaine (TMG)", amount: "250 mg", dv: "" },
+      { name: "Nicotinamide Riboside", amount: "500 mg", dv: "" },
+      { name: "R-Lipoic Acid", amount: "200 mg", dv: "" },
+      { name: "Apigenin", amount: "100 mg", dv: "" },
+      { name: "BioPerine (Black Pepper Extract)", amount: "5 mg", dv: "*" }
+    ],
+    otherIngredients: "Veg. cellulose (capsule), rice flour, magnesium stearate, silica."
+  },
+  keyActives: [
+    {
+      name: "Nicotinamide Riboside (NR)",
+      dose: "500 mg",
+      role: "NAD+ precursor",
+      explanation: "Supports NAD+ production through well-studied precursor pathways."
+    },
+    {
+      name: "Apigenin",
+      dose: "100 mg",
+      role: "NAD+ preservation support",
+      explanation: "Supports NAD+ availability by modulating enzymes involved in NAD+ turnover."
+    },
+    {
+      name: "TMG + Methylated B Complex",
+      dose: "TMG 250 mg + B-Complex",
+      role: "Methylation support",
+      explanation: "Supports one-carbon metabolism and methylation balance while running NAD+ support consistently."
+    },
+    {
+      name: "R-Lipoic Acid",
+      dose: "200 mg",
+      role: "Mitochondrial cofactor support",
+      explanation: "Supports metabolic enzyme function and oxidative balance."
+    },
+    {
+      name: "BioPerine",
+      dose: "5 mg",
+      role: "Absorption support",
+      explanation: "Added to support bioavailability of select compounds."
+    }
+  ],
+  mechanisms: [
+    {
+      step: "01",
+      label: "Support NAD+ supply",
+      text: "NR provides precursor support for maintaining NAD+ availability."
+    },
+    {
+      step: "02",
+      label: "Support NAD+ preservation",
+      text: "Apigenin supports healthy NAD+ turnover dynamics."
+    },
+    {
+      step: "03",
+      label: "Support the system that runs it",
+      text: "TMG + methylated Bs support methylation balance; R-lipoic acid supports metabolic function."
+    }
+  ],
+  stack: [
+    {
+      name: "CELLUBIOME",
+      role: "Mitochondria + Gut Barrier",
+      add: "Pairs NAD+ support with mitochondrial quality and gut barrier support.",
+      when: "Daily baseline"
+    },
+    {
+      name: "CELLUNOVA",
+      role: "Autophagy + Senescence Support",
+      add: "Periodic reset to complement daily NAD+ support.",
+      when: "7-day monthly cycle"
+    }
+  ],
+  faq: [
+    {
+      q: "How long does it take to notice effects?",
+      a: "Many assess changes over weeks, with more meaningful evaluation over 2–3 months of consistent daily use."
+    },
+    {
+      q: "When should I take it?",
+      a: "Take 2 capsules daily with a meal, typically morning or afternoon. Consistency matters more than timing."
+    },
+    {
+      q: "Does it break a fast?",
+      a: "It has no meaningful caloric load for most people, but fasting rules vary. If you fast strictly, take it with your first meal."
+    },
+    {
+      q: "Can I stack it with CELLUNOVA?",
+      a: "Yes. CELLUNAD+ is designed for daily use, while CELLUNOVA is a periodic protocol."
+    },
+    {
+      q: "Why include methylation support?",
+      a: "NAD+ pathways intersect with one-carbon metabolism. TMG and methylated B vitamins support methylation balance during consistent use."
+    },
+    {
+      q: "Who should avoid it?",
+      a: "Consult your clinician if pregnant, nursing, on medication, or managing a medical condition."
+    }
+  ],
+  trust: [
+    "cGMP manufactured",
+    "Third-party tested",
+    "Full-label disclosure",
+    "Glass packaging (if available)"
+  ]
+};
+
+// --- ARCHITECTURAL MOTIFS ---
+
+const GridLines = () => (
+  <div 
+    className="absolute inset-0 pointer-events-none opacity-[0.02] z-0" 
+    style={{ 
+      backgroundImage: `linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)`, 
+      backgroundSize: '100px 100px' 
+    }}
+  />
+);
+
+const CornerBrackets = () => (
+  <div className="absolute inset-0 pointer-events-none z-10 p-4 md:p-10">
+    <div className="absolute top-4 left-4 md:top-10 md:left-10 w-4 h-4 md:w-6 md:h-6 border-t border-l border-white/20" />
+    <div className="absolute top-4 right-4 md:top-10 md:right-10 w-4 h-4 md:w-6 md:h-6 border-t border-r border-white/20" />
+    <div className="absolute bottom-4 left-4 md:bottom-10 md:left-10 w-4 h-4 md:w-6 md:h-6 border-b border-l border-white/20" />
+    <div className="absolute bottom-4 right-4 md:bottom-10 md:right-10 w-4 h-4 md:w-6 md:h-6 border-b border-r border-white/20" />
+  </div>
+);
+
+const MasterFooter = ({ title, slide }) => (
+  <div className="w-full h-[80px] px-6 md:px-[60px] flex items-center justify-between pointer-events-none z-50 border-t border-white/5 bg-[#0f172a]">
+    <div className="font-mono text-[9px] text-white/30 uppercase tracking-[0.2em]">
+      {String(title)} // AR_SYS_ID_V1.0
+    </div>
+    <div className="hidden md:flex items-center gap-12 font-mono text-[9px] text-white/30 uppercase tracking-[0.2em]">
+      <div className="flex items-center gap-2">
+        <span className="relative flex h-1.5 w-1.5">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-teal-500"></span>
+        </span>
+        <span>PROTOCOL_SYNCED</span>
+      </div>
+      <span>SYS_DATA_{String(slide)}</span>
+    </div>
+  </div>
+);
+
+// --- UI COMPONENTS ---
+
+const ModalFacts = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 z-[200] flex items-end sm:items-center justify-center p-0 sm:p-4">
+      <div className="absolute inset-0 bg-[#0f172a]/90 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative w-full max-w-lg bg-white text-[#0f172a] p-8 overflow-y-auto max-h-[90vh] shadow-2xl animate-in slide-in-from-bottom-4 duration-300">
+        <button onClick={onClose} className="absolute top-6 right-6 p-2 hover:bg-black/5 transition-colors">
+          <X size={20} />
+        </button>
+        <div className="border-b-4 border-black pb-2 mb-4">
+          <h2 className="text-3xl font-black uppercase tracking-tight">Supplement Facts</h2>
+          <p className="text-sm">Serving Size: {PRODUCT_DATA.supplementFacts.servingSize}</p>
+          <p className="text-sm">Servings Per Container: {PRODUCT_DATA.supplementFacts.servingsPerContainer}</p>
+        </div>
+        <table className="w-full text-left text-sm border-collapse">
+          <thead>
+            <tr className="border-b-2 border-black">
+              <th className="py-2 font-bold">Amount Per Serving</th>
+              <th className="py-2 text-right font-bold">%DV</th>
+            </tr>
+          </thead>
+          <tbody>
+            {PRODUCT_DATA.supplementFacts.items?.map((item, i) => (
+              <tr key={i} className="border-b border-black/10">
+                <td className="py-2">{String(item.name)} <span className="font-bold ml-2">{String(item.amount)}</span></td>
+                <td className="py-2 text-right font-bold">{String(item.dv || "†")}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className="mt-4 text-[10px] leading-tight space-y-2">
+          <p>† Daily Value (DV) not established.</p>
+          <p>* Percent Daily Values are based on a 2,000 calorie diet.</p>
+          <p className="pt-2"><span className="font-bold uppercase">Other Ingredients:</span> {String(PRODUCT_DATA.supplementFacts.otherIngredients)}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Accordion = ({ items }) => {
+  const [openIndex, setOpenIndex] = useState(0);
+  if (!items || !Array.isArray(items)) return null;
+  return (
+    <div className="w-full space-y-1">
+      {items.map((item, i) => (
+        <div key={i} className="border border-white/10 bg-white/5 overflow-hidden">
+          <button 
+            onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
+            className="w-full p-6 flex justify-between items-center text-left hover:bg-white/5 transition-colors"
+          >
+            <span className="font-mono text-[11px] font-bold uppercase tracking-widest">{String(item.q)}</span>
+            <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`} />
+          </button>
+          <div className={`grid transition-all duration-300 ease-in-out ${openIndex === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+            <div className="overflow-hidden">
+              <div className="px-6 pb-6 text-white/50 text-[14px] leading-relaxed font-medium">
+                {String(item.a)}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// --- MAIN PAGE ---
+
+export default function AgeRevivePDP() {
+  const [isSubscribe, setIsSubscribe] = useState(true);
+  const [quantity, setQuantity] = useState(1);
+  const [showSticky, setShowSticky] = useState(false);
+  const [isFactsOpen, setIsFactsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setShowSticky(window.scrollY > 600);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const currentPrice = isSubscribe ? (PRODUCT_DATA.priceSubscribe || 0) : (PRODUCT_DATA.priceOneTime || 0);
+
+  return (
+    <div className="min-h-screen bg-[#0f172a] text-[#F4F1EA] selection:bg-teal-500/30 selection:text-white font-sans antialiased">
+      <GridLines />
+      <GlobalNoise />
+      <ModalFacts isOpen={isFactsOpen} onClose={() => setIsFactsOpen(false)} />
+
+      {/* STICKY PROTOCOL BAR */}
+      <div className={`fixed bottom-0 left-0 w-full z-[110] bg-white text-[#0f172a] border-t border-black/10 py-4 px-6 transition-transform duration-500 transform ${showSticky ? 'translate-y-0' : 'translate-y-full'}`}>
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+          <div className="hidden sm:block">
+            <p className="font-mono text-[10px] uppercase font-bold tracking-widest opacity-40 leading-none mb-1">Add to Protocol</p>
+            <h4 className="text-sm font-black tracking-tight uppercase leading-none">{PRODUCT_DATA.name}</h4>
+          </div>
+          <div className="flex items-center gap-4 w-full sm:w-auto">
+            <div className="flex-1 sm:flex-none text-right pr-4 border-r border-black/10">
+              <span className="text-lg font-black tracking-tighter">${(currentPrice * quantity).toFixed(2)}</span>
+            </div>
+            <button className="flex-1 sm:flex-none py-3 px-8 bg-[#0f172a] text-white font-mono text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-black transition-all">
+              Initialize
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* NAV */}
+      <nav className="relative z-50 px-6 md:px-[60px] py-8 flex items-center justify-between border-b border-white/5 bg-[#0f172a]/50 backdrop-blur-md">
+        <div className="text-[20px] font-black tracking-[-0.04em] text-white">AGE REVIVE</div>
+        <div className="hidden lg:flex items-center gap-10 font-mono text-[10px] font-bold tracking-[0.2em] text-white/40">
+          <a href="#" className="hover:text-white transition-colors uppercase">The Axis</a>
+          <a href="#" className="hover:text-white transition-colors uppercase">Protocols</a>
+          <a href="#" className="hover:text-white transition-colors uppercase">Science</a>
+        </div>
+        <div className="flex items-center gap-6">
+          <button className="p-2 hover:bg-white/5 transition-all text-white/60"><ShoppingBag size={18} /></button>
+        </div>
+      </nav>
+
+      {/* HERO SECTION */}
+      <section className="relative px-6 md:px-[60px] py-16 lg:py-24 overflow-hidden">
+        <CornerBrackets />
+        
+        {/* Ambient Glows */}
+        <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] bg-teal-500/10 blur-[120px] pointer-events-none rounded-full" />
+        <div className="absolute bottom-[10%] right-[-10%] w-[40%] h-[40%] bg-indigo-500/10 blur-[120px] pointer-events-none rounded-full" />
+
+        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+          
+          {/* Left Content */}
+          <div className="lg:col-span-7 space-y-12">
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-[1px] bg-teal-500" />
+                <span className="font-mono text-[11px] font-bold tracking-[0.3em] text-teal-400 uppercase">SYS_COMPONENT // CN_01</span>
+              </div>
+              <h1 className="text-[64px] md:text-[90px] font-black tracking-[-0.04em] leading-[0.85] uppercase">
+                CELLU<br /><span className="text-white/40">NAD+.</span>
+              </h1>
+              <p className="text-[22px] md:text-[26px] text-white/70 font-light leading-snug max-w-xl">
+                {String(PRODUCT_DATA.subtitle)}. <br />
+                <span className="text-white font-normal">Molecular repletion for cellular metabolic flux.</span>
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {PRODUCT_DATA.heroClaims?.map((claim, i) => (
+                <div key={i} className="p-4 border border-white/10 bg-white/5 flex flex-col justify-center gap-2">
+                  <div className="w-1 h-1 bg-teal-500" />
+                  <span className="text-[10px] font-bold uppercase tracking-tight text-white/50">{String(claim)}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="space-y-4 pt-4">
+               {[
+                 { label: "Nicotinamide Riboside", dose: "500 mg" },
+                 { label: "Apigenin", dose: "100 mg" },
+                 { label: "R-Lipoic Acid", dose: "200 mg" }
+               ].map((item, i) => (
+                 <div key={i} className="flex items-center justify-between max-w-sm border-b border-white/5 pb-2">
+                   <span className="font-mono text-[10px] uppercase font-bold text-white/30 tracking-widest">{String(item.label)}</span>
+                   <span className="font-mono text-[11px] font-black text-teal-400">{String(item.dose)}</span>
+                 </div>
+               ))}
+            </div>
+          </div>
+
+          {/* Right Purchase Card */}
+          <div className="lg:col-span-5 w-full">
+            <div className="bg-[#F4F1EA] text-[#0f172a] p-8 md:p-10 shadow-[40px_40px_100px_rgba(0,0,0,0.4)] space-y-8">
+              <div className="flex justify-between items-baseline border-b border-black/5 pb-6">
+                <div className="space-y-1">
+                  <p className="font-mono text-[10px] uppercase font-bold tracking-widest opacity-40">Baseline Protocol</p>
+                  <h3 className="text-5xl font-black tracking-tighter">
+                    ${(currentPrice * quantity).toFixed(2)}
+                  </h3>
+                </div>
+                <div className="text-right">
+                  <p className="font-mono text-[10px] uppercase font-bold opacity-40">{String(PRODUCT_DATA.form)}</p>
+                  <p className="text-sm font-bold uppercase">{String(PRODUCT_DATA.servingsPerContainer)} Days</p>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <button 
+                  onClick={() => setIsSubscribe(true)}
+                  className={`w-full p-6 border-2 text-left transition-all flex justify-between items-center group ${isSubscribe ? 'border-[#0f172a] bg-[#0f172a] text-white' : 'border-black/10 hover:border-black/20'}`}
+                >
+                  <div className="space-y-1">
+                    <p className="font-mono text-[10px] font-bold uppercase tracking-widest">Protocol Sync</p>
+                    <p className={`text-xs ${isSubscribe ? 'text-white/60' : 'text-black/40'}`}>Ships monthly. Cancel anytime.</p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xl font-black">Save 15%</span>
+                  </div>
+                </button>
+                <button 
+                  onClick={() => setIsSubscribe(false)}
+                  className={`w-full p-6 border-2 text-left transition-all ${!isSubscribe ? 'border-[#0f172a] bg-[#0f172a] text-white' : 'border-black/10 hover:border-black/20'}`}
+                >
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-widest">One-time Deployment</p>
+                  <p className={`text-xs ${!isSubscribe ? 'text-white/60' : 'text-black/40'}`}>Standard retail value.</p>
+                </button>
+              </div>
+
+              <div className="flex items-center justify-between py-2">
+                <span className="font-mono text-[10px] uppercase font-bold tracking-widest opacity-40">Select Quantity</span>
+                <div className="flex items-center gap-6 bg-black/5 p-2 px-4 rounded-full">
+                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-1 hover:text-teal-600 transition-colors"><Minus size={16} /></button>
+                  <span className="font-mono font-black text-xl w-6 text-center">{quantity}</span>
+                  <button onClick={() => setQuantity(quantity + 1)} className="p-1 hover:text-teal-600 transition-colors"><Plus size={16} /></button>
+                </div>
+              </div>
+
+              <button className="w-full py-6 bg-[#0f172a] text-white font-mono text-[12px] font-black uppercase tracking-[0.25em] hover:bg-black transition-all flex items-center justify-center gap-3">
+                Add to Protocol <ArrowRight size={16} />
+              </button>
+
+              <div className="space-y-4 pt-2">
+                 <button 
+                   onClick={() => setIsFactsOpen(true)}
+                   className="flex items-center gap-2 font-mono text-[10px] uppercase font-bold tracking-widest opacity-60 hover:opacity-100 transition-all border-b border-black/10 pb-1"
+                 >
+                   <FileText size={12} /> View Supplement Facts
+                 </button>
+                 <div className="flex flex-wrap justify-between gap-4 opacity-40 font-mono text-[8px] font-bold uppercase tracking-[0.2em]">
+                   <div className="flex items-center gap-2"><Shield size={10} /> cGMP Manufactured</div>
+                   <div className="flex items-center gap-2"><FlaskConical size={10} /> 3rd-Party Tested</div>
+                   <div className="flex items-center gap-2"><Check size={10} /> 30-Day Returns</div>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY NAD+ MATTERS */}
+      <section className="py-24 px-6 md:px-[60px] bg-white/5 border-y border-white/5">
+        <div className="max-w-7xl mx-auto space-y-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-10">
+              <div className="space-y-4">
+                <p className="font-mono text-[11px] text-teal-400 uppercase tracking-widest font-bold">Scientific Context</p>
+                <h2 className="text-[40px] font-black tracking-[-0.02em] uppercase leading-none">Why NAD+ Matters</h2>
+              </div>
+              <div className="space-y-8 text-white/60 text-[18px] leading-relaxed font-medium">
+                <p>NAD+ is a fundamental coenzyme found in every living cell. It serves as a critical electron transporter in cellular energy metabolism, helping convert nutrients into ATP.</p>
+                <p>Beyond energy, NAD+ is required for the activity of enzymes involved in DNA maintenance and cellular signaling pathways. Biological NAD+ levels are associated with age and metabolic demands.</p>
+              </div>
+            </div>
+
+            {/* DIAGRAM */}
+            <div className="relative p-12 bg-[#0f172a] border border-white/10 flex flex-col justify-center items-center">
+               <div className="absolute top-4 left-4 font-mono text-[9px] text-white/20 uppercase tracking-widest uppercase">SIGNAL_DISTRIBUTION_PATHWAY</div>
+               <div className="flex flex-col md:flex-row items-center gap-12 relative w-full">
+                  <div className="w-32 h-32 rounded-full border border-teal-500/30 bg-teal-500/5 flex flex-col items-center justify-center text-center p-4">
+                    <p className="font-mono text-[10px] font-bold uppercase text-teal-400">NAD+ Pool</p>
+                  </div>
+                  <ArrowRight size={24} className="text-white/10 hidden md:block" />
+                  <div className="flex flex-col gap-4 w-full md:w-auto">
+                    {[
+                      { label: "Energy Metabolism", icn: Zap },
+                      { label: "DNA Maintenance", icn: Dna },
+                      { label: "Cellular Signaling", icn: Activity }
+                    ].map((n, i) => {
+                      const IconComponent = n.icn;
+                      return (
+                        <div key={i} className="flex items-center gap-4 p-4 border border-white/10 bg-white/5 w-full md:w-64">
+                          <IconComponent size={16} className="text-teal-500/50" />
+                          <span className="font-mono text-[10px] uppercase font-bold tracking-widest">{String(n.label)}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section className="py-24 px-6 md:px-[60px]">
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="text-center space-y-4">
+            <p className="font-mono text-[11px] text-teal-400 uppercase tracking-widest font-bold">Methodology</p>
+            <h2 className="text-[40px] font-black uppercase tracking-tight">Triple-Action System</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {PRODUCT_DATA.mechanisms?.map((m, i) => (
+              <div key={i} className="p-10 border border-white/10 bg-white/5 space-y-6 group hover:border-teal-500/30 transition-all">
+                <span className="font-mono text-[10px] text-teal-500 font-bold uppercase opacity-40">Step_{String(m.step)}</span>
+                <div className="space-y-4">
+                  <h4 className="text-xl font-bold uppercase tracking-tight group-hover:text-teal-400 transition-colors">{String(m.label)}</h4>
+                  <p className="text-sm text-white/50 leading-relaxed font-medium">{String(m.text)}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* INGREDIENT DEEP DIVE */}
+      <section className="py-24 px-6 md:px-[60px] bg-white/5 border-y border-white/5">
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="space-y-4">
+            <p className="font-mono text-[11px] text-teal-400 uppercase tracking-widest font-bold">Specifications</p>
+            <h2 className="text-[40px] font-black uppercase tracking-tight leading-none">Active Inputs</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {PRODUCT_DATA.keyActives?.map((active, i) => (
+              <div key={i} className="p-8 border border-white/10 bg-[#0f172a] space-y-6 flex flex-col justify-between hover:bg-white/5 transition-all">
+                <div className="space-y-4">
+                  <div className="flex justify-between items-start">
+                    <h4 className="text-lg font-bold uppercase tracking-tight max-w-[70%]">{String(active.name)}</h4>
+                    <span className="font-mono text-[10px] font-black text-teal-400 uppercase">{String(active.dose)}</span>
+                  </div>
+                  <p className="font-mono text-[9px] text-white/20 uppercase tracking-widest">{String(active.role)}</p>
+                  <p className="text-sm text-white/50 leading-relaxed font-medium">{String(active.explanation)}</p>
+                </div>
+                <div className="pt-4 flex items-center gap-2 opacity-20">
+                  <div className="h-[1px] flex-1 bg-white" />
+                  <Microscope size={14} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHO IT'S FOR */}
+      <section className="py-24 px-6 md:px-[60px]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8">
+            <h2 className="text-[40px] font-black uppercase leading-none tracking-tight">System Suitability</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {[
+                "People seeking daily NAD+ support",
+                "Focused on energy metabolism",
+                "Stacking longevity protocols",
+                "Seeking methylation support"
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4 items-start">
+                  <span className="font-mono text-[11px] font-bold text-teal-500">0{i+1}</span>
+                  <p className="text-sm font-bold uppercase tracking-widest text-white/60">{String(item)}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="p-10 border-2 border-dashed border-white/5 bg-white/5">
+            <div className="flex items-center gap-3 text-white/40 mb-6">
+              <Info size={18} />
+              <p className="font-mono text-[10px] font-bold uppercase tracking-widest">Protocol Directive</p>
+            </div>
+            <p className="text-white/40 text-[15px] italic leading-relaxed font-medium">
+              Consult your clinician prior to deployment if you are pregnant, nursing, on medication, or managing a chronic medical condition.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* BUILT TO STACK */}
+      <section className="py-24 px-6 md:px-[60px] bg-white/5 border-y border-white/5">
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="text-center space-y-4">
+             <p className="font-mono text-[11px] text-teal-400 uppercase tracking-widest font-bold">Synergy</p>
+             <h2 className="text-[40px] font-black uppercase tracking-tight">Built to Stack</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {PRODUCT_DATA.stack?.map((item, i) => (
+              <div key={i} className="border border-white/10 bg-[#0f172a] p-10 space-y-8 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 blur-[60px] group-hover:bg-teal-500/10 transition-all" />
+                <div className="space-y-2">
+                   <div className="flex justify-between items-center">
+                     <h4 className="text-2xl font-black uppercase tracking-tight">{String(item.name)}</h4>
+                     <span className="font-mono text-[9px] text-teal-400 border border-teal-400/20 px-2 py-1 uppercase">{String(item.role)}</span>
+                   </div>
+                   <p className="text-sm text-white/50 leading-relaxed font-medium">{String(item.add)}</p>
+                </div>
+                <div className="flex items-center gap-3 font-mono text-[9px] text-white/30 uppercase tracking-[0.2em]">
+                  <Clock size={12} /> Sync: {String(item.when)}
+                </div>
+                <div className="flex gap-4 pt-2">
+                   <button className="flex-1 py-4 border border-white/10 font-mono text-[10px] font-black uppercase tracking-widest hover:bg-white/5">View</button>
+                   <button className="flex-1 py-4 bg-white text-[#0f172a] font-mono text-[10px] font-black uppercase tracking-widest hover:bg-teal-500 hover:text-white">Add</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* QUALITY & TRUST */}
+      <section className="py-20 px-6 md:px-[60px]">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+           {PRODUCT_DATA.trust?.map((t, i) => (
+             <div key={i} className="text-center space-y-4 opacity-40">
+                <div className="w-12 h-12 border border-white/10 flex items-center justify-center mx-auto rounded-full">
+                  <Check size={18} className="text-teal-500" />
+                </div>
+                <p className="font-mono text-[10px] uppercase font-bold tracking-[0.2em]">{String(t)}</p>
+             </div>
+           ))}
+        </div>
+      </section>
+
+      {/* FAQ SECTION */}
+      <section className="py-24 px-6 md:px-[60px] max-w-4xl mx-auto space-y-16">
+        <h3 className="text-3xl font-black uppercase tracking-tight text-center">Protocol Queries</h3>
+        <Accordion items={PRODUCT_DATA.faq} />
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="py-40 px-6 md:px-[60px] relative overflow-hidden bg-[#0f172a] border-t border-white/10 text-center">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-30" />
+        <div className="relative z-10 max-w-3xl mx-auto space-y-12">
+          <div className="space-y-4">
+             <h2 className="text-6xl md:text-8xl font-black uppercase tracking-[-0.04em] leading-[0.85]">Initialize <br /> Baseline.</h2>
+             <p className="font-mono text-[12px] text-white/40 uppercase tracking-[0.3em]">Deploy CELLUNAD+ for daily mitochondrial infrastructure support.</p>
+          </div>
+          <button className="px-16 py-6 bg-white text-[#0f172a] font-mono text-[12px] font-black tracking-[0.3em] uppercase hover:bg-teal-500 hover:text-white transition-all shadow-2xl">
+            Add to Protocol
+          </button>
+        </div>
+      </section>
+
+      <MasterFooter title="CELLUNAD+ PRODUCT SPECIFICATION" slide="PDP_V1.2" />
+
+      {/* FDA DISCLAIMER */}
+      <div className="bg-[#0f172a] py-16 px-6 md:px-[60px] border-t border-white/5">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="font-mono text-[10px] text-white/20 uppercase tracking-widest leading-relaxed">
+            * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. // Age Revive Precision Longevity // © 2024.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  );
+}
+
+// --- HELPER SUBCOMPONENTS ---
+
+function GlobalNoise() {
+  return (
+    <div className="fixed inset-0 pointer-events-none z-[150] opacity-[0.05]">
+      <svg width="100%" height="100%">
+        <filter id="noise">
+          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#noise)" />
+      </svg>
+    </div>
+  );
+}
