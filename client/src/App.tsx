@@ -8,6 +8,7 @@ const ProductDetail = lazy(() => import("./ProductDetail"));
 const Science = lazy(() => import("./pages/Science"));
 const Quality = lazy(() => import("./pages/Quality"));
 const FAQ = lazy(() => import("./pages/FAQ"));
+const Purchase = lazy(() => import("./pages/Purchase"));
 
 function LoadingFallback() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Suspense fallback={<LoadingFallback />}>
         <Switch>
           <Route path="/" component={Home} />
+          <Route path="/product/:slug/purchase" component={Purchase} />
           <Route path="/product/:slug" component={ProductDetail} />
           <Route path="/products/:slug" component={ProductDetail} />
           <Route path="/shop" component={Shop} />

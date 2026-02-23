@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useParams } from 'wouter';
+import { useParams, useLocation } from 'wouter';
 import {
   ArrowRight,
   Check,
@@ -268,12 +268,10 @@ function SectionLabel({ label }: { label: string }) {
 }
 
 function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.cellunad; slug: string }) {
-  const [isSubscribe, setIsSubscribe] = useState(true);
-  const [quantity, setQuantity] = useState(1);
   const [showSticky, setShowSticky] = useState(false);
   const [isFactsOpen, setIsFactsOpen] = useState(false);
-  const [showPurchaseOptions, setShowPurchaseOptions] = useState(false);
   const [activeTimeline, setActiveTimeline] = useState(0);
+  const [, navigate] = useLocation();
   const cart = useCart();
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -307,21 +305,8 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
     };
   }, [data.name]);
 
-  const currentPrice = isSubscribe ? data.priceSubscribe : data.priceOneTime;
   const accentColor = data.accentText;
   const images = PRODUCT_IMAGES[slug as keyof typeof PRODUCT_IMAGES] || PRODUCT_IMAGES.cellunad;
-  const productInfo = PRODUCTS.find((p) => p.slug === slug);
-
-  const handleAddToCart = () => {
-    cart.addItem({
-      slug,
-      name: data.name,
-      image: productInfo?.image || images[0],
-      price: currentPrice,
-      isSubscribe,
-      frequency: isSubscribe ? 'Delivered monthly' : 'One-time purchase',
-    }, quantity);
-  };
 
   return (
     <div ref={containerRef} className="min-h-screen bg-[#0b1120] text-white selection:bg-teal-500/30 selection:text-white font-sans antialiased">
@@ -332,14 +317,14 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
           <div className="hidden sm:flex items-center gap-3">
             <h4 className="text-sm font-head font-normal tracking-tight uppercase leading-none">{data.name}</h4>
             <span className="text-xs text-black/40">|</span>
-            <span className="text-sm font-head font-normal tracking-tighter">${currentPrice.toFixed(2)}</span>
+            <span className="text-sm font-head font-normal tracking-tighter">${data.priceSubscribe.toFixed(2)}</span>
           </div>
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <div className="flex-1 sm:hidden text-left">
-              <span className="text-lg font-head font-normal tracking-tighter">${(currentPrice * quantity).toFixed(2)}</span>
+              <span className="text-lg font-head font-normal tracking-tighter">${data.priceSubscribe.toFixed(2)}</span>
             </div>
-            <button onClick={() => { if (!showPurchaseOptions) { setShowPurchaseOptions(true); window.scrollTo({ top: 0, behavior: 'smooth' }); } else { handleAddToCart(); } }} className="flex-1 sm:flex-none py-3 px-8 bg-ar-teal text-ar-navy rounded-lg font-mono text-[11px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all min-h-[44px]" data-testid="sticky-cta">
-              {showPurchaseOptions ? 'Add to Cart' : 'Start Now'}
+            <button onClick={() => navigate(`/product/${slug}/purchase`)} className="flex-1 sm:flex-none py-3 px-8 bg-ar-teal text-ar-navy rounded-lg font-mono text-[11px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all min-h-[44px]" data-testid="sticky-cta">
+              Start Now
             </button>
           </div>
         </div>
@@ -386,95 +371,36 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                 {data.supplyLabel}<br />{data.subscribeNote}
               </div>
 
-              {!showPurchaseOptions ? (
-                <>
-                  <button
-                    onClick={() => setShowPurchaseOptions(true)}
-                    className="w-full py-4 bg-ar-teal text-ar-navy rounded-xl font-mono text-[12px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]"
-                    style={{ boxShadow: '0 0 20px rgba(45,212,191,0.15)' }}
-                    data-testid="start-now"
-                  >
-                    Start Now <ArrowRight size={14} />
-                  </button>
+              <button
+                onClick={() => navigate(`/product/${slug}/purchase`)}
+                className="w-full py-4 bg-ar-teal text-ar-navy rounded-xl font-mono text-[12px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]"
+                style={{ boxShadow: '0 0 20px rgba(45,212,191,0.15)' }}
+                data-testid="start-now"
+              >
+                Start Now <ArrowRight size={14} />
+              </button>
 
-                  <p className="text-center text-[12px] text-white/30 font-sans italic">
-                    30-day risk-free guarantee. Free US shipping.
-                  </p>
+              <p className="text-center text-[12px] text-white/30 font-sans italic">
+                30-day risk-free guarantee. Free US shipping.
+              </p>
 
-                  <div className="flex items-center gap-4 text-[10px] justify-center text-white">
-                    <button
-                      onClick={() => setIsFactsOpen(true)}
-                      className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40 hover:opacity-70 transition-all"
-                      data-testid="view-supplement-facts"
-                    >
-                      <FileText size={11} /> Supplement Facts
-                    </button>
-                    <span className="opacity-15">|</span>
-                    <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
-                      <Shield size={11} /> cGMP
-                    </div>
-                    <span className="opacity-15">|</span>
-                    <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
-                      <FlaskConical size={11} /> Tested
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="space-y-2">
-                    <button
-                      onClick={() => setIsSubscribe(true)}
-                      className={`w-full p-3.5 lg:p-4 border rounded-lg text-left transition-all flex justify-between items-center ${isSubscribe ? 'border-ar-teal bg-ar-teal/10 text-white' : 'border-white/10 text-white/60 hover:border-white/20'}`}
-                      data-testid="option-subscribe"
-                    >
-                      <div>
-                        <p className="font-mono text-[10px] font-bold uppercase tracking-[0.10em]">Subscribe & Save 15%</p>
-                        <p className={`text-xs mt-0.5 ${isSubscribe ? 'text-white/50' : 'text-white/30'}`}>Ships monthly. Cancel anytime.</p>
-                      </div>
-                      <span className={`text-sm font-head font-bold ${isSubscribe ? 'text-ar-teal' : 'text-white/40'}`}>Save 15%</span>
-                    </button>
-                    <button
-                      onClick={() => setIsSubscribe(false)}
-                      className={`w-full p-3.5 lg:p-4 border rounded-lg text-left transition-all ${!isSubscribe ? 'border-ar-teal bg-ar-teal/10 text-white' : 'border-white/10 text-white/60 hover:border-white/20'}`}
-                      data-testid="option-onetime"
-                    >
-                      <p className="font-mono text-[10px] font-bold uppercase tracking-[0.10em]">One-Time Purchase</p>
-                      <p className={`text-xs mt-0.5 ${!isSubscribe ? 'text-white/50' : 'text-white/30'}`}>No commitment.</p>
-                    </button>
-                  </div>
-
-                  <div className="flex items-center justify-between py-2">
-                    <span className="font-mono text-[10px] uppercase font-bold tracking-[0.10em] text-white/30">Qty</span>
-                    <div className="flex items-center gap-4 bg-white/5 px-4 py-1.5 rounded-full">
-                      <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-1 hover:opacity-70 transition-colors min-w-[30px] min-h-[30px] flex items-center justify-center text-white" data-testid="qty-minus"><Minus size={16} /></button>
-                      <span className="font-mono font-bold text-lg w-5 text-center text-white">{quantity}</span>
-                      <button onClick={() => setQuantity(quantity + 1)} className="p-1 hover:opacity-70 transition-colors min-w-[30px] min-h-[30px] flex items-center justify-center text-white" data-testid="qty-plus"><Plus size={16} /></button>
-                    </div>
-                  </div>
-
-                  <button onClick={handleAddToCart} className="w-full py-4 bg-ar-teal text-ar-navy rounded-xl font-mono text-[12px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]" style={{ boxShadow: '0 0 20px rgba(45,212,191,0.15)' }} data-testid="add-to-cart">
-                    Add to Cart <ArrowRight size={14} />
-                  </button>
-
-                  <div className="flex items-center gap-4 text-[10px] justify-center text-white">
-                    <button
-                      onClick={() => setIsFactsOpen(true)}
-                      className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40 hover:opacity-70 transition-all"
-                      data-testid="view-supplement-facts"
-                    >
-                      <FileText size={11} /> Supplement Facts
-                    </button>
-                    <span className="opacity-15">|</span>
-                    <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
-                      <Shield size={11} /> cGMP
-                    </div>
-                    <span className="opacity-15">|</span>
-                    <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
-                      <FlaskConical size={11} /> Tested
-                    </div>
-                  </div>
-                </>
-              )}
+              <div className="flex items-center gap-4 text-[10px] justify-center text-white">
+                <button
+                  onClick={() => setIsFactsOpen(true)}
+                  className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40 hover:opacity-70 transition-all"
+                  data-testid="view-supplement-facts"
+                >
+                  <FileText size={11} /> Supplement Facts
+                </button>
+                <span className="opacity-15">|</span>
+                <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
+                  <Shield size={11} /> cGMP
+                </div>
+                <span className="opacity-15">|</span>
+                <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
+                  <FlaskConical size={11} /> Tested
+                </div>
+              </div>
             </div>
           </div>
         </div>
