@@ -12,6 +12,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PRODUCTS as SELECTOR_PRODUCTS, BrandName } from './productsData';
 import ProtocolSelectorCard from './components/ProtocolSelectorCard';
 import Footer from './components/Footer';
+import { useCart } from './cartStore';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -213,7 +214,7 @@ const Navbar = () => {
     { label: 'FAQ', href: '/faq' }
   ];
 
-  const cartCount = 0;
+  const cart = useCart();
 
   return (
     <>
@@ -243,12 +244,12 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-1.5 sm:gap-2">
-            <a href="/shop" className="relative min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-teal-300 transition-colors" aria-label="Cart" data-testid="nav-cart">
+            <button onClick={cart.openCart} className="relative min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-teal-300 transition-colors" aria-label="Cart" data-testid="nav-cart">
               <ShoppingBag size={18} />
               <span className="absolute -top-0.5 -right-0.5 w-[15px] h-[15px] flex items-center justify-center text-[9px] font-mono font-bold rounded-sm leading-none text-teal-300 border border-teal-300/40 bg-white/[0.04]">
-                {cartCount}
+                {cart.totalItems}
               </span>
-            </a>
+            </button>
 
             <button
               className="md:hidden min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-teal-300 transition-colors"

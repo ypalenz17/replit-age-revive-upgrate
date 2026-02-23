@@ -36,6 +36,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import Footer from './components/Footer';
 import { PRODUCT_IMAGES, PRODUCT_DETAIL_DATA } from './productData';
+import { useCart } from './cartStore';
+import { PRODUCTS } from './productsData';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,6 +50,7 @@ function getIcon(name: string) {
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const cart = useCart();
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 50);
@@ -89,10 +92,10 @@ function Navbar() {
             ))}
           </div>
           <div className="flex items-center gap-1.5 sm:gap-2">
-            <a href="/shop" className="relative min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-teal-300 transition-colors" aria-label="Cart" data-testid="nav-cart-pdp">
+            <button onClick={cart.openCart} className="relative min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-teal-300 transition-colors" aria-label="Cart" data-testid="nav-cart-pdp">
               <ShoppingBag size={18} />
-              <span className="absolute -top-0.5 -right-0.5 w-[15px] h-[15px] flex items-center justify-center text-[9px] font-mono font-bold rounded-sm leading-none text-teal-300 border border-teal-300/40 bg-white/[0.04]">0</span>
-            </a>
+              <span className="absolute -top-0.5 -right-0.5 w-[15px] h-[15px] flex items-center justify-center text-[9px] font-mono font-bold rounded-sm leading-none text-teal-300 border border-teal-300/40 bg-white/[0.04]">{cart.totalItems}</span>
+            </button>
             <button
               className="md:hidden min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-white transition-colors"
               aria-label="Menu"
@@ -267,6 +270,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
   const [showSticky, setShowSticky] = useState(false);
   const [isFactsOpen, setIsFactsOpen] = useState(false);
   const [activeTimeline, setActiveTimeline] = useState(0);
+  const cart = useCart();
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -302,6 +306,18 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
   const currentPrice = isSubscribe ? data.priceSubscribe : data.priceOneTime;
   const accentColor = data.accentText;
   const images = PRODUCT_IMAGES[slug as keyof typeof PRODUCT_IMAGES] || PRODUCT_IMAGES.cellunad;
+  const productInfo = PRODUCTS.find((p) => p.slug === slug);
+
+  const handleAddToCart = () => {
+    cart.addItem({
+      slug,
+      name: data.name,
+      image: productInfo?.image || images[0],
+      price: currentPrice,
+      isSubscribe,
+      frequency: isSubscribe ? 'Delivered monthly' : 'One-time purchase',
+    }, quantity);
+  };
 
   return (
     <div ref={containerRef} className="min-h-screen bg-[#0b1120] text-white selection:bg-teal-500/30 selection:text-white font-sans antialiased">
@@ -318,7 +334,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
             <div className="flex-1 sm:hidden text-left">
               <span className="text-lg font-head font-normal tracking-tighter">${(currentPrice * quantity).toFixed(2)}</span>
             </div>
-            <button className="flex-1 sm:flex-none py-3 px-8 bg-ar-teal text-ar-navy rounded-lg font-mono text-[11px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all min-h-[44px]" data-testid="sticky-cta">
+            <button onClick={handleAddToCart} className="flex-1 sm:flex-none py-3 px-8 bg-ar-teal text-ar-navy rounded-lg font-mono text-[11px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all min-h-[44px]" data-testid="sticky-cta">
               Add to Cart
             </button>
           </div>
@@ -400,7 +416,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                 </div>
               </div>
 
-              <button className="w-full py-4 bg-ar-teal text-ar-navy rounded-lg font-mono text-[12px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="add-to-cart">
+              <button onClick={handleAddToCart} className="w-full py-4 bg-ar-teal text-ar-navy rounded-lg font-mono text-[12px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="add-to-cart">
                 Start Now <ArrowRight size={14} />
               </button>
 
