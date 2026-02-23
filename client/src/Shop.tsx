@@ -702,18 +702,17 @@ function ProductTemplate({ product }) {
           </>
         )}
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12 px-5 md:px-8 pt-28 md:pt-32 pb-10 md:pb-16 items-center">
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12 px-5 md:px-8 pt-28 md:pt-32 pb-10 md:pb-16 md:items-center min-h-[100dvh] md:min-h-0">
 
           <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left relative">
-            <div className="absolute -inset-x-8 -inset-y-4 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 40%, rgba(15,23,42,0.65) 0%, transparent 100%)' }} />
             <div className="relative">
-              <span className="inline-block font-mono text-[10px] uppercase tracking-[0.18em] font-bold mb-3 opacity-90" style={{ color: accentText }} data-testid="text-overline">{copy.overline}</span>
+              <span className="inline-block font-mono text-[10px] uppercase tracking-[0.18em] font-bold mb-3" style={{ color: accentText }} data-testid="text-overline">{copy.overline}</span>
 
               <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase mb-3" style={{ fontSize: 'clamp(2.8rem, 9vw, 5.5rem)' }} data-testid="text-product-name"><BrandName name={product.name} /></h1>
 
-              <p className="text-[15px] md:text-[17px] font-sans font-medium text-white/70 max-w-md mb-3 leading-snug mx-auto md:mx-0">{copy.subtitle}</p>
+              <p className="text-[15px] md:text-[17px] font-sans font-medium text-white/80 max-w-md mb-3 leading-snug mx-auto md:mx-0">{copy.subtitle}</p>
 
-              <p className="text-[11px] font-mono text-white/65 tracking-[0.01em] max-w-md mx-auto md:mx-0" data-testid="text-micro-line">{copy.microLine}</p>
+              <p className="text-[11px] font-mono text-white/70 tracking-[0.01em] max-w-md mx-auto md:mx-0" data-testid="text-micro-line">{copy.microLine}</p>
             </div>
           </div>
 
@@ -730,11 +729,11 @@ function ProductTemplate({ product }) {
 
                 <div className="px-3 pb-3 md:px-4 md:pb-4 space-y-2.5">
                   <div className="flex items-baseline justify-between gap-4">
-                    <span className="text-[11px] font-mono uppercase tracking-[0.10em] font-bold text-white/50">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
+                    <span className="text-[11px] font-mono uppercase tracking-[0.10em] font-bold text-white/65">{product.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
                     <span className="text-[22px] md:text-[24px] font-sans font-black text-white leading-none tracking-[-0.03em]">{product.price}</span>
                   </div>
 
-                  <p className="text-[14px] md:text-[15px] text-white/65 leading-snug font-sans tracking-[-0.01em]">{product.description}</p>
+                  <p className="text-[14px] md:text-[15px] text-white/75 leading-snug font-sans tracking-[-0.01em]">{product.description}</p>
 
                   <div className="border-t border-white/[0.06] pt-3 mt-2">
                     <div className="flex flex-col gap-1">
@@ -744,7 +743,7 @@ function ProductTemplate({ product }) {
                     </div>
                   </div>
 
-                  <p className="text-[10px] font-mono text-white/50 tracking-[0.08em] uppercase whitespace-nowrap mt-1">{product.specRow}</p>
+                  <p className="text-[10px] font-mono text-white/60 tracking-[0.08em] uppercase whitespace-nowrap mt-1">{product.specRow}</p>
 
                   {product.warnings && (
                     <p className="text-[10px] font-mono text-white/60 tracking-[0.02em]">{product.warnings}</p>
@@ -753,7 +752,7 @@ function ProductTemplate({ product }) {
                   <div className="space-y-2.5 pt-0.5">
                     <MagneticButton
                       className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
-                      style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06))', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.10), 0 1px 3px rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.10)' }}
+                      style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.08))', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15), 0 1px 3px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.18)' }}
                       onClick={() => {}}
                     >
                       <span className="relative z-10">Add to Stack</span>
@@ -764,15 +763,15 @@ function ProductTemplate({ product }) {
                     <div className="flex items-center justify-center gap-6">
                       <button
                         onClick={() => setActiveSidePanel('ingredients')}
-                        className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium text-white/35 hover:text-white/60 transition-colors duration-200"
+                        className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium text-white/50 hover:text-white/75 transition-colors duration-200"
                         data-testid="button-ingredients-pdp"
                       >
                         Ingredients
                       </button>
-                      <span className="w-px h-3 bg-white/6" />
+                      <span className="w-px h-3 bg-white/15" />
                       <button
                         onClick={() => setActiveSidePanel('rationale')}
-                        className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium text-white/35 hover:text-white/60 transition-colors duration-200"
+                        className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium text-white/50 hover:text-white/75 transition-colors duration-200"
                         data-testid="button-evidence-pdp"
                       >
                         Evidence
@@ -1054,13 +1053,13 @@ export default function Shop() {
               onClick={() => setSlug(p.id)}
               className={[
                 'px-5 py-3 text-[11px] font-mono font-bold uppercase tracking-[0.14em] transition-all min-h-[44px] relative',
-                slug === p.id ? 'text-white' : 'text-white/40 hover:text-white/65'
+                slug === p.id ? 'text-white' : 'text-white/55 hover:text-white/75'
               ].join(' ')}
               data-testid={`switcher-${p.id}`}
             >
               <BrandName name={p.name} />
               {slug === p.id && (
-                <span className="absolute bottom-0 left-3 right-3 h-[1.5px]" style={{ background: p.accentText || p.accent, opacity: 0.6 }} />
+                <span className="absolute bottom-0 left-3 right-3 h-[2px]" style={{ background: p.accentText || p.accent, opacity: 0.85 }} />
               )}
             </button>
           ))}
