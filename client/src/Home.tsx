@@ -8,6 +8,7 @@ import {
 
 import { gsap } from 'gsap';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
+import heroOrb from '@assets/hero_orb_1771871207728.png';
 import imgCellubiome from '@assets/cellubiome_cropped.png';
 import imgCellunad from '@assets/cellunad_cropped.png';
 import imgCellunova from '@assets/cellunova_cropped.png';
@@ -239,7 +240,7 @@ const Navbar = () => {
 
           <div className="hidden md:flex items-center gap-7 font-mono font-medium text-[11px] uppercase tracking-[0.14em]">
             {navLinks.map((l) => (
-              <a key={l.label} href={l.href} className="text-white/55 hover:text-teal-300 transition-colors" data-testid={`nav-link-${l.label.toLowerCase()}`}>
+              <a key={l.label} href={l.href} className="text-white/55 lg:text-white/70 hover:text-teal-300 transition-colors" data-testid={`nav-link-${l.label.toLowerCase()}`}>
                 {l.label}
               </a>
             ))}
@@ -298,18 +299,19 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
       </div>
 
       <div className="hidden lg:block absolute inset-0 z-[1] pointer-events-none" aria-hidden="true">
-        <div className="absolute right-[12%] top-[40%] -translate-y-1/2 w-[500px] h-[500px] rounded-full" style={{ background: 'radial-gradient(ellipse at center, rgba(45,212,191,0.06) 0%, transparent 70%)' }} />
-        <div className="absolute bottom-0 left-0 right-0 h-[30%]" style={{ background: 'linear-gradient(to top, rgba(15,23,42,0.5) 0%, transparent 100%)' }} />
-        <div className="absolute top-0 left-0 w-[40%] h-full" style={{ background: 'linear-gradient(to right, rgba(15,23,42,0.3) 0%, transparent 100%)' }} />
+        <div className="absolute right-[18%] top-[45%] -translate-y-1/2 w-[450px] h-[450px] rounded-full" style={{ background: 'radial-gradient(ellipse at center, rgba(45,212,191,0.03) 0%, transparent 70%)' }} />
+        <div className="absolute bottom-0 left-0 right-0 h-[35%]" style={{ background: 'linear-gradient(to top, rgba(15,23,42,0.6) 0%, transparent 100%)' }} />
+        <div className="absolute top-0 left-0 w-[45%] h-full" style={{ background: 'linear-gradient(to right, rgba(15,23,42,0.4) 0%, transparent 100%)' }} />
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 120% 100% at 50% 50%, transparent 40%, rgba(15,23,42,0.6) 100%)' }} />
       </div>
 
-      <div className="relative z-10 w-full max-w-3xl lg:max-w-7xl mx-auto flex flex-col justify-center text-center lg:text-left px-5 md:px-6 lg:px-12 pt-20 md:pt-36 lg:pt-44 pb-6 md:pb-12 lg:pb-20 min-h-[100dvh]">
-        <div className="lg:grid lg:grid-cols-12 lg:gap-8 lg:items-center">
+      <div className="relative z-10 w-full max-w-3xl lg:max-w-7xl mx-auto flex flex-col justify-center text-center lg:text-left px-5 md:px-6 lg:px-12 pt-20 md:pt-36 lg:pt-48 pb-6 md:pb-12 lg:pb-24 min-h-[100dvh]">
+        <div className="lg:grid lg:grid-cols-12 lg:gap-12 lg:items-center">
 
         <div className="flex flex-col hero-text w-full items-center lg:items-start lg:col-span-7">
 
           <div className="flex flex-col items-center md:items-start md:pl-[3%] lg:pl-0">
-            <div className="flex items-center gap-2 justify-center lg:justify-start mb-3">
+            <div className="flex items-center gap-2 justify-center lg:justify-start mb-3 lg:mb-5">
               <div className="h-px w-4 bg-white/10" />
               <span className="font-mono text-[10px] text-ar-teal/75 uppercase tracking-[0.10em]">Protocol-Grade Supplements</span>
               <div className="h-px w-4 bg-white/10" />
@@ -328,19 +330,19 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             </h1>
           </div>
 
-          <p className="mt-5 md:mt-6 lg:mt-8 text-[14px] md:text-[16px] lg:text-[17px] text-white/75 font-sans font-medium max-w-[32ch] md:max-w-[42ch] leading-[1.5] mx-auto md:ml-[3%] md:mr-auto md:text-left lg:ml-0">
+          <p className="mt-5 md:mt-6 lg:mt-10 text-[14px] md:text-[16px] lg:text-[17px] text-white/75 font-sans font-medium max-w-[32ch] md:max-w-[42ch] leading-[1.5] mx-auto md:ml-[3%] md:mr-auto md:text-left lg:ml-0">
             One system. Three protocols. Daily <span className="text-white/95">NAD+</span>, daily <span className="text-white/95">gut-mito</span> repair, and a <span className="text-white/95">7-day</span> monthly reset.
           </p>
 
-          <div className="mt-5 lg:mt-8 flex flex-col sm:flex-row gap-2 w-full max-w-[340px] mx-auto sm:w-auto sm:max-w-none md:justify-center lg:justify-start lg:mx-0">
-            <a href="/shop" className="group relative w-full sm:w-auto px-7 lg:px-9 min-h-[40px] lg:min-h-[46px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.10em] overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="button-shop-system">
+          <div className="mt-5 lg:mt-10 flex flex-col sm:flex-row gap-2 lg:gap-3 w-full max-w-[340px] mx-auto sm:w-auto sm:max-w-none md:justify-center lg:justify-start lg:mx-0">
+            <a href="/shop" className="group relative w-full sm:w-auto px-7 lg:px-10 min-h-[40px] lg:min-h-[48px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-lg font-mono lg:font-sans font-bold uppercase text-[11px] lg:text-[12px] tracking-[0.10em] lg:tracking-[0.08em] overflow-hidden transition-all hover:opacity-90 active:scale-[0.98]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.20), 0 0 8px rgba(45,212,191,0.08)' }} data-testid="button-shop-system">
               <span className="relative z-10">Shop the System</span>
-              <div className="absolute inset-0 bg-white/12 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-white/8 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </a>
 
             <button
               onClick={onOpenEvidence}
-              className="w-full sm:w-auto px-7 min-h-[40px] lg:min-h-[46px] text-white/40 lg:text-white/35 rounded-lg lg:rounded-none font-mono font-bold uppercase text-[11px] tracking-[0.10em] hover:text-white/65 transition-all lg:border-0 lg:bg-transparent lg:shadow-none"
+              className="w-full sm:w-auto px-7 min-h-[40px] lg:min-h-[48px] text-white/40 lg:text-white/45 rounded-lg font-mono lg:font-sans font-bold lg:font-semibold uppercase text-[11px] lg:text-[12px] tracking-[0.10em] lg:tracking-[0.08em] hover:text-white/65 transition-all lg:border lg:border-white/[0.10] lg:rounded-lg lg:hover:border-white/[0.18]"
               style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)' }}
               data-testid="button-view-evidence"
             >
@@ -358,19 +360,30 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             </div>
           </div>
 
-          <div className="hidden lg:flex items-center gap-0 mt-8" data-testid="proof-bar-desktop">
-            <span className="text-[10px] text-white/50 uppercase tracking-[0.10em] font-mono">Bioavailability First</span>
-            <span className="w-px h-3 bg-white/15 mx-3" />
-            <span className="text-[10px] text-white/50 uppercase tracking-[0.10em] font-mono">Standardized Actives</span>
-            <span className="w-px h-3 bg-white/15 mx-3" />
-            <span className="text-[10px] text-white/50 uppercase tracking-[0.10em] font-mono">Clinical Doses</span>
-            <span className="w-px h-3 bg-white/15 mx-3" />
-            <span className="text-[10px] text-white/50 uppercase tracking-[0.10em] font-mono">Glass Packaging</span>
+          <div className="hidden lg:flex items-center gap-0 mt-12" data-testid="proof-bar-desktop">
+            <span className="text-[10px] text-white/45 uppercase tracking-[0.10em] font-sans font-medium">Bioavailability First</span>
+            <span className="w-px h-3 bg-white/12 mx-3.5" />
+            <span className="text-[10px] text-white/45 uppercase tracking-[0.10em] font-sans font-medium">Standardized Actives</span>
+            <span className="w-px h-3 bg-white/12 mx-3.5" />
+            <span className="text-[10px] text-white/45 uppercase tracking-[0.10em] font-sans font-medium">Clinical Doses</span>
+            <span className="w-px h-3 bg-white/12 mx-3.5" />
+            <span className="text-[10px] text-white/45 uppercase tracking-[0.10em] font-sans font-medium">Glass Packaging</span>
           </div>
 
           <p className="mt-2 text-[11px] text-white/40 font-sans tracking-normal lg:hidden">Start with the bundle or choose a protocol.</p>
         </div>
 
+        <div className="hidden lg:flex lg:col-span-5 items-center justify-center">
+          <div className="relative w-full max-w-[420px]">
+            <div className="absolute inset-0 -inset-x-8 -inset-y-8 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(45,212,191,0.04), transparent 70%)' }} />
+            <img
+              src={heroOrb}
+              alt="Age Revive cellular axis visualization"
+              className="relative z-10 w-full h-auto object-contain opacity-90"
+              style={{ filter: 'drop-shadow(0 0 40px rgba(45,212,191,0.06))' }}
+            />
+          </div>
+        </div>
 
         </div>
       </div>
