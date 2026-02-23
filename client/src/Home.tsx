@@ -618,12 +618,12 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-0 sm:gap-y-6 items-stretch">
               {SELECTOR_PRODUCTS.map((p, i) => (
                 <div key={p.slug} className="flex flex-col">
-                  <ProtocolSelectorCard p={p} />
-                  {i < SELECTOR_PRODUCTS.length - 1 && (
+                  {i > 0 && (
                     <div className="flex justify-center py-6 sm:hidden">
                       <div className="w-[60%] h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
                     </div>
                   )}
+                  <ProtocolSelectorCard p={p} />
                 </div>
               ))}
             </div>
