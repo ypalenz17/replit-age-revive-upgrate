@@ -61,11 +61,11 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
         </h4>
 
         {p.benefit && (
-          <p className="text-[14px] sm:text-[15px] font-sans text-white/70 font-medium leading-[1.45] min-h-[42px] mb-4">{p.benefit}</p>
+          <p className="text-[14px] sm:text-[15px] font-sans text-white/70 font-medium leading-[1.45] min-h-[42px] mb-2.5">{p.benefit}</p>
         )}
 
         {p.outcomes && p.outcomes.length > 0 && (
-          <div className="flex flex-col gap-[6px] mb-5 min-h-[78px]">
+          <div className="flex flex-col gap-[6px] mb-2.5 min-h-[78px]">
             {p.outcomes.slice(0, 3).map((o) => (
               <span key={o} className="flex items-center gap-2 text-[13px] font-sans font-medium text-white">
                 <Check size={13} strokeWidth={2.5} className="shrink-0" style={{ color: accentText }} />
