@@ -676,11 +676,11 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
         <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] blur-[120px] pointer-events-none rounded-full" style={{ background: `${data.accent}18` }} />
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
 
-          <div className="order-2 lg:order-1">
+          <div>
             <ImageCarousel images={images} accent={data.accent} />
           </div>
 
-          <div className="order-1 lg:order-2 lg:sticky lg:top-20 space-y-6">
+          <div className="lg:sticky lg:top-20 space-y-6">
             <div className="space-y-3">
               <p className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: accentColor }}>{data.tagline}</p>
               <h1 className="font-head font-normal tracking-[-0.04em] leading-[0.9] uppercase text-white" style={{ fontSize: 'clamp(2.4rem, 6vw, 3.5rem)' }}>
