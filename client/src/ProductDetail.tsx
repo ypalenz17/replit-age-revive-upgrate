@@ -177,8 +177,8 @@ function ImageCarousel({ images }: { images: string[] }) {
   const total = images.length;
 
   return (
-    <div className="relative w-full">
-      <div className="aspect-[3/4] w-full overflow-hidden rounded-xl bg-white/[0.03]">
+    <div className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-none mx-auto">
+      <div className="aspect-square w-full overflow-hidden rounded-xl bg-white/[0.03]">
         {images.map((src, i) => (
           <img
             key={src}
@@ -193,27 +193,27 @@ function ImageCarousel({ images }: { images: string[] }) {
       <div className="absolute inset-y-0 left-0 flex items-center">
         <button
           onClick={() => setCurrent((current - 1 + total) % total)}
-          className="ml-2 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
+          className="ml-1.5 w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
           data-testid="carousel-prev"
         >
-          <ChevronLeft size={18} />
+          <ChevronLeft size={16} />
         </button>
       </div>
       <div className="absolute inset-y-0 right-0 flex items-center">
         <button
           onClick={() => setCurrent((current + 1) % total)}
-          className="mr-2 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
+          className="mr-1.5 w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
           data-testid="carousel-next"
         >
-          <ChevronRight size={18} />
+          <ChevronRight size={16} />
         </button>
       </div>
-      <div className="flex gap-2 mt-3 justify-center">
+      <div className="flex gap-1.5 lg:gap-2 mt-2 lg:mt-3 justify-center">
         {images.map((img, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`w-14 h-14 rounded-lg overflow-hidden border-2 transition-all ${i === current ? 'border-white/60 opacity-100' : 'border-transparent opacity-40 hover:opacity-70'}`}
+            className={`w-11 h-11 lg:w-14 lg:h-14 rounded-lg overflow-hidden border-2 transition-all ${i === current ? 'border-white/60 opacity-100' : 'border-transparent opacity-40 hover:opacity-70'}`}
             data-testid={`carousel-thumb-${i}`}
           >
             <img src={img} alt="" loading="lazy" className="w-full h-full object-cover" />
@@ -328,18 +328,18 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       <Navbar />
 
       {/* ───── HERO: Seed-style image carousel left + purchase card right ───── */}
-      <section className="relative pt-20 pb-10 lg:pt-24 lg:pb-16 px-5 md:px-10 lg:px-[60px] overflow-hidden">
+      <section className="relative pt-16 pb-6 lg:pt-24 lg:pb-16 px-5 md:px-10 lg:px-[60px] overflow-hidden">
         <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] blur-[120px] pointer-events-none rounded-full" style={{ background: `${data.accent}18` }} />
-        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
+        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-14 items-start">
 
           <div>
             <ImageCarousel images={images} />
           </div>
 
-          <div className="lg:sticky lg:top-20 space-y-6">
-            <div className="space-y-3">
-              <p className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: accentColor }}>{data.tagline}</p>
-              <h1 className="font-head font-normal tracking-[-0.04em] leading-[0.9] uppercase text-white" style={{ fontSize: 'clamp(2.4rem, 6vw, 3.5rem)' }}>
+          <div className="lg:sticky lg:top-20 space-y-4 lg:space-y-6">
+            <div className="space-y-2 lg:space-y-3">
+              <p className="font-mono text-[10px] lg:text-[11px] uppercase tracking-[0.14em]" style={{ color: accentColor }}>{data.tagline}</p>
+              <h1 className="font-head font-normal tracking-[-0.04em] leading-[0.9] uppercase text-white" style={{ fontSize: 'clamp(1.8rem, 5vw, 3.5rem)' }}>
                 {data.name}
               </h1>
               <div className="flex items-center gap-3">
@@ -352,14 +352,14 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
               </div>
             </div>
 
-            <p className="text-[15px] text-white/60 font-sans leading-relaxed max-w-md">
+            <p className="text-[13px] lg:text-[15px] text-white/60 font-sans leading-relaxed max-w-md">
               {data.subtitle}
             </p>
 
-            <div className="bg-[#F4F1EA] text-[#0b1120] p-6 md:p-8 rounded-xl shadow-[20px_20px_80px_rgba(0,0,0,0.3)] space-y-5">
-              <div className="flex justify-between items-baseline border-b border-black/5 pb-4">
+            <div className="bg-[#F4F1EA] text-[#0b1120] p-5 lg:p-8 rounded-xl shadow-[20px_20px_80px_rgba(0,0,0,0.3)] space-y-4 lg:space-y-5">
+              <div className="flex justify-between items-baseline border-b border-black/5 pb-3 lg:pb-4">
                 <div>
-                  <span className="text-3xl md:text-4xl font-head font-normal tracking-tighter">${(currentPrice * quantity).toFixed(2)}</span>
+                  <span className="text-2xl lg:text-4xl font-head font-normal tracking-tighter">${(currentPrice * quantity).toFixed(2)}</span>
                   {isSubscribe && <span className="ml-2 text-xs text-black/40 line-through">${(data.priceOneTime * quantity).toFixed(2)}</span>}
                 </div>
                 <span className="text-[11px] font-mono font-bold uppercase tracking-wider opacity-40">{data.form}</span>
@@ -369,10 +369,10 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                 {data.supplyLabel}<br />{data.subscribeNote}
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-1.5 lg:space-y-2">
                 <button
                   onClick={() => setIsSubscribe(true)}
-                  className={`w-full p-4 border-2 rounded-lg text-left transition-all flex justify-between items-center ${isSubscribe ? 'border-[#0b1120] bg-[#0b1120] text-white' : 'border-black/10 hover:border-black/20'}`}
+                  className={`w-full p-3 lg:p-4 border-2 rounded-lg text-left transition-all flex justify-between items-center ${isSubscribe ? 'border-[#0b1120] bg-[#0b1120] text-white' : 'border-black/10 hover:border-black/20'}`}
                   data-testid="option-subscribe"
                 >
                   <div>
@@ -383,7 +383,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                 </button>
                 <button
                   onClick={() => setIsSubscribe(false)}
-                  className={`w-full p-4 border-2 rounded-lg text-left transition-all ${!isSubscribe ? 'border-[#0b1120] bg-[#0b1120] text-white' : 'border-black/10 hover:border-black/20'}`}
+                  className={`w-full p-3 lg:p-4 border-2 rounded-lg text-left transition-all ${!isSubscribe ? 'border-[#0b1120] bg-[#0b1120] text-white' : 'border-black/10 hover:border-black/20'}`}
                   data-testid="option-onetime"
                 >
                   <p className="font-mono text-[10px] font-bold uppercase tracking-[0.10em]">One-Time Purchase</p>
