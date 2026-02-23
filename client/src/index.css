@@ -88,6 +88,9 @@ details summary::-webkit-details-marker {
   }
 }
 
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* Cart drawer slide-in */
 @keyframes slide-in-right {
   from { transform: translateX(100%); }

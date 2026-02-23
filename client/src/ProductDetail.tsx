@@ -176,51 +176,54 @@ function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () =>
 }
 
 function ImageCarousel({ images }: { images: string[] }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);
-  const total = images.length;
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const scrollLeft = el.scrollLeft;
+      const itemWidth = el.offsetWidth * 0.82;
+      const idx = Math.round(scrollLeft / itemWidth);
+      setCurrent(Math.min(idx, images.length - 1));
+    };
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, [images.length]);
 
   return (
-    <div className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-none mx-auto">
-      <div className="aspect-square w-full overflow-hidden rounded-xl bg-white/[0.03]">
+    <div className="relative w-full">
+      <div
+        ref={scrollRef}
+        className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-3 pl-5 md:pl-0"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+        data-testid="carousel-scroll"
+      >
         {images.map((src, i) => (
-          <img
+          <div
             key={src}
-            src={src}
-            alt={`Product image ${i + 1}`}
-            loading={i === 0 ? 'eager' : 'lazy'}
-            className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-500 ${i === current ? 'opacity-100 relative' : 'opacity-0 pointer-events-none'}`}
-            data-testid={i === current ? `carousel-image-${current}` : undefined}
-          />
+            className="snap-start shrink-0 rounded-xl overflow-hidden bg-white/[0.03]"
+            style={{ width: '85%', maxWidth: '560px' }}
+          >
+            <div className="aspect-[4/3] w-full">
+              <img
+                src={src}
+                alt={`Product image ${i + 1}`}
+                loading={i === 0 ? 'eager' : 'lazy'}
+                className="w-full h-full object-cover"
+                data-testid={`carousel-image-${i}`}
+              />
+            </div>
+          </div>
         ))}
       </div>
-      <div className="absolute inset-y-0 left-0 flex items-center">
-        <button
-          onClick={() => setCurrent((current - 1 + total) % total)}
-          className="ml-1.5 w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
-          data-testid="carousel-prev"
-        >
-          <ChevronLeft size={16} />
-        </button>
-      </div>
-      <div className="absolute inset-y-0 right-0 flex items-center">
-        <button
-          onClick={() => setCurrent((current + 1) % total)}
-          className="mr-1.5 w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
-          data-testid="carousel-next"
-        >
-          <ChevronRight size={16} />
-        </button>
-      </div>
-      <div className="flex gap-1.5 lg:gap-2 mt-2 lg:mt-3 justify-center">
-        {images.map((img, i) => (
-          <button
+      <div className="flex gap-1.5 justify-center mt-1">
+        {images.map((_, i) => (
+          <div
             key={i}
-            onClick={() => setCurrent(i)}
-            className={`w-11 h-11 lg:w-14 lg:h-14 rounded-lg overflow-hidden border-2 transition-all ${i === current ? 'border-white/60 opacity-100' : 'border-transparent opacity-40 hover:opacity-70'}`}
-            data-testid={`carousel-thumb-${i}`}
-          >
-            <img src={img} alt="" loading="lazy" className="w-full h-full object-cover" />
-          </button>
+            className={`h-[3px] rounded-full transition-all duration-300 ${i === current ? 'w-5 bg-white/60' : 'w-1.5 bg-white/15'}`}
+          />
         ))}
       </div>
     </div>
@@ -349,7 +352,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
         <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] blur-[120px] pointer-events-none rounded-full" style={{ background: `${data.accent}18` }} />
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-14 items-start">
 
-          <div>
+          <div className="-mx-5 md:mx-0">
             <ImageCarousel images={images} />
           </div>
 
