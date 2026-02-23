@@ -36,23 +36,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import Footer from './components/Footer';
 
-import productBottle1 from './assets/images/product-bottle_1.jpg';
-import productBottle2 from './assets/images/product-bottle_2.jpg';
-import productBottle3 from './assets/images/product-bottle_3.jpg';
-import productCapsules1 from './assets/images/product-capsules_1.jpg';
-import productCapsules2 from './assets/images/product-capsules_2.jpg';
-import lifestyleWellness1 from './assets/images/lifestyle-wellness_1.jpg';
-import lifestyleWellness2 from './assets/images/lifestyle-wellness_2.jpg';
-import labTesting from './assets/images/lab-testing.jpg';
-import howToUseImg from './assets/images/how-to-use.jpg';
-import scienceGut from './assets/images/science-gut.jpg';
-
 gsap.registerPlugin(ScrollTrigger);
 
-const PRODUCT_IMAGES = {
-  cellunad: [productBottle1, productCapsules1, lifestyleWellness1, labTesting],
-  cellubiome: [productBottle2, productCapsules2, scienceGut, lifestyleWellness2],
-  cellunova: [productBottle3, productBottle1, productCapsules1, howToUseImg],
+const PRODUCT_IMAGES: Record<string, string[]> = {
+  cellunad: ['/images/product-bottle_1.jpg', '/images/product-capsules_1.jpg', '/images/lifestyle-wellness_1.jpg', '/images/lab-testing.jpg'],
+  cellubiome: ['/images/product-bottle_2.jpg', '/images/product-capsules_2.jpg', '/images/science-gut.jpg', '/images/lifestyle-wellness_2.jpg'],
+  cellunova: ['/images/product-bottle_3.jpg', '/images/product-bottle_1.jpg', '/images/product-capsules_1.jpg', '/images/how-to-use.jpg'],
 };
 
 const PRODUCT_DETAIL_DATA = {
@@ -520,19 +509,23 @@ function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () =>
   );
 }
 
-function ImageCarousel({ images, accent }: { images: string[]; accent: string }) {
+function ImageCarousel({ images }: { images: string[] }) {
   const [current, setCurrent] = useState(0);
   const total = images.length;
 
   return (
     <div className="relative w-full">
       <div className="aspect-[3/4] w-full overflow-hidden rounded-xl bg-white/[0.03]">
-        <img
-          src={images[current]}
-          alt={`Product image ${current + 1}`}
-          className="w-full h-full object-cover transition-opacity duration-500"
-          data-testid={`carousel-image-${current}`}
-        />
+        {images.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt={`Product image ${i + 1}`}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-500 ${i === current ? 'opacity-100 relative' : 'opacity-0 pointer-events-none'}`}
+            data-testid={i === current ? `carousel-image-${current}` : undefined}
+          />
+        ))}
       </div>
       <div className="absolute inset-y-0 left-0 flex items-center">
         <button
@@ -560,7 +553,7 @@ function ImageCarousel({ images, accent }: { images: string[]; accent: string })
             className={`w-14 h-14 rounded-lg overflow-hidden border-2 transition-all ${i === current ? 'border-white/60 opacity-100' : 'border-transparent opacity-40 hover:opacity-70'}`}
             data-testid={`carousel-thumb-${i}`}
           >
-            <img src={img} alt="" className="w-full h-full object-cover" />
+            <img src={img} alt="" loading="lazy" className="w-full h-full object-cover" />
           </button>
         ))}
       </div>
@@ -677,7 +670,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
 
           <div>
-            <ImageCarousel images={images} accent={data.accent} />
+            <ImageCarousel images={images} />
           </div>
 
           <div className="lg:sticky lg:top-20 space-y-6">
@@ -912,7 +905,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="rounded-xl overflow-hidden aspect-[4/3]">
-            <img src={howToUseImg} alt="How to use" className="w-full h-full object-cover" />
+            <img src="/images/how-to-use.jpg" alt="How to use" loading="lazy" className="w-full h-full object-cover" />
           </div>
           <div className="space-y-6">
             <div>
