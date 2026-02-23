@@ -8,7 +8,7 @@ import {
 
 import { gsap } from 'gsap';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
-import heroVideo from '@assets/Extreme_low_key_1080p_202602231330_1771871527314.mp4';
+import heroVideo from '@assets/hero_video_cropped.mp4';
 import imgCellubiome from '@assets/cellubiome_cropped.png';
 import imgCellunad from '@assets/cellunad_cropped.png';
 import imgCellunova from '@assets/cellunova_cropped.png';
@@ -299,7 +299,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 scale-[1.05] translate-x-[2.5%]"
+        className="absolute inset-0 w-full h-full object-cover z-0"
         src={heroVideo}
       />
       <div className="absolute inset-0 z-[1] pointer-events-none" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.5) 0%, rgba(15,23,42,0.35) 40%, rgba(15,23,42,0.6) 80%, rgba(15,23,42,0.9) 100%)' }} />
