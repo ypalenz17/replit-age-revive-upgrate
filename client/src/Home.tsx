@@ -602,7 +602,7 @@ export default function Home() {
       <section className="relative pt-8 pb-12 md:pt-12 md:pb-20 px-6">
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 30%, rgba(30,58,138,0.06) 0%, transparent 70%)' }} />
         <div className="max-w-7xl mx-auto relative">
-          <div className="text-center mb-8 md:mb-14 reveal-stagger">
+          <div className="text-center mb-12 md:mb-20 reveal-stagger">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="h-[1px] w-12 bg-ar-teal" />
               <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Select Your Protocol</span>
@@ -611,7 +611,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-head font-normal text-white tracking-[-0.04em] uppercase leading-tight">
               The System
             </h2>
-            <p className="text-sm text-white/50 font-mono uppercase tracking-[0.12em] mt-3">Choose your starting point</p>
+            <p className="text-[11px] text-white/50 font-mono uppercase tracking-[0.12em] mt-1.5">Choose your starting point</p>
           </div>
 
           <div className="max-w-5xl mx-auto">
