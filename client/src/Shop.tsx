@@ -444,6 +444,7 @@ function IngredientPanel({ ingredients, accentText }) {
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [shopOpen, setShopOpen] = useState(false);
   const cart = useCart();
 
   useEffect(() => {
@@ -510,15 +511,36 @@ function Navbar() {
           <div className="absolute top-0 left-0 right-0 pt-16 pb-6 px-6 bg-white/[0.04] backdrop-blur-xl border-b border-white/[0.08]">
             <div className="flex flex-col gap-0">
               {navLinks.map((l) => (
-                <a
-                  key={l.label}
-                  href={l.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="py-3 min-h-[44px] flex items-center text-[13px] font-mono font-bold uppercase tracking-[0.10em] text-white/70 hover:text-teal-300 transition-colors border-b border-white/[0.05] last:border-0"
-                  data-testid={`mobile-nav-shop-${l.label.toLowerCase()}`}
-                >
-                  {l.label}
-                </a>
+                l.label === 'Shop' ? (
+                  <div key={l.label} className="border-b border-white/[0.05]">
+                    <button
+                      onClick={() => setShopOpen(!shopOpen)}
+                      className="w-full py-3 min-h-[44px] flex items-center justify-between text-[13px] font-mono font-bold uppercase tracking-[0.10em] text-white/70 hover:text-teal-300 transition-colors"
+                      data-testid="mobile-nav-shop-shop-toggle"
+                    >
+                      {l.label}
+                      <ChevronDown size={14} className={`transition-transform duration-300 ${shopOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    {shopOpen && (
+                      <div className="flex flex-col gap-0 pl-4 pb-2">
+                        <a href="/product/cellunad" onClick={() => setMobileOpen(false)} className="min-h-[40px] flex items-center text-[12px] font-mono font-bold uppercase tracking-[0.10em] text-white/50 hover:text-teal-300 transition-colors" data-testid="mobile-nav-product-cellunad">CELLUNAD+</a>
+                        <a href="/product/cellubiome" onClick={() => setMobileOpen(false)} className="min-h-[40px] flex items-center text-[12px] font-mono font-bold uppercase tracking-[0.10em] text-white/50 hover:text-teal-300 transition-colors" data-testid="mobile-nav-product-cellubiome">CELLUBIOME</a>
+                        <a href="/product/cellunova" onClick={() => setMobileOpen(false)} className="min-h-[40px] flex items-center text-[12px] font-mono font-bold uppercase tracking-[0.10em] text-white/50 hover:text-teal-300 transition-colors" data-testid="mobile-nav-product-cellunova">CELLUNOVA</a>
+                        <a href="/shop" onClick={() => setMobileOpen(false)} className="min-h-[40px] flex items-center text-[12px] font-mono uppercase tracking-[0.10em] text-white/50 hover:text-teal-300 transition-colors italic" data-testid="mobile-nav-shop-viewall">View All <ArrowRight size={12} className="ml-1.5" /></a>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <a
+                    key={l.label}
+                    href={l.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="py-3 min-h-[44px] flex items-center text-[13px] font-mono font-bold uppercase tracking-[0.10em] text-white/70 hover:text-teal-300 transition-colors border-b border-white/[0.05] last:border-0"
+                    data-testid={`mobile-nav-shop-${l.label.toLowerCase()}`}
+                  >
+                    {l.label}
+                  </a>
+                )
               ))}
             </div>
           </div>
