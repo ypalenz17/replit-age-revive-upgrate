@@ -8,6 +8,7 @@ import {
 
 import { gsap } from 'gsap';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
+import heroVideo from '@assets/Extreme_low_key_1080p_202602231330_1771871527314.mp4';
 import imgCellubiome from '@assets/cellubiome_cropped.png';
 import imgCellunad from '@assets/cellunad_cropped.png';
 import imgCellunova from '@assets/cellunova_cropped.png';
@@ -293,15 +294,16 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
   return (
     <section className="relative min-h-[100dvh] flex flex-col overflow-hidden">
 
-      <div className="absolute inset-0 z-[1] pointer-events-none lg:hidden" aria-hidden="true">
-        <div className="absolute left-1/2 top-[35%] -translate-x-1/2 -translate-y-1/2 w-[min(95vw,650px)] h-[min(95vw,650px)] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(8,12,26,0.9)_0%,transparent_70%)]" />
-      </div>
-
-      <div className="hidden lg:block absolute inset-0 z-[1] pointer-events-none" aria-hidden="true">
-        <div className="absolute right-[12%] top-[40%] -translate-y-1/2 w-[500px] h-[500px] rounded-full" style={{ background: 'radial-gradient(ellipse at center, rgba(45,212,191,0.06) 0%, transparent 70%)' }} />
-        <div className="absolute bottom-0 left-0 right-0 h-[30%]" style={{ background: 'linear-gradient(to top, rgba(15,23,42,0.5) 0%, transparent 100%)' }} />
-        <div className="absolute top-0 left-0 w-[40%] h-full" style={{ background: 'linear-gradient(to right, rgba(15,23,42,0.3) 0%, transparent 100%)' }} />
-      </div>
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        src={heroVideo}
+      />
+      <div className="absolute inset-0 z-[1] pointer-events-none" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.5) 0%, rgba(15,23,42,0.35) 40%, rgba(15,23,42,0.6) 80%, rgba(15,23,42,0.9) 100%)' }} />
+      <div className="absolute inset-0 z-[1] pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 70% at 50% 40%, transparent 30%, rgba(15,23,42,0.5) 100%)' }} />
 
       <div className="relative z-10 w-full max-w-3xl lg:max-w-7xl mx-auto flex flex-col justify-center text-center lg:text-left px-5 md:px-6 lg:px-12 pt-20 md:pt-36 lg:pt-44 pb-6 md:pb-12 lg:pb-20 min-h-[100dvh]">
         <div className="lg:grid lg:grid-cols-12 lg:gap-8 lg:items-center">
