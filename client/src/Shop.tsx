@@ -793,10 +793,12 @@ function ProductTemplate({ product }) {
         {product.id === 'cellunova' && (
           <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(108,92,231,0.04), transparent 70%)' }} />
         )}
-        <div className="relative z-[1] max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10">
-          <div className="reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.16em] block mb-4" style={{ color: accentText }} data-testid="text-narrative-label">{copy.narrative.label}</span>
-            <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-6" data-testid="text-narrative-headline">{copy.narrative.headline}</h2>
+        <div className="relative z-[1] max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto px-6 md:px-10">
+          <div className="reveal md:grid md:grid-cols-2 md:gap-16 md:items-start">
+            <div>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.16em] block mb-4" style={{ color: accentText }} data-testid="text-narrative-label">{copy.narrative.label}</span>
+              <h2 className="text-[22px] md:text-[32px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-6 md:mb-0" data-testid="text-narrative-headline">{copy.narrative.headline}</h2>
+            </div>
             <div className="space-y-1" data-testid="text-narrative-body">
               {copy.narrative.bodyLines.map((line, i) => (
                 <p key={i} className="text-[14px] md:text-[15px] font-sans text-white/70 leading-[1.75]">{line}</p>
