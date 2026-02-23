@@ -33,28 +33,26 @@ gsap.registerPlugin(ScrollTrigger);
 const PRODUCT_DETAIL_DATA = {
   cellunad: {
     name: "CELLUNAD+",
-    subtitle: "Daily NAD+ Support for Energy + DNA Maintenance",
+    subtitle: "Daily NAD+ support for energy and DNA maintenance.",
     form: "Capsules",
-    serving: "2 capsules daily with a meal (morning or afternoon)",
+    serving: "2 capsules daily with a meal",
     servingsPerContainer: 30,
     priceOneTime: 79.99,
     priceSubscribe: 67.99,
     accent: '#1e3a8a',
     accentText: '#60a5fa',
     accentTailwind: 'teal',
-    heroCode: 'SYS_COMPONENT // CN_01',
+    heroOverline: 'Daily NAD+ Optimization',
     heroSplit: ['CELLU', 'NAD+.'],
-    heroSubExtra: 'Molecular repletion for cellular metabolic flux.',
-    supplyLabel: '30 Days',
-    purchaseLabel: 'Baseline Protocol',
-    subscribeLabel: 'Protocol Sync',
+    supplyLabel: '30-Day Supply',
+    subscribeLabel: 'Subscribe & Save 15%',
     subscribeDesc: 'Ships monthly. Cancel anytime.',
-    onetimeLabel: 'One-time Deployment',
-    onetimeDesc: 'Standard retail value.',
+    onetimeLabel: 'One-Time Purchase',
+    onetimeDesc: 'No commitment.',
     heroClaims: [
       "Supports NAD+ levels*",
       "Supports cellular energy*",
-      "Supports DNA maintenance pathways*",
+      "Supports DNA maintenance*",
       "Supports methylation balance*"
     ],
     heroSpecs: [
@@ -79,20 +77,20 @@ const PRODUCT_DETAIL_DATA = {
       allergenNote: null as string | null
     },
     keyActives: [
-      { name: "Nicotinamide Riboside (NR)", dose: "500 mg", role: "NAD+ precursor", explanation: "Supports NAD+ production through well-studied precursor pathways." },
-      { name: "Apigenin", dose: "100 mg", role: "NAD+ preservation support", explanation: "Supports NAD+ availability by modulating enzymes involved in NAD+ turnover." },
-      { name: "TMG + Methylated B Complex", dose: "TMG 250 mg + B-Complex", role: "Methylation support", explanation: "Supports one-carbon metabolism and methylation balance while running NAD+ support consistently." },
-      { name: "R-Lipoic Acid", dose: "200 mg", role: "Mitochondrial cofactor support", explanation: "Supports metabolic enzyme function and oxidative balance." },
-      { name: "BioPerine", dose: "5 mg", role: "Absorption support", explanation: "Added to support bioavailability of select compounds." }
+      { name: "Nicotinamide Riboside (NR)", dose: "500 mg", role: "NAD+ Precursor", explanation: "A well-studied precursor that supports NAD+ production in every cell." },
+      { name: "Apigenin", dose: "100 mg", role: "NAD+ Preservation", explanation: "Helps maintain NAD+ availability by supporting healthy enzyme balance." },
+      { name: "TMG + Methylated B Complex", dose: "TMG 250 mg + B-Complex", role: "Methylation Support", explanation: "Supports methylation balance alongside consistent NAD+ supplementation." },
+      { name: "R-Lipoic Acid", dose: "200 mg", role: "Mitochondrial Cofactor", explanation: "Supports metabolic enzyme function and antioxidant balance." },
+      { name: "BioPerine", dose: "5 mg", role: "Absorption", explanation: "Black pepper extract included to support bioavailability." }
     ],
     scienceSection: {
-      label: 'Scientific Context',
+      label: 'The Science',
       headline: 'Why NAD+ Matters',
       paragraphs: [
-        'NAD+ is a fundamental coenzyme found in every living cell. It serves as a critical electron transporter in cellular energy metabolism, helping convert nutrients into ATP.',
-        'Beyond energy, NAD+ is required for the activity of enzymes involved in DNA maintenance and cellular signaling pathways. Biological NAD+ levels are associated with age and metabolic demands.'
+        'NAD+ is a coenzyme found in every living cell. It plays a central role in converting nutrients into energy and is required by enzymes that maintain DNA and regulate cellular signaling.',
+        'NAD+ levels naturally decline with age. CELLUNAD+ is formulated to support daily NAD+ replenishment with clinically studied doses and essential co-factors.'
       ],
-      diagramLabel: 'SIGNAL_DISTRIBUTION_PATHWAY',
+      diagramLabel: 'NAD+ Pathway',
       diagramCenter: { label: 'NAD+ Pool', icon: '' } as { label: string; icon: string } | null,
       diagramNodes: [
         { label: "Energy Metabolism", icon: 'Zap' },
@@ -102,43 +100,41 @@ const PRODUCT_DETAIL_DATA = {
       diagramFooter: null as { label: string; text: string } | null
     },
     mechanisms: [
-      { step: "01", label: "Support NAD+ supply", text: "NR provides precursor support for maintaining NAD+ availability." },
-      { step: "02", label: "Support NAD+ preservation", text: "Apigenin supports healthy NAD+ turnover dynamics." },
-      { step: "03", label: "Support the system that runs it", text: "TMG + methylated Bs support methylation balance; R-lipoic acid supports metabolic function." }
+      { step: "01", label: "Replenish NAD+", text: "NR provides a direct precursor to support NAD+ availability every day." },
+      { step: "02", label: "Preserve NAD+", text: "Apigenin helps maintain healthy NAD+ levels by supporting enzyme balance." },
+      { step: "03", label: "Complete the System", text: "TMG and methylated B vitamins provide cofactor support for the pathways that use NAD+." }
     ],
-    mechanismLabel: 'Methodology',
-    mechanismHeadline: 'Triple-Action System',
+    mechanismLabel: 'How It Works',
+    mechanismHeadline: 'Three-Step Approach',
     suitability: [
-      "People seeking daily NAD+ support",
-      "Focused on energy metabolism",
-      "Stacking longevity protocols",
-      "Seeking methylation support"
+      "Daily NAD+ support",
+      "Energy and focus",
+      "Longevity-focused routines",
+      "Methylation balance"
     ],
-    safetyNote: 'Consult your clinician prior to deployment if you are pregnant, nursing, on medication, or managing a chronic medical condition.',
-    allergenDisclosure: null,
+    safetyNote: 'Consult your healthcare provider before use if you are pregnant, nursing, on medication, or managing a medical condition.',
+    allergenDisclosure: null as string | null,
     stack: [
-      { name: "CELLUBIOME", slug: "cellubiome", role: "Mitochondria + Gut Barrier", add: "Pairs NAD+ support with mitochondrial quality and gut barrier support.", when: "Daily baseline" },
-      { name: "CELLUNOVA", slug: "cellunova", role: "Autophagy + Senescence Support", add: "Periodic reset to complement daily NAD+ support.", when: "7-day monthly cycle" }
+      { name: "CELLUBIOME", slug: "cellubiome", role: "Gut + Mitochondria", add: "Pair NAD+ support with gut barrier and mitochondrial quality.", when: "Take daily" },
+      { name: "CELLUNOVA", slug: "cellunova", role: "Monthly Reset", add: "Add a periodic 7-day reset to complement daily NAD+ support.", when: "7-day monthly cycle" }
     ],
     faq: [
-      { q: "How long does it take to notice effects?", a: "Many assess changes over weeks, with more meaningful evaluation over 2\u20133 months of consistent daily use." },
-      { q: "When should I take it?", a: "Take 2 capsules daily with a meal, typically morning or afternoon. Consistency matters more than timing." },
-      { q: "Does it break a fast?", a: "It has no meaningful caloric load for most people, but fasting rules vary. If you fast strictly, take it with your first meal." },
-      { q: "Can I stack it with CELLUNOVA?", a: "Yes. CELLUNAD+ is designed for daily use, while CELLUNOVA is a periodic protocol." },
-      { q: "Why include methylation support?", a: "NAD+ pathways intersect with one-carbon metabolism. TMG and methylated B vitamins support methylation balance during consistent use." },
-      { q: "Who should avoid it?", a: "Consult your clinician if pregnant, nursing, on medication, or managing a medical condition." }
+      { q: "How long does it take to notice effects?", a: "Most people evaluate changes over 2\u20133 months of consistent daily use." },
+      { q: "When should I take it?", a: "Take 2 capsules daily with a meal, morning or afternoon. Consistency matters more than timing." },
+      { q: "Does it break a fast?", a: "It has no meaningful caloric load, but if you fast strictly, take it with your first meal." },
+      { q: "Can I take it with CELLUNOVA?", a: "Yes. CELLUNAD+ is designed for daily use. CELLUNOVA is a separate 7-day monthly cycle." },
+      { q: "Why include methylation support?", a: "NAD+ and methylation pathways are closely linked. TMG and methylated B vitamins help keep both in balance." },
+      { q: "Who should avoid it?", a: "Check with your doctor if pregnant, nursing, on medication, or managing a medical condition." }
     ],
-    trust: ["cGMP manufactured", "Third-party tested", "Full-label disclosure", "Glass packaging (if available)"],
-    ctaHeadline: ['Initialize', 'Baseline.'],
-    ctaBody: 'Deploy CELLUNAD+ for daily mitochondrial infrastructure support.',
-    ctaButton: 'Add to Protocol',
-    footerTitle: 'CELLUNAD+ PRODUCT SPECIFICATION',
-    footerSlide: 'PDP_V1.2'
+    trust: ["cGMP Manufactured", "Third-Party Tested", "Full Label Disclosure", "Glass Packaging"],
+    ctaHeadline: ['Start your', 'daily foundation.'],
+    ctaBody: 'Add CELLUNAD+ to your routine for daily NAD+ and energy support.',
+    ctaButton: 'Add to Cart',
   },
 
   cellubiome: {
     name: "CELLUBIOME",
-    subtitle: "Mitochondrial + Gut Axis Optimization",
+    subtitle: "Daily gut barrier and mitochondrial renewal support.",
     form: "Enteric Capsules",
     serving: "2 capsules daily",
     servingsPerContainer: 30,
@@ -147,20 +143,18 @@ const PRODUCT_DETAIL_DATA = {
     accent: '#19B3A6',
     accentText: '#5eead4',
     accentTailwind: 'teal',
-    heroCode: 'CB_01 // COMPONENT',
+    heroOverline: 'Gut\u2013Mitochondria Axis',
     heroSplit: ['CELLU', 'BIOME.'],
-    heroSubExtra: 'Molecular maintenance for the gut\u2013mitochondria axis.',
-    supplyLabel: '30 Day Supply',
-    purchaseLabel: 'System Protocol',
-    subscribeLabel: 'Protocol Sync',
-    subscribeDesc: 'Monthly delivery. Cancel anytime.',
-    onetimeLabel: 'One-time Deployment',
-    onetimeDesc: 'Standard retail protocol.',
+    supplyLabel: '30-Day Supply',
+    subscribeLabel: 'Subscribe & Save 15%',
+    subscribeDesc: 'Ships monthly. Cancel anytime.',
+    onetimeLabel: 'One-Time Purchase',
+    onetimeDesc: 'No commitment.',
     heroClaims: [
-      "Supports mitophagy signaling*",
+      "Supports mitochondrial renewal*",
       "Supports gut barrier integrity*",
-      "Enhances mitochondrial renewal*",
-      "Supports systemic signal control*"
+      "Supports healthy aging*",
+      "Enteric-coated delivery*"
     ],
     heroSpecs: [
       { label: "Urolithin A", dose: "500 mg" },
@@ -178,67 +172,65 @@ const PRODUCT_DETAIL_DATA = {
       allergenNote: null as string | null
     },
     keyActives: [
-      { name: "Urolithin A", dose: "500 mg", role: "Mitophagy Inducer", explanation: "A clinical-grade dose associated with the activation of mitochondrial recycling pathways (mitophagy)." },
-      { name: "Tributyrin", dose: "500 mg", role: "Butyrate Precursor", explanation: "A stable triglyceride form of butyrate that supports intestinal epithelial integrity and fuels colonocytes." },
-      { name: "Enteric Delivery", dose: "Targeted Release", role: "Bioavailability Infrastructure", explanation: "Ensures compound protection against gastric acid for precise intestinal deployment." }
+      { name: "Urolithin A", dose: "500 mg", role: "Mitochondrial Renewal", explanation: "Clinically studied at 500 mg to support mitochondrial recycling (mitophagy)." },
+      { name: "Tributyrin", dose: "500 mg", role: "Gut Barrier Support", explanation: "A stable form of butyrate that supports intestinal lining integrity and gut health." },
+      { name: "Enteric Coating", dose: "Targeted Release", role: "Absorption", explanation: "Protects active compounds from stomach acid for release in the intestines where they're needed." }
     ],
     scienceSection: {
-      label: 'Biological Architecture',
-      headline: 'The Mitochondria\u2013Gut Axis',
+      label: 'The Science',
+      headline: 'The Gut\u2013Mitochondria Connection',
       paragraphs: [
-        'Mitochondrial dysfunction drives epithelial stress, while a compromised gut barrier allows biological entropy to inhibit cellular energy production.',
-        'CELLUBIOME coordinates mitophagy induction with tight-junction reinforcement to stabilize the feedback loop where systemic energy and inflammatory signaling intersect.'
+        'Your gut health and mitochondrial function are deeply connected. When either weakens, the other suffers\u2014creating a cycle that accelerates aging.',
+        'CELLUBIOME addresses both sides: Urolithin A supports mitochondrial renewal, while Tributyrin supports gut barrier strength. Together, they help break the cycle.'
       ],
-      diagramLabel: 'SIGNAL_AXIS_SCHEMATIC',
+      diagramLabel: 'Gut\u2013Mito Axis',
       diagramCenter: { label: 'Mitochondria', icon: 'Zap' },
       diagramNodes: [
-        { label: "Tight Junction Integrity", icon: 'Layers' },
-        { label: "Mitophagy Flux", icon: 'ShieldCheck' },
+        { label: "Gut Barrier", icon: 'Layers' },
+        { label: "Mitochondrial Renewal", icon: 'ShieldCheck' },
         { label: "Barrier Defense", icon: 'ShieldCheck' }
       ],
       diagramFooter: null as { label: string; text: string } | null
     },
     mechanisms: [
-      { step: "01", label: "Support Mitophagy", text: "Urolithin A supports the clearance of dysfunctional mitochondria to maintain energy efficiency." },
-      { step: "02", label: "Support Gut Barrier", text: "Tributyrin supports tight junction proteins to maintain intestinal integrity." },
-      { step: "03", label: "Synchronize Axis", text: "Coordinated support for mitochondrial function and gut barrier defense to promote healthy aging." }
+      { step: "01", label: "Renew Mitochondria", text: "Urolithin A supports the recycling of old, damaged mitochondria so new ones can take their place." },
+      { step: "02", label: "Strengthen the Gut Barrier", text: "Tributyrin provides butyrate to support the tight junctions that keep your intestinal lining intact." },
+      { step: "03", label: "Connect Both Systems", text: "By supporting both gut health and mitochondrial function daily, you address two pillars of healthy aging together." }
     ],
-    mechanismLabel: 'Mechanism',
-    mechanismHeadline: 'Systemic Optimization',
+    mechanismLabel: 'How It Works',
+    mechanismHeadline: 'Three-Step Approach',
     deliveryRationale: {
       headline: 'Why Enteric Delivery Matters',
-      text: 'Tributyrin and Urolithin A require targeted intestinal release. Gastric acid bypass is critical to prevent premature degradation, ensuring high-integrity molecular delivery to the designated intestinal absorption sites.'
+      text: 'Tributyrin and Urolithin A need to reach the intestines intact. Our enteric coating protects them from stomach acid so they arrive where your body can use them most.'
     },
     suitability: [
-      "Longevity Strategy",
-      "Mitochondrial Efficiency",
-      "Gut Barrier Defense",
-      "NAD+ Protocol Stacking"
+      "Healthy aging support",
+      "Mitochondrial health",
+      "Gut barrier support",
+      "Pairs well with NAD+ support"
     ],
-    safetyNote: 'Consult your clinician prior to deployment if you are pregnant, nursing, on medication, or managing a chronic medical condition. Not for pediatric use.',
-    allergenDisclosure: null,
+    safetyNote: 'Consult your healthcare provider before use if you are pregnant, nursing, on medication, or managing a medical condition.',
+    allergenDisclosure: null as string | null,
     stack: [
-      { name: "CELLUNAD+", slug: "cellunad", role: "NAD+ Support", add: "Pairs mitochondrial renewal with NAD+ repletion infrastructure.", when: "Daily baseline" },
-      { name: "CELLUNOVA", slug: "cellunova", role: "Autophagy Protocol", add: "Scheduled cellular cleanup phase to complement daily signaling.", when: "7-day monthly cycle" }
+      { name: "CELLUNAD+", slug: "cellunad", role: "Daily NAD+", add: "Pair mitochondrial renewal with daily NAD+ support.", when: "Take daily" },
+      { name: "CELLUNOVA", slug: "cellunova", role: "Monthly Reset", add: "Add a periodic cellular cleanup cycle alongside daily support.", when: "7-day monthly cycle" }
     ],
     faq: [
-      { q: "How long before I notice anything?", a: "Biological priming starts within 72 hours. Measurable evaluation of mitochondrial and barrier markers typically occurs over 8\u201312 weeks of consistent daily use." },
-      { q: "Can I take it with food?", a: "Yes. CELLUBIOME is optimized for bioavailability and can be taken with or without a meal. Consistency is more critical than timing." },
-      { q: "Is this a probiotic?", a: "No. CELLUBIOME is a signaling protocol. It provides the postbiotic precursor Tributyrin and the mitophagy inducer Urolithin A, not live cultures." },
-      { q: "Why 500 mg Urolithin A?", a: "500 mg represents the validated clinical threshold shown in human research to induce significant mitophagy signals at the cellular level." },
-      { q: "Why Tributyrin instead of butyrate salts?", a: "Tributyrin is a stable triglyceride that bypasses early GI degradation, ensuring concentrated butyrate delivery directly to the colonocytes." }
+      { q: "How long before I notice anything?", a: "Give it 8\u201312 weeks of consistent daily use for a meaningful evaluation." },
+      { q: "Can I take it with food?", a: "Yes. Take it with or without a meal. Consistency is more important than timing." },
+      { q: "Is this a probiotic?", a: "No. CELLUBIOME provides Urolithin A and Tributyrin\u2014targeted compounds, not live cultures." },
+      { q: "Why 500 mg Urolithin A?", a: "500 mg is the dose used in published clinical research on mitochondrial health." },
+      { q: "Why Tributyrin instead of butyrate salts?", a: "Tributyrin is more stable and survives digestion better, delivering butyrate directly to the gut lining." }
     ],
-    trust: ["cGMP manufactured", "Third-party tested", "Full-label disclosure", "Enteric-protected"],
-    ctaHeadline: ['Initialize', 'Interface.'],
-    ctaBody: 'Deploy CELLUBIOME for systemic gut\u2013mitochondria infrastructure support.',
-    ctaButton: 'Add to Protocol',
-    footerTitle: 'CELLUBIOME PRODUCT SPECIFICATION',
-    footerSlide: 'PDP_CB_V1.0'
+    trust: ["cGMP Manufactured", "Third-Party Tested", "Full Label Disclosure", "Enteric Protected"],
+    ctaHeadline: ['Strengthen the', 'foundation.'],
+    ctaBody: 'Add CELLUBIOME for daily gut barrier and mitochondrial support.',
+    ctaButton: 'Add to Cart',
   },
 
   cellunova: {
     name: "CELLUNOVA",
-    subtitle: "7-Day Autophagy + Senolytic Protocol",
+    subtitle: "A 7-day cycle for cellular cleanup and renewal.",
     form: "Capsules",
     serving: "5 capsules daily for 7 consecutive days",
     servingsPerContainer: 7,
@@ -247,25 +239,23 @@ const PRODUCT_DETAIL_DATA = {
     accent: '#6C5CE7',
     accentText: '#a78bfa',
     accentTailwind: 'violet',
-    heroCode: 'PULSE_PROTOCOL // CV_01',
+    heroOverline: '7-Day Autophagy Cycle',
     heroSplit: ['CELLU', 'NOVA.'],
-    heroSubExtra: 'Periodic cellular maintenance and cleanup infrastructure.',
     supplyLabel: '7-Day Cycle',
-    purchaseLabel: 'Protocol Access',
-    subscribeLabel: 'Protocol Subscription',
-    subscribeDesc: 'Scheduled delivery every cycle.',
-    onetimeLabel: 'Single Pulse Only',
-    onetimeDesc: 'Standard retail protocol.',
+    subscribeLabel: 'Subscribe & Save 15%',
+    subscribeDesc: 'Ships monthly. Cancel anytime.',
+    onetimeLabel: 'One-Time Purchase',
+    onetimeDesc: 'No commitment.',
     heroClaims: [
       "Supports autophagy pathways*",
-      "Supports cellular cleanup processes*",
-      "Manages senescent cell burden*",
-      "Promotes healthy aging biology*"
+      "Supports cellular cleanup*",
+      "Supports senescent cell management*",
+      "Supports healthy aging*"
     ],
     heroSpecs: [
-      { label: "Pulse Mode", dose: "7 Days / Month" },
+      { label: "Cycle", dose: "7 Days / Month" },
       { label: "Serving", dose: "5 Capsules" },
-      { label: "Target", dose: "Autophagy" }
+      { label: "Focus", dose: "Autophagy" }
     ],
     supplementFacts: {
       servingSize: "5 Capsules",
@@ -286,58 +276,56 @@ const PRODUCT_DETAIL_DATA = {
       allergenNote: "Contains Wheat (Wheat Germ derived Spermidine)."
     },
     keyActives: [
-      { name: "Spermidine + Resveratrol", dose: "15 mg / 500 mg", role: "Autophagy Inducers", explanation: "Synergistic activation of macro-autophagy pathways to support the recycling of cytoplasmic components." },
-      { name: "Fisetin + Quercetin", dose: "100 mg / 500 mg", role: "Senolytic Support", explanation: "Bioactive flavonoids associated with the management of senescent cell burden and SASP-related signaling." },
-      { name: "NAC + Calcium AKG", dose: "600 mg / 300 mg", role: "Metabolic Support", explanation: "Cofactors that support cellular oxidative stress defense and metabolic efficiency during the cleanup phase." }
+      { name: "Spermidine + Resveratrol", dose: "15 mg / 500 mg", role: "Autophagy Support", explanation: "Two compounds that work together to support your body's natural cellular cleanup processes." },
+      { name: "Fisetin + Quercetin", dose: "100 mg / 500 mg", role: "Senolytic Support", explanation: "Flavonoids that support the body's ability to manage aging, non-functional cells." },
+      { name: "NAC + Calcium AKG", dose: "600 mg / 300 mg", role: "Antioxidant Support", explanation: "Cofactors that support antioxidant defenses and metabolic efficiency during the cleanup cycle." }
     ],
     scienceSection: {
-      label: 'Scientific Context',
-      headline: 'Autophagy & Senescence',
+      label: 'The Science',
+      headline: 'Autophagy & Cellular Aging',
       paragraphs: [
-        'Biological aging is associated with the accumulation of dysfunctional protein aggregates and senescent cells. These \u201czombie\u201d cells remain metabolically active but no longer function as intended.',
-        'CELLUNOVA is a targeted intervention designed to support the biological mechanisms of autophagy (cellular self-cleaning) and provide senolytic support to manage the systemic burden of aged cellular components.'
+        'As we age, damaged proteins and non-functional "zombie" cells accumulate. These cells stay active but stop doing their job, contributing to inflammation and decline.',
+        'CELLUNOVA is designed as a short, focused cycle to support your body\'s natural cleanup processes\u2014autophagy and senescent cell management\u2014then step back and let your body recover.'
       ],
-      diagramLabel: 'PULSE_PROTOCOL_MAP',
+      diagramLabel: '7-Day Cycle',
       diagramCenter: null as { label: string; icon: string } | null,
       diagramNodes: [
         { label: "Cleanup", icon: 'RotateCcw' },
         { label: "Removal", icon: 'Wind' },
         { label: "Recovery", icon: 'Zap' }
       ],
-      diagramFooter: { label: 'Scheduled Pulse Model', text: '7 days of high-intensity signaling to support systemic renewal.' }
+      diagramFooter: { label: '7-Day Focused Cycle', text: 'Seven days of targeted support, then time off. The rest period is part of the design.' }
     },
     mechanisms: [
-      { step: "01", label: "Induce Autophagy Pulse", text: "Triggers the biological \u2018cleanup\u2019 mechanism to clear accumulated protein aggregates and damaged organelles." },
-      { step: "02", label: "Support Senescent Management", text: "Provides senolytic compounds that help the system manage lingering dysfunctional cells." },
-      { step: "03", label: "Systemic Reset", text: "A cyclical protocol designed to refresh cellular infrastructure periodically, rather than daily repletion." }
+      { step: "01", label: "Activate Cleanup", text: "Supports your body's autophagy pathways to clear damaged proteins and worn-out cellular components." },
+      { step: "02", label: "Support Cell Turnover", text: "Senolytic compounds help your body manage aging cells that no longer function properly." },
+      { step: "03", label: "Rest and Recover", text: "After 7 days, you stop. The off-cycle lets your body integrate the cleanup and return to baseline." }
     ],
-    mechanismLabel: 'Protocol Stages',
-    mechanismHeadline: 'Triple-Action Reset',
+    mechanismLabel: 'How It Works',
+    mechanismHeadline: 'The 7-Day Cycle',
     suitability: [
-      "Longevity Strategy",
-      "Periodic Cellular Cleanup",
-      "Advanced Protocol Users",
-      "Aging Biomarker Management"
+      "Healthy aging support",
+      "Periodic cellular cleanup",
+      "Experienced supplement users",
+      "Longevity-focused routines"
     ],
-    safetyNote: 'Consult your clinician prior to deployment if you are pregnant, nursing, or managing a medical condition.',
-    allergenDisclosure: 'ALLERGEN DISCLOSURE: CONTAINS WHEAT (GERM DERIVED SPERMIDINE)',
+    safetyNote: 'Consult your healthcare provider before use if you are pregnant, nursing, or managing a medical condition.',
+    allergenDisclosure: 'Contains Wheat (from Wheat Germ derived Spermidine).',
     stack: [
-      { name: "CELLUNAD+", slug: "cellunad", role: "Daily Repletion", add: "Runs NAD+ repletion daily; use CELLUNOVA as a monthly protocol reset.", when: "Daily baseline" },
-      { name: "CELLUBIOME", slug: "cellubiome", role: "Mitochondria + Gut", add: "Pair gut signaling maintenance with a periodic cellular cleanup pulse.", when: "Daily baseline" }
+      { name: "CELLUNAD+", slug: "cellunad", role: "Daily NAD+", add: "Continue daily NAD+ support while running the 7-day CELLUNOVA cycle.", when: "Take daily" },
+      { name: "CELLUBIOME", slug: "cellubiome", role: "Gut + Mitochondria", add: "Support gut health and mitochondrial quality alongside periodic cleanup.", when: "Take daily" }
     ],
     faq: [
-      { q: "Is this a daily supplement?", a: "No. CELLUNOVA is a high-intensity pulse protocol. It is designed to be taken for 7 consecutive days once per month to facilitate periodic cellular maintenance." },
-      { q: "Does it contain wheat?", a: "Yes. The Spermidine in CELLUNOVA is derived from Wheat Germ. Those with gluten sensitivities should exercise caution." },
-      { q: "Why 5 capsules daily?", a: "To achieve the clinical thresholds required for autophagy signaling and senolytic support, a higher volume of bioactive compounds is necessary." },
-      { q: "Can I stack it with daily NAD+ support?", a: "Yes. Many users continue their CELLUNAD+ protocol alongside the 7-day CELLUNOVA cycle to maintain metabolic flux during the cleanup phase." },
-      { q: "How often should I run the protocol?", a: "Most clinicians suggest a monthly 7-day cycle. Some advanced users run the protocol every 60 or 90 days depending on biological age markers." }
+      { q: "Is this a daily supplement?", a: "No. CELLUNOVA is taken for 7 consecutive days, once per month. The off-period is part of the design." },
+      { q: "Does it contain wheat?", a: "Yes. The Spermidine is derived from Wheat Germ. Not suitable for those with wheat or gluten sensitivities." },
+      { q: "Why 5 capsules per day?", a: "The serving size reflects the amount needed to reach meaningful doses of each active ingredient during the 7-day window." },
+      { q: "Can I take it with CELLUNAD+?", a: "Yes. Many people continue their daily CELLUNAD+ alongside the 7-day CELLUNOVA cycle." },
+      { q: "How often should I do a cycle?", a: "Once per month is the standard recommendation. Some people space cycles every 60 or 90 days." }
     ],
-    trust: ["Contains Wheat", "7-Day Pulse Model", "Third-Party Tested", "cGMP Verified"],
-    ctaHeadline: ['Initialize', 'Cleanup.'],
-    ctaBody: 'Deploy CELLUNOVA for periodic cellular reset and senolytic support.',
-    ctaButton: 'Initialize Pulse',
-    footerTitle: 'CELLUNOVA PRODUCT SPECIFICATION',
-    footerSlide: 'PDP_CV_V1.0'
+    trust: ["Contains Wheat", "7-Day Cycle", "Third-Party Tested", "cGMP Verified"],
+    ctaHeadline: ['Reset.', 'Renew.'],
+    ctaBody: 'Add CELLUNOVA for a focused 7-day cellular cleanup cycle.',
+    ctaButton: 'Add to Cart',
   }
 };
 
@@ -549,15 +537,14 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
       <div className={`fixed bottom-0 left-0 w-full z-[110] bg-white text-[#0b1120] border-t border-black/10 py-3.5 px-5 transition-transform duration-500 transform ${showSticky ? 'translate-y-0' : 'translate-y-full'}`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="hidden sm:block">
-            <p className="font-mono text-[10px] uppercase font-bold tracking-[0.12em] opacity-40 leading-none mb-1">Add to Protocol</p>
-            <h4 className="text-sm font-head font-bold tracking-tight uppercase leading-none">{data.name}</h4>
+            <h4 className="text-sm font-head font-normal tracking-tight uppercase leading-none">{data.name}</h4>
           </div>
           <div className="flex items-center gap-4 w-full sm:w-auto">
             <div className="flex-1 sm:flex-none text-right pr-4 border-r border-black/10">
-              <span className="text-lg font-head font-bold tracking-tighter">${(currentPrice * quantity).toFixed(2)}</span>
+              <span className="text-lg font-head font-normal tracking-tighter">${(currentPrice * quantity).toFixed(2)}</span>
             </div>
-            <button className="flex-1 sm:flex-none py-3 px-8 bg-[#0b1120] text-white font-mono text-[11px] font-bold uppercase tracking-[0.14em] hover:bg-black transition-all min-h-[44px]" data-testid="sticky-cta">
-              Initialize
+            <button className="flex-1 sm:flex-none py-3 px-8 bg-ar-teal text-ar-navy rounded-lg font-mono text-[11px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all min-h-[44px]" data-testid="sticky-cta">
+              Add to Cart
             </button>
           </div>
         </div>
@@ -572,16 +559,16 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-7 space-y-10">
             <div className="space-y-5">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-[1px]" style={{ background: accentColor }} />
-                <span className="font-mono text-[11px] font-bold tracking-[0.20em] uppercase" style={{ color: accentColor }}>{data.heroCode}</span>
+              <div className="flex items-center gap-2">
+                <div className="h-px w-4 bg-white/10" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.10em]" style={{ color: `${accentColor}CC` }}>{data.heroOverline}</span>
+                <div className="h-px w-4 bg-white/10" />
               </div>
-              <h1 className="text-[56px] md:text-[80px] lg:text-[90px] font-head font-bold tracking-[-0.04em] leading-[0.85] uppercase">
-                {data.heroSplit[0]}<br /><span className="text-white/40">{data.heroSplit[1]}</span>
+              <h1 className="font-head font-normal tracking-[-0.04em] leading-[0.85] uppercase text-white" style={{ fontSize: 'clamp(3rem, 9vw, 5.5rem)' }}>
+                {data.heroSplit[0]}<br /><span className="text-white/50">{data.heroSplit[1]}</span>
               </h1>
-              <p className="text-[20px] md:text-[24px] text-white/70 font-sans font-light leading-snug max-w-xl">
-                {data.subtitle}. <br />
-                <span className="text-white font-normal">{data.heroSubExtra}</span>
+              <p className="text-[15px] md:text-[17px] text-white/75 font-sans font-medium leading-snug max-w-md">
+                {data.subtitle}
               </p>
             </div>
 
@@ -605,11 +592,10 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
           </div>
 
           <div className="lg:col-span-5 w-full">
-            <div className="bg-[#F4F1EA] text-[#0b1120] p-7 md:p-9 shadow-[30px_30px_100px_rgba(0,0,0,0.4)] space-y-7">
+            <div className="bg-[#F4F1EA] text-[#0b1120] p-7 md:p-9 shadow-[30px_30px_100px_rgba(0,0,0,0.4)] rounded-lg space-y-7">
               <div className="flex justify-between items-baseline border-b border-black/5 pb-5">
                 <div className="space-y-1">
-                  <p className="font-mono text-[10px] uppercase font-bold tracking-[0.12em] opacity-40">{data.purchaseLabel}</p>
-                  <h3 className="text-4xl md:text-5xl font-head font-bold tracking-tighter">
+                  <h3 className="text-4xl md:text-5xl font-head font-normal tracking-tighter">
                     ${(currentPrice * quantity).toFixed(2)}
                   </h3>
                 </div>
@@ -650,8 +636,8 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
                 </div>
               </div>
 
-              <button className="w-full py-5 bg-[#0b1120] text-white font-mono text-[12px] font-bold uppercase tracking-[0.18em] hover:bg-black transition-all flex items-center justify-center gap-3 min-h-[52px]" data-testid="add-to-protocol">
-                Add to Protocol <ArrowRight size={16} />
+              <button className="w-full py-5 bg-ar-teal text-ar-navy rounded-lg font-mono text-[11px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="add-to-cart">
+                Add to Cart <ArrowRight size={14} />
               </button>
 
               <div className="space-y-3 pt-1">
@@ -678,8 +664,12 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-8">
               <div className="space-y-3">
-                <p className="font-mono text-[11px] uppercase tracking-[0.14em] font-bold" style={{ color: accentColor }}>{data.scienceSection.label}</p>
-                <h2 className="text-[34px] md:text-[40px] font-head font-bold tracking-[-0.02em] uppercase leading-none">{data.scienceSection.headline}</h2>
+                <div className="flex items-center gap-3">
+                  <div className="h-[1px] w-8" style={{ background: accentColor }} />
+                  <span className="font-mono text-[12px] uppercase tracking-[0.18em]" style={{ color: accentColor }}>{data.scienceSection.label}</span>
+                  <div className="h-[1px] w-8" style={{ background: accentColor }} />
+                </div>
+                <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>{data.scienceSection.headline}</h2>
               </div>
               <div className="space-y-6 text-white/55 text-[16px] md:text-[18px] leading-relaxed font-sans font-medium">
                 {data.scienceSection.paragraphs.map((p, i) => (
@@ -738,15 +728,19 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
       <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
         <div className="max-w-7xl mx-auto space-y-14">
           <div className="text-center space-y-3">
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] font-bold" style={{ color: accentColor }}>{data.mechanismLabel}</p>
-            <h2 className="text-[34px] md:text-[40px] font-head font-bold uppercase tracking-tight">{data.mechanismHeadline}</h2>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-[1px] w-12 bg-ar-teal" />
+              <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">{data.mechanismLabel}</span>
+              <div className="h-[1px] w-12 bg-ar-teal" />
+            </div>
+            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>{data.mechanismHeadline}</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {data.mechanisms.map((m, i) => (
-              <div key={i} className="p-8 md:p-10 border border-white/10 bg-white/[0.03] space-y-5 group hover:border-opacity-30 transition-all" style={{ ['--hover-border' as string]: accentColor }}>
-                <span className="font-mono text-[10px] font-bold uppercase opacity-40" style={{ color: accentColor }}>Step_{m.step}</span>
+              <div key={i} className="p-6 md:p-8 border border-white/[0.06] bg-white/[0.02] space-y-4 group hover:border-white/[0.10] transition-all rounded-lg">
+                <span className="font-mono text-[10px] font-bold uppercase text-white/40">Step {m.step}</span>
                 <div className="space-y-3">
-                  <h4 className="text-lg md:text-xl font-head font-bold uppercase tracking-tight group-hover:opacity-90 transition-colors">{m.label}</h4>
+                  <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white">{m.label}</h4>
                   <p className="text-sm text-white/50 leading-relaxed font-sans font-medium">{m.text}</p>
                 </div>
               </div>
@@ -758,18 +752,22 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
       <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
         <div className="max-w-7xl mx-auto space-y-14">
           <div className="space-y-3">
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] font-bold" style={{ color: accentColor }}>Specifications</p>
-            <h2 className="text-[34px] md:text-[40px] font-head font-bold uppercase tracking-tight leading-none">Active Inputs</h2>
+            <div className="flex items-center gap-3">
+              <div className="h-[1px] w-8" style={{ background: accentColor }} />
+              <span className="font-mono text-[12px] uppercase tracking-[0.18em]" style={{ color: accentColor }}>Key Ingredients</span>
+              <div className="h-[1px] w-8" style={{ background: accentColor }} />
+            </div>
+            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>What's Inside</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {data.keyActives.map((active, i) => (
-              <div key={i} className="p-7 md:p-8 border border-white/10 bg-[#0b1120] space-y-5 flex flex-col justify-between hover:bg-white/[0.03] transition-all">
+              <div key={i} className="p-7 md:p-8 border border-white/[0.06] bg-white/[0.02] space-y-5 flex flex-col justify-between hover:bg-white/[0.04] transition-all rounded-lg">
                 <div className="space-y-3">
                   <div className="flex justify-between items-start gap-3">
-                    <h4 className="text-base md:text-lg font-head font-bold uppercase tracking-tight max-w-[70%]">{active.name}</h4>
+                    <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white max-w-[70%]">{active.name}</h4>
                     <span className="font-mono text-[10px] font-bold uppercase shrink-0" style={{ color: accentColor }}>{active.dose}</span>
                   </div>
-                  <p className="font-mono text-[9px] text-white/20 uppercase tracking-[0.12em]">{active.role}</p>
+                  <p className="font-mono text-[9px] text-white/30 uppercase tracking-[0.12em]">{active.role}</p>
                   <p className="text-sm text-white/50 leading-relaxed font-sans font-medium">{active.explanation}</p>
                 </div>
                 <div className="pt-4 flex items-center gap-2 opacity-20">
@@ -783,16 +781,14 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
       </section>
 
       {'deliveryRationale' in data && (data as any).deliveryRationale && (
-        <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] text-center">
-          <div className="max-w-2xl mx-auto space-y-8">
-            <div className="inline-flex items-center justify-center p-4 border-2 border-dashed rounded-full" style={{ borderColor: `${accentColor}30` }}>
-              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: `${data.accent}15` }}>
-                <FlaskConical size={20} style={{ color: accentColor }} />
-              </div>
+        <section className="pdp-reveal py-16 md:py-20 px-5 md:px-10 lg:px-[60px] text-center">
+          <div className="max-w-2xl mx-auto space-y-6">
+            <div className="inline-flex items-center justify-center p-3 rounded-full" style={{ background: `${data.accent}10`, border: `1px solid ${accentColor}20` }}>
+              <FlaskConical size={20} style={{ color: accentColor }} />
             </div>
             <div className="space-y-3">
-              <h3 className="text-xl md:text-2xl font-head font-bold uppercase tracking-tight">{(data as any).deliveryRationale.headline}</h3>
-              <p className="text-white/40 text-sm leading-relaxed font-sans font-medium">{(data as any).deliveryRationale.text}</p>
+              <h3 className="font-head font-normal uppercase tracking-[-0.02em] text-white" style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)' }}>{(data as any).deliveryRationale.headline}</h3>
+              <p className="text-white/50 text-[14px] leading-relaxed font-sans font-medium max-w-lg mx-auto">{(data as any).deliveryRationale.text}</p>
             </div>
           </div>
         </section>
@@ -801,7 +797,7 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
       <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-7">
-            <h2 className="text-[34px] md:text-[40px] font-head font-bold uppercase leading-none tracking-tight">System Suitability</h2>
+            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>Who It's For</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {data.suitability.map((item, i) => (
                 <div key={i} className="flex gap-3 items-start">
@@ -814,7 +810,7 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
           <div className="p-8 md:p-10 border-2 border-dashed border-white/[0.08] bg-white/[0.03] space-y-5">
             <div className="flex items-center gap-3 text-white/40">
               <Info size={18} />
-              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em]">Protocol Directive</p>
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em]">Important</p>
             </div>
             <p className="text-white/40 text-[14px] md:text-[15px] italic leading-relaxed font-sans font-medium">{data.safetyNote}</p>
             {data.allergenDisclosure && (
@@ -829,8 +825,12 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
       <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
         <div className="max-w-7xl mx-auto space-y-14">
           <div className="text-center space-y-3">
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] font-bold" style={{ color: accentColor }}>Synergy</p>
-            <h2 className="text-[34px] md:text-[40px] font-head font-bold uppercase tracking-tight">Built to Stack</h2>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-[1px] w-12 bg-ar-teal" />
+              <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">Works Together</span>
+              <div className="h-[1px] w-12 bg-ar-teal" />
+            </div>
+            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>Pairs Well With</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {data.stack.map((item, i) => (
@@ -838,17 +838,17 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
                 <div className="absolute top-0 right-0 w-32 h-32 blur-[60px] transition-all" style={{ background: `${data.accent}08` }} />
                 <div className="space-y-2 relative z-10">
                   <div className="flex justify-between items-center gap-3">
-                    <h4 className="text-xl md:text-2xl font-head font-bold uppercase tracking-tight">{item.name}</h4>
+                    <h4 className="text-xl md:text-2xl font-head font-normal uppercase tracking-tight">{item.name}</h4>
                     <span className="font-mono text-[9px] border px-2 py-1 uppercase shrink-0" style={{ color: accentColor, borderColor: `${accentColor}30` }}>{item.role}</span>
                   </div>
                   <p className="text-sm text-white/50 leading-relaxed font-sans font-medium">{item.add}</p>
                 </div>
                 <div className="flex items-center gap-3 font-mono text-[9px] text-white/30 uppercase tracking-[0.14em] relative z-10">
-                  <Clock size={12} /> Sync: {item.when}
+                  <Clock size={12} /> {item.when}
                 </div>
                 <div className="flex gap-3 pt-2 relative z-10">
-                  <a href={`/product/${item.slug}`} className="flex-1 py-3.5 border border-white/10 font-mono text-[10px] font-bold uppercase tracking-[0.10em] hover:bg-white/[0.04] transition-all text-center min-h-[44px] flex items-center justify-center" data-testid={`stack-view-${item.slug}`}>View</a>
-                  <button className="flex-1 py-3.5 bg-white text-[#0b1120] font-mono text-[10px] font-bold uppercase tracking-[0.10em] hover:opacity-90 transition-all min-h-[44px]" data-testid={`stack-add-${item.slug}`}>Add</button>
+                  <a href={`/product/${item.slug}`} className="flex-1 py-3.5 border border-white/10 rounded-lg font-mono text-[10px] font-bold uppercase tracking-[0.10em] hover:bg-white/[0.04] transition-all text-center min-h-[44px] flex items-center justify-center" data-testid={`stack-view-${item.slug}`}>View</a>
+                  <button className="flex-1 py-3.5 bg-ar-teal text-ar-navy rounded-lg font-mono text-[10px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all min-h-[44px]" data-testid={`stack-add-${item.slug}`}>Add to Cart</button>
                 </div>
               </div>
             ))}
@@ -870,47 +870,42 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
       </section>
 
       <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] max-w-4xl mx-auto space-y-12">
-        <h3 className="text-2xl md:text-3xl font-head font-bold uppercase tracking-tight text-center">Protocol Queries</h3>
+        <div className="text-center space-y-3">
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-[1px] w-12 bg-ar-teal" />
+            <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">FAQ</span>
+            <div className="h-[1px] w-12 bg-ar-teal" />
+          </div>
+          <h3 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>Common Questions</h3>
+        </div>
         <Accordion items={data.faq} />
       </section>
 
-      <section className="py-28 md:py-40 px-5 md:px-10 lg:px-[60px] relative overflow-hidden border-t border-white/10 text-center">
-        <div className="absolute inset-0 opacity-25" style={{ background: `radial-gradient(circle at center, ${data.accent} 0%, #0b1120 120%)` }} />
-        <div className="relative z-10 max-w-3xl mx-auto space-y-10">
-          <div className="space-y-4">
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-head font-bold uppercase tracking-[-0.04em] leading-[0.85]">
-              {data.ctaHeadline[0]} <br /> {data.ctaHeadline[1]}
-            </h2>
-            <p className="font-mono text-[11px] md:text-[12px] text-white/40 uppercase tracking-[0.20em]">{data.ctaBody}</p>
-          </div>
-          <button className="px-12 md:px-16 py-5 md:py-6 bg-white text-[#0b1120] font-mono text-[11px] md:text-[12px] font-bold tracking-[0.20em] uppercase hover:opacity-90 transition-all shadow-2xl min-h-[52px]" data-testid="final-cta">
+      <section className="relative py-10 md:py-14 px-6 text-white overflow-hidden">
+        <div className="max-w-2xl mx-auto text-center relative z-10">
+          <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2rem, 7vw, 3.5rem)' }}>
+            {data.ctaHeadline[0]}
+            <br />
+            <span className="text-white/45">{data.ctaHeadline[1]}</span>
+          </h2>
+          <p className="mt-3 text-[13px] text-white/50 font-sans max-w-md mx-auto leading-relaxed">{data.ctaBody}</p>
+          <a href="/shop" className="mt-5 inline-flex items-center justify-center px-8 py-3 min-h-[44px] bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] hover:bg-ar-teal/90 transition-colors" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="final-cta">
             {data.ctaButton}
-          </button>
+          </a>
+          <div className="mt-3">
+            <a href="/shop" className="text-[10px] font-mono uppercase tracking-[0.08em] text-white/50 hover:text-white/70 transition-colors inline-flex items-center gap-1">
+              Browse all products <ArrowRight size={9} />
+            </a>
+          </div>
         </div>
       </section>
 
-      <div className="w-full h-[70px] md:h-[80px] px-5 md:px-[60px] flex items-center justify-between z-50 border-t border-white/[0.05] bg-[#0b1120]">
-        <div className="font-mono text-[9px] text-white/30 uppercase tracking-[0.14em]">
-          {data.footerTitle} // AR_SYS_ID_V1.0
-        </div>
-        <div className="hidden md:flex items-center gap-10 font-mono text-[9px] text-white/30 uppercase tracking-[0.14em]">
-          <div className="flex items-center gap-2">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: accentColor }} />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5" style={{ background: accentColor }} />
-            </span>
-            <span>PROTOCOL_SYNCED</span>
-          </div>
-          <span>SYS_DATA_{data.footerSlide}</span>
-        </div>
-      </div>
+      <div className="max-w-2xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" /></div>
 
-      <div className="bg-[#0b1120] py-12 md:py-16 px-5 md:px-[60px] border-t border-white/[0.05]">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="font-mono text-[10px] text-white/20 uppercase tracking-[0.10em] leading-relaxed">
-            * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. // Age Revive Precision Longevity // &copy; 2026.
-          </p>
-        </div>
+      <div className="py-8 px-6">
+        <p className="font-mono text-[10px] text-white/20 uppercase tracking-[0.10em] leading-relaxed text-center max-w-3xl mx-auto">
+          * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+        </p>
       </div>
 
       <Footer />
