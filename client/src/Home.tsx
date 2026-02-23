@@ -293,7 +293,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
   return (
     <section className="relative min-h-[100dvh] flex flex-col overflow-hidden">
 
-      <div className="absolute inset-0 z-[1] pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 z-[1] pointer-events-none lg:hidden" aria-hidden="true">
         <div className="absolute left-1/2 top-[35%] -translate-x-1/2 -translate-y-1/2 w-[min(95vw,650px)] h-[min(95vw,650px)] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(8,12,26,0.9)_0%,transparent_70%)]" />
       </div>
 
