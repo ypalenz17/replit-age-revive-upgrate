@@ -269,6 +269,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
   const [quantity, setQuantity] = useState(1);
   const [showSticky, setShowSticky] = useState(false);
   const [isFactsOpen, setIsFactsOpen] = useState(false);
+  const [showPurchaseOptions, setShowPurchaseOptions] = useState(false);
   const [activeTimeline, setActiveTimeline] = useState(0);
   const cart = useCart();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -334,8 +335,8 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
             <div className="flex-1 sm:hidden text-left">
               <span className="text-lg font-head font-normal tracking-tighter">${(currentPrice * quantity).toFixed(2)}</span>
             </div>
-            <button onClick={handleAddToCart} className="flex-1 sm:flex-none py-3 px-8 bg-ar-teal text-ar-navy rounded-lg font-mono text-[11px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all min-h-[44px]" data-testid="sticky-cta">
-              Add to Cart
+            <button onClick={() => { if (!showPurchaseOptions) { setShowPurchaseOptions(true); window.scrollTo({ top: 0, behavior: 'smooth' }); } else { handleAddToCart(); } }} className="flex-1 sm:flex-none py-3 px-8 bg-ar-teal text-ar-navy rounded-lg font-mono text-[11px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all min-h-[44px]" data-testid="sticky-cta">
+              {showPurchaseOptions ? 'Add to Cart' : 'Start Now'}
             </button>
           </div>
         </div>
@@ -372,71 +373,105 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
               {data.subtitle}
             </p>
 
-            <div className="bg-[#F4F1EA] text-[#0b1120] p-5 lg:p-8 rounded-xl shadow-[20px_20px_80px_rgba(0,0,0,0.3)] space-y-4 lg:space-y-5">
-              <div className="flex justify-between items-baseline border-b border-black/5 pb-3 lg:pb-4">
-                <div>
-                  <span className="text-2xl lg:text-4xl font-head font-normal tracking-tighter">${(currentPrice * quantity).toFixed(2)}</span>
-                  {isSubscribe && <span className="ml-2 text-xs text-black/40 line-through">${(data.priceOneTime * quantity).toFixed(2)}</span>}
-                </div>
-                <span className="text-[11px] font-mono font-bold uppercase tracking-wider opacity-40">{data.form}</span>
+            <div className="space-y-4 lg:space-y-5">
+              <div>
+                <span className="text-3xl lg:text-4xl font-head font-normal tracking-tighter text-white">${data.priceSubscribe.toFixed(2)}</span>
+                <span className="ml-2 text-sm text-white/35 line-through">${data.priceOneTime.toFixed(2)}</span>
               </div>
 
-              <div className="text-[13px] text-black/50 font-sans leading-snug">
+              <div className="text-[13px] text-white/45 font-sans leading-snug">
                 {data.supplyLabel}<br />{data.subscribeNote}
               </div>
 
-              <div className="space-y-1.5 lg:space-y-2">
-                <button
-                  onClick={() => setIsSubscribe(true)}
-                  className={`w-full p-3 lg:p-4 border-2 rounded-lg text-left transition-all flex justify-between items-center ${isSubscribe ? 'border-[#0b1120] bg-[#0b1120] text-white' : 'border-black/10 hover:border-black/20'}`}
-                  data-testid="option-subscribe"
-                >
-                  <div>
-                    <p className="font-mono text-[10px] font-bold uppercase tracking-[0.10em]">Subscribe & Save 15%</p>
-                    <p className={`text-xs mt-0.5 ${isSubscribe ? 'text-white/50' : 'text-black/40'}`}>Ships monthly. Cancel anytime.</p>
+              {!showPurchaseOptions ? (
+                <>
+                  <button
+                    onClick={() => setShowPurchaseOptions(true)}
+                    className="w-full py-4 bg-ar-teal text-ar-navy rounded-xl font-mono text-[12px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]"
+                    style={{ boxShadow: '0 0 20px rgba(45,212,191,0.15)' }}
+                    data-testid="start-now"
+                  >
+                    Start Now <ArrowRight size={14} />
+                  </button>
+
+                  <p className="text-center text-[12px] text-white/30 font-sans italic">
+                    30-day risk-free guarantee. Free US shipping.
+                  </p>
+
+                  <div className="flex items-center gap-4 text-[10px] justify-center text-white">
+                    <button
+                      onClick={() => setIsFactsOpen(true)}
+                      className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40 hover:opacity-70 transition-all"
+                      data-testid="view-supplement-facts"
+                    >
+                      <FileText size={11} /> Supplement Facts
+                    </button>
+                    <span className="opacity-15">|</span>
+                    <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
+                      <Shield size={11} /> cGMP
+                    </div>
+                    <span className="opacity-15">|</span>
+                    <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
+                      <FlaskConical size={11} /> Tested
+                    </div>
                   </div>
-                  <span className="text-sm font-head font-bold">Save 15%</span>
-                </button>
-                <button
-                  onClick={() => setIsSubscribe(false)}
-                  className={`w-full p-3 lg:p-4 border-2 rounded-lg text-left transition-all ${!isSubscribe ? 'border-[#0b1120] bg-[#0b1120] text-white' : 'border-black/10 hover:border-black/20'}`}
-                  data-testid="option-onetime"
-                >
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.10em]">One-Time Purchase</p>
-                  <p className={`text-xs mt-0.5 ${!isSubscribe ? 'text-white/50' : 'text-black/40'}`}>No commitment.</p>
-                </button>
-              </div>
+                </>
+              ) : (
+                <>
+                  <div className="space-y-2">
+                    <button
+                      onClick={() => setIsSubscribe(true)}
+                      className={`w-full p-3.5 lg:p-4 border rounded-lg text-left transition-all flex justify-between items-center ${isSubscribe ? 'border-ar-teal bg-ar-teal/10 text-white' : 'border-white/10 text-white/60 hover:border-white/20'}`}
+                      data-testid="option-subscribe"
+                    >
+                      <div>
+                        <p className="font-mono text-[10px] font-bold uppercase tracking-[0.10em]">Subscribe & Save 15%</p>
+                        <p className={`text-xs mt-0.5 ${isSubscribe ? 'text-white/50' : 'text-white/30'}`}>Ships monthly. Cancel anytime.</p>
+                      </div>
+                      <span className={`text-sm font-head font-bold ${isSubscribe ? 'text-ar-teal' : 'text-white/40'}`}>Save 15%</span>
+                    </button>
+                    <button
+                      onClick={() => setIsSubscribe(false)}
+                      className={`w-full p-3.5 lg:p-4 border rounded-lg text-left transition-all ${!isSubscribe ? 'border-ar-teal bg-ar-teal/10 text-white' : 'border-white/10 text-white/60 hover:border-white/20'}`}
+                      data-testid="option-onetime"
+                    >
+                      <p className="font-mono text-[10px] font-bold uppercase tracking-[0.10em]">One-Time Purchase</p>
+                      <p className={`text-xs mt-0.5 ${!isSubscribe ? 'text-white/50' : 'text-white/30'}`}>No commitment.</p>
+                    </button>
+                  </div>
 
-              <div className="flex items-center justify-between py-2">
-                <span className="font-mono text-[10px] uppercase font-bold tracking-[0.10em] opacity-40">Qty</span>
-                <div className="flex items-center gap-4 bg-black/5 px-4 py-1.5 rounded-full">
-                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-1 hover:opacity-70 transition-colors min-w-[30px] min-h-[30px] flex items-center justify-center" data-testid="qty-minus"><Minus size={16} /></button>
-                  <span className="font-mono font-bold text-lg w-5 text-center">{quantity}</span>
-                  <button onClick={() => setQuantity(quantity + 1)} className="p-1 hover:opacity-70 transition-colors min-w-[30px] min-h-[30px] flex items-center justify-center" data-testid="qty-plus"><Plus size={16} /></button>
-                </div>
-              </div>
+                  <div className="flex items-center justify-between py-2">
+                    <span className="font-mono text-[10px] uppercase font-bold tracking-[0.10em] text-white/30">Qty</span>
+                    <div className="flex items-center gap-4 bg-white/5 px-4 py-1.5 rounded-full">
+                      <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-1 hover:opacity-70 transition-colors min-w-[30px] min-h-[30px] flex items-center justify-center text-white" data-testid="qty-minus"><Minus size={16} /></button>
+                      <span className="font-mono font-bold text-lg w-5 text-center text-white">{quantity}</span>
+                      <button onClick={() => setQuantity(quantity + 1)} className="p-1 hover:opacity-70 transition-colors min-w-[30px] min-h-[30px] flex items-center justify-center text-white" data-testid="qty-plus"><Plus size={16} /></button>
+                    </div>
+                  </div>
 
-              <button onClick={handleAddToCart} className="w-full py-4 bg-ar-teal text-ar-navy rounded-lg font-mono text-[12px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="add-to-cart">
-                Start Now <ArrowRight size={14} />
-              </button>
+                  <button onClick={handleAddToCart} className="w-full py-4 bg-ar-teal text-ar-navy rounded-xl font-mono text-[12px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]" style={{ boxShadow: '0 0 20px rgba(45,212,191,0.15)' }} data-testid="add-to-cart">
+                    Add to Cart <ArrowRight size={14} />
+                  </button>
 
-              <div className="flex items-center gap-4 text-[10px] justify-center">
-                <button
-                  onClick={() => setIsFactsOpen(true)}
-                  className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-50 hover:opacity-80 transition-all"
-                  data-testid="view-supplement-facts"
-                >
-                  <FileText size={11} /> Supplement Facts
-                </button>
-                <span className="opacity-20">|</span>
-                <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-50">
-                  <Shield size={11} /> cGMP
-                </div>
-                <span className="opacity-20">|</span>
-                <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-50">
-                  <FlaskConical size={11} /> Tested
-                </div>
-              </div>
+                  <div className="flex items-center gap-4 text-[10px] justify-center text-white">
+                    <button
+                      onClick={() => setIsFactsOpen(true)}
+                      className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40 hover:opacity-70 transition-all"
+                      data-testid="view-supplement-facts"
+                    >
+                      <FileText size={11} /> Supplement Facts
+                    </button>
+                    <span className="opacity-15">|</span>
+                    <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
+                      <Shield size={11} /> cGMP
+                    </div>
+                    <span className="opacity-15">|</span>
+                    <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
+                      <FlaskConical size={11} /> Tested
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
