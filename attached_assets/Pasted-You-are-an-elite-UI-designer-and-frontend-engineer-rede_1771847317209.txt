@@ -1,0 +1,51 @@
+You are an elite UI designer and frontend engineer redesigning the DESKTOP hero section only.
+
+GOAL:
+Make the hero feel like a $100M premium longevity brand.
+Cinematic, restrained, asymmetric, object-forward.
+Mobile must remain unchanged.
+
+HARD RULES:
+- Do not change any copy in this task.
+- Do not change global typography, colors, design tokens, or brand palette.
+- Do not add or remove sections.
+- Do not refactor components or restructure the page beyond the hero layout container.
+- No new libraries.
+- Only adjust layout, spacing, and visual presentation of the hero on desktop (lg and up).
+- Mobile and tablet layouts should stay exactly as they are today unless required for desktop-only styling.
+
+HERO REDESIGN SPEC (DESKTOP lg+):
+1) Convert hero to a 12-column grid.
+   - Left content spans columns 1-6
+   - Right visual spans columns 7-12
+   - Left align hero text on desktop.
+
+2) Add a product stack visual on the right using existing product renders (CELLUNAD+, CELLUBIOME, CELLUNOVA).
+   - Use one composed stack image if it exists. If not, layer 2-3 images with absolute positioning.
+   - Slight stagger between products for depth.
+   - Add subtle shadow depth.
+   - Add a very subtle teal radial glow behind the stack (opacity low, tasteful).
+
+3) Increase headline prominence on desktop:
+   - Increase font size ~20-30% at lg+.
+   - Increase hero vertical padding top/bottom ~25-35% at lg+.
+   - Keep line breaks consistent and premium.
+
+4) Replace the vertical feature list block layout with a premium inline proof row under the CTAs:
+   - Keep the same four items text.
+   - Display in one row with thin dividers.
+   - Small caps, lower opacity, tighter spacing.
+
+5) CTA cluster refinement:
+   - Keep same buttons and actions.
+   - Increase primary button height slightly and refine padding on desktop.
+   - Secondary becomes quieter (ghost or text-link style), but do not remove it.
+
+6) Background depth:
+   - Keep the grid.
+   - Add subtle vignette or gradient sweep to create depth behind hero content on desktop only.
+   - Do not add noise or extra patterns.
+
+DELIVERABLE:
+Return the updated homepage file with hero desktop redesign implemented.
+Confirm that only hero desktop styles and layout were changed.

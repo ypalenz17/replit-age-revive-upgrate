@@ -22,7 +22,7 @@ const PRODUCTS = [
   {
     slug: 'cellubiome',
     name: 'CELLUBIOME',
-    category: 'Gut + Mito Signaling',
+    category: 'Mitochondrial + Gut Signaling',
     tagline: 'The Gut–Mitochondria Axis, simplified.',
     serving: '2 enteric-coated capsules daily',
     ingredientsBadges: ['Urolithin A 500 mg', 'Tributyrin 500 mg'],
@@ -78,7 +78,7 @@ const PRODUCTS = [
   {
     slug: 'cellunova',
     name: 'CELLUNOVA',
-    category: '7-Day Autophagy Pulse',
+    category: '7-Day Autophagy + Senolytic Protocol',
     tagline: 'Seven days on. Designed as a cycle, not forever.',
     serving: '5 capsules daily for 7 consecutive days',
     warning: 'Contains wheat (spermidine source).',
@@ -112,12 +112,12 @@ const PRODUCTS = [
 ];
 
 const PILLARS = [
-  { title: 'Genomic Stability', what: 'NAD+ supports enzymes involved in DNA maintenance and cell resilience.', why: 'Without daily NAD+ replenishment, repair enzymes slow and mutations accumulate.', protocol: 'CELLUNAD+', slug: 'cellunad', tags: ['NAD+', 'Sirtuins'], accent: '#3B82F6' },
-  { title: 'Telomere Integrity', what: 'Support telomere pathways that help cells divide cleanly over time.', why: 'Shortened telomeres accelerate biological aging and reduce tissue regeneration.', protocol: 'CELLUNAD+', slug: 'cellunad', tags: ['NR', 'Longevity'], accent: '#3B82F6' },
-  { title: 'Epigenetic Signaling', what: 'Gut-derived signals help regulate gene expression across the body.', why: 'Disrupted gut signaling silences protective genes and amplifies inflammatory ones.', protocol: 'CELLUBIOME', slug: 'cellubiome', tags: ['Methylation', 'Gut Axis'], accent: '#19B3A6' },
-  { title: 'Nutrient Sensing', what: 'Cells sense fuel levels and shift into maintenance when needed.', why: 'Chronically active mTOR suppresses autophagy, letting damaged proteins accumulate.', protocol: 'CELLUNOVA', slug: 'cellunova', tags: ['AMPK', 'mTOR'], accent: '#6C5CE7' },
-  { title: 'Mitochondrial Function', what: 'Support mitochondrial renewal so energy output stays strong.', why: 'Dysfunctional mitochondria leak free radicals, draining cellular energy output.', protocol: 'CELLUBIOME', slug: 'cellubiome', tags: ['Mitophagy', 'ATP'], accent: '#19B3A6' },
-  { title: 'Cellular Senescence', what: 'Support healthy aging by helping manage senescence-related stress signals.', why: 'Senescent cell accumulation drives chronic inflammation and tissue breakdown.', protocol: 'CELLUNOVA', slug: 'cellunova', tags: ['Fisetin', 'Senescence'], accent: '#6C5CE7' }
+  { title: 'Genomic Stability', what: 'NAD+ fuels enzymes that repair damaged DNA and maintain chromosomal integrity.', why: 'Without daily NAD+ replenishment, repair enzymes slow and mutations accumulate.', protocol: 'CELLUNAD+', slug: 'cellunad', tags: ['NAD+', 'Sirtuins'], accent: '#3B82F6' },
+  { title: 'Telomere Integrity', what: 'Telomere-protective pathways preserve the replication fidelity of every cell division.', why: 'Shortened telomeres accelerate biological aging and reduce tissue regeneration.', protocol: 'CELLUNAD+', slug: 'cellunad', tags: ['NR', 'Longevity'], accent: '#3B82F6' },
+  { title: 'Epigenetic Signaling', what: 'Gut-derived metabolites like butyrate modulate gene expression across tissues.', why: 'Disrupted gut signaling silences protective genes and amplifies inflammatory ones.', protocol: 'CELLUBIOME', slug: 'cellubiome', tags: ['Methylation', 'Gut Axis'], accent: '#19B3A6' },
+  { title: 'Nutrient Sensing', what: 'AMPK and mTOR pathways detect energy status and trigger cellular maintenance.', why: 'Chronically active mTOR suppresses autophagy, letting damaged proteins accumulate.', protocol: 'CELLUNOVA', slug: 'cellunova', tags: ['AMPK', 'mTOR'], accent: '#6C5CE7' },
+  { title: 'Mitochondrial Function', what: 'Urolithin A activates mitophagy, clearing damaged mitochondria for new ones.', why: 'Dysfunctional mitochondria leak free radicals, draining cellular energy output.', protocol: 'CELLUBIOME', slug: 'cellubiome', tags: ['Mitophagy', 'ATP'], accent: '#19B3A6' },
+  { title: 'Cellular Senescence', what: 'Fisetin-driven senolytic cycles clear zombie cells that secrete inflammatory signals.', why: 'Senescent cell accumulation drives chronic inflammation and tissue breakdown.', protocol: 'CELLUNOVA', slug: 'cellunova', tags: ['Fisetin', 'Senolytic'], accent: '#6C5CE7' }
 ];
 
 const NoiseOverlay = () => (
@@ -297,45 +297,50 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
         <div className="absolute left-1/2 top-[35%] -translate-x-1/2 -translate-y-1/2 w-[min(95vw,650px)] h-[min(95vw,650px)] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(8,12,26,0.9)_0%,transparent_70%)]" />
       </div>
 
-      <div className="relative z-10 w-full max-w-3xl mx-auto flex flex-col justify-center text-center px-5 md:px-6 pt-20 md:pt-36 pb-6 md:pb-12 min-h-[100dvh]">
-        <div className="flex flex-col hero-text w-full items-center">
+      <div className="hidden lg:block absolute inset-0 z-[1] pointer-events-none" aria-hidden="true">
+        <div className="absolute right-[12%] top-[40%] -translate-y-1/2 w-[500px] h-[500px] rounded-full" style={{ background: 'radial-gradient(ellipse at center, rgba(45,212,191,0.06) 0%, transparent 70%)' }} />
+        <div className="absolute bottom-0 left-0 right-0 h-[30%]" style={{ background: 'linear-gradient(to top, rgba(15,23,42,0.5) 0%, transparent 100%)' }} />
+        <div className="absolute top-0 left-0 w-[40%] h-full" style={{ background: 'linear-gradient(to right, rgba(15,23,42,0.3) 0%, transparent 100%)' }} />
+      </div>
 
-          <div className="flex flex-col items-center md:items-start md:pl-[3%]">
-            <div className="flex items-center gap-2 justify-center mb-3">
+      <div className="relative z-10 w-full max-w-3xl lg:max-w-7xl mx-auto flex flex-col justify-center text-center lg:text-left px-5 md:px-6 lg:px-12 pt-20 md:pt-36 lg:pt-44 pb-6 md:pb-12 lg:pb-20 min-h-[100dvh]">
+        <div className="lg:grid lg:grid-cols-12 lg:gap-8 lg:items-center">
+
+        <div className="flex flex-col hero-text w-full items-center lg:items-start lg:col-span-6">
+
+          <div className="flex flex-col items-center md:items-start md:pl-[3%] lg:pl-0">
+            <div className="flex items-center gap-2 justify-center lg:justify-start mb-3">
               <div className="h-px w-4 bg-white/10" />
               <span className="font-mono text-[10px] text-ar-teal/75 uppercase tracking-[0.10em]">Protocol-Grade Supplements</span>
               <div className="h-px w-4 bg-white/10" />
             </div>
             <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase" style={{ fontSize: 'clamp(38px, 9.5vw, 56px)' }}>
-              Cellular Energy.
-              <br />
-              <span className="text-white/70">Gut Resilience.</span>
+              <span className="lg:hidden">
+                Cellular Energy.
+                <br />
+                <span className="text-white/70">Gut Resilience.</span>
+              </span>
+              <span className="hidden lg:inline" style={{ fontSize: 'clamp(56px, 5.5vw, 72px)' }}>
+                Cellular Energy.
+                <br />
+                <span className="text-white/70">Gut Resilience.</span>
+              </span>
             </h1>
           </div>
 
-          <p className="mt-5 md:mt-6 text-[14px] md:text-[16px] text-white/75 font-sans font-medium max-w-[32ch] md:max-w-[42ch] leading-[1.5] mx-auto md:ml-[3%] md:mr-auto md:text-left">
-            One system. Three protocols. <span className="text-white/95">NAD+</span> support, <span className="text-white/95">gut-mito</span> support, and a <span className="text-white/95">7-day</span> monthly pulse.
+          <p className="mt-5 md:mt-6 lg:mt-8 text-[14px] md:text-[16px] lg:text-[17px] text-white/75 font-sans font-medium max-w-[32ch] md:max-w-[42ch] leading-[1.5] mx-auto md:ml-[3%] md:mr-auto md:text-left lg:ml-0">
+            One system. Three protocols. Daily <span className="text-white/95">NAD+</span>, daily <span className="text-white/95">gut-mito</span> repair, and a <span className="text-white/95">7-day</span> monthly reset.
           </p>
 
-          <div className="mt-5 flex flex-col items-center gap-0" data-testid="proof-bar">
-            <div className="w-10 h-px bg-white/10 mb-3" />
-            <div className="flex flex-col items-center gap-[2px] leading-snug">
-              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">ABSORPTION FIRST</span>
-              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">VERIFIED POTENCY</span>
-              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">CLINICAL-LEVEL DOSING</span>
-              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">UV-PROTECTED GLASS</span>
-            </div>
-          </div>
-
-          <div className="mt-5 flex flex-col sm:flex-row gap-2 w-full max-w-[340px] mx-auto sm:w-auto sm:max-w-none md:justify-center">
-            <a href="/shop" className="group relative w-full sm:w-auto px-7 min-h-[40px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.10em] overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="button-shop-system">
+          <div className="mt-5 lg:mt-8 flex flex-col sm:flex-row gap-2 w-full max-w-[340px] mx-auto sm:w-auto sm:max-w-none md:justify-center lg:justify-start lg:mx-0">
+            <a href="/shop" className="group relative w-full sm:w-auto px-7 lg:px-9 min-h-[40px] lg:min-h-[46px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.10em] overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="button-shop-system">
               <span className="relative z-10">Shop the System</span>
               <div className="absolute inset-0 bg-white/12 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </a>
 
             <button
               onClick={onOpenEvidence}
-              className="w-full sm:w-auto px-7 min-h-[40px] text-white/50 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.10em] hover:bg-white/[0.03] hover:text-white/75 transition-all"
+              className="w-full sm:w-auto px-7 min-h-[40px] lg:min-h-[46px] text-white/40 lg:text-white/35 rounded-lg lg:rounded-none font-mono font-bold uppercase text-[11px] tracking-[0.10em] hover:text-white/65 transition-all lg:border-0 lg:bg-transparent lg:shadow-none"
               style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)' }}
               data-testid="button-view-evidence"
             >
@@ -343,7 +348,52 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
             </button>
           </div>
 
-          <p className="mt-2 text-[11px] text-white/40 font-sans tracking-normal">Start now. Consistency compounds.</p>
+          <div className="mt-5 flex flex-col items-center gap-0 lg:hidden" data-testid="proof-bar">
+            <div className="w-10 h-px bg-white/10 mb-3" />
+            <div className="flex flex-col items-center gap-[2px] leading-snug">
+              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Bioavailability First</span>
+              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Standardized Actives</span>
+              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Clinical Doses</span>
+              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Glass Packaging</span>
+            </div>
+          </div>
+
+          <div className="hidden lg:flex items-center gap-0 mt-8" data-testid="proof-bar-desktop">
+            <span className="text-[10px] text-white/50 uppercase tracking-[0.10em] font-mono">Bioavailability First</span>
+            <span className="w-px h-3 bg-white/15 mx-3" />
+            <span className="text-[10px] text-white/50 uppercase tracking-[0.10em] font-mono">Standardized Actives</span>
+            <span className="w-px h-3 bg-white/15 mx-3" />
+            <span className="text-[10px] text-white/50 uppercase tracking-[0.10em] font-mono">Clinical Doses</span>
+            <span className="w-px h-3 bg-white/15 mx-3" />
+            <span className="text-[10px] text-white/50 uppercase tracking-[0.10em] font-mono">Glass Packaging</span>
+          </div>
+
+          <p className="mt-2 text-[11px] text-white/40 font-sans tracking-normal lg:hidden">Start with the bundle or choose a protocol.</p>
+        </div>
+
+        <div className="hidden lg:flex lg:col-span-6 relative items-center justify-center min-h-[450px]">
+          <div className="relative w-full h-[480px]">
+            <img
+              src={imgCellunad}
+              alt=""
+              className="absolute left-[10%] top-[8%] w-[38%] h-auto object-contain z-[3] hero-text"
+              style={{ filter: 'drop-shadow(0 12px 28px rgba(30,58,138,0.3)) drop-shadow(0 4px 10px rgba(0,0,0,0.4))' }}
+            />
+            <img
+              src={imgCellubiome}
+              alt=""
+              className="absolute left-[32%] top-[18%] w-[38%] h-auto object-contain z-[2] hero-text"
+              style={{ filter: 'drop-shadow(0 12px 28px rgba(25,179,166,0.25)) drop-shadow(0 4px 10px rgba(0,0,0,0.35))' }}
+            />
+            <img
+              src={imgCellunova}
+              alt=""
+              className="absolute left-[54%] top-[6%] w-[38%] h-auto object-contain z-[1] hero-text"
+              style={{ filter: 'drop-shadow(0 12px 28px rgba(108,92,231,0.25)) drop-shadow(0 4px 10px rgba(0,0,0,0.35))' }}
+            />
+          </div>
+        </div>
+
         </div>
       </div>
     </section>
@@ -377,8 +427,8 @@ const TheAxis = ({ onOpenEvidence }) => {
               accentBg: 'rgba(25,179,166,0.08)',
               accentBorder: 'rgba(25,179,166,0.25)',
               accentText: 'rgba(25,179,166,0.8)',
-              desc: 'Support gut-mito communication for steady energy and digestive resilience.',
-              steps: ['Enteric delivery', 'Barrier support', 'Mito renewal'],
+              desc: 'Postbiotic signaling and mitochondrial renewal support designed for daily repeatability.',
+              steps: ['Enteric delivery', 'Barrier support', 'Mitophagy signaling'],
               primary: true
             },
             {
@@ -388,8 +438,8 @@ const TheAxis = ({ onOpenEvidence }) => {
               accentBg: 'rgba(96,165,250,0.06)',
               accentBorder: 'rgba(96,165,250,0.20)',
               accentText: 'rgba(96,165,250,0.75)',
-              desc: 'Daily NAD+ support with cofactors for consistent cellular energy.',
-              steps: ['NAD+ support', 'Oxidative balance', 'Methylation support'],
+              desc: 'Daily NAD+ precursor support with co-factors for consistent pathway support.',
+              steps: ['NAD+ pools', 'Redox support', 'Methylation support'],
               primary: false
             },
             {
@@ -399,8 +449,8 @@ const TheAxis = ({ onOpenEvidence }) => {
               accentBg: 'rgba(108,92,231,0.06)',
               accentBorder: 'rgba(108,92,231,0.20)',
               accentText: 'rgba(108,92,231,0.75)',
-              desc: 'A 7-day monthly pulse designed to support cellular renewal and resilience.',
-              steps: ['Short cycle', 'Cleanup support', 'Return to base'],
+              desc: 'A 7-day cyclical protocol designed to support cellular cleanup processes and resilience.',
+              steps: ['Short cycle', 'Defense layer', 'Return to base'],
               primary: false
             }
           ].map((item, i) => (
@@ -457,7 +507,7 @@ const SixPillars = () => {
           </div>
           <h2 className="text-4xl md:text-5xl font-head font-normal tracking-[-0.04em] uppercase text-white">6 Pillars of Systemic Aging</h2>
           <p className="text-[13px] text-white/50 font-sans max-w-md mx-auto mt-3 leading-relaxed">
-            A map from science to your routine. Not medical advice.
+            A framework for mapping protocols to systems. Not medical advice.
           </p>
         </div>
 
@@ -474,7 +524,7 @@ const SixPillars = () => {
                   <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white">{p.title}</h4>
                   <p className="text-[12.5px] font-sans text-white/55 leading-[1.5] mt-1">{p.what}</p>
                   <div className="flex items-center gap-3 mt-1.5">
-                    <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/45">{p.tags.join(' • ')}</span>
+                    <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/45">{p.tags.join(' — ')}</span>
                     <div className="h-[10px] w-px bg-white/12" />
                     <a
                       href={`/product/${p.slug}`}
@@ -583,7 +633,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-head font-normal text-white tracking-[-0.04em] uppercase leading-tight">
               The System
             </h2>
-            <p className="text-sm text-white/50 font-mono uppercase tracking-[0.12em] mt-3">START WHERE YOU FEEL IT</p>
+            <p className="text-sm text-white/50 font-mono uppercase tracking-[0.12em] mt-3">Choose your starting point</p>
           </div>
 
           <div className="max-w-5xl mx-auto">
@@ -604,9 +654,9 @@ export default function Home() {
             <div className="border-t border-white/[0.06]">
               {[
                 { title: 'Third-Party Tested', desc: 'Independent lab verification' },
-                { title: 'Standardized Actives', desc: 'Consistent potency, every batch' },
-                { title: 'Enteric Delivery', desc: 'Absorbs where it matters' },
-                { title: 'Quality Control', desc: 'Batch-by-batch review' },
+                { title: 'Standardized Actives', desc: 'Precise concentration, no variability' },
+                { title: 'Enteric Delivery', desc: 'Targeted absorption' },
+                { title: 'Quality Control', desc: 'Multi-stage review process' },
               ].map((s, i) => (
                 <div key={s.title} className="flex items-start gap-3 py-3 border-b border-white/[0.06]">
                   <span className="font-mono text-[13px] font-bold tabular-nums text-ar-teal/80 shrink-0 pt-px w-5">0{i + 1}</span>
