@@ -785,25 +785,15 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      {/* NARRATIVE — single section per SKU */}
-      <section
-        className="relative py-14 md:py-[72px]"
-        style={{
-          background: product.id === 'cellunad'
-            ? 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.75) 8%, rgba(15,23,42,0.75) 92%, rgba(15,23,42,0) 100%)'
-            : product.id === 'cellubiome'
-              ? 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.7) 8%, rgba(15,23,42,0.7) 92%, rgba(15,23,42,0) 100%)'
-              : 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.7) 8%, rgba(15,23,42,0.7) 92%, rgba(15,23,42,0) 100%)'
-        }}
-        data-testid="section-narrative"
-      >
+      {/* NARRATIVE */}
+      <section className="relative py-12 md:py-16" data-testid="section-narrative">
         {product.id === 'cellubiome' && (
-          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(20,184,166,0.08), transparent 70%)', filter: 'blur(20px)' }} />
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(20,184,166,0.06), transparent 70%)', filter: 'blur(20px)' }} />
         )}
         {product.id === 'cellunova' && (
           <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(108,92,231,0.04), transparent 70%)' }} />
         )}
-        <div className="relative z-[1] max-w-3xl mx-auto px-6">
+        <div className="relative z-[1] max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10">
           <div className="reveal">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.16em] block mb-4" style={{ color: accentText }} data-testid="text-narrative-label">{copy.narrative.label}</span>
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-6" data-testid="text-narrative-headline">{copy.narrative.headline}</h2>
@@ -812,27 +802,27 @@ function ProductTemplate({ product }) {
                 <p key={i} className="text-[14px] md:text-[15px] font-sans text-white/70 leading-[1.75]">{line}</p>
               ))}
             </div>
-            <div className="border-b border-white/10 mt-8" />
           </div>
         </div>
       </section>
 
-      {/* TELEMETRY — Plane B (lighter) */}
-      <section className="relative py-11 md:py-16" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.25) 8%, rgba(15,23,42,0.25) 92%, rgba(15,23,42,0) 100%)' }} data-testid="section-telemetry">
-        <div className="absolute inset-0 bg-[#0f172a]/20 pointer-events-none z-0" />
-        <div className="relative z-[1] max-w-3xl mx-auto px-6">
+      <div className="max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10"><div className="h-px bg-white/[0.06]" /></div>
+
+      {/* TELEMETRY */}
+      <section className="relative py-12 md:py-16" data-testid="section-telemetry">
+        <div className="relative z-[1] max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10">
           <div className="reveal">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Telemetry</span>
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-3">{copy.telemetry.headline}</h2>
-            <p className="text-[14px] font-sans text-white/60 leading-relaxed max-w-xl mb-6">{copy.telemetry.body}</p>
+            <p className="text-[14px] font-sans text-white/65 leading-relaxed max-w-xl mb-6">{copy.telemetry.body}</p>
 
             <div className="flex flex-col gap-0">
               {copy.telemetry.rows.map((row, i) => (
                 <div key={i} className="flex items-baseline gap-4 py-2.5" data-testid={`telemetry-row-${i}`}>
                   <span className="font-mono text-[14px] font-black tracking-[0.04em] shrink-0 w-6 text-right" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
-                  <div className="flex flex-col gap-0 flex-1 border-b border-white/[0.05] pb-3">
+                  <div className="flex flex-col gap-0 flex-1 border-b border-white/[0.06] pb-3">
                     <span className="text-[13px] font-sans font-bold text-white/90">{row.label}</span>
-                    <span className="text-[12px] font-mono text-white/45 tracking-[0.02em] mt-0.5">{row.metric}</span>
+                    <span className="text-[12px] font-mono text-white/50 tracking-[0.02em] mt-0.5">{row.metric}</span>
                   </div>
                 </div>
               ))}
@@ -841,9 +831,11 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      {/* STANDARDS — Plane A (darker) */}
-      <section className="relative py-11 md:py-16" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.45) 8%, rgba(15,23,42,0.45) 92%, rgba(15,23,42,0) 100%)' }} data-testid="section-standards">
-        <div className="max-w-3xl mx-auto px-6">
+      <div className="max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10"><div className="h-px bg-white/[0.06]" /></div>
+
+      {/* STANDARDS */}
+      <section className="relative py-12 md:py-16" data-testid="section-standards">
+        <div className="max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10">
           <div className="reveal">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-5" style={{ color: accentText }}>Formulation Standards</span>
             <div className="flex flex-col gap-4">
@@ -852,7 +844,7 @@ function ProductTemplate({ product }) {
                   <span className="font-mono text-[14px] font-black tracking-[0.04em] shrink-0 w-6 text-right" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
                   <div className="flex flex-col">
                     <span className="text-[13px] font-sans font-bold text-white/90">{item.label}</span>
-                    <span className="text-[13px] font-sans text-white/55 leading-snug">{item.desc}</span>
+                    <span className="text-[13px] font-sans text-white/60 leading-snug">{item.desc}</span>
                   </div>
                 </div>
               ))}
@@ -861,16 +853,17 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      {/* COMPOUND SPECIFICATION — Plane C (deep vignette) */}
-      <section className="relative py-11 md:py-16" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.7) 8%, rgba(15,23,42,0.7) 92%, rgba(15,23,42,0) 100%)' }} data-testid="section-spec">
-        <div className="absolute inset-0 bg-[#0f172a]/30 pointer-events-none z-0" />
-        <div className="relative z-[1] max-w-3xl mx-auto px-6">
+      <div className="max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10"><div className="h-px bg-white/[0.06]" /></div>
+
+      {/* COMPOUND SPECIFICATION */}
+      <section className="relative py-12 md:py-16" data-testid="section-spec">
+        <div className="relative z-[1] max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10">
           <div className="reveal mb-6">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Compound Specification</span>
-            <p className="text-[12px] font-mono text-white/50 tracking-[0.04em] uppercase mb-1.5">{copy.spec.meta}</p>
-            <p className="text-[14px] font-sans text-white/60 leading-relaxed max-w-lg mb-1.5">{copy.spec.reassurance}</p>
-            <p className="text-[12px] font-mono text-white/45 tracking-[0.04em]">{copy.spec.declaration}</p>
-            {copy.spec.microNote && <p className="text-[11px] font-mono text-white/40 tracking-[0.04em] mt-1">{copy.spec.microNote}</p>}
+            <p className="text-[12px] font-mono text-white/55 tracking-[0.04em] uppercase mb-1.5">{copy.spec.meta}</p>
+            <p className="text-[14px] font-sans text-white/65 leading-relaxed max-w-lg mb-1.5">{copy.spec.reassurance}</p>
+            <p className="text-[12px] font-mono text-white/50 tracking-[0.04em]">{copy.spec.declaration}</p>
+            {copy.spec.microNote && <p className="text-[11px] font-mono text-white/45 tracking-[0.04em] mt-1">{copy.spec.microNote}</p>}
           </div>
 
           <div className="reveal border-t border-white/[0.06] pt-5">
@@ -878,39 +871,40 @@ function ProductTemplate({ product }) {
           </div>
 
           <div className="mt-5 space-y-1">
-            <p className="text-[11px] font-mono text-white/45 tracking-[0.06em] leading-relaxed">All dosages reflect clinically studied ranges</p>
-            <p className="text-[11px] font-mono text-white/45 tracking-[0.06em] leading-relaxed">All compounds listed in bioavailable forms</p>
+            <p className="text-[11px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All dosages reflect clinically studied ranges</p>
+            <p className="text-[11px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All compounds listed in bioavailable forms</p>
           </div>
         </div>
       </section>
 
-      {/* PROTOCOL ARC — Plane B (lighter) */}
-      <section className="relative py-11 md:py-16" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.25) 8%, rgba(15,23,42,0.25) 92%, rgba(15,23,42,0) 100%)' }} data-testid="section-arc">
-        <div className="absolute inset-0 bg-[#0f172a]/20 pointer-events-none z-0" />
-        <div className="relative z-[1] max-w-3xl mx-auto px-6">
+      <div className="max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10"><div className="h-px bg-white/[0.06]" /></div>
+
+      {/* PROTOCOL ARC */}
+      <section className="relative py-12 md:py-16" data-testid="section-arc">
+        <div className="relative z-[1] max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10">
           <div className="reveal">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Protocol Arc</span>
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">{copy.arc.headline}</h2>
-            <p className="text-[13px] font-mono text-white/40 tracking-[-0.01em] mb-8">{copy.arc.subline}</p>
+            <p className="text-[13px] font-mono text-white/45 tracking-[-0.01em] mb-8">{copy.arc.subline}</p>
 
             <div className="relative">
-              <div className="absolute left-[7px] top-3 bottom-3 w-px bg-white/[0.05]" />
+              <div className="absolute left-[7px] top-3 bottom-3 w-px bg-white/[0.06]" />
 
               <div className="space-y-0">
                 {copy.arc.phases.map((step, i) => (
                   <div key={i} className="relative pl-8 py-5 md:py-6 reveal" data-testid={`arc-phase-${i}`}>
                     <div className="absolute left-0 top-[26px] w-[15px] h-[15px] flex items-center justify-center">
-                      <div className="w-[5px] h-[5px] rounded-full" style={{ backgroundColor: accentText, opacity: 0.45 }} />
+                      <div className="w-[5px] h-[5px] rounded-full" style={{ backgroundColor: accentText, opacity: 0.55 }} />
                     </div>
 
                     <div className="flex items-baseline gap-3 mb-1">
                       <span className="text-[11px] font-mono font-black uppercase tracking-[0.06em]" style={{ color: accentText }}>Phase {step.phase}</span>
-                      <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.08em]">{step.time}</span>
+                      <span className="text-[10px] font-mono text-white/45 uppercase tracking-[0.08em]">{step.time}</span>
                     </div>
                     <h4 className="text-[15px] md:text-[16px] font-sans font-bold text-white/90 tracking-[-0.01em] mb-1">{step.label}</h4>
-                    <p className="text-[14px] font-sans text-white/60 leading-relaxed max-w-md">{step.desc}</p>
+                    <p className="text-[14px] font-sans text-white/65 leading-relaxed max-w-md">{step.desc}</p>
 
-                    {i < copy.arc.phases.length - 1 && <div className="h-px bg-white/[0.03] mt-4" />}
+                    {i < copy.arc.phases.length - 1 && <div className="h-px bg-white/[0.04] mt-4" />}
                   </div>
                 ))}
               </div>
@@ -919,17 +913,19 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      {/* CLOSE — Plane A (darker) */}
-      <section className="relative py-11 md:py-16" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0) 0%, rgba(15,23,42,0.45) 8%, rgba(15,23,42,0.45) 92%, rgba(15,23,42,0) 100%)' }} data-testid="section-close">
-        <div className="max-w-3xl mx-auto px-6 text-center">
+      <div className="max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10"><div className="h-px bg-white/[0.06]" /></div>
+
+      {/* CLOSE */}
+      <section className="relative py-12 md:py-16" data-testid="section-close">
+        <div className="max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10 text-center">
           <div className="reveal">
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-3" data-testid="text-close-headline">{copy.close.headline}</h2>
-            <p className="text-[14px] font-sans text-white/60 leading-relaxed max-w-md mx-auto mb-8">{copy.close.body}</p>
+            <p className="text-[14px] font-sans text-white/65 leading-relaxed max-w-md mx-auto mb-8">{copy.close.body}</p>
 
             <div className="flex flex-col items-center gap-3">
               <MagneticButton
                 className="min-h-[44px] min-w-[200px] flex items-center justify-center gap-2 py-3 px-8 rounded-lg text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
-                style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06))', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.10), 0 1px 3px rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.10)' }}
+                style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.08))', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15), 0 1px 3px rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.18)' }}
                 onClick={() => {}}
               >
                 <span className="relative z-10">Add to Stack</span>
@@ -939,7 +935,7 @@ function ProductTemplate({ product }) {
 
               <button
                 onClick={() => setActiveSidePanel('rationale')}
-                className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium text-white/40 hover:text-white/65 transition-colors duration-200"
+                className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium text-white/50 hover:text-white/70 transition-colors duration-200"
                 data-testid="link-view-evidence"
               >
                 View Evidence →
