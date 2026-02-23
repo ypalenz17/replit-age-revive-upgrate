@@ -721,7 +721,7 @@ function ProductTemplate({ product }) {
               <div className="absolute inset-0 -inset-x-4 pointer-events-none" style={{ background: `radial-gradient(ellipse 90% 70% at 50% 45%, ${hexToRgba(accent, 0.12)}, transparent 70%)` }} />
 
               <div className="relative z-10">
-                <div className="relative flex items-end justify-center px-6 pt-4 pb-2 md:px-10 md:pt-6 md:pb-3">
+                <div className="relative flex items-end justify-center px-6 pt-4 pb-8 md:px-10 md:pt-6 md:pb-3">
                   <div className="absolute left-1/2 -translate-x-1/2 top-[15%] w-[80%] h-[70%] blur-[40px] opacity-20 pointer-events-none" style={{ background: `radial-gradient(ellipse at 50% 60%, ${hexToRgba(accent, 0.5)}, transparent 70%)` }} />
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40%] h-[6px] rounded-[50%] blur-sm opacity-50 pointer-events-none" style={{ background: 'rgba(0,0,0,0.7)' }} />
                   <img src={product.heroImage} alt={product.name} className="relative z-10 w-[45%] md:w-[55%] max-h-[180px] md:max-h-none h-auto object-contain" style={{ filter: `drop-shadow(0 8px 16px ${hexToRgba(accent, 0.2)}) drop-shadow(0 3px 6px rgba(0,0,0,0.35))` }} />
