@@ -506,8 +506,8 @@ const SixPillars = () => {
                     <div className="h-[10px] w-px bg-white/12" />
                     <a
                       href={`/product/${p.slug}`}
-                      className="text-[10px] font-mono font-bold uppercase tracking-[0.08em] transition-colors duration-200 flex items-center gap-1"
-                      style={{ color: `${p.accent}BB` }}
+                      className="text-[12px] font-mono font-bold uppercase tracking-[0.08em] transition-colors duration-200 flex items-center gap-1"
+                      style={{ color: `${p.accent}DD` }}
                       data-testid={`pillar-link-${p.slug}`}
                     >
                       {p.protocol} <ArrowRight size={9} />
