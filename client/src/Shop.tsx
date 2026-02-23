@@ -862,22 +862,21 @@ function ProductTemplate({ product }) {
       {/* COMPOUND SPECIFICATION */}
       <section className="relative py-12 md:py-20" data-testid="section-spec">
         <div className="relative z-[1] max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto px-6 md:px-10">
-          <div className="reveal mb-6 md:grid md:grid-cols-2 md:gap-16 md:items-start">
-            <div>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Compound Specification</span>
-              <p className="text-[12px] font-mono text-white/55 tracking-[0.04em] uppercase mb-1.5">{copy.spec.meta}</p>
-              <p className="text-[14px] font-sans text-white/65 leading-relaxed mb-1.5">{copy.spec.reassurance}</p>
-              <p className="text-[12px] font-mono text-white/50 tracking-[0.04em]">{copy.spec.declaration}</p>
-              {copy.spec.microNote && <p className="text-[11px] font-mono text-white/45 tracking-[0.04em] mt-1">{copy.spec.microNote}</p>}
-            </div>
-            <div className="mt-5 md:mt-0 space-y-1">
-              <p className="text-[11px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All dosages reflect clinically studied ranges</p>
-              <p className="text-[11px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All compounds listed in bioavailable forms</p>
-            </div>
+          <div className="reveal mb-6">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Compound Specification</span>
+            <p className="text-[12px] font-mono text-white/55 tracking-[0.04em] uppercase mb-1.5">{copy.spec.meta}</p>
+            <p className="text-[14px] font-sans text-white/65 leading-relaxed mb-1.5">{copy.spec.reassurance}</p>
+            <p className="text-[12px] font-mono text-white/50 tracking-[0.04em]">{copy.spec.declaration}</p>
+            {copy.spec.microNote && <p className="text-[11px] font-mono text-white/45 tracking-[0.04em] mt-1">{copy.spec.microNote}</p>}
           </div>
 
-          <div className="reveal border-t border-white/[0.06] pt-5">
+          <div className="reveal border-t border-white/[0.06] pt-5 max-w-4xl">
             <IngredientPanel ingredients={product.ingredients} accentText={accentText} />
+          </div>
+
+          <div className="mt-5 space-y-1 max-w-4xl">
+            <p className="text-[11px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All dosages reflect clinically studied ranges</p>
+            <p className="text-[11px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All compounds listed in bioavailable forms</p>
           </div>
         </div>
       </section>
