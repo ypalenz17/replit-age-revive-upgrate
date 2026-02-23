@@ -542,20 +542,19 @@ export default function Home() {
 
       gsap.from('.hero-text', { opacity: 0, y: 20, duration: 1, ease: 'power3.out' });
 
-      gsap.utils.toArray('.reveal-stagger').forEach((el, i) => {
+      gsap.utils.toArray('.reveal-stagger').forEach((el) => {
         gsap.from(el, {
-          scrollTrigger: { trigger: el, start: 'top 88%' },
+          scrollTrigger: { trigger: el, start: 'top 95%', toggleActions: 'play none none none' },
           opacity: 0,
           y: 16,
           duration: 0.8,
-          delay: i * 0.06,
           ease: 'power3.out'
         });
       });
 
       gsap.utils.toArray('.reveal').forEach((el) => {
         gsap.from(el, {
-          scrollTrigger: { trigger: el, start: 'top 85%' },
+          scrollTrigger: { trigger: el, start: 'top 95%', toggleActions: 'play none none none' },
           opacity: 0,
           y: 16,
           duration: 0.8,
