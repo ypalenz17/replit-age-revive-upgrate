@@ -669,8 +669,8 @@ function ProductTemplate({ product }) {
   const copy = COPY_MAP[product.id];
 
   return (
-    <main ref={containerRef} style={{ '--accent': accent, '--accentGlow': accentGlow }} className="relative bg-[#0f172a] text-white selection:bg-ar-teal selection:text-white">
-      <div className="fixed inset-0 z-0 bg-[#0f172a]">
+    <main ref={containerRef} style={{ '--accent': accent, '--accentGlow': accentGlow }} className="relative bg-[#0b1120] text-white selection:bg-ar-teal selection:text-white">
+      <div className="fixed inset-0 z-0 bg-[#0b1120]">
         <img
           src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2400"
           className="w-full h-full object-cover grayscale opacity-30 mix-blend-screen"
@@ -678,7 +678,7 @@ function ProductTemplate({ product }) {
           decoding="async"
           fetchpriority="high"
         />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e3a8a_0%,_#0f172a_120%)] opacity-70" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#131b2e_0%,_#0b1120_120%)] opacity-80" />
       </div>
       <div
         className="fixed inset-0 pointer-events-none z-[1] opacity-[0.012]"

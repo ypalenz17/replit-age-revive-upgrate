@@ -9,6 +9,7 @@ import {
 import { gsap } from 'gsap';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import heroVideo from '@assets/hero_video_cropped.mp4';
+import heroVideoPortrait from '@assets/hero_video_portrait.mp4';
 import imgCellubiome from '@assets/cellubiome_cropped.png';
 import imgCellunad from '@assets/cellunad_cropped.png';
 import imgCellunova from '@assets/cellunova_cropped.png';
@@ -299,8 +300,16 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 object-top md:object-center"
+        className="absolute inset-0 w-full h-full object-cover z-0 hidden md:block"
         src={heroVideo}
+      />
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0 md:hidden"
+        src={heroVideoPortrait}
       />
       <div className="absolute inset-0 z-[1] pointer-events-none hidden md:block" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.5) 0%, rgba(15,23,42,0.35) 40%, rgba(15,23,42,0.6) 80%, rgba(15,23,42,0.9) 100%)' }} />
       <div className="absolute inset-0 z-[1] pointer-events-none md:hidden" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.45) 0%, rgba(15,23,42,0.55) 30%, rgba(15,23,42,0.75) 60%, rgba(15,23,42,0.95) 100%)' }} />
@@ -486,7 +495,7 @@ const SixPillars = () => {
             <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">Framework</span>
             <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
-          <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white whitespace-nowrap" style={{ fontSize: 'clamp(1.6rem, 5vw, 3rem)' }}>6 Pillars of Systemic Aging</h2>
+          <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white" style={{ fontSize: 'clamp(1.4rem, 4.5vw, 3rem)' }}>6 Pillars of Systemic Aging</h2>
           <p className="text-[13px] text-white/50 font-sans max-w-md mx-auto mt-3 leading-relaxed">
             A framework for mapping protocols to systems. Not medical advice.
           </p>
