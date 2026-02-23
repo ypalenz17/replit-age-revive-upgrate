@@ -806,15 +806,17 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <div className="max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10"><div className="h-px bg-white/[0.06]" /></div>
+      <div className="max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto px-6 md:px-10"><div className="h-px bg-white/[0.06]" /></div>
 
       {/* TELEMETRY */}
-      <section className="relative py-12 md:py-16" data-testid="section-telemetry">
-        <div className="relative z-[1] max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10">
-          <div className="reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Telemetry</span>
-            <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-3">{copy.telemetry.headline}</h2>
-            <p className="text-[14px] font-sans text-white/65 leading-relaxed max-w-xl mb-6">{copy.telemetry.body}</p>
+      <section className="relative py-12 md:py-20" data-testid="section-telemetry">
+        <div className="relative z-[1] max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto px-6 md:px-10">
+          <div className="reveal md:grid md:grid-cols-2 md:gap-16 md:items-start">
+            <div>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Telemetry</span>
+              <h2 className="text-[22px] md:text-[32px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-3">{copy.telemetry.headline}</h2>
+              <p className="text-[14px] font-sans text-white/65 leading-relaxed max-w-xl mb-6 md:mb-0">{copy.telemetry.body}</p>
+            </div>
 
             <div className="flex flex-col gap-0">
               {copy.telemetry.rows.map((row, i) => (
@@ -831,17 +833,17 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <div className="max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10"><div className="h-px bg-white/[0.06]" /></div>
+      <div className="max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto px-6 md:px-10"><div className="h-px bg-white/[0.06]" /></div>
 
       {/* STANDARDS */}
-      <section className="relative py-12 md:py-16" data-testid="section-standards">
-        <div className="max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10">
+      <section className="relative py-12 md:py-20" data-testid="section-standards">
+        <div className="max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto px-6 md:px-10">
           <div className="reveal">
             <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-5" style={{ color: accentText }}>Formulation Standards</span>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
               {SHARED_STANDARDS.map((item, i) => (
-                <div key={i} className="flex items-start gap-5" data-testid={`standard-${i}`}>
-                  <span className="font-mono text-[14px] font-black tracking-[0.04em] shrink-0 w-6 text-right" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
+                <div key={i} className="flex items-start gap-5 md:flex-col md:gap-2" data-testid={`standard-${i}`}>
+                  <span className="font-mono text-[14px] font-black tracking-[0.04em] shrink-0 w-6 text-right md:text-left" style={{ color: accentText }}>{String(i + 1).padStart(2, '0')}</span>
                   <div className="flex flex-col">
                     <span className="text-[13px] font-sans font-bold text-white/90">{item.label}</span>
                     <span className="text-[13px] font-sans text-white/60 leading-snug">{item.desc}</span>
@@ -853,39 +855,42 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <div className="max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10"><div className="h-px bg-white/[0.06]" /></div>
+      <div className="max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto px-6 md:px-10"><div className="h-px bg-white/[0.06]" /></div>
 
       {/* COMPOUND SPECIFICATION */}
-      <section className="relative py-12 md:py-16" data-testid="section-spec">
-        <div className="relative z-[1] max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10">
-          <div className="reveal mb-6">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Compound Specification</span>
-            <p className="text-[12px] font-mono text-white/55 tracking-[0.04em] uppercase mb-1.5">{copy.spec.meta}</p>
-            <p className="text-[14px] font-sans text-white/65 leading-relaxed max-w-lg mb-1.5">{copy.spec.reassurance}</p>
-            <p className="text-[12px] font-mono text-white/50 tracking-[0.04em]">{copy.spec.declaration}</p>
-            {copy.spec.microNote && <p className="text-[11px] font-mono text-white/45 tracking-[0.04em] mt-1">{copy.spec.microNote}</p>}
+      <section className="relative py-12 md:py-20" data-testid="section-spec">
+        <div className="relative z-[1] max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto px-6 md:px-10">
+          <div className="reveal mb-6 md:grid md:grid-cols-2 md:gap-16 md:items-start">
+            <div>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Compound Specification</span>
+              <p className="text-[12px] font-mono text-white/55 tracking-[0.04em] uppercase mb-1.5">{copy.spec.meta}</p>
+              <p className="text-[14px] font-sans text-white/65 leading-relaxed mb-1.5">{copy.spec.reassurance}</p>
+              <p className="text-[12px] font-mono text-white/50 tracking-[0.04em]">{copy.spec.declaration}</p>
+              {copy.spec.microNote && <p className="text-[11px] font-mono text-white/45 tracking-[0.04em] mt-1">{copy.spec.microNote}</p>}
+            </div>
+            <div className="mt-5 md:mt-0 space-y-1">
+              <p className="text-[11px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All dosages reflect clinically studied ranges</p>
+              <p className="text-[11px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All compounds listed in bioavailable forms</p>
+            </div>
           </div>
 
           <div className="reveal border-t border-white/[0.06] pt-5">
             <IngredientPanel ingredients={product.ingredients} accentText={accentText} />
           </div>
-
-          <div className="mt-5 space-y-1">
-            <p className="text-[11px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All dosages reflect clinically studied ranges</p>
-            <p className="text-[11px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All compounds listed in bioavailable forms</p>
-          </div>
         </div>
       </section>
 
-      <div className="max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10"><div className="h-px bg-white/[0.06]" /></div>
+      <div className="max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto px-6 md:px-10"><div className="h-px bg-white/[0.06]" /></div>
 
       {/* PROTOCOL ARC */}
-      <section className="relative py-12 md:py-16" data-testid="section-arc">
-        <div className="relative z-[1] max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10">
-          <div className="reveal">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Protocol Arc</span>
-            <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">{copy.arc.headline}</h2>
-            <p className="text-[13px] font-mono text-white/45 tracking-[-0.01em] mb-8">{copy.arc.subline}</p>
+      <section className="relative py-12 md:py-20" data-testid="section-arc">
+        <div className="relative z-[1] max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto px-6 md:px-10">
+          <div className="reveal md:grid md:grid-cols-2 md:gap-16 md:items-start">
+            <div>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-[0.20em] block mb-2" style={{ color: accentText }}>Protocol Arc</span>
+              <h2 className="text-[22px] md:text-[32px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-1.5">{copy.arc.headline}</h2>
+              <p className="text-[13px] font-mono text-white/45 tracking-[-0.01em] mb-8 md:mb-0">{copy.arc.subline}</p>
+            </div>
 
             <div className="relative">
               <div className="absolute left-[7px] top-3 bottom-3 w-px bg-white/[0.06]" />
@@ -902,7 +907,7 @@ function ProductTemplate({ product }) {
                       <span className="text-[10px] font-mono text-white/45 uppercase tracking-[0.08em]">{step.time}</span>
                     </div>
                     <h4 className="text-[15px] md:text-[16px] font-sans font-bold text-white/90 tracking-[-0.01em] mb-1">{step.label}</h4>
-                    <p className="text-[14px] font-sans text-white/65 leading-relaxed max-w-md">{step.desc}</p>
+                    <p className="text-[14px] font-sans text-white/65 leading-relaxed">{step.desc}</p>
 
                     {i < copy.arc.phases.length - 1 && <div className="h-px bg-white/[0.04] mt-4" />}
                   </div>
@@ -913,11 +918,11 @@ function ProductTemplate({ product }) {
         </div>
       </section>
 
-      <div className="max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10"><div className="h-px bg-white/[0.06]" /></div>
+      <div className="max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto px-6 md:px-10"><div className="h-px bg-white/[0.06]" /></div>
 
       {/* CLOSE */}
-      <section className="relative py-12 md:py-16" data-testid="section-close">
-        <div className="max-w-3xl md:max-w-4xl mx-auto px-6 md:px-10 text-center">
+      <section className="relative py-12 md:py-20" data-testid="section-close">
+        <div className="max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto px-6 md:px-10 text-center">
           <div className="reveal">
             <h2 className="text-[22px] md:text-[28px] font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight mb-3" data-testid="text-close-headline">{copy.close.headline}</h2>
             <p className="text-[14px] font-sans text-white/65 leading-relaxed max-w-md mx-auto mb-8">{copy.close.body}</p>
