@@ -695,6 +695,13 @@ function ProductTemplate({ product }) {
         <div className="absolute inset-0 z-[1] pointer-events-none" style={{ background: 'linear-gradient(180deg, #0f172a 0%, rgba(15,23,42,0.85) 12%, transparent 35%)' }} />
         <div className="absolute inset-0 z-[2] opacity-[0.20] pointer-events-none" style={{ background: `radial-gradient(700px 500px at 20% 75%, ${accentGlow}, transparent 60%)` }} />
 
+        {product.id === 'cellubiome' && (
+          <>
+            <div className="absolute inset-0 z-[2] pointer-events-none" style={{ background: 'radial-gradient(600px 500px at 60% 55%, rgba(20,184,166,0.15), transparent 70%)', filter: 'blur(40px)' }} />
+            <div className="absolute bottom-0 left-0 right-0 h-[20%] z-[3] pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(15,23,42,0.5), transparent)' }} />
+          </>
+        )}
+
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12 px-5 md:px-8 pt-28 md:pt-32 pb-10 md:pb-16 items-center">
 
           <div className="w-full md:w-3/5 hero-content text-white text-center md:text-left relative">
@@ -792,7 +799,7 @@ function ProductTemplate({ product }) {
         data-testid="section-narrative"
       >
         {product.id === 'cellubiome' && (
-          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(25,179,166,0.04), transparent 70%)' }} />
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(20,184,166,0.08), transparent 70%)', filter: 'blur(20px)' }} />
         )}
         {product.id === 'cellunova' && (
           <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(108,92,231,0.04), transparent 70%)' }} />
