@@ -186,7 +186,7 @@ const PRODUCTS = {
     tagline: 'Daily NAD+ support engineered for consistency, not hype.',
     description:
       'NR + cofactors. 8 actives. Clinically aligned.',
-    price: '$92.00',
+    price: '$79.99',
     serving: '2 capsules daily',
     specRow: 'Glass bottle \u2022 UV-protected',
     accent: '#1e3a8a',
@@ -776,6 +776,14 @@ function ProductTemplate({ product }) {
                       >
                         Evidence
                       </button>
+                      <span className="w-px h-3 bg-white/15" />
+                      <a
+                        href={`/product/${product.id}`}
+                        className="font-mono uppercase text-[10px] tracking-[0.14em] font-medium text-white/50 hover:text-white/75 transition-colors duration-200"
+                        data-testid="link-full-details"
+                      >
+                        Full Details
+                      </a>
                     </div>
                   </div>
                 </div>
