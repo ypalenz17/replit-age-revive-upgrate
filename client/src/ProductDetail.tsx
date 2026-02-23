@@ -8,6 +8,8 @@ import {
   Clock,
   Microscope,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   ShieldCheck,
   Dna,
   Layers,
@@ -21,19 +23,45 @@ import {
   Menu,
   ShoppingBag,
   RotateCcw,
-  Wind
+  Wind,
+  Heart,
+  Brain,
+  Flame,
+  Star,
+  BadgeCheck,
+  Timer
 } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import Footer from './components/Footer';
 
+import productBottle1 from './assets/images/product-bottle_1.jpg';
+import productBottle2 from './assets/images/product-bottle_2.jpg';
+import productBottle3 from './assets/images/product-bottle_3.jpg';
+import productCapsules1 from './assets/images/product-capsules_1.jpg';
+import productCapsules2 from './assets/images/product-capsules_2.jpg';
+import lifestyleWellness1 from './assets/images/lifestyle-wellness_1.jpg';
+import lifestyleWellness2 from './assets/images/lifestyle-wellness_2.jpg';
+import labTesting from './assets/images/lab-testing.jpg';
+import howToUseImg from './assets/images/how-to-use.jpg';
+import scienceGut from './assets/images/science-gut.jpg';
+
 gsap.registerPlugin(ScrollTrigger);
+
+const PRODUCT_IMAGES = {
+  cellunad: [productBottle1, productCapsules1, lifestyleWellness1, labTesting],
+  cellubiome: [productBottle2, productCapsules2, scienceGut, lifestyleWellness2],
+  cellunova: [productBottle3, productBottle1, productCapsules1, howToUseImg],
+};
 
 const PRODUCT_DETAIL_DATA = {
   cellunad: {
     name: "CELLUNAD+",
-    subtitle: "Daily NAD+ support for energy and DNA maintenance.",
+    tagline: "Daily NAD+ Optimization",
+    subtitle: "Clinically studied NAD+ precursor with essential co-factors for energy, DNA maintenance, and healthy aging.*",
+    rating: 4.8,
+    reviewCount: 847,
     form: "Capsules",
     serving: "2 capsules daily with a meal",
     servingsPerContainer: 30,
@@ -41,25 +69,8 @@ const PRODUCT_DETAIL_DATA = {
     priceSubscribe: 67.99,
     accent: '#1e3a8a',
     accentText: '#60a5fa',
-    accentTailwind: 'teal',
-    heroOverline: 'Daily NAD+ Optimization',
-    heroSplit: ['CELLU', 'NAD+.'],
-    supplyLabel: '30-Day Supply',
-    subscribeLabel: 'Subscribe & Save 15%',
-    subscribeDesc: 'Ships monthly. Cancel anytime.',
-    onetimeLabel: 'One-Time Purchase',
-    onetimeDesc: 'No commitment.',
-    heroClaims: [
-      "Supports NAD+ levels*",
-      "Supports cellular energy*",
-      "Supports DNA maintenance*",
-      "Supports methylation balance*"
-    ],
-    heroSpecs: [
-      { label: "Nicotinamide Riboside", dose: "500 mg" },
-      { label: "Apigenin", dose: "100 mg" },
-      { label: "R-Lipoic Acid", dose: "200 mg" }
-    ],
+    supplyLabel: '30-day supply delivered monthly.',
+    subscribeNote: 'Pause or cancel anytime.',
     supplementFacts: {
       servingSize: "2 Capsules",
       servingsPerContainer: "30",
@@ -76,15 +87,48 @@ const PRODUCT_DETAIL_DATA = {
       otherIngredients: "Veg. cellulose (capsule), rice flour, magnesium stearate, silica.",
       allergenNote: null as string | null
     },
-    keyActives: [
-      { name: "Nicotinamide Riboside (NR)", dose: "500 mg", role: "NAD+ Precursor", explanation: "A well-studied precursor that supports NAD+ production in every cell." },
-      { name: "Apigenin", dose: "100 mg", role: "NAD+ Preservation", explanation: "Helps maintain NAD+ availability by supporting healthy enzyme balance." },
-      { name: "TMG + Methylated B Complex", dose: "TMG 250 mg + B-Complex", role: "Methylation Support", explanation: "Supports methylation balance alongside consistent NAD+ supplementation." },
-      { name: "R-Lipoic Acid", dose: "200 mg", role: "Mitochondrial Cofactor", explanation: "Supports metabolic enzyme function and antioxidant balance." },
-      { name: "BioPerine", dose: "5 mg", role: "Absorption", explanation: "Black pepper extract included to support bioavailability." }
+    benefitHighlights: [
+      { icon: 'Zap', title: "NAD+ Replenishment", desc: "500 mg NR supports daily NAD+ production in every cell." },
+      { icon: 'Dna', title: "DNA Maintenance", desc: "NAD+ is required by enzymes that maintain and repair DNA." },
+      { icon: 'Brain', title: "Mental Clarity", desc: "Supports cellular energy production in the brain." },
+      { icon: 'Shield', title: "Methylation Balance", desc: "TMG + B vitamins keep methylation pathways in balance." },
     ],
+    benefitsTimeline: [
+      { time: "1 Week", items: ["Initial energy support begins*", "NAD+ precursors begin building in your system*"] },
+      { time: "2 Weeks", items: ["Noticeable improvement in daily energy*", "Supports mental clarity and focus*"] },
+      { time: "4 Weeks", items: ["Sustained cellular energy support*", "Supports healthy methylation balance*"] },
+      { time: "3 Months", items: ["Long-term NAD+ level support*", "Foundation for healthy aging*", "Supports DNA maintenance processes*"] },
+    ],
+    howToUse: {
+      instruction: "Take 2 capsules daily with a meal, morning or afternoon.",
+      tips: ["Consistency matters more than timing", "Take with food for best absorption", "Pairs well with CELLUBIOME"],
+    },
+    ingredientGroups: [
+      {
+        category: "NAD+ Support Complex",
+        totalDose: "500 mg NR + 100 mg Apigenin",
+        desc: "Core NAD+ precursor and preservation compounds for daily cellular energy.",
+        ingredients: ["Nicotinamide Riboside (NR) — 500 mg", "Apigenin — 100 mg"],
+      },
+      {
+        category: "Methylation Support",
+        totalDose: "TMG 250 mg + B-Complex",
+        desc: "Essential cofactors that keep methylation pathways balanced alongside NAD+ supplementation.",
+        ingredients: ["Betaine (TMG) — 250 mg", "Vitamin B6 (P-5-P) — 10 mg", "Folate (5-MTHF) — 400 mcg", "Vitamin B12 (Methylcobalamin) — 1,000 mcg"],
+      },
+      {
+        category: "Absorption & Bioavailability",
+        totalDose: "R-Lipoic Acid 200 mg + BioPerine 5 mg",
+        desc: "Supports metabolic enzyme function and enhances bioavailability of all active compounds.",
+        ingredients: ["R-Lipoic Acid — 200 mg", "BioPerine (Black Pepper Extract) — 5 mg"],
+      },
+    ],
+    qualityBadges: ["cGMP Manufactured", "Third-Party Tested", "Vegan", "No Artificial Fillers", "Full Label Disclosure", "Glass Packaging"],
+    comparison: {
+      us: ["500 mg clinically studied NR", "Complete methylation co-factors", "Third-party tested for purity", "Full label disclosure", "Bioavailability-enhanced"],
+      them: ["Low-dose or unstudied forms", "Missing essential co-factors", "Rarely third-party tested", "Proprietary blends", "No absorption support"],
+    },
     scienceSection: {
-      label: 'The Science',
       headline: 'Why NAD+ Matters',
       paragraphs: [
         'NAD+ is a coenzyme found in every living cell. It plays a central role in converting nutrients into energy and is required by enzymes that maintain DNA and regulate cellular signaling.',
@@ -99,18 +143,12 @@ const PRODUCT_DETAIL_DATA = {
       ],
       diagramFooter: null as { label: string; text: string } | null
     },
-    mechanisms: [
-      { step: "01", label: "Replenish NAD+", text: "NR provides a direct precursor to support NAD+ availability every day." },
-      { step: "02", label: "Preserve NAD+", text: "Apigenin helps maintain healthy NAD+ levels by supporting enzyme balance." },
-      { step: "03", label: "Complete the System", text: "TMG and methylated B vitamins provide cofactor support for the pathways that use NAD+." }
-    ],
-    mechanismLabel: 'How It Works',
-    mechanismHeadline: 'Three-Step Approach',
+    deliveryRationale: null as { headline: string; text: string } | null,
     suitability: [
-      "Daily NAD+ support",
-      "Energy and focus",
-      "Longevity-focused routines",
-      "Methylation balance"
+      "Adults seeking daily NAD+ support",
+      "Those focused on energy and mental clarity",
+      "Longevity-focused wellness routines",
+      "Anyone looking to support healthy aging"
     ],
     safetyNote: 'Consult your healthcare provider before use if you are pregnant, nursing, on medication, or managing a medical condition.',
     allergenDisclosure: null as string | null,
@@ -119,22 +157,24 @@ const PRODUCT_DETAIL_DATA = {
       { name: "CELLUNOVA", slug: "cellunova", role: "Monthly Reset", add: "Add a periodic 7-day reset to complement daily NAD+ support.", when: "7-day monthly cycle" }
     ],
     faq: [
-      { q: "How long does it take to notice effects?", a: "Most people evaluate changes over 2\u20133 months of consistent daily use." },
+      { q: "How long does it take to notice effects?", a: "Most people evaluate changes over 2–3 months of consistent daily use." },
       { q: "When should I take it?", a: "Take 2 capsules daily with a meal, morning or afternoon. Consistency matters more than timing." },
       { q: "Does it break a fast?", a: "It has no meaningful caloric load, but if you fast strictly, take it with your first meal." },
       { q: "Can I take it with CELLUNOVA?", a: "Yes. CELLUNAD+ is designed for daily use. CELLUNOVA is a separate 7-day monthly cycle." },
       { q: "Why include methylation support?", a: "NAD+ and methylation pathways are closely linked. TMG and methylated B vitamins help keep both in balance." },
       { q: "Who should avoid it?", a: "Check with your doctor if pregnant, nursing, on medication, or managing a medical condition." }
     ],
-    trust: ["cGMP Manufactured", "Third-Party Tested", "Full Label Disclosure", "Glass Packaging"],
     ctaHeadline: ['Start your', 'daily foundation.'],
     ctaBody: 'Add CELLUNAD+ to your routine for daily NAD+ and energy support.',
-    ctaButton: 'Add to Cart',
+    ctaButton: 'Start Now',
   },
 
   cellubiome: {
     name: "CELLUBIOME",
-    subtitle: "Daily gut barrier and mitochondrial renewal support.",
+    tagline: "Gut–Mitochondria Axis",
+    subtitle: "Clinically studied Urolithin A and Tributyrin for mitochondrial renewal and gut barrier integrity.*",
+    rating: 4.9,
+    reviewCount: 623,
     form: "Enteric Capsules",
     serving: "2 capsules daily",
     servingsPerContainer: 30,
@@ -142,48 +182,60 @@ const PRODUCT_DETAIL_DATA = {
     priceSubscribe: 93.50,
     accent: '#19B3A6',
     accentText: '#5eead4',
-    accentTailwind: 'teal',
-    heroOverline: 'Gut\u2013Mitochondria Axis',
-    heroSplit: ['CELLU', 'BIOME.'],
-    supplyLabel: '30-Day Supply',
-    subscribeLabel: 'Subscribe & Save 15%',
-    subscribeDesc: 'Ships monthly. Cancel anytime.',
-    onetimeLabel: 'One-Time Purchase',
-    onetimeDesc: 'No commitment.',
-    heroClaims: [
-      "Supports mitochondrial renewal*",
-      "Supports gut barrier integrity*",
-      "Supports healthy aging*",
-      "Enteric-coated delivery*"
-    ],
-    heroSpecs: [
-      { label: "Urolithin A", dose: "500 mg" },
-      { label: "Tributyrin", dose: "500 mg" },
-      { label: "Delivery", dose: "Enteric" }
-    ],
+    supplyLabel: '30-day supply delivered monthly.',
+    subscribeNote: 'Pause or cancel anytime.',
     supplementFacts: {
       servingSize: "2 Capsules",
       servingsPerContainer: "30",
       items: [
-        { name: "Urolithin A (\u226599% Purity)", amount: "500 mg", dv: "" },
+        { name: "Urolithin A (≥99% Purity)", amount: "500 mg", dv: "" },
         { name: "Tributyrin (Butyrate Precursor)", amount: "500 mg", dv: "" }
       ],
       otherIngredients: "Veg. cellulose (capsule), rice flour, magnesium stearate, silica.",
       allergenNote: null as string | null
     },
-    keyActives: [
-      { name: "Urolithin A", dose: "500 mg", role: "Mitochondrial Renewal", explanation: "Clinically studied at 500 mg to support mitochondrial recycling (mitophagy)." },
-      { name: "Tributyrin", dose: "500 mg", role: "Gut Barrier Support", explanation: "A stable form of butyrate that supports intestinal lining integrity and gut health." },
-      { name: "Enteric Coating", dose: "Targeted Release", role: "Absorption", explanation: "Protects active compounds from stomach acid for release in the intestines where they're needed." }
+    benefitHighlights: [
+      { icon: 'RotateCcw', title: "Mitochondrial Renewal", desc: "500 mg Urolithin A supports recycling of damaged mitochondria." },
+      { icon: 'Layers', title: "Gut Barrier Integrity", desc: "Tributyrin delivers butyrate to strengthen intestinal lining." },
+      { icon: 'ShieldCheck', title: "Enteric Protected", desc: "Coating protects compounds from stomach acid for targeted delivery." },
+      { icon: 'Heart', title: "Healthy Aging", desc: "Addresses two pillars of aging — gut health and mitochondrial function." },
     ],
+    benefitsTimeline: [
+      { time: "2 Weeks", items: ["Gut comfort improvements begin*", "Butyrate begins supporting intestinal lining*"] },
+      { time: "4 Weeks", items: ["Enhanced digestive regularity*", "Mitochondrial recycling pathways activated*"] },
+      { time: "8 Weeks", items: ["Measurable gut barrier support*", "Sustained mitochondrial quality*"] },
+      { time: "3 Months", items: ["Long-term gut–mitochondria axis support*", "Foundation for cellular longevity*", "Noticeable energy and resilience*"] },
+    ],
+    howToUse: {
+      instruction: "Take 2 capsules daily. With or without food.",
+      tips: ["Consistency is more important than timing", "Enteric coating handles digestion", "Pairs well with CELLUNAD+"],
+    },
+    ingredientGroups: [
+      {
+        category: "Mitochondrial Renewal",
+        totalDose: "500 mg Urolithin A",
+        desc: "Clinically studied at 500 mg to support mitochondrial recycling (mitophagy) and cellular energy.",
+        ingredients: ["Urolithin A (≥99% Purity) — 500 mg"],
+      },
+      {
+        category: "Gut Barrier Support",
+        totalDose: "500 mg Tributyrin",
+        desc: "A stable form of butyrate that supports intestinal lining integrity and gut health.",
+        ingredients: ["Tributyrin (Butyrate Precursor) — 500 mg"],
+      },
+    ],
+    qualityBadges: ["cGMP Manufactured", "Third-Party Tested", "Enteric Protected", "Vegan", "Full Label Disclosure", "No Artificial Fillers"],
+    comparison: {
+      us: ["500 mg clinical-dose Urolithin A", "Enteric-coated for targeted delivery", "Pure Tributyrin for gut support", "Third-party tested for purity", "Full label disclosure"],
+      them: ["Sub-clinical doses common", "No enteric protection", "Generic butyrate salts", "Rarely third-party tested", "Proprietary blends"],
+    },
     scienceSection: {
-      label: 'The Science',
-      headline: 'The Gut\u2013Mitochondria Connection',
+      headline: 'The Gut–Mitochondria Connection',
       paragraphs: [
-        'Your gut health and mitochondrial function are deeply connected. When either weakens, the other suffers\u2014creating a cycle that accelerates aging.',
+        'Your gut health and mitochondrial function are deeply connected. When either weakens, the other suffers—creating a cycle that accelerates aging.',
         'CELLUBIOME addresses both sides: Urolithin A supports mitochondrial renewal, while Tributyrin supports gut barrier strength. Together, they help break the cycle.'
       ],
-      diagramLabel: 'Gut\u2013Mito Axis',
+      diagramLabel: 'Gut–Mito Axis',
       diagramCenter: { label: 'Mitochondria', icon: 'Zap' },
       diagramNodes: [
         { label: "Gut Barrier", icon: 'Layers' },
@@ -192,21 +244,14 @@ const PRODUCT_DETAIL_DATA = {
       ],
       diagramFooter: null as { label: string; text: string } | null
     },
-    mechanisms: [
-      { step: "01", label: "Renew Mitochondria", text: "Urolithin A supports the recycling of old, damaged mitochondria so new ones can take their place." },
-      { step: "02", label: "Strengthen the Gut Barrier", text: "Tributyrin provides butyrate to support the tight junctions that keep your intestinal lining intact." },
-      { step: "03", label: "Connect Both Systems", text: "By supporting both gut health and mitochondrial function daily, you address two pillars of healthy aging together." }
-    ],
-    mechanismLabel: 'How It Works',
-    mechanismHeadline: 'Three-Step Approach',
     deliveryRationale: {
       headline: 'Why Enteric Delivery Matters',
       text: 'Tributyrin and Urolithin A need to reach the intestines intact. Our enteric coating protects them from stomach acid so they arrive where your body can use them most.'
     },
     suitability: [
-      "Healthy aging support",
-      "Mitochondrial health",
-      "Gut barrier support",
+      "Adults focused on healthy aging",
+      "Those seeking mitochondrial support",
+      "Gut barrier and digestive health",
       "Pairs well with NAD+ support"
     ],
     safetyNote: 'Consult your healthcare provider before use if you are pregnant, nursing, on medication, or managing a medical condition.',
@@ -216,21 +261,23 @@ const PRODUCT_DETAIL_DATA = {
       { name: "CELLUNOVA", slug: "cellunova", role: "Monthly Reset", add: "Add a periodic cellular cleanup cycle alongside daily support.", when: "7-day monthly cycle" }
     ],
     faq: [
-      { q: "How long before I notice anything?", a: "Give it 8\u201312 weeks of consistent daily use for a meaningful evaluation." },
+      { q: "How long before I notice anything?", a: "Give it 8–12 weeks of consistent daily use for a meaningful evaluation." },
       { q: "Can I take it with food?", a: "Yes. Take it with or without a meal. Consistency is more important than timing." },
-      { q: "Is this a probiotic?", a: "No. CELLUBIOME provides Urolithin A and Tributyrin\u2014targeted compounds, not live cultures." },
+      { q: "Is this a probiotic?", a: "No. CELLUBIOME provides Urolithin A and Tributyrin—targeted compounds, not live cultures." },
       { q: "Why 500 mg Urolithin A?", a: "500 mg is the dose used in published clinical research on mitochondrial health." },
       { q: "Why Tributyrin instead of butyrate salts?", a: "Tributyrin is more stable and survives digestion better, delivering butyrate directly to the gut lining." }
     ],
-    trust: ["cGMP Manufactured", "Third-Party Tested", "Full Label Disclosure", "Enteric Protected"],
     ctaHeadline: ['Strengthen the', 'foundation.'],
     ctaBody: 'Add CELLUBIOME for daily gut barrier and mitochondrial support.',
-    ctaButton: 'Add to Cart',
+    ctaButton: 'Start Now',
   },
 
   cellunova: {
     name: "CELLUNOVA",
-    subtitle: "A 7-day cycle for cellular cleanup and renewal.",
+    tagline: "7-Day Autophagy Cycle",
+    subtitle: "A focused 7-day cycle with senolytics and autophagy activators for deep cellular cleanup and renewal.*",
+    rating: 4.7,
+    reviewCount: 412,
     form: "Capsules",
     serving: "5 capsules daily for 7 consecutive days",
     servingsPerContainer: 7,
@@ -238,25 +285,8 @@ const PRODUCT_DETAIL_DATA = {
     priceSubscribe: 123.25,
     accent: '#6C5CE7',
     accentText: '#a78bfa',
-    accentTailwind: 'violet',
-    heroOverline: '7-Day Autophagy Cycle',
-    heroSplit: ['CELLU', 'NOVA.'],
-    supplyLabel: '7-Day Cycle',
-    subscribeLabel: 'Subscribe & Save 15%',
-    subscribeDesc: 'Ships monthly. Cancel anytime.',
-    onetimeLabel: 'One-Time Purchase',
-    onetimeDesc: 'No commitment.',
-    heroClaims: [
-      "Supports autophagy pathways*",
-      "Supports cellular cleanup*",
-      "Supports senescent cell management*",
-      "Supports healthy aging*"
-    ],
-    heroSpecs: [
-      { label: "Cycle", dose: "7 Days / Month" },
-      { label: "Serving", dose: "5 Capsules" },
-      { label: "Focus", dose: "Autophagy" }
-    ],
+    supplyLabel: '7-day cycle, once per month.',
+    subscribeNote: 'Ships monthly. Pause or cancel anytime.',
     supplementFacts: {
       servingSize: "5 Capsules",
       servingsPerContainer: "7",
@@ -275,17 +305,52 @@ const PRODUCT_DETAIL_DATA = {
       otherIngredients: "Veg. cellulose (capsule), rice flour, magnesium stearate, silica.",
       allergenNote: "Contains Wheat (Wheat Germ derived Spermidine)."
     },
-    keyActives: [
-      { name: "Spermidine + Resveratrol", dose: "15 mg / 500 mg", role: "Autophagy Support", explanation: "Two compounds that work together to support your body's natural cellular cleanup processes." },
-      { name: "Fisetin + Quercetin", dose: "100 mg / 500 mg", role: "Senolytic Support", explanation: "Flavonoids that support the body's ability to manage aging, non-functional cells." },
-      { name: "NAC + Calcium AKG", dose: "600 mg / 300 mg", role: "Antioxidant Support", explanation: "Cofactors that support antioxidant defenses and metabolic efficiency during the cleanup cycle." }
+    benefitHighlights: [
+      { icon: 'RotateCcw', title: "Autophagy Activation", desc: "Supports your body's natural cellular cleanup processes." },
+      { icon: 'Wind', title: "Senolytic Support", desc: "Helps manage aging, non-functional 'zombie' cells." },
+      { icon: 'Flame', title: "Antioxidant Defense", desc: "NAC + Astaxanthin support antioxidant balance during cleanup." },
+      { icon: 'Timer', title: "Cyclical by Design", desc: "7 days on, 3 weeks off. The rest period is part of the design." },
     ],
+    benefitsTimeline: [
+      { time: "Day 1–3", items: ["Autophagy pathways begin activating*", "Senolytic compounds start accumulating*"] },
+      { time: "Day 4–7", items: ["Peak cellular cleanup activity*", "Antioxidant defenses fully engaged*"] },
+      { time: "Week 2–3", items: ["Recovery and integration period*", "Body processes the cleanup cycle*"] },
+      { time: "Monthly", items: ["Cumulative cellular renewal benefits*", "Reduced burden of aging cells over time*", "Foundation for long-term longevity*"] },
+    ],
+    howToUse: {
+      instruction: "Take 5 capsules daily for 7 consecutive days, once per month.",
+      tips: ["Take with a meal to minimize GI sensitivity", "The 3-week off period is part of the design", "Can be taken alongside CELLUNAD+"],
+    },
+    ingredientGroups: [
+      {
+        category: "Autophagy Activators",
+        totalDose: "Spermidine 15 mg + Resveratrol 500 mg",
+        desc: "Two compounds that work together to support your body's natural cellular cleanup processes.",
+        ingredients: ["Spermidine (from Wheat Germ) — 15 mg", "Trans-Resveratrol — 500 mg", "Green Tea Extract (50% EGCG) — 300 mg"],
+      },
+      {
+        category: "Senolytic Blend",
+        totalDose: "Fisetin 100 mg + Quercetin 500 mg",
+        desc: "Flavonoids that support the body's ability to manage aging, non-functional cells.",
+        ingredients: ["Fisetin — 100 mg", "Quercetin — 500 mg"],
+      },
+      {
+        category: "Recovery & Antioxidant Support",
+        totalDose: "NAC 600 mg + Ca-AKG 300 mg",
+        desc: "Cofactors that support antioxidant defenses and metabolic efficiency during the cleanup cycle.",
+        ingredients: ["NAC — 600 mg", "Calcium Alpha-Ketoglutarate — 300 mg", "Astaxanthin — 4 mg", "PQQ — 10 mg", "BioPerine — 5 mg"],
+      },
+    ],
+    qualityBadges: ["cGMP Manufactured", "Third-Party Tested", "Contains Wheat", "Full Label Disclosure", "No Artificial Fillers", "Cyclical Protocol"],
+    comparison: {
+      us: ["10 synergistic active ingredients", "Clinically studied doses", "Designed as a 7-day cycle", "Third-party tested for purity", "Full label disclosure"],
+      them: ["1–2 ingredients at low doses", "Sub-clinical amounts common", "Daily use (not cyclical)", "Rarely third-party tested", "Proprietary blends"],
+    },
     scienceSection: {
-      label: 'The Science',
       headline: 'Autophagy & Cellular Aging',
       paragraphs: [
         'As we age, damaged proteins and non-functional "zombie" cells accumulate. These cells stay active but stop doing their job, contributing to inflammation and decline.',
-        'CELLUNOVA is designed as a short, focused cycle to support your body\'s natural cleanup processes\u2014autophagy and senescent cell management\u2014then step back and let your body recover.'
+        'CELLUNOVA is designed as a short, focused cycle to support your body\'s natural cleanup processes—autophagy and senescent cell management—then step back and let your body recover.'
       ],
       diagramLabel: '7-Day Cycle',
       diagramCenter: null as { label: string; icon: string } | null,
@@ -296,18 +361,12 @@ const PRODUCT_DETAIL_DATA = {
       ],
       diagramFooter: { label: '7-Day Focused Cycle', text: 'Seven days of targeted support, then time off. The rest period is part of the design.' }
     },
-    mechanisms: [
-      { step: "01", label: "Activate Cleanup", text: "Supports your body's autophagy pathways to clear damaged proteins and worn-out cellular components." },
-      { step: "02", label: "Support Cell Turnover", text: "Senolytic compounds help your body manage aging cells that no longer function properly." },
-      { step: "03", label: "Rest and Recover", text: "After 7 days, you stop. The off-cycle lets your body integrate the cleanup and return to baseline." }
-    ],
-    mechanismLabel: 'How It Works',
-    mechanismHeadline: 'The 7-Day Cycle',
+    deliveryRationale: null as { headline: string; text: string } | null,
     suitability: [
-      "Healthy aging support",
-      "Periodic cellular cleanup",
+      "Adults focused on healthy aging",
+      "Periodic cellular cleanup support",
       "Experienced supplement users",
-      "Longevity-focused routines"
+      "Longevity-focused wellness routines"
     ],
     safetyNote: 'Consult your healthcare provider before use if you are pregnant, nursing, or managing a medical condition.',
     allergenDisclosure: 'Contains Wheat (from Wheat Germ derived Spermidine).',
@@ -322,17 +381,16 @@ const PRODUCT_DETAIL_DATA = {
       { q: "Can I take it with CELLUNAD+?", a: "Yes. Many people continue their daily CELLUNAD+ alongside the 7-day CELLUNOVA cycle." },
       { q: "How often should I do a cycle?", a: "Once per month is the standard recommendation. Some people space cycles every 60 or 90 days." }
     ],
-    trust: ["Contains Wheat", "7-Day Cycle", "Third-Party Tested", "cGMP Verified"],
     ctaHeadline: ['Reset.', 'Renew.'],
     ctaBody: 'Add CELLUNOVA for a focused 7-day cellular cleanup cycle.',
-    ctaButton: 'Add to Cart',
+    ctaButton: 'Start Now',
   }
 };
 
-const ICON_MAP = { Zap, Dna, Activity, Layers, ShieldCheck, RotateCcw, Wind };
+const ICON_MAP: Record<string, any> = { Zap, Dna, Activity, Layers, ShieldCheck, RotateCcw, Wind, Heart, Brain, Flame, Shield, Timer };
 
 function getIcon(name: string) {
-  return ICON_MAP[name as keyof typeof ICON_MAP] || Activity;
+  return ICON_MAP[name] || Activity;
 }
 
 function Navbar() {
@@ -424,14 +482,13 @@ function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () =>
   return (
     <div className="fixed inset-0 z-[200] flex items-end sm:items-center justify-center p-0 sm:p-4">
       <div className="absolute inset-0 bg-[#0b1120]/95 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-lg bg-white text-[#0b1120] p-8 overflow-y-auto max-h-[90vh] shadow-2xl">
-        <button onClick={onClose} className="absolute top-6 right-6 p-2 hover:bg-black/5 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center" data-testid="button-close-facts">
+      <div className="relative w-full max-w-lg bg-white text-[#0b1120] p-8 overflow-y-auto max-h-[90vh] shadow-2xl rounded-t-2xl sm:rounded-2xl">
+        <button onClick={onClose} className="absolute top-6 right-6 p-2 hover:bg-black/5 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full" data-testid="button-close-facts">
           <X size={20} />
         </button>
         <div className="border-b-4 border-black pb-2 mb-4">
-          <h2 className="text-3xl font-head font-bold uppercase tracking-tight">Supplement Facts</h2>
-          {data.name === 'CELLUNOVA' && <p className="text-sm italic">Designed as a 7-day cyclical protocol.</p>}
-          <p className="text-sm font-sans">Serving Size: {data.supplementFacts.servingSize}</p>
+          <h2 className="text-2xl font-head font-normal uppercase tracking-tight">Supplement Facts</h2>
+          <p className="text-sm font-sans mt-1">Serving Size: {data.supplementFacts.servingSize}</p>
           <p className="text-sm font-sans">Servings Per Container: {data.supplementFacts.servingsPerContainer}</p>
         </div>
         <table className="w-full text-left text-sm border-collapse">
@@ -445,13 +502,13 @@ function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () =>
             {data.supplementFacts.items.map((item, i) => (
               <tr key={i} className="border-b border-black/10">
                 <td className="py-2">{item.name} <span className="font-bold ml-2">{item.amount}</span></td>
-                <td className="py-2 text-right font-bold">{item.dv || "\u2020"}</td>
+                <td className="py-2 text-right font-bold">{item.dv || "†"}</td>
               </tr>
             ))}
           </tbody>
         </table>
         <div className="mt-4 text-[10px] leading-tight space-y-2">
-          <p>\u2020 Daily Value (DV) not established.</p>
+          <p>† Daily Value (DV) not established.</p>
           <p>* Percent Daily Values are based on a 2,000 calorie diet.</p>
           {data.supplementFacts.allergenNote && (
             <p className="pt-2"><span className="font-bold uppercase">Allergens:</span> {data.supplementFacts.allergenNote}</p>
@@ -463,23 +520,71 @@ function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () =>
   );
 }
 
+function ImageCarousel({ images, accent }: { images: string[]; accent: string }) {
+  const [current, setCurrent] = useState(0);
+  const total = images.length;
+
+  return (
+    <div className="relative w-full">
+      <div className="aspect-[3/4] w-full overflow-hidden rounded-xl bg-white/[0.03]">
+        <img
+          src={images[current]}
+          alt={`Product image ${current + 1}`}
+          className="w-full h-full object-cover transition-opacity duration-500"
+          data-testid={`carousel-image-${current}`}
+        />
+      </div>
+      <div className="absolute inset-y-0 left-0 flex items-center">
+        <button
+          onClick={() => setCurrent((current - 1 + total) % total)}
+          className="ml-2 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
+          data-testid="carousel-prev"
+        >
+          <ChevronLeft size={18} />
+        </button>
+      </div>
+      <div className="absolute inset-y-0 right-0 flex items-center">
+        <button
+          onClick={() => setCurrent((current + 1) % total)}
+          className="mr-2 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
+          data-testid="carousel-next"
+        >
+          <ChevronRight size={18} />
+        </button>
+      </div>
+      <div className="flex gap-2 mt-3 justify-center">
+        {images.map((img, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-14 h-14 rounded-lg overflow-hidden border-2 transition-all ${i === current ? 'border-white/60 opacity-100' : 'border-transparent opacity-40 hover:opacity-70'}`}
+            data-testid={`carousel-thumb-${i}`}
+          >
+            <img src={img} alt="" className="w-full h-full object-cover" />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Accordion({ items }: { items: { q: string; a: string }[] }) {
   const [openIndex, setOpenIndex] = useState(0);
   return (
-    <div className="w-full space-y-1">
+    <div className="w-full divide-y divide-white/[0.06]">
       {items.map((item, i) => (
-        <div key={i} className="border border-white/10 bg-white/[0.03] overflow-hidden">
+        <div key={i}>
           <button
             onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
-            className="w-full p-5 md:p-6 flex justify-between items-center text-left hover:bg-white/[0.03] transition-colors gap-4"
+            className="w-full py-5 md:py-6 flex justify-between items-center text-left hover:opacity-80 transition-opacity gap-4"
             data-testid={`faq-toggle-${i}`}
           >
-            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.08em] text-white/80 leading-snug">{item.q}</span>
+            <span className="text-[14px] md:text-[15px] font-sans font-medium text-white/80 leading-snug">{item.q}</span>
             <ChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-300 text-white/40 ${openIndex === i ? 'rotate-180' : ''}`} />
           </button>
           <div className={`grid transition-all duration-300 ease-in-out ${openIndex === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
             <div className="overflow-hidden">
-              <div className="px-5 md:px-6 pb-5 md:pb-6 text-white/50 text-[14px] leading-relaxed font-sans font-medium">
+              <div className="pb-5 md:pb-6 text-white/50 text-[14px] leading-relaxed font-sans">
                 {item.a}
               </div>
             </div>
@@ -490,11 +595,22 @@ function Accordion({ items }: { items: { q: string; a: string }[] }) {
   );
 }
 
-function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad }) {
+function SectionLabel({ label }: { label: string }) {
+  return (
+    <div className="flex items-center justify-center gap-3 mb-2">
+      <div className="h-[1px] w-10 bg-ar-teal" />
+      <span className="font-mono text-[11px] text-ar-teal uppercase tracking-[0.18em]">{label}</span>
+      <div className="h-[1px] w-10 bg-ar-teal" />
+    </div>
+  );
+}
+
+function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.cellunad; slug: string }) {
   const [isSubscribe, setIsSubscribe] = useState(true);
   const [quantity, setQuantity] = useState(1);
   const [showSticky, setShowSticky] = useState(false);
   const [isFactsOpen, setIsFactsOpen] = useState(false);
+  const [activeTimeline, setActiveTimeline] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -529,18 +645,21 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
 
   const currentPrice = isSubscribe ? data.priceSubscribe : data.priceOneTime;
   const accentColor = data.accentText;
+  const images = PRODUCT_IMAGES[slug as keyof typeof PRODUCT_IMAGES] || PRODUCT_IMAGES.cellunad;
 
   return (
     <div ref={containerRef} className="min-h-screen bg-[#0b1120] text-white selection:bg-teal-500/30 selection:text-white font-sans antialiased">
       <ModalFacts isOpen={isFactsOpen} onClose={() => setIsFactsOpen(false)} data={data} />
 
-      <div className={`fixed bottom-0 left-0 w-full z-[110] bg-white text-[#0b1120] border-t border-black/10 py-3.5 px-5 transition-transform duration-500 transform ${showSticky ? 'translate-y-0' : 'translate-y-full'}`}>
+      <div className={`fixed bottom-0 left-0 w-full z-[110] bg-white text-[#0b1120] border-t border-black/10 py-3 px-5 transition-transform duration-500 transform ${showSticky ? 'translate-y-0' : 'translate-y-full'}`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div className="hidden sm:block">
+          <div className="hidden sm:flex items-center gap-3">
             <h4 className="text-sm font-head font-normal tracking-tight uppercase leading-none">{data.name}</h4>
+            <span className="text-xs text-black/40">|</span>
+            <span className="text-sm font-head font-normal tracking-tighter">${currentPrice.toFixed(2)}</span>
           </div>
-          <div className="flex items-center gap-4 w-full sm:w-auto">
-            <div className="flex-1 sm:flex-none text-right pr-4 border-r border-black/10">
+          <div className="flex items-center gap-3 w-full sm:w-auto">
+            <div className="flex-1 sm:hidden text-left">
               <span className="text-lg font-head font-normal tracking-tighter">${(currentPrice * quantity).toFixed(2)}</span>
             </div>
             <button className="flex-1 sm:flex-none py-3 px-8 bg-ar-teal text-ar-navy rounded-lg font-mono text-[11px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all min-h-[44px]" data-testid="sticky-cta">
@@ -552,106 +671,98 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
 
       <Navbar />
 
-      <section className="relative px-5 md:px-10 lg:px-[60px] pt-20 pb-16 lg:pt-28 lg:pb-24 overflow-hidden">
-        <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] blur-[120px] pointer-events-none rounded-full" style={{ background: `${data.accent}22` }} />
-        <div className="absolute bottom-[10%] right-[-10%] w-[40%] h-[40%] blur-[120px] pointer-events-none rounded-full" style={{ background: `${data.accent}15` }} />
+      {/* ───── HERO: Seed-style image carousel left + purchase card right ───── */}
+      <section className="relative pt-20 pb-10 lg:pt-24 lg:pb-16 px-5 md:px-10 lg:px-[60px] overflow-hidden">
+        <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] blur-[120px] pointer-events-none rounded-full" style={{ background: `${data.accent}18` }} />
+        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
 
-        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          <div className="lg:col-span-7 space-y-10">
-            <div className="space-y-5">
-              <div className="flex items-center gap-2">
-                <div className="h-px w-4 bg-white/10" />
-                <span className="font-mono text-[10px] uppercase tracking-[0.10em]" style={{ color: `${accentColor}CC` }}>{data.heroOverline}</span>
-                <div className="h-px w-4 bg-white/10" />
-              </div>
-              <h1 className="font-head font-normal tracking-[-0.04em] leading-[0.85] uppercase text-white" style={{ fontSize: 'clamp(3rem, 9vw, 5.5rem)' }}>
-                {data.heroSplit[0]}<br /><span className="text-white/50">{data.heroSplit[1]}</span>
-              </h1>
-              <p className="text-[15px] md:text-[17px] text-white/75 font-sans font-medium leading-snug max-w-md">
-                {data.subtitle}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {data.heroClaims.map((claim, i) => (
-                <div key={i} className="p-3.5 border border-white/10 bg-white/[0.03] flex flex-col justify-center gap-2">
-                  <div className="w-1 h-1 rounded-full" style={{ background: accentColor }} />
-                  <span className="text-[10px] font-bold uppercase tracking-tight text-white/50">{claim}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="space-y-3 pt-2">
-              {data.heroSpecs.map((item, i) => (
-                <div key={i} className="flex items-center justify-between max-w-sm border-b border-white/[0.06] pb-2">
-                  <span className="font-mono text-[10px] uppercase font-bold text-white/30 tracking-[0.12em]">{item.label}</span>
-                  <span className="font-mono text-[11px] font-bold" style={{ color: accentColor }}>{item.dose}</span>
-                </div>
-              ))}
-            </div>
+          <div className="order-2 lg:order-1">
+            <ImageCarousel images={images} accent={data.accent} />
           </div>
 
-          <div className="lg:col-span-5 w-full">
-            <div className="bg-[#F4F1EA] text-[#0b1120] p-7 md:p-9 shadow-[30px_30px_100px_rgba(0,0,0,0.4)] rounded-lg space-y-7">
-              <div className="flex justify-between items-baseline border-b border-black/5 pb-5">
-                <div className="space-y-1">
-                  <h3 className="text-4xl md:text-5xl font-head font-normal tracking-tighter">
-                    ${(currentPrice * quantity).toFixed(2)}
-                  </h3>
+          <div className="order-1 lg:order-2 lg:sticky lg:top-20 space-y-6">
+            <div className="space-y-3">
+              <p className="font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: accentColor }}>{data.tagline}</p>
+              <h1 className="font-head font-normal tracking-[-0.04em] leading-[0.9] uppercase text-white" style={{ fontSize: 'clamp(2.4rem, 6vw, 3.5rem)' }}>
+                {data.name}
+              </h1>
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={14} className={i < Math.floor(data.rating) ? 'text-amber-400 fill-amber-400' : 'text-white/20'} />
+                  ))}
                 </div>
-                <div className="text-right">
-                  <p className="font-mono text-[10px] uppercase font-bold opacity-40">{data.form}</p>
-                  <p className="text-sm font-bold uppercase">{data.supplyLabel}</p>
+                <span className="text-[13px] text-white/50 font-sans">{data.rating} · {data.reviewCount.toLocaleString()} Reviews</span>
+              </div>
+            </div>
+
+            <p className="text-[15px] text-white/60 font-sans leading-relaxed max-w-md">
+              {data.subtitle}
+            </p>
+
+            <div className="bg-[#F4F1EA] text-[#0b1120] p-6 md:p-8 rounded-xl shadow-[20px_20px_80px_rgba(0,0,0,0.3)] space-y-5">
+              <div className="flex justify-between items-baseline border-b border-black/5 pb-4">
+                <div>
+                  <span className="text-3xl md:text-4xl font-head font-normal tracking-tighter">${(currentPrice * quantity).toFixed(2)}</span>
+                  {isSubscribe && <span className="ml-2 text-xs text-black/40 line-through">${(data.priceOneTime * quantity).toFixed(2)}</span>}
                 </div>
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider opacity-40">{data.form}</span>
               </div>
 
-              <div className="space-y-2.5">
+              <div className="text-[13px] text-black/50 font-sans leading-snug">
+                {data.supplyLabel}<br />{data.subscribeNote}
+              </div>
+
+              <div className="space-y-2">
                 <button
                   onClick={() => setIsSubscribe(true)}
-                  className={`w-full p-5 border-2 text-left transition-all flex justify-between items-center ${isSubscribe ? 'border-[#0b1120] bg-[#0b1120] text-white' : 'border-black/10 hover:border-black/20'}`}
+                  className={`w-full p-4 border-2 rounded-lg text-left transition-all flex justify-between items-center ${isSubscribe ? 'border-[#0b1120] bg-[#0b1120] text-white' : 'border-black/10 hover:border-black/20'}`}
                   data-testid="option-subscribe"
                 >
-                  <div className="space-y-1">
-                    <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em]">{data.subscribeLabel}</p>
-                    <p className={`text-xs ${isSubscribe ? 'text-white/60' : 'text-black/40'}`}>{data.subscribeDesc}</p>
+                  <div>
+                    <p className="font-mono text-[10px] font-bold uppercase tracking-[0.10em]">Subscribe & Save 15%</p>
+                    <p className={`text-xs mt-0.5 ${isSubscribe ? 'text-white/50' : 'text-black/40'}`}>Ships monthly. Cancel anytime.</p>
                   </div>
-                  <span className="text-lg font-head font-bold">Save 15%</span>
+                  <span className="text-sm font-head font-bold">Save 15%</span>
                 </button>
                 <button
                   onClick={() => setIsSubscribe(false)}
-                  className={`w-full p-5 border-2 text-left transition-all ${!isSubscribe ? 'border-[#0b1120] bg-[#0b1120] text-white' : 'border-black/10 hover:border-black/20'}`}
+                  className={`w-full p-4 border-2 rounded-lg text-left transition-all ${!isSubscribe ? 'border-[#0b1120] bg-[#0b1120] text-white' : 'border-black/10 hover:border-black/20'}`}
                   data-testid="option-onetime"
                 >
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em]">{data.onetimeLabel}</p>
-                  <p className={`text-xs ${!isSubscribe ? 'text-white/60' : 'text-black/40'}`}>{data.onetimeDesc}</p>
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.10em]">One-Time Purchase</p>
+                  <p className={`text-xs mt-0.5 ${!isSubscribe ? 'text-white/50' : 'text-black/40'}`}>No commitment.</p>
                 </button>
               </div>
 
-              <div className="flex items-center justify-between py-2 border-y border-black/5">
-                <span className="font-mono text-[10px] uppercase font-bold tracking-[0.12em] opacity-40">Select Quantity</span>
-                <div className="flex items-center gap-5 bg-black/5 p-2 px-4 rounded-full">
+              <div className="flex items-center justify-between py-2">
+                <span className="font-mono text-[10px] uppercase font-bold tracking-[0.10em] opacity-40">Qty</span>
+                <div className="flex items-center gap-4 bg-black/5 px-4 py-1.5 rounded-full">
                   <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-1 hover:opacity-70 transition-colors min-w-[30px] min-h-[30px] flex items-center justify-center" data-testid="qty-minus"><Minus size={16} /></button>
-                  <span className="font-mono font-bold text-xl w-6 text-center">{quantity}</span>
+                  <span className="font-mono font-bold text-lg w-5 text-center">{quantity}</span>
                   <button onClick={() => setQuantity(quantity + 1)} className="p-1 hover:opacity-70 transition-colors min-w-[30px] min-h-[30px] flex items-center justify-center" data-testid="qty-plus"><Plus size={16} /></button>
                 </div>
               </div>
 
-              <button className="w-full py-5 bg-ar-teal text-ar-navy rounded-lg font-mono text-[11px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="add-to-cart">
-                Add to Cart <ArrowRight size={14} />
+              <button className="w-full py-4 bg-ar-teal text-ar-navy rounded-lg font-mono text-[12px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="add-to-cart">
+                Start Now <ArrowRight size={14} />
               </button>
 
-              <div className="space-y-3 pt-1">
+              <div className="flex items-center gap-4 text-[10px] justify-center">
                 <button
                   onClick={() => setIsFactsOpen(true)}
-                  className="flex items-center gap-2 font-mono text-[10px] uppercase font-bold tracking-[0.12em] opacity-60 hover:opacity-100 transition-all border-b border-black/10 pb-1"
+                  className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-50 hover:opacity-80 transition-all"
                   data-testid="view-supplement-facts"
                 >
-                  <FileText size={12} /> View Supplement Facts
+                  <FileText size={11} /> Supplement Facts
                 </button>
-                <div className="flex flex-wrap justify-between gap-3 opacity-40 font-mono text-[8px] font-bold uppercase tracking-[0.14em]">
-                  <div className="flex items-center gap-1.5"><Shield size={10} /> cGMP Compliant</div>
-                  <div className="flex items-center gap-1.5"><FlaskConical size={10} /> 3rd-Party Tested</div>
-                  <div className="flex items-center gap-1.5"><Check size={10} /> Priority Dispatch</div>
+                <span className="opacity-20">|</span>
+                <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-50">
+                  <Shield size={11} /> cGMP
+                </div>
+                <span className="opacity-20">|</span>
+                <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-50">
+                  <FlaskConical size={11} /> Tested
                 </div>
               </div>
             </div>
@@ -659,162 +770,288 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
         </div>
       </section>
 
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
-        <div className="max-w-7xl mx-auto space-y-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="space-y-8">
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="h-[1px] w-8" style={{ background: accentColor }} />
-                  <span className="font-mono text-[12px] uppercase tracking-[0.18em]" style={{ color: accentColor }}>{data.scienceSection.label}</span>
-                  <div className="h-[1px] w-8" style={{ background: accentColor }} />
-                </div>
-                <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>{data.scienceSection.headline}</h2>
-              </div>
-              <div className="space-y-6 text-white/55 text-[16px] md:text-[18px] leading-relaxed font-sans font-medium">
-                {data.scienceSection.paragraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
-            </div>
-
-            <div className="relative p-8 md:p-12 bg-[#0b1120] border border-white/10 flex flex-col justify-center items-center overflow-hidden">
-              <div className="absolute top-4 left-4 font-mono text-[9px] text-white/20 uppercase tracking-[0.14em]">{data.scienceSection.diagramLabel}</div>
-              {data.scienceSection.diagramCenter ? (
-                <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 relative w-full pt-6">
-                  <div className="w-28 h-28 md:w-32 md:h-32 rounded-full border flex flex-col items-center justify-center text-center p-4" style={{ borderColor: `${accentColor}40`, background: `${data.accent}10` }}>
-                    {data.scienceSection.diagramCenter.icon && (() => { const Ic = getIcon(data.scienceSection.diagramCenter.icon); return <Ic size={24} style={{ color: accentColor }} className="mb-2" />; })()}
-                    <p className="font-mono text-[10px] font-bold uppercase" style={{ color: accentColor }}>{data.scienceSection.diagramCenter.label}</p>
+      {/* ───── BENEFIT HIGHLIGHTS STRIP ───── */}
+      <section className="pdp-reveal py-12 md:py-16 border-y border-white/[0.05] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-[60px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {data.benefitHighlights.map((h, i) => {
+              const Icon = getIcon(h.icon);
+              return (
+                <div key={i} className="flex gap-4 items-start" data-testid={`highlight-${i}`}>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: `${data.accent}15`, border: `1px solid ${accentColor}25` }}>
+                    <Icon size={18} style={{ color: accentColor }} />
                   </div>
-                  <ArrowRight size={24} className="text-white/10 hidden md:block" />
-                  <div className="flex flex-col gap-3 w-full md:w-auto">
-                    {data.scienceSection.diagramNodes.map((n, i) => {
-                      const Ic = getIcon(n.icon);
-                      return (
-                        <div key={i} className="flex items-center gap-4 p-3.5 border border-white/10 bg-white/[0.03] w-full md:w-60">
-                          <Ic size={16} style={{ color: `${accentColor}80` }} />
-                          <span className="font-mono text-[10px] uppercase font-bold tracking-[0.10em]">{n.label}</span>
-                        </div>
-                      );
-                    })}
+                  <div>
+                    <p className="text-[13px] font-sans font-semibold text-white mb-1">{h.title}</p>
+                    <p className="text-[12px] text-white/45 font-sans leading-snug">{h.desc}</p>
                   </div>
                 </div>
-              ) : (
-                <div className="flex flex-col items-center gap-6 relative w-full pt-6">
-                  <div className="w-full grid grid-cols-3 gap-3">
-                    {data.scienceSection.diagramNodes.map((n, i) => {
-                      const Ic = getIcon(n.icon);
-                      return (
-                        <div key={i} className="flex flex-col items-center gap-3 p-4 md:p-6 border border-white/10 bg-white/[0.03] text-center">
-                          <Ic size={22} style={{ color: `${accentColor}80` }} />
-                          <span className="font-mono text-[9px] uppercase font-bold tracking-[0.10em]">{n.label}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  {data.scienceSection.diagramFooter && (
-                    <div className="p-5 border w-full text-center" style={{ borderColor: `${accentColor}30`, background: `${data.accent}08` }}>
-                      <p className="font-mono text-[11px] font-bold uppercase mb-1.5" style={{ color: accentColor }}>{data.scienceSection.diagramFooter.label}</p>
-                      <p className="text-[12px] text-white/40">{data.scienceSection.diagramFooter.text}</p>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
-        <div className="max-w-7xl mx-auto space-y-14">
-          <div className="text-center space-y-3">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-[1px] w-12 bg-ar-teal" />
-              <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">{data.mechanismLabel}</span>
-              <div className="h-[1px] w-12 bg-ar-teal" />
+      {/* ───── SCIENCE SECTION ───── */}
+      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="space-y-6">
+            <div>
+              <SectionLabel label="The Science" />
+              <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>{data.scienceSection.headline}</h2>
             </div>
-            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>{data.mechanismHeadline}</h2>
+            <div className="space-y-5 text-white/55 text-[15px] md:text-[17px] leading-relaxed font-sans">
+              {data.scienceSection.paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {data.mechanisms.map((m, i) => (
-              <div key={i} className="p-6 md:p-8 border border-white/[0.06] bg-white/[0.02] space-y-4 group hover:border-white/[0.10] transition-all rounded-lg">
-                <span className="font-mono text-[10px] font-bold uppercase text-white/40">Step {m.step}</span>
-                <div className="space-y-3">
-                  <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white">{m.label}</h4>
-                  <p className="text-sm text-white/50 leading-relaxed font-sans font-medium">{m.text}</p>
+
+          <div className="relative p-8 md:p-12 bg-white/[0.02] border border-white/[0.06] rounded-xl flex flex-col justify-center items-center overflow-hidden">
+            <div className="absolute top-4 left-4 font-mono text-[9px] text-white/20 uppercase tracking-[0.14em]">{data.scienceSection.diagramLabel}</div>
+            {data.scienceSection.diagramCenter ? (
+              <div className="flex flex-col md:flex-row items-center gap-8 md:gap-10 relative w-full pt-6">
+                <div className="w-24 h-24 md:w-28 md:h-28 rounded-full border flex flex-col items-center justify-center text-center p-4" style={{ borderColor: `${accentColor}40`, background: `${data.accent}10` }}>
+                  {data.scienceSection.diagramCenter.icon && (() => { const Ic = getIcon(data.scienceSection.diagramCenter.icon); return <Ic size={22} style={{ color: accentColor }} className="mb-1" />; })()}
+                  <p className="font-mono text-[9px] font-bold uppercase" style={{ color: accentColor }}>{data.scienceSection.diagramCenter.label}</p>
+                </div>
+                <ArrowRight size={20} className="text-white/10 hidden md:block" />
+                <div className="flex flex-col gap-2.5 w-full md:w-auto">
+                  {data.scienceSection.diagramNodes.map((n, i) => {
+                    const Ic = getIcon(n.icon);
+                    return (
+                      <div key={i} className="flex items-center gap-3 p-3 border border-white/[0.06] bg-white/[0.02] rounded-lg w-full md:w-56">
+                        <Ic size={14} style={{ color: `${accentColor}80` }} />
+                        <span className="font-mono text-[10px] uppercase font-bold tracking-[0.08em]">{n.label}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
-        <div className="max-w-7xl mx-auto space-y-14">
-          <div className="space-y-3">
-            <div className="flex items-center gap-3">
-              <div className="h-[1px] w-8" style={{ background: accentColor }} />
-              <span className="font-mono text-[12px] uppercase tracking-[0.18em]" style={{ color: accentColor }}>Key Ingredients</span>
-              <div className="h-[1px] w-8" style={{ background: accentColor }} />
-            </div>
-            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>What's Inside</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {data.keyActives.map((active, i) => (
-              <div key={i} className="p-7 md:p-8 border border-white/[0.06] bg-white/[0.02] space-y-5 flex flex-col justify-between hover:bg-white/[0.04] transition-all rounded-lg">
-                <div className="space-y-3">
-                  <div className="flex justify-between items-start gap-3">
-                    <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white max-w-[70%]">{active.name}</h4>
-                    <span className="font-mono text-[10px] font-bold uppercase shrink-0" style={{ color: accentColor }}>{active.dose}</span>
+            ) : (
+              <div className="flex flex-col items-center gap-5 relative w-full pt-6">
+                <div className="w-full grid grid-cols-3 gap-3">
+                  {data.scienceSection.diagramNodes.map((n, i) => {
+                    const Ic = getIcon(n.icon);
+                    return (
+                      <div key={i} className="flex flex-col items-center gap-2 p-4 md:p-5 border border-white/[0.06] bg-white/[0.02] text-center rounded-lg">
+                        <Ic size={20} style={{ color: `${accentColor}80` }} />
+                        <span className="font-mono text-[9px] uppercase font-bold tracking-[0.08em]">{n.label}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+                {data.scienceSection.diagramFooter && (
+                  <div className="p-4 border w-full text-center rounded-lg" style={{ borderColor: `${accentColor}30`, background: `${data.accent}08` }}>
+                    <p className="font-mono text-[10px] font-bold uppercase mb-1" style={{ color: accentColor }}>{data.scienceSection.diagramFooter.label}</p>
+                    <p className="text-[12px] text-white/40">{data.scienceSection.diagramFooter.text}</p>
                   </div>
-                  <p className="font-mono text-[9px] text-white/30 uppercase tracking-[0.12em]">{active.role}</p>
-                  <p className="text-sm text-white/50 leading-relaxed font-sans font-medium">{active.explanation}</p>
-                </div>
-                <div className="pt-4 flex items-center gap-2 opacity-20">
-                  <div className="h-[1px] flex-1 bg-white" />
-                  <Microscope size={14} />
-                </div>
+                )}
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
 
-      {'deliveryRationale' in data && (data as any).deliveryRationale && (
-        <section className="pdp-reveal py-16 md:py-20 px-5 md:px-10 lg:px-[60px] text-center">
-          <div className="max-w-2xl mx-auto space-y-6">
+      {/* ───── DELIVERY RATIONALE (CELLUBIOME only) ───── */}
+      {data.deliveryRationale && (
+        <section className="pdp-reveal py-12 md:py-16 px-5 md:px-10 lg:px-[60px] text-center border-y border-white/[0.05]">
+          <div className="max-w-xl mx-auto space-y-4">
             <div className="inline-flex items-center justify-center p-3 rounded-full" style={{ background: `${data.accent}10`, border: `1px solid ${accentColor}20` }}>
-              <FlaskConical size={20} style={{ color: accentColor }} />
+              <FlaskConical size={18} style={{ color: accentColor }} />
             </div>
-            <div className="space-y-3">
-              <h3 className="font-head font-normal uppercase tracking-[-0.02em] text-white" style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)' }}>{(data as any).deliveryRationale.headline}</h3>
-              <p className="text-white/50 text-[14px] leading-relaxed font-sans font-medium max-w-lg mx-auto">{(data as any).deliveryRationale.text}</p>
-            </div>
+            <h3 className="font-head font-normal uppercase tracking-[-0.02em] text-white text-xl md:text-2xl">{data.deliveryRationale.headline}</h3>
+            <p className="text-white/50 text-[14px] leading-relaxed font-sans max-w-md mx-auto">{data.deliveryRationale.text}</p>
           </div>
         </section>
       )}
 
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="space-y-7">
-            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>Who It's For</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {data.suitability.map((item, i) => (
-                <div key={i} className="flex gap-3 items-start">
-                  <span className="font-mono text-[11px] font-bold" style={{ color: accentColor }}>0{i + 1}</span>
-                  <p className="text-sm font-bold uppercase tracking-[0.10em] text-white/60">{item}</p>
+      {/* ───── BENEFITS TIMELINE ───── */}
+      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.02]">
+        <div className="max-w-4xl mx-auto space-y-10">
+          <div className="text-center">
+            <SectionLabel label="Results Over Time" />
+            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>
+              Benefits that build over time
+            </h2>
+            <p className="text-[14px] text-white/40 font-sans mt-2">What to expect with consistent use.*</p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3">
+            {data.benefitsTimeline.map((t, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveTimeline(i)}
+                className={`px-4 py-2 rounded-full font-mono text-[11px] font-bold uppercase tracking-[0.08em] transition-all min-h-[36px] ${
+                  activeTimeline === i
+                    ? 'bg-ar-teal text-ar-navy'
+                    : 'bg-white/[0.04] text-white/50 hover:bg-white/[0.08]'
+                }`}
+                data-testid={`timeline-tab-${i}`}
+              >
+                {t.time}
+              </button>
+            ))}
+          </div>
+
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-6 md:p-10 min-h-[180px]">
+            <h3 className="font-head font-normal uppercase tracking-tight text-white text-lg mb-4">{data.benefitsTimeline[activeTimeline].time}</h3>
+            <ul className="space-y-3">
+              {data.benefitsTimeline[activeTimeline].items.map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <Check size={16} className="shrink-0 mt-0.5" style={{ color: accentColor }} />
+                  <span className="text-[14px] text-white/60 font-sans leading-snug">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ───── HOW TO USE ───── */}
+      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="rounded-xl overflow-hidden aspect-[4/3]">
+            <img src={howToUseImg} alt="How to use" className="w-full h-full object-cover" />
+          </div>
+          <div className="space-y-6">
+            <div>
+              <SectionLabel label="How to Use" />
+              <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.2rem)' }}>Simple daily routine</h2>
+            </div>
+            <p className="text-lg text-white/70 font-sans font-medium leading-relaxed">{data.howToUse.instruction}</p>
+            <div className="space-y-3">
+              {data.howToUse.tips.map((tip, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full" style={{ background: accentColor }} />
+                  <span className="text-[14px] text-white/50 font-sans">{tip}</span>
                 </div>
               ))}
             </div>
           </div>
-          <div className="p-8 md:p-10 border-2 border-dashed border-white/[0.08] bg-white/[0.03] space-y-5">
-            <div className="flex items-center gap-3 text-white/40">
-              <Info size={18} />
-              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em]">Important</p>
+        </div>
+      </section>
+
+      {/* ───── INGREDIENT DEEP DIVE ───── */}
+      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.02] border-y border-white/[0.05]">
+        <div className="max-w-5xl mx-auto space-y-12">
+          <div className="text-center">
+            <SectionLabel label="Ingredients" />
+            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>
+              What's inside
+            </h2>
+          </div>
+
+          <div className="space-y-6">
+            {data.ingredientGroups.map((group, i) => (
+              <div key={i} className="border border-white/[0.06] bg-white/[0.02] rounded-xl p-6 md:p-8 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                  <h3 className="text-[15px] font-head font-normal uppercase tracking-tight text-white">{group.category}</h3>
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-[0.10em] px-3 py-1 rounded-full" style={{ color: accentColor, background: `${data.accent}15` }}>
+                    {group.totalDose}
+                  </span>
+                </div>
+                <p className="text-[13px] text-white/45 font-sans leading-relaxed">{group.desc}</p>
+                <div className="border-t border-white/[0.05] pt-3">
+                  <p className="font-mono text-[9px] text-white/25 uppercase tracking-[0.12em] mb-2">Ingredients</p>
+                  <div className="flex flex-wrap gap-x-6 gap-y-1.5">
+                    {group.ingredients.map((ing, j) => (
+                      <span key={j} className="text-[13px] text-white/60 font-sans">{ing}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <button
+              onClick={() => setIsFactsOpen(true)}
+              className="inline-flex items-center gap-2 font-mono text-[11px] uppercase font-bold tracking-[0.12em] text-white/40 hover:text-white/70 transition-all"
+              data-testid="view-full-label"
+            >
+              <FileText size={14} /> View Full Supplement Facts
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ───── QUALITY BADGES ───── */}
+      <section className="pdp-reveal py-12 md:py-16 px-5 md:px-10 lg:px-[60px]">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+            {data.qualityBadges.map((badge, i) => (
+              <div key={i} className="flex items-center gap-2 px-4 py-2.5 bg-white/[0.03] border border-white/[0.06] rounded-full" data-testid={`badge-${i}`}>
+                <BadgeCheck size={14} style={{ color: accentColor }} />
+                <span className="font-mono text-[10px] uppercase font-bold tracking-[0.08em] text-white/50">{badge}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───── COMPARISON TABLE ───── */}
+      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.02] border-y border-white/[0.05]">
+        <div className="max-w-4xl mx-auto space-y-10">
+          <div className="text-center">
+            <SectionLabel label="Compare" />
+            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>
+              How {data.name} compares
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 md:gap-6">
+            <div className="space-y-4">
+              <div className="text-center pb-3 border-b border-white/[0.06]">
+                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.10em]" style={{ color: accentColor }}>{data.name}</span>
+              </div>
+              {data.comparison.us.map((item, i) => (
+                <div key={i} className="flex items-start gap-2.5">
+                  <Check size={14} className="shrink-0 mt-0.5" style={{ color: accentColor }} />
+                  <span className="text-[13px] text-white/60 font-sans leading-snug">{item}</span>
+                </div>
+              ))}
             </div>
-            <p className="text-white/40 text-[14px] md:text-[15px] italic leading-relaxed font-sans font-medium">{data.safetyNote}</p>
+            <div className="space-y-4">
+              <div className="text-center pb-3 border-b border-white/[0.06]">
+                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.10em] text-white/30">Other Brands</span>
+              </div>
+              {data.comparison.them.map((item, i) => (
+                <div key={i} className="flex items-start gap-2.5">
+                  <X size={14} className="shrink-0 mt-0.5 text-white/20" />
+                  <span className="text-[13px] text-white/35 font-sans leading-snug">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ───── WHO IT'S FOR ───── */}
+      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="space-y-6">
+            <div>
+              <SectionLabel label="Suitability" />
+              <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>Who it's for</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {data.suitability.map((item, i) => (
+                <div key={i} className="flex gap-3 items-center p-3 bg-white/[0.02] border border-white/[0.05] rounded-lg">
+                  <Check size={14} style={{ color: accentColor }} />
+                  <span className="text-[13px] font-sans text-white/60">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="p-6 md:p-8 border border-white/[0.06] bg-white/[0.02] rounded-xl space-y-4">
+            <div className="flex items-center gap-3 text-white/40">
+              <Info size={16} />
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.10em]">Important</p>
+            </div>
+            <p className="text-white/45 text-[14px] leading-relaxed font-sans">{data.safetyNote}</p>
             {data.allergenDisclosure && (
-              <div className="p-3.5 border text-[10px] font-mono uppercase tracking-[0.12em]" style={{ borderColor: `${accentColor}30`, background: `${data.accent}08`, color: accentColor }}>
+              <div className="p-3 border rounded-lg text-[11px] font-mono uppercase tracking-[0.10em]" style={{ borderColor: `${accentColor}30`, background: `${data.accent}08`, color: accentColor }}>
                 {data.allergenDisclosure}
               </div>
             )}
@@ -822,33 +1059,30 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
         </div>
       </section>
 
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
-        <div className="max-w-7xl mx-auto space-y-14">
-          <div className="text-center space-y-3">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-[1px] w-12 bg-ar-teal" />
-              <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">Works Together</span>
-              <div className="h-[1px] w-12 bg-ar-teal" />
-            </div>
-            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>Pairs Well With</h2>
+      {/* ───── STACKING / PAIRS WELL WITH ───── */}
+      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.02] border-y border-white/[0.05]">
+        <div className="max-w-5xl mx-auto space-y-10">
+          <div className="text-center">
+            <SectionLabel label="Works Together" />
+            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>Pairs well with</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {data.stack.map((item, i) => (
-              <div key={i} className="border border-white/10 bg-[#0b1120] p-8 md:p-10 space-y-6 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-32 h-32 blur-[60px] transition-all" style={{ background: `${data.accent}08` }} />
-                <div className="space-y-2 relative z-10">
+              <div key={i} className="border border-white/[0.06] bg-white/[0.03] p-6 md:p-8 rounded-xl space-y-4 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-24 h-24 blur-[50px] transition-all" style={{ background: `${data.accent}08` }} />
+                <div className="relative z-10 space-y-2">
                   <div className="flex justify-between items-center gap-3">
-                    <h4 className="text-xl md:text-2xl font-head font-normal uppercase tracking-tight">{item.name}</h4>
-                    <span className="font-mono text-[9px] border px-2 py-1 uppercase shrink-0" style={{ color: accentColor, borderColor: `${accentColor}30` }}>{item.role}</span>
+                    <h4 className="text-lg font-head font-normal uppercase tracking-tight">{item.name}</h4>
+                    <span className="font-mono text-[9px] border px-2 py-1 rounded-full uppercase shrink-0" style={{ color: accentColor, borderColor: `${accentColor}30` }}>{item.role}</span>
                   </div>
-                  <p className="text-sm text-white/50 leading-relaxed font-sans font-medium">{item.add}</p>
+                  <p className="text-[13px] text-white/50 font-sans leading-relaxed">{item.add}</p>
                 </div>
-                <div className="flex items-center gap-3 font-mono text-[9px] text-white/30 uppercase tracking-[0.14em] relative z-10">
-                  <Clock size={12} /> {item.when}
+                <div className="flex items-center gap-2 font-mono text-[9px] text-white/30 uppercase tracking-[0.12em] relative z-10">
+                  <Clock size={11} /> {item.when}
                 </div>
-                <div className="flex gap-3 pt-2 relative z-10">
-                  <a href={`/product/${item.slug}`} className="flex-1 py-3.5 border border-white/10 rounded-lg font-mono text-[10px] font-bold uppercase tracking-[0.10em] hover:bg-white/[0.04] transition-all text-center min-h-[44px] flex items-center justify-center" data-testid={`stack-view-${item.slug}`}>View</a>
-                  <button className="flex-1 py-3.5 bg-ar-teal text-ar-navy rounded-lg font-mono text-[10px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all min-h-[44px]" data-testid={`stack-add-${item.slug}`}>Add to Cart</button>
+                <div className="flex gap-3 pt-1 relative z-10">
+                  <a href={`/product/${item.slug}`} className="flex-1 py-3 border border-white/10 rounded-lg font-mono text-[10px] font-bold uppercase tracking-[0.08em] hover:bg-white/[0.04] transition-all text-center min-h-[40px] flex items-center justify-center" data-testid={`stack-view-${item.slug}`}>Learn More</a>
+                  <button className="flex-1 py-3 bg-ar-teal text-ar-navy rounded-lg font-mono text-[10px] font-bold uppercase tracking-[0.08em] hover:bg-ar-teal/90 transition-all min-h-[40px]" data-testid={`stack-add-${item.slug}`}>Add to Cart</button>
                 </div>
               </div>
             ))}
@@ -856,54 +1090,65 @@ function ProductDetailPage({ data }: { data: typeof PRODUCT_DETAIL_DATA.cellunad
         </div>
       </section>
 
-      <section className="pdp-reveal py-16 md:py-20 px-5 md:px-10 lg:px-[60px]">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-          {data.trust.map((t, i) => (
-            <div key={i} className="text-center space-y-3 opacity-40">
-              <div className="w-11 h-11 border border-white/10 flex items-center justify-center mx-auto rounded-full">
-                <Check size={16} style={{ color: accentColor }} />
-              </div>
-              <p className="font-mono text-[10px] uppercase font-bold tracking-[0.14em]">{t}</p>
+      {/* ───── TESTING & QUALITY ───── */}
+      <section className="pdp-reveal py-12 md:py-16 px-5 md:px-10 lg:px-[60px]">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="flex gap-4 items-start p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl">
+            <ShieldCheck size={20} style={{ color: accentColor }} className="shrink-0 mt-0.5" />
+            <div>
+              <p className="text-[13px] font-sans font-semibold text-white mb-1">Full label disclosure</p>
+              <p className="text-[12px] text-white/40 font-sans leading-snug">Every ingredient and dose is listed. No proprietary blends.</p>
             </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] max-w-4xl mx-auto space-y-12">
-        <div className="text-center space-y-3">
-          <div className="flex items-center justify-center gap-3">
-            <div className="h-[1px] w-12 bg-ar-teal" />
-            <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">FAQ</span>
-            <div className="h-[1px] w-12 bg-ar-teal" />
           </div>
-          <h3 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>Common Questions</h3>
+          <div className="flex gap-4 items-start p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl">
+            <FlaskConical size={20} style={{ color: accentColor }} className="shrink-0 mt-0.5" />
+            <div>
+              <p className="text-[13px] font-sans font-semibold text-white mb-1">Third-party tested</p>
+              <p className="text-[12px] text-white/40 font-sans leading-snug">Tested for purity, potency, and contaminants by independent labs.</p>
+            </div>
+          </div>
+          <div className="flex gap-4 items-start p-5 bg-white/[0.02] border border-white/[0.05] rounded-xl">
+            <Microscope size={20} style={{ color: accentColor }} className="shrink-0 mt-0.5" />
+            <div>
+              <p className="text-[13px] font-sans font-semibold text-white mb-1">Clinically studied doses</p>
+              <p className="text-[12px] text-white/40 font-sans leading-snug">Doses match or exceed amounts used in published clinical research.</p>
+            </div>
+          </div>
         </div>
-        <Accordion items={data.faq} />
       </section>
 
-      <section className="relative py-10 md:py-14 px-6 text-white overflow-hidden">
-        <div className="max-w-2xl mx-auto text-center relative z-10">
-          <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2rem, 7vw, 3.5rem)' }}>
+      {/* ───── FAQ ───── */}
+      <section className="pdp-reveal py-16 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.02] border-y border-white/[0.05]">
+        <div className="max-w-3xl mx-auto space-y-8">
+          <div className="text-center">
+            <SectionLabel label="FAQ" />
+            <h3 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight mt-2" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>Questions? We're here to help.</h3>
+          </div>
+          <Accordion items={data.faq} />
+        </div>
+      </section>
+
+      {/* ───── FINAL CTA ───── */}
+      <section className="relative py-16 md:py-24 px-6 text-white overflow-hidden">
+        <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse at center, ${data.accent}12 0%, transparent 70%)` }} />
+        <div className="max-w-2xl mx-auto text-center relative z-10 space-y-5">
+          <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2rem, 6vw, 3rem)' }}>
             {data.ctaHeadline[0]}
             <br />
-            <span className="text-white/45">{data.ctaHeadline[1]}</span>
+            <span className="text-white/40">{data.ctaHeadline[1]}</span>
           </h2>
-          <p className="mt-3 text-[13px] text-white/50 font-sans max-w-md mx-auto leading-relaxed">{data.ctaBody}</p>
-          <a href="/shop" className="mt-5 inline-flex items-center justify-center px-8 py-3 min-h-[44px] bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] hover:bg-ar-teal/90 transition-colors" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="final-cta">
-            {data.ctaButton}
-          </a>
-          <div className="mt-3">
-            <a href="/shop" className="text-[10px] font-mono uppercase tracking-[0.08em] text-white/50 hover:text-white/70 transition-colors inline-flex items-center gap-1">
-              Browse all products <ArrowRight size={9} />
-            </a>
-          </div>
+          <p className="text-[14px] text-white/45 font-sans max-w-md mx-auto leading-relaxed">{data.ctaBody}</p>
+          <button className="inline-flex items-center justify-center px-10 py-4 min-h-[48px] bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.12em] hover:bg-ar-teal/90 transition-colors gap-2" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="final-cta">
+            {data.ctaButton} <ArrowRight size={14} />
+          </button>
+          <p className="text-[11px] text-white/30 font-sans">30-day satisfaction guarantee. Free shipping on subscriptions.</p>
         </div>
       </section>
 
-      <div className="max-w-2xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" /></div>
+      <div className="max-w-2xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" /></div>
 
       <div className="py-8 px-6">
-        <p className="font-mono text-[10px] text-white/20 uppercase tracking-[0.10em] leading-relaxed text-center max-w-3xl mx-auto">
+        <p className="font-mono text-[10px] text-white/15 uppercase tracking-[0.08em] leading-relaxed text-center max-w-3xl mx-auto">
           * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
         </p>
       </div>
@@ -922,12 +1167,12 @@ export default function ProductDetail() {
     return (
       <div className="min-h-screen bg-[#0b1120] text-white flex items-center justify-center">
         <div className="text-center space-y-4">
-          <h1 className="text-3xl font-head font-bold uppercase">Product Not Found</h1>
+          <h1 className="text-3xl font-head font-normal uppercase tracking-tight">Product Not Found</h1>
           <a href="/shop" className="text-teal-400 font-mono text-sm uppercase tracking-wider hover:text-teal-300 transition-colors" data-testid="link-back-shop">Back to Shop</a>
         </div>
       </div>
     );
   }
 
-  return <ProductDetailPage key={slug} data={data} />;
+  return <ProductDetailPage key={slug} data={data} slug={slug} />;
 }
