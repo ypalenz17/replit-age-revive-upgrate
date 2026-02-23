@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Revive Hero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #05070a;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Custom Inset Shine for Button */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+        .btn-shine:hover::after {
+            left: 100%;
+        }
+
+        /* Teal Glow behind bottles */
+        .product-glow {
+            background: radial-gradient(circle at center, rgba(20, 184, 166, 0.15) 0%, transparent 70%);
+            filter: blur(40px);
+        }
+
+        /* Unified Soft Base Shadow */
+        .group-shadow {
+            width: 80%;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            filter: blur(15px);
+            margin: -20px auto 0;
+        }
+
+        /* Atmosphere separation */
+        .haze {
+            pointer-events: none;
+            background: linear-gradient(to top, rgba(5, 7, 10, 0.4), transparent);
+        }
+    </style>
+</head>
+<body class="text-white antialiased">
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex flex-col justify-center overflow-hidden">
+        
+        <!-- Background Layers -->
+        <div class="absolute inset-0 z-0">
+            <!-- Dark Radial Vignette -->
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 35% 35%, #0d121a 0%, #05070a 100%);"></div>
+            
+            <!-- Desktop Only Enhancements -->
+            <div class="hidden lg:block absolute inset-0">
+                <!-- Left Edge Gradient for Depth -->
+                <div class="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-black/40 to-transparent"></div>
+                <!-- Bottom-to-Top Dark Gradient -->
+                <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#05070a] to-transparent"></div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-32 lg:pt-44 pb-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content: Typography & Buttons -->
+                <div class="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
+                    
+                    <h1 class="font-bold tracking-tight leading-[1.1]" style="font-size: clamp(38px, 9.5vw, 56px);">
+                        Reclaim your <br>
+                        <span class="text-white" style="font-size: clamp(56px, 5.5vw, 72px);">cellular vitality.</span>
+                    </h1>
+
+                    <p class="max-w-md text-white/70 font-light leading-relaxed" style="font-size: 17px;">
+                        Clinically-backed longevity protocols designed to revive your internal biomes and optimize NAD+ levels at the source.
+                    </p>
+
+                    <!-- Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center gap-6 pt-4">
+                        <button class="btn-shine bg-teal-600 hover:bg-teal-500 text-white font-medium px-9 min-h-[46px] rounded-full transition-all shadow-[0_0_20px_rgba(20,184,166,0.3)]">
+                            Shop the System
+                        </button>
+                        <button class="text-white/35 lg:text-white/35 hover:text-white transition-colors text-sm uppercase tracking-widest font-semibold">
+                            View Evidence
+                        </button>
+                    </div>
+
+                    <!-- Proof Bar -->
+                    <div class="flex flex-col lg:flex-row items-center gap-4 lg:gap-6 pt-8 text-[10px] uppercase tracking-[0.2em] text-white/50">
+                        <span>Purity Guaranteed</span>
+                        <div class="hidden lg:block w-[1px] h-3 bg-white/15"></div>
+                        <span>Clinical Grade</span>
+                        <div class="hidden lg:block w-[1px] h-3 bg-white/15"></div>
+                        <span>Third Party Tested</span>
+                    </div>
+                </div>
+
+                <!-- Right Content: Product Composition -->
+                <div class="lg:col-span-6 relative flex justify-center items-center">
+                    
+                    <!-- Teal Rim Glow Behind -->
+                    <div class="absolute w-[120%] h-[120%] product-glow z-0"></div>
+
+                    <!-- Composition Wrapper -->
+                    <div class="relative w-full max-w-[500px] aspect-square flex items-center justify-center">
+                        
+                        <!-- CELLUBIOME (Behind) -->
+                        <div class="absolute z-10 transform translate-x-12 -translate-y-8 scale-[0.93] rotate-[2deg] blur-[0.8px] opacity-90 transition-all duration-1000">
+                            <div class="relative w-[280px] h-[320px] overflow-hidden">
+                                <!-- Using the left half of the uploaded image -->
+                                <img src="https://canvas.v0.build/api/m/uploaded:BIOME%20%26%20NAD%20PHOTO%20FINAL.jpg-0d541590-07b4-4d64-8662-00a0c9d5c406" 
+                                     alt="Cellubiome" 
+                                     class="absolute left-[-5%] top-0 h-full w-auto max-w-none object-cover"
+                                     style="clip-path: inset(0 50% 0 0);">
+                            </div>
+                        </div>
+
+                        <!-- CELLUNAD+ (Front) -->
+                        <div class="absolute z-20 transform translate-x-[-10%] scale-100 rotate-[-1deg] transition-all duration-700">
+                            <div class="relative w-[280px] h-[320px] overflow-hidden">
+                                <!-- Using the right half of the uploaded image -->
+                                <img src="https://canvas.v0.build/api/m/uploaded:BIOME%20%26%20NAD%20PHOTO%20FINAL.jpg-0d541590-07b4-4d64-8662-00a0c9d5c406" 
+                                     alt="Cellunad+" 
+                                     class="absolute right-[-5%] top-0 h-full w-auto max-w-none object-cover"
+                                     style="clip-path: inset(0 0 0 50%);">
+                            </div>
+                        </div>
+
+                        <!-- Shadow Base -->
+                        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-0">
+                            <div class="group-shadow"></div>
+                        </div>
+
+                        <!-- Atmospheric Haze (Lower part of bottles) -->
+                        <div class="absolute bottom-10 inset-x-0 h-24 haze z-30"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
