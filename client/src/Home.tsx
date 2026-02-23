@@ -602,7 +602,7 @@ export default function Home() {
       <section className="relative pt-8 pb-12 md:pt-12 md:pb-20 px-6">
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 30%, rgba(30,58,138,0.06) 0%, transparent 70%)' }} />
         <div className="max-w-7xl mx-auto relative">
-          <div className="text-center mb-12 md:mb-20 reveal-stagger">
+          <div className="text-center mb-12 md:mb-28 reveal-stagger">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="h-[1px] w-12 bg-ar-teal" />
               <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Select Your Protocol</span>
