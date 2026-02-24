@@ -839,8 +839,8 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
             <img src="/images/how-to-use.jpg" alt="How to use" loading="lazy" className="w-full h-full object-cover" />
           </div>
           <div className="space-y-8">
-            <div className="space-y-3">
-              <SectionLabel label="How to Use" color={accentColor} align="left" />
+            <div className="space-y-3 text-center">
+              <SectionLabel label="How to Use" color={accentColor} />
               <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>Simple routine</h2>
             </div>
             <p className="text-[17px] text-white/60 font-sans font-medium leading-relaxed">{data.howToUse.instruction}</p>
@@ -862,8 +862,8 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       {/* ───── INGREDIENT DEEP DIVE ───── */}
       <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
         <div className="max-w-7xl mx-auto space-y-14">
-          <div className="space-y-3">
-            <SectionLabel label="Key Ingredients" color={accentColor} align="left" />
+          <div className="space-y-3 text-center">
+            <SectionLabel label="Key Ingredients" color={accentColor} />
             <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>What's inside</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -960,8 +960,8 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-8">
-            <div className="space-y-3">
-              <SectionLabel label="Suitability" color={accentColor} align="left" />
+            <div className="space-y-3 text-center">
+              <SectionLabel label="Suitability" color={accentColor} />
               <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>Who it's for</h2>
             </div>
             <div className="space-y-4">
