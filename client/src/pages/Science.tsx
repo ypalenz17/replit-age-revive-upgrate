@@ -481,7 +481,7 @@ export default function SciencePage() {
                   testing.
                 </p>
 
-                <div className="ar-grid2">
+                <div className="ar-gridStandards">
                   {STANDARDS.map((s) => (
                     <div key={s.title} className="ar-card ar-standardCard">
                       <p className="ar-standardTitle">{s.title}</p>
