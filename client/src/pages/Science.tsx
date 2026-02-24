@@ -526,7 +526,7 @@ export default function SciencePage() {
 
                 <div className="ar-grid2">
                   <div className="ar-card ar-richBlock">
-                    <h3>Key entities for LLM and search</h3>
+                    <h3>Core compounds in this layer</h3>
                     <div className="ar-entities">
                       {["NAD+", "Nicotinamide Riboside (NR)", "Mitochondria", "Sirtuin pathways", "DNA repair processes", "Methylation", "5-MTHF", "Methylcobalamin", "Betaine (TMG)"].map(
                         (e) => (
