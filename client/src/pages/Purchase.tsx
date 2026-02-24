@@ -61,41 +61,41 @@ export default function Purchase() {
         <h1 className="font-head font-normal tracking-[-0.03em] uppercase text-white pt-6 pb-6" style={{ fontSize: 'clamp(1.5rem, 5vw, 1.8rem)' }} data-testid="cart-title">Your Cart</h1>
 
         <div className="border-b border-white/[0.06] pb-6">
-          <div className="flex justify-center mb-5">
-            <div className="w-48 aspect-square">
+          <div className="flex gap-4">
+            <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0">
               <img
-                src={images[0]}
+                src={productInfo?.image || images[0]}
                 alt={data.name}
                 className="w-full h-full object-contain"
               />
             </div>
-          </div>
-
-          <div className="flex justify-between items-start">
-            <div>
-              <h2 className="text-[15px] font-head font-normal uppercase tracking-[-0.02em] text-white" data-testid="purchase-product-name">{data.name}</h2>
-              <p className="text-[12px] text-white/40 mt-0.5 font-sans">Delivered monthly</p>
-            </div>
-            <span className="text-[15px] font-sans font-semibold text-white">${price.toFixed(2)}</span>
-          </div>
-
-          <div className="flex items-center gap-3 mt-3">
-            <div className="inline-flex items-center border border-white/[0.10] rounded-full">
-              <button
-                onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition-colors"
-                data-testid="qty-minus"
-              >
-                <Minus size={14} />
-              </button>
-              <span className="w-6 text-center text-[13px] font-mono font-bold text-white">{quantity}</span>
-              <button
-                onClick={() => setQuantity(quantity + 1)}
-                className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition-colors"
-                data-testid="qty-plus"
-              >
-                <Plus size={14} />
-              </button>
+            <div className="flex-1 min-w-0">
+              <div className="flex justify-between items-start">
+                <div>
+                  <h2 className="text-[15px] font-head font-normal uppercase tracking-[-0.02em] text-white" data-testid="purchase-product-name">{data.name}</h2>
+                  <p className="text-[12px] text-white/40 mt-0.5 font-sans">Delivered monthly</p>
+                </div>
+                <span className="text-[15px] font-sans font-semibold text-white">${price.toFixed(2)}</span>
+              </div>
+              <div className="flex items-center gap-3 mt-3">
+                <div className="inline-flex items-center border border-white/[0.10] rounded-full">
+                  <button
+                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                    className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition-colors"
+                    data-testid="qty-minus"
+                  >
+                    <Minus size={14} />
+                  </button>
+                  <span className="w-6 text-center text-[13px] font-mono font-bold text-white">{quantity}</span>
+                  <button
+                    onClick={() => setQuantity(quantity + 1)}
+                    className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition-colors"
+                    data-testid="qty-plus"
+                  >
+                    <Plus size={14} />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
