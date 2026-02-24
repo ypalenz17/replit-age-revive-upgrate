@@ -525,16 +525,20 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
 
                 <button
                   onClick={() => navigate(`/product/${slug}/purchase`)}
-                  className="w-full py-4 bg-ar-teal text-ar-navy rounded-xl font-mono text-[12px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]"
-                  style={{ boxShadow: '0 0 20px rgba(45,212,191,0.15)' }}
+                  className="w-full py-3.5 bg-ar-teal text-ar-navy rounded-xl font-mono text-[11px] font-bold uppercase tracking-[0.08em] hover:brightness-110 hover:shadow-[0_0_24px_rgba(45,212,191,0.25)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 min-h-[48px]"
+                  style={{ boxShadow: '0 0 16px rgba(45,212,191,0.12)' }}
                   data-testid="start-now"
                 >
-                  Start Now <ArrowRight size={14} />
+                  Start Now <ArrowRight size={13} />
                 </button>
 
-                <p className="text-center text-[12px] text-white/30 font-sans italic">
-                  30-day risk-free guarantee. Free US shipping.
-                </p>
+                <div className="flex items-center justify-center gap-2 text-[11px] text-white/30 font-sans">
+                  <span>30-day guarantee</span>
+                  <span className="text-white/15">·</span>
+                  <span>Free US shipping</span>
+                  <span className="text-white/15">·</span>
+                  <span>Cancel anytime</span>
+                </div>
 
                 <div className="flex items-center justify-between pt-2 border-t border-white/[0.06]">
                   <div className="flex items-center gap-4 text-[10px] text-white">
