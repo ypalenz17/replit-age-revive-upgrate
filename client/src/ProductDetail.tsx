@@ -492,16 +492,16 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
               </p>
 
               <div className="space-y-4 lg:space-y-5">
-                {slug === 'cellubiome' && (
-                  <span className="inline-block px-3 py-1 rounded-full text-[11px] font-sans font-semibold bg-ar-teal/15 text-ar-teal" data-testid="bestseller-badge">Bestseller</span>
-                )}
-
-                <div>
-                  <span className="text-2xl font-sans font-semibold text-white">${data.priceOneTime.toFixed(2)}</span>
-                </div>
-
-                <div className="text-[13px] text-white/45 font-sans leading-snug">
-                  {data.supplyLabel}<br />{data.subscribeNote}
+                <div className="space-y-1.5">
+                  {slug === 'cellubiome' && (
+                    <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-sans font-bold uppercase tracking-[0.06em] bg-ar-teal text-ar-navy" data-testid="bestseller-badge">Bestseller</span>
+                  )}
+                  <div>
+                    <span className="text-2xl font-sans font-semibold text-white">${data.priceOneTime.toFixed(2)}</span>
+                  </div>
+                  <div className="text-[13px] text-white/45 font-sans leading-snug">
+                    {data.supplyLabel}<br />{data.subscribeNote}
+                  </div>
                 </div>
 
                 <button
