@@ -58,32 +58,33 @@ export const PRODUCT_DETAIL_DATA = {
     ],
     howToUse: {
       instruction: "Take 2 capsules daily with a meal, morning or afternoon.",
-      tips: ["Consistency matters more than timing", "Take with food for best absorption", "Pairs well with CELLUBIOME"],
+      tips: ["Consistency matters more than timing.", "Take with food for optimal absorption.", "Stacks cleanly with CELLUBIOME for gut and mitochondrial support."],
+      microNote: "Tip: Take at the same time each day to build the habit.",
     },
     ingredientGroups: [
       {
         category: "NAD+ Support Complex",
         totalDose: "500 mg NR + 100 mg Apigenin",
-        desc: "Core NAD+ precursor and preservation compounds for daily cellular energy.",
+        desc: "Clinically studied NAD+ precursor paired with Apigenin for CD38 modulation and NAD+ preservation.",
         ingredients: ["Nicotinamide Riboside (NR) — 500 mg", "Apigenin — 100 mg"],
       },
       {
         category: "Methylation Support",
         totalDose: "TMG 250 mg + B-Complex",
-        desc: "Essential cofactors that keep methylation pathways balanced alongside NAD+ supplementation.",
+        desc: "Essential cofactors that maintain methylation balance alongside daily NAD+ supplementation.",
         ingredients: ["Betaine (TMG) — 250 mg", "Vitamin B6 (P-5-P) — 10 mg", "Folate (5-MTHF) — 400 mcg", "Vitamin B12 (Methylcobalamin) — 1,000 mcg"],
       },
       {
         category: "Absorption & Bioavailability",
         totalDose: "R-Lipoic Acid 200 mg + BioPerine 5 mg",
-        desc: "Supports metabolic enzyme function and enhances bioavailability of all active compounds.",
+        desc: "Metabolic cofactors that enhance bioavailability and support antioxidant recycling.",
         ingredients: ["R-Lipoic Acid — 200 mg", "BioPerine (Black Pepper Extract) — 5 mg"],
       },
     ],
     qualityBadges: ["cGMP Manufactured", "Third-Party Tested", "Vegan", "No Artificial Fillers", "Full Label Disclosure", "Glass Packaging"],
     comparison: {
-      us: ["500 mg clinically studied NR", "Complete methylation co-factors", "Third-party tested for purity", "Full label disclosure", "Bioavailability-enhanced"],
-      them: ["Low-dose or unstudied forms", "Missing essential co-factors", "Rarely third-party tested", "Proprietary blends", "No absorption support"],
+      us: ["500 mg clinically studied Nicotinamide Riboside", "Complete methylation co-factors (TMG + B-Complex)", "Third-party tested for purity and contaminants", "Full label disclosure (no proprietary blends)", "Bioavailability-enhanced with BioPerine"],
+      them: ["Low-dose or unstudied NAD+ precursors", "Missing essential methylation co-factors", "Limited third-party testing", "Proprietary blends (unclear dosing)", "No absorption support"],
     },
     scienceSection: {
       headline: 'Why NAD+ Matters',
@@ -102,24 +103,24 @@ export const PRODUCT_DETAIL_DATA = {
     },
     deliveryRationale: null as { headline: string; text: string } | null,
     suitability: [
-      "Adults seeking daily NAD+ support",
-      "Those focused on energy and mental clarity",
-      "Longevity-focused wellness routines",
-      "Anyone looking to support healthy aging"
+      "Adults focused on healthy aging and daily cellular energy",
+      "Those supporting NAD+ levels, DNA maintenance, and mental clarity",
+      "Those prioritizing methylation balance alongside NAD+ supplementation",
+      "Stacks well with gut and mitochondrial support (CELLUBIOME)"
     ],
-    safetyNote: 'Consult your healthcare provider before use if you are pregnant, nursing, on medication, or managing a medical condition.',
+    safetyNote: 'Consult your healthcare provider before use if pregnant, nursing, taking medication, or managing a medical condition.',
     allergenDisclosure: null as string | null,
     stack: [
-      { name: "CELLUBIOME", slug: "cellubiome", role: "Gut + Mitochondria", add: "Pair NAD+ support with gut barrier and mitochondrial quality.", when: "Take daily" },
-      { name: "CELLUNOVA", slug: "cellunova", role: "Monthly Reset", add: "Add a periodic 7-day reset to complement daily NAD+ support.", when: "7-day monthly cycle" }
+      { name: "CELLUBIOME", slug: "cellubiome", role: "Gut + Mitochondria", add: "Pair NAD+ support with gut barrier integrity and mitochondrial renewal.", when: "Daily use" },
+      { name: "CELLUNOVA", slug: "cellunova", role: "Monthly Reset", add: "Add a periodic 7-day cellular cleanup cycle to complement daily NAD+ support.", when: "7-day monthly cycle" }
     ],
     faq: [
-      { q: "How long does it take to notice effects?", a: "Most people evaluate changes over 2–3 months of consistent daily use." },
+      { q: "How long does it take to notice effects?", a: "Most people evaluate meaningful changes after 2–3 months of consistent daily use.* Early energy improvements may appear sooner.*" },
       { q: "When should I take it?", a: "Take 2 capsules daily with a meal, morning or afternoon. Consistency matters more than timing." },
-      { q: "Does it break a fast?", a: "It has no meaningful caloric load, but if you fast strictly, take it with your first meal." },
-      { q: "Can I take it with CELLUNOVA?", a: "Yes. CELLUNAD+ is designed for daily use. CELLUNOVA is a separate 7-day monthly cycle." },
-      { q: "Why include methylation support?", a: "NAD+ and methylation pathways are closely linked. TMG and methylated B vitamins help keep both in balance." },
-      { q: "Who should avoid it?", a: "Check with your doctor if pregnant, nursing, on medication, or managing a medical condition." }
+      { q: "Does it break a fast?", a: "It has no meaningful caloric load. If you fast strictly, take it with your first meal." },
+      { q: "Can I take it with CELLUNOVA?", a: "Yes. CELLUNAD+ is designed for daily NAD+ support. CELLUNOVA is a separate 7-day monthly cycle for cellular cleanup." },
+      { q: "Why include methylation support?", a: "NAD+ metabolism and methylation pathways are closely linked. TMG and methylated B vitamins (B6, Folate, B12) help maintain both in balance." },
+      { q: "Who should avoid it?", a: "Consult your healthcare provider if pregnant, nursing, taking medication, or managing a medical condition." }
     ],
     ctaHeadline: ['Start your', 'daily foundation.'],
     ctaBody: 'Add CELLUNAD+ to your routine for daily NAD+ and energy support.',
@@ -303,32 +304,33 @@ export const PRODUCT_DETAIL_DATA = {
     ],
     howToUse: {
       instruction: "Take 5 capsules daily for 7 consecutive days, once per month.",
-      tips: ["Take with a meal to minimize GI sensitivity", "The 3-week off period is part of the design", "Can be taken alongside CELLUNAD+"],
+      tips: ["Take with a meal to minimize GI sensitivity.", "The 3-week off period is part of the protocol design.", "Stacks cleanly with CELLUNAD+ for continuous NAD+ support."],
+      microNote: "Tip: Mark your calendar — consistency within the 7-day window matters.",
     },
     ingredientGroups: [
       {
         category: "Autophagy Activators",
         totalDose: "Spermidine 15 mg + Resveratrol 500 mg",
-        desc: "Two compounds that work together to support your body's natural cellular cleanup processes.",
+        desc: "Clinically relevant compounds that support mTOR modulation, AMPK activation, and natural cellular recycling processes.",
         ingredients: ["Spermidine (from Wheat Germ) — 15 mg", "Trans-Resveratrol — 500 mg", "Green Tea Extract (50% EGCG) — 300 mg"],
       },
       {
         category: "Senolytic Blend",
         totalDose: "Fisetin 100 mg + Quercetin 500 mg",
-        desc: "Flavonoids that support the body's ability to manage aging, non-functional cells.",
+        desc: "Flavonoid compounds studied for their role in supporting the body's management of senescent (non-functional) cells.",
         ingredients: ["Fisetin — 100 mg", "Quercetin — 500 mg"],
       },
       {
         category: "Recovery & Antioxidant Support",
         totalDose: "NAC 600 mg + Ca-AKG 300 mg",
-        desc: "Cofactors that support antioxidant defenses and metabolic efficiency during the cleanup cycle.",
+        desc: "Metabolic cofactors that support glutathione recycling, antioxidant defense, and mitochondrial efficiency during the cleanup cycle.",
         ingredients: ["NAC — 600 mg", "Calcium Alpha-Ketoglutarate — 300 mg", "Astaxanthin — 4 mg", "PQQ — 10 mg", "BioPerine — 5 mg"],
       },
     ],
     qualityBadges: ["cGMP Manufactured", "Third-Party Tested", "Contains Wheat", "Full Label Disclosure", "No Artificial Fillers", "Cyclical Protocol"],
     comparison: {
-      us: ["10 synergistic active ingredients", "Clinically studied doses", "Designed as a 7-day cycle", "Third-party tested for purity", "Full label disclosure"],
-      them: ["1–2 ingredients at low doses", "Sub-clinical amounts common", "Daily use (not cyclical)", "Rarely third-party tested", "Proprietary blends"],
+      us: ["10 synergistic active ingredients at clinical doses", "Designed as a focused 7-day cyclical protocol", "Senolytic + autophagy activation in one formula", "Third-party tested for purity and contaminants", "Full label disclosure (no proprietary blends)"],
+      them: ["1–2 ingredients at sub-clinical doses", "Daily use with no cyclical design", "Missing senolytic or autophagy pathways", "Limited third-party testing", "Proprietary blends (unclear dosing)"],
     },
     scienceSection: {
       headline: 'Autophagy & Cellular Aging',
@@ -347,23 +349,23 @@ export const PRODUCT_DETAIL_DATA = {
     },
     deliveryRationale: null as { headline: string; text: string } | null,
     suitability: [
-      "Adults focused on healthy aging",
-      "Periodic cellular cleanup support",
-      "Experienced supplement users",
-      "Longevity-focused wellness routines"
+      "Adults focused on healthy aging and periodic cellular renewal",
+      "Those supporting autophagy activation and senescent cell management",
+      "Experienced supplement users seeking a structured cyclical protocol",
+      "Stacks well with daily NAD+ and gut support (CELLUNAD+ / CELLUBIOME)"
     ],
-    safetyNote: 'Consult your healthcare provider before use if you are pregnant, nursing, or managing a medical condition.',
+    safetyNote: 'Consult your healthcare provider before use if pregnant, nursing, taking medication, or managing a medical condition.',
     allergenDisclosure: 'Contains Wheat (from Wheat Germ derived Spermidine).',
     stack: [
-      { name: "CELLUNAD+", slug: "cellunad", role: "Daily NAD+", add: "Continue daily NAD+ support while running the 7-day CELLUNOVA cycle.", when: "Take daily" },
-      { name: "CELLUBIOME", slug: "cellubiome", role: "Gut + Mitochondria", add: "Support gut health and mitochondrial quality alongside periodic cleanup.", when: "Take daily" }
+      { name: "CELLUNAD+", slug: "cellunad", role: "Daily NAD+", add: "Continue daily NAD+ support while running the 7-day CELLUNOVA cycle.", when: "Daily use" },
+      { name: "CELLUBIOME", slug: "cellubiome", role: "Gut + Mitochondria", add: "Support gut barrier integrity and mitochondrial renewal alongside periodic cleanup.", when: "Daily use" }
     ],
     faq: [
-      { q: "Is this a daily supplement?", a: "No. CELLUNOVA is taken for 7 consecutive days, once per month. The off-period is part of the design." },
-      { q: "Does it contain wheat?", a: "Yes. The Spermidine is derived from Wheat Germ. Not suitable for those with wheat or gluten sensitivities." },
-      { q: "Why 5 capsules per day?", a: "The serving size reflects the amount needed to reach meaningful doses of each active ingredient during the 7-day window." },
-      { q: "Can I take it with CELLUNAD+?", a: "Yes. Many people continue their daily CELLUNAD+ alongside the 7-day CELLUNOVA cycle." },
-      { q: "How often should I do a cycle?", a: "Once per month is the standard recommendation. Some people space cycles every 60 or 90 days." }
+      { q: "Is this a daily supplement?", a: "No. CELLUNOVA is a 7-day cyclical protocol taken once per month. The 3-week off period is part of the design." },
+      { q: "Does it contain wheat?", a: "Yes. Spermidine is derived from Wheat Germ. Not suitable for those with wheat or gluten sensitivities." },
+      { q: "Why 5 capsules per day?", a: "The serving size delivers clinically relevant doses of all 10 active ingredients within the focused 7-day window." },
+      { q: "Can I take it with CELLUNAD+?", a: "Yes. CELLUNAD+ provides daily NAD+ support. CELLUNOVA adds a periodic 7-day cellular cleanup cycle. They are designed to complement each other." },
+      { q: "How often should I do a cycle?", a: "Once per month is the standard protocol. Some individuals space cycles every 60–90 days based on personal preference." }
     ],
     ctaHeadline: ['Reset.', 'Renew.'],
     ctaBody: 'Add CELLUNOVA for a focused 7-day cellular cleanup cycle.',
