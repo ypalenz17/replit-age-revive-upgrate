@@ -199,17 +199,19 @@ export const PRODUCT_DETAIL_DATA = {
       them: ["Sub-clinical doses common", "No enteric protection", "Generic butyrate salts", "Rarely third-party tested", "Proprietary blends"],
     },
     scienceSection: {
-      headline: 'The Gut–Mitochondria Connection',
+      headline: 'The Gut–Mitochondria Axis',
       paragraphs: [
-        'Your gut health and mitochondrial function are deeply connected. When either weakens, the other suffers—creating a cycle that accelerates aging.',
-        'CELLUBIOME addresses both sides: Urolithin A supports mitochondrial renewal, while Tributyrin supports gut barrier strength. Together, they help break the cycle.'
+        'The gut barrier and mitochondrial function are biologically interconnected. Disruption in either system can amplify inflammation, impair cellular energy production, and accelerate biological aging.',
+        'CELLUBIOME delivers clinically studied doses of <strong>Urolithin A</strong> and <strong>Tributyrin</strong> to support <strong>mitophagy</strong> activation, intestinal barrier integrity, and gut–mitochondria signaling resilience.',
       ],
+      microProof: 'Formulated to target both mitochondrial renewal and butyrate-mediated gut repair.',
+      ctaSupport: 'Restore internal signal stability at the cellular level.',
       diagramLabel: 'Gut–Mito Axis',
       diagramCenter: { label: 'Mitochondria', icon: 'Zap' },
       diagramNodes: [
         { label: "Gut Barrier", icon: 'Layers' },
-        { label: "Mitochondrial Renewal", icon: 'ShieldCheck' },
-        { label: "Barrier Defense", icon: 'ShieldCheck' }
+        { label: "Mitophagy", icon: 'RotateCcw' },
+        { label: "Butyrate Delivery", icon: 'ShieldCheck' }
       ],
       diagramFooter: null as { label: string; text: string } | null
     },

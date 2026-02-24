@@ -637,67 +637,106 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       })()}
 
       {/* ───── SCIENCE SECTION ───── */}
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
-        <div className="max-w-7xl mx-auto space-y-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="space-y-8">
-              <div className="space-y-3">
-                <SectionLabel label="The Science" color={accentColor} align="left" />
-                <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>{data.scienceSection.headline}</h2>
-              </div>
-              <div className="space-y-6 text-white/55 text-[16px] md:text-[18px] leading-relaxed font-sans font-medium">
-                {data.scienceSection.paragraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
-            </div>
+      {(() => {
+        const sci = data.scienceSection as any;
+        const hasMicroProof = !!sci.microProof;
+        const mineralTeal2 = hasMicroProof ? '#1fb8ac' : accentColor;
 
-            <div className="relative p-8 md:p-12 bg-[#0b1120] border border-white/10 flex flex-col justify-center items-center overflow-hidden">
-              <div className="absolute top-4 left-4 font-mono text-[9px] text-white/20 uppercase tracking-[0.14em]">{data.scienceSection.diagramLabel}</div>
-              {data.scienceSection.diagramCenter ? (
-                <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 relative w-full pt-6">
-                  <div className="w-28 h-28 md:w-32 md:h-32 rounded-full border flex flex-col items-center justify-center text-center p-4" style={{ borderColor: `${accentColor}40`, background: `${data.accent}10` }}>
-                    {data.scienceSection.diagramCenter.icon && (() => { const Ic = getIcon(data.scienceSection.diagramCenter.icon); return <Ic size={24} style={{ color: accentColor }} className="mb-2" />; })()}
-                    <p className="font-mono text-[10px] font-bold uppercase" style={{ color: accentColor }}>{data.scienceSection.diagramCenter.label}</p>
-                  </div>
-                  <ArrowRight size={24} className="text-white/10 hidden md:block" />
-                  <div className="flex flex-col gap-3 w-full md:w-auto">
-                    {data.scienceSection.diagramNodes.map((n, i) => {
-                      const Ic = getIcon(n.icon);
-                      return (
-                        <div key={i} className="flex items-center gap-4 p-3.5 border border-white/10 bg-white/[0.03] w-full md:w-60">
-                          <Ic size={16} style={{ color: `${accentColor}80` }} />
-                          <span className="font-mono text-[10px] uppercase font-bold tracking-[0.10em]">{n.label}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              ) : (
-                <div className="flex flex-col items-center gap-6 relative w-full pt-6">
-                  <div className="w-full grid grid-cols-3 gap-3">
-                    {data.scienceSection.diagramNodes.map((n, i) => {
-                      const Ic = getIcon(n.icon);
-                      return (
-                        <div key={i} className="flex flex-col items-center gap-3 p-4 md:p-6 border border-white/10 bg-white/[0.03] text-center">
-                          <Ic size={22} style={{ color: `${accentColor}80` }} />
-                          <span className="font-mono text-[9px] uppercase font-bold tracking-[0.10em]">{n.label}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  {data.scienceSection.diagramFooter && (
-                    <div className="p-4 border w-full text-center" style={{ borderColor: `${accentColor}30`, background: `${data.accent}08` }}>
-                      <p className="font-mono text-[11px] font-bold uppercase mb-1.5" style={{ color: accentColor }}>{data.scienceSection.diagramFooter.label}</p>
-                      <p className="text-[12px] text-white/40">{data.scienceSection.diagramFooter.text}</p>
+        return (
+          <section
+            aria-labelledby="gut-mito-heading"
+            className="pdp-reveal relative"
+            style={{ background: hasMicroProof ? '#071320' : undefined }}
+          >
+            {hasMicroProof && (
+              <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(244,241,234,0.05)' }} />
+            )}
+            <div className={`px-5 md:px-10 lg:px-[60px] ${hasMicroProof ? 'pt-[72px] pb-[88px] md:pt-24 md:pb-[120px]' : 'py-20 md:py-24'}`}>
+              <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                  <div className="space-y-8">
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="h-[1px] w-6" style={{ background: `${mineralTeal2}50` }} />
+                        <span className="font-mono text-[9px] uppercase tracking-[0.22em]" style={{ color: `${mineralTeal2}90` }}>The Science</span>
+                        <div className="h-[1px] w-6" style={{ background: `${mineralTeal2}50` }} />
+                      </div>
+                      <h2
+                        id="gut-mito-heading"
+                        className="font-head font-normal tracking-[-0.04em] uppercase text-[#F4F1EA] leading-tight"
+                        style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}
+                      >
+                        {sci.headline}
+                      </h2>
                     </div>
-                  )}
+                    <div className="space-y-5 max-w-[640px]">
+                      {sci.paragraphs.map((p: string, i: number) => (
+                        <p
+                          key={i}
+                          className="text-[15px] md:text-[16px] text-[#F4F1EA]/55 leading-[1.6] font-sans"
+                          dangerouslySetInnerHTML={{ __html: p }}
+                        />
+                      ))}
+                      {hasMicroProof && (
+                        <p className="text-[13px] font-mono uppercase tracking-[0.06em] text-[#F4F1EA]/35 pt-2">
+                          {sci.microProof}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="relative p-10 md:p-14 bg-[#0b1120] border overflow-hidden rounded-lg" style={{ borderColor: 'rgba(244,241,234,0.08)' }}>
+                    <div className="absolute top-5 left-6 font-mono text-[9px] text-white/15 uppercase tracking-[0.14em]">{sci.diagramLabel}</div>
+                    {sci.diagramCenter ? (
+                      <div className="flex flex-col items-center gap-6 relative w-full pt-4">
+                        <div className="w-24 h-24 md:w-28 md:h-28 rounded-full border flex flex-col items-center justify-center text-center p-4" style={{ borderColor: `${mineralTeal2}30`, background: `rgba(31,184,172,0.04)` }}>
+                          {sci.diagramCenter.icon && (() => { const Ic = getIcon(sci.diagramCenter.icon); return <Ic size={20} style={{ color: `${mineralTeal2}80` }} className="mb-1.5" />; })()}
+                          <p className="font-mono text-[9px] font-bold uppercase" style={{ color: `${mineralTeal2}90` }}>{sci.diagramCenter.label}</p>
+                        </div>
+                        <div className="w-px h-6" style={{ background: `${mineralTeal2}18` }} />
+                        <div className="flex flex-col gap-2.5 w-full">
+                          {sci.diagramNodes.map((n: any, i: number) => {
+                            const Ic = getIcon(n.icon);
+                            return (
+                              <div key={i} className="flex items-center gap-4 p-3.5 border bg-white/[0.02] rounded-md" style={{ borderColor: 'rgba(244,241,234,0.08)' }}>
+                                <Ic size={14} style={{ color: `${mineralTeal2}60` }} />
+                                <span className="font-mono text-[9px] uppercase font-bold tracking-[0.10em] text-[#F4F1EA]/60">{n.label}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        {sci.ctaSupport && (
+                          <p className="text-[12px] text-[#F4F1EA]/30 font-sans text-center pt-4 max-w-[280px]">{sci.ctaSupport}</p>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="flex flex-col items-center gap-6 relative w-full pt-6">
+                        <div className="w-full grid grid-cols-3 gap-3">
+                          {sci.diagramNodes.map((n: any, i: number) => {
+                            const Ic = getIcon(n.icon);
+                            return (
+                              <div key={i} className="flex flex-col items-center gap-3 p-4 md:p-6 border bg-white/[0.02] text-center rounded-md" style={{ borderColor: 'rgba(244,241,234,0.08)' }}>
+                                <Ic size={20} style={{ color: `${accentColor}70` }} />
+                                <span className="font-mono text-[9px] uppercase font-bold tracking-[0.10em] text-[#F4F1EA]/50">{n.label}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        {sci.diagramFooter && (
+                          <div className="p-4 border w-full text-center rounded-md" style={{ borderColor: `${accentColor}20`, background: `${data.accent}06` }}>
+                            <p className="font-mono text-[10px] font-bold uppercase mb-1.5" style={{ color: `${accentColor}90` }}>{sci.diagramFooter.label}</p>
+                            <p className="text-[12px] text-[#F4F1EA]/35">{sci.diagramFooter.text}</p>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
+        );
+      })()}
 
       {/* ───── DELIVERY RATIONALE (CELLUBIOME only) ───── */}
       {data.deliveryRationale && (

@@ -1,0 +1,170 @@
+We are rebuilding the “THE GUT–MITOCHONDRIA CONNECTION” section for CELLUBIOME.
+
+Goals:
+
+Increase conversion confidence
+
+Improve semantic richness for LLM indexing
+
+Strengthen biological authority
+
+Maintain premium longevity positioning
+
+Keep dark navy design system
+
+Do NOT add generic marketing fluff
+
+Do NOT change overall site architecture
+
+Refine spacing, hierarchy, and semantic HTML only
+
+1️⃣ STRUCTURE REQUIREMENTS
+
+Replace current section with this semantic structure:
+
+<section aria-labelledby="gut-mito-heading" class="science-section">
+  <div class="container">
+    <p class="eyebrow">THE SCIENCE</p>
+
+    <h2 id="gut-mito-heading">
+      The Gut–Mitochondria Axis
+    </h2>
+
+    <div class="science-copy">
+      <p>
+        The gut barrier and mitochondrial function are biologically interconnected.
+        Disruption in either system can amplify inflammation, impair cellular
+        energy production, and accelerate biological aging.
+      </p>
+
+      <p>
+        CELLUBIOME delivers clinically studied doses of Urolithin A and Tributyrin
+        to support mitophagy activation, intestinal barrier integrity, and
+        gut–mitochondria signaling resilience.
+      </p>
+    </div>
+
+    <div class="axis-visual">
+      <!-- existing visual container stays -->
+    </div>
+  </div>
+</section>
+2️⃣ CONVERSION OPTIMIZATION RULES
+
+Add one reinforcing micro-proof line below paragraph 2:
+
+<p class="micro-proof">
+  Formulated to target both mitochondrial renewal and butyrate-mediated gut repair.
+</p>
+
+Add subtle CTA reinforcement under the diagram:
+
+<p class="cta-support">
+  Restore internal signal stability at the cellular level.
+</p>
+
+No buttons here. This is pre-CTA authority building.
+
+3️⃣ LLM SEO ENHANCEMENT
+
+We must naturally include these entities in body text:
+
+Urolithin A
+
+Tributyrin
+
+Mitophagy
+
+Intestinal barrier
+
+Butyrate
+
+Mitochondrial function
+
+Gut–mitochondria axis
+
+Biological aging
+
+Do NOT keyword stuff.
+Use clean scientific phrasing.
+
+Add structured emphasis using <strong> on:
+
+Urolithin A
+
+Tributyrin
+
+Mitophagy
+
+Butyrate
+
+4️⃣ SPACING + PADDING FIX
+
+Adjust vertical rhythm:
+
+Section top padding: 96px desktop / 72px mobile
+
+Section bottom padding: 120px desktop / 88px mobile
+
+Max-width text block: 640px
+
+Line-height: 1.6
+
+Remove excess empty vertical air above headline
+
+The section must feel contained, not floating.
+
+5️⃣ AXIS DIAGRAM REFINEMENT
+
+Inside the visual container:
+
+Reduce circle size by 12%
+
+Add subtle vertical connector line from circle downward
+
+Soften rectangle borders to 15% opacity
+
+Remove heavy button feel
+
+Increase inner padding of visual container
+
+This should feel like a biological system blueprint, not clickable UI cards.
+
+6️⃣ DESIGN CONSTRAINTS
+
+Keep navy background
+
+Keep teal accent
+
+No amber
+
+No glow effects
+
+No heavy shadows
+
+No glassmorphism
+
+No marketing buzzwords
+
+Tone must remain:
+Clinical. Controlled. Intelligent.
+
+7️⃣ FINAL VALIDATION CHECKLIST
+
+Before finishing:
+
+Text reads authoritative, not salesy
+
+Entities are present but natural
+
+Section improves clarity
+
+Padding is balanced top and bottom
+
+Diagram feels connected, not floating
+
+No generic phrases like “break the cycle”
+
+No filler language
+
+End of instructions.
