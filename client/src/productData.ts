@@ -44,11 +44,15 @@ export const PRODUCT_DETAIL_DATA = {
       otherIngredients: "Veg. cellulose (capsule), rice flour, magnesium stearate, silica.",
       allergenNote: null as string | null
     },
+    benefitSectionOverride: {
+      eyebrow: "Cellular Foundation",
+      headlinePrimary: "Energy Architecture",
+      headlineSecondary: "Layer",
+      subhead: "Supports NAD+ replenishment, DNA maintenance, and methylation balance for daily cellular energy.",
+    },
     benefitHighlights: [
-      { icon: 'Zap', title: "NAD+ Replenishment", desc: "500 mg NR supports daily NAD+ production in every cell." },
-      { icon: 'Dna', title: "DNA Maintenance", desc: "NAD+ is required by enzymes that maintain and repair DNA." },
-      { icon: 'Brain', title: "Mental Clarity", desc: "Supports cellular energy production in the brain." },
-      { icon: 'Shield', title: "Methylation Balance", desc: "TMG + B vitamins keep methylation pathways in balance." },
+      { icon: 'Zap', title: "NAD+ Replenishment & DNA Maintenance", desc: "500 mg Nicotinamide Riboside supports daily NAD+ production — a coenzyme required by sirtuins and PARPs for DNA repair, cellular signaling, and energy metabolism." },
+      { icon: 'Shield', title: "Methylation Balance & Bioavailability", desc: "TMG, methylated B vitamins, and R-Lipoic Acid maintain methylation pathways that NAD+ metabolism depends on. BioPerine enhances absorption of all active compounds." },
     ],
     benefitsTimeline: [
       { time: "1 Week", items: ["Initial energy support begins*", "NAD+ precursors begin building in your system*"] },
@@ -290,11 +294,15 @@ export const PRODUCT_DETAIL_DATA = {
       otherIngredients: "Veg. cellulose (capsule), rice flour, magnesium stearate, silica.",
       allergenNote: "Contains Wheat (Wheat Germ derived Spermidine)."
     },
+    benefitSectionOverride: {
+      eyebrow: "Periodic Renewal",
+      headlinePrimary: "Cellular Cleanup",
+      headlineSecondary: "Cycle",
+      subhead: "A focused 7-day protocol combining senolytic and autophagy pathways for deep cellular renewal.",
+    },
     benefitHighlights: [
-      { icon: 'RotateCcw', title: "Autophagy Activation", desc: "Supports your body's natural cellular cleanup processes." },
-      { icon: 'Wind', title: "Senolytic Support", desc: "Helps manage aging, non-functional 'zombie' cells." },
-      { icon: 'Flame', title: "Antioxidant Defense", desc: "NAC + Astaxanthin support antioxidant balance during cleanup." },
-      { icon: 'Timer', title: "Cyclical by Design", desc: "7 days on, 3 weeks off. The rest period is part of the design." },
+      { icon: 'RotateCcw', title: "Autophagy & Senolytic Activation", desc: "Spermidine, Resveratrol, Fisetin, and Quercetin work across mTOR, AMPK, and senolytic pathways to support your body's natural cellular cleanup and senescent cell management." },
+      { icon: 'Flame', title: "Recovery & Cyclical Design", desc: "NAC, Astaxanthin, PQQ, and Ca-AKG support antioxidant defense and mitochondrial efficiency during the 7-day window. The 3-week off period is part of the protocol design." },
     ],
     benefitsTimeline: [
       { time: "Day 1–3", items: ["Autophagy pathways begin activating*", "Senolytic compounds start accumulating*"] },
