@@ -910,11 +910,11 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
 
       {/* ───── QUALITY BADGES ───── */}
       <section className="pdp-reveal py-10 md:py-14 px-5 md:px-10 lg:px-[60px] border-y border-white/[0.05]">
-        <div className="max-w-5xl mx-auto space-y-4">
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
+        <div className="max-w-3xl mx-auto space-y-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-3 justify-items-start mx-auto w-fit">
             {data.qualityBadges.map((badge, i) => (
               <div key={i} className="flex items-center gap-2" data-testid={`badge-${i}`}>
-                <Check size={12} style={{ color: accentColor }} />
+                <Check size={12} className="shrink-0" style={{ color: accentColor }} />
                 <span className="font-mono text-[10px] uppercase font-bold tracking-[0.12em] text-white/35">{badge}</span>
               </div>
             ))}
