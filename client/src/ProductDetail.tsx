@@ -453,43 +453,68 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
 
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 items-stretch">
 
-          <div className="bg-[#f0f0ec] lg:bg-transparent">
-            <div className="py-4 lg:py-24 lg:pr-10 px-5 md:px-8 lg:px-0">
-              <ImageCarousel images={images} accent={data.accent} lightMode />
+          <div className="lg:bg-transparent">
+            <div className="lg:py-24 lg:pr-10 lg:px-0">
+              <div className="hidden lg:block px-5 md:px-8">
+                <ImageCarousel images={images} accent={data.accent} lightMode />
+              </div>
+              <div className="lg:hidden px-4 pt-3 pb-2">
+                <div
+                  className="rounded-2xl border border-white/[0.10] overflow-hidden"
+                  style={{
+                    background: `linear-gradient(165deg, rgba(15,23,42,0.97) 0%, rgba(11,17,32,1) 50%, rgba(8,12,25,1) 100%)`,
+                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.3), 0 4px 24px rgba(0,0,0,0.3)',
+                  }}
+                >
+                  <ImageCarousel images={images} accent={data.accent} />
+                </div>
+              </div>
             </div>
           </div>
 
           <div className="lg:py-24 lg:pl-10 px-5 md:px-10 lg:px-0">
-            <div className="lg:sticky lg:top-20 space-y-4 lg:space-y-6 pt-6 lg:pt-0 pb-8 lg:pb-0">
-              <div className="space-y-2 lg:space-y-3">
+            <div className="lg:sticky lg:top-20 space-y-4 lg:space-y-6 pt-5 lg:pt-0 pb-8 lg:pb-0">
+              <div className="space-y-1.5 lg:space-y-3">
                 <p className="font-mono text-[10px] lg:text-[11px] uppercase tracking-[0.14em]" style={{ color: accentColor }}>{data.tagline}</p>
                 <h1 className="font-head font-normal tracking-[-0.04em] leading-[0.9] uppercase text-white" style={{ fontSize: 'clamp(1.8rem, 5vw, 3.5rem)' }}>
                   {data.name}
                 </h1>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <div className="flex items-center gap-0.5">
                     {[...Array(5)].map((_, i) => {
                       const filled = i < Math.floor(data.rating);
                       const partial = !filled && i < data.rating;
                       return (
-                        <span key={i} className="relative inline-block" style={{ width: 14, height: 14 }}>
-                          <Star size={14} className="text-white/20 absolute inset-0" />
+                        <span key={i} className="relative inline-block" style={{ width: 12, height: 12 }}>
+                          <Star size={12} className="text-white/15 absolute inset-0" />
                           {(filled || partial) && (
                             <span className="absolute inset-0 overflow-hidden" style={{ width: filled ? '100%' : `${(data.rating % 1) * 100}%` }}>
-                              <Star size={14} className="text-amber-400 fill-amber-400" />
+                              <Star size={12} className="text-amber-400/80 fill-amber-400/80" />
                             </span>
                           )}
                         </span>
                       );
                     })}
                   </div>
-                  <span className="text-[13px] text-white/50 font-sans">{data.rating} · {data.reviewCount.toLocaleString()} Reviews</span>
+                  <span className="text-[11px] lg:text-[13px] text-white/40 font-sans">{data.rating} · {data.reviewCount.toLocaleString()} Reviews</span>
                 </div>
               </div>
 
-              <p className="text-[14px] lg:text-[15px] text-white/55 font-sans leading-relaxed max-w-md">
-                {data.subtitle}
-              </p>
+              <div className="space-y-2.5">
+                <p className="text-[13px] lg:text-[15px] text-white/45 font-sans leading-relaxed max-w-md">
+                  {data.heroBullets ? data.heroBullets.lead : data.subtitle}
+                </p>
+                {data.heroBullets && (
+                  <ul className="space-y-1.5 pl-0.5">
+                    {data.heroBullets.points.map((pt: string, i: number) => (
+                      <li key={i} className="flex items-start gap-2.5">
+                        <span className="mt-[5px] w-[5px] h-[5px] rounded-full shrink-0 opacity-50" style={{ backgroundColor: accentColor }} />
+                        <span className="text-[13px] lg:text-[14px] text-white/50 font-sans leading-snug">{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
 
               <div className="space-y-4 lg:space-y-5">
                 <div className="space-y-1.5">

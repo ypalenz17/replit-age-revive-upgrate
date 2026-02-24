@@ -9,6 +9,14 @@ export const PRODUCT_DETAIL_DATA = {
     name: "CELLUNAD+",
     tagline: "Daily NAD+ Optimization",
     subtitle: "Clinically studied NAD+ precursor with essential co-factors for energy, DNA maintenance, and healthy aging.*",
+    heroBullets: {
+      lead: "Clinically studied NAD+ precursor with essential co-factors.*",
+      points: [
+        "500 mg NR for daily cellular energy",
+        "Complete methylation support with TMG + B vitamins",
+        "Enhanced absorption with BioPerine"
+      ]
+    },
     rating: 4.8,
     reviewCount: 847,
     form: "Capsules",
@@ -122,6 +130,14 @@ export const PRODUCT_DETAIL_DATA = {
     name: "CELLUBIOME",
     tagline: "Gut–Mitochondria Axis",
     subtitle: "Recycle damaged mitochondria. Reinforce gut barrier integrity. Two clinically studied compounds working together to restore cellular energy from the inside out.*",
+    heroBullets: {
+      lead: "Two clinically studied compounds for gut and mitochondrial health.*",
+      points: [
+        "Recycles damaged mitochondria for renewed energy",
+        "Reinforces gut barrier integrity",
+        "Restores cellular energy from the inside out"
+      ]
+    },
     rating: 4.9,
     reviewCount: 623,
     form: "Enteric Capsules",
@@ -225,6 +241,14 @@ export const PRODUCT_DETAIL_DATA = {
     name: "CELLUNOVA",
     tagline: "7-Day Autophagy Cycle",
     subtitle: "A focused 7-day cycle with senolytics and autophagy activators for deep cellular cleanup and renewal.*",
+    heroBullets: {
+      lead: "A focused 7-day cycle for deep cellular cleanup and renewal.*",
+      points: [
+        "Senolytic compounds target damaged cells",
+        "Autophagy activators promote cellular recycling",
+        "Cyclical protocol for sustained renewal"
+      ]
+    },
     rating: 4.7,
     reviewCount: 412,
     form: "Capsules",
