@@ -640,7 +640,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       {(() => {
         const sci = data.scienceSection as any;
         const hasMicroProof = !!sci.microProof;
-        const mineralTeal2 = hasMicroProof ? '#1fb8ac' : accentColor;
+        const mineralTeal2 = hasMicroProof ? (slug === 'cellubiome' ? '#1fb8ac' : accentColor) : accentColor;
 
         return (
           <section
@@ -689,7 +689,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                     <div className="absolute top-5 left-6 font-mono text-[9px] text-white/15 uppercase tracking-[0.14em]">{sci.diagramLabel}</div>
                     {sci.diagramCenter ? (
                       <div className="flex flex-col items-center gap-6 relative w-full pt-4">
-                        <div className="w-24 h-24 md:w-28 md:h-28 rounded-full border flex flex-col items-center justify-center text-center p-4" style={{ borderColor: `${mineralTeal2}30`, background: `rgba(31,184,172,0.04)` }}>
+                        <div className="w-24 h-24 md:w-28 md:h-28 rounded-full border flex flex-col items-center justify-center text-center p-4" style={{ borderColor: `${mineralTeal2}30`, background: `${mineralTeal2}0A` }}>
                           {sci.diagramCenter.icon && (() => { const Ic = getIcon(sci.diagramCenter.icon); return <Ic size={20} style={{ color: `${mineralTeal2}80` }} className="mb-1.5" />; })()}
                           <p className="font-mono text-[9px] font-bold uppercase" style={{ color: `${mineralTeal2}90` }}>{sci.diagramCenter.label}</p>
                         </div>
@@ -774,11 +774,10 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
 
       {/* ───── BENEFITS TIMELINE ───── */}
       {(() => {
-        const isCellubiome = slug === 'cellubiome';
-        const timelineTeal = isCellubiome ? '#1fb8ac' : accentColor;
+        const timelineTeal = slug === 'cellubiome' ? '#1fb8ac' : accentColor;
 
         return (
-          <section className={`pdp-reveal px-5 md:px-10 lg:px-[60px] ${isCellubiome ? '' : 'py-20 md:py-24'}`} style={isCellubiome ? { paddingTop: '96px', paddingBottom: '120px' } : undefined}>
+          <section className="pdp-reveal px-5 md:px-10 lg:px-[60px]" style={{ paddingTop: '96px', paddingBottom: '120px' }}>
             <div className="max-w-4xl mx-auto">
               <div className="text-center space-y-4">
                 <div className="flex items-center gap-3 justify-center">
@@ -787,10 +786,10 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                   <div className="h-[1px] w-6" style={{ background: `${timelineTeal}50` }} />
                 </div>
                 <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-[#F4F1EA] leading-tight" style={{ fontSize: 'clamp(1.4rem, 4.5vw, 2.8rem)' }}>
-                  {isCellubiome ? 'Biological Improvements Over Time' : 'Benefits that build'}
+                  {(data as any).timelineHeadline || 'Biological Improvements Over Time'}
                 </h2>
                 <p className="text-[13px] text-[#F4F1EA]/40 font-sans">
-                  {isCellubiome ? 'What consistent cellular support may look like.*' : 'What to expect with consistent use.*'}
+                  {(data as any).timelineSubline || 'What consistent cellular support may look like.*'}
                 </p>
               </div>
 
@@ -823,9 +822,9 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                 </ul>
               </div>
 
-              {isCellubiome && (
+              {(data as any).timelineConfidence && (
                 <p className="text-center text-[12px] font-sans text-[#F4F1EA]/25 mt-6">
-                  Designed for cumulative biological adaptation, not temporary symptom masking.
+                  {(data as any).timelineConfidence}
                 </p>
               )}
             </div>

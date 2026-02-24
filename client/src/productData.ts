@@ -54,6 +54,9 @@ export const PRODUCT_DETAIL_DATA = {
       { icon: 'Zap', title: "NAD+ Replenishment & DNA Maintenance", desc: "500 mg Nicotinamide Riboside supports daily NAD+ production — a coenzyme required by sirtuins and PARPs for DNA repair, cellular signaling, and energy metabolism." },
       { icon: 'Shield', title: "Methylation Balance & Bioavailability", desc: "TMG, methylated B vitamins, and R-Lipoic Acid maintain methylation pathways that NAD+ metabolism depends on. BioPerine enhances absorption of all active compounds." },
     ],
+    timelineHeadline: 'Biological Improvements Over Time',
+    timelineSubline: 'What consistent NAD+ support may look like.*',
+    timelineConfidence: 'Designed for cumulative cellular adaptation, not temporary energy masking.',
     benefitsTimeline: [
       { time: "1 Week", items: ["Initial energy support begins*", "NAD+ precursors begin building in your system*"] },
       { time: "2 Weeks", items: ["Noticeable improvement in daily energy*", "Supports mental clarity and focus*"] },
@@ -93,9 +96,10 @@ export const PRODUCT_DETAIL_DATA = {
     scienceSection: {
       headline: 'Why NAD+ Matters',
       paragraphs: [
-        'NAD+ is a coenzyme found in every living cell. It plays a central role in converting nutrients into energy and is required by enzymes that maintain DNA and regulate cellular signaling.',
-        'NAD+ levels naturally decline with age. CELLUNAD+ is formulated to support daily NAD+ replenishment with clinically studied doses and essential co-factors.'
+        '<strong>NAD+</strong> is a coenzyme found in every living cell. It plays a central role in converting nutrients into energy and is required by <strong>sirtuins</strong> and <strong>PARPs</strong> — enzymes that maintain DNA and regulate cellular signaling.',
+        'NAD+ levels naturally decline with age. CELLUNAD+ delivers <strong>500 mg Nicotinamide Riboside</strong> with <strong>Apigenin</strong>, <strong>TMG</strong>, and methylated <strong>B vitamins</strong> to support daily NAD+ replenishment and methylation balance.'
       ],
+      microProof: 'Formulated to address the NAD+ decline associated with biological aging.',
       diagramLabel: 'NAD+ Pathway',
       diagramCenter: { label: 'NAD+ Pool', icon: '' } as { label: string; icon: string } | null,
       diagramNodes: [
@@ -174,6 +178,9 @@ export const PRODUCT_DETAIL_DATA = {
       { icon: 'RotateCcw', title: "Mitochondrial Renewal", desc: "500 mg Urolithin A supports mitophagy and the renewal of aging mitochondria. Sustains cellular energy efficiency over time." },
       { icon: 'Layers', title: "Gut Barrier Integrity", desc: "Enteric Tributyrin delivers bioavailable butyrate to reinforce intestinal barrier integrity. Supports microbial balance and long-term signaling stability." },
     ],
+    timelineHeadline: 'Biological Improvements Over Time',
+    timelineSubline: 'What consistent cellular support may look like.*',
+    timelineConfidence: 'Designed for cumulative biological adaptation, not temporary symptom masking.',
     benefitsTimeline: [
       { time: "2 Weeks", items: ["Early digestive comfort improvements*", "Butyrate begins supporting intestinal barrier cells*", "Initial cellular recycling support via mitophagy activation*"] },
       { time: "4 Weeks", items: ["Improved gut barrier resilience*", "More consistent mitochondrial energy efficiency*", "Reduction in digestive variability*"] },
@@ -304,6 +311,9 @@ export const PRODUCT_DETAIL_DATA = {
       { icon: 'RotateCcw', title: "Autophagy & Senolytic Activation", desc: "Spermidine, Resveratrol, Fisetin, and Quercetin work across mTOR, AMPK, and senolytic pathways to support your body's natural cellular cleanup and senescent cell management." },
       { icon: 'Flame', title: "Recovery & Cyclical Design", desc: "NAC, Astaxanthin, PQQ, and Ca-AKG support antioxidant defense and mitochondrial efficiency during the 7-day window. The 3-week off period is part of the protocol design." },
     ],
+    timelineHeadline: 'Biological Improvements Over Time',
+    timelineSubline: 'What a structured 7-day cleanup cycle may look like.*',
+    timelineConfidence: 'Designed for periodic cellular renewal, not daily supplementation.',
     benefitsTimeline: [
       { time: "Day 1–3", items: ["Autophagy pathways begin activating*", "Senolytic compounds start accumulating*"] },
       { time: "Day 4–7", items: ["Peak cellular cleanup activity*", "Antioxidant defenses fully engaged*"] },
@@ -343,9 +353,10 @@ export const PRODUCT_DETAIL_DATA = {
     scienceSection: {
       headline: 'Autophagy & Cellular Aging',
       paragraphs: [
-        'As we age, damaged proteins and non-functional "zombie" cells accumulate. These cells stay active but stop doing their job, contributing to inflammation and decline.',
-        'CELLUNOVA is designed as a short, focused cycle to support your body\'s natural cleanup processes—autophagy and senescent cell management—then step back and let your body recover.'
+        'As we age, damaged proteins and non-functional <strong>senescent cells</strong> accumulate. These cells remain metabolically active but stop performing their function, contributing to chronic inflammation and biological decline.',
+        'CELLUNOVA delivers <strong>Fisetin</strong>, <strong>Quercetin</strong>, <strong>Spermidine</strong>, and <strong>Resveratrol</strong> in a focused 7-day cycle to support <strong>autophagy</strong> activation and <strong>senolytic</strong> pathways — then steps back to let your body recover.'
       ],
+      microProof: 'Cyclical protocol designed to support periodic cellular renewal without daily supplementation burden.',
       diagramLabel: '7-Day Cycle',
       diagramCenter: null as { label: string; icon: string } | null,
       diagramNodes: [
