@@ -1,0 +1,64 @@
+You are working on the Age Revive React (Vite) app. Update ONLY the “Key Benefits / What it does” section shown in the screenshot for CELLUBIOME. Goal: make it feel like a $100M longevity brand (clinical luxury), add hierarchy and section separation, remove generic “supplement” feel. Do NOT change any other sections, layout, routes, product pricing/CTA logic, or global typography. No refactors outside this section.
+
+CONSTRAINTS
+- Keep the same content scope: 2 benefit cards for CELLUBIOME.
+- Do NOT add new sections above/below, do NOT change nav, do NOT change sticky CTA behavior beyond visual polish (no functional changes).
+- Keep mobile-first and ensure it looks elite on iPhone width.
+- No “AI fluff” copy. Short, precise, outcome-oriented. No medical claims like “treat, cure, prevent”.
+- Reuse existing design tokens/colors if present. If not, use these:
+  - background deep: #0A1626
+  - panel: rgba(255,255,255,0.04)
+  - border: rgba(244,241,234,0.14)
+  - text primary: #F4F1EA
+  - text muted: rgba(244,241,234,0.70)
+  - accent teal: #22D3C5
+
+SECTION COPY (replace existing headlines + card body copy exactly)
+Top eyebrow label: “BIOLOGICAL FUNCTION”
+Main headline: “Signal Stability Layer”
+Subhead: “Restores mitochondrial recycling and gut barrier resilience to stabilize internal signaling.”
+
+Card 01 title: “Mitochondrial Renewal”
+Card 01 body:
+“Delivers 500 mg Urolithin A to support mitophagy and recycling of dysfunctional mitochondria.
+Supports cellular energy efficiency and resilience.”
+
+Card 02 title: “Gut Barrier Integrity”
+Card 02 body:
+“Tributyrin supplies bioavailable butyrate to support intestinal barrier structure and microbial balance.
+Supports the gut–mitochondria communication axis.”
+
+DESIGN / UI CHANGES (do all)
+1) Section separation:
+- Give this entire section a distinct deeper navy background (#0A1626) with subtle top gradient fade (from transparent to deep navy) so it no longer blends with adjacent sections.
+
+2) Header styling:
+- Eyebrow “BIOLOGICAL FUNCTION” small, tracked, teal accent, centered.
+- Headline “Signal Stability Layer” large, premium spacing, centered.
+- Subhead muted, max width 520px, centered.
+
+3) Card redesign (still stacked on mobile):
+- Keep cards as two stacked modules on mobile.
+- Each card: slightly brighter glass panel (rgba(255,255,255,0.04)), 1px border (rgba(244,241,234,0.14)), radius 20-24px, padding 20-24px.
+- Add a large “01” / “02” ghost number (absolute) behind content at top-left, opacity 0.08–0.12, very large font-size. This is the premium “architectural” cue.
+- Icon should become secondary (small). Title is primary.
+- Add a thin vertical connector line between the two cards’ number areas (subtle, teal at low opacity). Keep it very understated.
+
+4) Typography:
+- Card titles: higher contrast and weight than body.
+- Body: muted off-white at ~70% opacity, line-height comfortable.
+- Ensure the section title hierarchy is obvious.
+
+5) Sticky CTA overlap polish (visual only):
+- If the sticky bottom bar overlaps this section visually, add a subtle backdrop blur and/or slightly darker background to the sticky bar so it doesn’t look like it’s sitting on top of content cheaply. Do NOT change behavior, only styling.
+
+IMPLEMENTATION INSTRUCTIONS
+- Find the component/file that renders this “Key Benefits / What it does” block for CELLUBIOME.
+- Update the JSX and Tailwind classes to match above.
+- If Tailwind is not available in that file, use existing CSS module or add minimal scoped CSS just for this section.
+- Do NOT edit unrelated components.
+- After changes, run the app and fix any build errors you introduced.
+
+DELIVERABLE
+- Provide the full updated component code (entire file) for the section you edited.
+- Also list exactly which file(s) you changed.

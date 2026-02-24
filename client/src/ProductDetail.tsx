@@ -424,7 +424,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
     <div ref={containerRef} className="min-h-screen bg-[#0b1120] text-white selection:bg-teal-500/30 selection:text-white font-sans antialiased">
       <ModalFacts isOpen={isFactsOpen} onClose={() => setIsFactsOpen(false)} data={data} />
 
-      <div className={`fixed bottom-0 left-0 w-full z-[110] bg-white text-[#0b1120] border-t border-black/10 py-3 px-5 transition-transform duration-500 transform ${showSticky ? 'translate-y-0' : 'translate-y-full'}`}>
+      <div className={`fixed bottom-0 left-0 w-full z-[110] bg-white/95 backdrop-blur-md text-[#0b1120] border-t border-black/[0.06] py-3 px-5 transition-transform duration-500 transform shadow-[0_-4px_20px_rgba(0,0,0,0.15)] ${showSticky ? 'translate-y-0' : 'translate-y-full'}`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="hidden sm:flex items-center gap-3">
             <h4 className="text-sm font-head font-normal tracking-tight uppercase leading-none">{data.name}</h4>
@@ -564,31 +564,84 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── BENEFIT HIGHLIGHTS ───── */}
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
-        <div className="max-w-7xl mx-auto space-y-14">
-          <div className="text-center space-y-3">
-            <SectionLabel label="Key Benefits" color={accentColor} />
-            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>What it does</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {data.benefitHighlights.map((h, i) => {
-              const Icon = getIcon(h.icon);
-              return (
-                <div key={i} className="p-6 md:p-7 border border-white/[0.06] bg-white/[0.02] space-y-4 group hover:border-white/[0.10] transition-all rounded-lg" data-testid={`highlight-${i}`}>
-                  <div className="flex items-center gap-3">
-                    <Icon size={16} style={{ color: `${accentColor}` }} />
-                    <span className="font-mono text-[10px] font-bold uppercase text-white/40">0{i + 1}</span>
-                  </div>
-                  <div className="space-y-2">
-                    <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white">{h.title}</h4>
-                    <p className="text-[13px] text-white/50 leading-relaxed font-sans font-medium">{h.desc}</p>
-                  </div>
+      {(() => {
+        const override = (data as any).benefitSectionOverride;
+        const hasOverride = !!override;
+        const eyebrow = hasOverride ? override.eyebrow : "Key Benefits";
+        const headline = hasOverride ? override.headline : "What it does";
+        const subhead = hasOverride ? override.subhead : null;
+        const isCompact = data.benefitHighlights.length <= 2;
+
+        return (
+          <section className="pdp-reveal relative" style={{ background: hasOverride ? '#0A1626' : undefined }}>
+            {hasOverride && (
+              <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#0b1120] to-transparent z-[1]" />
+            )}
+            <div className="relative z-[2] py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
+              <div className="max-w-7xl mx-auto space-y-14">
+                <div className="text-center space-y-4">
+                  <SectionLabel label={eyebrow} color={accentColor} />
+                  <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>{headline}</h2>
+                  {subhead && (
+                    <p className="text-[14px] md:text-[16px] text-[#F4F1EA]/70 font-sans leading-relaxed max-w-[520px] mx-auto">{subhead}</p>
+                  )}
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+
+                <div className={`${isCompact ? 'flex flex-col items-center gap-0' : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'}`}>
+                  {data.benefitHighlights.map((h, i) => {
+                    const Icon = getIcon(h.icon);
+
+                    if (isCompact) {
+                      return (
+                        <div key={i} className="w-full max-w-xl">
+                          {i > 0 && (
+                            <div className="flex justify-start pl-8 md:pl-10">
+                              <div className="w-px h-8" style={{ background: `${accentColor}20` }} />
+                            </div>
+                          )}
+                          <div
+                            className="relative p-5 md:p-6 border rounded-2xl overflow-hidden group hover:border-[rgba(244,241,234,0.20)] transition-all"
+                            style={{ background: 'rgba(255,255,255,0.04)', borderColor: 'rgba(244,241,234,0.14)' }}
+                            data-testid={`highlight-${i}`}
+                          >
+                            <span
+                              className="absolute top-3 left-5 md:left-6 font-head font-normal leading-none pointer-events-none select-none"
+                              style={{ fontSize: 'clamp(3.5rem, 8vw, 5rem)', color: 'rgba(244,241,234,0.06)' }}
+                            >
+                              0{i + 1}
+                            </span>
+                            <div className="relative z-[1] space-y-3 pt-8 md:pt-10">
+                              <div className="flex items-center gap-3">
+                                <Icon size={14} style={{ color: `${accentColor}90` }} />
+                                <span className="font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-white/25">0{i + 1}</span>
+                              </div>
+                              <h4 className="text-[16px] md:text-[18px] font-head font-normal uppercase tracking-[-0.02em] text-[#F4F1EA]">{h.title}</h4>
+                              <p className="text-[13px] md:text-[14px] text-[#F4F1EA]/70 leading-relaxed font-sans">{h.desc}</p>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <div key={i} className="p-6 md:p-7 border border-white/[0.06] bg-white/[0.02] space-y-4 group hover:border-white/[0.10] transition-all rounded-lg" data-testid={`highlight-${i}`}>
+                        <div className="flex items-center gap-3">
+                          <Icon size={16} style={{ color: `${accentColor}` }} />
+                          <span className="font-mono text-[10px] font-bold uppercase text-white/40">0{i + 1}</span>
+                        </div>
+                        <div className="space-y-2">
+                          <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white">{h.title}</h4>
+                          <p className="text-[13px] text-white/50 leading-relaxed font-sans font-medium">{h.desc}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* ───── SCIENCE SECTION ───── */}
       <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">

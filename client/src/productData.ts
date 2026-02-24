@@ -159,11 +159,14 @@ export const PRODUCT_DETAIL_DATA = {
       otherIngredients: "Veg. cellulose (capsule), rice flour, magnesium stearate, silica.",
       allergenNote: null as string | null
     },
+    benefitSectionOverride: {
+      eyebrow: "Biological Function",
+      headline: "Signal Stability Layer",
+      subhead: "Restores mitochondrial recycling and gut barrier resilience to stabilize internal signaling.",
+    },
     benefitHighlights: [
-      { icon: 'RotateCcw', title: "Mitochondrial Renewal", desc: "500 mg Urolithin A supports recycling of damaged mitochondria." },
-      { icon: 'Layers', title: "Gut Barrier Integrity", desc: "Tributyrin delivers butyrate to strengthen intestinal lining." },
-      { icon: 'ShieldCheck', title: "Enteric Protected", desc: "Coating protects compounds from stomach acid for targeted delivery." },
-      { icon: 'Heart', title: "Healthy Aging", desc: "Addresses two pillars of aging — gut health and mitochondrial function." },
+      { icon: 'RotateCcw', title: "Mitochondrial Renewal", desc: "Delivers 500 mg Urolithin A to support mitophagy and recycling of dysfunctional mitochondria. Supports cellular energy efficiency and resilience." },
+      { icon: 'Layers', title: "Gut Barrier Integrity", desc: "Tributyrin supplies bioavailable butyrate to support intestinal barrier structure and microbial balance. Supports the gut–mitochondria communication axis." },
     ],
     benefitsTimeline: [
       { time: "2 Weeks", items: ["Gut comfort improvements begin*", "Butyrate begins supporting intestinal lining*"] },
