@@ -85,8 +85,8 @@ export const LAYERS: LayerCard[] = [
       "A periodic protocol designed to support autophagy-related pathways, mitochondrial resilience, and exposure to senescence research compounds.",
     bullets: [
       "7-day protocol format, repeated monthly",
-      "Autophagy support: spermidine, trans-resveratrol, EGCG",
-      "Senescence research compounds: quercetin, fisetin",
+      "Autophagy: spermidine, trans-resveratrol, EGCG",
+      "Senescence research: quercetin, fisetin",
       "Mito resilience: NAC, PQQ, astaxanthin, Ca-AKG",
     ],
     entities: ["Autophagy", "Senescence", "Quercetin", "Fisetin", "Spermidine", "NAC", "PQQ", "Ca-AKG"],
