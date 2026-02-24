@@ -231,14 +231,14 @@ function ImageCarousel({ images, accent, lightMode }: { images: string[]; accent
         {images.map((src, i) => {
           const isBottle = isBottleImage(src);
           const cardBg = lightMode
-            ? 'transparent'
+            ? (isBottle ? '#f0f0ec' : 'transparent')
             : (isBottle
               ? `radial-gradient(ellipse at center 60%, ${glowColor}12 0%, ${glowColor}06 40%, rgba(15,23,42,0.95) 70%)`
               : 'rgba(255,255,255,0.03)');
           return (
             <div
               key={src}
-              className={`snap-start shrink-0 overflow-hidden relative ${lightMode ? 'rounded-2xl shadow-sm' : 'rounded-xl'}`}
+              className={`snap-start shrink-0 overflow-hidden relative ${lightMode ? 'rounded-lg' : 'rounded-lg'}`}
               style={{
                 width: lightMode ? '90%' : '85%',
                 maxWidth: '560px',
@@ -262,18 +262,6 @@ function ImageCarousel({ images, accent, lightMode }: { images: string[]; accent
             </div>
           );
         })}
-      </div>
-      <div className="flex gap-1.5 justify-center mt-2">
-        {images.map((_, i) => (
-          <div
-            key={i}
-            className={`h-[3px] rounded-full transition-all duration-300 ${
-              i === current
-                ? `w-5 ${lightMode ? 'bg-[#0b1120]/50' : 'bg-white/60'}`
-                : `w-1.5 ${lightMode ? 'bg-[#0b1120]/15' : 'bg-white/15'}`
-            }`}
-          />
-        ))}
       </div>
     </div>
   );
