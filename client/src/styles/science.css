@@ -6,7 +6,12 @@
     linear-gradient(180deg, #081221 0%, #060E1A 100%);
   color: rgba(244, 241, 234, 0.92);
   overflow-x: hidden;
-  word-break: break-word;
+}
+
+.ar-science *,
+.ar-science *::before,
+.ar-science *::after {
+  box-sizing: border-box;
 }
 
 .ar-science a {
@@ -22,11 +27,12 @@
   width: 100%;
   max-width: 1140px;
   margin: 0 auto;
-  padding: 0 18px;
+  padding: 0 16px;
+  overflow: hidden;
 }
 
 .ar-science .ar-hero {
-  padding: 88px 0 28px;
+  padding: 72px 0 20px;
   text-align: center;
 }
 
@@ -47,41 +53,43 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  margin: 0 0 14px;
+  gap: 10px;
+  margin: 0 0 12px;
   color: rgba(122, 246, 224, 0.92);
-  letter-spacing: 0.28em;
-  font-size: 12px;
+  letter-spacing: 0.20em;
+  font-size: 11px;
   text-transform: uppercase;
 }
 
 .ar-science .ar-eyebrowLine {
-  width: 56px;
+  width: 28px;
   height: 1px;
   background: rgba(122, 246, 224, 0.55);
+  flex-shrink: 0;
 }
 
 .ar-science h1 {
   margin: 0;
-  font-size: 44px;
-  line-height: 1.05;
-  letter-spacing: 0.08em;
+  font-size: 26px;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  overflow-wrap: break-word;
 }
 
 .ar-science .ar-subhead {
-  margin: 16px auto 0;
+  margin: 14px auto 0;
   max-width: 860px;
-  font-size: 18px;
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.6;
   color: rgba(244, 241, 234, 0.72);
 }
 
 .ar-science .ar-heroCtas {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-top: 22px;
+  gap: 10px;
+  margin-top: 20px;
   flex-wrap: wrap;
 }
 
@@ -89,14 +97,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 48px;
-  padding: 0 18px;
+  height: 42px;
+  padding: 0 14px;
   border-radius: 12px;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 11px;
   border: 1px solid rgba(244, 241, 234, 0.16);
   background: rgba(255, 255, 255, 0.02);
+  white-space: nowrap;
 }
 
 .ar-science .ar-btnPrimary {
@@ -114,36 +123,38 @@
 }
 
 .ar-science .ar-trustGrid {
-  margin: 28px auto 0;
+  margin: 24px auto 0;
   max-width: 980px;
   display: grid;
-  gap: 12px;
+  gap: 10px;
   grid-template-columns: 1fr;
 }
 
 .ar-science .ar-card {
-  border-radius: 18px;
+  border-radius: 16px;
   border: 1px solid rgba(244, 241, 234, 0.12);
   background: rgba(255, 255, 255, 0.02);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  min-width: 0;
+  overflow: hidden;
 }
 
 .ar-science .ar-trustCard {
-  padding: 16px 16px;
+  padding: 14px;
   text-align: left;
 }
 
 .ar-science .ar-trustTitle {
   margin: 0;
-  font-size: 13px;
-  letter-spacing: 0.16em;
+  font-size: 12px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(244, 241, 234, 0.92);
 }
 
 .ar-science .ar-trustDetail {
-  margin: 8px 0 0;
-  font-size: 14px;
+  margin: 6px 0 0;
+  font-size: 13px;
   line-height: 1.55;
   color: rgba(244, 241, 234, 0.68);
 }
@@ -153,13 +164,16 @@
   grid-template-columns: 1fr;
   gap: 18px;
   padding: 22px 0 96px;
+  min-width: 0;
+}
+
+.ar-science .ar-mainGrid > article {
+  min-width: 0;
+  overflow: hidden;
 }
 
 .ar-science .ar-toc {
-  border: 1px solid rgba(244, 241, 234, 0.10);
-  border-radius: 18px;
-  padding: 14px;
-  background: rgba(255, 255, 255, 0.02);
+  display: none;
 }
 
 .ar-science .ar-tocTitle {
@@ -186,9 +200,9 @@
 
 .ar-science .ar-tocMobilePills {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   overflow-x: auto;
-  padding: 12px 2px 4px;
+  padding: 10px 2px 4px;
   margin: 10px 0 0;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -201,12 +215,12 @@
 
 .ar-science .ar-pill {
   flex: 0 0 auto;
-  padding: 10px 14px;
+  padding: 8px 12px;
   border-radius: 999px;
   border: 1px solid rgba(244, 241, 234, 0.14);
   background: rgba(255, 255, 255, 0.02);
-  font-size: 12px;
-  letter-spacing: 0.18em;
+  font-size: 11px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(244, 241, 234, 0.72);
 }
@@ -218,29 +232,30 @@
 }
 
 .ar-science .ar-section {
-  padding: 56px 0;
+  padding: 36px 0;
   border-top: 1px solid rgba(244, 241, 234, 0.08);
 }
 
 .ar-science .ar-section:first-of-type {
   border-top: none;
-  padding-top: 24px;
+  padding-top: 20px;
 }
 
 .ar-science h2 {
   margin: 0;
-  font-size: 34px;
-  line-height: 1.10;
-  letter-spacing: 0.08em;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   text-align: center;
+  overflow-wrap: break-word;
 }
 
 .ar-science .ar-lede {
-  margin: 14px auto 0;
+  margin: 12px auto 0;
   max-width: 900px;
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 14px;
+  line-height: 1.7;
   color: rgba(244, 241, 234, 0.70);
   text-align: center;
 }
@@ -248,85 +263,86 @@
 .ar-science .ar-grid2 {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
-  margin-top: 22px;
+  gap: 12px;
+  margin-top: 18px;
 }
 
 .ar-science .ar-grid3 {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
-  margin-top: 22px;
+  gap: 12px;
+  margin-top: 18px;
 }
 
 .ar-science .ar-layerCard {
-  padding: 18px;
+  padding: 16px;
 }
 
 .ar-science .ar-tag {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   font-size: 11px;
   color: rgba(122, 246, 224, 0.90);
 }
 
 .ar-science .ar-layerTitle {
-  margin: 12px 0 0;
-  font-size: 22px;
-  letter-spacing: 0.10em;
+  margin: 10px 0 0;
+  font-size: 18px;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  overflow-wrap: break-word;
 }
 
 .ar-science .ar-layerBody {
-  margin: 10px 0 0;
-  font-size: 15px;
-  line-height: 1.7;
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.65;
   color: rgba(244, 241, 234, 0.68);
 }
 
 .ar-science .ar-list {
-  margin: 14px 0 0;
+  margin: 12px 0 0;
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .ar-science .ar-list li {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: flex-start;
   color: rgba(244, 241, 234, 0.78);
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 13px;
+  line-height: 1.55;
 }
 
 .ar-science .ar-check {
   width: 18px;
   height: 18px;
-  margin-top: 2px;
+  margin-top: 1px;
   border-radius: 6px;
   border: 1px solid rgba(122, 246, 224, 0.35);
   background: rgba(122, 246, 224, 0.10);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 auto;
+  flex: 0 0 18px;
 }
 
 .ar-science .ar-entities {
-  margin-top: 14px;
+  margin-top: 12px;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
 .ar-science .ar-chip {
-  font-size: 12px;
-  padding: 8px 10px;
+  font-size: 11px;
+  padding: 6px 8px;
   border-radius: 999px;
   border: 1px solid rgba(244, 241, 234, 0.12);
   background: rgba(255, 255, 255, 0.02);
@@ -335,88 +351,98 @@
 
 .ar-science .ar-layerCtas {
   display: flex;
-  gap: 10px;
-  margin-top: 16px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.ar-science .ar-layerCtas .ar-btn {
+  width: 100%;
 }
 
 .ar-science .ar-standardCard {
-  padding: 18px;
+  padding: 14px;
 }
 
 .ar-science .ar-standardTitle {
   margin: 0;
-  font-size: 14px;
-  letter-spacing: 0.16em;
+  font-size: 12px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .ar-science .ar-standardBody {
-  margin: 10px 0 0;
-  font-size: 14px;
-  line-height: 1.7;
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.65;
   color: rgba(244, 241, 234, 0.68);
 }
 
 .ar-science .ar-divider {
   height: 1px;
-  margin: 22px 0 0;
+  margin: 18px 0 0;
   background: rgba(244, 241, 234, 0.08);
 }
 
 .ar-science .ar-richBlock {
-  padding: 18px;
-  margin-top: 22px;
+  padding: 14px;
+  margin-top: 16px;
 }
 
 .ar-science h3 {
   margin: 0;
-  font-size: 18px;
-  letter-spacing: 0.10em;
+  font-size: 14px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  overflow-wrap: break-word;
 }
 
 .ar-science .ar-paras {
-  margin-top: 10px;
+  margin-top: 8px;
   display: grid;
-  gap: 10px;
+  gap: 8px;
   color: rgba(244, 241, 234, 0.70);
-  font-size: 15px;
-  line-height: 1.75;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.ar-science .ar-paras p {
+  overflow-wrap: break-word;
 }
 
 .ar-science .ar-tableWrap {
-  margin-top: 18px;
+  margin-top: 16px;
   overflow-x: auto;
-  border-radius: 18px;
+  border-radius: 16px;
   border: 1px solid rgba(244, 241, 234, 0.10);
   background: rgba(255, 255, 255, 0.02);
+  -webkit-overflow-scrolling: touch;
 }
 
 .ar-science table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 760px;
+  min-width: 600px;
 }
 
 .ar-science caption {
   text-align: left;
-  padding: 16px 16px 0;
+  padding: 14px 14px 0;
   color: rgba(244, 241, 234, 0.70);
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.6;
 }
 
 .ar-science th,
 .ar-science td {
-  padding: 12px 16px;
+  padding: 10px 12px;
   border-top: 1px solid rgba(244, 241, 234, 0.08);
   vertical-align: top;
 }
 
 .ar-science th {
-  font-size: 12px;
-  letter-spacing: 0.18em;
+  font-size: 11px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(122, 246, 224, 0.85);
   text-align: left;
@@ -424,44 +450,45 @@
 }
 
 .ar-science td {
-  font-size: 14px;
+  font-size: 13px;
   color: rgba(244, 241, 234, 0.74);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 .ar-science .ar-muted {
   color: rgba(244, 241, 234, 0.60);
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .ar-science .ar-dl {
-  margin-top: 18px;
+  margin-top: 16px;
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
 .ar-science dt {
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 12px;
   color: rgba(244, 241, 234, 0.90);
 }
 
 .ar-science dd {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   color: rgba(244, 241, 234, 0.70);
-  line-height: 1.7;
+  line-height: 1.65;
+  font-size: 14px;
 }
 
 .ar-science .ar-accordion {
-  margin-top: 18px;
+  margin-top: 16px;
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .ar-science .ar-accItem {
-  border-radius: 16px;
+  border-radius: 14px;
   border: 1px solid rgba(244, 241, 234, 0.10);
   background: rgba(255, 255, 255, 0.02);
 }
@@ -472,201 +499,49 @@
   background: transparent;
   color: rgba(244, 241, 234, 0.90);
   border: none;
-  padding: 14px 14px;
+  padding: 12px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .ar-science .ar-accPanel {
-  padding: 0 14px 14px;
+  padding: 0 12px 12px;
   color: rgba(244, 241, 234, 0.70);
-  line-height: 1.75;
-  font-size: 15px;
+  line-height: 1.7;
+  font-size: 14px;
 }
 
 .ar-science .ar-refList {
-  margin-top: 18px;
-  padding-left: 18px;
+  margin-top: 16px;
+  padding-left: 16px;
   display: grid;
   gap: 10px;
   color: rgba(244, 241, 234, 0.72);
-  line-height: 1.7;
-}
-
-.ar-science .ar-footnote {
-  margin: 28px 0 0;
-  padding: 16px;
-  border-radius: 18px;
-  border: 1px solid rgba(244, 241, 234, 0.10);
-  background: rgba(255, 255, 255, 0.02);
-  color: rgba(244, 241, 234, 0.62);
-  line-height: 1.75;
+  line-height: 1.65;
   font-size: 13px;
 }
 
-@media (max-width: 480px) {
-  .ar-science h1 {
-    font-size: 26px;
-    letter-spacing: 0.04em;
-  }
-
-  .ar-science h2 {
-    font-size: 22px;
-    letter-spacing: 0.04em;
-  }
-
-  .ar-science h3 {
-    font-size: 15px;
-    letter-spacing: 0.06em;
-  }
-
-  .ar-science .ar-subhead {
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  .ar-science .ar-hero {
-    padding: 72px 0 20px;
-  }
-
-  .ar-science .ar-container {
-    padding: 0 14px;
-  }
-
-  .ar-science .ar-layerTitle {
-    font-size: 17px;
-    letter-spacing: 0.06em;
-  }
-
-  .ar-science .ar-layerBody {
-    font-size: 14px;
-  }
-
-  .ar-science .ar-layerCard {
-    padding: 14px;
-  }
-
-  .ar-science .ar-standardCard {
-    padding: 14px;
-  }
-
-  .ar-science .ar-richBlock {
-    padding: 14px;
-  }
-
-  .ar-science .ar-btn {
-    height: 42px;
-    padding: 0 14px;
-    font-size: 11px;
-    letter-spacing: 0.16em;
-  }
-
-  .ar-science .ar-layerCtas {
-    flex-direction: column;
-  }
-
-  .ar-science .ar-layerCtas .ar-btn {
-    width: 100%;
-  }
-
-  .ar-science .ar-section {
-    padding: 36px 0;
-  }
-
-  .ar-science .ar-lede {
-    font-size: 14px;
-  }
-
-  .ar-science .ar-paras {
-    font-size: 14px;
-  }
-
-  .ar-science .ar-trustTitle {
-    font-size: 12px;
-    letter-spacing: 0.12em;
-  }
-
-  .ar-science .ar-trustDetail {
-    font-size: 13px;
-  }
-
-  .ar-science .ar-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.20em;
-    gap: 10px;
-  }
-
-  .ar-science .ar-eyebrowLine {
-    width: 32px;
-  }
-
-  .ar-science .ar-footnote {
-    padding: 12px;
-    font-size: 12px;
-  }
-
-  .ar-science .ar-accButton {
-    font-size: 14px;
-    padding: 12px;
-  }
-
-  .ar-science .ar-accPanel {
-    padding: 0 12px 12px;
-    font-size: 14px;
-  }
-
-  .ar-science .ar-chip {
-    font-size: 11px;
-    padding: 6px 8px;
-  }
-
-  .ar-science .ar-standardTitle {
-    font-size: 12px;
-    letter-spacing: 0.12em;
-  }
-
-  .ar-science .ar-standardBody {
-    font-size: 13px;
-  }
-
-  .ar-science caption {
-    font-size: 13px;
-    padding: 12px 12px 0;
-  }
-
-  .ar-science th {
-    font-size: 11px;
-    padding: 10px 12px;
-  }
-
-  .ar-science td {
-    font-size: 13px;
-    padding: 10px 12px;
-  }
-
-  .ar-science .ar-refList {
-    font-size: 13px;
-    padding-left: 14px;
-  }
-
-  .ar-science dt {
-    font-size: 12px;
-  }
-
-  .ar-science dd {
-    font-size: 14px;
-  }
+.ar-science .ar-refList a {
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 
-@media (max-width: 719px) {
-  .ar-science .ar-toc {
-    display: none;
-  }
+.ar-science .ar-footnote {
+  margin: 22px 0 0;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(244, 241, 234, 0.10);
+  background: rgba(255, 255, 255, 0.02);
+  color: rgba(244, 241, 234, 0.62);
+  line-height: 1.7;
+  font-size: 12px;
+}
 
+@media (min-width: 480px) {
   .ar-science h1 {
     font-size: 32px;
     letter-spacing: 0.05em;
@@ -677,17 +552,103 @@
     letter-spacing: 0.05em;
   }
 
+  .ar-science h3 {
+    font-size: 16px;
+    letter-spacing: 0.08em;
+  }
+
   .ar-science .ar-subhead {
     font-size: 16px;
   }
 
+  .ar-science .ar-lede {
+    font-size: 15px;
+  }
+
+  .ar-science .ar-container {
+    padding: 0 18px;
+  }
+
   .ar-science .ar-hero {
-    padding: 76px 0 24px;
+    padding: 80px 0 24px;
+  }
+
+  .ar-science .ar-section {
+    padding: 44px 0;
   }
 
   .ar-science .ar-layerTitle {
-    font-size: 18px;
+    font-size: 20px;
     letter-spacing: 0.06em;
+  }
+
+  .ar-science .ar-layerBody {
+    font-size: 15px;
+  }
+
+  .ar-science .ar-list li {
+    font-size: 14px;
+  }
+
+  .ar-science .ar-paras {
+    font-size: 15px;
+  }
+
+  .ar-science .ar-standardBody {
+    font-size: 14px;
+  }
+
+  .ar-science .ar-btn {
+    height: 44px;
+    padding: 0 16px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+  }
+
+  .ar-science .ar-layerCtas {
+    flex-direction: row;
+  }
+
+  .ar-science .ar-layerCtas .ar-btn {
+    width: auto;
+  }
+
+  .ar-science .ar-accButton {
+    font-size: 15px;
+    padding: 14px;
+  }
+
+  .ar-science .ar-accPanel {
+    font-size: 15px;
+    padding: 0 14px 14px;
+  }
+
+  .ar-science .ar-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    gap: 12px;
+  }
+
+  .ar-science .ar-eyebrowLine {
+    width: 44px;
+  }
+
+  .ar-science .ar-trustTitle {
+    font-size: 13px;
+    letter-spacing: 0.14em;
+  }
+
+  .ar-science .ar-trustDetail {
+    font-size: 14px;
+  }
+
+  .ar-science .ar-chip {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .ar-science dd {
+    font-size: 15px;
   }
 }
 
@@ -705,11 +666,122 @@
   }
 
   .ar-science h1 {
-    font-size: 56px;
+    font-size: 44px;
+    letter-spacing: 0.08em;
+  }
+
+  .ar-science h2 {
+    font-size: 34px;
+    letter-spacing: 0.08em;
+  }
+
+  .ar-science h3 {
+    font-size: 18px;
+    letter-spacing: 0.10em;
+  }
+
+  .ar-science .ar-subhead {
+    font-size: 18px;
+    line-height: 1.65;
+  }
+
+  .ar-science .ar-hero {
+    padding: 88px 0 28px;
+  }
+
+  .ar-science .ar-section {
+    padding: 56px 0;
+  }
+
+  .ar-science .ar-lede {
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  .ar-science .ar-layerCard {
+    padding: 18px;
+  }
+
+  .ar-science .ar-layerTitle {
+    font-size: 22px;
+    letter-spacing: 0.10em;
+  }
+
+  .ar-science .ar-standardCard {
+    padding: 18px;
+  }
+
+  .ar-science .ar-standardTitle {
+    font-size: 14px;
+    letter-spacing: 0.16em;
+  }
+
+  .ar-science .ar-richBlock {
+    padding: 18px;
+    margin-top: 22px;
+  }
+
+  .ar-science .ar-btn {
+    height: 48px;
+    padding: 0 18px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+  }
+
+  .ar-science .ar-card {
+    border-radius: 18px;
+  }
+
+  .ar-science .ar-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    gap: 14px;
+  }
+
+  .ar-science .ar-eyebrowLine {
+    width: 56px;
+  }
+
+  .ar-science .ar-paras {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .ar-science .ar-accButton {
+    font-size: 16px;
+  }
+
+  .ar-science .ar-accPanel {
+    font-size: 15px;
+  }
+
+  .ar-science .ar-footnote {
+    padding: 16px;
+    font-size: 13px;
+  }
+
+  .ar-science .ar-refList {
+    font-size: 14px;
+  }
+
+  .ar-science .ar-muted {
+    font-size: 13px;
+  }
+
+  .ar-science td {
+    font-size: 14px;
+  }
+
+  .ar-science caption {
+    font-size: 14px;
   }
 }
 
 @media (min-width: 980px) {
+  .ar-science h1 {
+    font-size: 56px;
+  }
+
   .ar-science .ar-mainGrid {
     grid-template-columns: 320px 1fr;
     align-items: start;
@@ -717,6 +789,11 @@
   }
 
   .ar-science .ar-toc {
+    display: block;
+    border: 1px solid rgba(244, 241, 234, 0.10);
+    border-radius: 18px;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.02);
     position: sticky;
     top: 96px;
   }
