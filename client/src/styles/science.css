@@ -6,6 +6,20 @@
     linear-gradient(180deg, #081221 0%, #060E1A 100%);
   color: rgba(244, 241, 234, 0.92);
   overflow-x: hidden;
+  position: relative;
+}
+
+.ar-science::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.30;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px;
+  mix-blend-mode: overlay;
 }
 
 .ar-science *,
@@ -43,13 +57,16 @@
   width: 56px;
   height: 56px;
   border-radius: 999px;
-  border: 1px solid rgba(244, 241, 234, 0.16);
+  border: 1px solid rgba(122, 246, 224, 0.18);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 18px;
-  background: rgba(255, 255, 255, 0.02);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+  background: radial-gradient(circle, rgba(122, 246, 224, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
+  box-shadow:
+    0 0 40px rgba(122, 246, 224, 0.08),
+    0 14px 40px rgba(0, 0, 0, 0.25),
+    inset 0 0 20px rgba(122, 246, 224, 0.04);
 }
 
 .ar-science .ar-eyebrow {
@@ -112,17 +129,27 @@
 }
 
 .ar-science .ar-btnPrimary {
-  background: rgba(122, 246, 224, 0.86);
+  background: linear-gradient(135deg, rgba(122, 246, 224, 0.90) 0%, rgba(100, 220, 200, 0.85) 100%);
   color: rgba(10, 18, 32, 0.95);
   border-color: rgba(122, 246, 224, 0.55);
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(122, 246, 224, 0.12), 0 2px 8px rgba(0, 0, 0, 0.20);
+  transition: transform 0.2s ease, box-shadow 0.25s ease, filter 0.2s ease;
 }
 
 .ar-science .ar-btnPrimary:hover {
-  filter: brightness(1.03);
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 0 28px rgba(122, 246, 224, 0.18), 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.ar-science .ar-btnGhost {
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
 .ar-science .ar-btnGhost:hover {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(244, 241, 234, 0.22);
 }
 
 .ar-science .ar-trustGrid {
@@ -135,11 +162,25 @@
 
 .ar-science .ar-card {
   border-radius: 16px;
-  border: 1px solid rgba(244, 241, 234, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(244, 241, 234, 0.08);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.012) 100%);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.05) inset,
+    0 20px 60px rgba(0, 0, 0, 0.30),
+    0 0 0 0.5px rgba(0, 0, 0, 0.20);
   min-width: 0;
   overflow: hidden;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.ar-science .ar-card:hover {
+  border-color: rgba(122, 246, 224, 0.14);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.06) inset,
+    0 24px 72px rgba(0, 0, 0, 0.35),
+    0 0 60px rgba(122, 246, 224, 0.03),
+    0 0 0 0.5px rgba(0, 0, 0, 0.20);
 }
 
 .ar-science .ar-trustCard {
@@ -196,6 +237,7 @@
   background: rgba(122, 246, 224, 0.10);
   border: 1px solid rgba(122, 246, 224, 0.22);
   color: rgba(244, 241, 234, 0.92);
+  box-shadow: 0 0 16px rgba(122, 246, 224, 0.06);
 }
 
 .ar-science .ar-tocMobilePills {
@@ -262,16 +304,37 @@
   background: rgba(122, 246, 224, 0.16);
   border-color: rgba(122, 246, 224, 0.28);
   color: rgba(244, 241, 234, 0.92);
+  box-shadow: 0 0 14px rgba(122, 246, 224, 0.10);
 }
 
 .ar-science .ar-section {
   padding: 36px 0;
-  border-top: 1px solid rgba(244, 241, 234, 0.08);
+  border-top: none;
+  position: relative;
+}
+
+.ar-science .ar-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 600px);
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(122, 246, 224, 0.12) 20%,
+    rgba(122, 246, 224, 0.22) 50%,
+    rgba(122, 246, 224, 0.12) 80%,
+    transparent 100%);
 }
 
 .ar-science .ar-section:first-of-type {
-  border-top: none;
   padding-top: 20px;
+}
+
+.ar-science .ar-section:first-of-type::before {
+  display: none;
 }
 
 .ar-science h2 {
@@ -282,6 +345,7 @@
   text-transform: uppercase;
   text-align: center;
   overflow-wrap: break-word;
+  text-shadow: 0 0 40px rgba(122, 246, 224, 0.08);
 }
 
 .ar-science .ar-lede {
@@ -358,12 +422,13 @@
   height: 18px;
   margin-top: 1px;
   border-radius: 6px;
-  border: 1px solid rgba(122, 246, 224, 0.35);
-  background: rgba(122, 246, 224, 0.10);
+  border: 1px solid rgba(122, 246, 224, 0.30);
+  background: linear-gradient(135deg, rgba(122, 246, 224, 0.14) 0%, rgba(122, 246, 224, 0.06) 100%);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 18px;
+  box-shadow: 0 0 10px rgba(122, 246, 224, 0.06);
 }
 
 .ar-science .ar-entities {
@@ -414,7 +479,12 @@
 .ar-science .ar-divider {
   height: 1px;
   margin: 18px 0 0;
-  background: rgba(244, 241, 234, 0.08);
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(122, 246, 224, 0.10) 30%,
+    rgba(244, 241, 234, 0.08) 50%,
+    rgba(122, 246, 224, 0.10) 70%,
+    transparent 100%);
 }
 
 .ar-science .ar-richBlock {
@@ -447,9 +517,10 @@
   margin-top: 16px;
   overflow-x: auto;
   border-radius: 16px;
-  border: 1px solid rgba(244, 241, 234, 0.10);
-  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(244, 241, 234, 0.08);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.008) 100%);
   -webkit-overflow-scrolling: touch;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.20);
 }
 
 .ar-science table {
@@ -522,8 +593,13 @@
 
 .ar-science .ar-accItem {
   border-radius: 14px;
-  border: 1px solid rgba(244, 241, 234, 0.10);
-  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(244, 241, 234, 0.08);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  transition: border-color 0.3s ease;
+}
+
+.ar-science .ar-accItem:hover {
+  border-color: rgba(122, 246, 224, 0.14);
 }
 
 .ar-science .ar-accButton {
@@ -567,11 +643,12 @@
   margin: 22px 0 0;
   padding: 12px;
   border-radius: 14px;
-  border: 1px solid rgba(244, 241, 234, 0.10);
-  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(244, 241, 234, 0.06);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.008) 100%);
   color: rgba(244, 241, 234, 0.62);
   line-height: 1.7;
   font-size: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 @media (min-width: 480px) {
@@ -823,12 +900,16 @@
 
   .ar-science .ar-toc {
     display: block;
-    border: 1px solid rgba(244, 241, 234, 0.10);
+    border: 1px solid rgba(244, 241, 234, 0.08);
     border-radius: 18px;
     padding: 14px;
-    background: rgba(255, 255, 255, 0.02);
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
     position: sticky;
     top: 96px;
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
+      0 16px 48px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
   }
 
   .ar-science .ar-tocMobilePills {
