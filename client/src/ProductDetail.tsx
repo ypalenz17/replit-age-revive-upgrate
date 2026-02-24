@@ -255,7 +255,7 @@ function ImageCarousel({ images, accent, lightMode }: { images: string[]; accent
                   src={src}
                   alt={`Product image ${i + 1}`}
                   loading={i === 0 ? 'eager' : 'lazy'}
-                  className={`w-full h-full relative z-[1] ${lightMode && isBottle ? 'object-cover scale-[1.6]' : lightMode ? 'object-cover' : isBottle ? 'object-contain p-6' : 'object-cover'}`}
+                  className={`w-full h-full relative z-[1] ${lightMode && isBottle ? 'object-cover scale-[1.15]' : lightMode ? 'object-cover' : isBottle ? 'object-contain p-6' : 'object-cover'}`}
                   data-testid={`carousel-image-${i}`}
                 />
               </div>
