@@ -513,7 +513,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
               <div className="space-y-4 lg:space-y-5">
                 <div className="space-y-1.5">
                   {slug === 'cellubiome' && (
-                    <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-sans font-bold uppercase tracking-[0.06em] bg-ar-teal text-ar-navy" data-testid="bestseller-badge">Bestseller</span>
+                    <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-sans font-semibold uppercase tracking-[0.06em] bg-white/[0.06] text-white/50 border border-white/[0.08]" data-testid="bestseller-badge">Bestseller</span>
                   )}
                   <div>
                     <span className="text-2xl font-sans font-semibold text-white">${data.priceOneTime.toFixed(2)}</span>
