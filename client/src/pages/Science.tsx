@@ -518,7 +518,7 @@ export default function SciencePage() {
                       daily pathway support, not transient stimulation.
                     </p>
                     <p className="ar-muted">
-                      Translation note: "Supports" is used in the dietary supplement sense. Individual response varies and
+                      "Supports" is used in the dietary supplement sense. Individual response varies and
                       depends on baseline biology, lifestyle, and consistency.
                     </p>
                   </div>
