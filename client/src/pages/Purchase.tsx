@@ -100,10 +100,10 @@ export default function Purchase() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 py-4 px-4 mt-1 -mx-1 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+        <div className="flex items-center gap-3 py-5 -mx-5 px-5 bg-white/[0.03] border-y border-white/[0.06]">
           <RotateCcw size={18} className="text-ar-teal shrink-0" />
-          <span className="text-[14px] text-white/80 font-sans flex-1">Save 10% on 3 Month Delivery</span>
-          <button className="text-[14px] font-sans font-bold text-white underline underline-offset-4 decoration-white/50 hover:decoration-white transition-colors" data-testid="upgrade-plan">Upgrade</button>
+          <span className="text-[14px] text-white/70 font-sans flex-1">Save 10% on 3 Month Delivery</span>
+          <button className="text-[14px] font-sans font-bold text-white underline underline-offset-4 decoration-2 hover:text-ar-teal hover:decoration-ar-teal transition-colors" data-testid="upgrade-plan">Upgrade</button>
         </div>
 
         <div className="py-6 border-b border-white/[0.06]">
