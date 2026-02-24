@@ -121,7 +121,7 @@ export const PRODUCT_DETAIL_DATA = {
   cellubiome: {
     name: "CELLUBIOME",
     tagline: "Gut–Mitochondria Axis",
-    subtitle: "Clinically studied Urolithin A and Tributyrin for mitochondrial renewal and gut barrier integrity.*",
+    subtitle: "Recycle damaged mitochondria. Reinforce gut barrier integrity. Two clinically studied compounds working together to restore cellular energy from the inside out.*",
     rating: 4.9,
     reviewCount: 623,
     form: "Enteric Capsules",

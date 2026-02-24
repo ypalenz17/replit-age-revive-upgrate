@@ -460,7 +460,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
           </div>
 
           <div className="lg:py-24 lg:pl-10 px-5 md:px-10 lg:px-0">
-            <div className="lg:sticky lg:top-20 space-y-4 lg:space-y-6 pb-8 lg:pb-0">
+            <div className="lg:sticky lg:top-20 space-y-4 lg:space-y-6 pt-6 lg:pt-0 pb-8 lg:pb-0">
               <div className="space-y-2 lg:space-y-3">
                 <p className="font-mono text-[10px] lg:text-[11px] uppercase tracking-[0.14em]" style={{ color: accentColor }}>{data.tagline}</p>
                 <h1 className="font-head font-normal tracking-[-0.04em] leading-[0.9] uppercase text-white" style={{ fontSize: 'clamp(1.8rem, 5vw, 3.5rem)' }}>
@@ -468,22 +468,33 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                 </h1>
                 <div className="flex items-center gap-3">
                   <div className="flex items-center gap-0.5">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={14} className={i < Math.floor(data.rating) ? 'text-amber-400 fill-amber-400' : 'text-white/20'} />
-                    ))}
+                    {[...Array(5)].map((_, i) => {
+                      const filled = i < Math.floor(data.rating);
+                      const partial = !filled && i < data.rating;
+                      return (
+                        <span key={i} className="relative inline-block" style={{ width: 14, height: 14 }}>
+                          <Star size={14} className="text-white/20 absolute inset-0" />
+                          {(filled || partial) && (
+                            <span className="absolute inset-0 overflow-hidden" style={{ width: filled ? '100%' : `${(data.rating % 1) * 100}%` }}>
+                              <Star size={14} className="text-amber-400 fill-amber-400" />
+                            </span>
+                          )}
+                        </span>
+                      );
+                    })}
                   </div>
                   <span className="text-[13px] text-white/50 font-sans">{data.rating} · {data.reviewCount.toLocaleString()} Reviews</span>
                 </div>
               </div>
 
-              <p className="text-[13px] lg:text-[15px] text-white/60 font-sans leading-relaxed max-w-md">
+              <p className="text-[14px] lg:text-[15px] text-white/55 font-sans leading-relaxed max-w-md">
                 {data.subtitle}
               </p>
 
               <div className="space-y-4 lg:space-y-5">
-                <div>
-                  <span className="text-3xl lg:text-4xl font-head font-normal tracking-tighter text-white">${data.priceSubscribe.toFixed(2)}</span>
-                  <span className="ml-2 text-sm text-white/35 line-through">${data.priceOneTime.toFixed(2)}</span>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl font-sans font-semibold text-white">${data.priceSubscribe.toFixed(2)}</span>
+                  <span className="text-sm text-white/30 font-sans line-through">${data.priceOneTime.toFixed(2)}</span>
                 </div>
 
                 <div className="text-[13px] text-white/45 font-sans leading-snug">
