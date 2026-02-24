@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, useLocation, Link } from 'wouter';
-import { ArrowLeft, ArrowRight, Plus, Minus, Check } from 'lucide-react';
+import { ArrowRight, Plus, Minus, RotateCcw, ShoppingBag } from 'lucide-react';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import { PRODUCT_DETAIL_DATA, PRODUCT_IMAGES } from '../productData';
 import { PRODUCTS } from '../productsData';
@@ -10,8 +10,9 @@ export default function Purchase() {
   const { slug } = useParams<{ slug: string }>();
   const [, navigate] = useLocation();
   const cart = useCart();
-  const [isSubscribe, setIsSubscribe] = useState(true);
   const [quantity, setQuantity] = useState(1);
+  const [promoCode, setPromoCode] = useState('');
+  const [promoApplied, setPromoApplied] = useState(false);
 
   const data = PRODUCT_DETAIL_DATA[slug as keyof typeof PRODUCT_DETAIL_DATA];
   if (!data) {
@@ -21,148 +22,163 @@ export default function Purchase() {
 
   const images = PRODUCT_IMAGES[slug as keyof typeof PRODUCT_IMAGES] || PRODUCT_IMAGES.cellunad;
   const productInfo = PRODUCTS.find((p) => p.slug === slug);
-  const currentPrice = isSubscribe ? data.priceSubscribe : data.priceOneTime;
+  const otherProducts = PRODUCTS.filter((p) => p.slug !== slug);
+  const price = data.priceSubscribe;
+  const total = price * quantity;
 
   const handleAddToCart = () => {
     cart.addItem({
-      slug,
+      slug: slug!,
       name: data.name,
       image: productInfo?.image || images[0],
-      price: currentPrice,
-      isSubscribe,
-      frequency: isSubscribe ? 'Delivered monthly' : 'One-time purchase',
+      price,
+      isSubscribe: true,
+      frequency: 'Delivered monthly',
     }, quantity);
   };
 
   return (
-    <div className="min-h-screen bg-[#0b1120] text-white font-sans antialiased">
-      <nav className="sticky top-0 z-50 bg-[#0b1120]/90 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-lg mx-auto px-5 py-4 flex items-center justify-between">
-          <button
-            onClick={() => navigate(`/product/${slug}`)}
-            className="flex items-center gap-2 text-white/60 hover:text-white transition-colors"
-            data-testid="purchase-back"
-          >
-            <ArrowLeft size={18} />
-            <span className="text-sm font-sans">Back</span>
-          </button>
+    <div className="min-h-screen bg-[#f5f5f0] text-[#0b1120] font-sans antialiased">
+      <nav className="sticky top-0 z-50 bg-[#f5f5f0] border-b border-black/[0.06]">
+        <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
           <Link href="/">
-            <img src={brandLogo} alt="AGE REVIVE" className="h-5 opacity-80" />
+            <img src={brandLogo} alt="AGE REVIVE" className="h-5 invert" />
           </Link>
-          <div className="w-16" />
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => navigate(`/product/${slug}`)}
+              className="relative flex items-center justify-center w-10 h-10 rounded-full bg-[#0b1120] text-white"
+              data-testid="purchase-cart-icon"
+            >
+              <ShoppingBag size={16} />
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-ar-teal text-[#0b1120] text-[10px] font-bold rounded-full flex items-center justify-center">{quantity}</span>
+            </button>
+          </div>
         </div>
       </nav>
 
-      <div className="max-w-lg mx-auto px-5 py-8 space-y-8">
-        <div className="flex gap-4 items-center">
-          <div className="w-20 h-20 rounded-xl overflow-hidden bg-white/[0.03] shrink-0">
-            <img
-              src={images[0]}
-              alt={data.name}
-              className="w-full h-full object-cover"
+      <div className="max-w-lg mx-auto px-5 pb-40">
+        <h1 className="text-[28px] font-sans font-normal text-[#0b1120] pt-6 pb-6" data-testid="cart-title">Your Cart</h1>
+
+        <div className="border-b border-black/[0.08] pb-6">
+          <div className="flex gap-4">
+            <div className="w-16 h-16 rounded-lg overflow-hidden bg-white shrink-0">
+              <img
+                src={images[0]}
+                alt={data.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex justify-between items-start">
+                <div>
+                  <h2 className="text-[16px] font-sans font-semibold text-[#0b1120]" data-testid="purchase-product-name">{data.name}</h2>
+                  <p className="text-[13px] text-[#0b1120]/50 mt-0.5">Delivered monthly</p>
+                </div>
+                <span className="text-[16px] font-sans font-semibold text-[#0b1120]">${price.toFixed(2)}</span>
+              </div>
+              <div className="flex items-center gap-3 mt-3">
+                <div className="inline-flex items-center border border-black/[0.12] rounded-full">
+                  <button
+                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                    className="w-8 h-8 flex items-center justify-center text-[#0b1120]/60 hover:text-[#0b1120] transition-colors"
+                    data-testid="qty-minus"
+                  >
+                    <Minus size={14} />
+                  </button>
+                  <span className="w-6 text-center text-[14px] font-medium text-[#0b1120]">{quantity}</span>
+                  <button
+                    onClick={() => setQuantity(quantity + 1)}
+                    className="w-8 h-8 flex items-center justify-center text-[#0b1120]/60 hover:text-[#0b1120] transition-colors"
+                    data-testid="qty-plus"
+                  >
+                    <Plus size={14} />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3 py-4 border-b border-black/[0.08]">
+          <RotateCcw size={16} className="text-[#0b1120]/40 shrink-0" />
+          <span className="text-[13px] text-[#0b1120]/60 flex-1">Save 10% on 3 Month Delivery</span>
+          <button className="text-[13px] font-semibold text-[#0b1120] underline underline-offset-2" data-testid="upgrade-plan">Upgrade</button>
+        </div>
+
+        <div className="py-6 border-b border-black/[0.08]">
+          <p className="text-[14px] font-semibold text-[#0b1120] mb-3">Promo Code</p>
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={promoCode}
+              onChange={(e) => setPromoCode(e.target.value)}
+              placeholder="Enter Promo Code"
+              className="flex-1 px-4 py-3 border border-black/[0.12] rounded-lg bg-white text-[14px] text-[#0b1120] placeholder:text-[#0b1120]/30 focus:outline-none focus:border-[#0b1120]/30 transition-colors"
+              data-testid="promo-input"
             />
-          </div>
-          <div>
-            <h1 className="font-head font-normal text-xl tracking-tight uppercase text-white" data-testid="purchase-product-name">
-              {data.name}
-            </h1>
-            <p className="text-sm text-white/40 mt-0.5">{data.supplyLabel}</p>
-          </div>
-        </div>
-
-        <div className="space-y-3">
-          <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/40 font-bold">Choose your plan</p>
-
-          <button
-            onClick={() => setIsSubscribe(true)}
-            className={`w-full p-4 border rounded-xl text-left transition-all flex justify-between items-center gap-3 ${isSubscribe ? 'border-ar-teal bg-ar-teal/[0.08]' : 'border-white/10 hover:border-white/20'}`}
-            data-testid="option-subscribe"
-          >
-            <div className="flex items-center gap-3 flex-1">
-              <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${isSubscribe ? 'border-ar-teal bg-ar-teal' : 'border-white/20'}`}>
-                {isSubscribe && <Check size={12} className="text-ar-navy" />}
-              </div>
-              <div>
-                <p className="font-mono text-[11px] font-bold uppercase tracking-[0.08em] text-white">Subscribe & Save 15%</p>
-                <p className="text-xs mt-0.5 text-white/40">Ships monthly. Cancel anytime.</p>
-              </div>
-            </div>
-            <div className="text-right shrink-0">
-              <p className="text-lg font-head font-normal tracking-tight text-white">${data.priceSubscribe.toFixed(2)}</p>
-              <p className="text-[10px] text-white/30 line-through">${data.priceOneTime.toFixed(2)}</p>
-            </div>
-          </button>
-
-          <button
-            onClick={() => setIsSubscribe(false)}
-            className={`w-full p-4 border rounded-xl text-left transition-all flex justify-between items-center gap-3 ${!isSubscribe ? 'border-ar-teal bg-ar-teal/[0.08]' : 'border-white/10 hover:border-white/20'}`}
-            data-testid="option-onetime"
-          >
-            <div className="flex items-center gap-3 flex-1">
-              <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-all ${!isSubscribe ? 'border-ar-teal bg-ar-teal' : 'border-white/20'}`}>
-                {!isSubscribe && <Check size={12} className="text-ar-navy" />}
-              </div>
-              <div>
-                <p className="font-mono text-[11px] font-bold uppercase tracking-[0.08em] text-white">One-Time Purchase</p>
-                <p className="text-xs mt-0.5 text-white/40">No commitment.</p>
-              </div>
-            </div>
-            <div className="text-right shrink-0">
-              <p className="text-lg font-head font-normal tracking-tight text-white">${data.priceOneTime.toFixed(2)}</p>
-            </div>
-          </button>
-        </div>
-
-        <div className="flex items-center justify-between py-3 border-t border-b border-white/[0.06]">
-          <span className="font-mono text-[10px] uppercase font-bold tracking-[0.10em] text-white/40">Quantity</span>
-          <div className="flex items-center gap-5 bg-white/5 px-5 py-2 rounded-full">
             <button
-              onClick={() => setQuantity(Math.max(1, quantity - 1))}
-              className="p-1 hover:opacity-70 transition-colors min-w-[30px] min-h-[30px] flex items-center justify-center text-white"
-              data-testid="qty-minus"
+              onClick={() => { if (promoCode.trim()) setPromoApplied(true); }}
+              className="px-5 py-3 bg-[#0b1120] text-white rounded-lg text-[14px] font-semibold hover:bg-[#0b1120]/90 transition-colors"
+              data-testid="promo-apply"
             >
-              <Minus size={16} />
-            </button>
-            <span className="font-mono font-bold text-lg w-5 text-center text-white">{quantity}</span>
-            <button
-              onClick={() => setQuantity(quantity + 1)}
-              className="p-1 hover:opacity-70 transition-colors min-w-[30px] min-h-[30px] flex items-center justify-center text-white"
-              data-testid="qty-plus"
-            >
-              <Plus size={16} />
+              Apply
             </button>
           </div>
-        </div>
-
-        <div className="space-y-2">
-          <div className="flex justify-between text-sm">
-            <span className="text-white/50">Subtotal</span>
-            <span className="text-white font-head tracking-tight">${(currentPrice * quantity).toFixed(2)}</span>
-          </div>
-          {isSubscribe && (
-            <div className="flex justify-between text-sm">
-              <span className="text-ar-teal/70">You save</span>
-              <span className="text-ar-teal font-head tracking-tight">-${((data.priceOneTime - data.priceSubscribe) * quantity).toFixed(2)}</span>
-            </div>
+          {promoApplied && (
+            <p className="text-[12px] text-ar-teal mt-2">Promo code applied!</p>
           )}
-          <div className="flex justify-between text-sm pt-2 border-t border-white/[0.06]">
-            <span className="text-white font-medium">Total</span>
-            <span className="text-white font-head text-xl tracking-tight">${(currentPrice * quantity).toFixed(2)}</span>
-          </div>
         </div>
 
-        <button
-          onClick={handleAddToCart}
-          className="w-full py-4 bg-ar-teal text-ar-navy rounded-xl font-mono text-[12px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]"
-          style={{ boxShadow: '0 0 20px rgba(45,212,191,0.15)' }}
-          data-testid="add-to-cart"
-        >
-          Add to Cart <ArrowRight size={14} />
-        </button>
+        <div className="py-6">
+          <p className="text-[14px] font-semibold text-[#0b1120] mb-4">You Might Also Like:</p>
+          <div className="flex gap-3 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none' }}>
+            {otherProducts.map((p) => {
+              const pData = PRODUCT_DETAIL_DATA[p.slug as keyof typeof PRODUCT_DETAIL_DATA];
+              return (
+                <Link
+                  key={p.slug}
+                  href={`/product/${p.slug}`}
+                  className="shrink-0 w-36 rounded-lg border border-black/[0.08] bg-white overflow-hidden hover:border-black/[0.15] transition-colors"
+                  data-testid={`suggest-${p.slug}`}
+                >
+                  <div className="aspect-square bg-[#f0f0ec] flex items-center justify-center p-3">
+                    <img src={p.image} alt={p.name} className="w-full h-full object-contain" />
+                  </div>
+                  <div className="p-3">
+                    <p className="text-[12px] font-semibold text-[#0b1120] truncate">{p.name}</p>
+                    <p className="text-[11px] text-[#0b1120]/40 mt-0.5">{pData ? `$${pData.priceSubscribe.toFixed(2)}` : ''}</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </div>
 
-        <p className="text-center text-[12px] text-white/25 font-sans">
-          Free US shipping · 30-day risk-free guarantee
-        </p>
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#f5f5f0] border-t border-black/[0.08]">
+        <div className="max-w-lg mx-auto px-5 py-4 space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-[15px] font-semibold text-[#0b1120]">Total</span>
+            <span className="text-[20px] font-semibold text-[#0b1120]">${total.toFixed(2)}</span>
+          </div>
+          <div className="flex gap-3">
+            <button
+              className="flex-1 py-3.5 bg-black text-white rounded-full text-[14px] font-semibold flex items-center justify-center gap-2 hover:bg-black/90 transition-colors min-h-[48px]"
+              data-testid="apple-pay"
+            >
+              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+              Pay
+            </button>
+            <button
+              onClick={handleAddToCart}
+              className="flex-1 py-3.5 bg-ar-teal text-[#0b1120] rounded-full text-[14px] font-semibold flex items-center justify-center gap-2 hover:bg-ar-teal/90 transition-colors min-h-[48px]"
+              data-testid="checkout"
+            >
+              Checkout
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
