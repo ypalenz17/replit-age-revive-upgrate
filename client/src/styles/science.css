@@ -202,11 +202,15 @@
   display: flex;
   gap: 8px;
   overflow-x: auto;
-  padding: 10px 16px 4px;
-  margin: 10px -16px 0;
+  padding: 10px 0 4px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+.ar-science .ar-tocMobilePills::after {
+  content: "";
+  flex: 0 0 1px;
 }
 
 .ar-science .ar-tocMobilePills::-webkit-scrollbar {
