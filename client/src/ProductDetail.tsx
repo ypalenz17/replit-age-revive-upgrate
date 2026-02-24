@@ -29,7 +29,8 @@ import {
   Flame,
   Star,
   BadgeCheck,
-  Timer
+  Timer,
+  ZoomIn
 } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -197,9 +198,107 @@ function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () =>
   );
 }
 
+function ImageLightbox({ images, startIndex, onClose }: { images: string[]; startIndex: number; onClose: () => void }) {
+  const [idx, setIdx] = useState(startIndex);
+  const [scale, setScale] = useState(1);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [dragging, setDragging] = useState(false);
+  const dragStart = useRef({ x: 0, y: 0, px: 0, py: 0 });
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowRight') { setIdx(i => Math.min(i + 1, images.length - 1)); resetZoom(); }
+      if (e.key === 'ArrowLeft') { setIdx(i => Math.max(i - 1, 0)); resetZoom(); }
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
+  }, [images.length, onClose]);
+
+  const resetZoom = () => { setScale(1); setPos({ x: 0, y: 0 }); };
+
+  const toggleZoom = (e: React.MouseEvent) => {
+    if (scale > 1) { resetZoom(); return; }
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * -200;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -200;
+    setScale(2.5);
+    setPos({ x, y });
+  };
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (scale <= 1) return;
+    setDragging(true);
+    dragStart.current = { x: e.clientX, y: e.clientY, px: pos.x, py: pos.y };
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+  };
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!dragging) return;
+    setPos({
+      x: dragStart.current.px + (e.clientX - dragStart.current.x),
+      y: dragStart.current.py + (e.clientY - dragStart.current.y),
+    });
+  };
+  const onPointerUp = () => setDragging(false);
+
+  const goTo = (newIdx: number) => { setIdx(newIdx); resetZoom(); };
+
+  return (
+    <div className="fixed inset-0 z-[9999] bg-black/95 flex flex-col" data-testid="lightbox">
+      <div className="flex items-center justify-between p-4">
+        <span className="font-mono text-[11px] text-white/40 uppercase tracking-[0.10em]">{idx + 1} / {images.length}</span>
+        <button onClick={onClose} className="w-10 h-10 flex items-center justify-center text-white/60 hover:text-white transition-colors" data-testid="lightbox-close">
+          <X size={22} />
+        </button>
+      </div>
+
+      <div className="flex-1 flex items-center justify-center relative overflow-hidden px-4">
+        {idx > 0 && (
+          <button onClick={() => goTo(idx - 1)} className="absolute left-3 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all" data-testid="lightbox-prev">
+            <ChevronLeft size={20} />
+          </button>
+        )}
+
+        <div
+          className="max-w-4xl w-full h-full flex items-center justify-center"
+          onClick={toggleZoom}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          style={{ cursor: scale > 1 ? 'grab' : 'zoom-in', touchAction: 'none' }}
+        >
+          <img
+            src={images[idx]}
+            alt={`Product image ${idx + 1}`}
+            className="max-w-full max-h-[80vh] object-contain select-none transition-transform duration-200"
+            style={{ transform: `scale(${scale}) translate(${pos.x / scale}px, ${pos.y / scale}px)` }}
+            draggable={false}
+          />
+        </div>
+
+        {idx < images.length - 1 && (
+          <button onClick={() => goTo(idx + 1)} className="absolute right-3 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all" data-testid="lightbox-next">
+            <ChevronRight size={20} />
+          </button>
+        )}
+      </div>
+
+      <div className="flex gap-2 justify-center p-4">
+        {images.map((src, i) => (
+          <button key={i} onClick={() => goTo(i)} className={`w-14 h-10 rounded overflow-hidden border-2 transition-all ${i === idx ? 'border-white/60' : 'border-transparent opacity-40 hover:opacity-70'}`} data-testid={`lightbox-thumb-${i}`}>
+            <img src={src} alt="" className="w-full h-full object-cover" />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ImageCarousel({ images, accent, lightMode }: { images: string[]; accent?: string; lightMode?: boolean }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const glowColor = accent || '#2dd4bf';
 
   useEffect(() => {
@@ -221,49 +320,59 @@ function ImageCarousel({ images, accent, lightMode }: { images: string[]; accent
   };
 
   return (
-    <div className="relative w-full">
-      <div
-        ref={scrollRef}
-        className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-0 pl-5 md:pl-0"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
-        data-testid="carousel-scroll"
-      >
-        {images.map((src, i) => {
-          const isBottle = isBottleImage(src);
-          const cardBg = lightMode
-            ? (isBottle ? '#f0f0ec' : 'transparent')
-            : (isBottle
-              ? `radial-gradient(ellipse at center 60%, ${glowColor}12 0%, ${glowColor}06 40%, rgba(15,23,42,0.95) 70%)`
-              : 'rgba(255,255,255,0.03)');
-          return (
-            <div
-              key={src}
-              className={`snap-start shrink-0 overflow-hidden relative ${lightMode ? 'rounded-lg' : 'rounded-lg'}`}
-              style={{
-                width: lightMode ? '90%' : '85%',
-                maxWidth: '560px',
-                background: cardBg,
-              }}
-            >
-              <div className="aspect-[4/3] w-full relative overflow-hidden">
-                {isBottle && !lightMode && (
-                  <div className="absolute inset-0 pointer-events-none" style={{
-                    background: `radial-gradient(circle at 50% 55%, ${glowColor}15 0%, transparent 60%)`,
-                  }} />
-                )}
-                <img
-                  src={src}
-                  alt={`Product image ${i + 1}`}
-                  loading={i === 0 ? 'eager' : 'lazy'}
-                  className={`w-full h-full relative z-[1] ${lightMode && isBottle ? 'object-cover scale-[1.15] mix-blend-multiply' : lightMode ? 'object-cover' : isBottle ? 'object-contain p-6' : 'object-cover'}`}
-                  data-testid={`carousel-image-${i}`}
-                />
+    <>
+      {lightboxIndex !== null && (
+        <ImageLightbox images={images} startIndex={lightboxIndex} onClose={() => setLightboxIndex(null)} />
+      )}
+      <div className="relative w-full">
+        <div
+          ref={scrollRef}
+          className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-0 pl-5 md:pl-0"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+          data-testid="carousel-scroll"
+        >
+          {images.map((src, i) => {
+            const isBottle = isBottleImage(src);
+            const cardBg = lightMode
+              ? (isBottle ? '#f0f0ec' : 'transparent')
+              : (isBottle
+                ? `radial-gradient(ellipse at center 60%, ${glowColor}12 0%, ${glowColor}06 40%, rgba(15,23,42,0.95) 70%)`
+                : 'rgba(255,255,255,0.03)');
+            return (
+              <div
+                key={src}
+                className="snap-start shrink-0 overflow-hidden relative rounded-lg cursor-pointer group"
+                style={{
+                  width: lightMode ? '90%' : '85%',
+                  maxWidth: '560px',
+                  background: cardBg,
+                }}
+                onClick={() => setLightboxIndex(i)}
+                data-testid={`carousel-card-${i}`}
+              >
+                <div className="aspect-[4/3] w-full relative overflow-hidden">
+                  {isBottle && !lightMode && (
+                    <div className="absolute inset-0 pointer-events-none" style={{
+                      background: `radial-gradient(circle at 50% 55%, ${glowColor}15 0%, transparent 60%)`,
+                    }} />
+                  )}
+                  <img
+                    src={src}
+                    alt={`Product image ${i + 1}`}
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                    className={`w-full h-full relative z-[1] ${lightMode && isBottle ? 'object-cover scale-[1.15] mix-blend-multiply' : lightMode ? 'object-cover' : isBottle ? 'object-contain p-6' : 'object-cover'}`}
+                    data-testid={`carousel-image-${i}`}
+                  />
+                  <div className={`absolute inset-0 z-[2] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity ${lightMode ? 'bg-black/10' : 'bg-black/20'}`}>
+                    <ZoomIn size={24} className="text-white drop-shadow-lg" />
+                  </div>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
