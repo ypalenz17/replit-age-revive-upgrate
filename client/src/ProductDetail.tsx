@@ -654,9 +654,9 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
             <div className={`px-5 md:px-10 lg:px-[60px] ${hasMicroProof ? 'pt-[72px] pb-[88px] md:pt-24 md:pb-[120px]' : 'py-20 md:py-24'}`}>
               <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                  <div className="space-y-8">
+                  <div className="space-y-8 text-center lg:text-left">
                     <div className="space-y-3">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-3 justify-center lg:justify-start">
                         <div className="h-[1px] w-6" style={{ background: `${mineralTeal2}50` }} />
                         <span className="font-mono text-[9px] uppercase tracking-[0.22em]" style={{ color: `${mineralTeal2}90` }}>The Science</span>
                         <div className="h-[1px] w-6" style={{ background: `${mineralTeal2}50` }} />
@@ -669,7 +669,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                         {sci.headline}
                       </h2>
                     </div>
-                    <div className="space-y-5 max-w-[640px]">
+                    <div className="space-y-5 max-w-[640px] mx-auto lg:mx-0">
                       {sci.paragraphs.map((p: string, i: number) => (
                         <p
                           key={i}
