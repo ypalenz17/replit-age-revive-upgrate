@@ -458,15 +458,9 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
               <div className="hidden lg:block px-5 md:px-8">
                 <ImageCarousel images={images} accent={data.accent} lightMode />
               </div>
-              <div className="lg:hidden px-4 pt-3 pb-2">
-                <div
-                  className="rounded-2xl border border-white/[0.10] overflow-hidden"
-                  style={{
-                    background: `linear-gradient(165deg, rgba(15,23,42,0.97) 0%, rgba(11,17,32,1) 50%, rgba(8,12,25,1) 100%)`,
-                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.3), 0 4px 24px rgba(0,0,0,0.3)',
-                  }}
-                >
-                  <ImageCarousel images={images} accent={data.accent} />
+              <div className="lg:hidden">
+                <div className="bg-[#f0f0ec] py-4 px-5 md:px-8">
+                  <ImageCarousel images={images} accent={data.accent} lightMode />
                 </div>
               </div>
             </div>
