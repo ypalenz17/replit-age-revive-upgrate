@@ -161,12 +161,13 @@ export const PRODUCT_DETAIL_DATA = {
     },
     benefitSectionOverride: {
       eyebrow: "Biological Function",
-      headline: "Signal Stability Layer",
-      subhead: "Restores mitochondrial recycling and gut barrier resilience to stabilize internal signaling.",
+      headlinePrimary: "Signal Stability",
+      headlineSecondary: "Layer",
+      subhead: "Supports mitochondrial renewal and gut barrier resilience to preserve internal signaling balance.",
     },
     benefitHighlights: [
-      { icon: 'RotateCcw', title: "Mitochondrial Renewal", desc: "Delivers 500 mg Urolithin A to support mitophagy and recycling of dysfunctional mitochondria. Supports cellular energy efficiency and resilience." },
-      { icon: 'Layers', title: "Gut Barrier Integrity", desc: "Tributyrin supplies bioavailable butyrate to support intestinal barrier structure and microbial balance. Supports the gut–mitochondria communication axis." },
+      { icon: 'RotateCcw', title: "Mitochondrial Renewal", desc: "500 mg Urolithin A supports mitophagy and the renewal of aging mitochondria. Sustains cellular energy efficiency over time." },
+      { icon: 'Layers', title: "Gut Barrier Integrity", desc: "Enteric Tributyrin delivers bioavailable butyrate to reinforce intestinal barrier integrity. Supports microbial balance and long-term signaling stability." },
     ],
     benefitsTimeline: [
       { time: "2 Weeks", items: ["Gut comfort improvements begin*", "Butyrate begins supporting intestinal lining*"] },

@@ -1,0 +1,117 @@
+ou are refining an existing React (Vite + Tailwind) component.
+
+Do NOT refactor structure.
+Do NOT remove the sticky price bar.
+Do NOT remove the icons.
+Do NOT remove the ghost background numbers (01 / 02).
+Do NOT change layout hierarchy.
+
+You are only refining typography, spacing, color tone, and copy.
+
+This is an ultra-premium modern longevity brand.
+No glow. No neon. No SaaS dashboard look.
+
+Update the section positioning
+
+Keep the section label “Biological Function” but make it quieter:
+
+Smaller
+
+Increased letter spacing
+
+Lower contrast
+
+Change the main header hierarchy so:
+
+“SIGNAL STABILITY” is dominant
+
+“Layer” is smaller and lighter beneath it
+
+They should not feel equal weight.
+
+Replace the subline with:
+
+Supports mitochondrial renewal and gut barrier resilience to preserve internal signaling balance.
+
+Keep it to one sentence.
+
+Increase vertical spacing between the subline and the first card. Premium brands breathe.
+
+Refine card copy
+
+Card 1 body:
+
+500 mg Urolithin A supports mitophagy and the renewal of aging mitochondria.
+Sustains cellular energy efficiency over time.
+
+Card 2 body:
+
+Enteric Tributyrin delivers bioavailable butyrate to reinforce intestinal barrier integrity.
+Supports microbial balance and long-term signaling stability.
+
+Keep sentences short. No extra filler language.
+
+Upgrade the visual tone of the section
+
+Make the section background slightly deeper navy than the previous section.
+
+Add subtle separation at the top so this feels like entering a new layer.
+
+Reduce border opacity on cards.
+
+Remove any heavy shadow.
+
+Add very subtle internal vertical gradient to the cards so they feel layered, not flat.
+
+Reduce teal saturation slightly so it feels mineral, not neon.
+
+This should feel calm and architectural.
+
+Improve card hierarchy
+
+Keep:
+
+Ghost 01 / 02 background numbers
+
+Icons
+
+Remove redundancy if there is a small visible “01” next to the icon.
+The ghost number is enough.
+
+Increase internal padding inside the cards.
+Slightly tighten body line-height.
+
+Cards should feel like biological layers floating in depth, not clickable ecommerce tiles.
+
+Refine sticky price bar
+
+Keep structure intact.
+
+When overlapping dark sections:
+
+Darken the background slightly
+
+Add subtle blur
+
+Add a soft top border
+
+It should feel like a floating control panel, not a Shopify footer.
+
+Reduce button saturation slightly.
+Keep CTA text unchanged.
+
+Goal:
+
+This section must feel like ultra-premium modern longevity.
+
+Calm.
+Confident.
+Timeless.
+Biological.
+Architectural.
+
+It should feel like stepping into a longevity system chamber — not scrolling a supplement page.
+
+Do not add animations.
+Do not redesign layout.
+Only refine

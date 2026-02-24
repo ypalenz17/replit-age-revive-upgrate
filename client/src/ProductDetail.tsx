@@ -424,19 +424,19 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
     <div ref={containerRef} className="min-h-screen bg-[#0b1120] text-white selection:bg-teal-500/30 selection:text-white font-sans antialiased">
       <ModalFacts isOpen={isFactsOpen} onClose={() => setIsFactsOpen(false)} data={data} />
 
-      <div className={`fixed bottom-0 left-0 w-full z-[110] bg-white/95 backdrop-blur-md text-[#0b1120] border-t border-black/[0.06] py-3 px-5 transition-transform duration-500 transform shadow-[0_-4px_20px_rgba(0,0,0,0.15)] ${showSticky ? 'translate-y-0' : 'translate-y-full'}`}>
+      <div className={`fixed bottom-0 left-0 w-full z-[110] backdrop-blur-xl py-3 px-5 transition-transform duration-500 transform ${showSticky ? 'translate-y-0' : 'translate-y-full'}`} style={{ background: 'rgba(245,242,236,0.97)', borderTop: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 -2px 16px rgba(0,0,0,0.08)' }}>
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="hidden sm:flex items-center gap-3">
-            <h4 className="text-sm font-head font-normal tracking-tight uppercase leading-none">{data.name}</h4>
-            <span className="text-xs text-black/40">|</span>
-            <span className="text-sm font-head font-normal tracking-tighter">${data.priceSubscribe.toFixed(2)}</span>
+            <h4 className="text-sm font-head font-normal tracking-tight uppercase leading-none text-[#0b1120]">{data.name}</h4>
+            <span className="text-xs text-black/30">|</span>
+            <span className="text-sm font-head font-normal tracking-tighter text-[#0b1120]">${data.priceSubscribe.toFixed(2)}</span>
           </div>
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <div className="flex-1 sm:hidden text-left">
-              <span className="text-lg font-head font-normal tracking-tighter">${data.priceSubscribe.toFixed(2)}</span>
+              <span className="text-lg font-head font-normal tracking-tighter text-[#0b1120]">${data.priceSubscribe.toFixed(2)}</span>
             </div>
-            <button onClick={() => navigate(`/product/${slug}/purchase`)} className="flex-1 sm:flex-none py-3 px-8 bg-ar-teal text-ar-navy rounded-lg font-mono text-[11px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all min-h-[44px]" data-testid="sticky-cta">
-              Start Now
+            <button onClick={() => navigate(`/product/${slug}/purchase`)} className="flex-1 sm:flex-none py-3 px-8 rounded-lg font-mono text-[11px] font-bold uppercase tracking-[0.08em] transition-all min-h-[44px] active:scale-[0.98]" style={{ background: '#1fb8ac', color: '#0b1120' }} data-testid="sticky-cta">
+              Get {data.name}
             </button>
           </div>
         </div>
@@ -568,22 +568,40 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
         const override = (data as any).benefitSectionOverride;
         const hasOverride = !!override;
         const eyebrow = hasOverride ? override.eyebrow : "Key Benefits";
-        const headline = hasOverride ? override.headline : "What it does";
         const subhead = hasOverride ? override.subhead : null;
         const isCompact = data.benefitHighlights.length <= 2;
+        const mineralTeal = hasOverride ? '#1fb8ac' : accentColor;
 
         return (
-          <section className="pdp-reveal relative" style={{ background: hasOverride ? '#0A1626' : undefined }}>
+          <section className="pdp-reveal relative" style={{ background: hasOverride ? '#081422' : undefined }}>
             {hasOverride && (
-              <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#0b1120] to-transparent z-[1]" />
+              <div className="absolute top-0 left-0 right-0 h-32 z-[1]" style={{ background: 'linear-gradient(to bottom, #0b1120 0%, transparent 100%)' }} />
             )}
-            <div className="relative z-[2] py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
-              <div className="max-w-7xl mx-auto space-y-14">
-                <div className="text-center space-y-4">
-                  <SectionLabel label={eyebrow} color={accentColor} />
-                  <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>{headline}</h2>
+            {hasOverride && (
+              <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(244,241,234,0.06)' }} />
+            )}
+            <div className="relative z-[2] py-24 md:py-32 px-5 md:px-10 lg:px-[60px]">
+              <div className="max-w-7xl mx-auto">
+                <div className="text-center space-y-5 mb-20">
+                  <div className="flex items-center gap-3 justify-center">
+                    <div className="h-[1px] w-6" style={{ background: `${mineralTeal}50` }} />
+                    <span className="font-mono text-[9px] uppercase tracking-[0.22em]" style={{ color: `${mineralTeal}90` }}>{eyebrow}</span>
+                    <div className="h-[1px] w-6" style={{ background: `${mineralTeal}50` }} />
+                  </div>
+                  {hasOverride ? (
+                    <div>
+                      <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-[#F4F1EA] leading-[0.9]" style={{ fontSize: 'clamp(2rem, 6vw, 3.2rem)' }}>
+                        {override.headlinePrimary}
+                      </h2>
+                      <p className="font-head font-normal tracking-[-0.02em] uppercase text-[#F4F1EA]/40 mt-1" style={{ fontSize: 'clamp(1.1rem, 3vw, 1.6rem)' }}>
+                        {override.headlineSecondary}
+                      </p>
+                    </div>
+                  ) : (
+                    <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>What it does</h2>
+                  )}
                   {subhead && (
-                    <p className="text-[14px] md:text-[16px] text-[#F4F1EA]/70 font-sans leading-relaxed max-w-[520px] mx-auto">{subhead}</p>
+                    <p className="text-[13px] md:text-[15px] text-[#F4F1EA]/50 font-sans leading-relaxed max-w-[480px] mx-auto">{subhead}</p>
                   )}
                 </div>
 
@@ -595,28 +613,28 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                       return (
                         <div key={i} className="w-full max-w-xl">
                           {i > 0 && (
-                            <div className="flex justify-start pl-8 md:pl-10">
-                              <div className="w-px h-8" style={{ background: `${accentColor}20` }} />
+                            <div className="flex justify-start pl-10 md:pl-12">
+                              <div className="w-px h-10" style={{ background: `${mineralTeal}18` }} />
                             </div>
                           )}
                           <div
-                            className="relative p-5 md:p-6 border rounded-2xl overflow-hidden group hover:border-[rgba(244,241,234,0.20)] transition-all"
-                            style={{ background: 'rgba(255,255,255,0.04)', borderColor: 'rgba(244,241,234,0.14)' }}
+                            className="relative p-6 md:p-8 border rounded-[22px] overflow-hidden"
+                            style={{
+                              background: 'linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.015) 100%)',
+                              borderColor: 'rgba(244,241,234,0.08)',
+                            }}
                             data-testid={`highlight-${i}`}
                           >
                             <span
-                              className="absolute top-3 left-5 md:left-6 font-head font-normal leading-none pointer-events-none select-none"
-                              style={{ fontSize: 'clamp(3.5rem, 8vw, 5rem)', color: 'rgba(244,241,234,0.06)' }}
+                              className="absolute top-4 left-6 md:left-8 font-head font-normal leading-none pointer-events-none select-none"
+                              style={{ fontSize: 'clamp(3.5rem, 8vw, 5rem)', color: 'rgba(244,241,234,0.05)' }}
                             >
                               0{i + 1}
                             </span>
-                            <div className="relative z-[1] space-y-3 pt-8 md:pt-10">
-                              <div className="flex items-center gap-3">
-                                <Icon size={14} style={{ color: `${accentColor}90` }} />
-                                <span className="font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-white/25">0{i + 1}</span>
-                              </div>
-                              <h4 className="text-[16px] md:text-[18px] font-head font-normal uppercase tracking-[-0.02em] text-[#F4F1EA]">{h.title}</h4>
-                              <p className="text-[13px] md:text-[14px] text-[#F4F1EA]/70 leading-relaxed font-sans">{h.desc}</p>
+                            <div className="relative z-[1] space-y-3 pt-10 md:pt-12">
+                              <Icon size={14} style={{ color: `${mineralTeal}70` }} />
+                              <h4 className="text-[15px] md:text-[17px] font-head font-normal uppercase tracking-[-0.02em] text-[#F4F1EA]/90">{h.title}</h4>
+                              <p className="text-[13px] md:text-[14px] text-[#F4F1EA]/50 leading-[1.65] font-sans">{h.desc}</p>
                             </div>
                           </div>
                         </div>
