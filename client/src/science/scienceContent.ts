@@ -50,7 +50,7 @@ export const LAYERS: LayerCard[] = [
       "Supports NAD+ regeneration and mitochondrial energy metabolism with methylation co-factor support designed for consistent daily use.",
     bullets: [
       "500 mg Nicotinamide Riboside (NR) per serving",
-      "Methylation support: TMG, 5-MTHF, methyl-B12, P-5-P",
+      "Methylation co-factors: TMG, 5-MTHF, B12, P-5-P",
       "Mitochondrial cofactor: R-Lipoic Acid",
       "Apigenin to support NAD+ preservation",
     ],
