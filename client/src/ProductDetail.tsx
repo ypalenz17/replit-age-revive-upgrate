@@ -794,12 +794,12 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                 </p>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-2 md:gap-3 mt-10">
+              <div className="flex justify-center gap-1.5 md:gap-2.5 mt-10">
                 {data.benefitsTimeline.map((t, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveTimeline(i)}
-                    className="font-mono text-[10px] font-bold uppercase tracking-[0.10em] transition-all min-h-[36px] px-5 py-2 rounded-full"
+                    className="font-mono text-[9px] md:text-[10px] font-bold uppercase tracking-[0.08em] transition-all min-h-[34px] px-3.5 md:px-5 py-1.5 rounded-full whitespace-nowrap"
                     style={activeTimeline === i
                       ? { background: timelineTeal, color: '#0b1120' }
                       : { background: 'rgba(255,255,255,0.04)', color: 'rgba(244,241,234,0.45)', border: '1px solid rgba(244,241,234,0.08)' }
