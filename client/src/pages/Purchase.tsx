@@ -233,7 +233,10 @@ export default function Purchase() {
               Pay
             </button>
             <button
-              onClick={handleAddToCart}
+              onClick={() => {
+                handleAddToCart();
+                navigate('/checkout');
+              }}
               className="flex-1 py-3.5 bg-ar-teal text-[#0b1120] rounded-full text-[13px] font-sans font-semibold flex items-center justify-center gap-2 hover:bg-ar-teal/90 transition-colors min-h-[48px]"
               data-testid="checkout"
             >
