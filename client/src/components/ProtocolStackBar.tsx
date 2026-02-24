@@ -92,32 +92,29 @@ export default function ProtocolStackBar({ config, showAfterPx = 520, onAddItems
 
   return (
     <div className="ar-protocolbar fixed left-0 right-0 bottom-0 z-[60]" role="region" aria-label="Protocol stack quick add" data-testid="protocol-stack-bar">
-      <div className="mx-auto max-w-[1100px] px-4 pb-3 pt-3">
-        <div className="flex items-center justify-between gap-2 sm:gap-3">
+      <div className="mx-auto max-w-[1100px] px-4 py-2.5">
+        <div className="flex items-center justify-between gap-3 sm:gap-4">
           <div className="min-w-0 shrink">
-            <div className="text-[9px] sm:text-[11px] tracking-[0.20em] sm:tracking-[0.26em] text-[rgba(244,241,234,0.50)] uppercase font-mono leading-tight">
+            <div className="text-[9px] sm:text-[10px] tracking-[0.18em] text-[rgba(244,241,234,0.35)] uppercase font-mono leading-none">
               Protocol Stack
             </div>
-            <div className="truncate text-[11px] sm:text-[13px] tracking-[0.08em] sm:tracking-[0.12em] text-[rgba(112,239,220,0.95)] uppercase font-mono leading-tight mt-0.5">
+            <div className="truncate text-[11px] sm:text-[12px] tracking-[0.06em] text-[rgba(112,239,220,0.80)] uppercase font-mono leading-none mt-1">
               {activeLabel}
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            <button type="button" onClick={() => setExpanded((v) => !v)} className="ar-protocolbar__ghostbtn hidden sm:inline-flex" aria-expanded={expanded} data-testid="button-toggle-details">
-              {expanded ? "Hide" : "View"} details
-            </button>
-            <button type="button" onClick={() => setExpanded((v) => !v)} className="ar-protocolbar__ghostbtn sm:hidden" aria-expanded={expanded} data-testid="button-toggle-details-mobile">
+          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+            <button type="button" onClick={() => setExpanded((v) => !v)} className="ar-protocolbar__ghostbtn" aria-expanded={expanded} data-testid="button-toggle-details">
               {expanded ? "Hide" : "Details"}
             </button>
 
-            <div className="text-right min-w-[60px]">
-              <div className="text-[9px] sm:text-[11px] text-[rgba(244,241,234,0.50)] font-mono leading-tight">Total</div>
-              <div className="flex items-center justify-end gap-1">
+            <div className="text-right">
+              <div className="text-[9px] sm:text-[10px] text-[rgba(244,241,234,0.35)] font-mono leading-none">Total</div>
+              <div className="flex items-center justify-end gap-1.5 mt-1">
                 {hasAddOns && (
-                  <span className="text-[10px] sm:text-[12px] text-[rgba(244,241,234,0.35)] font-mono line-through">{formatMoney(subtotal)}</span>
+                  <span className="text-[10px] text-[rgba(244,241,234,0.25)] font-mono line-through">{formatMoney(subtotal)}</span>
                 )}
-                <span className="text-[14px] sm:text-[16px] text-[rgba(244,241,234,0.95)] font-semibold font-mono">{formatMoney(total)}</span>
+                <span className="text-[14px] text-[rgba(244,241,234,0.90)] font-semibold font-mono">{formatMoney(total)}</span>
               </div>
             </div>
 

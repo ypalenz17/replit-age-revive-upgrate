@@ -118,26 +118,38 @@ details summary::-webkit-details-marker {
 }
 
 .ar-protocolbar__ghostbtn {
-  border: 1px solid rgba(244, 241, 234, 0.14);
-  color: rgba(244, 241, 234, 0.80);
-  padding: 10px 12px;
-  border-radius: 12px;
-  font-size: 12px;
-  letter-spacing: 0.14em;
+  border: 1px solid rgba(244, 241, 234, 0.10);
+  color: rgba(244, 241, 234, 0.55);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 10px;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   background: transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.ar-protocolbar__ghostbtn:hover {
+  border-color: rgba(244, 241, 234, 0.18);
+  color: rgba(244, 241, 234, 0.75);
 }
 
 .ar-protocolbar__cta {
-  background: rgba(112, 239, 220, 0.95);
-  color: rgba(15, 23, 42, 0.95);
-  padding: 12px 14px;
-  border-radius: 14px;
-  font-size: 12px;
-  letter-spacing: 0.16em;
+  background: transparent;
+  color: rgba(112, 239, 220, 0.80);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 10px;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
-  font-weight: 700;
-  border: 1px solid rgba(112, 239, 220, 0.35);
+  font-weight: 600;
+  border: 1px solid rgba(112, 239, 220, 0.22);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.ar-protocolbar__cta:hover {
+  background: rgba(112, 239, 220, 0.06);
+  border-color: rgba(112, 239, 220, 0.38);
 }
 
 .ar-protocolbar__row {
