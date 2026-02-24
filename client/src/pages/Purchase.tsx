@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, useLocation, Link } from 'wouter';
-import { ArrowRight, Plus, Minus, RotateCcw, ShoppingBag } from 'lucide-react';
+import { Plus, Minus, RotateCcw, ShoppingBag } from 'lucide-react';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import { PRODUCT_DETAIL_DATA, PRODUCT_IMAGES } from '../productData';
 import { PRODUCTS } from '../productsData';
@@ -38,16 +38,16 @@ export default function Purchase() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f5f0] text-[#0b1120] font-sans antialiased">
-      <nav className="sticky top-0 z-50 bg-[#f5f5f0] border-b border-black/[0.06]">
+    <div className="min-h-screen bg-[#0b1120] text-white font-sans antialiased">
+      <nav className="sticky top-0 z-50 bg-[#0b1120]/90 backdrop-blur-md border-b border-white/[0.06]">
         <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
           <Link href="/">
-            <img src={brandLogo} alt="AGE REVIVE" className="h-5 invert" />
+            <img src={brandLogo} alt="AGE REVIVE" className="h-5 opacity-80" />
           </Link>
           <div className="flex items-center gap-3">
             <button
               onClick={() => navigate(`/product/${slug}`)}
-              className="relative flex items-center justify-center w-10 h-10 rounded-full bg-[#0b1120] text-white"
+              className="relative flex items-center justify-center w-10 h-10 rounded-full border border-white/[0.10] text-white/60 hover:text-white transition-colors"
               data-testid="purchase-cart-icon"
             >
               <ShoppingBag size={16} />
@@ -57,12 +57,12 @@ export default function Purchase() {
         </div>
       </nav>
 
-      <div className="max-w-lg mx-auto px-5 pb-40">
-        <h1 className="text-[28px] font-sans font-normal text-[#0b1120] pt-6 pb-6" data-testid="cart-title">Your Cart</h1>
+      <div className="max-w-lg mx-auto px-5 pb-44">
+        <h1 className="font-head font-normal tracking-[-0.03em] uppercase text-white pt-6 pb-6" style={{ fontSize: 'clamp(1.5rem, 5vw, 1.8rem)' }} data-testid="cart-title">Your Cart</h1>
 
-        <div className="border-b border-black/[0.08] pb-6">
+        <div className="border-b border-white/[0.06] pb-6">
           <div className="flex gap-4">
-            <div className="w-16 h-16 rounded-lg overflow-hidden bg-white shrink-0">
+            <div className="w-16 h-16 rounded-lg overflow-hidden bg-white/[0.04] shrink-0">
               <img
                 src={images[0]}
                 alt={data.name}
@@ -72,24 +72,24 @@ export default function Purchase() {
             <div className="flex-1 min-w-0">
               <div className="flex justify-between items-start">
                 <div>
-                  <h2 className="text-[16px] font-sans font-semibold text-[#0b1120]" data-testid="purchase-product-name">{data.name}</h2>
-                  <p className="text-[13px] text-[#0b1120]/50 mt-0.5">Delivered monthly</p>
+                  <h2 className="text-[15px] font-head font-normal uppercase tracking-[-0.02em] text-white" data-testid="purchase-product-name">{data.name}</h2>
+                  <p className="text-[12px] text-white/40 mt-0.5 font-sans">Delivered monthly</p>
                 </div>
-                <span className="text-[16px] font-sans font-semibold text-[#0b1120]">${price.toFixed(2)}</span>
+                <span className="text-[15px] font-sans font-semibold text-white">${price.toFixed(2)}</span>
               </div>
               <div className="flex items-center gap-3 mt-3">
-                <div className="inline-flex items-center border border-black/[0.12] rounded-full">
+                <div className="inline-flex items-center border border-white/[0.10] rounded-full">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="w-8 h-8 flex items-center justify-center text-[#0b1120]/60 hover:text-[#0b1120] transition-colors"
+                    className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition-colors"
                     data-testid="qty-minus"
                   >
                     <Minus size={14} />
                   </button>
-                  <span className="w-6 text-center text-[14px] font-medium text-[#0b1120]">{quantity}</span>
+                  <span className="w-6 text-center text-[13px] font-mono font-bold text-white">{quantity}</span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
-                    className="w-8 h-8 flex items-center justify-center text-[#0b1120]/60 hover:text-[#0b1120] transition-colors"
+                    className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition-colors"
                     data-testid="qty-plus"
                   >
                     <Plus size={14} />
@@ -100,54 +100,55 @@ export default function Purchase() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 py-4 border-b border-black/[0.08]">
-          <RotateCcw size={16} className="text-[#0b1120]/40 shrink-0" />
-          <span className="text-[13px] text-[#0b1120]/60 flex-1">Save 10% on 3 Month Delivery</span>
-          <button className="text-[13px] font-semibold text-[#0b1120] underline underline-offset-2" data-testid="upgrade-plan">Upgrade</button>
+        <div className="flex items-center gap-3 py-4 border-b border-white/[0.06]">
+          <RotateCcw size={15} className="text-ar-teal/50 shrink-0" />
+          <span className="text-[13px] text-white/50 font-sans flex-1">Save 10% on 3 Month Delivery</span>
+          <button className="text-[13px] font-sans font-semibold text-white underline underline-offset-2 decoration-white/30 hover:decoration-white/60 transition-colors" data-testid="upgrade-plan">Upgrade</button>
         </div>
 
-        <div className="py-6 border-b border-black/[0.08]">
-          <p className="text-[14px] font-semibold text-[#0b1120] mb-3">Promo Code</p>
+        <div className="py-6 border-b border-white/[0.06]">
+          <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-white/40 font-bold mb-3">Promo Code</p>
           <div className="flex gap-2">
             <input
               type="text"
               value={promoCode}
               onChange={(e) => setPromoCode(e.target.value)}
               placeholder="Enter Promo Code"
-              className="flex-1 px-4 py-3 border border-black/[0.12] rounded-lg bg-white text-[14px] text-[#0b1120] placeholder:text-[#0b1120]/30 focus:outline-none focus:border-[#0b1120]/30 transition-colors"
+              className="flex-1 px-4 py-3 border border-white/[0.10] rounded-lg bg-white/[0.03] text-[13px] font-sans text-white placeholder:text-white/25 focus:outline-none focus:border-white/20 transition-colors"
               data-testid="promo-input"
             />
             <button
               onClick={() => { if (promoCode.trim()) setPromoApplied(true); }}
-              className="px-5 py-3 bg-[#0b1120] text-white rounded-lg text-[14px] font-semibold hover:bg-[#0b1120]/90 transition-colors"
+              className="px-5 py-3 bg-white/[0.08] hover:bg-white/[0.12] text-white rounded-lg text-[13px] font-sans font-semibold transition-colors border border-white/[0.10]"
               data-testid="promo-apply"
             >
               Apply
             </button>
           </div>
           {promoApplied && (
-            <p className="text-[12px] text-ar-teal mt-2">Promo code applied!</p>
+            <p className="text-[11px] text-ar-teal font-mono uppercase tracking-[0.08em] mt-2">Promo code applied</p>
           )}
         </div>
 
         <div className="py-6">
-          <p className="text-[14px] font-semibold text-[#0b1120] mb-4">You Might Also Like:</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-white/40 font-bold mb-4">You Might Also Like</p>
           <div className="flex gap-3 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none' }}>
             {otherProducts.map((p) => {
               const pData = PRODUCT_DETAIL_DATA[p.slug as keyof typeof PRODUCT_DETAIL_DATA];
+              const pImages = PRODUCT_IMAGES[p.slug as keyof typeof PRODUCT_IMAGES];
               return (
                 <Link
                   key={p.slug}
                   href={`/product/${p.slug}`}
-                  className="shrink-0 w-36 rounded-lg border border-black/[0.08] bg-white overflow-hidden hover:border-black/[0.15] transition-colors"
+                  className="shrink-0 w-36 rounded-lg border border-white/[0.06] bg-white/[0.02] overflow-hidden hover:border-white/[0.12] transition-colors"
                   data-testid={`suggest-${p.slug}`}
                 >
-                  <div className="aspect-square bg-[#f0f0ec] flex items-center justify-center p-3">
-                    <img src={p.image} alt={p.name} className="w-full h-full object-contain" />
+                  <div className="aspect-square bg-white/[0.03] flex items-center justify-center p-3">
+                    <img src={pImages ? pImages[0] : p.image} alt={p.name} className="w-full h-full object-contain" />
                   </div>
                   <div className="p-3">
-                    <p className="text-[12px] font-semibold text-[#0b1120] truncate">{p.name}</p>
-                    <p className="text-[11px] text-[#0b1120]/40 mt-0.5">{pData ? `$${pData.priceSubscribe.toFixed(2)}` : ''}</p>
+                    <p className="text-[11px] font-head font-normal uppercase tracking-[-0.01em] text-white truncate">{p.name}</p>
+                    <p className="text-[11px] text-white/35 font-sans mt-0.5">{pData ? `$${pData.priceSubscribe.toFixed(2)}` : ''}</p>
                   </div>
                 </Link>
               );
@@ -156,23 +157,23 @@ export default function Purchase() {
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#f5f5f0] border-t border-black/[0.08]">
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0b1120]/95 backdrop-blur-md border-t border-white/[0.06]">
         <div className="max-w-lg mx-auto px-5 py-4 space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-[15px] font-semibold text-[#0b1120]">Total</span>
-            <span className="text-[20px] font-semibold text-[#0b1120]">${total.toFixed(2)}</span>
+            <span className="text-[14px] font-sans font-medium text-white/60">Total</span>
+            <span className="text-[20px] font-sans font-semibold text-white">${total.toFixed(2)}</span>
           </div>
           <div className="flex gap-3">
             <button
-              className="flex-1 py-3.5 bg-black text-white rounded-full text-[14px] font-semibold flex items-center justify-center gap-2 hover:bg-black/90 transition-colors min-h-[48px]"
+              className="flex-1 py-3.5 bg-white text-[#0b1120] rounded-full text-[13px] font-sans font-semibold flex items-center justify-center gap-2 hover:bg-white/90 transition-colors min-h-[48px]"
               data-testid="apple-pay"
             >
-              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#0b1120]"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
               Pay
             </button>
             <button
               onClick={handleAddToCart}
-              className="flex-1 py-3.5 bg-ar-teal text-[#0b1120] rounded-full text-[14px] font-semibold flex items-center justify-center gap-2 hover:bg-ar-teal/90 transition-colors min-h-[48px]"
+              className="flex-1 py-3.5 bg-ar-teal text-[#0b1120] rounded-full text-[13px] font-sans font-semibold flex items-center justify-center gap-2 hover:bg-ar-teal/90 transition-colors min-h-[48px]"
               data-testid="checkout"
             >
               Checkout
