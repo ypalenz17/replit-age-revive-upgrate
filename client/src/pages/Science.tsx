@@ -932,7 +932,9 @@ export default function SciencePage() {
           </div>
         </div>
       </main>
-      <Footer />
+      <div className="bg-[#060E1A]">
+        <Footer />
+      </div>
     </>
   );
 }
