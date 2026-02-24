@@ -197,9 +197,10 @@ function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () =>
   );
 }
 
-function ImageCarousel({ images }: { images: string[] }) {
+function ImageCarousel({ images, accent }: { images: string[]; accent?: string }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);
+  const glowColor = accent || '#2dd4bf';
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -214,6 +215,11 @@ function ImageCarousel({ images }: { images: string[] }) {
     return () => el.removeEventListener('scroll', onScroll);
   }, [images.length]);
 
+  const isBottleImage = (src: string) => {
+    const lower = src.toLowerCase();
+    return lower.includes('bottle') || lower.includes('front') || lower.includes('transparent');
+  };
+
   return (
     <div className="relative w-full">
       <div
@@ -222,23 +228,37 @@ function ImageCarousel({ images }: { images: string[] }) {
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
         data-testid="carousel-scroll"
       >
-        {images.map((src, i) => (
-          <div
-            key={src}
-            className="snap-start shrink-0 rounded-xl overflow-hidden bg-white/[0.03]"
-            style={{ width: '85%', maxWidth: '560px' }}
-          >
-            <div className="aspect-[4/3] w-full">
-              <img
-                src={src}
-                alt={`Product image ${i + 1}`}
-                loading={i === 0 ? 'eager' : 'lazy'}
-                className="w-full h-full object-cover"
-                data-testid={`carousel-image-${i}`}
-              />
+        {images.map((src, i) => {
+          const isBottle = isBottleImage(src);
+          return (
+            <div
+              key={src}
+              className="snap-start shrink-0 rounded-xl overflow-hidden relative"
+              style={{
+                width: '85%',
+                maxWidth: '560px',
+                background: isBottle
+                  ? `radial-gradient(ellipse at center 60%, ${glowColor}12 0%, ${glowColor}06 40%, rgba(15,23,42,0.95) 70%)`
+                  : 'rgba(255,255,255,0.03)',
+              }}
+            >
+              <div className="aspect-[4/3] w-full relative">
+                {isBottle && (
+                  <div className="absolute inset-0 pointer-events-none" style={{
+                    background: `radial-gradient(circle at 50% 55%, ${glowColor}15 0%, transparent 60%)`,
+                  }} />
+                )}
+                <img
+                  src={src}
+                  alt={`Product image ${i + 1}`}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  className={`w-full h-full relative z-[1] ${isBottle ? 'object-contain p-4' : 'object-cover'}`}
+                  data-testid={`carousel-image-${i}`}
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <div className="flex gap-1.5 justify-center mt-1">
         {images.map((_, i) => (
@@ -361,7 +381,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-14 items-start">
 
           <div className="-mx-5 md:mx-0">
-            <ImageCarousel images={images} />
+            <ImageCarousel images={images} accent={data.accent} />
           </div>
 
           <div className="lg:sticky lg:top-20 space-y-4 lg:space-y-6">
