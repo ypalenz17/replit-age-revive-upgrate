@@ -125,10 +125,10 @@ export default function Purchase() {
         </div>
 
         {!upgraded ? (
-          <div className="-mx-5 px-5 py-4 bg-white/[0.03] border-y border-white/[0.06]">
+          <div className="-mx-5 px-5 py-4 bg-ar-teal/[0.06] border-y border-ar-teal/[0.12]">
             <div className="flex items-center gap-3">
-              <RotateCcw size={18} className="text-white/40 shrink-0" />
-              <span className="text-[14px] font-sans text-white/70 flex-1">Save 10% on 3 Month Delivery</span>
+              <RotateCcw size={18} className="text-ar-teal shrink-0" />
+              <span className="text-[14px] font-sans font-semibold text-white flex-1">Save 10% on 3 Month Delivery</span>
               <button
                 onClick={() => setUpgraded(true)}
                 className="text-[14px] font-sans font-bold text-white underline underline-offset-4 decoration-2 hover:text-ar-teal hover:decoration-ar-teal transition-colors"
