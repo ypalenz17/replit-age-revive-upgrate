@@ -374,7 +374,10 @@ export default function SciencePage() {
 
           </div>
 
-          <div className="ar-tocMobilePills" aria-label="Jump to section">
+          <div className="ar-tocMobilePills" aria-label="Jump to section" onScroll={(e) => {
+            const el = e.currentTarget.nextElementSibling;
+            if (el) el.classList.add("ar-swipeHintHidden");
+          }}>
             {SCIENCE_TOC.map((t) => (
               <button
                 key={t.id}
@@ -386,6 +389,11 @@ export default function SciencePage() {
                 {t.label}
               </button>
             ))}
+          </div>
+          <div className="ar-swipeHint" aria-hidden="true">
+            <span className="ar-swipeLine" />
+            <span className="ar-swipeText">swipe to see more</span>
+            <span className="ar-swipeLine" />
           </div>
         </header>
 

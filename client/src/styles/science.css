@@ -217,6 +217,35 @@
   display: none;
 }
 
+.ar-science .ar-swipeHint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px 2px;
+  opacity: 0.45;
+  transition: opacity 0.5s ease;
+}
+
+.ar-science .ar-swipeHintHidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ar-science .ar-swipeLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(122, 246, 224, 0.25), transparent);
+}
+
+.ar-science .ar-swipeText {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(122, 246, 224, 0.55);
+  white-space: nowrap;
+}
+
 .ar-science .ar-pill {
   flex: 0 0 auto;
   padding: 8px 12px;
@@ -803,6 +832,10 @@
   }
 
   .ar-science .ar-tocMobilePills {
+    display: none;
+  }
+
+  .ar-science .ar-swipeHint {
     display: none;
   }
 }
