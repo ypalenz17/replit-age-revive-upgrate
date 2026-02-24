@@ -124,28 +124,42 @@ export default function Purchase() {
           </div>
         </div>
 
-        <div className="-mx-5 px-5 py-5 border-y border-white/[0.06]">
-          <button
-            onClick={() => setUpgraded(!upgraded)}
-            className="w-full flex items-center justify-between"
-            data-testid="upgrade-plan"
-          >
-            <span className="text-[15px] font-sans font-light text-white/90 tracking-[-0.01em]">3 Month Delivery</span>
+        {!upgraded ? (
+          <div className="-mx-5 px-5 py-4 bg-white/[0.03] border-y border-white/[0.06]">
             <div className="flex items-center gap-3">
-              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border ${upgraded ? 'bg-ar-teal/10 border-ar-teal/25' : 'bg-white/[0.04] border-white/[0.10]'}`}>
-                <RotateCcw size={13} className={upgraded ? 'text-ar-teal' : 'text-white/40'} />
-                <span className={`text-[12px] font-sans font-medium ${upgraded ? 'text-ar-teal' : 'text-white/40'}`}>10% off</span>
-              </span>
-              <ChevronDown size={16} className={`text-white/30 transition-transform ${upgraded ? 'rotate-180' : ''}`} />
+              <RotateCcw size={18} className="text-white/40 shrink-0" />
+              <span className="text-[14px] font-sans text-white/70 flex-1">Save 10% on 3 Month Delivery</span>
+              <button
+                onClick={() => setUpgraded(true)}
+                className="text-[14px] font-sans font-bold text-white underline underline-offset-4 decoration-2 hover:text-ar-teal hover:decoration-ar-teal transition-colors"
+                data-testid="upgrade-plan"
+              >
+                Upgrade
+              </button>
             </div>
-          </button>
+          </div>
+        ) : (
+          <div className="-mx-5 px-5 py-5 border-y border-white/[0.06]">
+            <button
+              onClick={() => setUpgraded(false)}
+              className="w-full flex items-center justify-between"
+              data-testid="downgrade-plan"
+            >
+              <span className="text-[15px] font-sans font-light text-white/90 tracking-[-0.01em]">3 Month Delivery</span>
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border bg-white/[0.04] border-white/[0.10]">
+                  <RotateCcw size={13} className="text-white/40" />
+                  <span className="text-[12px] font-sans font-medium text-white/40">10% off</span>
+                </span>
+                <ChevronDown size={16} className="text-white/30" />
+              </div>
+            </button>
 
-          {upgraded && (
             <div className="mt-4 py-2.5 rounded-lg bg-ar-teal/[0.07] text-center">
               <span className="text-[13px] font-sans font-semibold text-ar-teal" data-testid="yearly-savings">${yearlySavings.toFixed(2)} savings per year</span>
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
         <div className="py-6 border-b border-white/[0.06]">
           <p className="text-[14px] font-sans font-medium text-white mb-3">Promo Code</p>
