@@ -227,11 +227,11 @@ function ImageLightbox({ images, startIndex, onClose }: { images: string[]; star
   const goTo = (newIdx: number) => { setIdx(newIdx); setZoomed(false); };
 
   return (
-    <div className="fixed inset-0 z-[9999] bg-black/95 flex flex-col" data-testid="lightbox">
+    <div className="fixed inset-0 z-[9999] bg-black/95 flex flex-col" data-testid="lightbox" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
       <div className="flex items-center justify-between p-4">
         <span className="font-mono text-[11px] text-white/40 uppercase tracking-[0.10em]">{idx + 1} / {images.length}</span>
-        <button onClick={onClose} className="w-10 h-10 flex items-center justify-center text-white/60 hover:text-white transition-colors" data-testid="lightbox-close">
-          <X size={22} />
+        <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" data-testid="lightbox-close">
+          <X size={24} />
         </button>
       </div>
 
