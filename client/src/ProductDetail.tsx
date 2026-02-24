@@ -245,7 +245,7 @@ function ImageCarousel({ images, accent, lightMode }: { images: string[]; accent
                 background: cardBg,
               }}
             >
-              <div className={`${lightMode && isBottle ? 'aspect-square' : 'aspect-[4/3]'} w-full relative`}>
+              <div className="aspect-[4/3] w-full relative overflow-hidden">
                 {isBottle && !lightMode && (
                   <div className="absolute inset-0 pointer-events-none" style={{
                     background: `radial-gradient(circle at 50% 55%, ${glowColor}15 0%, transparent 60%)`,
