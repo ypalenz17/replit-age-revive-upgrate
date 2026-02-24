@@ -1,6 +1,6 @@
 export const PRODUCT_IMAGES: Record<string, string[]> = {
   cellunad: ['/images/product-bottle_1.jpg', '/images/product-capsules_1.jpg', '/images/lifestyle-wellness_1.jpg', '/images/lab-testing.jpg'],
-  cellubiome: ['/images/cellubiome-bottle.png', '/images/cellubiome-2.png', '/images/cellubiome-3.png', '/images/cellubiome-4.png', '/images/cellubiome-5.png'],
+  cellubiome: ['/images/cellubiome-bottle.jpg', '/images/cellubiome-2.png', '/images/cellubiome-3.png', '/images/cellubiome-4.png', '/images/cellubiome-5.png'],
   cellunova: ['/images/product-bottle_3.jpg', '/images/product-bottle_1.jpg', '/images/product-capsules_1.jpg', '/images/how-to-use.jpg'],
 };
 
