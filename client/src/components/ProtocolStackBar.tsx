@@ -32,7 +32,9 @@ export default function ProtocolStackBar({ config, showAfterPx = 520, onAddItems
   }, [base]);
 
   const selectedItems = useMemo(() => items.filter((it) => selected[it.key]), [items, selected]);
-  const total = useMemo(() => selectedItems.reduce((sum, it) => sum + it.price, 0), [selectedItems]);
+  const hasAddOns = useMemo(() => selectedItems.some((it) => it.key !== base), [selectedItems, base]);
+  const subtotal = useMemo(() => selectedItems.reduce((sum, it) => sum + it.price, 0), [selectedItems]);
+  const total = hasAddOns ? +(subtotal * 0.9).toFixed(2) : subtotal;
 
   useEffect(() => {
     const onScroll = () => {
@@ -91,24 +93,32 @@ export default function ProtocolStackBar({ config, showAfterPx = 520, onAddItems
   return (
     <div className="ar-protocolbar fixed left-0 right-0 bottom-0 z-[60]" role="region" aria-label="Protocol stack quick add" data-testid="protocol-stack-bar">
       <div className="mx-auto max-w-[1100px] px-4 pb-3 pt-3">
-        <div className="flex items-center justify-between gap-3">
-          <div className="min-w-0">
-            <div className="text-[11px] tracking-[0.26em] text-[rgba(244,241,234,0.70)] uppercase font-mono">
+        <div className="flex items-center justify-between gap-2 sm:gap-3">
+          <div className="min-w-0 shrink">
+            <div className="text-[9px] sm:text-[11px] tracking-[0.20em] sm:tracking-[0.26em] text-[rgba(244,241,234,0.50)] uppercase font-mono leading-tight">
               Protocol Stack
             </div>
-            <div className="truncate text-[13px] tracking-[0.12em] text-[rgba(112,239,220,0.95)] uppercase font-mono">
+            <div className="truncate text-[11px] sm:text-[13px] tracking-[0.08em] sm:tracking-[0.12em] text-[rgba(112,239,220,0.95)] uppercase font-mono leading-tight mt-0.5">
               {activeLabel}
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <button type="button" onClick={() => setExpanded((v) => !v)} className="ar-protocolbar__ghostbtn" aria-expanded={expanded} data-testid="button-toggle-details">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            <button type="button" onClick={() => setExpanded((v) => !v)} className="ar-protocolbar__ghostbtn hidden sm:inline-flex" aria-expanded={expanded} data-testid="button-toggle-details">
               {expanded ? "Hide" : "View"} details
             </button>
+            <button type="button" onClick={() => setExpanded((v) => !v)} className="ar-protocolbar__ghostbtn sm:hidden" aria-expanded={expanded} data-testid="button-toggle-details-mobile">
+              {expanded ? "Hide" : "Details"}
+            </button>
 
-            <div className="text-right">
-              <div className="text-[11px] text-[rgba(244,241,234,0.65)] font-mono">Total</div>
-              <div className="text-[16px] text-[rgba(244,241,234,0.95)] font-semibold font-mono">{formatMoney(total)}</div>
+            <div className="text-right min-w-[60px]">
+              <div className="text-[9px] sm:text-[11px] text-[rgba(244,241,234,0.50)] font-mono leading-tight">Total</div>
+              <div className="flex items-center justify-end gap-1">
+                {hasAddOns && (
+                  <span className="text-[10px] sm:text-[12px] text-[rgba(244,241,234,0.35)] font-mono line-through">{formatMoney(subtotal)}</span>
+                )}
+                <span className="text-[14px] sm:text-[16px] text-[rgba(244,241,234,0.95)] font-semibold font-mono">{formatMoney(total)}</span>
+              </div>
             </div>
 
             <button type="button" onClick={addStack} className="ar-protocolbar__cta" data-testid="button-add-stack">
@@ -144,8 +154,10 @@ export default function ProtocolStackBar({ config, showAfterPx = 520, onAddItems
               );
             })}
 
-            <div className="mt-1 text-[11px] text-[rgba(244,241,234,0.55)] font-mono">
-              Base includes {items.find((i) => i.key === base)?.name}. Add-ons optional.
+            <div className="mt-1 text-[11px] font-mono" style={{ color: hasAddOns ? 'rgba(112,239,220,0.85)' : 'rgba(244,241,234,0.55)' }}>
+              {hasAddOns
+                ? `10% stack discount applied. You save ${formatMoney(subtotal - total)}.`
+                : "Add a product to unlock 10% stack discount."}
             </div>
           </div>
         )}
