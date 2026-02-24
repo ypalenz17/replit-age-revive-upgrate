@@ -80,27 +80,16 @@ function CheckIcon() {
   );
 }
 
-function FlaskIcon() {
+function HeroMark() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M10 2h4"
-        stroke="rgba(122, 246, 224, 0.95)"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-      <path
-        d="M10 2v6l-5.2 9.2A3.5 3.5 0 0 0 7.9 22h8.2a3.5 3.5 0 0 0 3.1-4.8L14 8V2"
-        stroke="rgba(122, 246, 224, 0.95)"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M9.3 12.2h5.4"
-        stroke="rgba(122, 246, 224, 0.65)"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
+    <svg width="28" height="28" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <circle cx="20" cy="20" r="14" stroke="rgba(122, 246, 224, 0.30)" strokeWidth="1.2" />
+      <circle cx="20" cy="20" r="7" stroke="rgba(122, 246, 224, 0.55)" strokeWidth="1.2" />
+      <circle cx="20" cy="20" r="2.2" fill="rgba(122, 246, 224, 0.90)" />
+      <circle cx="20" cy="6" r="1.4" fill="rgba(122, 246, 224, 0.45)" />
+      <circle cx="20" cy="34" r="1.4" fill="rgba(122, 246, 224, 0.45)" />
+      <circle cx="6" cy="20" r="1.4" fill="rgba(122, 246, 224, 0.45)" />
+      <circle cx="34" cy="20" r="1.4" fill="rgba(122, 246, 224, 0.45)" />
     </svg>
   );
 }
@@ -344,7 +333,7 @@ export default function SciencePage() {
         <header className="ar-hero">
           <div className="ar-container">
             <div className="ar-heroIcon" aria-hidden="true">
-              <FlaskIcon />
+              <HeroMark />
             </div>
 
             <Eyebrow label="SCIENCE" />
