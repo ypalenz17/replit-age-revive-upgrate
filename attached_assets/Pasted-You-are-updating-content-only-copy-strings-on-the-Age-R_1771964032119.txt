@@ -1,0 +1,337 @@
+You are updating content only (copy/strings) on the Age Revive React (Vite) product pages.
+DO NOT change layout, components, styling, spacing, icons, or section structure.
+DO NOT add or remove sections.
+Replace text only, exactly as provided below.
+
+Goal:
+- Optimize CELLUNAD+ and CELLUNOVA PDP copy for LLM SEO + conversion
+- Increase semantic clarity, entity density, and mechanism-based explanations
+- Keep tone: clinical, controlled, premium
+- Avoid hype and medical claims (no diagnose/treat/cure/prevent)
+
+IMPORTANT:
+- Keep ingredient names and doses EXACTLY:
+  CELLUNAD+ per serving: NR 500 mg; R-Lipoic Acid 200 mg; Apigenin 100 mg; Betaine (TMG) 250 mg; P-5-P 10 mg; 5-MTHF 400 mcg DFE; Methylcobalamin 1,000 mcg; BioPerine 5 mg.
+  CELLUNOVA (7-day) per serving: NAC 600 mg; Trans-Resveratrol 500 mg; Quercetin 500 mg; Fisetin 100 mg; Green Tea Extract 300 mg (50% EGCG); Spermidine (wheat germ) 15 mg; Astaxanthin 4 mg; PQQ 10 mg; Ca-AKG 300 mg; BioPerine 5 mg. Contains wheat.
+
+- Keep existing asterisks (*) where your UI uses them for disclaimer linkage.
+- If sections use IDs (for sticky protocol bar), keep IDs unchanged.
+
+========================
+CELLUNAD+ (Foundation Layer) — REPLACE COPY IN ALL SECTIONS
+========================
+
+1) SECTION: BIOLOGICAL FUNCTION / WHAT IT DOES (or equivalent)
+Eyebrow: BIOLOGICAL FUNCTION
+Headline: FOUNDATION LAYER
+Subhead:
+"Supports NAD+ regeneration, mitochondrial energy metabolism, and methylation balance at the cellular level."
+
+Card 01 title:
+"NAD+ RESTORATION"
+Card 01 body:
+"Delivers 500 mg Nicotinamide Riboside (NR) to support intracellular NAD+ levels. NAD+ supports cellular energy production, DNA repair processes, and sirtuin pathway activity."
+
+Card 02 title:
+"MITOCHONDRIAL SUPPORT"
+Card 02 body:
+"Supports mitochondrial function and oxidative balance through R-Lipoic Acid and NAD+-dependent metabolic pathways."
+
+Card 03 title:
+"METHYLATION SUPPORT"
+Card 03 body:
+"Includes Betaine (TMG), P-5-P, 5-MTHF, and Methylcobalamin to support methylation processes associated with NAD+ metabolism and homocysteine balance."
+
+2) SECTION: THE SCIENCE
+Eyebrow: THE SCIENCE
+Headline:
+"NAD+ AND CELLULAR ENERGY METABOLISM"
+Body paragraph 1:
+"NAD+ (nicotinamide adenine dinucleotide) is a core coenzyme in cellular energy metabolism and genomic stability. NAD+ availability influences mitochondrial efficiency and cellular stress resilience, and NAD+ levels tend to decline with age."
+Body paragraph 2:
+"CELLUNAD+ provides Nicotinamide Riboside (NR), a precursor used by cells to synthesize NAD+, alongside methylation and cofactor support to maintain balanced NAD+ metabolism."
+Micro-proof line (if your design supports a third line):
+"Formulated for sustained pathway support, not transient stimulation."
+
+3) SECTION: WHY DELIVERY / FORMULATION (if present for NAD)
+Headline:
+"WHY CO-FACTORS MATTER"
+Body:
+"NR-driven NAD+ support interacts with methylation pathways. Betaine (TMG), P-5-P, 5-MTHF, and Methylcobalamin provide cofactor support designed to keep NAD+ metabolism balanced with consistent daily use."
+
+4) SECTION: RESULTS OVER TIME (tabs: 2 weeks / 4 weeks / 8 weeks / 3 months)
+Eyebrow: RESULTS OVER TIME
+Headline:
+"BIOLOGICAL IMPROVEMENTS OVER TIME"
+Subhead:
+"What consistent NAD+ support may look like.*"
+
+2 WEEKS bullets:
+- "Early improvements in daily energy consistency*"
+- "Initial support for NAD+ biosynthesis pathways*"
+- "More stable metabolic rhythm*"
+
+4 WEEKS bullets:
+- "Support for mitochondrial energy efficiency*"
+- "Support for cellular repair and resilience pathways*"
+- "Improved day-to-day performance consistency*"
+
+8 WEEKS bullets:
+- "Sustained NAD+ pathway support*"
+- "Compounded mitochondrial support with consistent use*"
+- "Greater metabolic stress resilience support*"
+
+3 MONTHS bullets:
+- "Long-term foundation for mitochondrial function support*"
+- "Ongoing support for genomic stability processes*"
+- "Stable methylation and metabolic balance support*"
+
+5) SECTION: HOW TO USE (Simple Routine)
+Eyebrow: HOW TO USE
+Headline: SIMPLE ROUTINE
+Lead line:
+"Take 2 capsules daily. With or without food."
+Bullets:
+- "Consistency matters more than timing."
+- "Designed for daily NAD+ pathway support."
+- "Stacks cleanly with CELLUBIOME for gut–mitochondria support."
+
+6) SECTION: WHAT’S INSIDE / KEY INGREDIENTS
+Eyebrow: KEY INGREDIENTS
+Headline: WHAT’S INSIDE
+
+Ingredient card A title:
+"NAD+ RESTORATION"
+Dose label:
+"500 MG NICOTINAMIDE RIBOSIDE (NR)"
+Description:
+"Clinically studied dose used in published research on NAD+ support and mitochondrial function."
+Compounds line (keep your existing layout):
+"Nicotinamide Riboside (NR) — 500 mg"
+
+Ingredient card B title:
+"MITOCHONDRIAL COFACTOR SUPPORT"
+Dose label:
+"200 MG R-LIPOIC ACID"
+Description:
+"Supports mitochondrial oxidative balance and metabolic efficiency."
+Compounds:
+"R-Lipoic Acid — 200 mg"
+
+Ingredient card C title:
+"METHYLATION SUPPORT COMPLEX"
+Dose label:
+"CO-FACTORS"
+Description:
+"Supports methylation pathways associated with NAD+ metabolism."
+Compounds (keep exact dose formatting):
+"Betaine (TMG) — 250 mg"
+"P-5-P — 10 mg"
+"5-MTHF — 400 mcg DFE"
+"Methylcobalamin — 1,000 mcg"
+
+Optional micro-ingredient line if your UI supports it:
+"Apigenin — 100 mg"
+"BioPerine — 5 mg"
+
+7) SECTION: COMPARE (How CELLUNAD+ compares)
+Headline:
+"HOW CELLUNAD+ COMPARES"
+CELLUNAD+ side bullets:
+- "500 mg Nicotinamide Riboside (NR)"
+- "Includes methylation co-factors (TMG, 5-MTHF, methyl-B12)"
+- "Designed for daily NAD+ pathway support"
+- "Third-party tested"
+- "Full label disclosure (no proprietary blends)"
+OTHER BRANDS bullets:
+- "Lower NR dosing common"
+- "Missing co-factor support"
+- "Inconsistent testing standards"
+- "Proprietary blends (unclear dosing)"
+
+8) SECTION: WHO IT’S FOR
+Headline: WHO IT’S FOR
+Bullets:
+- "Adults focused on healthy aging and daily resilience"
+- "Those supporting NAD+ and cellular energy metabolism"
+- "Those prioritizing mitochondrial function support"
+- "Stacks well with gut–mitochondria support (CELLUBIOME)"
+
+IMPORTANT box:
+"Consult your healthcare provider before use if you are pregnant, nursing, on medication, or managing a medical condition."
+
+9) SECTION: FAQ (ensure answers are short and entity-rich)
+FAQ Q1: "How long before I notice anything?"
+A: "Most people evaluate meaningful changes after 8–12 weeks of consistent daily use.*"
+
+FAQ Q2: "Can I take it with food?"
+A: "Yes. Take with or without food. Consistency matters more than timing."
+
+FAQ Q3: "What is Nicotinamide Riboside (NR)?"
+A: "Nicotinamide Riboside (NR) is a precursor to NAD+, a coenzyme required for mitochondrial energy production and cellular repair processes."
+
+FAQ Q4: "Why include methylation support ingredients?"
+A: "NAD+ metabolism interacts with methylation pathways. Betaine (TMG), P-5-P, 5-MTHF, and Methylcobalamin support balanced NAD+ metabolism with consistent use."
+
+FAQ Q5: "Is this a stimulant?"
+A: "No. CELLUNAD+ supports cellular energy metabolism through NAD+ pathways, not stimulant compounds."
+
+========================
+CELLUNOVA (Controlled Reset) — REPLACE COPY IN ALL SECTIONS
+========================
+
+1) SECTION: BIOLOGICAL FUNCTION / WHAT IT DOES (or equivalent)
+Eyebrow: BIOLOGICAL FUNCTION
+Headline: CONTROLLED RESET
+Subhead:
+"Designed as a 7-day protocol to periodically support autophagy-related pathways, cellular cleanup, and mitochondrial resilience."
+
+Card 01 title:
+"AUTOPHAGY SUPPORT"
+Card 01 body:
+"Includes Spermidine, Trans-Resveratrol, and Green Tea Extract (50% EGCG) to support autophagy pathways involved in cellular maintenance."
+
+Card 02 title:
+"SENOLYTIC SUPPORT"
+Card 02 body:
+"Quercetin and Fisetin are studied for their role in supporting the body’s natural clearance processes associated with cellular senescence."
+
+Card 03 title:
+"MITOCHONDRIAL RESILIENCE"
+Card 03 body:
+"NAC, PQQ, Astaxanthin, and Ca-AKG support mitochondrial and oxidative defense pathways during metabolic stress."
+
+2) SECTION: THE SCIENCE
+Eyebrow: THE SCIENCE
+Headline:
+"AUTOPHAGY, SENESCENCE, AND CELLULAR RENEWAL"
+Body paragraph 1:
+"Autophagy is a cellular recycling process involved in maintaining mitochondrial function and cellular homeostasis. Age-related decline in autophagy can contribute to accumulation and metabolic inefficiency."
+Body paragraph 2:
+"CELLUNOVA is structured as a 7-day protocol using compounds studied in autophagy and senolytic research, designed to complement daily foundational support."
+Micro-proof line:
+"Designed as a periodic cycle alongside daily support, not a daily baseline."
+
+3) SECTION: RESULTS OVER TIME / PROTOCOL TIMELINE (if tabs exist)
+Eyebrow: RESULTS OVER TIME
+Headline:
+"PROTOCOL EFFECTS OVER TIME"
+Subhead:
+"What a structured 7-day cycle may look like.*"
+
+DURING 7-DAY CYCLE bullets:
+- "Support for autophagy-related pathways*"
+- "Senolytic compound exposure during the protocol window*"
+- "Mitochondrial oxidative defense support*"
+
+REPEATED MONTHLY bullets:
+- "Compounded cellular cleanup support across cycles*"
+- "Reinforcement of mitochondrial maintenance pathways*"
+- "Structured reset layered onto daily foundation support*"
+
+4) SECTION: HOW TO USE
+Eyebrow: HOW TO USE
+Headline: SIMPLE PROTOCOL
+Lead line:
+"Take 5 capsules daily for 7 days. Repeat monthly."
+Bullets:
+- "Designed as a periodic protocol, not daily use."
+- "Stacks with CELLUNAD+ and CELLUBIOME as daily foundation support."
+- "Take with food if preferred for comfort."
+
+Add a note if your UI allows:
+"Contains wheat (spermidine source)."
+
+5) SECTION: WHAT’S INSIDE / KEY INGREDIENTS
+Eyebrow: KEY INGREDIENTS
+Headline: WHAT’S INSIDE
+
+Card A title:
+"AUTOPHAGY SUPPORT COMPLEX"
+Dose label:
+"PATHWAY SUPPORT"
+Description:
+"Compounds studied for autophagy and cellular maintenance pathways."
+Compounds (exact):
+"NAC — 600 mg"
+"Trans-Resveratrol — 500 mg"
+"Green Tea Extract (50% EGCG) — 300 mg"
+"Spermidine (wheat germ) — 15 mg"
+"BioPerine — 5 mg"
+
+Card B title:
+"SENOLYTIC SUPPORT"
+Dose label:
+"CELLULAR SENESCENCE"
+Description:
+"Compounds studied in senescence-related research."
+Compounds:
+"Quercetin — 500 mg"
+"Fisetin — 100 mg"
+
+Card C title:
+"MITOCHONDRIAL & ANTIOXIDANT SUPPORT"
+Dose label:
+"RESILIENCE"
+Description:
+"Supports mitochondrial resilience during metabolic stress."
+Compounds:
+"Astaxanthin — 4 mg"
+"PQQ — 10 mg"
+"Ca-AKG — 300 mg"
+
+6) SECTION: COMPARE (How CELLUNOVA compares)
+Headline:
+"HOW CELLUNOVA COMPARES"
+CELLUNOVA bullets:
+- "7-day structured protocol format"
+- "Autophagy + senolytic research compounds in disclosed doses"
+- "Includes mitochondrial resilience support (NAC, PQQ, Astaxanthin, Ca-AKG)"
+- "Third-party tested"
+- "Full label disclosure (no proprietary blends)"
+OTHER BRANDS bullets:
+- "Low-dose daily blends"
+- "Unclear dosing (proprietary blends)"
+- "Incomplete pathway coverage"
+- "Inconsistent testing standards"
+
+7) SECTION: WHO IT’S FOR
+Headline: WHO IT’S FOR
+Bullets:
+- "Adults focused on periodic cellular renewal support"
+- "Those running structured longevity protocols"
+- "Those stacking daily foundation support with periodic cycles"
+- "Those supporting autophagy-related pathways"
+
+IMPORTANT box (same as others):
+"Consult your healthcare provider before use if you are pregnant, nursing, on medication, or managing a medical condition."
+
+Add a wheat note near important box if possible:
+"Contains wheat (spermidine source)."
+
+8) SECTION: FAQ
+FAQ Q1: "Is CELLUNOVA taken daily?"
+A: "No. CELLUNOVA is a 7-day protocol designed to be repeated monthly."
+
+FAQ Q2: "What is autophagy?"
+A: "Autophagy is a cellular recycling process involved in maintaining mitochondrial function and cellular homeostasis."
+
+FAQ Q3: "Can I stack it with CELLUNAD+ and CELLUBIOME?"
+A: "Yes. CELLUNOVA is designed as a periodic reset layered onto daily NAD+ and gut–mitochondria support."
+
+FAQ Q4: "Should I take it with food?"
+A: "You can take it with or without food. Many people prefer taking it with food for comfort."
+
+FAQ Q5: "Does it contain allergens?"
+A: "Contains wheat (spermidine source)."
+
+========================
+Implementation notes
+========================
+- Keep the same typography and layout. Only replace strings.
+- Ensure headings remain in the same DOM positions (H2/H3) to preserve SEO structure.
+- Ensure FAQPage JSON-LD (if present) matches the updated visible FAQ Q/A exactly for each product page.
+- Do not add medical claims.
+- Keep FDA disclaimer visible as is.
+
+Proceed to implement now.

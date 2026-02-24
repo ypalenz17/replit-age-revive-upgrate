@@ -545,7 +545,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
         const hasOverride = !!override;
         const eyebrow = hasOverride ? override.eyebrow : "Key Benefits";
         const subhead = hasOverride ? override.subhead : null;
-        const isCompact = data.benefitHighlights.length <= 2;
+        const isCompact = data.benefitHighlights.length <= 3;
         const mineralTeal = hasOverride ? (slug === 'cellubiome' ? '#1fb8ac' : accentColor) : accentColor;
 
         return (
