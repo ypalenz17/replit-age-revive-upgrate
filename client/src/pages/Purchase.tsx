@@ -124,32 +124,24 @@ export default function Purchase() {
           </div>
         </div>
 
-        <div className="border-y border-white/[0.06] py-4">
+        <div className="-mx-5 px-5 py-5 border-y border-white/[0.06]">
           <button
             onClick={() => setUpgraded(!upgraded)}
             className="w-full flex items-center justify-between"
             data-testid="upgrade-plan"
           >
-            <span className="text-[14px] font-sans font-medium text-white">3 Month Delivery</span>
-            <div className="flex items-center gap-2">
-              {upgraded && (
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-ar-teal/10 border border-ar-teal/20">
-                  <RotateCcw size={12} className="text-ar-teal" />
-                  <span className="text-[11px] font-sans font-semibold text-ar-teal">10% off</span>
-                </span>
-              )}
-              {!upgraded && (
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/[0.06] border border-white/[0.08]">
-                  <RotateCcw size={12} className="text-white/50" />
-                  <span className="text-[11px] font-sans font-medium text-white/50">10% off</span>
-                </span>
-              )}
-              <ChevronDown size={16} className={`text-white/40 transition-transform ${upgraded ? 'rotate-180' : ''}`} />
+            <span className="text-[15px] font-sans font-light text-white/90 tracking-[-0.01em]">3 Month Delivery</span>
+            <div className="flex items-center gap-3">
+              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border ${upgraded ? 'bg-ar-teal/10 border-ar-teal/25' : 'bg-white/[0.04] border-white/[0.10]'}`}>
+                <RotateCcw size={13} className={upgraded ? 'text-ar-teal' : 'text-white/40'} />
+                <span className={`text-[12px] font-sans font-medium ${upgraded ? 'text-ar-teal' : 'text-white/40'}`}>10% off</span>
+              </span>
+              <ChevronDown size={16} className={`text-white/30 transition-transform ${upgraded ? 'rotate-180' : ''}`} />
             </div>
           </button>
 
           {upgraded && (
-            <div className="mt-3 py-2.5 px-4 rounded-lg bg-ar-teal/[0.08] border border-ar-teal/[0.15] text-center">
+            <div className="mt-4 py-2.5 rounded-lg bg-ar-teal/[0.07] text-center">
               <span className="text-[13px] font-sans font-semibold text-ar-teal" data-testid="yearly-savings">${yearlySavings.toFixed(2)} savings per year</span>
             </div>
           )}
