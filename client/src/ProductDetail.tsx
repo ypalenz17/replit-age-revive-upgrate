@@ -200,49 +200,31 @@ function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () =>
 
 function ImageLightbox({ images, startIndex, onClose }: { images: string[]; startIndex: number; onClose: () => void }) {
   const [idx, setIdx] = useState(startIndex);
-  const [scale, setScale] = useState(1);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  const [dragging, setDragging] = useState(false);
-  const dragStart = useRef({ x: 0, y: 0, px: 0, py: 0 });
+  const [zoomed, setZoomed] = useState(false);
+  const [origin, setOrigin] = useState('center center');
+  const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowRight') { setIdx(i => Math.min(i + 1, images.length - 1)); resetZoom(); }
-      if (e.key === 'ArrowLeft') { setIdx(i => Math.max(i - 1, 0)); resetZoom(); }
+      if (e.key === 'ArrowRight') { setIdx(i => Math.min(i + 1, images.length - 1)); setZoomed(false); }
+      if (e.key === 'ArrowLeft') { setIdx(i => Math.max(i - 1, 0)); setZoomed(false); }
     };
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', onKey);
     return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
   }, [images.length, onClose]);
 
-  const resetZoom = () => { setScale(1); setPos({ x: 0, y: 0 }); };
-
-  const toggleZoom = (e: React.MouseEvent) => {
-    if (scale > 1) { resetZoom(); return; }
-    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * -200;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -200;
-    setScale(2.5);
-    setPos({ x, y });
+  const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
+    if (zoomed) { setZoomed(false); return; }
+    const rect = e.currentTarget.getBoundingClientRect();
+    const xPct = ((e.clientX - rect.left) / rect.width) * 100;
+    const yPct = ((e.clientY - rect.top) / rect.height) * 100;
+    setOrigin(`${xPct}% ${yPct}%`);
+    setZoomed(true);
   };
 
-  const onPointerDown = (e: React.PointerEvent) => {
-    if (scale <= 1) return;
-    setDragging(true);
-    dragStart.current = { x: e.clientX, y: e.clientY, px: pos.x, py: pos.y };
-    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-  };
-  const onPointerMove = (e: React.PointerEvent) => {
-    if (!dragging) return;
-    setPos({
-      x: dragStart.current.px + (e.clientX - dragStart.current.x),
-      y: dragStart.current.py + (e.clientY - dragStart.current.y),
-    });
-  };
-  const onPointerUp = () => setDragging(false);
-
-  const goTo = (newIdx: number) => { setIdx(newIdx); resetZoom(); };
+  const goTo = (newIdx: number) => { setIdx(newIdx); setZoomed(false); };
 
   return (
     <div className="fixed inset-0 z-[9999] bg-black/95 flex flex-col" data-testid="lightbox">
@@ -253,26 +235,25 @@ function ImageLightbox({ images, startIndex, onClose }: { images: string[]; star
         </button>
       </div>
 
-      <div className="flex-1 flex items-center justify-center relative overflow-hidden px-4">
+      <div className="flex-1 flex items-center justify-center relative px-4">
         {idx > 0 && (
           <button onClick={() => goTo(idx - 1)} className="absolute left-3 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all" data-testid="lightbox-prev">
             <ChevronLeft size={20} />
           </button>
         )}
 
-        <div
-          className="max-w-4xl w-full h-full flex items-center justify-center"
-          onClick={toggleZoom}
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={onPointerUp}
-          style={{ cursor: scale > 1 ? 'grab' : 'zoom-in', touchAction: 'none' }}
-        >
+        <div className={`max-w-4xl w-full flex items-center justify-center ${zoomed ? 'overflow-auto' : 'overflow-hidden'}`} style={{ maxHeight: '80vh' }}>
           <img
+            ref={imgRef}
             src={images[idx]}
             alt={`Product image ${idx + 1}`}
-            className="max-w-full max-h-[80vh] object-contain select-none transition-transform duration-200"
-            style={{ transform: `scale(${scale}) translate(${pos.x / scale}px, ${pos.y / scale}px)` }}
+            onClick={handleImageClick}
+            className="max-w-full max-h-[80vh] object-contain select-none transition-transform duration-300 ease-out"
+            style={{
+              transform: zoomed ? 'scale(3)' : 'scale(1)',
+              transformOrigin: origin,
+              cursor: zoomed ? 'zoom-out' : 'zoom-in',
+            }}
             draggable={false}
           />
         </div>
