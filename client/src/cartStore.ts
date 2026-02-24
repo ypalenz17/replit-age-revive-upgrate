@@ -48,12 +48,13 @@ export function useCart() {
       state = { ...state, isOpen: false };
       emit();
     },
-    addItem(item: Omit<CartItem, 'quantity'>, qty = 1) {
+    addItem(item: Omit<CartItem, 'quantity'>, qty = 1, silent = false) {
       const existing = state.items.find((c) => c.slug === item.slug && c.isSubscribe === item.isSubscribe);
+      const openDrawer = silent ? state.isOpen : true;
       if (existing) {
         state = {
           ...state,
-          isOpen: true,
+          isOpen: openDrawer,
           items: state.items.map((c) =>
             c.slug === item.slug && c.isSubscribe === item.isSubscribe
               ? { ...c, quantity: c.quantity + qty }
@@ -61,7 +62,7 @@ export function useCart() {
           ),
         };
       } else {
-        state = { isOpen: true, items: [...state.items, { ...item, quantity: qty }] };
+        state = { isOpen: openDrawer, items: [...state.items, { ...item, quantity: qty }] };
       }
       emit();
     },

@@ -234,7 +234,14 @@ export default function Purchase() {
             </button>
             <button
               onClick={() => {
-                handleAddToCart();
+                cart.addItem({
+                  slug: slug!,
+                  name: data.name,
+                  image: productInfo?.image || images[0],
+                  price: displayPrice,
+                  isSubscribe: true,
+                  frequency: upgraded ? 'Every 3 months' : 'Delivered monthly',
+                }, quantity, true);
                 navigate('/checkout');
               }}
               className="flex-1 py-3.5 bg-ar-teal text-[#0b1120] rounded-full text-[13px] font-sans font-semibold flex items-center justify-center gap-2 hover:bg-ar-teal/90 transition-colors min-h-[48px]"
