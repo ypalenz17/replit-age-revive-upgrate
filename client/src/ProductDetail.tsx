@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { useParams, useLocation } from 'wouter';
 import {
   ArrowRight,
@@ -302,8 +303,9 @@ function ImageCarousel({ images, accent, lightMode }: { images: string[]; accent
 
   return (
     <>
-      {lightboxIndex !== null && (
-        <ImageLightbox images={images} startIndex={lightboxIndex} onClose={() => setLightboxIndex(null)} />
+      {lightboxIndex !== null && createPortal(
+        <ImageLightbox images={images} startIndex={lightboxIndex} onClose={() => setLightboxIndex(null)} />,
+        document.body
       )}
       <div className="relative w-full">
         <div
