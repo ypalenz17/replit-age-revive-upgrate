@@ -12,9 +12,9 @@ export const PRODUCT_DETAIL_DATA = {
     heroBullets: {
       lead: "Clinically studied NAD+ precursor with essential co-factors.*",
       points: [
-        "500 mg NR for daily cellular energy",
-        "Complete methylation support with TMG + B vitamins",
-        "Enhanced absorption with BioPerine"
+        "500 mg NR for daily cellular energy*",
+        "Complete methylation support with TMG + B vitamins*",
+        "Enhanced absorption with BioPerine*"
       ]
     },
     rating: 4.8,
@@ -133,9 +133,9 @@ export const PRODUCT_DETAIL_DATA = {
     heroBullets: {
       lead: "Two clinically studied compounds for gut and mitochondrial health.*",
       points: [
-        "Recycles damaged mitochondria for renewed energy",
-        "Reinforces gut barrier integrity",
-        "Restores cellular energy from the inside out"
+        "Recycles damaged mitochondria for renewed energy*",
+        "Reinforces gut barrier integrity*",
+        "Restores cellular energy from the inside out*"
       ]
     },
     rating: 4.9,
@@ -244,9 +244,9 @@ export const PRODUCT_DETAIL_DATA = {
     heroBullets: {
       lead: "A focused 7-day cycle for deep cellular cleanup and renewal.*",
       points: [
-        "Senolytic compounds target damaged cells",
-        "Autophagy activators promote cellular recycling",
-        "Cyclical protocol for sustained renewal"
+        "Senolytic compounds target damaged cells*",
+        "Autophagy activators promote cellular recycling*",
+        "Cyclical protocol for sustained renewal*"
       ]
     },
     rating: 4.7,
