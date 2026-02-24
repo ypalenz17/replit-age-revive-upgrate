@@ -87,7 +87,7 @@ export const LAYERS: LayerCard[] = [
       "7-day protocol format, repeated monthly",
       "Autophagy support: spermidine, trans-resveratrol, EGCG",
       "Senescence research compounds: quercetin, fisetin",
-      "Mitochondrial resilience: NAC, PQQ, astaxanthin, Ca-AKG",
+      "Mito resilience: NAC, PQQ, astaxanthin, Ca-AKG",
     ],
     entities: ["Autophagy", "Senescence", "Quercetin", "Fisetin", "Spermidine", "NAC", "PQQ", "Ca-AKG"],
     primaryCtaLabel: "Explore CELLUNOVA",
