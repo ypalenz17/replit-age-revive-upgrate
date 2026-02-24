@@ -372,19 +372,20 @@ export default function SciencePage() {
               ))}
             </div>
 
-            <div className="ar-tocMobilePills scrollbar-hide" aria-label="Jump to section">
-              {SCIENCE_TOC.map((t) => (
-                <button
-                  key={t.id}
-                  type="button"
-                  className={`ar-pill ${activeId === t.id ? "ar-pillActive" : ""}`}
-                  onClick={() => scrollTo(t.id)}
-                  data-testid={`pill-${t.id}`}
-                >
-                  {t.label}
-                </button>
-              ))}
-            </div>
+          </div>
+
+          <div className="ar-tocMobilePills" aria-label="Jump to section">
+            {SCIENCE_TOC.map((t) => (
+              <button
+                key={t.id}
+                type="button"
+                className={`ar-pill ${activeId === t.id ? "ar-pillActive" : ""}`}
+                onClick={() => scrollTo(t.id)}
+                data-testid={`pill-${t.id}`}
+              >
+                {t.label}
+              </button>
+            ))}
           </div>
         </header>
 
