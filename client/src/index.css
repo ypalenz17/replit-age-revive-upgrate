@@ -103,6 +103,7 @@ details summary::-webkit-details-marker {
 /* Protocol Stack Bar */
 .ar-page-with-protocolbar {
   padding-bottom: 96px;
+  background: #0b1120;
 }
 @media (min-width: 1024px) {
   .ar-page-with-protocolbar {
