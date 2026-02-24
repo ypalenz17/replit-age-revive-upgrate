@@ -13,6 +13,7 @@ export default function Purchase() {
   const [quantity, setQuantity] = useState(1);
   const [promoCode, setPromoCode] = useState('');
   const [promoApplied, setPromoApplied] = useState(false);
+  const [upgraded, setUpgraded] = useState(false);
 
   const data = PRODUCT_DETAIL_DATA[slug as keyof typeof PRODUCT_DETAIL_DATA];
   if (!data) {
@@ -23,7 +24,8 @@ export default function Purchase() {
   const images = PRODUCT_IMAGES[slug as keyof typeof PRODUCT_IMAGES] || PRODUCT_IMAGES.cellunad;
   const productInfo = PRODUCTS.find((p) => p.slug === slug);
   const otherProducts = PRODUCTS.filter((p) => p.slug !== slug);
-  const price = data.priceSubscribe;
+  const basePrice = data.priceOneTime;
+  const price = upgraded ? Math.round(basePrice * 0.9 * 100) / 100 : basePrice;
   const total = price * quantity;
 
   const handleAddToCart = () => {
@@ -33,7 +35,7 @@ export default function Purchase() {
       image: productInfo?.image || images[0],
       price,
       isSubscribe: true,
-      frequency: 'Delivered monthly',
+      frequency: upgraded ? 'Every 3 months' : 'Delivered monthly',
     }, quantity);
   };
 
@@ -73,7 +75,7 @@ export default function Purchase() {
               <div className="flex justify-between items-start">
                 <div>
                   <h2 className="text-[15px] font-head font-normal uppercase tracking-[-0.02em] text-white" data-testid="purchase-product-name">{data.name}</h2>
-                  <p className="text-[12px] text-white/40 mt-1 font-sans">Delivered monthly</p>
+                  <p className="text-[12px] text-white/40 mt-1 font-sans">{upgraded ? 'Every 3 months' : 'Delivered monthly'}</p>
                 </div>
                 <span className="text-[15px] font-sans font-semibold text-white">${price.toFixed(2)}</span>
               </div>
@@ -101,9 +103,27 @@ export default function Purchase() {
         </div>
 
         <div className="flex items-center gap-3 py-5 -mx-5 px-5 bg-white/[0.03] border-y border-white/[0.06]">
-          <RotateCcw size={18} className="text-ar-teal shrink-0" />
-          <span className="text-[14px] text-white/70 font-sans flex-1">Save 10% on 3 Month Delivery</span>
-          <button className="text-[14px] font-sans font-bold text-white underline underline-offset-4 decoration-2 hover:text-ar-teal hover:decoration-ar-teal transition-colors" data-testid="upgrade-plan">Upgrade</button>
+          <RotateCcw size={18} className={upgraded ? 'text-ar-teal shrink-0' : 'text-white/40 shrink-0'} />
+          <span className="text-[14px] text-white/70 font-sans flex-1">
+            {upgraded ? 'Saving 10% with 3 Month Delivery' : 'Save 10% on 3 Month Delivery'}
+          </span>
+          {upgraded ? (
+            <button
+              onClick={() => setUpgraded(false)}
+              className="text-[13px] font-sans text-white/40 hover:text-white transition-colors"
+              data-testid="downgrade-plan"
+            >
+              Remove
+            </button>
+          ) : (
+            <button
+              onClick={() => setUpgraded(true)}
+              className="text-[14px] font-sans font-bold text-white underline underline-offset-4 decoration-2 hover:text-ar-teal hover:decoration-ar-teal transition-colors"
+              data-testid="upgrade-plan"
+            >
+              Upgrade
+            </button>
+          )}
         </div>
 
         <div className="py-6 border-b border-white/[0.06]">
