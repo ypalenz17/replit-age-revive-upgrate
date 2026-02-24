@@ -961,7 +961,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── WHO IT'S FOR ───── */}
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
+      <section className="pdp-reveal py-10 md:py-14 px-5 md:px-10 lg:px-[60px]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-8">
             <div className="space-y-3 text-center">
@@ -984,9 +984,9 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
             </div>
             <p className="text-white/45 text-[15px] leading-relaxed font-sans font-medium">{data.safetyNote}</p>
             {data.allergenDisclosure && (
-              <div className="p-4 border text-[11px] font-mono uppercase tracking-[0.10em]" style={{ borderColor: `${accentColor}30`, background: `${data.accent}08`, color: accentColor }}>
+              <p className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/20 mt-2">
                 {data.allergenDisclosure}
-              </div>
+              </p>
             )}
           </div>
         </div>
