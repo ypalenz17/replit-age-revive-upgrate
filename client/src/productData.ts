@@ -14,7 +14,7 @@ export const PRODUCT_DETAIL_DATA = {
       points: [
         "500 mg NR for daily cellular energy*",
         "Complete methylation support with TMG + B vitamins*",
-        "Apigenin for CD38 modulation and NAD+ preservation*"
+        "Apigenin to help protect NAD+ levels*"
       ]
     },
     rating: 4.8,
