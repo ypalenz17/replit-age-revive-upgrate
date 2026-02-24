@@ -786,7 +786,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                   <span className="font-mono text-[9px] uppercase tracking-[0.22em]" style={{ color: `${timelineTeal}90` }}>Results Over Time</span>
                   <div className="h-[1px] w-6" style={{ background: `${timelineTeal}50` }} />
                 </div>
-                <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-[#F4F1EA] leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>
+                <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-[#F4F1EA] leading-tight" style={{ fontSize: 'clamp(1.4rem, 4.5vw, 2.8rem)' }}>
                   {isCellubiome ? 'Biological Improvements Over Time' : 'Benefits that build'}
                 </h2>
                 <p className="text-[13px] text-[#F4F1EA]/40 font-sans">
