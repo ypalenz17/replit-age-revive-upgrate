@@ -632,7 +632,6 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                               0{i + 1}
                             </span>
                             <div className="relative z-[1] space-y-3 pt-10 md:pt-12">
-                              <Icon size={14} style={{ color: `${mineralTeal}70` }} />
                               <h4 className="text-[15px] md:text-[17px] font-head font-normal uppercase tracking-[-0.02em] text-[#F4F1EA]/90">{h.title}</h4>
                               <p className="text-[13px] md:text-[14px] text-[#F4F1EA]/50 leading-[1.65] font-sans">{h.desc}</p>
                             </div>
