@@ -58,11 +58,11 @@ export default function Purchase() {
       </nav>
 
       <div className="max-w-lg mx-auto px-5 pb-44">
-        <h1 className="font-head font-normal tracking-[-0.03em] uppercase text-white pt-6 pb-6" style={{ fontSize: 'clamp(1.5rem, 5vw, 1.8rem)' }} data-testid="cart-title">Your Cart</h1>
+        <h1 className="font-sans font-light tracking-[-0.02em] text-white/90 pt-6 pb-6" style={{ fontSize: 'clamp(1.5rem, 5vw, 1.8rem)' }} data-testid="cart-title">Your Cart</h1>
 
         <div className="border-b border-white/[0.06] pb-6">
-          <div className="flex gap-4">
-            <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0">
+          <div className="flex items-center gap-5">
+            <div className="w-20 h-20 shrink-0 flex items-center justify-center">
               <img
                 src={productInfo?.image || images[0]}
                 alt={data.name}
@@ -73,7 +73,7 @@ export default function Purchase() {
               <div className="flex justify-between items-start">
                 <div>
                   <h2 className="text-[15px] font-head font-normal uppercase tracking-[-0.02em] text-white" data-testid="purchase-product-name">{data.name}</h2>
-                  <p className="text-[12px] text-white/40 mt-0.5 font-sans">Delivered monthly</p>
+                  <p className="text-[12px] text-white/40 mt-1 font-sans">Delivered monthly</p>
                 </div>
                 <span className="text-[15px] font-sans font-semibold text-white">${price.toFixed(2)}</span>
               </div>
@@ -100,10 +100,10 @@ export default function Purchase() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 py-4 border-b border-white/[0.06]">
-          <RotateCcw size={15} className="text-ar-teal/50 shrink-0" />
-          <span className="text-[13px] text-white/50 font-sans flex-1">Save 10% on 3 Month Delivery</span>
-          <button className="text-[13px] font-sans font-semibold text-white underline underline-offset-2 decoration-white/30 hover:decoration-white/60 transition-colors" data-testid="upgrade-plan">Upgrade</button>
+        <div className="flex items-center gap-3 py-4 px-4 mt-1 -mx-1 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+          <RotateCcw size={18} className="text-ar-teal shrink-0" />
+          <span className="text-[14px] text-white/80 font-sans flex-1">Save 10% on 3 Month Delivery</span>
+          <button className="text-[14px] font-sans font-bold text-white underline underline-offset-4 decoration-white/50 hover:decoration-white transition-colors" data-testid="upgrade-plan">Upgrade</button>
         </div>
 
         <div className="py-6 border-b border-white/[0.06]">
