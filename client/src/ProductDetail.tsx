@@ -517,24 +517,22 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                   30-day risk-free guarantee. Free US shipping.
                 </p>
 
-                <div className="space-y-3 pt-2">
-                  <button
-                    onClick={() => setIsFactsOpen(true)}
-                    className="flex items-center gap-1.5 text-[13px] font-sans font-medium text-white/70 hover:text-white underline underline-offset-4 decoration-white/30 hover:decoration-white/60 transition-all"
-                    data-testid="view-supplement-facts"
-                  >
-                    View Supplement Facts <ArrowRight size={13} />
-                  </button>
-
+                <div className="flex items-center justify-between pt-2 border-t border-white/[0.06]">
                   <div className="flex items-center gap-4 text-[10px] text-white">
                     <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-30">
                       <Shield size={11} /> cGMP
                     </div>
-                    <span className="opacity-10">|</span>
                     <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-30">
-                      <FlaskConical size={11} /> Third-Party Tested
+                      <FlaskConical size={11} /> Tested
                     </div>
                   </div>
+                  <button
+                    onClick={() => setIsFactsOpen(true)}
+                    className="text-[12px] font-sans text-white/50 hover:text-white/80 underline underline-offset-4 decoration-white/20 hover:decoration-white/50 transition-all"
+                    data-testid="view-supplement-facts"
+                  >
+                    Supplement Facts →
+                  </button>
                 </div>
               </div>
             </div>
