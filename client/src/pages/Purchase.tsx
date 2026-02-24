@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, useLocation, Link } from 'wouter';
-import { Plus, Minus, RotateCcw, ShoppingBag } from 'lucide-react';
+import { Plus, Minus, RotateCcw, ShoppingBag, ChevronDown, Diamond } from 'lucide-react';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import { PRODUCT_DETAIL_DATA, PRODUCT_IMAGES } from '../productData';
 import { PRODUCTS } from '../productsData';
@@ -24,16 +24,23 @@ export default function Purchase() {
   const images = PRODUCT_IMAGES[slug as keyof typeof PRODUCT_IMAGES] || PRODUCT_IMAGES.cellunad;
   const productInfo = PRODUCTS.find((p) => p.slug === slug);
   const otherProducts = PRODUCTS.filter((p) => p.slug !== slug);
-  const basePrice = data.priceOneTime;
-  const price = upgraded ? Math.round(basePrice * 0.9 * 100) / 100 : basePrice;
-  const total = price * quantity;
+
+  const monthlyPrice = data.priceOneTime;
+  const threeMonthFull = Math.round(monthlyPrice * 3 * 100) / 100;
+  const threeMonthDiscounted = Math.round(threeMonthFull * 0.9 * 100) / 100;
+  const savings = Math.round((threeMonthFull - threeMonthDiscounted) * 100) / 100;
+  const yearlySavings = Math.round(savings * 4 * 100) / 100;
+
+  const displayPrice = upgraded ? threeMonthDiscounted : monthlyPrice;
+  const total = Math.round(displayPrice * quantity * 100) / 100;
+  const discountAmount = upgraded ? Math.round(savings * quantity * 100) / 100 : 0;
 
   const handleAddToCart = () => {
     cart.addItem({
       slug: slug!,
       name: data.name,
       image: productInfo?.image || images[0],
-      price,
+      price: displayPrice,
       isSubscribe: true,
       frequency: upgraded ? 'Every 3 months' : 'Delivered monthly',
     }, quantity);
@@ -59,10 +66,10 @@ export default function Purchase() {
         </div>
       </nav>
 
-      <div className="max-w-lg mx-auto px-5 pb-44">
+      <div className="max-w-lg mx-auto px-5 pb-52">
         <h1 className="font-sans font-light tracking-[-0.02em] text-white/90 pt-6 pb-6" style={{ fontSize: 'clamp(1.5rem, 5vw, 1.8rem)' }} data-testid="cart-title">Your Cart</h1>
 
-        <div className="border-b border-white/[0.06] pb-6">
+        <div className="pb-5">
           <div className="flex items-center gap-5">
             <div className="w-20 h-20 shrink-0 flex items-center justify-center">
               <img
@@ -75,10 +82,25 @@ export default function Purchase() {
               <div className="flex justify-between items-start">
                 <div>
                   <h2 className="text-[15px] font-head font-normal uppercase tracking-[-0.02em] text-white" data-testid="purchase-product-name">{data.name}</h2>
-                  <p className="text-[12px] text-white/40 mt-1 font-sans">{upgraded ? 'Every 3 months' : 'Delivered monthly'}</p>
+                  <p className="text-[12px] text-white/40 mt-1 font-sans">
+                    {upgraded ? '90-day supply' : '30-day supply'}
+                  </p>
                 </div>
-                <span className="text-[15px] font-sans font-semibold text-white">${price.toFixed(2)}</span>
+                <div className="text-right">
+                  <span className="text-[15px] font-sans font-semibold text-white" data-testid="display-price">${displayPrice.toFixed(2)}</span>
+                  {upgraded && (
+                    <span className="block text-[12px] text-white/30 line-through font-sans" data-testid="original-price">${threeMonthFull.toFixed(2)}</span>
+                  )}
+                </div>
               </div>
+
+              {upgraded && (
+                <div className="inline-flex items-center gap-1.5 mt-2 px-2.5 py-1 border border-ar-teal/30 rounded-full">
+                  <Diamond size={12} className="text-ar-teal" />
+                  <span className="text-[11px] font-sans font-semibold text-ar-teal" data-testid="savings-badge">${savings.toFixed(2)} savings</span>
+                </div>
+              )}
+
               <div className="flex items-center gap-3 mt-3">
                 <div className="inline-flex items-center border border-white/[0.10] rounded-full">
                   <button
@@ -102,32 +124,39 @@ export default function Purchase() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 py-5 -mx-5 px-5 bg-white/[0.03] border-y border-white/[0.06]">
-          <RotateCcw size={18} className={upgraded ? 'text-ar-teal shrink-0' : 'text-white/40 shrink-0'} />
-          <span className="text-[14px] text-white/70 font-sans flex-1">
-            {upgraded ? 'Saving 10% with 3 Month Delivery' : 'Save 10% on 3 Month Delivery'}
-          </span>
-          {upgraded ? (
-            <button
-              onClick={() => setUpgraded(false)}
-              className="text-[13px] font-sans text-white/40 hover:text-white transition-colors"
-              data-testid="downgrade-plan"
-            >
-              Remove
-            </button>
-          ) : (
-            <button
-              onClick={() => setUpgraded(true)}
-              className="text-[14px] font-sans font-bold text-white underline underline-offset-4 decoration-2 hover:text-ar-teal hover:decoration-ar-teal transition-colors"
-              data-testid="upgrade-plan"
-            >
-              Upgrade
-            </button>
+        <div className="border-y border-white/[0.06] py-4">
+          <button
+            onClick={() => setUpgraded(!upgraded)}
+            className="w-full flex items-center justify-between"
+            data-testid="upgrade-plan"
+          >
+            <span className="text-[14px] font-sans font-medium text-white">3 Month Delivery</span>
+            <div className="flex items-center gap-2">
+              {upgraded && (
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-ar-teal/10 border border-ar-teal/20">
+                  <RotateCcw size={12} className="text-ar-teal" />
+                  <span className="text-[11px] font-sans font-semibold text-ar-teal">10% off</span>
+                </span>
+              )}
+              {!upgraded && (
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/[0.06] border border-white/[0.08]">
+                  <RotateCcw size={12} className="text-white/50" />
+                  <span className="text-[11px] font-sans font-medium text-white/50">10% off</span>
+                </span>
+              )}
+              <ChevronDown size={16} className={`text-white/40 transition-transform ${upgraded ? 'rotate-180' : ''}`} />
+            </div>
+          </button>
+
+          {upgraded && (
+            <div className="mt-3 py-2.5 px-4 rounded-lg bg-ar-teal/[0.08] border border-ar-teal/[0.15] text-center">
+              <span className="text-[13px] font-sans font-semibold text-ar-teal" data-testid="yearly-savings">${yearlySavings.toFixed(2)} savings per year</span>
+            </div>
           )}
         </div>
 
         <div className="py-6 border-b border-white/[0.06]">
-          <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-white/40 font-bold mb-3">Promo Code</p>
+          <p className="text-[14px] font-sans font-medium text-white mb-3">Promo Code</p>
           <div className="flex gap-2">
             <input
               type="text"
@@ -168,7 +197,7 @@ export default function Purchase() {
                   </div>
                   <div className="p-3">
                     <p className="text-[11px] font-head font-normal uppercase tracking-[-0.01em] text-white truncate">{p.name}</p>
-                    <p className="text-[11px] text-white/35 font-sans mt-0.5">{pData ? `$${pData.priceSubscribe.toFixed(2)}` : ''}</p>
+                    <p className="text-[11px] text-white/35 font-sans mt-0.5">{pData ? `$${pData.priceOneTime.toFixed(2)}` : ''}</p>
                   </div>
                 </Link>
               );
@@ -179,9 +208,15 @@ export default function Purchase() {
 
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0b1120]/95 backdrop-blur-md border-t border-white/[0.06]">
         <div className="max-w-lg mx-auto px-5 py-4 space-y-3">
+          {upgraded && (
+            <div className="flex items-center justify-between">
+              <span className="text-[13px] font-sans text-white/50">Discounts</span>
+              <span className="text-[13px] font-sans font-medium text-ar-teal" data-testid="discount-amount">-${discountAmount.toFixed(2)}</span>
+            </div>
+          )}
           <div className="flex items-center justify-between">
-            <span className="text-[14px] font-sans font-medium text-white/60">Total</span>
-            <span className="text-[20px] font-sans font-semibold text-white">${total.toFixed(2)}</span>
+            <span className="text-[14px] font-sans font-semibold text-white">Total</span>
+            <span className="text-[20px] font-sans font-semibold text-white" data-testid="total-price">${total.toFixed(2)}</span>
           </div>
           <div className="flex gap-3">
             <button
