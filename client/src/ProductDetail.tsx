@@ -492,9 +492,12 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
               </p>
 
               <div className="space-y-4 lg:space-y-5">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-sans font-semibold text-white">${data.priceSubscribe.toFixed(2)}</span>
-                  <span className="text-sm text-white/30 font-sans line-through">${data.priceOneTime.toFixed(2)}</span>
+                {slug === 'cellubiome' && (
+                  <span className="inline-block px-3 py-1 rounded-full text-[11px] font-sans font-semibold bg-ar-teal/15 text-ar-teal" data-testid="bestseller-badge">Bestseller</span>
+                )}
+
+                <div>
+                  <span className="text-2xl font-sans font-semibold text-white">${data.priceOneTime.toFixed(2)}</span>
                 </div>
 
                 <div className="text-[13px] text-white/45 font-sans leading-snug">
@@ -514,21 +517,23 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                   30-day risk-free guarantee. Free US shipping.
                 </p>
 
-                <div className="flex items-center gap-4 text-[10px] justify-center text-white">
+                <div className="space-y-3 pt-2">
                   <button
                     onClick={() => setIsFactsOpen(true)}
-                    className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40 hover:opacity-70 transition-all"
+                    className="flex items-center gap-1.5 text-[13px] font-sans font-medium text-white/70 hover:text-white underline underline-offset-4 decoration-white/30 hover:decoration-white/60 transition-all"
                     data-testid="view-supplement-facts"
                   >
-                    <FileText size={11} /> Supplement Facts
+                    View Supplement Facts <ArrowRight size={13} />
                   </button>
-                  <span className="opacity-15">|</span>
-                  <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
-                    <Shield size={11} /> cGMP
-                  </div>
-                  <span className="opacity-15">|</span>
-                  <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
-                    <FlaskConical size={11} /> Tested
+
+                  <div className="flex items-center gap-4 text-[10px] text-white">
+                    <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-30">
+                      <Shield size={11} /> cGMP
+                    </div>
+                    <span className="opacity-10">|</span>
+                    <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-30">
+                      <FlaskConical size={11} /> Third-Party Tested
+                    </div>
                   </div>
                 </div>
               </div>
