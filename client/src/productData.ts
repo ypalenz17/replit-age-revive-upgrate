@@ -14,7 +14,7 @@ export const PRODUCT_DETAIL_DATA = {
       points: [
         "500 mg NR for daily cellular energy*",
         "Complete methylation support with TMG + B vitamins*",
-        "Enhanced absorption with BioPerine*"
+        "Apigenin for CD38 modulation and NAD+ preservation*"
       ]
     },
     rating: 4.8,
