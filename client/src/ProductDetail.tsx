@@ -874,9 +874,9 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
             {data.ingredientGroups.map((group, i) => (
               <div key={i} className="p-7 md:p-8 border border-white/[0.06] bg-white/[0.02] space-y-5 flex flex-col justify-between hover:bg-white/[0.04] transition-all rounded-lg">
                 <div className="space-y-3">
-                  <div className="flex justify-between items-start gap-3">
-                    <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white shrink-0">{group.category}</h4>
-                    <span className="font-mono text-[10px] font-bold uppercase text-right" style={{ color: accentColor }}>{group.totalDose}</span>
+                  <div className="flex justify-between items-start gap-4">
+                    <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white min-w-0">{group.category}</h4>
+                    <span className="font-mono text-[9px] font-bold uppercase text-right shrink-0 leading-tight max-w-[45%]" style={{ color: accentColor }}>{group.totalDose}</span>
                   </div>
                   <p className="text-sm text-white/50 leading-relaxed font-sans font-medium">{group.desc}</p>
                 </div>
