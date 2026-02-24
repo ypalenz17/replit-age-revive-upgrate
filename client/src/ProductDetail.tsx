@@ -40,6 +40,9 @@ import Footer from './components/Footer';
 import { PRODUCT_IMAGES, PRODUCT_DETAIL_DATA } from './productData';
 import { useCart } from './cartStore';
 import { PRODUCTS } from './productsData';
+import ProtocolStackBar from './components/ProtocolStackBar';
+import { getProductKeyFromSlug, getProtocolConfig } from './protocolStack/protocolStackConfig';
+import type { StackItem } from './protocolStack/protocolStackConfig';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -549,7 +552,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
         const mineralTeal = hasOverride ? (slug === 'cellubiome' ? '#1fb8ac' : accentColor) : accentColor;
 
         return (
-          <section className="pdp-reveal relative" style={{ background: hasOverride ? '#081422' : undefined }}>
+          <section id={slug === 'cellubiome' ? 'biological-function' : slug === 'cellunova' ? 'controlled-reset' : 'foundation-layer'} className="pdp-reveal relative" style={{ background: hasOverride ? '#081422' : undefined }}>
             {hasOverride && (
               <div className="absolute top-0 left-0 right-0 h-32 z-[1]" style={{ background: 'linear-gradient(to bottom, #0b1120 0%, transparent 100%)' }} />
             )}
@@ -644,6 +647,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
 
         return (
           <section
+            id="science"
             aria-labelledby="gut-mito-heading"
             className="pdp-reveal relative"
             style={{ background: hasMicroProof ? '#071320' : undefined }}
@@ -743,7 +747,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
         const dr = data.deliveryRationale as any;
         const hasParas = !!dr.paragraphs;
         return (
-          <section className="pdp-reveal px-5 md:px-10 lg:px-[60px] text-center py-20 md:py-24">
+          <section id="enteric-delivery" className="pdp-reveal px-5 md:px-10 lg:px-[60px] text-center py-20 md:py-24">
             <div className="max-w-[620px] mx-auto space-y-5">
               <div className="inline-flex items-center justify-center p-2.5 rounded-full" style={{ background: `rgba(31,184,172,0.06)`, border: `1px solid rgba(31,184,172,0.15)` }}>
                 <FlaskConical size={18} style={{ color: '#1fb8ac' }} />
@@ -777,7 +781,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
         const timelineTeal = slug === 'cellubiome' ? '#1fb8ac' : accentColor;
 
         return (
-          <section className="pdp-reveal px-5 md:px-10 lg:px-[60px] py-20 md:py-24">
+          <section id="results-over-time" className="pdp-reveal px-5 md:px-10 lg:px-[60px] py-20 md:py-24">
             <div className="max-w-4xl mx-auto">
               <div className="text-center space-y-4">
                 <div className="flex items-center gap-3 justify-center">
@@ -860,7 +864,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── INGREDIENT DEEP DIVE ───── */}
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
+      <section id="ingredients" className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
         <div className="max-w-7xl mx-auto space-y-14">
           <div className="space-y-3 text-center">
             <SectionLabel label="Key Ingredients" color={accentColor} />
@@ -920,7 +924,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── COMPARISON TABLE ───── */}
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
+      <section id="compare" className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
         <div className="max-w-4xl mx-auto space-y-12">
           <div className="text-center space-y-3">
             <SectionLabel label="Compare" color={accentColor} />
@@ -1047,7 +1051,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── FAQ ───── */}
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
+      <section id="faq" className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
         <div className="max-w-3xl mx-auto space-y-10">
           <div className="text-center space-y-3">
             <SectionLabel label="FAQ" color={accentColor} />
@@ -1095,6 +1099,7 @@ export default function ProductDetail() {
   const params = useParams<{ slug: string }>();
   const slug = params.slug || 'cellunad';
   const data = PRODUCT_DETAIL_DATA[slug as keyof typeof PRODUCT_DETAIL_DATA];
+  const cart = useCart();
 
   if (!data) {
     return (
@@ -1107,5 +1112,38 @@ export default function ProductDetail() {
     );
   }
 
-  return <ProductDetailPage key={slug} data={data} slug={slug} />;
+  const productKey = getProductKeyFromSlug(slug);
+  const protocolConfig = productKey ? getProtocolConfig(productKey) : null;
+
+  const handleAddStack = (selected: StackItem[]) => {
+    for (const item of selected) {
+      const pData = PRODUCT_DETAIL_DATA[item.key as keyof typeof PRODUCT_DETAIL_DATA];
+      const imgs = PRODUCT_IMAGES[item.key as keyof typeof PRODUCT_IMAGES];
+      if (!pData) continue;
+      const existsInCart = cart.items.some((c) => c.slug === item.key);
+      if (existsInCart) continue;
+      cart.addItem({
+        slug: item.key,
+        name: pData.name,
+        image: imgs?.[0] || '/images/product-bottle_1.jpg',
+        price: item.price,
+        isSubscribe: true,
+        frequency: 'Monthly',
+      }, 1, true);
+    }
+    cart.openCart();
+  };
+
+  return (
+    <div className="ar-page-with-protocolbar">
+      <ProductDetailPage key={slug} data={data} slug={slug} />
+      {protocolConfig && (
+        <ProtocolStackBar
+          config={protocolConfig}
+          showAfterPx={520}
+          onAddItems={handleAddStack}
+        />
+      )}
+    </div>
+  );
 }
