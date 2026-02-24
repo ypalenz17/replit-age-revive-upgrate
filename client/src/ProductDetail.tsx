@@ -529,7 +529,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                   style={{ boxShadow: '0 0 16px rgba(45,212,191,0.12)' }}
                   data-testid="start-now"
                 >
-                  Start Now <ArrowRight size={13} />
+                  Get {data.name} <ArrowRight size={13} />
                 </button>
 
                 <div className="flex items-center justify-center gap-2 text-[11px] text-white/30 font-sans">
