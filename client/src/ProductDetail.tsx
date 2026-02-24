@@ -197,7 +197,7 @@ function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () =>
   );
 }
 
-function ImageCarousel({ images, accent }: { images: string[]; accent?: string }) {
+function ImageCarousel({ images, accent, lightMode }: { images: string[]; accent?: string; lightMode?: boolean }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);
   const glowColor = accent || '#2dd4bf';
@@ -230,20 +230,23 @@ function ImageCarousel({ images, accent }: { images: string[]; accent?: string }
       >
         {images.map((src, i) => {
           const isBottle = isBottleImage(src);
+          const cardBg = lightMode
+            ? (isBottle ? '#e8e8e4' : 'transparent')
+            : (isBottle
+              ? `radial-gradient(ellipse at center 60%, ${glowColor}12 0%, ${glowColor}06 40%, rgba(15,23,42,0.95) 70%)`
+              : 'rgba(255,255,255,0.03)');
           return (
             <div
               key={src}
-              className="snap-start shrink-0 rounded-xl overflow-hidden relative"
+              className={`snap-start shrink-0 overflow-hidden relative ${lightMode ? 'rounded-2xl' : 'rounded-xl'}`}
               style={{
                 width: '85%',
                 maxWidth: '560px',
-                background: isBottle
-                  ? `radial-gradient(ellipse at center 60%, ${glowColor}12 0%, ${glowColor}06 40%, rgba(15,23,42,0.95) 70%)`
-                  : 'rgba(255,255,255,0.03)',
+                background: cardBg,
               }}
             >
               <div className="aspect-[4/3] w-full relative">
-                {isBottle && (
+                {isBottle && !lightMode && (
                   <div className="absolute inset-0 pointer-events-none" style={{
                     background: `radial-gradient(circle at 50% 55%, ${glowColor}15 0%, transparent 60%)`,
                   }} />
@@ -252,7 +255,7 @@ function ImageCarousel({ images, accent }: { images: string[]; accent?: string }
                   src={src}
                   alt={`Product image ${i + 1}`}
                   loading={i === 0 ? 'eager' : 'lazy'}
-                  className={`w-full h-full relative z-[1] ${isBottle ? 'object-contain p-4' : 'object-cover'}`}
+                  className={`w-full h-full relative z-[1] ${isBottle ? 'object-contain p-6' : 'object-cover'}`}
                   data-testid={`carousel-image-${i}`}
                 />
               </div>
@@ -260,11 +263,15 @@ function ImageCarousel({ images, accent }: { images: string[]; accent?: string }
           );
         })}
       </div>
-      <div className="flex gap-1.5 justify-center mt-1">
+      <div className="flex gap-1.5 justify-center mt-2">
         {images.map((_, i) => (
           <div
             key={i}
-            className={`h-[3px] rounded-full transition-all duration-300 ${i === current ? 'w-5 bg-white/60' : 'w-1.5 bg-white/15'}`}
+            className={`h-[3px] rounded-full transition-all duration-300 ${
+              i === current
+                ? `w-5 ${lightMode ? 'bg-[#0b1120]/50' : 'bg-white/60'}`
+                : `w-1.5 ${lightMode ? 'bg-[#0b1120]/15' : 'bg-white/15'}`
+            }`}
           />
         ))}
       </div>
@@ -375,73 +382,81 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
 
       <Navbar />
 
-      {/* ───── HERO: Seed-style image carousel left + purchase card right ───── */}
-      <section className="relative pt-16 pb-6 lg:pt-24 lg:pb-16 px-5 md:px-10 lg:px-[60px] overflow-hidden">
-        <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] blur-[120px] pointer-events-none rounded-full" style={{ background: `${data.accent}18` }} />
-        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-14 items-start">
+      {/* ───── HERO: Two-tone split — light carousel left, dark purchase right ───── */}
+      <section className="relative pt-16 lg:pt-0 overflow-hidden">
+        <div className="absolute inset-0 hidden lg:block">
+          <div className="absolute top-0 left-0 w-1/2 h-full bg-[#f0f0ec]" />
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-[#0b1120]" />
+        </div>
 
-          <div className="-mx-5 md:mx-0">
-            <ImageCarousel images={images} accent={data.accent} />
+        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 items-stretch">
+
+          <div className="bg-[#f0f0ec] lg:bg-transparent -mx-5 md:mx-0 lg:mx-0">
+            <div className="py-8 lg:py-24 lg:pr-10">
+              <ImageCarousel images={images} accent={data.accent} lightMode />
+            </div>
           </div>
 
-          <div className="lg:sticky lg:top-20 space-y-4 lg:space-y-6">
-            <div className="space-y-2 lg:space-y-3">
-              <p className="font-mono text-[10px] lg:text-[11px] uppercase tracking-[0.14em]" style={{ color: accentColor }}>{data.tagline}</p>
-              <h1 className="font-head font-normal tracking-[-0.04em] leading-[0.9] uppercase text-white" style={{ fontSize: 'clamp(1.8rem, 5vw, 3.5rem)' }}>
-                {data.name}
-              </h1>
-              <div className="flex items-center gap-3">
-                <div className="flex items-center gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={14} className={i < Math.floor(data.rating) ? 'text-amber-400 fill-amber-400' : 'text-white/20'} />
-                  ))}
+          <div className="lg:py-24 lg:pl-10 px-5 md:px-10 lg:px-0">
+            <div className="lg:sticky lg:top-20 space-y-4 lg:space-y-6 pb-8 lg:pb-0">
+              <div className="space-y-2 lg:space-y-3">
+                <p className="font-mono text-[10px] lg:text-[11px] uppercase tracking-[0.14em]" style={{ color: accentColor }}>{data.tagline}</p>
+                <h1 className="font-head font-normal tracking-[-0.04em] leading-[0.9] uppercase text-white" style={{ fontSize: 'clamp(1.8rem, 5vw, 3.5rem)' }}>
+                  {data.name}
+                </h1>
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={14} className={i < Math.floor(data.rating) ? 'text-amber-400 fill-amber-400' : 'text-white/20'} />
+                    ))}
+                  </div>
+                  <span className="text-[13px] text-white/50 font-sans">{data.rating} · {data.reviewCount.toLocaleString()} Reviews</span>
                 </div>
-                <span className="text-[13px] text-white/50 font-sans">{data.rating} · {data.reviewCount.toLocaleString()} Reviews</span>
-              </div>
-            </div>
-
-            <p className="text-[13px] lg:text-[15px] text-white/60 font-sans leading-relaxed max-w-md">
-              {data.subtitle}
-            </p>
-
-            <div className="space-y-4 lg:space-y-5">
-              <div>
-                <span className="text-3xl lg:text-4xl font-head font-normal tracking-tighter text-white">${data.priceSubscribe.toFixed(2)}</span>
-                <span className="ml-2 text-sm text-white/35 line-through">${data.priceOneTime.toFixed(2)}</span>
               </div>
 
-              <div className="text-[13px] text-white/45 font-sans leading-snug">
-                {data.supplyLabel}<br />{data.subscribeNote}
-              </div>
-
-              <button
-                onClick={() => navigate(`/product/${slug}/purchase`)}
-                className="w-full py-4 bg-ar-teal text-ar-navy rounded-xl font-mono text-[12px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]"
-                style={{ boxShadow: '0 0 20px rgba(45,212,191,0.15)' }}
-                data-testid="start-now"
-              >
-                Start Now <ArrowRight size={14} />
-              </button>
-
-              <p className="text-center text-[12px] text-white/30 font-sans italic">
-                30-day risk-free guarantee. Free US shipping.
+              <p className="text-[13px] lg:text-[15px] text-white/60 font-sans leading-relaxed max-w-md">
+                {data.subtitle}
               </p>
 
-              <div className="flex items-center gap-4 text-[10px] justify-center text-white">
-                <button
-                  onClick={() => setIsFactsOpen(true)}
-                  className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40 hover:opacity-70 transition-all"
-                  data-testid="view-supplement-facts"
-                >
-                  <FileText size={11} /> Supplement Facts
-                </button>
-                <span className="opacity-15">|</span>
-                <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
-                  <Shield size={11} /> cGMP
+              <div className="space-y-4 lg:space-y-5">
+                <div>
+                  <span className="text-3xl lg:text-4xl font-head font-normal tracking-tighter text-white">${data.priceSubscribe.toFixed(2)}</span>
+                  <span className="ml-2 text-sm text-white/35 line-through">${data.priceOneTime.toFixed(2)}</span>
                 </div>
-                <span className="opacity-15">|</span>
-                <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
-                  <FlaskConical size={11} /> Tested
+
+                <div className="text-[13px] text-white/45 font-sans leading-snug">
+                  {data.supplyLabel}<br />{data.subscribeNote}
+                </div>
+
+                <button
+                  onClick={() => navigate(`/product/${slug}/purchase`)}
+                  className="w-full py-4 bg-ar-teal text-ar-navy rounded-xl font-mono text-[12px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]"
+                  style={{ boxShadow: '0 0 20px rgba(45,212,191,0.15)' }}
+                  data-testid="start-now"
+                >
+                  Start Now <ArrowRight size={14} />
+                </button>
+
+                <p className="text-center text-[12px] text-white/30 font-sans italic">
+                  30-day risk-free guarantee. Free US shipping.
+                </p>
+
+                <div className="flex items-center gap-4 text-[10px] justify-center text-white">
+                  <button
+                    onClick={() => setIsFactsOpen(true)}
+                    className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40 hover:opacity-70 transition-all"
+                    data-testid="view-supplement-facts"
+                  >
+                    <FileText size={11} /> Supplement Facts
+                  </button>
+                  <span className="opacity-15">|</span>
+                  <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
+                    <Shield size={11} /> cGMP
+                  </div>
+                  <span className="opacity-15">|</span>
+                  <div className="flex items-center gap-1.5 font-mono uppercase font-bold tracking-[0.10em] opacity-40">
+                    <FlaskConical size={11} /> Tested
+                  </div>
                 </div>
               </div>
             </div>
