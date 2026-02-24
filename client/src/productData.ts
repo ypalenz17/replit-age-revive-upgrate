@@ -177,26 +177,27 @@ export const PRODUCT_DETAIL_DATA = {
     ],
     howToUse: {
       instruction: "Take 2 capsules daily. With or without food.",
-      tips: ["Consistency is more important than timing", "Enteric coating handles digestion", "Pairs well with CELLUNAD+"],
+      tips: ["Consistency matters more than timing.", "Enteric coating supports targeted intestinal release.", "Stacks cleanly with CELLUNAD+ for daily NAD+ support."],
+      microNote: "Tip: Take at the same time each day to build the habit.",
     },
     ingredientGroups: [
       {
         category: "Mitochondrial Renewal",
         totalDose: "500 mg Urolithin A",
-        desc: "Clinically studied at 500 mg to support mitochondrial recycling (mitophagy) and cellular energy.",
+        desc: "Clinically studied at 500 mg to support mitochondrial recycling (mitophagy) and cellular energy efficiency.",
         ingredients: ["Urolithin A (≥99% Purity) — 500 mg"],
       },
       {
         category: "Gut Barrier Support",
         totalDose: "500 mg Tributyrin",
-        desc: "A stable form of butyrate that supports intestinal lining integrity and gut health.",
+        desc: "A stable butyrate precursor that supports intestinal barrier integrity and microbiome-related gut resilience.",
         ingredients: ["Tributyrin (Butyrate Precursor) — 500 mg"],
       },
     ],
     qualityBadges: ["cGMP Manufactured", "Third-Party Tested", "Enteric Protected", "Vegan", "Full Label Disclosure", "No Artificial Fillers"],
     comparison: {
-      us: ["500 mg clinical-dose Urolithin A", "Enteric-coated for targeted delivery", "Pure Tributyrin for gut support", "Third-party tested for purity", "Full label disclosure"],
-      them: ["Sub-clinical doses common", "No enteric protection", "Generic butyrate salts", "Rarely third-party tested", "Proprietary blends"],
+      us: ["500 mg clinically studied Urolithin A", "500 mg Tributyrin (butyrate precursor)", "Enteric-coated for targeted intestinal release", "Third-party tested for purity and contaminants", "Full label disclosure (no proprietary blends)"],
+      them: ["Sub-clinical Urolithin A doses common", "No enteric protection", "Butyrate salts or low-potency forms", "Limited third-party testing", "Proprietary blends (unclear dosing)"],
     },
     scienceSection: {
       headline: 'The Gut–Mitochondria Axis',
@@ -224,23 +225,23 @@ export const PRODUCT_DETAIL_DATA = {
       microProof: 'Targeted intestinal release enhances biological efficacy and supports gut–mitochondria signaling stability.',
     },
     suitability: [
-      "Adults focused on healthy aging",
-      "Those seeking mitochondrial support",
-      "Gut barrier and digestive health",
-      "Pairs well with NAD+ support"
+      "Adults focused on healthy aging and resilience",
+      "Those supporting mitochondrial function and cellular renewal",
+      "Those prioritizing gut barrier integrity and digestive consistency",
+      "Stacks well with NAD+ support protocols (CELLUNAD+)"
     ],
-    safetyNote: 'Consult your healthcare provider before use if you are pregnant, nursing, on medication, or managing a medical condition.',
+    safetyNote: 'Consult your healthcare provider before use if pregnant, nursing, taking medication, or managing a medical condition.',
     allergenDisclosure: null as string | null,
     stack: [
-      { name: "CELLUNAD+", slug: "cellunad", role: "Daily NAD+", add: "Pair mitochondrial renewal with daily NAD+ support.", when: "Take daily" },
-      { name: "CELLUNOVA", slug: "cellunova", role: "Monthly Reset", add: "Add a periodic cellular cleanup cycle alongside daily support.", when: "7-day monthly cycle" }
+      { name: "CELLUNAD+", slug: "cellunad", role: "Daily NAD+", add: "Pair mitochondrial renewal with daily NAD+ support for your Foundation Layer.", when: "Daily use" },
+      { name: "CELLUNOVA", slug: "cellunova", role: "Monthly Reset", add: "Add a periodic 7-day reset cycle to complement daily support.", when: "7-day monthly cycle" }
     ],
     faq: [
-      { q: "How long before I notice anything?", a: "Give it 8–12 weeks of consistent daily use for a meaningful evaluation." },
-      { q: "Can I take it with food?", a: "Yes. Take it with or without a meal. Consistency is more important than timing." },
-      { q: "Is this a probiotic?", a: "No. CELLUBIOME provides Urolithin A and Tributyrin—targeted compounds, not live cultures." },
-      { q: "Why 500 mg Urolithin A?", a: "500 mg is the dose used in published clinical research on mitochondrial health." },
-      { q: "Why Tributyrin instead of butyrate salts?", a: "Tributyrin is more stable and survives digestion better, delivering butyrate directly to the gut lining." }
+      { q: "How long before I notice anything?", a: "Most people evaluate meaningful changes after 8–12 weeks of consistent daily use.* Early digestive comfort may appear sooner.*" },
+      { q: "Can I take it with food?", a: "Yes. Take with or without food. Consistency matters more than timing." },
+      { q: "Is this a probiotic?", a: "No. CELLUBIOME is not a probiotic. It provides Urolithin A and Tributyrin to support mitochondrial function, mitophagy pathways, and gut barrier integrity." },
+      { q: "Why 500 mg Urolithin A?", a: "500 mg is the clinically studied dose used in published research on mitochondrial function and cellular recycling (mitophagy)." },
+      { q: "Why Tributyrin instead of butyrate salts?", a: "Tributyrin is a stable butyrate precursor designed to deliver bioavailable butyrate support without relying on common butyrate salts." }
     ],
     ctaHeadline: ['Strengthen the', 'foundation.'],
     ctaBody: 'Add CELLUBIOME for daily gut barrier and mitochondrial support.',

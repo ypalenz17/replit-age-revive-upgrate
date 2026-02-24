@@ -1,0 +1,323 @@
+You are a senior CRO strategist + technical SEO copy architect.
+
+We are optimizing the following CELLUBIOME PDP sections:
+
+HOW TO USE (Simple Routine)
+
+WHAT’S INSIDE (Key Ingredients cards + “View full supplement facts”)
+
+COMPARE (How CELLUBIOME compares)
+
+WHO IT’S FOR (Suitability)
+
+PAIRS WELL WITH (CELLUNAD+ and CELLUNOVA cross-sells)
+
+TRUST CARDS (Full label disclosure, Third-party tested, Clinically studied doses)
+
+FAQ (Common questions accordion)
+
+FINAL CTA (Strengthen the foundation + Start Now + Browse)
+
+Goals:
+
+Improve conversion by reducing uncertainty and increasing “this is engineered” perception
+
+Increase LLM SEO (semantic clarity, entity coverage, internal linking)
+
+Keep design system: dark navy, teal accent, no amber, no glow gimmicks
+
+Do NOT refactor page architecture or remove sections
+
+Do NOT add medical claims (no treating, curing, diagnosing)
+
+Keep copy concise, controlled, high-end
+
+Global content rules:
+
+Use semantic HTML: <section>, <h2>, <h3>, <p>, <ul>, <li>
+
+Use consistent entity language across sections:
+
+Urolithin A (≥99% purity) 500 mg
+
+Tributyrin (butyrate precursor) 500 mg
+
+Mitophagy
+
+Butyrate
+
+Gut barrier / intestinal barrier integrity
+
+Mitochondrial function
+
+Enteric-coated delivery / targeted intestinal release
+
+Avoid generic wellness fluff (no “feel amazing”, “supercharge”, “detox”, etc.)
+
+1) HOW TO USE — “SIMPLE ROUTINE” (Conversion + Clarity)
+
+Keep layout and bullets, but replace the lead sentence + bullets with:
+
+Title stays: SIMPLE ROUTINE
+Body line becomes:
+
+“Take 2 capsules daily. With or without food.”
+
+Bullets become:
+
+“Consistency matters more than timing.”
+
+“Enteric coating supports targeted intestinal release.”
+
+“Stacks cleanly with CELLUNAD+ for daily NAD+ support.”
+
+Add one short micro-note under bullets:
+
+“Tip: Take at the same time each day to build the habit.”
+
+Keep it non-medical. Keep it tight.
+
+Also fix padding:
+
+Reduce excessive top whitespace above image by 12–16%
+
+Ensure bottom padding before next section is at least 72px mobile
+
+2) WHAT’S INSIDE — “KEY INGREDIENTS” (Make it feel engineered)
+
+This section is strong but can be more “clinical luxury” and more LLM-friendly.
+
+Card 1: Urolithin A
+
+Keep:
+
+“MITOCHONDRIAL RENEWAL”
+
+“500 MG UROLITHIN A”
+
+“Urolithin A (≥99% Purity) — 500 mg”
+
+Rewrite description to:
+
+“Clinically studied at 500 mg to support mitochondrial recycling (mitophagy) and cellular energy efficiency.”
+
+Card 2: Tributyrin
+
+Keep:
+
+“GUT BARRIER SUPPORT”
+
+“500 MG TRIBUTYRIN”
+
+“Tributyrin (Butyrate Precursor) — 500 mg”
+
+Rewrite description to:
+
+“A stable butyrate precursor that supports intestinal barrier integrity and microbiome-related gut resilience.”
+
+“View Full Supplement Facts” link
+
+Change label from generic to conversion-forward:
+
+“View full Supplement Facts and sourcing standards”
+
+Also add aria-label for accessibility and LLM parsing.
+
+Padding fix:
+
+Reduce dead space under cards and before the checkmark list by 16–24px
+
+Increase separation between “View full…” row and the checklist by 12px
+
+3) CHECKLIST (cGMP, tested, enteric, vegan, etc.)
+
+This list is good but visually too quiet. Keep structure, change microcopy slightly for authority:
+
+“cGMP manufactured”
+
+“Third-party tested”
+
+“Enteric protected”
+
+“Vegan”
+
+“Full label disclosure”
+
+“No artificial fillers”
+
+Add one optional footnote line beneath list (small, muted):
+
+“Documentation available upon request.”
+
+No claims, just confidence.
+
+4) COMPARE — “HOW CELLUBIOME COMPARES” (Make it sharper, less petty)
+
+Keep two-column layout.
+
+Change bullets to be more precise and less “trash talk”.
+
+CELLUBIOME side (left):
+
+“500 mg clinically studied Urolithin A”
+
+“500 mg Tributyrin (butyrate precursor)”
+
+“Enteric-coated for targeted intestinal release”
+
+“Third-party tested for purity and contaminants”
+
+“Full label disclosure (no proprietary blends)”
+
+OTHER BRANDS side (right):
+
+“Sub-clinical Urolithin A doses common”
+
+“No enteric protection”
+
+“Butyrate salts or low-potency forms”
+
+“Limited third-party testing”
+
+“Proprietary blends (unclear dosing)”
+
+LLM SEO requirement:
+
+Include the explicit entity “butyrate salts” here once
+
+Include “targeted intestinal release” here once
+
+Padding fix:
+
+Reduce top whitespace above the headline by ~24px
+
+Ensure bottom spacing to next section is consistent (96px desktop / 72px mobile)
+
+5) WHO IT’S FOR — “SUITABILITY” (Stop being generic)
+
+Keep the checklist-card format, but rewrite each line to be specific and aligned with CELLUBIOME’s role.
+
+Replace with:
+
+“Adults focused on healthy aging and resilience”
+
+“Those supporting mitochondrial function and cellular renewal”
+
+“Those prioritizing gut barrier integrity and digestive consistency”
+
+“Stacks well with NAD+ support protocols (CELLUNAD+)”
+
+Keep the “IMPORTANT” box, but rewrite it cleaner:
+
+“Consult your healthcare provider before use if pregnant, nursing, taking medication, or managing a medical condition.”
+
+No more, no less.
+
+6) PAIRS WELL WITH (Cross-sell) — Optimize for AOV and clarity
+
+Keep both product cards and CTAs.
+
+Rewrite subcopy:
+
+CELLUNAD+ card
+
+“Pair mitochondrial renewal with daily NAD+ support for your Foundation Layer.”
+
+CELLUNOVA card
+
+“Add a periodic 7-day reset cycle to complement daily support.”
+
+Also add one micro-line under each (small muted):
+
+CELLUNAD+: “Daily use”
+CELLUNOVA: “7-day monthly cycle”
+
+Make sure both cards have:
+
+Clear hierarchy: product name > one-line purpose > cadence > CTAs
+
+7) TRUST CARDS (Disclosure, Testing, Doses)
+
+These are strong. Tighten copy to be more premium and defensible.
+
+Full label disclosure
+
+“Every ingredient and dose listed. No proprietary blends.”
+
+Third-party tested
+
+“Independent testing for purity, potency, and common contaminants.”
+
+Clinically studied doses
+
+“Doses match or exceed amounts used in published research.”
+
+Keep it factual.
+
+Padding:
+
+Increase spacing before FAQ header so FAQ feels like a new chapter (at least 96px desktop / 72px mobile)
+
+8) FAQ — Optimize for conversion + LLM extraction
+
+Keep accordion UI, but ensure each answer is 1–3 sentences, entity-rich, and not medical.
+
+Update/ensure FAQ questions include:
+
+“How long before I notice anything?”
+Answer:
+“Most people evaluate meaningful changes after 8–12 weeks of consistent daily use.* Early digestive comfort may appear sooner.*”
+
+“Can I take it with food?”
+Answer:
+“Yes. Take with or without food. Consistency matters more than timing.”
+
+“Is this a probiotic?”
+Answer:
+“No. CELLUBIOME is not a probiotic. It provides Urolithin A and Tributyrin to support mitochondrial function, mitophagy pathways, and gut barrier integrity.”
+
+“Why 500 mg Urolithin A?”
+Answer:
+“500 mg is the clinically studied dose used in published research on mitochondrial function and cellular recycling (mitophagy).”
+
+“Why Tributyrin instead of butyrate salts?”
+Answer:
+“Tributyrin is a stable butyrate precursor designed to deliver bioavailable butyrate support without relying on common butyrate salts.”
+
+Add FAQPage JSON-LD in the page if not already present (must match visible FAQs exactly).
+
+9) FINAL CTA — Make it decisive, not generic
+
+Keep “STRENGTHEN THE FOUNDATION.” and START NOW button.
+
+Rewrite subline to:
+
+“Add CELLUBIOME for daily gut barrier and mitochondrial support.”
+
+Add a micro-reassurance line below the button (small, muted):
+
+“2 capsules daily. Enteric-protected. Fully disclosed.”
+
+Keep “Browse all products →”.
+
+Make sure FDA disclaimer stays visible and readable.
+
+FINAL QA CHECKLIST
+
+Before shipping:
+
+No medical claims
+
+Entities appear naturally across sections
+
+Padding between sections is consistent
+
+Copy is concise, premium, and conversion-forward
+
+FAQ answers are short and structured for LLM extraction
+
+Compare section is precise, not aggressive
+
+Cross-sell cards clearly communicate cadence and role in the system
+
+End instructions.

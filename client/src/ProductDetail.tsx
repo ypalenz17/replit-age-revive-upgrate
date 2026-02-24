@@ -853,6 +853,9 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                 </div>
               ))}
             </div>
+            {(data.howToUse as any).microNote && (
+              <p className="text-[12px] text-white/30 font-sans italic">{(data.howToUse as any).microNote}</p>
+            )}
           </div>
         </div>
       </section>
@@ -896,7 +899,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
               className="inline-flex items-center gap-2.5 font-mono text-[11px] uppercase font-bold tracking-[0.12em] text-white/40 hover:text-white/70 transition-all"
               data-testid="view-full-label"
             >
-              <FileText size={14} /> View Full Supplement Facts
+              <FileText size={14} /> View full Supplement Facts and sourcing standards
             </button>
           </div>
         </div>
@@ -904,7 +907,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
 
       {/* ───── QUALITY BADGES ───── */}
       <section className="pdp-reveal py-10 md:py-14 px-5 md:px-10 lg:px-[60px] border-y border-white/[0.05]">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto space-y-4">
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
             {data.qualityBadges.map((badge, i) => (
               <div key={i} className="flex items-center gap-2" data-testid={`badge-${i}`}>
@@ -913,11 +916,12 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
               </div>
             ))}
           </div>
+          <p className="text-center font-mono text-[9px] uppercase tracking-[0.10em] text-white/15">Documentation available upon request.</p>
         </div>
       </section>
 
       {/* ───── COMPARISON TABLE ───── */}
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
+      <section className="pdp-reveal pt-16 pb-20 md:pt-20 md:pb-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
         <div className="max-w-4xl mx-auto space-y-12">
           <div className="text-center space-y-3">
             <SectionLabel label="Compare" color={accentColor} />
@@ -1023,28 +1027,28 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
             <ShieldCheck size={18} style={{ color: accentColor }} className="shrink-0 mt-0.5" />
             <div>
               <p className="text-[14px] font-sans font-semibold text-white mb-1.5">Full label disclosure</p>
-              <p className="text-[13px] text-white/40 font-sans leading-relaxed">Every ingredient and dose is listed. No proprietary blends.</p>
+              <p className="text-[13px] text-white/40 font-sans leading-relaxed">Every ingredient and dose listed. No proprietary blends.</p>
             </div>
           </div>
           <div className="flex gap-4 items-start p-6 border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all rounded-lg">
             <FlaskConical size={18} style={{ color: accentColor }} className="shrink-0 mt-0.5" />
             <div>
               <p className="text-[14px] font-sans font-semibold text-white mb-1.5">Third-party tested</p>
-              <p className="text-[13px] text-white/40 font-sans leading-relaxed">Tested for purity, potency, and contaminants by independent labs.</p>
+              <p className="text-[13px] text-white/40 font-sans leading-relaxed">Independent testing for purity, potency, and common contaminants.</p>
             </div>
           </div>
           <div className="flex gap-4 items-start p-6 border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all rounded-lg">
             <Microscope size={18} style={{ color: accentColor }} className="shrink-0 mt-0.5" />
             <div>
               <p className="text-[14px] font-sans font-semibold text-white mb-1.5">Clinically studied doses</p>
-              <p className="text-[13px] text-white/40 font-sans leading-relaxed">Doses match or exceed amounts used in published clinical research.</p>
+              <p className="text-[13px] text-white/40 font-sans leading-relaxed">Doses match or exceed amounts used in published research.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ───── FAQ ───── */}
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
+      <section className="pdp-reveal pt-24 pb-20 md:pt-[96px] md:pb-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
         <div className="max-w-3xl mx-auto space-y-10">
           <div className="text-center space-y-3">
             <SectionLabel label="FAQ" color={accentColor} />
@@ -1066,6 +1070,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
           <a href={`/product/${slug}/purchase`} className="mt-5 inline-flex items-center justify-center px-8 py-3 min-h-[44px] bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] hover:bg-ar-teal/90 transition-colors" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="final-cta">
             {data.ctaButton}
           </a>
+          <p className="mt-3 text-[11px] font-mono uppercase tracking-[0.06em] text-white/25">2 capsules daily · Enteric-protected · Fully disclosed</p>
           <div className="mt-3">
             <a href="/shop" className="text-[10px] font-mono uppercase tracking-[0.08em] text-white/50 hover:text-white/70 transition-colors inline-flex items-center gap-1">
               Browse all products <ArrowRight size={9} />
