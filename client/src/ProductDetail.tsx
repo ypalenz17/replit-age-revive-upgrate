@@ -837,7 +837,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       })()}
 
       {/* ───── HOW TO USE ───── */}
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
+      <section className="pdp-reveal py-10 md:py-14 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="overflow-hidden aspect-[4/3]">
             <img src="/images/how-to-use.jpg" alt="How to use" loading="lazy" className="w-full h-full object-cover" />
@@ -864,7 +864,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── INGREDIENT DEEP DIVE ───── */}
-      <section id="ingredients" className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
+      <section id="ingredients" className="pdp-reveal py-10 md:py-14 px-5 md:px-10 lg:px-[60px]">
         <div className="max-w-7xl mx-auto space-y-14">
           <div className="space-y-3 text-center">
             <SectionLabel label="Key Ingredients" color={accentColor} />
@@ -902,7 +902,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
               className="inline-flex items-center gap-2.5 font-mono text-[11px] uppercase font-bold tracking-[0.12em] text-white/40 hover:text-white/70 transition-all"
               data-testid="view-full-label"
             >
-              <FileText size={14} /> View full Supplement Facts and sourcing standards
+              <FileText size={14} /> View Supplement Facts
             </button>
           </div>
         </div>
