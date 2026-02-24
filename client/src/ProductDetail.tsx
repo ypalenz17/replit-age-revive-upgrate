@@ -224,7 +224,7 @@ function ImageCarousel({ images, accent, lightMode }: { images: string[]; accent
     <div className="relative w-full">
       <div
         ref={scrollRef}
-        className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-3 pl-5 md:pl-0"
+        className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-0 pl-5 md:pl-0"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
         data-testid="carousel-scroll"
       >
@@ -380,7 +380,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 items-stretch">
 
           <div className="bg-[#f0f0ec] lg:bg-transparent">
-            <div className="py-6 lg:py-24 lg:pr-10 px-5 md:px-8 lg:px-0">
+            <div className="py-4 lg:py-24 lg:pr-10 px-5 md:px-8 lg:px-0">
               <ImageCarousel images={images} accent={data.accent} lightMode />
             </div>
           </div>
