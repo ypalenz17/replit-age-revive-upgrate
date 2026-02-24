@@ -556,9 +556,9 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
             {hasOverride && (
               <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(244,241,234,0.06)' }} />
             )}
-            <div className="relative z-[2] py-24 md:py-32 px-5 md:px-10 lg:px-[60px]">
+            <div className="relative z-[2] py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
               <div className="max-w-7xl mx-auto">
-                <div className="text-center space-y-5 mb-20">
+                <div className="text-center space-y-5 mb-12">
                   <div className="flex items-center gap-3 justify-center">
                     <div className="h-[1px] w-6" style={{ background: `${mineralTeal}50` }} />
                     <span className="font-mono text-[9px] uppercase tracking-[0.22em]" style={{ color: `${mineralTeal}90` }}>{eyebrow}</span>
@@ -743,7 +743,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
         const dr = data.deliveryRationale as any;
         const hasParas = !!dr.paragraphs;
         return (
-          <section className="pdp-reveal px-5 md:px-10 lg:px-[60px] text-center pt-16 pb-[72px] md:pt-[88px] md:pb-[104px]">
+          <section className="pdp-reveal px-5 md:px-10 lg:px-[60px] text-center py-20 md:py-24">
             <div className="max-w-[620px] mx-auto space-y-5">
               <div className="inline-flex items-center justify-center p-2.5 rounded-full" style={{ background: `rgba(31,184,172,0.06)`, border: `1px solid rgba(31,184,172,0.15)` }}>
                 <FlaskConical size={18} style={{ color: '#1fb8ac' }} />
@@ -777,7 +777,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
         const timelineTeal = slug === 'cellubiome' ? '#1fb8ac' : accentColor;
 
         return (
-          <section className="pdp-reveal px-5 md:px-10 lg:px-[60px]" style={{ paddingTop: '96px', paddingBottom: '120px' }}>
+          <section className="pdp-reveal px-5 md:px-10 lg:px-[60px] py-20 md:py-24">
             <div className="max-w-4xl mx-auto">
               <div className="text-center space-y-4">
                 <div className="flex items-center gap-3 justify-center">
@@ -920,7 +920,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── COMPARISON TABLE ───── */}
-      <section className="pdp-reveal pt-16 pb-20 md:pt-20 md:pb-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
+      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
         <div className="max-w-4xl mx-auto space-y-12">
           <div className="text-center space-y-3">
             <SectionLabel label="Compare" color={accentColor} />
@@ -1020,7 +1020,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── TESTING & QUALITY ───── */}
-      <section className="pdp-reveal py-16 md:py-20 px-5 md:px-10 lg:px-[60px]">
+      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
           <div className="flex gap-4 items-start p-6 border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all rounded-lg">
             <ShieldCheck size={18} style={{ color: accentColor }} className="shrink-0 mt-0.5" />
@@ -1047,7 +1047,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       </section>
 
       {/* ───── FAQ ───── */}
-      <section className="pdp-reveal pt-24 pb-20 md:pt-[96px] md:pb-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
+      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">
         <div className="max-w-3xl mx-auto space-y-10">
           <div className="text-center space-y-3">
             <SectionLabel label="FAQ" color={accentColor} />
