@@ -747,10 +747,17 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
         const dr = data.deliveryRationale as any;
         const hasParas = !!dr.paragraphs;
         return (
-          <section id="enteric-delivery" className="pdp-reveal px-5 md:px-10 lg:px-[60px] text-center py-20 md:py-24">
+          <section id="enteric-delivery" className="pdp-reveal px-5 md:px-10 lg:px-[60px] text-center py-10 md:py-14">
             <div className="max-w-[620px] mx-auto space-y-5">
-              <div className="inline-flex items-center justify-center p-2.5 rounded-full" style={{ background: `rgba(31,184,172,0.06)`, border: `1px solid rgba(31,184,172,0.15)` }}>
-                <FlaskConical size={18} style={{ color: '#1fb8ac' }} />
+              <div className="inline-flex items-center justify-center w-10 h-10 rounded-full" style={{ background: `${accentColor}0A`, border: `1px solid ${accentColor}18` }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="7" r="2.5" stroke={accentColor} strokeWidth="1.5" />
+                  <circle cx="6" cy="17" r="2.5" stroke={accentColor} strokeWidth="1.5" />
+                  <circle cx="18" cy="17" r="2.5" stroke={accentColor} strokeWidth="1.5" />
+                  <line x1="12" y1="9.5" x2="7.5" y2="14.8" stroke={accentColor} strokeWidth="1.2" strokeLinecap="round" />
+                  <line x1="12" y1="9.5" x2="16.5" y2="14.8" stroke={accentColor} strokeWidth="1.2" strokeLinecap="round" />
+                  <line x1="8.5" y1="17" x2="15.5" y2="17" stroke={accentColor} strokeWidth="1.2" strokeLinecap="round" />
+                </svg>
               </div>
               <h3 className="font-head font-normal uppercase tracking-[-0.02em] text-[#F4F1EA] leading-tight" style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)' }}>{dr.headline}</h3>
               {hasParas ? (
