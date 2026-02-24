@@ -201,72 +201,54 @@ function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () =>
 
 function ImageLightbox({ images, startIndex, onClose }: { images: string[]; startIndex: number; onClose: () => void }) {
   const [idx, setIdx] = useState(startIndex);
-  const [zoomed, setZoomed] = useState(false);
-  const [origin, setOrigin] = useState('center center');
-  const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowRight') { setIdx(i => Math.min(i + 1, images.length - 1)); setZoomed(false); }
-      if (e.key === 'ArrowLeft') { setIdx(i => Math.max(i - 1, 0)); setZoomed(false); }
+      if (e.key === 'ArrowRight') setIdx(i => Math.min(i + 1, images.length - 1));
+      if (e.key === 'ArrowLeft') setIdx(i => Math.max(i - 1, 0));
     };
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', onKey);
     return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
   }, [images.length, onClose]);
 
-  const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
-    if (zoomed) { setZoomed(false); return; }
-    const rect = e.currentTarget.getBoundingClientRect();
-    const xPct = ((e.clientX - rect.left) / rect.width) * 100;
-    const yPct = ((e.clientY - rect.top) / rect.height) * 100;
-    setOrigin(`${xPct}% ${yPct}%`);
-    setZoomed(true);
-  };
-
-  const goTo = (newIdx: number) => { setIdx(newIdx); setZoomed(false); };
+  const goTo = (newIdx: number) => setIdx(newIdx);
 
   return (
-    <div className="fixed inset-0 z-[9999] bg-black/95 flex flex-col" data-testid="lightbox" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="flex items-center justify-between p-4">
+    <div className="fixed inset-0 z-[9999] bg-black flex flex-col" data-testid="lightbox">
+      <div className="flex items-center justify-between p-4 shrink-0">
         <span className="font-mono text-[11px] text-white/40 uppercase tracking-[0.10em]">{idx + 1} / {images.length}</span>
-        <button onClick={(e) => { e.stopPropagation(); onClose(); }} className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" data-testid="lightbox-close">
+        <button onClick={onClose} className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" data-testid="lightbox-close">
           <X size={24} />
         </button>
       </div>
 
-      <div className="flex-1 flex items-center justify-center relative px-4">
+      <div className="flex-1 relative overflow-auto" style={{ WebkitOverflowScrolling: 'touch' }}>
         {idx > 0 && (
-          <button onClick={() => goTo(idx - 1)} className="absolute left-3 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all" data-testid="lightbox-prev">
+          <button onClick={() => goTo(idx - 1)} className="fixed left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all" data-testid="lightbox-prev">
             <ChevronLeft size={20} />
           </button>
         )}
 
-        <div className={`max-w-4xl w-full flex items-center justify-center ${zoomed ? 'overflow-auto' : 'overflow-hidden'}`} style={{ maxHeight: '80vh' }}>
+        <div className="min-h-full flex items-center justify-center p-4">
           <img
-            ref={imgRef}
             src={images[idx]}
             alt={`Product image ${idx + 1}`}
-            onClick={handleImageClick}
-            className="max-w-full max-h-[80vh] object-contain select-none transition-transform duration-300 ease-out"
-            style={{
-              transform: zoomed ? 'scale(3)' : 'scale(1)',
-              transformOrigin: origin,
-              cursor: zoomed ? 'zoom-out' : 'zoom-in',
-            }}
+            className="max-w-[90vw] max-h-[75vh] object-contain select-none"
             draggable={false}
+            data-testid="lightbox-image"
           />
         </div>
 
         {idx < images.length - 1 && (
-          <button onClick={() => goTo(idx + 1)} className="absolute right-3 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all" data-testid="lightbox-next">
+          <button onClick={() => goTo(idx + 1)} className="fixed right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all" data-testid="lightbox-next">
             <ChevronRight size={20} />
           </button>
         )}
       </div>
 
-      <div className="flex gap-2 justify-center p-4">
+      <div className="flex gap-2 justify-center p-4 shrink-0">
         {images.map((src, i) => (
           <button key={i} onClick={() => goTo(i)} className={`w-14 h-10 rounded overflow-hidden border-2 transition-all ${i === idx ? 'border-white/60' : 'border-transparent opacity-40 hover:opacity-70'}`} data-testid={`lightbox-thumb-${i}`}>
             <img src={src} alt="" className="w-full h-full object-cover" />
