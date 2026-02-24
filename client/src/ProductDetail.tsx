@@ -380,18 +380,11 @@ function SectionLabel({ label, color, align = 'center' }: { label: string; color
 }
 
 function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.cellunad; slug: string }) {
-  const [showSticky, setShowSticky] = useState(false);
   const [isFactsOpen, setIsFactsOpen] = useState(false);
   const [activeTimeline, setActiveTimeline] = useState(0);
   const [, navigate] = useLocation();
   const cart = useCart();
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => setShowSticky(window.scrollY > 600);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -424,23 +417,6 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
     <div ref={containerRef} className="min-h-screen bg-[#0b1120] text-white selection:bg-teal-500/30 selection:text-white font-sans antialiased">
       <ModalFacts isOpen={isFactsOpen} onClose={() => setIsFactsOpen(false)} data={data} />
 
-      <div className={`fixed bottom-0 left-0 w-full z-[110] backdrop-blur-xl py-3 px-5 transition-transform duration-500 transform ${showSticky ? 'translate-y-0' : 'translate-y-full'}`} style={{ background: 'rgba(245,242,236,0.97)', borderTop: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 -2px 16px rgba(0,0,0,0.08)' }}>
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div className="hidden sm:flex items-center gap-3">
-            <h4 className="text-sm font-head font-normal tracking-tight uppercase leading-none text-[#0b1120]">{data.name}</h4>
-            <span className="text-xs text-black/30">|</span>
-            <span className="text-sm font-head font-normal tracking-tighter text-[#0b1120]">${data.priceSubscribe.toFixed(2)}</span>
-          </div>
-          <div className="flex items-center gap-3 w-full sm:w-auto">
-            <div className="flex-1 sm:hidden text-left">
-              <span className="text-lg font-head font-normal tracking-tighter text-[#0b1120]">${data.priceSubscribe.toFixed(2)}</span>
-            </div>
-            <button onClick={() => navigate(`/product/${slug}/purchase`)} className="flex-1 sm:flex-none py-3 px-8 rounded-lg font-mono text-[11px] font-bold uppercase tracking-[0.08em] transition-all min-h-[44px] active:scale-[0.98]" style={{ background: '#1fb8ac', color: '#0b1120' }} data-testid="sticky-cta">
-              Get {data.name}
-            </button>
-          </div>
-        </div>
-      </div>
 
       <Navbar />
 
