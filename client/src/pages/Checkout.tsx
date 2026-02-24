@@ -160,17 +160,6 @@ export default function Checkout() {
                   <p className="mt-5 text-[11px] font-sans text-white/25 leading-relaxed">
                     I understand that by creating an account, I agree to receive updates, AGE REVIVE news, and member-only offers. I understand that I can unsubscribe from emails at any time.
                   </p>
-
-                  <label className="flex items-start gap-3 mt-4 cursor-pointer group">
-                    <input
-                      type="checkbox"
-                      className="mt-0.5 w-4 h-4 rounded border border-white/20 bg-white/[0.03] accent-ar-teal"
-                      data-testid="checkbox-text-optin"
-                    />
-                    <span className="text-[11px] font-sans text-white/25 leading-relaxed group-hover:text-white/35 transition-colors">
-                      I'd also like to receive text updates about orders, promotions, and exclusive offers. Message and data rates may apply. Reply STOP to unsubscribe.
-                    </span>
-                  </label>
                 </>
               ) : (
                 <div className="flex items-center justify-between">
