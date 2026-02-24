@@ -739,59 +739,99 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
       })()}
 
       {/* ───── DELIVERY RATIONALE (CELLUBIOME only) ───── */}
-      {data.deliveryRationale && (
-        <section className="pdp-reveal py-16 md:py-20 px-5 md:px-10 lg:px-[60px] text-center">
-          <div className="max-w-2xl mx-auto space-y-6">
-            <div className="inline-flex items-center justify-center p-3 rounded-full" style={{ background: `${data.accent}10`, border: `1px solid ${accentColor}20` }}>
-              <FlaskConical size={20} style={{ color: accentColor }} />
+      {data.deliveryRationale && (() => {
+        const dr = data.deliveryRationale as any;
+        const hasParas = !!dr.paragraphs;
+        return (
+          <section className="pdp-reveal px-5 md:px-10 lg:px-[60px] text-center pt-16 pb-[72px] md:pt-[88px] md:pb-[104px]">
+            <div className="max-w-[620px] mx-auto space-y-5">
+              <div className="inline-flex items-center justify-center p-2.5 rounded-full" style={{ background: `rgba(31,184,172,0.06)`, border: `1px solid rgba(31,184,172,0.15)` }}>
+                <FlaskConical size={18} style={{ color: '#1fb8ac' }} />
+              </div>
+              <h3 className="font-head font-normal uppercase tracking-[-0.02em] text-[#F4F1EA] leading-tight" style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)' }}>{dr.headline}</h3>
+              {hasParas ? (
+                <div className="space-y-4">
+                  {dr.paragraphs.map((p: string, i: number) => (
+                    <p
+                      key={i}
+                      className="text-[14px] md:text-[15px] text-[#F4F1EA]/50 leading-[1.6] font-sans"
+                      dangerouslySetInnerHTML={{ __html: p }}
+                    />
+                  ))}
+                  {dr.microProof && (
+                    <p className="text-[12px] font-mono uppercase tracking-[0.06em] text-[#F4F1EA]/30 pt-2">
+                      {dr.microProof}
+                    </p>
+                  )}
+                </div>
+              ) : (
+                <p className="text-[#F4F1EA]/50 text-[15px] leading-[1.6] font-sans max-w-lg mx-auto">{dr.text}</p>
+              )}
             </div>
-            <h3 className="font-head font-normal uppercase tracking-[-0.02em] text-white leading-tight" style={{ fontSize: 'clamp(1.4rem, 4vw, 1.8rem)' }}>{data.deliveryRationale.headline}</h3>
-            <p className="text-white/50 text-[15px] leading-relaxed font-sans font-medium max-w-lg mx-auto">{data.deliveryRationale.text}</p>
-          </div>
-        </section>
-      )}
+          </section>
+        );
+      })()}
 
       {/* ───── BENEFITS TIMELINE ───── */}
-      <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px]">
-        <div className="max-w-4xl mx-auto space-y-12">
-          <div className="text-center space-y-3">
-            <SectionLabel label="Results Over Time" color={accentColor} />
-            <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>
-              Benefits that build
-            </h2>
-            <p className="text-[14px] text-white/40 font-sans font-medium">What to expect with consistent use.*</p>
-          </div>
+      {(() => {
+        const isCellubiome = slug === 'cellubiome';
+        const timelineTeal = isCellubiome ? '#1fb8ac' : accentColor;
 
-          <div className="flex flex-wrap justify-center gap-2 md:gap-3">
-            {data.benefitsTimeline.map((t, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveTimeline(i)}
-                className="font-mono text-[10px] font-bold uppercase tracking-[0.10em] transition-all min-h-[36px] px-5 py-2"
-                style={activeTimeline === i
-                  ? { background: accentColor, color: '#0b1120', borderRadius: '999px' }
-                  : { background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.5)', borderRadius: '999px' }
-                }
-                data-testid={`timeline-tab-${i}`}
-              >
-                {t.time}
-              </button>
-            ))}
-          </div>
+        return (
+          <section className={`pdp-reveal px-5 md:px-10 lg:px-[60px] ${isCellubiome ? '' : 'py-20 md:py-24'}`} style={isCellubiome ? { paddingTop: '96px', paddingBottom: '120px' } : undefined}>
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center space-y-4">
+                <div className="flex items-center gap-3 justify-center">
+                  <div className="h-[1px] w-6" style={{ background: `${timelineTeal}50` }} />
+                  <span className="font-mono text-[9px] uppercase tracking-[0.22em]" style={{ color: `${timelineTeal}90` }}>Results Over Time</span>
+                  <div className="h-[1px] w-6" style={{ background: `${timelineTeal}50` }} />
+                </div>
+                <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-[#F4F1EA] leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}>
+                  {isCellubiome ? 'Biological Improvements Over Time' : 'Benefits that build'}
+                </h2>
+                <p className="text-[13px] text-[#F4F1EA]/40 font-sans">
+                  {isCellubiome ? 'What consistent cellular support may look like.*' : 'What to expect with consistent use.*'}
+                </p>
+              </div>
 
-          <div className="border border-white/[0.08] bg-white/[0.02] p-8 md:p-10 min-h-[180px]">
-            <h3 className="font-head font-normal uppercase tracking-tight text-white text-lg mb-6" style={{ color: accentColor }}>{data.benefitsTimeline[activeTimeline].time}</h3>
-            <ul className="space-y-4">
-              {data.benefitsTimeline[activeTimeline].items.map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <Check size={16} className="shrink-0 mt-0.5" style={{ color: accentColor }} />
-                  <span className="text-[15px] text-white/60 font-sans font-medium leading-snug">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
+              <div className="flex flex-wrap justify-center gap-2 md:gap-3 mt-10">
+                {data.benefitsTimeline.map((t, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveTimeline(i)}
+                    className="font-mono text-[10px] font-bold uppercase tracking-[0.10em] transition-all min-h-[36px] px-5 py-2 rounded-full"
+                    style={activeTimeline === i
+                      ? { background: timelineTeal, color: '#0b1120' }
+                      : { background: 'rgba(255,255,255,0.04)', color: 'rgba(244,241,234,0.45)', border: '1px solid rgba(244,241,234,0.08)' }
+                    }
+                    data-testid={`timeline-tab-${i}`}
+                  >
+                    {t.time}
+                  </button>
+                ))}
+              </div>
+
+              <div className="mt-8 border rounded-lg p-9 md:p-11 min-h-[200px]" style={{ borderColor: 'rgba(244,241,234,0.08)', background: 'rgba(255,255,255,0.02)' }}>
+                <h3 className="font-head font-normal uppercase tracking-tight text-lg mb-6" style={{ color: `${timelineTeal}` }}>{data.benefitsTimeline[activeTimeline].time}</h3>
+                <ul className="space-y-4">
+                  {data.benefitsTimeline[activeTimeline].items.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <Check size={15} className="shrink-0 mt-0.5" style={{ color: `${timelineTeal}80` }} />
+                      <span className="text-[14px] text-[#F4F1EA]/55 font-sans leading-snug">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {isCellubiome && (
+                <p className="text-center text-[12px] font-sans text-[#F4F1EA]/25 mt-6">
+                  Designed for cumulative biological adaptation, not temporary symptom masking.
+                </p>
+              )}
+            </div>
+          </section>
+        );
+      })()}
 
       {/* ───── HOW TO USE ───── */}
       <section className="pdp-reveal py-20 md:py-24 px-5 md:px-10 lg:px-[60px] bg-white/[0.03] border-y border-white/[0.05]">

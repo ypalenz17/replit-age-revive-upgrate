@@ -170,10 +170,10 @@ export const PRODUCT_DETAIL_DATA = {
       { icon: 'Layers', title: "Gut Barrier Integrity", desc: "Enteric Tributyrin delivers bioavailable butyrate to reinforce intestinal barrier integrity. Supports microbial balance and long-term signaling stability." },
     ],
     benefitsTimeline: [
-      { time: "2 Weeks", items: ["Gut comfort improvements begin*", "Butyrate begins supporting intestinal lining*"] },
-      { time: "4 Weeks", items: ["Enhanced digestive regularity*", "Mitochondrial recycling pathways activated*"] },
-      { time: "8 Weeks", items: ["Measurable gut barrier support*", "Sustained mitochondrial quality*"] },
-      { time: "3 Months", items: ["Long-term gut–mitochondria axis support*", "Foundation for cellular longevity*", "Noticeable energy and resilience*"] },
+      { time: "2 Weeks", items: ["Early digestive comfort improvements*", "Butyrate begins supporting intestinal barrier cells*", "Initial cellular recycling support via mitophagy activation*"] },
+      { time: "4 Weeks", items: ["Improved gut barrier resilience*", "More consistent mitochondrial energy efficiency*", "Reduction in digestive variability*"] },
+      { time: "8 Weeks", items: ["Strengthened gut–mitochondria signaling*", "Enhanced cellular renewal dynamics*", "Greater systemic resilience*"] },
+      { time: "3 Months", items: ["Compounded support for mitochondrial function*", "Sustained intestinal barrier integrity*", "Long-term biological stability foundation*"] },
     ],
     howToUse: {
       instruction: "Take 2 capsules daily. With or without food.",
@@ -217,7 +217,11 @@ export const PRODUCT_DETAIL_DATA = {
     },
     deliveryRationale: {
       headline: 'Why Enteric Delivery Matters',
-      text: 'Tributyrin and Urolithin A need to reach the intestines intact. Our enteric coating protects them from stomach acid so they arrive where your body can use them most.'
+      paragraphs: [
+        '<strong>Urolithin A</strong> and <strong>Tributyrin</strong> must reach the small intestine intact to activate <strong>mitophagy</strong> pathways and deliver bioavailable <strong>butyrate</strong>.',
+        'Standard capsules can degrade in stomach acid. CELLUBIOME uses enteric delivery to protect active compounds until they reach the intestinal environment where absorption and barrier support occur.',
+      ],
+      microProof: 'Targeted intestinal release enhances biological efficacy and supports gut–mitochondria signaling stability.',
     },
     suitability: [
       "Adults focused on healthy aging",

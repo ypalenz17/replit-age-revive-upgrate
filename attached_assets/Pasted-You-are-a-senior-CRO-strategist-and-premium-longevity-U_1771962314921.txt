@@ -1,0 +1,214 @@
+You are a senior CRO strategist and premium longevity UX designer.
+
+We are optimizing two sections on the CELLUBIOME PDP:
+
+“Why Enteric Delivery Matters”
+
+“Benefits That Build” (Results Over Time)
+
+Goals:
+
+Increase purchase confidence
+
+Reinforce formulation superiority
+
+Improve semantic richness for LLM indexing
+
+Maintain clinical luxury tone
+
+Fix vertical spacing rhythm
+
+Avoid generic supplement language
+
+No fluff
+
+No hype
+
+No wellness clichés
+
+Do NOT redesign the entire layout.
+Refine hierarchy, spacing, and content only.
+
+SECTION 1 — WHY ENTERIC DELIVERY MATTERS
+1️⃣ Structural Adjustments
+
+Reduce excessive vertical padding.
+
+Target spacing:
+
+Top padding: 88px desktop / 64px mobile
+
+Bottom padding: 104px desktop / 72px mobile
+
+Max text width: 620px
+
+Centered layout remains
+
+Reduce excessive empty space above the flask icon.
+
+Icon size reduce by 10%.
+
+2️⃣ Replace Body Copy With This (LLM Optimized + Conversion Focused)
+<p>
+<strong>Urolithin A</strong> and <strong>Tributyrin</strong> must reach the small intestine intact to activate <strong>mitophagy</strong> pathways and deliver bioavailable <strong>butyrate</strong>.
+</p>
+
+<p>
+Standard capsules can degrade in stomach acid. CELLUBIOME uses enteric delivery to protect active compounds until they reach the intestinal environment where absorption and barrier support occur.
+</p>
+
+<p class="micro-proof">
+Targeted intestinal release enhances biological efficacy and supports gut–mitochondria signaling stability.
+</p>
+
+Requirements:
+
+Keep tone clinical.
+
+No marketing exaggeration.
+
+Natural inclusion of:
+
+Urolithin A
+
+Tributyrin
+
+Mitophagy
+
+Butyrate
+
+Intestinal absorption
+
+Enteric delivery
+
+SECTION 2 — RESULTS OVER TIME
+
+This section is important for conversion psychology.
+
+Right now it feels like:
+Generic timeline UI.
+
+We need:
+Progression.
+Momentum.
+Authority.
+
+1️⃣ Padding & Layout Fix
+
+Reduce top padding slightly.
+Increase spacing between headline and time selectors.
+
+Target:
+
+Top padding: 96px
+
+Bottom padding: 120px
+
+Timeline toggle spacing: 40px from headline
+
+2️⃣ Rewrite Headline Block
+
+Replace:
+
+“BENEFITS THAT BUILD”
+
+With:
+
+<h2>Biological Improvements Over Time</h2>
+
+Keep:
+RESULTS OVER TIME as eyebrow label.
+
+Replace subline with:
+
+<p class="subhead">
+What consistent cellular support may look like.*
+</p>
+
+Less consumer-y. More clinical.
+
+3️⃣ Rewrite Timeline Copy (Conversion + Authority)
+2 WEEKS
+
+Replace content with:
+
+<ul>
+<li>Early digestive comfort improvements*</li>
+<li>Butyrate begins supporting intestinal barrier cells*</li>
+<li>Initial cellular recycling support via mitophagy activation*</li>
+</ul>
+4 WEEKS
+<ul>
+<li>Improved gut barrier resilience*</li>
+<li>More consistent mitochondrial energy efficiency*</li>
+<li>Reduction in digestive variability*</li>
+</ul>
+8 WEEKS
+<ul>
+<li>Strengthened gut–mitochondria signaling*</li>
+<li>Enhanced cellular renewal dynamics*</li>
+<li>Greater systemic resilience*</li>
+</ul>
+3 MONTHS
+<ul>
+<li>Compounded support for mitochondrial function*</li>
+<li>Sustained intestinal barrier integrity*</li>
+<li>Long-term biological stability foundation*</li>
+</ul>
+4️⃣ UX Refinements
+
+Remove overly heavy pill shadow on time toggles.
+
+Reduce toggle contrast slightly.
+
+Make active state refined, not neon.
+
+Increase padding inside results card by 12%.
+
+Soften card border opacity to 15%.
+
+No glow effects.
+No gradient gimmicks.
+No bright teal saturation.
+
+5️⃣ Psychological Reinforcement Line (Below Results Card)
+
+Add subtle reinforcement:
+
+<p class="confidence-line">
+Designed for cumulative biological adaptation, not temporary symptom masking.
+</p>
+
+This increases perceived formulation depth.
+
+FINAL VALIDATION CHECKLIST
+
+Before finishing:
+
+Timeline reads scientific, not hype.
+
+No “feel amazing” language.
+
+No generic wellness phrases.
+
+Clean semantic HTML.
+
+Strong entity reinforcement for:
+
+Urolithin A
+
+Tributyrin
+
+Mitophagy
+
+Butyrate
+
+Gut barrier
+
+Mitochondrial function
+
+Vertical spacing feels engineered.
+
+No excessive empty air above icon sections.
+
+End of instructions.
