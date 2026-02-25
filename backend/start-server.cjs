@@ -1,4 +1,5 @@
 const path = require("path");
+const { execSync } = require("child_process");
 
 async function setup() {
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
@@ -51,11 +52,11 @@ async function start() {
   await setup();
 
   const rootDir = path.resolve(__dirname, "..");
-  const develop = require(path.join(rootDir, "node_modules", "@medusajs", "medusa", "dist", "commands", "develop.js")).default;
+  const startCmd = require(path.join(rootDir, "node_modules", "@medusajs", "medusa", "dist", "commands", "start.js")).default;
 
   console.log("Starting Medusa on port " + process.env.PORT + "...");
-  
-  await develop({
+
+  await startCmd({
     directory: __dirname,
     port: parseInt(process.env.PORT),
   });
