@@ -54,18 +54,14 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
 
       <div className="relative mb-2 sm:mb-3 flex items-end justify-center h-[180px] sm:h-[200px] mt-10 sm:mt-0">
         <div
-          className="absolute left-1/2 -translate-x-1/2 top-[15%] w-[80%] h-[70%] blur-[40px] opacity-20 pointer-events-none"
-          style={{ background: `radial-gradient(ellipse at 50% 60%, ${hexToRgba(accent, 0.5)}, transparent 70%)` }}
-        />
-        <div
-          className="absolute bottom-[-4px] left-1/2 -translate-x-1/2 w-[40%] h-[6px] rounded-[50%] blur-sm opacity-50 pointer-events-none"
-          style={{ background: 'rgba(0,0,0,0.7)' }}
+          className="absolute bottom-[-2px] left-1/2 -translate-x-1/2 w-[55%] h-[18px] rounded-[50%] pointer-events-none"
+          style={{ background: `radial-gradient(ellipse at 50% 50%, ${hexToRgba(accent, 0.35)}, ${hexToRgba(accent, 0.12)} 40%, transparent 70%)`, filter: 'blur(6px)' }}
         />
         <img
           src={p.image}
           alt={p.name}
           className="relative z-10 w-[168px] sm:w-[196px] max-w-[85vw] h-auto object-contain"
-          style={{ filter: `drop-shadow(0 8px 16px ${hexToRgba(accent, 0.2)}) drop-shadow(0 3px 6px rgba(0,0,0,0.35))` }}
+          style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.4))' }}
         />
       </div>
 
