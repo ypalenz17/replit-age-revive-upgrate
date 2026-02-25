@@ -10,7 +10,7 @@ export const PRODUCTS = [
     supply: '30-day supply',
     color: '#1e3a8a',
     textColor: '#60a5fa',
-    image: '/images/cellunad_cropped.png',
+    image: '/images/cellunad-render.png',
     ingredients: ['NR 500 mg', 'TMG 250 mg', 'Apigenin 100 mg'],
   },
   {
@@ -24,7 +24,7 @@ export const PRODUCTS = [
     supply: '30-day supply',
     color: '#19B3A6',
     textColor: '#5eead4',
-    image: '/images/cellubiome_cropped.png',
+    image: '/images/cellubiome-render.png',
     ingredients: ['Urolithin A 500 mg', 'Tributyrin 500 mg'],
   },
   {

@@ -190,7 +190,7 @@ const PRODUCTS = {
     specRow: 'Glass bottle \u2022 UV-protected',
     accent: '#1e3a8a',
     accentText: '#60a5fa',
-    heroImage: '/images/cellunad_cropped.png',
+    heroImage: '/images/cellunad-render.png',
     outcomes: [
       'Cellular energy + resilience',
       'NAD+ metabolism + replenishment',
@@ -254,7 +254,7 @@ const PRODUCTS = {
     specRow: 'Glass bottle \u2022 UV-protected',
     accent: '#19B3A6',
     accentText: '#5eead4',
-    heroImage: '/images/cellubiome_cropped.png',
+    heroImage: '/images/cellubiome-render.png',
     outcomes: [
       'Gut barrier integrity + digestive resilience',
       'Mito efficiency + recovery support',
