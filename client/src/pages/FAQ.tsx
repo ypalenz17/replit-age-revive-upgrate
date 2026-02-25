@@ -4,6 +4,7 @@ import { Menu, ShoppingBag, X } from "lucide-react";
 import brandLogo from "@assets/AR_brand_logo_1771613250600.png";
 import Footer from "../components/Footer";
 import { useCart } from "../cartStore";
+import "../styles/luxury-pages.css";
 
 const LAST_UPDATED = "2026-02-24";
 
@@ -299,7 +300,7 @@ function useFaqSEO(allFaqItems: FAQItem[]) {
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/75">
+    <span className="ar-luxury-pill">
       {children}
     </span>
   );
@@ -362,7 +363,7 @@ export default function FAQ() {
   }, [filteredCategories]);
 
   return (
-    <div className="min-h-screen bg-[#0b1120] text-white">
+    <div className="ar-luxury-page min-h-screen text-white">
       <nav className="fixed top-0 left-0 right-0 z-[150] bg-white/[0.05] backdrop-blur-md border-b border-white/[0.10] shadow-[0_1px_12px_rgba(0,0,0,0.2)]">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 h-14">
           <a href="/" aria-label="Go to homepage">
@@ -446,28 +447,28 @@ export default function FAQ() {
         </div>
       )}
 
-      <header className="relative overflow-hidden border-b border-white/10">
+      <header className="ar-luxury-hero relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0f1d30] to-[#0b1120]" />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-24 pb-12 md:pt-32 md:pb-20">
-          <p className="text-xs uppercase tracking-[0.32em] text-white/70">FAQ</p>
-          <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight md:text-6xl">
+          <p className="ar-luxury-eyebrow">FAQ</p>
+          <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
             Direct answers. No fog.
           </h1>
-          <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/75 md:text-xl">
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/70 md:text-xl md:leading-relaxed">
             Fast answers about protocol structure, ingredients, safety, quality verification, and practical ordering topics.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href={SCIENCE_URL}
-              className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-medium hover:bg-white/15"
+              className="ar-luxury-btn-primary"
               data-testid="link-read-science"
             >
               Read Science
             </Link>
             <Link
               href={QUALITY_URL}
-              className="inline-flex items-center justify-center rounded-full border border-white/15 bg-transparent px-5 py-3 text-sm font-medium text-white/90 hover:bg-white/5"
+              className="ar-luxury-btn-ghost"
               data-testid="link-read-quality"
             >
               Read Quality
@@ -483,11 +484,11 @@ export default function FAQ() {
             <Pill>Senescence</Pill>
           </div>
 
-          <div className="mt-10 rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
-            <p className="text-sm text-white/80">
+          <div className="mt-10 ar-luxury-disclaimer rounded-xl sm:rounded-2xl p-4 sm:p-6">
+            <p className="text-sm text-white/70">
               This page is educational content, not medical advice. Products are dietary supplements and are not intended to diagnose, treat, cure, or prevent any disease.
             </p>
-            <p className="mt-2 text-sm text-white/70">Last updated: {LAST_UPDATED}</p>
+            <p className="mt-2 text-xs text-white/40 font-mono tracking-wide">Last updated: {LAST_UPDATED}</p>
           </div>
         </div>
       </header>
@@ -495,18 +496,18 @@ export default function FAQ() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 md:py-12 overflow-hidden">
         <div className="grid gap-10 lg:grid-cols-[260px,1fr]">
           <aside className="hidden lg:block">
-            <div className="sticky top-24 rounded-2xl border border-white/10 bg-white/5 p-5">
-              <p className="text-xs uppercase tracking-[0.32em] text-white/60">Categories</p>
+            <div className="sticky top-24 ar-luxury-toc-card rounded-2xl p-5">
+              <p className="ar-luxury-eyebrow text-[10px]">Categories</p>
 
-              <div className="mt-4 grid gap-2">
+              <div className="mt-5 grid gap-1">
                 <button
                   type="button"
                   onClick={() => setActiveCategory("all")}
                   className={clsx(
-                    "rounded-lg px-3 py-2 text-left text-sm",
+                    "rounded-lg px-3 py-2.5 text-left text-[13px] transition-colors duration-200",
                     activeCategory === "all"
-                      ? "bg-white/10 text-white"
-                      : "text-white/75 hover:bg-white/5 hover:text-white"
+                      ? "bg-white/[0.06] text-white/90"
+                      : "text-white/55 hover:bg-white/[0.04] hover:text-white/90"
                   )}
                   data-testid="filter-all"
                 >
@@ -519,10 +520,10 @@ export default function FAQ() {
                     type="button"
                     onClick={() => setActiveCategory(c.id)}
                     className={clsx(
-                      "rounded-lg px-3 py-2 text-left text-sm",
+                      "rounded-lg px-3 py-2.5 text-left text-[13px] transition-colors duration-200",
                       activeCategory === c.id
-                        ? "bg-white/10 text-white"
-                        : "text-white/75 hover:bg-white/5 hover:text-white"
+                        ? "bg-white/[0.06] text-white/90"
+                        : "text-white/55 hover:bg-white/[0.04] hover:text-white/90"
                     )}
                     data-testid={`filter-${c.id}`}
                   >
@@ -531,8 +532,8 @@ export default function FAQ() {
                 ))}
               </div>
 
-              <div className="mt-6 border-t border-white/10 pt-5">
-                <p className="text-xs text-white/60">
+              <div className="mt-6 border-t border-white/[0.06] pt-5">
+                <p className="text-[11px] text-white/40 leading-relaxed">
                   Search matches questions, answers, and tags like "NR", "urolithin A", "tributyrin", "autophagy".
                 </p>
               </div>
@@ -540,8 +541,8 @@ export default function FAQ() {
           </aside>
 
           <main>
-            <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5">
-              <label className="text-xs uppercase tracking-[0.32em] text-white/60" htmlFor="faq-search">
+            <div className="ar-luxury-card p-4 sm:p-5">
+              <label className="ar-luxury-eyebrow text-[10px]" htmlFor="faq-search">
                 Search
               </label>
               <input
@@ -549,7 +550,7 @@ export default function FAQ() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search: NAD+, NR, urolithin A, tributyrin, autophagy, senescence..."
-                className="mt-3 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/20"
+                className="ar-luxury-search-input mt-3 w-full rounded-xl px-4 py-3 text-sm"
                 data-testid="input-faq-search"
               />
 
@@ -558,10 +559,10 @@ export default function FAQ() {
                   type="button"
                   onClick={() => setActiveCategory("all")}
                   className={clsx(
-                    "rounded-full border px-4 py-2 text-sm",
+                    "rounded-full border px-4 py-2 text-[12px] tracking-wide transition-colors duration-200",
                     activeCategory === "all"
-                      ? "border-white/20 bg-white/15 text-white"
-                      : "border-white/10 bg-white/5 text-white/75 hover:bg-white/10"
+                      ? "border-[rgba(122,246,224,0.20)] bg-[rgba(122,246,224,0.06)] text-[rgba(122,246,224,0.85)]"
+                      : "border-white/[0.06] bg-white/[0.02] text-white/50 hover:border-white/[0.10] hover:text-white/75"
                   )}
                   data-testid="filter-mobile-all"
                 >
@@ -573,10 +574,10 @@ export default function FAQ() {
                     type="button"
                     onClick={() => setActiveCategory(c.id)}
                     className={clsx(
-                      "rounded-full border px-4 py-2 text-sm",
+                      "rounded-full border px-4 py-2 text-[12px] tracking-wide transition-colors duration-200",
                       activeCategory === c.id
-                        ? "border-white/20 bg-white/15 text-white"
-                        : "border-white/10 bg-white/5 text-white/75 hover:bg-white/10"
+                        ? "border-[rgba(122,246,224,0.20)] bg-[rgba(122,246,224,0.06)] text-[rgba(122,246,224,0.85)]"
+                        : "border-white/[0.06] bg-white/[0.02] text-white/50 hover:border-white/[0.10] hover:text-white/75"
                     )}
                     data-testid={`filter-mobile-${c.id}`}
                   >
@@ -599,25 +600,28 @@ export default function FAQ() {
 
             <div className="mt-10 grid gap-10">
               {filteredCategories.length === 0 ? (
-                <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6 md:p-8" data-testid="text-no-results">
+                <div className="ar-luxury-card p-4 sm:p-6 md:p-8" data-testid="text-no-results">
                   <h2 className="text-xl font-semibold">No matches found</h2>
-                  <p className="mt-3 text-sm leading-relaxed text-white/70">
+                  <p className="mt-3 text-sm leading-relaxed text-white/60">
                     Try "NR", "NAD+", "urolithin A", "tributyrin", "mitophagy", "autophagy", "senescence", "quercetin", or "fisetin".
                   </p>
                 </div>
               ) : (
                 filteredCategories.map((cat) => (
-                  <section key={cat.id} className="rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6 md:p-8" data-testid={`section-faq-${cat.id}`}>
-                    <h2 className="text-2xl font-semibold">{cat.title}</h2>
-                    <p className="mt-2 text-sm text-white/70">{cat.description}</p>
+                  <section key={cat.id} className="ar-luxury-card ar-luxury-card-glow p-4 sm:p-6 md:p-8" data-testid={`section-faq-${cat.id}`}>
+                    <p className="ar-luxury-eyebrow text-[10px] mb-3">{cat.id.replace(/-/g, " ")}</p>
+                    <h2 className="text-2xl font-semibold tracking-tight">{cat.title}</h2>
+                    <p className="mt-2 text-sm text-white/55">{cat.description}</p>
 
-                    <div className="mt-6 grid gap-3">
+                    <hr className="ar-luxury-section-divider mt-6 mb-6" />
+
+                    <div className="grid gap-3">
                       {cat.items.map((f) => (
-                        <details key={f.q} className="rounded-xl sm:rounded-2xl border border-white/10 bg-black/10 p-4 sm:p-6" data-testid={`faq-item-${f.q.slice(0, 20).replace(/\s+/g, "-").toLowerCase()}`}>
-                          <summary className="cursor-pointer text-base font-semibold text-white">
+                        <details key={f.q} className="ar-luxury-accordion rounded-xl sm:rounded-2xl p-4 sm:p-6" data-testid={`faq-item-${f.q.slice(0, 20).replace(/\s+/g, "-").toLowerCase()}`}>
+                          <summary className="text-base font-semibold text-white/90">
                             {f.q}
                           </summary>
-                          <p className="mt-4 text-sm leading-relaxed text-white/70">{f.a}</p>
+                          <p className="mt-4 text-sm leading-relaxed text-white/60">{f.a}</p>
                           <div className="mt-4 flex flex-wrap gap-2">
                             {f.tags.slice(0, 6).map((t) => (
                               <Pill key={t}>{t}</Pill>
@@ -631,30 +635,31 @@ export default function FAQ() {
               )}
             </div>
 
-            <div className="mt-12 rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6 md:p-8" data-testid="section-build-protocol">
-              <h2 className="text-2xl font-semibold">Build your protocol</h2>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">
+            <div className="mt-12 ar-luxury-card ar-luxury-card-glow p-5 sm:p-7 md:p-10" data-testid="section-build-protocol">
+              <p className="ar-luxury-eyebrow text-[10px]">Next step</p>
+              <h2 className="mt-4 text-2xl font-semibold tracking-tight">Build your protocol</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/60">
                 Most people start with CELLUNAD+ as the daily foundation and add CELLUBIOME for gut and mitochondrial signaling stability. CELLUNOVA is designed as a periodic 7-day protocol.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
                   href={PRODUCT_ROUTES.cellunad}
-                  className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-medium hover:bg-white/15"
+                  className="ar-luxury-btn-primary"
                   data-testid="link-view-cellunad"
                 >
                   View CELLUNAD+
                 </Link>
                 <Link
                   href={PRODUCT_ROUTES.cellubiome}
-                  className="inline-flex items-center justify-center rounded-full border border-white/15 bg-transparent px-6 py-3 text-sm font-medium text-white/90 hover:bg-white/5"
+                  className="ar-luxury-btn-ghost"
                   data-testid="link-view-cellubiome"
                 >
                   View CELLUBIOME
                 </Link>
                 <Link
                   href={PRODUCT_ROUTES.cellunova}
-                  className="inline-flex items-center justify-center rounded-full border border-white/15 bg-transparent px-6 py-3 text-sm font-medium text-white/90 hover:bg-white/5"
+                  className="ar-luxury-btn-ghost"
                   data-testid="link-view-cellunova"
                 >
                   View CELLUNOVA

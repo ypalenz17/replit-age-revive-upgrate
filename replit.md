@@ -44,6 +44,7 @@ Preferred communication style: Simple, everyday language.
 2. **Storage interface pattern** — the `IStorage` interface in `server/storage.ts` abstracts data access, making it easy to swap `MemStorage` for a `DatabaseStorage` implementation backed by Drizzle/PostgreSQL.
 3. **Single-page marketing site** — the app is currently structured as a single `App.tsx` component rather than using a router, since it's a product landing page. A router can be added when multi-page navigation is needed.
 4. **shadcn/ui components are copied into the project** (not imported from a package), following the shadcn pattern. They live in `client/src/components/ui/` and can be modified directly.
+5. **Luxury design system** — shared CSS in `client/src/styles/luxury-pages.css` provides premium visual treatment (film grain overlay, glass-morphism cards, teal accent glows, gradient section dividers, multi-layer box shadows, backdrop blur) used by Quality, FAQ, and Science pages. Key CSS classes: `ar-luxury-page`, `ar-luxury-hero`, `ar-luxury-card`, `ar-luxury-card-glow`, `ar-luxury-accordion`, `ar-luxury-btn-primary`, `ar-luxury-btn-ghost`, `ar-luxury-eyebrow`, `ar-luxury-section-divider`, `ar-luxury-toc-card`, `ar-luxury-search-input`, `ar-luxury-pill`, `ar-luxury-table-wrap`, `ar-luxury-disclaimer`, `ar-luxury-product-card`.
 
 # External Dependencies
 

@@ -4,6 +4,7 @@ import { Menu, ShoppingBag, X } from "lucide-react";
 import brandLogo from "@assets/AR_brand_logo_1771613250600.png";
 import Footer from "../components/Footer";
 import { useCart } from "../cartStore";
+import "../styles/luxury-pages.css";
 
 const LAST_UPDATED = "2026-02-24";
 
@@ -186,19 +187,20 @@ function Section(props: {
   children: React.ReactNode;
 }) {
   return (
-    <section id={props.id} className="scroll-mt-28 py-12 md:py-16 border-t border-white/10">
+    <section id={props.id} className="scroll-mt-28 py-12 md:py-16">
+      <hr className="ar-luxury-section-divider mb-12 md:mb-16" />
       <div className="flex flex-col gap-4">
         {props.eyebrow ? (
-          <p className="text-xs uppercase tracking-[0.32em] text-white/60">{props.eyebrow}</p>
+          <p className="ar-luxury-eyebrow">{props.eyebrow}</p>
         ) : null}
-        <h2 className="text-2xl font-semibold leading-tight md:text-4xl">{props.title}</h2>
+        <h2 className="text-2xl font-semibold leading-tight tracking-tight md:text-4xl">{props.title}</h2>
         {props.subtitle ? (
-          <p className="max-w-3xl text-base leading-relaxed text-white/70 md:text-lg">
+          <p className="max-w-3xl text-base leading-relaxed text-white/60 md:text-lg">
             {props.subtitle}
           </p>
         ) : null}
       </div>
-      <div className="mt-8">{props.children}</div>
+      <div className="mt-10">{props.children}</div>
     </section>
   );
 }
@@ -231,7 +233,7 @@ export default function Quality() {
   }, [mobileOpen]);
 
   return (
-    <div className="min-h-screen bg-[#0b1120] text-white">
+    <div className="ar-luxury-page min-h-screen text-white">
       <nav className="fixed top-0 left-0 right-0 z-[150] bg-white/[0.05] backdrop-blur-md border-b border-white/[0.10] shadow-[0_1px_12px_rgba(0,0,0,0.2)]">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 h-14">
           <a href="/" aria-label="Go to homepage">
@@ -315,46 +317,46 @@ export default function Quality() {
         </div>
       )}
 
-      <header className="relative overflow-hidden border-b border-white/10">
+      <header className="ar-luxury-hero relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0f1d30] to-[#0b1120]" />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-24 pb-12 md:pt-32 md:pb-20">
-          <p className="text-xs uppercase tracking-[0.32em] text-white/70">Quality</p>
-          <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight md:text-6xl">
+          <p className="ar-luxury-eyebrow">Quality</p>
+          <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
             Quality you can verify
           </h1>
-          <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/75 md:text-xl">
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/70 md:text-xl md:leading-relaxed">
             Credibility comes from discipline: transparent dosing, identity and potency verification, contaminant screening concepts, lot traceability, and documentation that matches what is on the label.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href="#testing"
-              className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-medium text-white hover:bg-white/15"
+              className="ar-luxury-btn-primary"
               data-testid="link-see-testing"
             >
               See testing standards
             </a>
             <Link
               href={SCIENCE_URL}
-              className="inline-flex items-center justify-center rounded-full border border-white/15 bg-transparent px-5 py-3 text-sm font-medium text-white/90 hover:bg-white/5"
+              className="ar-luxury-btn-ghost"
               data-testid="link-read-science"
             >
               Read Science
             </Link>
             <Link
               href={FAQ_URL}
-              className="inline-flex items-center justify-center rounded-full border border-white/15 bg-transparent px-5 py-3 text-sm font-medium text-white/90 hover:bg-white/5"
+              className="ar-luxury-btn-ghost"
               data-testid="link-read-faq"
             >
               Read FAQ
             </Link>
           </div>
 
-          <div className="mt-10 rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
-            <p className="text-sm text-white/80">
+          <div className="mt-10 ar-luxury-disclaimer rounded-xl sm:rounded-2xl p-4 sm:p-6">
+            <p className="text-sm text-white/70">
               This page is educational content, not medical advice. Products are dietary supplements and are not intended to diagnose, treat, cure, or prevent any disease.
             </p>
-            <p className="mt-2 text-sm text-white/70">Last updated: {LAST_UPDATED}</p>
+            <p className="mt-2 text-xs text-white/40 font-mono tracking-wide">Last updated: {LAST_UPDATED}</p>
           </div>
         </div>
       </header>
@@ -362,14 +364,14 @@ export default function Quality() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 md:py-12 overflow-hidden">
         <div className="grid gap-10 lg:grid-cols-[260px,1fr]">
           <aside className="hidden lg:block">
-            <div className="sticky top-24 rounded-2xl border border-white/10 bg-white/5 p-5">
-              <p className="text-xs uppercase tracking-[0.32em] text-white/60">On this page</p>
-              <nav className="mt-4 space-y-2" aria-label="Table of contents">
+            <div className="sticky top-24 ar-luxury-toc-card rounded-2xl p-5">
+              <p className="ar-luxury-eyebrow text-[10px]">On this page</p>
+              <nav className="mt-5 space-y-1" aria-label="Table of contents">
                 {TOC.map((item) => (
                   <a
                     key={item.href}
                     href={item.href}
-                    className="block rounded-lg px-3 py-2 text-sm text-white/75 hover:bg-white/5 hover:text-white"
+                    className="block rounded-lg px-3 py-2.5 text-[13px] text-white/55 hover:bg-white/[0.04] hover:text-white/90 transition-colors duration-200"
                     data-testid={`toc-link-${item.href.slice(1)}`}
                   >
                     {item.label}
@@ -381,16 +383,16 @@ export default function Quality() {
 
           <main>
             <div className="lg:hidden">
-              <details className="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <details className="ar-luxury-accordion rounded-xl sm:rounded-2xl p-4 sm:p-5">
                 <summary className="cursor-pointer text-sm font-medium text-white" data-testid="mobile-toc-toggle">
                   Jump to section
                 </summary>
-                <div className="mt-4 grid gap-2">
+                <div className="mt-4 grid gap-1">
                   {TOC.map((item) => (
                     <a
                       key={item.href}
                       href={item.href}
-                      className="rounded-lg px-3 py-2 text-sm text-white/75 hover:bg-white/5 hover:text-white"
+                      className="rounded-lg px-3 py-2.5 text-[13px] text-white/55 hover:bg-white/[0.04] hover:text-white/90 transition-colors duration-200"
                     >
                       {item.label}
                     </a>
@@ -428,13 +430,13 @@ export default function Quality() {
                     bullets: ["Format integrity checks where applicable", "Stability alignment", "Packaging discipline"],
                   },
                 ].map((c) => (
-                  <div key={c.t} className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6" data-testid={`card-overview-${c.t.toLowerCase().replace(/\s+/g, "-")}`}>
+                  <div key={c.t} className="ar-luxury-card ar-luxury-card-glow p-4 sm:p-6" data-testid={`card-overview-${c.t.toLowerCase().replace(/\s+/g, "-")}`}>
                     <h3 className="text-lg font-semibold">{c.t}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-white/70">{c.b}</p>
                     <ul className="mt-4 space-y-2 text-sm leading-relaxed text-white/70">
                       {c.bullets.map((item) => (
                         <li key={item} className="flex gap-3">
-                          <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-white/40" />
+                          <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[rgba(122,246,224,0.30)]" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -443,7 +445,7 @@ export default function Quality() {
                 ))}
               </div>
 
-              <div className="mt-8 rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
+              <div className="mt-8 ar-luxury-card ar-luxury-card-glow p-4 sm:p-6">
                 <h3 className="text-lg font-semibold">Simple buyer audit checklist</h3>
                 <p className="mt-3 text-sm leading-relaxed text-white/70">
                   If you are evaluating any longevity supplement, these checks catch most marketing games.
@@ -451,7 +453,7 @@ export default function Quality() {
                 <ul className="mt-5 space-y-3 text-sm leading-relaxed text-white/70">
                   {AUDIT_CHECKLIST.map((item) => (
                     <li key={item} className="flex gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-white/40" />
+                      <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[rgba(122,246,224,0.30)]" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -476,22 +478,22 @@ export default function Quality() {
                 ];
                 return (
                   <>
-                    <div className="hidden md:block overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                    <div className="hidden md:block ar-luxury-table-wrap rounded-2xl">
                       <div className="overflow-x-auto">
                         <table className="w-full border-collapse">
                           <thead>
-                            <tr className="border-b border-white/10 bg-black/10">
-                              <th className="px-5 py-4 text-left text-xs uppercase tracking-[0.32em] text-white/60">Category</th>
-                              <th className="px-5 py-4 text-left text-xs uppercase tracking-[0.32em] text-white/60">What it checks</th>
-                              <th className="px-5 py-4 text-left text-xs uppercase tracking-[0.32em] text-white/60">Why it matters</th>
+                            <tr>
+                              <th className="px-5 py-4 text-left text-xs uppercase tracking-[0.32em] font-medium">Category</th>
+                              <th className="px-5 py-4 text-left text-xs uppercase tracking-[0.32em] font-medium">What it checks</th>
+                              <th className="px-5 py-4 text-left text-xs uppercase tracking-[0.32em] font-medium">Why it matters</th>
                             </tr>
                           </thead>
                           <tbody>
                             {rows.map((row) => (
-                              <tr key={row.cat} className="border-b border-white/10 last:border-b-0">
-                                <td className="px-5 py-4 text-sm text-white">{row.cat}</td>
-                                <td className="px-5 py-4 text-sm text-white/75">{row.what}</td>
-                                <td className="px-5 py-4 text-sm text-white/60">{row.why}</td>
+                              <tr key={row.cat}>
+                                <td className="px-5 py-4 text-sm text-white/90 font-medium">{row.cat}</td>
+                                <td className="px-5 py-4 text-sm text-white/65">{row.what}</td>
+                                <td className="px-5 py-4 text-sm text-white/50">{row.why}</td>
                               </tr>
                             ))}
                           </tbody>
@@ -500,10 +502,10 @@ export default function Quality() {
                     </div>
                     <div className="md:hidden grid gap-3">
                       {rows.map((row) => (
-                        <div key={row.cat} className="rounded-xl border border-white/10 bg-white/5 p-4">
-                          <h4 className="text-sm font-semibold text-white">{row.cat}</h4>
-                          <p className="mt-2 text-sm text-white/70">{row.what}</p>
-                          <p className="mt-1 text-xs text-white/50">{row.why}</p>
+                        <div key={row.cat} className="ar-luxury-card p-4">
+                          <h4 className="text-sm font-semibold text-white/90">{row.cat}</h4>
+                          <p className="mt-2 text-sm text-white/60">{row.what}</p>
+                          <p className="mt-1 text-xs text-white/40">{row.why}</p>
                         </div>
                       ))}
                     </div>
@@ -512,13 +514,13 @@ export default function Quality() {
               })()}
 
               <div className="mt-8 grid gap-4 md:grid-cols-2">
-                <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
+                <div className="ar-luxury-card ar-luxury-card-glow p-4 sm:p-6">
                   <h3 className="text-lg font-semibold">Avoid the fake quality signals</h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
                     Fake signal #1: premium ingredients with no identity or potency verification. Fake signal #2: proprietary blends that hide doses. If you cannot audit it, it is not science-forward.
                   </p>
                 </div>
-                <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
+                <div className="ar-luxury-card ar-luxury-card-glow p-4 sm:p-6">
                   <h3 className="text-lg font-semibold">What documentation should connect</h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
                     Documentation should connect identity, potency, and screening results to the exact lot number on the bottle.
@@ -539,14 +541,14 @@ export default function Quality() {
                   { t: "Supplier qualification", b: "Raw material variability is real. A serious program verifies identity and screens relevant risk categories per lot." },
                   { t: "Release criteria", b: "A product should be released only after it meets identity, potency, and contaminant standards appropriate to its ingredients." },
                 ].map((c) => (
-                  <div key={c.t} className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
+                  <div key={c.t} className="ar-luxury-card ar-luxury-card-glow p-4 sm:p-6">
                     <h3 className="text-lg font-semibold">{c.t}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-white/70">{c.b}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-8 rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
+              <div className="mt-8 ar-luxury-card ar-luxury-card-glow p-4 sm:p-6">
                 <h3 className="text-lg font-semibold">Why this matters for longevity protocols</h3>
                 <p className="mt-3 text-sm leading-relaxed text-white/70">
                   If people take a protocol consistently, the product must be consistent. That is why quality matters as much as mechanism selection.
@@ -561,7 +563,7 @@ export default function Quality() {
               subtitle="You should not have to trust a vibe. You should be able to reference a lot number and request batch documentation."
             >
               <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
+                <div className="ar-luxury-card ar-luxury-card-glow p-4 sm:p-6">
                   <h3 className="text-lg font-semibold">What to look for on your bottle</h3>
                   <ul className="mt-4 space-y-2 text-sm leading-relaxed text-white/70">
                     {[
@@ -571,14 +573,14 @@ export default function Quality() {
                       "Storage guidance appropriate to the product format",
                     ].map((b) => (
                       <li key={b} className="flex gap-3">
-                        <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-white/40" />
+                        <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[rgba(122,246,224,0.30)]" />
                         <span>{b}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
+                <div className="ar-luxury-card ar-luxury-card-glow p-4 sm:p-6">
                   <h3 className="text-lg font-semibold">How to request documentation</h3>
                   <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-white/70">
                     <li>Find the lot number on your bottle.</li>
@@ -589,7 +591,7 @@ export default function Quality() {
                   <div className="mt-5 flex flex-wrap gap-3">
                     <Link
                       href={FAQ_URL}
-                      className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-medium hover:bg-white/15"
+                      className="ar-luxury-btn-ghost"
                       data-testid="link-traceability-faq"
                     >
                       Read FAQ
@@ -606,13 +608,13 @@ export default function Quality() {
               subtitle="If the dose is hidden, the science cannot be evaluated."
             >
               <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
+                <div className="ar-luxury-card ar-luxury-card-glow p-4 sm:p-6">
                   <h3 className="text-lg font-semibold">No proprietary blends</h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
                     Proprietary blends prevent dose comparison to published research. They are incompatible with science-forward positioning.
                   </p>
                 </div>
-                <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
+                <div className="ar-luxury-card ar-luxury-card-glow p-4 sm:p-6">
                   <h3 className="text-lg font-semibold">Core actives should be disclosed</h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
                     Across the system this includes ingredients like Nicotinamide Riboside (NR), urolithin A, tributyrin, quercetin, fisetin, trans-resveratrol, spermidine, Ca-AKG, and PQQ.
@@ -663,14 +665,14 @@ export default function Quality() {
                     cta: "View CELLUNOVA",
                   },
                 ].map((card) => (
-                  <div key={card.name} className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6" data-testid={`card-product-${card.name.toLowerCase().replace("+", "")}`}>
-                    <p className="text-xs uppercase tracking-[0.32em] text-white/60">{card.eyebrow}</p>
-                    <h3 className="mt-3 text-xl font-semibold">{card.name}</h3>
-                    <p className="mt-3 text-sm text-white/75">{card.body}</p>
-                    <ul className="mt-4 space-y-2 text-sm leading-relaxed text-white/70">
+                  <div key={card.name} className="ar-luxury-card ar-luxury-card-glow ar-luxury-product-card p-4 sm:p-6" data-testid={`card-product-${card.name.toLowerCase().replace("+", "")}`}>
+                    <p className="ar-luxury-eyebrow text-[10px]">{card.eyebrow}</p>
+                    <h3 className="mt-3 text-xl font-semibold tracking-tight">{card.name}</h3>
+                    <p className="mt-3 text-sm text-white/65">{card.body}</p>
+                    <ul className="mt-4 space-y-2 text-sm leading-relaxed text-white/55">
                       {card.bullets.map((b) => (
                         <li key={b} className="flex gap-3">
-                          <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-white/40" />
+                          <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[rgba(122,246,224,0.30)]" />
                           <span>{b}</span>
                         </li>
                       ))}
@@ -678,7 +680,7 @@ export default function Quality() {
                     <div className="mt-6">
                       <Link
                         href={card.href}
-                        className="inline-flex w-full items-center justify-center rounded-full border border-white/15 bg-white/10 px-4 py-3 text-sm font-medium hover:bg-white/15"
+                        className="ar-luxury-btn-ghost w-full justify-center text-[11px]"
                         data-testid={`link-view-${card.name.toLowerCase().replace("+", "")}`}
                       >
                         {card.cta}
@@ -697,31 +699,32 @@ export default function Quality() {
             >
               <div className="grid gap-3">
                 {QUALITY_FAQS.map((f) => (
-                  <details key={f.q} className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6" data-testid={`faq-quality-${f.q.slice(0, 20).replace(/\s+/g, "-").toLowerCase()}`}>
-                    <summary className="cursor-pointer text-base font-semibold text-white">
+                  <details key={f.q} className="ar-luxury-accordion rounded-xl sm:rounded-2xl p-4 sm:p-6" data-testid={`faq-quality-${f.q.slice(0, 20).replace(/\s+/g, "-").toLowerCase()}`}>
+                    <summary className="text-base font-semibold text-white/90">
                       {f.q}
                     </summary>
-                    <p className="mt-4 text-sm leading-relaxed text-white/70">{f.a}</p>
+                    <p className="mt-4 text-sm leading-relaxed text-white/60">{f.a}</p>
                   </details>
                 ))}
               </div>
 
-              <div className="mt-10 rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6 md:p-8">
-                <h3 className="text-2xl font-semibold">Explore the full system</h3>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">
+              <div className="mt-10 ar-luxury-card ar-luxury-card-glow p-5 sm:p-7 md:p-10">
+                <p className="ar-luxury-eyebrow text-[10px]">Next step</p>
+                <h3 className="mt-4 text-2xl font-semibold tracking-tight">Explore the full system</h3>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/60">
                   Quality is the foundation. Science explains mechanisms. Products implement the protocol.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Link
                     href={SCIENCE_URL}
-                    className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-medium hover:bg-white/15"
+                    className="ar-luxury-btn-primary"
                     data-testid="link-explore-science"
                   >
                     Read Science
                   </Link>
                   <Link
                     href={PRODUCT_ROUTES.cellunad}
-                    className="inline-flex items-center justify-center rounded-full border border-white/15 bg-transparent px-6 py-3 text-sm font-medium text-white/90 hover:bg-white/5"
+                    className="ar-luxury-btn-ghost"
                     data-testid="link-explore-products"
                   >
                     View products
