@@ -33,7 +33,7 @@ const PRODUCTS = [
     ],
     color: '#19B3A6',
     textColor: '#5eead4',
-    image: '/images/cellubiome-hero.png',
+    image: '/images/cellubiome-trimmed.png',
     fullIngredients: [
       { name: 'Urolithin A (≥99%)', dose: '500 mg', purpose: 'Mitophagy support' },
       { name: 'Tributyrin', dose: '500 mg', purpose: 'Butyrate delivery support' }
@@ -58,7 +58,7 @@ const PRODUCTS = [
     ],
     color: '#1e3a8a',
     textColor: '#60a5fa',
-    image: '/images/cellunad-hero.png',
+    image: '/images/cellunad-trimmed.png',
     fullIngredients: [
       { name: 'Nicotinamide Riboside (NR)', dose: '500 mg', purpose: 'NAD+ precursor support' },
       { name: 'R-Lipoic Acid', dose: '200 mg', purpose: 'Redox balance support' },
@@ -90,7 +90,7 @@ const PRODUCTS = [
     ],
     color: '#6C5CE7',
     textColor: '#a78bfa',
-    image: '/images/cellunova-hero.png',
+    image: '/images/cellunova-trimmed.png',
     fullIngredients: [
       { name: 'NAC', dose: '600 mg', purpose: 'Glutathione support' },
       { name: 'Trans-Resveratrol', dose: '500 mg', purpose: 'Polyphenol support' },
