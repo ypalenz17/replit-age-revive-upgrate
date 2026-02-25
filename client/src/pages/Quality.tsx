@@ -317,7 +317,7 @@ export default function Quality() {
 
       <header className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0f1d30] to-[#0b1120]" />
-        <div className="relative mx-auto max-w-6xl px-6 pt-28 pb-16 md:pt-32 md:pb-20">
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-24 pb-12 md:pt-32 md:pb-20">
           <p className="text-xs uppercase tracking-[0.32em] text-white/70">Quality</p>
           <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight md:text-6xl">
             Quality you can verify
@@ -350,7 +350,7 @@ export default function Quality() {
             </Link>
           </div>
 
-          <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6">
+          <div className="mt-10 rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
             <p className="text-sm text-white/80">
               This page is educational content, not medical advice. Products are dietary supplements and are not intended to diagnose, treat, cure, or prevent any disease.
             </p>
@@ -359,7 +359,7 @@ export default function Quality() {
         </div>
       </header>
 
-      <div className="mx-auto max-w-6xl px-6 py-10 md:py-12">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 md:py-12 overflow-hidden">
         <div className="grid gap-10 lg:grid-cols-[260px,1fr]">
           <aside className="hidden lg:block">
             <div className="sticky top-24 rounded-2xl border border-white/10 bg-white/5 p-5">
@@ -428,7 +428,7 @@ export default function Quality() {
                     bullets: ["Format integrity checks where applicable", "Stability alignment", "Packaging discipline"],
                   },
                 ].map((c) => (
-                  <div key={c.t} className="rounded-2xl border border-white/10 bg-white/5 p-6" data-testid={`card-overview-${c.t.toLowerCase().replace(/\s+/g, "-")}`}>
+                  <div key={c.t} className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6" data-testid={`card-overview-${c.t.toLowerCase().replace(/\s+/g, "-")}`}>
                     <h3 className="text-lg font-semibold">{c.t}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-white/70">{c.b}</p>
                     <ul className="mt-4 space-y-2 text-sm leading-relaxed text-white/70">
@@ -443,7 +443,7 @@ export default function Quality() {
                 ))}
               </div>
 
-              <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
+              <div className="mt-8 rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
                 <h3 className="text-lg font-semibold">Simple buyer audit checklist</h3>
                 <p className="mt-3 text-sm leading-relaxed text-white/70">
                   If you are evaluating any longevity supplement, these checks catch most marketing games.
@@ -465,44 +465,60 @@ export default function Quality() {
               title="What we test and why it matters"
               subtitle="Panels vary by ingredient and risk profile, but the categories should be consistent and explainable."
             >
-              <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-                <div className="overflow-x-auto">
-                  <table className="min-w-[880px] w-full border-collapse">
-                    <thead>
-                      <tr className="border-b border-white/10 bg-black/10">
-                        <th className="px-5 py-4 text-left text-xs uppercase tracking-[0.32em] text-white/60">Category</th>
-                        <th className="px-5 py-4 text-left text-xs uppercase tracking-[0.32em] text-white/60">What it checks</th>
-                        <th className="px-5 py-4 text-left text-xs uppercase tracking-[0.32em] text-white/60">Why it matters</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {[
-                        { cat: "Identity", what: "Confirms the ingredient matches the label claim.", why: "Prevents substitution and sourcing errors." },
-                        { cat: "Potency", what: "Confirms labeled actives are present at labeled doses in finished product.", why: "Dose is the bridge between research and reality." },
-                        { cat: "Heavy metals", what: "Screens for metals such as lead, arsenic, cadmium, mercury (panel depends on method).", why: "Reduces avoidable exposure risk from raw material variability." },
-                        { cat: "Microbiological", what: "Screens for microbial contamination and baseline microbiological standards.", why: "Protects against contamination issues in production or storage." },
-                        { cat: "Residual solvents (when relevant)", what: "Screens for extraction-related residues where applicable.", why: "Some extracts can carry residues if poorly controlled." },
-                        { cat: "Format integrity (where applicable)", what: "Checks delivery characteristics such as enteric protection integrity.", why: "Delivery claims are meaningless if integrity fails." },
-                      ].map((row) => (
-                        <tr key={row.cat} className="border-b border-white/10 last:border-b-0">
-                          <td className="px-5 py-4 text-sm text-white">{row.cat}</td>
-                          <td className="px-5 py-4 text-sm text-white/75">{row.what}</td>
-                          <td className="px-5 py-4 text-sm text-white/60">{row.why}</td>
-                        </tr>
+              {(() => {
+                const rows = [
+                  { cat: "Identity", what: "Confirms the ingredient matches the label claim.", why: "Prevents substitution and sourcing errors." },
+                  { cat: "Potency", what: "Confirms labeled actives are present at labeled doses in finished product.", why: "Dose is the bridge between research and reality." },
+                  { cat: "Heavy metals", what: "Screens for metals such as lead, arsenic, cadmium, mercury (panel depends on method).", why: "Reduces avoidable exposure risk from raw material variability." },
+                  { cat: "Microbiological", what: "Screens for microbial contamination and baseline microbiological standards.", why: "Protects against contamination issues in production or storage." },
+                  { cat: "Residual solvents (when relevant)", what: "Screens for extraction-related residues where applicable.", why: "Some extracts can carry residues if poorly controlled." },
+                  { cat: "Format integrity (where applicable)", what: "Checks delivery characteristics such as enteric protection integrity.", why: "Delivery claims are meaningless if integrity fails." },
+                ];
+                return (
+                  <>
+                    <div className="hidden md:block overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                      <div className="overflow-x-auto">
+                        <table className="w-full border-collapse">
+                          <thead>
+                            <tr className="border-b border-white/10 bg-black/10">
+                              <th className="px-5 py-4 text-left text-xs uppercase tracking-[0.32em] text-white/60">Category</th>
+                              <th className="px-5 py-4 text-left text-xs uppercase tracking-[0.32em] text-white/60">What it checks</th>
+                              <th className="px-5 py-4 text-left text-xs uppercase tracking-[0.32em] text-white/60">Why it matters</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {rows.map((row) => (
+                              <tr key={row.cat} className="border-b border-white/10 last:border-b-0">
+                                <td className="px-5 py-4 text-sm text-white">{row.cat}</td>
+                                <td className="px-5 py-4 text-sm text-white/75">{row.what}</td>
+                                <td className="px-5 py-4 text-sm text-white/60">{row.why}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div className="md:hidden grid gap-3">
+                      {rows.map((row) => (
+                        <div key={row.cat} className="rounded-xl border border-white/10 bg-white/5 p-4">
+                          <h4 className="text-sm font-semibold text-white">{row.cat}</h4>
+                          <p className="mt-2 text-sm text-white/70">{row.what}</p>
+                          <p className="mt-1 text-xs text-white/50">{row.why}</p>
+                        </div>
                       ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+                    </div>
+                  </>
+                );
+              })()}
 
               <div className="mt-8 grid gap-4 md:grid-cols-2">
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
                   <h3 className="text-lg font-semibold">Avoid the fake quality signals</h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
                     Fake signal #1: premium ingredients with no identity or potency verification. Fake signal #2: proprietary blends that hide doses. If you cannot audit it, it is not science-forward.
                   </p>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
                   <h3 className="text-lg font-semibold">What documentation should connect</h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
                     Documentation should connect identity, potency, and screening results to the exact lot number on the bottle.
@@ -523,14 +539,14 @@ export default function Quality() {
                   { t: "Supplier qualification", b: "Raw material variability is real. A serious program verifies identity and screens relevant risk categories per lot." },
                   { t: "Release criteria", b: "A product should be released only after it meets identity, potency, and contaminant standards appropriate to its ingredients." },
                 ].map((c) => (
-                  <div key={c.t} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                  <div key={c.t} className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
                     <h3 className="text-lg font-semibold">{c.t}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-white/70">{c.b}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
+              <div className="mt-8 rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
                 <h3 className="text-lg font-semibold">Why this matters for longevity protocols</h3>
                 <p className="mt-3 text-sm leading-relaxed text-white/70">
                   If people take a protocol consistently, the product must be consistent. That is why quality matters as much as mechanism selection.
@@ -545,7 +561,7 @@ export default function Quality() {
               subtitle="You should not have to trust a vibe. You should be able to reference a lot number and request batch documentation."
             >
               <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
                   <h3 className="text-lg font-semibold">What to look for on your bottle</h3>
                   <ul className="mt-4 space-y-2 text-sm leading-relaxed text-white/70">
                     {[
@@ -562,7 +578,7 @@ export default function Quality() {
                   </ul>
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
                   <h3 className="text-lg font-semibold">How to request documentation</h3>
                   <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-white/70">
                     <li>Find the lot number on your bottle.</li>
@@ -590,13 +606,13 @@ export default function Quality() {
               subtitle="If the dose is hidden, the science cannot be evaluated."
             >
               <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
                   <h3 className="text-lg font-semibold">No proprietary blends</h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
                     Proprietary blends prevent dose comparison to published research. They are incompatible with science-forward positioning.
                   </p>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
                   <h3 className="text-lg font-semibold">Core actives should be disclosed</h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
                     Across the system this includes ingredients like Nicotinamide Riboside (NR), urolithin A, tributyrin, quercetin, fisetin, trans-resveratrol, spermidine, Ca-AKG, and PQQ.
@@ -611,7 +627,7 @@ export default function Quality() {
               title="Quality notes by product"
               subtitle="This ties quality expectations to real design choices: daily use, delivery integrity, allergens, and protocol structure."
             >
-              <div className="grid gap-5 lg:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {[
                   {
                     eyebrow: "Foundation layer",
@@ -647,7 +663,7 @@ export default function Quality() {
                     cta: "View CELLUNOVA",
                   },
                 ].map((card) => (
-                  <div key={card.name} className="rounded-2xl border border-white/10 bg-white/5 p-6" data-testid={`card-product-${card.name.toLowerCase().replace("+", "")}`}>
+                  <div key={card.name} className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6" data-testid={`card-product-${card.name.toLowerCase().replace("+", "")}`}>
                     <p className="text-xs uppercase tracking-[0.32em] text-white/60">{card.eyebrow}</p>
                     <h3 className="mt-3 text-xl font-semibold">{card.name}</h3>
                     <p className="mt-3 text-sm text-white/75">{card.body}</p>
@@ -681,7 +697,7 @@ export default function Quality() {
             >
               <div className="grid gap-3">
                 {QUALITY_FAQS.map((f) => (
-                  <details key={f.q} className="rounded-2xl border border-white/10 bg-white/5 p-6" data-testid={`faq-quality-${f.q.slice(0, 20).replace(/\s+/g, "-").toLowerCase()}`}>
+                  <details key={f.q} className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6" data-testid={`faq-quality-${f.q.slice(0, 20).replace(/\s+/g, "-").toLowerCase()}`}>
                     <summary className="cursor-pointer text-base font-semibold text-white">
                       {f.q}
                     </summary>
@@ -690,7 +706,7 @@ export default function Quality() {
                 ))}
               </div>
 
-              <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-8">
+              <div className="mt-10 rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6 md:p-8">
                 <h3 className="text-2xl font-semibold">Explore the full system</h3>
                 <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">
                   Quality is the foundation. Science explains mechanisms. Products implement the protocol.

@@ -448,7 +448,7 @@ export default function FAQ() {
 
       <header className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0f1d30] to-[#0b1120]" />
-        <div className="relative mx-auto max-w-6xl px-6 pt-28 pb-16 md:pt-32 md:pb-20">
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-24 pb-12 md:pt-32 md:pb-20">
           <p className="text-xs uppercase tracking-[0.32em] text-white/70">FAQ</p>
           <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight md:text-6xl">
             Direct answers. No fog.
@@ -483,7 +483,7 @@ export default function FAQ() {
             <Pill>Senescence</Pill>
           </div>
 
-          <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6">
+          <div className="mt-10 rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
             <p className="text-sm text-white/80">
               This page is educational content, not medical advice. Products are dietary supplements and are not intended to diagnose, treat, cure, or prevent any disease.
             </p>
@@ -492,7 +492,7 @@ export default function FAQ() {
         </div>
       </header>
 
-      <div className="mx-auto max-w-6xl px-6 py-10 md:py-12">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 md:py-12 overflow-hidden">
         <div className="grid gap-10 lg:grid-cols-[260px,1fr]">
           <aside className="hidden lg:block">
             <div className="sticky top-24 rounded-2xl border border-white/10 bg-white/5 p-5">
@@ -540,7 +540,7 @@ export default function FAQ() {
           </aside>
 
           <main>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-5">
               <label className="text-xs uppercase tracking-[0.32em] text-white/60" htmlFor="faq-search">
                 Search
               </label>
@@ -599,7 +599,7 @@ export default function FAQ() {
 
             <div className="mt-10 grid gap-10">
               {filteredCategories.length === 0 ? (
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-8" data-testid="text-no-results">
+                <div className="rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6 md:p-8" data-testid="text-no-results">
                   <h2 className="text-xl font-semibold">No matches found</h2>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
                     Try "NR", "NAD+", "urolithin A", "tributyrin", "mitophagy", "autophagy", "senescence", "quercetin", or "fisetin".
@@ -607,13 +607,13 @@ export default function FAQ() {
                 </div>
               ) : (
                 filteredCategories.map((cat) => (
-                  <section key={cat.id} className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8" data-testid={`section-faq-${cat.id}`}>
+                  <section key={cat.id} className="rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6 md:p-8" data-testid={`section-faq-${cat.id}`}>
                     <h2 className="text-2xl font-semibold">{cat.title}</h2>
                     <p className="mt-2 text-sm text-white/70">{cat.description}</p>
 
                     <div className="mt-6 grid gap-3">
                       {cat.items.map((f) => (
-                        <details key={f.q} className="rounded-2xl border border-white/10 bg-black/10 p-6" data-testid={`faq-item-${f.q.slice(0, 20).replace(/\s+/g, "-").toLowerCase()}`}>
+                        <details key={f.q} className="rounded-xl sm:rounded-2xl border border-white/10 bg-black/10 p-4 sm:p-6" data-testid={`faq-item-${f.q.slice(0, 20).replace(/\s+/g, "-").toLowerCase()}`}>
                           <summary className="cursor-pointer text-base font-semibold text-white">
                             {f.q}
                           </summary>
@@ -631,7 +631,7 @@ export default function FAQ() {
               )}
             </div>
 
-            <div className="mt-12 rounded-2xl border border-white/10 bg-white/5 p-8" data-testid="section-build-protocol">
+            <div className="mt-12 rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6 md:p-8" data-testid="section-build-protocol">
               <h2 className="text-2xl font-semibold">Build your protocol</h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">
                 Most people start with CELLUNAD+ as the daily foundation and add CELLUBIOME for gut and mitochondrial signaling stability. CELLUNOVA is designed as a periodic 7-day protocol.
