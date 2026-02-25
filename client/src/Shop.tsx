@@ -13,7 +13,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import Footer from './components/Footer';
-import { BrandName } from './productsData';
+import { BrandName, PRODUCTS as CATALOG_PRODUCTS } from './productsData';
+import ProtocolSelectorCard from './components/ProtocolSelectorCard';
 import { useCart } from './cartStore';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -1121,91 +1122,18 @@ function ShopCatalog() {
         </div>
       </header>
 
-      <div className="mx-auto max-w-6xl px-5 md:px-8 pb-20 md:pb-28">
-        <div className="grid gap-6 md:gap-8 md:grid-cols-3">
-          {Object.values(PRODUCTS).map((p) => {
-            const copyData = COPY_MAP[p.id as ProductId];
-            return (
-              <div
-                key={p.id}
-                className="relative group rounded-2xl overflow-hidden"
-                style={{
-                  background: 'linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  boxShadow: '0 4px 24px rgba(0,0,0,0.3)',
-                }}
-                data-testid={`card-product-${p.id}`}
-              >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: `radial-gradient(ellipse at 50% 30%, ${hexToRgba(p.accent, 0.08)}, transparent 70%)` }} />
-
-                <div className="relative p-5 md:p-6">
-                  <span className="inline-block font-mono text-[9px] uppercase tracking-[0.20em] font-bold mb-3" style={{ color: p.accentText }}>{copyData.overline}</span>
-
-                  <h2 className="font-head font-normal text-white tracking-[-0.03em] leading-[0.9] uppercase text-[28px] md:text-[32px] mb-2" data-testid={`text-card-name-${p.id}`}>
-                    <BrandName name={p.name} />
-                  </h2>
-
-                  <p className="text-[13px] md:text-[14px] font-sans text-white/70 leading-snug mb-4 min-h-[40px]">{copyData.subtitle}</p>
-
-                  <div className="relative flex items-end justify-center py-6 md:py-8">
-                    <div className="absolute left-1/2 -translate-x-1/2 top-[15%] w-[80%] h-[70%] blur-[40px] opacity-15 pointer-events-none" style={{ background: `radial-gradient(ellipse at 50% 60%, ${hexToRgba(p.accent, 0.5)}, transparent 70%)` }} />
-                    <img
-                      src={p.heroImage}
-                      alt={p.name}
-                      className="relative z-10 w-[50%] max-h-[160px] md:max-h-[180px] h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                      style={{ filter: `drop-shadow(0 8px 16px ${hexToRgba(p.accent, 0.2)}) drop-shadow(0 3px 6px rgba(0,0,0,0.35))` }}
-                    />
-                  </div>
-
-                  <div className="flex items-baseline justify-between gap-3 mb-3">
-                    <span className="text-[10px] font-mono uppercase tracking-[0.10em] font-bold text-white/55">{p.id === 'cellunova' ? '7-Day Cycle' : 'Daily Protocol'}</span>
-                    <span className="text-[22px] font-sans font-black text-white leading-none tracking-[-0.03em]">{p.price}</span>
-                  </div>
-
-                  <p className="text-[13px] text-white/65 font-sans leading-snug mb-4">{p.description}</p>
-
-                  <div className="border-t border-white/[0.06] pt-3 mb-4">
-                    <div className="flex flex-col gap-0.5">
-                      {p.outcomes.map((item, i) => (
-                        <span key={i} className="text-[13px] font-sans font-medium text-white/85 leading-[1.7]">{item}</span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <p className="text-[9px] font-mono text-white/50 tracking-[0.08em] uppercase mb-5">{p.specRow}</p>
-
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => addToCart(p.id)}
-                      className="flex-1 min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 text-white font-mono font-bold tracking-[0.10em] text-[10px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group/btn"
-                      style={{
-                        background: 'linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.08))',
-                        boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15), 0 1px 3px rgba(0,0,0,0.3)',
-                        border: '1px solid rgba(255,255,255,0.18)',
-                      }}
-                      data-testid={`button-add-to-cart-${p.id}`}
-                    >
-                      <span className="relative z-10">Add to Cart</span>
-                      <div className="absolute inset-0 bg-white/[0.06] translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500" />
-                    </button>
-
-                    <a
-                      href={`/product/${p.id}`}
-                      className="flex-1 min-h-[44px] flex items-center justify-center gap-1.5 rounded-lg py-2.5 font-mono font-bold tracking-[0.10em] text-[10px] uppercase transition-all hover:bg-white/[0.06] active:scale-[0.98]"
-                      style={{
-                        border: '1px solid rgba(255,255,255,0.10)',
-                        color: 'rgba(255,255,255,0.7)',
-                      }}
-                      data-testid={`link-learn-more-${p.id}`}
-                    >
-                      <span>Learn More</span>
-                      <ArrowRight size={12} className="opacity-60" />
-                    </a>
-                  </div>
+      <div className="mx-auto max-w-5xl px-5 md:px-8 pb-20 md:pb-28">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-0 sm:gap-y-6 items-stretch">
+          {CATALOG_PRODUCTS.map((p, i) => (
+            <div key={p.slug} className="flex flex-col">
+              {i > 0 && (
+                <div className="flex justify-center py-6 sm:hidden">
+                  <div className="w-[60%] h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
                 </div>
-              </div>
-            );
-          })}
+              )}
+              <ProtocolSelectorCard p={p} />
+            </div>
+          ))}
         </div>
       </div>
 
