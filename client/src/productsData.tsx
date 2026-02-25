@@ -24,7 +24,7 @@ export const PRODUCTS = [
     supply: '30-day supply',
     color: '#19B3A6',
     textColor: '#5eead4',
-    image: '/images/cellubiome-front.jpg',
+    image: '/images/cellubiome-transparent.png',
     ingredients: ['Urolithin A 500 mg', 'Tributyrin 500 mg'],
   },
   {

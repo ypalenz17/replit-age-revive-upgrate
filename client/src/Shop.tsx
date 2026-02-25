@@ -254,7 +254,7 @@ const PRODUCTS = {
     specRow: 'Glass bottle \u2022 UV-protected',
     accent: '#19B3A6',
     accentText: '#5eead4',
-    heroImage: '/images/cellubiome-front.jpg',
+    heroImage: '/images/cellubiome-transparent.png',
     outcomes: [
       'Gut barrier integrity + digestive resilience',
       'Mito efficiency + recovery support',

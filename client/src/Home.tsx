@@ -33,7 +33,7 @@ const PRODUCTS = [
     ],
     color: '#19B3A6',
     textColor: '#5eead4',
-    image: '/images/cellubiome-front.jpg',
+    image: '/images/cellubiome-transparent.png',
     fullIngredients: [
       { name: 'Urolithin A (≥99%)', dose: '500 mg', purpose: 'Mitophagy support' },
       { name: 'Tributyrin', dose: '500 mg', purpose: 'Butyrate delivery support' }
