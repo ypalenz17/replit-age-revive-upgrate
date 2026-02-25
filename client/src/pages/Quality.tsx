@@ -189,7 +189,7 @@ function Section(props: {
   return (
     <section id={props.id} className="scroll-mt-28 py-12 md:py-16">
       <hr className="ar-luxury-section-divider mb-12 md:mb-16" />
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col items-center text-center gap-4">
         {props.eyebrow ? (
           <p className="ar-luxury-eyebrow">{props.eyebrow}</p>
         ) : null}
@@ -319,16 +319,16 @@ export default function Quality() {
 
       <header className="ar-luxury-hero relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0f1d30] to-[#0b1120]" />
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-24 pb-12 md:pt-32 md:pb-20">
-          <p className="ar-luxury-eyebrow">Quality</p>
-          <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-24 pb-12 md:pt-32 md:pb-20 text-center">
+          <p className="ar-luxury-eyebrow mx-auto">Quality</p>
+          <h1 className="mt-5 max-w-4xl mx-auto text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
             Quality you can verify
           </h1>
-          <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/70 md:text-xl md:leading-relaxed">
+          <p className="mt-6 max-w-3xl mx-auto text-base leading-relaxed text-white/70 md:text-xl md:leading-relaxed">
             Credibility comes from discipline: transparent dosing, identity and potency verification, contaminant screening concepts, lot traceability, and documentation that matches what is on the label.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a
               href="#testing"
               className="ar-luxury-btn-primary"

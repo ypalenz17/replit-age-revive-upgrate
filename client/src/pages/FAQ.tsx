@@ -449,16 +449,16 @@ export default function FAQ() {
 
       <header className="ar-luxury-hero relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0f1d30] to-[#0b1120]" />
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-24 pb-12 md:pt-32 md:pb-20">
-          <p className="ar-luxury-eyebrow">FAQ</p>
-          <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-24 pb-12 md:pt-32 md:pb-20 text-center">
+          <p className="ar-luxury-eyebrow mx-auto">FAQ</p>
+          <h1 className="mt-5 max-w-4xl mx-auto text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
             Direct answers. No fog.
           </h1>
-          <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/70 md:text-xl md:leading-relaxed">
+          <p className="mt-6 max-w-3xl mx-auto text-base leading-relaxed text-white/70 md:text-xl md:leading-relaxed">
             Fast answers about protocol structure, ingredients, safety, quality verification, and practical ordering topics.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               href={SCIENCE_URL}
               className="ar-luxury-btn-primary"
@@ -475,7 +475,7 @@ export default function FAQ() {
             </Link>
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-2">
+          <div className="mt-10 flex flex-wrap justify-center gap-2">
             <Pill>NAD+ (NR)</Pill>
             <Pill>Urolithin A</Pill>
             <Pill>Tributyrin</Pill>
