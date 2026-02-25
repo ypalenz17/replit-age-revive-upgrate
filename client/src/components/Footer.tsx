@@ -20,9 +20,9 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-2">
             <span className="text-[9px] font-mono font-bold text-white/35 uppercase tracking-[0.12em] mb-1">Legal</span>
-            <a href="#" className="text-[11px] font-mono text-white/40 uppercase tracking-[0.06em] hover:text-white/60 transition-colors">Privacy</a>
-            <a href="#" className="text-[11px] font-mono text-white/40 uppercase tracking-[0.06em] hover:text-white/60 transition-colors">Terms</a>
-            <a href="#" className="text-[11px] font-mono text-white/40 uppercase tracking-[0.06em] hover:text-white/60 transition-colors">Shipping</a>
+            <a href="/privacy" className="text-[11px] font-mono text-white/40 uppercase tracking-[0.06em] hover:text-white/60 transition-colors" data-testid="footer-link-privacy">Privacy</a>
+            <a href="/terms" className="text-[11px] font-mono text-white/40 uppercase tracking-[0.06em] hover:text-white/60 transition-colors" data-testid="footer-link-terms">Terms</a>
+            <a href="/shipping" className="text-[11px] font-mono text-white/40 uppercase tracking-[0.06em] hover:text-white/60 transition-colors" data-testid="footer-link-shipping">Shipping</a>
           </div>
         </div>
         <div className="mt-6 pt-4 border-t border-white/[0.06] text-center">

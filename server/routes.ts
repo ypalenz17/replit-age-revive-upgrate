@@ -52,6 +52,9 @@ Every ingredient is chosen for its mechanistic evidence, not marketing trends. A
 - Science: https://agerevive.com/science
 - Quality: https://agerevive.com/quality
 - FAQ: https://agerevive.com/faq
+- Privacy: https://agerevive.com/privacy
+- Terms: https://agerevive.com/terms
+- Shipping: https://agerevive.com/shipping
 
 ---
 Brand: Age Revive

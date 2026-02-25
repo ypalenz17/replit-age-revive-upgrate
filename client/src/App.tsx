@@ -8,6 +8,9 @@ const ProductDetail = lazy(() => import("./ProductDetail"));
 const Science = lazy(() => import("./pages/Science"));
 const Quality = lazy(() => import("./pages/Quality"));
 const FAQ = lazy(() => import("./pages/FAQ"));
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
+const TermsPage = lazy(() => import("./pages/TermsPage"));
+const ShippingPage = lazy(() => import("./pages/ShippingPage"));
 const Purchase = lazy(() => import("./pages/Purchase"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 const OrderConfirmed = lazy(() => import("./pages/OrderConfirmed"));
@@ -35,6 +38,9 @@ function App() {
           <Route path="/science" component={Science} />
           <Route path="/quality" component={Quality} />
           <Route path="/faq" component={FAQ} />
+          <Route path="/privacy" component={PrivacyPage} />
+          <Route path="/terms" component={TermsPage} />
+          <Route path="/shipping" component={ShippingPage} />
           <Route>
             <Redirect to="/" />
           </Route>

@@ -75,6 +75,9 @@ const NAV_LINKS = `
     <li><a href="/science">Science</a></li>
     <li><a href="/quality">Quality</a></li>
     <li><a href="/faq">FAQ</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/terms">Terms</a></li>
+    <li><a href="/shipping">Shipping</a></li>
   </ul>
 </nav>`;
 
@@ -89,7 +92,10 @@ const FOOTER_HTML = `
     <a href="/product/cellunova">CELLUNOVA</a> |
     <a href="/science">Science</a> |
     <a href="/quality">Quality</a> |
-    <a href="/faq">FAQ</a>
+    <a href="/faq">FAQ</a> |
+    <a href="/privacy">Privacy</a> |
+    <a href="/terms">Terms</a> |
+    <a href="/shipping">Shipping</a>
   </nav>
   <p>*These statements have not been evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent any disease.</p>
 </footer>`;
@@ -194,6 +200,52 @@ const PAGE_CONTENT: Record<
   ${FOOTER_HTML}
 </article>`,
   },
+  "/privacy": {
+    title: "Privacy Policy | Age Revive",
+    description:
+      "Privacy Policy for Age Revive. Learn what data we collect, how we use it, how cookies work, and how to request access or deletion.",
+    html: `
+<article>
+  <h1>Privacy Policy — Age Revive</h1>
+  ${NAV_LINKS}
+  <p>A clear summary of what we collect, why we collect it, and how you can control it.</p>
+  <h2>Summary</h2><p>We collect the minimum data needed to operate the store, support customers, prevent fraud, and improve the site.</p>
+  <h2>Data we collect</h2><p>Account data, order data, support data, device and usage data, payment data.</p>
+  <h2>How we use data</h2><p>Fulfill orders, process payments, improve site performance, send transactional emails.</p>
+  <h2>Your rights</h2><p>Depending on your location, you may have rights to access, correct, delete, or export personal information.</p>
+  ${FOOTER_HTML}
+</article>`,
+  },
+  "/terms": {
+    title: "Terms of Service | Age Revive",
+    description:
+      "Terms of Service for Age Revive. Review eligibility, orders, billing, shipping, disclaimers, and limitations of liability.",
+    html: `
+<article>
+  <h1>Terms of Service — Age Revive</h1>
+  ${NAV_LINKS}
+  <p>The rules of using our website and purchasing products.</p>
+  <h2>Overview</h2><p>These Terms of Service govern your access to and use of the Age Revive website.</p>
+  <h2>Orders and billing</h2><p>Prices and availability may change without notice.</p>
+  <h2>Disclaimers</h2><p>Products are dietary supplements and are not intended to diagnose, treat, cure, or prevent any disease.</p>
+  ${FOOTER_HTML}
+</article>`,
+  },
+  "/shipping": {
+    title: "Shipping | Age Revive",
+    description:
+      "Shipping information for Age Revive. Learn where to find rates, how tracking works, and what to do if an order is delayed or damaged.",
+    html: `
+<article>
+  <h1>Shipping — Age Revive</h1>
+  ${NAV_LINKS}
+  <p>Shipping rates, taxes, and delivery estimates are shown at checkout.</p>
+  <h2>Rates and taxes</h2><p>Shipping rates and applicable taxes are calculated at checkout based on destination, package weight, and service level.</p>
+  <h2>Tracking</h2><p>Tracking is provided when available from the carrier or fulfillment provider.</p>
+  <h2>Lost, damaged, or delayed</h2><p>Contact support with your order number and tracking information.</p>
+  ${FOOTER_HTML}
+</article>`,
+  },
 };
 
 function getProductPage(slug: string): { title: string; description: string; html: string } | null {
@@ -288,4 +340,7 @@ export const ALL_ROUTES = [
   "/science",
   "/quality",
   "/faq",
+  "/privacy",
+  "/terms",
+  "/shipping",
 ];
