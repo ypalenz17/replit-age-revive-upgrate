@@ -190,7 +190,7 @@ const PRODUCTS = {
     specRow: 'Glass bottle \u2022 UV-protected',
     accent: '#1e3a8a',
     accentText: '#60a5fa',
-    heroImage: '/images/cellunad-trimmed.png',
+    heroImage: '/images/cellunad-hero.png',
     outcomes: [
       'Cellular energy + resilience',
       'NAD+ metabolism + replenishment',
@@ -254,7 +254,7 @@ const PRODUCTS = {
     specRow: 'Glass bottle \u2022 UV-protected',
     accent: '#19B3A6',
     accentText: '#5eead4',
-    heroImage: '/images/cellubiome-trimmed.png',
+    heroImage: '/images/cellubiome-hero.png',
     outcomes: [
       'Gut barrier integrity + digestive resilience',
       'Mito efficiency + recovery support',
@@ -290,7 +290,7 @@ const PRODUCTS = {
     warnings: 'Contains wheat (spermidine source).',
     accent: '#6C5CE7',
     accentText: '#a78bfa',
-    heroImage: '/images/cellunova-trimmed.png',
+    heroImage: '/images/cellunova-hero.png',
     outcomes: [
       'Cellular cleanup + renewal pathways',
       'Oxidative balance + antioxidant defense',
