@@ -237,8 +237,7 @@ export default function TermsPage() {
 
             <Section id="shipping" title="Shipping">
               <p>
-                Shipping rates, taxes, and delivery estimates are shown at checkout. For shipping details and common questions,
-                see the Shipping page.
+                Shipping is included in the price of every product. Applicable taxes and delivery estimates are shown at checkout. For shipping details and common questions, see the Shipping page.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link

@@ -234,13 +234,13 @@ const PAGE_CONTENT: Record<
   "/shipping": {
     title: "Shipping | Age Revive",
     description:
-      "Shipping information for Age Revive. Learn where to find rates, how tracking works, and what to do if an order is delayed or damaged.",
+      "Shipping information for Age Revive. Shipping is always included in the price. Learn how tracking works and what to do if an order is delayed or damaged.",
     html: `
 <article>
   <h1>Shipping — Age Revive</h1>
   ${NAV_LINKS}
-  <p>Shipping rates, taxes, and delivery estimates are shown at checkout.</p>
-  <h2>Rates and taxes</h2><p>Shipping rates and applicable taxes are calculated at checkout based on destination, package weight, and service level.</p>
+  <p>Shipping is always included in the price. No surprise fees at checkout.</p>
+  <h2>Rates and taxes</h2><p>Shipping is included in every order at no additional cost. Applicable taxes are calculated at checkout based on your location.</p>
   <h2>Tracking</h2><p>Tracking is provided when available from the carrier or fulfillment provider.</p>
   <h2>Lost, damaged, or delayed</h2><p>Contact support with your order number and tracking information.</p>
   ${FOOTER_HTML}

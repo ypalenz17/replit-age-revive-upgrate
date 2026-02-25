@@ -54,7 +54,7 @@ export default function ShippingPage() {
       path: "/shipping",
       title: `Shipping | ${LEGAL.brand}`,
       description:
-        "Shipping information for Age Revive. Learn where to find rates, how tracking works, and what to do if an order is delayed or damaged.",
+        "Shipping information for Age Revive. Shipping is always included in the price. Learn how tracking works and what to do if an order is delayed or damaged.",
       breadcrumbName: "Shipping",
       lastUpdated: LAST_UPDATED,
     });
@@ -156,7 +156,7 @@ export default function ShippingPage() {
             Shipping
           </h1>
           <p className="mt-6 max-w-3xl mx-auto text-base leading-relaxed text-white/70 md:text-xl md:leading-relaxed">
-            Clear shipping expectations reduce support tickets and increase conversion.
+            Shipping is always included in the price. No surprise fees at checkout.
           </p>
           <div className="mt-10 ar-luxury-disclaimer rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
             <p className="text-xs text-white/40 font-mono tracking-wide">Last updated: {LAST_UPDATED}</p>
@@ -203,20 +203,18 @@ export default function ShippingPage() {
 
             <Section id="overview" title="Overview">
               <p>
-                Shipping rates, taxes, and delivery estimates are shown at checkout. After purchase, you receive a confirmation email
-                and a tracking email when available.
+                Shipping is always included in the price of every Age Revive product. The price you see on the product page is the price you pay at checkout. After purchase, you receive a confirmation email and a tracking email when available.
               </p>
               <div className="ar-luxury-card ar-luxury-card-glow p-4 sm:p-6">
                 <p className="text-white/75">
-                  Trust note: We do not publish fake delivery promises. If you need exact timelines, check checkout estimates and your tracking link.
+                  Trust note: We do not add shipping fees at checkout. The listed product price includes shipping to your door.
                 </p>
               </div>
             </Section>
 
             <Section id="rates" title="Rates and taxes">
               <p>
-                Shipping rates and applicable taxes are calculated at checkout based on destination, package weight, and service level.
-                If free shipping promotions exist, they will be displayed on the product page or in checkout.
+                Shipping is included in every order at no additional cost. Applicable taxes are calculated at checkout based on your location. The product price you see already includes shipping.
               </p>
             </Section>
 
@@ -260,8 +258,8 @@ export default function ShippingPage() {
               <div className="grid gap-3">
                 {[
                   {
-                    q: "Where do I see exact shipping cost and delivery estimate?",
-                    a: "At checkout. Rates and delivery estimates are calculated based on destination and service level.",
+                    q: "Is shipping really free?",
+                    a: "Yes. Shipping is included in the price of every product. There are no additional shipping charges at checkout.",
                   },
                   {
                     q: "When do I get tracking?",
