@@ -65,8 +65,8 @@ export default function Checkout() {
   const labelFloat = "relative";
 
   return (
-    <div className="min-h-[100dvh] bg-[#0b1120] text-white font-sans antialiased">
-      <nav className="sticky top-0 z-50 bg-[#0b1120]/90 backdrop-blur-md border-b border-white/[0.06]">
+    <div className="min-h-[100dvh] bg-[#131d2e] text-white font-sans antialiased">
+      <nav className="sticky top-0 z-50 bg-[#131d2e]/90 backdrop-blur-md border-b border-white/[0.06]">
         <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
           <Link href="/">
             <img src={brandLogo} alt="AGE REVIVE" className="h-5 opacity-80" />
@@ -144,7 +144,7 @@ export default function Checkout() {
                     </div>
                     <button
                       onClick={handleEmailSubmit}
-                      className="w-full py-3.5 bg-ar-teal text-[#0b1120] rounded-full text-[14px] font-sans font-semibold hover:bg-ar-teal/90 transition-colors flex items-center justify-center gap-2"
+                      className="w-full py-3.5 bg-ar-teal text-[#131d2e] rounded-full text-[14px] font-sans font-semibold hover:bg-ar-teal/90 transition-colors flex items-center justify-center gap-2"
                       data-testid="button-signup-email"
                     >
                       <Mail size={16} />
@@ -226,7 +226,7 @@ export default function Checkout() {
                     />
 
                     <div className={labelFloat}>
-                      <label className="absolute -top-2 left-3 px-1 bg-[#0b1120] text-[10px] font-sans text-white/40 z-10">Country</label>
+                      <label className="absolute -top-2 left-3 px-1 bg-[#131d2e] text-[10px] font-sans text-white/40 z-10">Country</label>
                       <div className="relative">
                         <select
                           disabled
@@ -249,7 +249,7 @@ export default function Checkout() {
                         >
                           <option value="" disabled className="text-white/25">State*</option>
                           {US_STATES.map((s) => (
-                            <option key={s} value={s} className="bg-[#0b1120] text-white">{s}</option>
+                            <option key={s} value={s} className="bg-[#131d2e] text-white">{s}</option>
                           ))}
                         </select>
                         <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
@@ -266,7 +266,7 @@ export default function Checkout() {
 
                     <button
                       onClick={handleShippingSubmit}
-                      className="w-full py-3.5 bg-ar-teal text-[#0b1120] rounded-full text-[14px] font-sans font-semibold hover:bg-ar-teal/90 transition-colors mt-2"
+                      className="w-full py-3.5 bg-ar-teal text-[#131d2e] rounded-full text-[14px] font-sans font-semibold hover:bg-ar-teal/90 transition-colors mt-2"
                       data-testid="button-continue-payment"
                     >
                       Continue to Payment
@@ -337,7 +337,7 @@ export default function Checkout() {
 
                     <button
                       onClick={handlePaymentSubmit}
-                      className="w-full py-3.5 bg-ar-teal text-[#0b1120] rounded-full text-[14px] font-sans font-semibold hover:bg-ar-teal/90 transition-colors mt-2"
+                      className="w-full py-3.5 bg-ar-teal text-[#131d2e] rounded-full text-[14px] font-sans font-semibold hover:bg-ar-teal/90 transition-colors mt-2"
                       data-testid="button-place-order"
                     >
                       Place Order &middot; ${totalPrice.toFixed(2)}
@@ -356,7 +356,7 @@ export default function Checkout() {
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0b1120]/95 backdrop-blur-md border-t border-white/[0.06]" style={{ paddingBottom: 'max(10px, env(safe-area-inset-bottom, 0px))' }}>
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#131d2e]/95 backdrop-blur-md border-t border-white/[0.06]" style={{ paddingBottom: 'max(10px, env(safe-area-inset-bottom, 0px))' }}>
         <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
           <button
             onClick={() => {

@@ -165,8 +165,8 @@ function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () =>
   if (!isOpen) return null;
   return (
     <div className="fixed inset-0 z-[200] flex items-end sm:items-center justify-center p-0 sm:p-4">
-      <div className="absolute inset-0 bg-[#0b1120]/95 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-lg bg-white text-[#0b1120] p-8 overflow-y-auto max-h-[90vh] shadow-2xl rounded-t-2xl sm:rounded-2xl">
+      <div className="absolute inset-0 bg-[#131d2e]/95 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative w-full max-w-lg bg-white text-[#131d2e] p-8 overflow-y-auto max-h-[90vh] shadow-2xl rounded-t-2xl sm:rounded-2xl">
         <button onClick={onClose} className="absolute top-6 right-6 p-2 hover:bg-black/5 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full" data-testid="button-close-facts">
           <X size={20} />
         </button>
@@ -434,7 +434,7 @@ function ProductDetailPage({ data, slug }: { data: ProductDetailData; slug: stri
   };
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-[#0b1120] text-white selection:bg-teal-500/30 selection:text-white font-sans antialiased">
+    <div ref={containerRef} className="min-h-screen bg-[#131d2e] text-white selection:bg-teal-500/30 selection:text-white font-sans antialiased">
       <ModalFacts isOpen={isFactsOpen} onClose={() => setIsFactsOpen(false)} data={data} />
 
 
@@ -444,7 +444,7 @@ function ProductDetailPage({ data, slug }: { data: ProductDetailData; slug: stri
       <section className="relative pt-16 lg:pt-0 overflow-hidden">
         <div className="absolute inset-0 hidden lg:block">
           <div className="absolute top-0 left-0 w-1/2 h-full bg-[#f0f0ec]" />
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-[#0b1120]" />
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-[#131d2e]" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 items-stretch">
@@ -571,7 +571,7 @@ function ProductDetailPage({ data, slug }: { data: ProductDetailData; slug: stri
         return (
           <section id={slug === 'cellubiome' ? 'biological-function' : slug === 'cellunova' ? 'controlled-reset' : 'foundation-layer'} className="pdp-reveal relative" style={{ background: hasOverride ? '#081422' : undefined }}>
             {hasOverride && (
-              <div className="absolute top-0 left-0 right-0 h-32 z-[1]" style={{ background: 'linear-gradient(to bottom, #0b1120 0%, transparent 100%)' }} />
+              <div className="absolute top-0 left-0 right-0 h-32 z-[1]" style={{ background: 'linear-gradient(to bottom, #131d2e 0%, transparent 100%)' }} />
             )}
             {hasOverride && (
               <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(244,241,234,0.06)' }} />
@@ -706,7 +706,7 @@ function ProductDetailPage({ data, slug }: { data: ProductDetailData; slug: stri
                     </div>
                   </div>
 
-                  <div className="relative p-10 md:p-14 bg-[#0b1120] border overflow-hidden rounded-lg" style={{ borderColor: 'rgba(244,241,234,0.08)' }}>
+                  <div className="relative p-10 md:p-14 bg-[#131d2e] border overflow-hidden rounded-lg" style={{ borderColor: 'rgba(244,241,234,0.08)' }}>
                     <div className="absolute top-5 left-6 font-mono text-[9px] text-white/15 uppercase tracking-[0.14em]">{sci.diagramLabel}</div>
                     {sci.diagramCenter ? (
                       <div className="flex flex-col items-center gap-6 relative w-full pt-4">
@@ -828,7 +828,7 @@ function ProductDetailPage({ data, slug }: { data: ProductDetailData; slug: stri
                     onClick={() => setActiveTimeline(i)}
                     className="font-mono text-[9px] md:text-[10px] font-bold uppercase tracking-[0.08em] transition-all min-h-[34px] px-3.5 md:px-5 py-1.5 rounded-full whitespace-nowrap"
                     style={activeTimeline === i
-                      ? { background: timelineTeal, color: '#0b1120' }
+                      ? { background: timelineTeal, color: '#131d2e' }
                       : { background: 'rgba(255,255,255,0.04)', color: 'rgba(244,241,234,0.45)', border: '1px solid rgba(244,241,234,0.08)' }
                     }
                     data-testid={`timeline-tab-${i}`}
@@ -1001,7 +1001,7 @@ function ProductDetailPage({ data, slug }: { data: ProductDetailData; slug: stri
               ))}
             </div>
           </div>
-          <div className="p-8 md:p-10 border border-white/[0.08] bg-[#0b1120] space-y-5">
+          <div className="p-8 md:p-10 border border-white/[0.08] bg-[#131d2e] space-y-5">
             <div className="flex items-center gap-3 text-white/35">
               <Info size={16} />
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em]">Important</p>
@@ -1039,7 +1039,7 @@ function ProductDetailPage({ data, slug }: { data: ProductDetailData; slug: stri
                 </div>
                 <div className="flex gap-3 pt-2 relative z-10">
                   <a href={`/product/${item.slug}`} className="flex-1 py-3 border border-white/10 font-mono text-[10px] font-bold uppercase tracking-[0.08em] hover:bg-white/[0.04] transition-all text-center min-h-[40px] flex items-center justify-center" data-testid={`stack-view-${item.slug}`}>Learn More</a>
-                  <button onClick={() => addStackItemToCart(item.slug)} className="flex-1 py-3 font-mono text-[10px] font-bold uppercase tracking-[0.08em] transition-all min-h-[40px]" style={{ background: accentColor, color: '#0b1120' }} data-testid={`stack-add-${item.slug}`}>Add to Cart</button>
+                  <button onClick={() => addStackItemToCart(item.slug)} className="flex-1 py-3 font-mono text-[10px] font-bold uppercase tracking-[0.08em] transition-all min-h-[40px]" style={{ background: accentColor, color: '#131d2e' }} data-testid={`stack-add-${item.slug}`}>Add to Cart</button>
                 </div>
               </div>
             ))}
@@ -1127,7 +1127,7 @@ export default function ProductDetail() {
 
   if (!data) {
     return (
-      <div className="min-h-screen bg-[#0b1120] text-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#131d2e] text-white flex items-center justify-center">
         <div className="text-center space-y-4">
           <h1 className="text-3xl font-head font-normal uppercase tracking-tight">Product Not Found</h1>
           <a href="/shop" className="text-teal-400 font-mono text-sm uppercase tracking-wider hover:text-teal-300 transition-colors" data-testid="link-back-shop">Back to Shop</a>

@@ -18,7 +18,7 @@ const OrderConfirmed = lazy(() => import("./pages/OrderConfirmed"));
 
 function LoadingFallback() {
   return (
-    <div className="min-h-screen bg-[#0b1120] flex items-center justify-center">
+    <div className="min-h-screen bg-[#131d2e] flex items-center justify-center">
       <div className="w-6 h-6 border-2 border-teal-400/30 border-t-teal-400 rounded-full animate-spin" />
     </div>
   );

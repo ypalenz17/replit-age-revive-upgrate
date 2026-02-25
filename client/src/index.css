@@ -26,7 +26,7 @@ html, body {
 }
 
 html {
-  background: #0b1120;
+  background: #131d2e;
 }
 
 body {
@@ -107,7 +107,7 @@ details summary::-webkit-details-marker {
 /* Protocol Stack Bar */
 .ar-page-with-protocolbar {
   padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
-  background: #0b1120;
+  background: #131d2e;
 }
 @media (min-width: 1024px) {
   .ar-page-with-protocolbar {

@@ -3,8 +3,8 @@ import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 
 export default function OrderConfirmed() {
   return (
-    <div className="min-h-[100dvh] bg-[#0b1120] text-white font-sans antialiased">
-      <nav className="sticky top-0 z-50 bg-[#0b1120]/90 backdrop-blur-md border-b border-white/[0.06]">
+    <div className="min-h-[100dvh] bg-[#131d2e] text-white font-sans antialiased">
+      <nav className="sticky top-0 z-50 bg-[#131d2e]/90 backdrop-blur-md border-b border-white/[0.06]">
         <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
           <Link href="/">
             <img src={brandLogo} alt="AGE REVIVE" className="h-5 opacity-80" />
@@ -22,7 +22,7 @@ export default function OrderConfirmed() {
         </p>
 
         <div className="flex flex-col gap-3">
-          <Link href="/shop" className="w-full py-3.5 bg-ar-teal text-[#0b1120] rounded-full text-[14px] font-sans font-semibold hover:bg-ar-teal/90 transition-colors min-h-[48px] flex items-center justify-center" data-testid="order-confirmed-continue">
+          <Link href="/shop" className="w-full py-3.5 bg-ar-teal text-[#131d2e] rounded-full text-[14px] font-sans font-semibold hover:bg-ar-teal/90 transition-colors min-h-[48px] flex items-center justify-center" data-testid="order-confirmed-continue">
             Continue Shopping
           </Link>
           <Link href="/" className="text-[13px] font-sans text-white/55 hover:text-white transition-colors" data-testid="order-confirmed-home">

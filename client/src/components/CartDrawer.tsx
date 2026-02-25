@@ -31,7 +31,7 @@ export default function CartDrawer() {
         className="absolute inset-0 bg-black/60 backdrop-blur-sm"
         onClick={cart.closeCart}
       />
-      <div className="absolute top-0 right-0 bottom-0 w-full max-w-md bg-white text-[#0b1120] flex flex-col shadow-2xl animate-slide-in-right">
+      <div className="absolute top-0 right-0 bottom-0 w-full max-w-md bg-white text-[#131d2e] flex flex-col shadow-2xl animate-slide-in-right">
         <div className="flex items-center justify-between px-6 py-5 border-b border-black/5">
           <h2 className="text-xl font-head font-normal tracking-tight" data-testid="cart-title">Your Cart</h2>
           <button
@@ -129,7 +129,7 @@ export default function CartDrawer() {
                   />
                   <button
                     onClick={() => { if (promoCode.trim()) setPromoApplied(true); }}
-                    className="px-5 py-2.5 bg-[#0b1120] text-white rounded-lg font-mono text-[11px] font-bold uppercase tracking-[0.10em] hover:bg-[#0b1120]/90 transition-colors"
+                    className="px-5 py-2.5 bg-[#131d2e] text-white rounded-lg font-mono text-[11px] font-bold uppercase tracking-[0.10em] hover:bg-[#131d2e]/90 transition-colors"
                     data-testid="promo-apply"
                   >
                     Apply

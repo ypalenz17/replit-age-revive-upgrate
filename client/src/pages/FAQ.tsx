@@ -448,7 +448,7 @@ export default function FAQ() {
       )}
 
       <header className="ar-luxury-hero relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0f1d30] to-[#0b1120]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0f1d30] to-[#131d2e]" />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-24 pb-12 md:pt-32 md:pb-20 text-center">
           <p className="ar-luxury-eyebrow mx-auto">FAQ</p>
           <h1 className="mt-5 max-w-4xl mx-auto text-4xl font-semibold leading-tight tracking-tight md:text-6xl">

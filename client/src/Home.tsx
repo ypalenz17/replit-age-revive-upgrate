@@ -625,14 +625,14 @@ export default function Home() {
   };
 
   return (
-    <div ref={containerRef} className="relative bg-[#0f172a] selection:bg-ar-teal selection:text-white">
-      <div className="fixed inset-0 z-0 bg-[#0f172a]">
+    <div ref={containerRef} className="relative bg-[#162336] selection:bg-ar-teal selection:text-white">
+      <div className="fixed inset-0 z-0 bg-[#162336]">
         <img
           src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2400"
           className="w-full h-full object-cover grayscale opacity-30 mix-blend-screen"
           alt=""
         />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#131b2e_0%,_#0b1120_120%)] opacity-80" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#182840_0%,_#131d2e_120%)] opacity-80" />
       </div>
       <div
         className="fixed inset-0 pointer-events-none z-[1] opacity-[0.02]"

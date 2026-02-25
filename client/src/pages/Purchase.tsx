@@ -46,8 +46,8 @@ export default function Purchase() {
   };
 
   return (
-    <div className="min-h-[100dvh] bg-[#0b1120] text-white font-sans antialiased">
-      <nav className="sticky top-0 z-50 bg-[#0b1120]/90 backdrop-blur-md border-b border-white/[0.06]">
+    <div className="min-h-[100dvh] bg-[#131d2e] text-white font-sans antialiased">
+      <nav className="sticky top-0 z-50 bg-[#131d2e]/90 backdrop-blur-md border-b border-white/[0.06]">
         <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
           <Link href="/">
             <img src={brandLogo} alt="AGE REVIVE" className="h-5 opacity-80" />
@@ -59,7 +59,7 @@ export default function Purchase() {
               data-testid="purchase-cart-icon"
             >
               <ShoppingBag size={16} />
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-ar-teal text-[#0b1120] text-[10px] font-bold rounded-full flex items-center justify-center">{quantity}</span>
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-ar-teal text-[#131d2e] text-[10px] font-bold rounded-full flex items-center justify-center">{quantity}</span>
             </button>
           </div>
         </div>
@@ -211,7 +211,7 @@ export default function Purchase() {
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0b1120]/95 backdrop-blur-md border-t border-white/[0.06]" style={{ paddingBottom: 'max(12px, env(safe-area-inset-bottom, 0px))' }}>
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#131d2e]/95 backdrop-blur-md border-t border-white/[0.06]" style={{ paddingBottom: 'max(12px, env(safe-area-inset-bottom, 0px))' }}>
         <div className="max-w-lg mx-auto px-5 py-4 space-y-3">
           {upgraded && (
             <div className="flex items-center justify-between">
@@ -225,10 +225,10 @@ export default function Purchase() {
           </div>
           <div className="flex gap-3">
             <button
-              className="flex-1 py-3.5 bg-white text-[#0b1120] rounded-full text-[13px] font-sans font-semibold flex items-center justify-center gap-2 hover:bg-white/90 transition-colors min-h-[48px]"
+              className="flex-1 py-3.5 bg-white text-[#131d2e] rounded-full text-[13px] font-sans font-semibold flex items-center justify-center gap-2 hover:bg-white/90 transition-colors min-h-[48px]"
               data-testid="apple-pay"
             >
-              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#0b1120]"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#131d2e]"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
               Pay
             </button>
             <button
@@ -243,7 +243,7 @@ export default function Purchase() {
                 }, quantity, true);
                 navigate('/checkout');
               }}
-              className="flex-1 py-3.5 bg-ar-teal text-[#0b1120] rounded-full text-[13px] font-sans font-semibold flex items-center justify-center gap-2 hover:bg-ar-teal/90 transition-colors min-h-[48px]"
+              className="flex-1 py-3.5 bg-ar-teal text-[#131d2e] rounded-full text-[13px] font-sans font-semibold flex items-center justify-center gap-2 hover:bg-ar-teal/90 transition-colors min-h-[48px]"
               data-testid="checkout"
             >
               Checkout

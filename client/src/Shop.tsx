@@ -748,8 +748,8 @@ function ProductTemplate({ product }: ProductTemplateProps) {
   } as CSSProperties & { '--accent': string; '--accentGlow': string };
 
   return (
-    <main ref={containerRef} style={productThemeVars} className="relative bg-[#0b1120] text-white selection:bg-ar-teal selection:text-white">
-      <div className="fixed inset-0 z-0 bg-[#0b1120]">
+    <main ref={containerRef} style={productThemeVars} className="relative bg-[#131d2e] text-white selection:bg-ar-teal selection:text-white">
+      <div className="fixed inset-0 z-0 bg-[#131d2e]">
         <img
           src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2400"
           className="w-full h-full object-cover grayscale opacity-30 mix-blend-screen"
@@ -757,7 +757,7 @@ function ProductTemplate({ product }: ProductTemplateProps) {
           decoding="async"
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#131b2e_0%,_#0b1120_120%)] opacity-80" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#182840_0%,_#131d2e_120%)] opacity-80" />
       </div>
       <div
         className="fixed inset-0 pointer-events-none z-[1] opacity-[0.012]"
@@ -771,7 +771,7 @@ function ProductTemplate({ product }: ProductTemplateProps) {
       <Navbar />
 
       <section className="hero relative min-h-[100dvh] overflow-hidden">
-        <div className="absolute inset-0 z-[1] pointer-events-none" style={{ background: 'linear-gradient(180deg, #0f172a 0%, rgba(15,23,42,0.85) 12%, transparent 35%)' }} />
+        <div className="absolute inset-0 z-[1] pointer-events-none" style={{ background: 'linear-gradient(180deg, #162336 0%, rgba(15,23,42,0.85) 12%, transparent 35%)' }} />
         <div className="absolute inset-0 z-[2] opacity-[0.20] pointer-events-none" style={{ background: `radial-gradient(700px 500px at 20% 75%, ${accentGlow}, transparent 60%)` }} />
 
         {product.id === 'cellubiome' && (
@@ -1104,12 +1104,12 @@ function ShopCatalog() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b1120] text-white">
+    <div className="min-h-screen bg-[#131d2e] text-white">
       <NoiseOverlay />
       <Navbar />
 
       <header className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0f1d30] to-[#0b1120]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#152538] to-[#131d2e]" />
         <div className="relative mx-auto max-w-6xl px-5 md:px-8 pt-28 md:pt-36 pb-12 md:pb-16 text-center">
           <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] font-bold text-teal-400/80 mb-4">The Protocol</span>
           <h1 className="text-4xl md:text-6xl font-head font-normal uppercase tracking-[-0.04em] leading-[0.9] text-white">
