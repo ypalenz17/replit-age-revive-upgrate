@@ -10,6 +10,7 @@ const Quality = lazy(() => import("./pages/Quality"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const Purchase = lazy(() => import("./pages/Purchase"));
 const Checkout = lazy(() => import("./pages/Checkout"));
+const OrderConfirmed = lazy(() => import("./pages/OrderConfirmed"));
 
 function LoadingFallback() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/checkout" component={Checkout} />
+          <Route path="/order-confirmed" component={OrderConfirmed} />
           <Route path="/product/:slug/purchase" component={Purchase} />
           <Route path="/product/:slug" component={ProductDetail} />
           <Route path="/products/:slug" component={ProductDetail} />

@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { X, Minus, Plus, Trash2, Tag, ArrowRight } from 'lucide-react';
+import { useLocation } from 'wouter';
 import { useCart } from '../cartStore';
 import { PRODUCTS } from '../productsData';
 
 export default function CartDrawer() {
   const cart = useCart();
+  const [, navigate] = useLocation();
   const [promoCode, setPromoCode] = useState('');
   const [promoApplied, setPromoApplied] = useState(false);
 
@@ -169,12 +171,16 @@ export default function CartDrawer() {
         </div>
 
         {cart.items.length > 0 && (
-          <div className="border-t border-black/5 px-6 py-5 space-y-4 bg-white">
+          <div className="border-t border-black/5 px-6 py-5 space-y-4 bg-white" style={{ paddingBottom: 'calc(20px + env(safe-area-inset-bottom, 0px))' }}>
             <div className="flex justify-between items-baseline">
               <span className="font-head font-normal text-[14px]">Total</span>
               <span className="text-xl font-head font-normal tracking-tighter">${cart.totalPrice.toFixed(2)}</span>
             </div>
             <button
+              onClick={() => {
+                cart.closeCart();
+                navigate('/checkout');
+              }}
               className="w-full py-4 bg-ar-teal text-ar-navy rounded-xl font-mono text-[12px] font-bold uppercase tracking-[0.10em] hover:bg-ar-teal/90 transition-all flex items-center justify-center gap-2 min-h-[52px]"
               style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25)' }}
               data-testid="cart-checkout"

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams, useLocation, Link } from 'wouter';
+import { useParams, useLocation, Link, Redirect } from 'wouter';
 import { Plus, Minus, RotateCcw, ShoppingBag, ChevronDown, Diamond } from 'lucide-react';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import { PRODUCT_DETAIL_DATA, PRODUCT_IMAGES } from '../productData';
@@ -17,8 +17,7 @@ export default function Purchase() {
 
   const data = PRODUCT_DETAIL_DATA[slug as keyof typeof PRODUCT_DETAIL_DATA];
   if (!data) {
-    navigate('/shop');
-    return null;
+    return <Redirect to="/shop" />;
   }
 
   const images = PRODUCT_IMAGES[slug as keyof typeof PRODUCT_IMAGES] || PRODUCT_IMAGES.cellunad;
@@ -47,7 +46,7 @@ export default function Purchase() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b1120] text-white font-sans antialiased">
+    <div className="min-h-[100dvh] bg-[#0b1120] text-white font-sans antialiased">
       <nav className="sticky top-0 z-50 bg-[#0b1120]/90 backdrop-blur-md border-b border-white/[0.06]">
         <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
           <Link href="/">
@@ -66,7 +65,7 @@ export default function Purchase() {
         </div>
       </nav>
 
-      <div className="max-w-lg mx-auto px-5 pb-52">
+      <div className="max-w-lg mx-auto px-5 pb-52" style={{ paddingBottom: 'calc(13rem + env(safe-area-inset-bottom, 0px))' }}>
         <h1 className="font-sans font-light tracking-[-0.02em] text-white/90 pt-6 pb-6" style={{ fontSize: 'clamp(1.5rem, 5vw, 1.8rem)' }} data-testid="cart-title">Your Cart</h1>
 
         <div className="pb-5">
@@ -212,7 +211,7 @@ export default function Purchase() {
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0b1120]/95 backdrop-blur-md border-t border-white/[0.06]">
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0b1120]/95 backdrop-blur-md border-t border-white/[0.06]" style={{ paddingBottom: 'max(12px, env(safe-area-inset-bottom, 0px))' }}>
         <div className="max-w-lg mx-auto px-5 py-4 space-y-3">
           {upgraded && (
             <div className="flex items-center justify-between">

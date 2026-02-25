@@ -102,12 +102,12 @@ details summary::-webkit-details-marker {
 
 /* Protocol Stack Bar */
 .ar-page-with-protocolbar {
-  padding-bottom: 96px;
+  padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
   background: #0b1120;
 }
 @media (min-width: 1024px) {
   .ar-page-with-protocolbar {
-    padding-bottom: 88px;
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
   }
 }
 

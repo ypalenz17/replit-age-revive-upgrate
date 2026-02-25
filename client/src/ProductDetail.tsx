@@ -44,6 +44,8 @@ import ProtocolStackBar from './components/ProtocolStackBar';
 import { getProductKeyFromSlug, getProtocolConfig } from './protocolStack/protocolStackConfig';
 import type { StackItem } from './protocolStack/protocolStackConfig';
 
+type ProductDetailData = (typeof PRODUCT_DETAIL_DATA)[keyof typeof PRODUCT_DETAIL_DATA];
+
 gsap.registerPlugin(ScrollTrigger);
 
 const ICON_MAP: Record<string, any> = { Zap, Dna, Activity, Layers, ShieldCheck, RotateCcw, Wind, Heart, Brain, Flame, Shield, Timer };
@@ -159,7 +161,7 @@ function Navbar() {
   );
 }
 
-function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () => void; data: typeof PRODUCT_DETAIL_DATA.cellunad }) {
+function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () => void; data: ProductDetailData }) {
   if (!isOpen) return null;
   return (
     <div className="fixed inset-0 z-[200] flex items-end sm:items-center justify-center p-0 sm:p-4">
@@ -382,7 +384,7 @@ function SectionLabel({ label, color, align = 'center' }: { label: string; color
   );
 }
 
-function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.cellunad; slug: string }) {
+function ProductDetailPage({ data, slug }: { data: ProductDetailData; slug: string }) {
   const [isFactsOpen, setIsFactsOpen] = useState(false);
   const [activeTimeline, setActiveTimeline] = useState(0);
   const [, navigate] = useLocation();
@@ -415,6 +417,21 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
 
   const accentColor = data.accentText;
   const images = PRODUCT_IMAGES[slug as keyof typeof PRODUCT_IMAGES] || PRODUCT_IMAGES.cellunad;
+
+  const addStackItemToCart = (stackSlug: string) => {
+    const stackData = PRODUCT_DETAIL_DATA[stackSlug as keyof typeof PRODUCT_DETAIL_DATA];
+    const stackImages = PRODUCT_IMAGES[stackSlug as keyof typeof PRODUCT_IMAGES];
+    if (!stackData) return;
+
+    cart.addItem({
+      slug: stackSlug,
+      name: stackData.name,
+      image: stackImages?.[0] || '/images/product-bottle_1.jpg',
+      price: stackData.priceOneTime,
+      isSubscribe: true,
+      frequency: stackSlug === 'cellunova' ? '7-day cycle' : 'Delivered monthly',
+    });
+  };
 
   return (
     <div ref={containerRef} className="min-h-screen bg-[#0b1120] text-white selection:bg-teal-500/30 selection:text-white font-sans antialiased">
@@ -1022,7 +1039,7 @@ function ProductDetailPage({ data, slug }: { data: typeof PRODUCT_DETAIL_DATA.ce
                 </div>
                 <div className="flex gap-3 pt-2 relative z-10">
                   <a href={`/product/${item.slug}`} className="flex-1 py-3 border border-white/10 font-mono text-[10px] font-bold uppercase tracking-[0.08em] hover:bg-white/[0.04] transition-all text-center min-h-[40px] flex items-center justify-center" data-testid={`stack-view-${item.slug}`}>Learn More</a>
-                  <button className="flex-1 py-3 font-mono text-[10px] font-bold uppercase tracking-[0.08em] transition-all min-h-[40px]" style={{ background: accentColor, color: '#0b1120' }} data-testid={`stack-add-${item.slug}`}>Add to Cart</button>
+                  <button onClick={() => addStackItemToCart(item.slug)} className="flex-1 py-3 font-mono text-[10px] font-bold uppercase tracking-[0.08em] transition-all min-h-[40px]" style={{ background: accentColor, color: '#0b1120' }} data-testid={`stack-add-${item.slug}`}>Add to Cart</button>
                 </div>
               </div>
             ))}

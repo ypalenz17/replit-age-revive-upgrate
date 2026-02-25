@@ -5,6 +5,19 @@ import { createServer } from "http";
 
 const app = express();
 const httpServer = createServer(app);
+app.disable("x-powered-by");
+
+const configuredCorsOrigins = new Set(
+  (process.env.CORS_ORIGIN ?? "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean),
+);
+
+if (process.env.NODE_ENV !== "production") {
+  configuredCorsOrigins.add("http://localhost:5173");
+  configuredCorsOrigins.add("http://127.0.0.1:5173");
+}
 
 declare module "http" {
   interface IncomingMessage {
@@ -14,13 +27,59 @@ declare module "http" {
 
 app.use(
   express.json({
+    limit: "100kb",
+    strict: true,
     verify: (req, _res, buf) => {
       req.rawBody = buf;
     },
   }),
 );
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false, limit: "100kb" }));
+
+app.use((req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "DENY");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+  res.setHeader("Cross-Origin-Resource-Policy", "same-origin");
+
+  if (process.env.NODE_ENV === "production") {
+    res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+  }
+
+  next();
+});
+
+app.use("/api", (req, res, next) => {
+  const origin = req.get("origin");
+  if (!origin) {
+    return next();
+  }
+
+  const host = req.get("host");
+  const sameHostOrigin = host
+    ? origin === `http://${host}` || origin === `https://${host}`
+    : false;
+  const originAllowed = sameHostOrigin || configuredCorsOrigins.has(origin);
+
+  if (!originAllowed) {
+    return res.status(403).json({ message: "Origin not allowed" });
+  }
+
+  res.setHeader("Access-Control-Allow-Origin", origin);
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Vary", "Origin");
+
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204);
+  }
+
+  next();
+});
 
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
@@ -36,23 +95,11 @@ export function log(message: string, source = "express") {
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
-  let capturedJsonResponse: Record<string, any> | undefined = undefined;
-
-  const originalResJson = res.json;
-  res.json = function (bodyJson, ...args) {
-    capturedJsonResponse = bodyJson;
-    return originalResJson.apply(res, [bodyJson, ...args]);
-  };
 
   res.on("finish", () => {
     const duration = Date.now() - start;
     if (path.startsWith("/api")) {
-      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
-        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
-      }
-
-      log(logLine);
+      log(`${req.method} ${path} ${res.statusCode} in ${duration}ms`);
     }
   });
 
@@ -62,17 +109,32 @@ app.use((req, res, next) => {
 (async () => {
   await registerRoutes(httpServer, app);
 
-  app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
+  app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+    const status = Number(err?.status || err?.statusCode || 500);
+    const isJsonSyntaxError =
+      err instanceof SyntaxError &&
+      (err as { status?: number }).status === 400 &&
+      "body" in err;
+    const safeStatus = Number.isFinite(status) && status >= 400 && status < 600 ? status : 500;
+    const message = isJsonSyntaxError
+      ? "Invalid JSON payload"
+      : safeStatus >= 500
+        ? "Internal Server Error"
+        : typeof err?.message === "string" && err.message
+          ? err.message
+          : "Bad Request";
 
-    console.error("Internal Server Error:", err);
+    if (safeStatus >= 500) {
+      log(`${req.method} ${req.path} ${safeStatus} :: internal error`, "error");
+    } else {
+      log(`${req.method} ${req.path} ${safeStatus}`, "error");
+    }
 
     if (res.headersSent) {
       return next(err);
     }
 
-    return res.status(status).json({ message });
+    return res.status(safeStatus).json({ message });
   });
 
   if (process.env.NODE_ENV === "production") {
@@ -87,14 +149,23 @@ app.use((req, res, next) => {
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
   const port = parseInt(process.env.PORT || "5000", 10);
+  httpServer.on("error", (err) => {
+    console.error("Server failed to start:", err);
+    process.exit(1);
+  });
+
+  const listenOptions =
+    process.platform === "win32"
+      ? { port, host: "0.0.0.0" as const }
+      : { port, host: "0.0.0.0" as const, reusePort: true };
+
   httpServer.listen(
-    {
-      port,
-      host: "0.0.0.0",
-      reusePort: true,
-    },
+    listenOptions,
     () => {
       log(`serving on port ${port}`);
     },
   );
-})();
+})().catch((err) => {
+  console.error("Failed during server startup:", err);
+  process.exit(1);
+});

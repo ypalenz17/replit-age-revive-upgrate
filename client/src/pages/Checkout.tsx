@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation, Link } from 'wouter';
+import { useLocation, Link, Redirect } from 'wouter';
 import { ChevronDown, ChevronLeft, Check, Mail } from 'lucide-react';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import { useCart } from '../cartStore';
@@ -39,8 +39,7 @@ export default function Checkout() {
   const itemCount = cart.totalItems;
 
   if (itemCount === 0) {
-    navigate('/shop');
-    return null;
+    return <Redirect to="/shop" />;
   }
 
   const handleEmailSubmit = () => {
@@ -57,6 +56,7 @@ export default function Checkout() {
 
   const handlePaymentSubmit = () => {
     if (cardNumber.trim() && expiry.trim() && cvc.trim() && nameOnCard.trim()) {
+      cart.clearCart();
       navigate('/order-confirmed');
     }
   };
@@ -65,7 +65,7 @@ export default function Checkout() {
   const labelFloat = "relative";
 
   return (
-    <div className="min-h-screen bg-[#0b1120] text-white font-sans antialiased">
+    <div className="min-h-[100dvh] bg-[#0b1120] text-white font-sans antialiased">
       <nav className="sticky top-0 z-50 bg-[#0b1120]/90 backdrop-blur-md border-b border-white/[0.06]">
         <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
           <Link href="/">
@@ -104,7 +104,7 @@ export default function Checkout() {
           </div>
         )}
 
-        <div className="px-5 pt-8 pb-32">
+        <div className="px-5 pt-8 pb-32" style={{ paddingBottom: 'calc(8rem + env(safe-area-inset-bottom, 0px))' }}>
           <div className="space-y-8">
             <section data-testid="step-account">
               <p className="text-[12px] font-mono uppercase tracking-[0.12em] text-white/30 mb-2">1 of 3</p>
@@ -356,7 +356,7 @@ export default function Checkout() {
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0b1120]/95 backdrop-blur-md border-t border-white/[0.06]">
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0b1120]/95 backdrop-blur-md border-t border-white/[0.06]" style={{ paddingBottom: 'max(10px, env(safe-area-inset-bottom, 0px))' }}>
         <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
           <button
             onClick={() => {

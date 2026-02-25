@@ -4,10 +4,12 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=development tsx server/index.ts",
-    "build": "tsx script/build.ts",
-    "start": "NODE_ENV=production node dist/index.cjs",
+    "dev": "cross-env NODE_ENV=development tsx server/index.ts",
+    "build": "npm run check && tsx script/build.ts",
+    "start": "cross-env NODE_ENV=production node dist/index.cjs",
     "check": "tsc",
+    "test": "tsx --test client/src/cartStore.test.ts",
+    "smoke": "tsx --test client/src/cartStore.test.ts client/src/flowSmoke.test.ts",
     "db:push": "drizzle-kit push"
   },
   "dependencies": {
@@ -93,6 +95,7 @@
     "@types/ws": "^8.5.13",
     "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.24",
+    "cross-env": "^7.0.3",
     "drizzle-kit": "^0.31.8",
     "esbuild": "^0.25.0",
     "postcss": "^8.5.6",
@@ -104,7 +107,10 @@
   "overrides": {
     "drizzle-kit": {
       "@esbuild-kit/esm-loader": "npm:tsx@^4.20.4"
-    }
+    },
+    "lodash": "4.17.23",
+    "minimatch": "9.0.6",
+    "qs": "6.15.0"
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.8"

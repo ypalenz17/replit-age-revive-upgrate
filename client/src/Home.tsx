@@ -14,6 +14,7 @@ import { PRODUCTS as SELECTOR_PRODUCTS, BrandName } from './productsData';
 import ProtocolSelectorCard from './components/ProtocolSelectorCard';
 import Footer from './components/Footer';
 import { useCart } from './cartStore';
+import { PRODUCT_DETAIL_DATA } from './productData';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -109,6 +110,7 @@ const PRODUCTS = [
     ]
   }
 ];
+type HomeProduct = (typeof PRODUCTS)[number];
 
 const PILLARS = [
   { title: 'Genomic Stability', what: 'NAD+ fuels enzymes that repair damaged DNA and maintain chromosomal integrity.', why: 'Without daily NAD+ replenishment, repair enzymes slow and mutations accumulate.', protocol: 'CELLUNAD+', slug: 'cellunad', tags: ['NAD+', 'Sirtuins'], accent: '#3B82F6' },
@@ -131,15 +133,15 @@ const NoiseOverlay = () => (
   </div>
 );
 
-const SideSheet = ({ isOpen, onClose, title, children }: { isOpen: boolean; onClose: () => void; title: any; children: any }) => {
-  const sheetRef = useRef(null);
+const SideSheet = ({ isOpen, onClose, title, children }: { isOpen: boolean; onClose: () => void; title: React.ReactNode; children: React.ReactNode }) => {
+  const sheetRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!isOpen) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
-    const handleEsc = (e) => { if (e.key === 'Escape') onClose(); };
+    const handleEsc = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
     window.addEventListener('keydown', handleEsc);
 
     const ctx = gsap.context(() => {
@@ -310,7 +312,7 @@ const Navbar = () => {
   );
 };
 
-const Hero = ({ onOpenEvidence, onOpenProduct }) => {
+const Hero = ({ onOpenEvidence, onOpenProduct }: { onOpenEvidence: () => void; onOpenProduct: (slug: string) => void }) => {
   return (
     <section className="relative min-h-[100dvh] flex flex-col overflow-hidden">
 
@@ -409,7 +411,7 @@ const Hero = ({ onOpenEvidence, onOpenProduct }) => {
   );
 };
 
-const TheAxis = ({ onOpenEvidence }) => {
+const TheAxis = ({ onOpenEvidence }: { onOpenEvidence: () => void }) => {
   return (
     <section id="axis" className="relative py-12 md:py-20 px-6">
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 40%, rgba(25,179,166,0.04) 0%, transparent 70%)' }} />
@@ -556,9 +558,10 @@ const SixPillars = () => {
 
 
 export default function Home() {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const [evidencePanel, setEvidencePanel] = useState(false);
-  const [activeProduct, setActiveProduct] = useState(null);
+  const [activeProduct, setActiveProduct] = useState<HomeProduct | null>(null);
+  const cart = useCart();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -573,7 +576,7 @@ export default function Home() {
 
       gsap.from('.hero-text', { opacity: 0, y: 20, duration: 1, ease: 'power3.out' });
 
-      gsap.utils.toArray('.reveal-stagger').forEach((el) => {
+      gsap.utils.toArray<HTMLElement>('.reveal-stagger').forEach((el) => {
         gsap.from(el, {
           scrollTrigger: { trigger: el, start: 'top 95%', toggleActions: 'play none none none' },
           opacity: 0,
@@ -583,7 +586,7 @@ export default function Home() {
         });
       });
 
-      gsap.utils.toArray('.reveal').forEach((el) => {
+      gsap.utils.toArray<HTMLElement>('.reveal').forEach((el) => {
         gsap.from(el, {
           scrollTrigger: { trigger: el, start: 'top 95%', toggleActions: 'play none none none' },
           opacity: 0,
@@ -600,7 +603,26 @@ export default function Home() {
     };
   }, []);
 
-  const productBySlug = useMemo(() => Object.fromEntries(PRODUCTS.map((p) => [p.slug, p])), []);
+  const productBySlug = useMemo<Record<string, HomeProduct>>(
+    () => Object.fromEntries(PRODUCTS.map((p) => [p.slug, p])),
+    [],
+  );
+
+  const addActiveProductToCart = () => {
+    if (!activeProduct) return;
+
+    const detailData = PRODUCT_DETAIL_DATA[activeProduct.slug as keyof typeof PRODUCT_DETAIL_DATA];
+    if (!detailData) return;
+
+    cart.addItem({
+      slug: activeProduct.slug,
+      name: activeProduct.name,
+      image: activeProduct.image,
+      price: detailData.priceOneTime,
+      isSubscribe: true,
+      frequency: activeProduct.slug === 'cellunova' ? '7-day cycle' : 'Delivered monthly',
+    });
+  };
 
   return (
     <div ref={containerRef} className="relative bg-[#0f172a] selection:bg-ar-teal selection:text-white">
@@ -625,7 +647,7 @@ export default function Home() {
 
       <Hero
         onOpenEvidence={() => setEvidencePanel(true)}
-        onOpenProduct={(slug) => setActiveProduct(productBySlug[slug])}
+        onOpenProduct={(slug: string) => setActiveProduct(productBySlug[slug] ?? null)}
       />
 
       {/* Protocol Selector */}
@@ -788,7 +810,7 @@ export default function Home() {
               ))}
             </div>
 
-            <button className="w-full py-5 min-h-[48px] bg-ar-navy text-white rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-ar-ink transition-colors flex items-center justify-center gap-2" data-testid="button-add-to-cart">
+            <button onClick={addActiveProductToCart} className="w-full py-5 min-h-[48px] bg-ar-navy text-white rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-ar-ink transition-colors flex items-center justify-center gap-2" data-testid="button-add-to-cart">
               Add to Cart <ArrowRight size={14} />
             </button>
 

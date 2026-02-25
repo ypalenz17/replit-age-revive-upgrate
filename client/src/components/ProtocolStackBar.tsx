@@ -91,7 +91,7 @@ export default function ProtocolStackBar({ config, showAfterPx = 520, onAddItems
   if (!visible) return null;
 
   return (
-    <div className="ar-protocolbar fixed left-0 right-0 bottom-0 z-[60]" role="region" aria-label="Protocol stack quick add" data-testid="protocol-stack-bar">
+    <div className="ar-protocolbar fixed left-0 right-0 bottom-0 z-[60]" style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }} role="region" aria-label="Protocol stack quick add" data-testid="protocol-stack-bar">
       <div className="mx-auto max-w-[1100px] px-4 py-2.5">
         <div className="flex items-center justify-between gap-3 sm:gap-4">
           <div className="min-w-0 shrink">

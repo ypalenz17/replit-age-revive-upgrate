@@ -62,7 +62,11 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  app.get('/api/site-content', (_req, res) => {
+  app.get('/api/site-content', (req, res) => {
+    if (Object.keys(req.query).length > 0) {
+      return res.status(400).json({ message: 'Query parameters are not supported for this endpoint.' });
+    }
+
     res.setHeader('Content-Type', 'text/markdown; charset=utf-8');
     res.send(SITE_CONTENT);
   });

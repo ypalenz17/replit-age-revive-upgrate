@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import type { CSSProperties, MouseEventHandler, ReactNode } from 'react';
 import {
   ArrowRight,
   ChevronDown,
@@ -17,7 +18,7 @@ import { useCart } from './cartStore';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function hexToRgba(hex, alpha = 1) {
+function hexToRgba(hex: string, alpha = 1) {
   const h = (hex || '').replace('#', '').trim();
   if (h.length !== 6) return `rgba(0,0,0,${alpha})`;
   const r = parseInt(h.slice(0, 2), 16);
@@ -352,6 +353,44 @@ const PRODUCTS = {
   }
 };
 
+type ProductId = keyof typeof PRODUCTS;
+type ProductData = (typeof PRODUCTS)[ProductId];
+type ProductIngredient = ProductData['ingredients'][number];
+type ProductIngredientRef = NonNullable<ProductIngredient['refs']>[number];
+type ProductCopy = (typeof COPY_MAP)[ProductId];
+type SidePanelKey = 'ingredients' | 'rationale';
+
+type CompoundRowProps = {
+  ing: ProductIngredient;
+  accentText: string;
+  isLast: boolean;
+  index: number;
+};
+
+type IngredientPanelProps = {
+  ingredients: ProductIngredient[];
+  accentText: string;
+};
+
+type MagneticButtonProps = {
+  className?: string;
+  children: ReactNode;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  type?: 'button' | 'submit' | 'reset';
+  style?: CSSProperties;
+};
+
+type SideSheetProps = {
+  open: boolean;
+  title: string;
+  onClose: () => void;
+  children: ReactNode;
+};
+
+type ProductTemplateProps = {
+  product: ProductData;
+};
+
 function NoiseOverlay() {
   return (
     <div className="fixed inset-0 pointer-events-none z-[50] opacity-[0.035]" aria-hidden="true">
@@ -367,7 +406,7 @@ function NoiseOverlay() {
 }
 
 
-function CompoundRow({ ing, accentText, isLast, index }) {
+function CompoundRow({ ing, accentText, isLast, index }: CompoundRowProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -402,10 +441,10 @@ function CompoundRow({ ing, accentText, isLast, index }) {
             <div>
               <span className="text-[9px] font-mono font-bold uppercase tracking-[0.16em] text-white/35 block mb-1.5">Clinical Evidence</span>
               <div className="space-y-1.5">
-                {ing.refs.map((ref, ri) => (
+                {ing.refs.map((ref: ProductIngredientRef, ri: number) => (
                   <p key={ri} className="text-[10px] font-mono text-white/40 leading-relaxed break-words">
                     [{ri + 1}] {ref.title}
-                    {ref.doi && (
+                    {'doi' in ref && ref.doi && (
                       <a
                         href={`https://doi.org/${ref.doi}`}
                         target="_blank"
@@ -430,7 +469,7 @@ function CompoundRow({ ing, accentText, isLast, index }) {
   );
 }
 
-function IngredientPanel({ ingredients, accentText }) {
+function IngredientPanel({ ingredients, accentText }: IngredientPanelProps) {
   return (
     <div className="space-y-0">
       {ingredients.map((ing, i) => (
@@ -550,8 +589,8 @@ function Navbar() {
   );
 }
 
-function MagneticButton({ className = '', children, onClick, type = 'button', style = {} }) {
-  const btnRef = useRef(null);
+function MagneticButton({ className = '', children, onClick, type = 'button', style = {} }: MagneticButtonProps) {
+  const btnRef = useRef<HTMLButtonElement | null>(null);
   const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
@@ -563,7 +602,7 @@ function MagneticButton({ className = '', children, onClick, type = 'button', st
       const xTo = gsap.quickTo(el, 'x', { duration: 0.35, ease: 'power3.out' });
       const yTo = gsap.quickTo(el, 'y', { duration: 0.35, ease: 'power3.out' });
 
-      const onMove = (e) => {
+      const onMove = (e: MouseEvent) => {
         const r = el.getBoundingClientRect();
         const dx = e.clientX - (r.left + r.width / 2);
         const dy = e.clientY - (r.top + r.height / 2);
@@ -595,33 +634,32 @@ function MagneticButton({ className = '', children, onClick, type = 'button', st
   );
 }
 
-function SideSheet({ open, title, onClose, children }) {
+function SideSheet({ open, title, onClose, children }: SideSheetProps) {
   const reducedMotion = usePrefersReducedMotion();
-  const sheetRef = useRef(null);
+  const sheetRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!open) return;
 
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    let ctx: gsap.Context | null = null;
 
     if (!reducedMotion && sheetRef.current) {
       const el = sheetRef.current;
-      const panel = el.querySelector('[data-panel]');
-      const overlay = el.querySelector('[data-overlay]');
+      const panel = el.querySelector<HTMLElement>('[data-panel]');
+      const overlay = el.querySelector<HTMLElement>('[data-overlay]');
 
-      const ctx = gsap.context(() => {
-        gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' });
-        gsap.fromTo(panel, { x: 28, opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: 'power3.out' });
-      }, sheetRef);
-
-      return () => {
-        ctx.revert();
-        document.body.style.overflow = prev;
-      };
+      if (panel && overlay) {
+        ctx = gsap.context(() => {
+          gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' });
+          gsap.fromTo(panel, { x: 28, opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: 'power3.out' });
+        }, sheetRef);
+      }
     }
 
     return () => {
+      ctx?.revert();
       document.body.style.overflow = prev;
     };
   }, [open, reducedMotion]);
@@ -649,10 +687,24 @@ function SideSheet({ open, title, onClose, children }) {
   );
 }
 
-function ProductTemplate({ product }) {
-  const containerRef = useRef(null);
-  const [activeSidePanel, setActiveSidePanel] = useState(null);
+function ProductTemplate({ product }: ProductTemplateProps) {
+  const containerRef = useRef<HTMLElement | null>(null);
+  const [activeSidePanel, setActiveSidePanel] = useState<SidePanelKey | null>(null);
   const reducedMotion = usePrefersReducedMotion();
+  const cart = useCart();
+
+  const addCurrentProductToCart = () => {
+    const parsedPrice = Number.parseFloat(product.price.replace(/[^0-9.]/g, ''));
+    const price = Number.isFinite(parsedPrice) ? parsedPrice : 0;
+    cart.addItem({
+      slug: product.id,
+      name: product.name,
+      image: product.heroImage,
+      price,
+      isSubscribe: true,
+      frequency: product.id === 'cellunova' ? '7-day cycle' : 'Delivered monthly',
+    });
+  };
 
   useEffect(() => {
     if (reducedMotion) return;
@@ -665,7 +717,7 @@ function ProductTemplate({ product }) {
       gsap.from('.hero-content', { opacity: 0, y: 46, duration: 1.05, ease: 'power4.out', delay: 0.18 });
       gsap.from('.buy-panel', { opacity: 0, x: 34, duration: 1.05, ease: 'power4.out', delay: 0.28 });
 
-      gsap.utils.toArray('.reveal').forEach((el) => {
+      gsap.utils.toArray<HTMLElement>('.reveal').forEach((el) => {
         gsap.from(el, {
           scrollTrigger: { trigger: el, start: 'top 85%' },
           opacity: 0,
@@ -687,17 +739,23 @@ function ProductTemplate({ product }) {
   const accent = product.accent;
   const accentGlow = hexToRgba(accent, 0.55);
   const accentText = product.accentText || accent;
-  const copy = COPY_MAP[product.id];
+  const copy: ProductCopy = COPY_MAP[product.id as ProductId];
+  const productWarnings = 'warnings' in product ? product.warnings : undefined;
+  const specMicroNote = 'microNote' in copy.spec ? copy.spec.microNote : undefined;
+  const productThemeVars = {
+    '--accent': accent,
+    '--accentGlow': accentGlow,
+  } as CSSProperties & { '--accent': string; '--accentGlow': string };
 
   return (
-    <main ref={containerRef} style={{ '--accent': accent, '--accentGlow': accentGlow }} className="relative bg-[#0b1120] text-white selection:bg-ar-teal selection:text-white">
+    <main ref={containerRef} style={productThemeVars} className="relative bg-[#0b1120] text-white selection:bg-ar-teal selection:text-white">
       <div className="fixed inset-0 z-0 bg-[#0b1120]">
         <img
           src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2400"
           className="w-full h-full object-cover grayscale opacity-30 mix-blend-screen"
           alt=""
           decoding="async"
-          fetchpriority="high"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#131b2e_0%,_#0b1120_120%)] opacity-80" />
       </div>
@@ -766,15 +824,15 @@ function ProductTemplate({ product }) {
 
                   <p className="text-[10px] font-mono text-white/60 tracking-[0.08em] uppercase whitespace-nowrap mt-1">{product.specRow}</p>
 
-                  {product.warnings && (
-                    <p className="text-[10px] font-mono text-white/60 tracking-[0.02em]">{product.warnings}</p>
+                  {productWarnings && (
+                    <p className="text-[10px] font-mono text-white/60 tracking-[0.02em]">{productWarnings}</p>
                   )}
 
                   <div className="space-y-2.5 pt-0.5">
                     <MagneticButton
                       className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
                       style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.08))', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15), 0 1px 3px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.18)' }}
-                      onClick={() => {}}
+                      onClick={addCurrentProductToCart}
                     >
                       <span className="relative z-10">Add to Stack</span>
                       <ArrowRight size={13} className="relative z-10" />
@@ -896,7 +954,7 @@ function ProductTemplate({ product }) {
             <p className="text-[12px] font-mono text-white/55 tracking-[0.04em] uppercase mb-1.5">{copy.spec.meta}</p>
             <p className="text-[14px] font-sans text-white/65 leading-relaxed mb-1.5">{copy.spec.reassurance}</p>
             <p className="text-[12px] font-mono text-white/50 tracking-[0.04em]">{copy.spec.declaration}</p>
-            {copy.spec.microNote && <p className="text-[11px] font-mono text-white/45 tracking-[0.04em] mt-1">{copy.spec.microNote}</p>}
+            {specMicroNote && <p className="text-[11px] font-mono text-white/45 tracking-[0.04em] mt-1">{specMicroNote}</p>}
           </div>
 
           <div className="reveal border-t border-white/[0.06] pt-5 max-w-4xl">
@@ -961,7 +1019,7 @@ function ProductTemplate({ product }) {
               <MagneticButton
                 className="min-h-[44px] min-w-[200px] flex items-center justify-center gap-2 py-3 px-8 rounded-lg text-white font-mono font-bold tracking-[0.12em] text-[11px] uppercase active:scale-[0.98] transition-all relative overflow-hidden group"
                 style={{ background: 'linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.08))', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.15), 0 1px 3px rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.18)' }}
-                onClick={() => {}}
+                onClick={addCurrentProductToCart}
               >
                 <span className="relative z-10">Add to Stack</span>
                 <ArrowRight size={13} className="relative z-10" />
@@ -999,8 +1057,8 @@ function ProductTemplate({ product }) {
           ))}
         </div>
 
-        {product.warnings && (
-          <p className="mt-6 text-[11px] font-mono text-white/45 tracking-[0.02em]">{product.warnings}</p>
+        {productWarnings && (
+          <p className="mt-6 text-[11px] font-mono text-white/45 tracking-[0.02em]">{productWarnings}</p>
         )}
       </SideSheet>
 
@@ -1026,18 +1084,19 @@ function ProductTemplate({ product }) {
 }
 
 export default function Shop() {
+  const isProductId = (value: string): value is ProductId => value in PRODUCTS;
   const params = useParams<{ slug?: string }>();
-  const initialSlug = (params.slug && PRODUCTS[params.slug]) ? params.slug : 'cellunad';
-  const [slug, setSlug] = useState(initialSlug);
+  const initialSlug: ProductId = params.slug && isProductId(params.slug) ? params.slug : 'cellunad';
+  const [slug, setSlug] = useState<ProductId>(initialSlug);
   const [railVisible, setRailVisible] = useState(true);
   const currentProduct = PRODUCTS[slug];
-  const footerSentinelRef = useRef(null);
+  const footerSentinelRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (params.slug && PRODUCTS[params.slug] && params.slug !== slug) {
+    if (params.slug && isProductId(params.slug) && params.slug !== slug) {
       setSlug(params.slug);
     }
-  }, [params.slug]);
+  }, [params.slug, slug]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -1081,7 +1140,7 @@ export default function Shop() {
           {Object.values(PRODUCTS).map((p) => (
             <button
               key={p.id}
-              onClick={() => setSlug(p.id)}
+              onClick={() => setSlug(p.id as ProductId)}
               className={[
                 'px-5 py-3 text-[11px] font-mono font-bold uppercase tracking-[0.14em] transition-all min-h-[44px] relative',
                 slug === p.id ? 'text-white' : 'text-white/55 hover:text-white/75'

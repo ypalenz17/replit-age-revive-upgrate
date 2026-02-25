@@ -1,6 +1,8 @@
 import { Link } from "wouter";
 import { ArrowRight, Plus, Check } from "lucide-react";
 import { BrandName } from "../productsData";
+import { useCart } from "../cartStore";
+import { PRODUCT_DETAIL_DATA } from "../productData";
 
 function hexToRgba(hex: string, a = 1) {
   const h = (hex || "").replace("#", "").trim();
@@ -31,6 +33,21 @@ interface ProductCardProps {
 export default function ProtocolSelectorCard({ p }: ProductCardProps) {
   const accent = p.color;
   const accentText = p.textColor || accent;
+  const cart = useCart();
+  const detailData = PRODUCT_DETAIL_DATA[p.slug as keyof typeof PRODUCT_DETAIL_DATA];
+
+  const addCurrentProtocolToCart = () => {
+    if (!detailData) return;
+
+    cart.addItem({
+      slug: p.slug,
+      name: p.name,
+      image: p.image,
+      price: detailData.priceOneTime,
+      isSubscribe: true,
+      frequency: p.slug === "cellunova" ? "7-day cycle" : "Delivered monthly",
+    });
+  };
 
   return (
     <div className="flex flex-col h-full" data-testid={`card-protocol-${p.slug}`}>
@@ -95,6 +112,7 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
             </Link>
 
             <button
+              onClick={addCurrentProtocolToCart}
               className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 font-mono uppercase text-[11px] tracking-[0.14em] font-medium text-white/45 hover:bg-white/[0.04] hover:text-white/65 transition-all duration-300"
               style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)' }}
               data-testid={`button-add-stack-${p.slug}`}
