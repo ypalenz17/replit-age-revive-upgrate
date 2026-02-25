@@ -1,20 +1,20 @@
-import { useEffect, useMemo, useState } from "react";
-import { Link } from "wouter";
-import { Menu, ShoppingBag, X } from "lucide-react";
-import brandLogo from "@assets/AR_brand_logo_1771613250600.png";
-import Footer from "../components/Footer";
-import { useCart } from "../cartStore";
+import React, { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 
 const LAST_UPDATED = "2026-02-24";
 
+/**
+ * UPDATE IF YOUR ROUTES DIFFER
+ */
 const PRODUCT_ROUTES = {
-  cellunad: "/product/cellunad",
-  cellubiome: "/product/cellubiome",
-  cellunova: "/product/cellunova",
+  cellunad: "/products/cellunad",
+  cellubiome: "/products/cellubiome",
+  cellunova: "/products/cellunova",
 } as const;
 
 const SCIENCE_URL = "/science";
 const QUALITY_URL = "/quality";
+const CONTACT_URL = "/contact";
 
 type FAQItem = { q: string; a: string; tags: string[] };
 
@@ -33,27 +33,32 @@ const FAQ_CATEGORIES: FAQCategory[] = [
     items: [
       {
         q: "How do the three products fit together?",
-        a: "Age Revive is designed as a three-layer protocol: CELLUNAD+ is the daily NAD+ foundation, CELLUBIOME supports the gut and mitochondria interface using urolithin A and tributyrin, and CELLUNOVA is a periodic 7-day protocol used as a controlled reset.",
+        a:
+          "Age Revive is designed as a three-layer protocol: CELLUNAD+ is the daily NAD+ foundation, CELLUBIOME supports the gut and mitochondria interface using urolithin A and tributyrin, and CELLUNOVA is a periodic 7-day protocol used as a controlled reset.",
         tags: ["protocol", "stack", "CELLUNAD+", "CELLUBIOME", "CELLUNOVA", "NAD+", "mitophagy", "autophagy"],
       },
       {
         q: "Can I take all three together?",
-        a: "Yes. The intended structure is daily CELLUNAD+ plus CELLUBIOME, with CELLUNOVA layered in as a periodic 7-day cycle. Consult a clinician if you are on medication or managing a condition.",
+        a:
+          "Yes. The intended structure is daily CELLUNAD+ plus CELLUBIOME, with CELLUNOVA layered in as a periodic 7-day cycle. Consult a clinician if you are on medication or managing a condition.",
         tags: ["stack", "daily", "cycle", "safety"],
       },
       {
         q: "If I start with one product, which one should it be?",
-        a: "Most people start with CELLUNAD+ because NAD+ metabolism is an upstream pathway in cellular energy processes. If your priority is gut signaling stability, consider starting with CELLUBIOME.",
+        a:
+          "Most people start with CELLUNAD+ because NAD+ metabolism is an upstream pathway in cellular energy processes. If your priority is gut signaling stability, consider starting with CELLUBIOME.",
         tags: ["start", "CELLUNAD+", "CELLUBIOME", "NAD+"],
       },
       {
         q: "How long should I evaluate daily products?",
-        a: "Most people assess meaningful changes after 8 to 12 weeks of consistent daily use. Consistency matters more than exact timing.",
+        a:
+          "Most people assess meaningful changes after 8 to 12 weeks of consistent daily use. Consistency matters more than exact timing.",
         tags: ["timeline", "consistency"],
       },
       {
         q: "Is CELLUNOVA taken daily?",
-        a: "No. CELLUNOVA is a 7-day protocol designed to be used periodically, commonly monthly, then you return to the daily baseline layers.",
+        a:
+          "No. CELLUNOVA is a 7-day protocol designed to be used periodically, commonly monthly, then you return to the daily baseline layers.",
         tags: ["CELLUNOVA", "cycle", "7-day protocol"],
       },
     ],
@@ -65,52 +70,62 @@ const FAQ_CATEGORIES: FAQCategory[] = [
     items: [
       {
         q: "What is NAD+?",
-        a: "NAD+ (nicotinamide adenine dinucleotide) is a coenzyme involved in cellular energy metabolism and multiple enzyme systems tied to cellular maintenance processes.",
+        a:
+          "NAD+ (nicotinamide adenine dinucleotide) is a coenzyme involved in cellular energy metabolism and multiple enzyme systems tied to cellular maintenance processes.",
         tags: ["NAD+", "definition", "metabolism"],
       },
       {
         q: "What is Nicotinamide Riboside (NR)?",
-        a: "Nicotinamide Riboside (NR) is a precursor used by cells to synthesize NAD+. Human trials show NR can increase NAD+ metabolites in blood, though outcomes vary by endpoint and population.",
+        a:
+          "Nicotinamide Riboside (NR) is a precursor used by cells to synthesize NAD+. Human trials show NR can increase NAD+ metabolites in blood, though outcomes vary by endpoint and population.",
         tags: ["NR", "NAD+", "human trials"],
       },
       {
         q: "What is mitophagy?",
-        a: "Mitophagy is a cellular process involved in recycling damaged mitochondria as part of mitochondrial quality control and cellular maintenance.",
+        a:
+          "Mitophagy is a cellular process involved in recycling damaged mitochondria as part of mitochondrial quality control and cellular maintenance.",
         tags: ["mitophagy", "mitochondria"],
       },
       {
         q: "What is urolithin A?",
-        a: "Urolithin A is a compound studied in humans for biomarkers of mitochondrial health and performance outcomes. It is discussed in the context of mitophagy and mitochondrial quality control.",
+        a:
+          "Urolithin A is a compound studied in humans for biomarkers of mitochondrial health and performance outcomes. It is discussed in the context of mitophagy and mitochondrial quality control.",
         tags: ["urolithin A", "mitophagy", "mitochondria"],
       },
       {
         q: "What is tributyrin and why not plain butyrate?",
-        a: "Butyrate is a short-chain fatty acid discussed in gut barrier and immune signaling research. Tributyrin is a butyrate precursor designed to improve stability upstream and support butyrate-related activity downstream.",
+        a:
+          "Butyrate is a short-chain fatty acid discussed in gut barrier and immune signaling research. Tributyrin is a butyrate precursor designed to improve stability upstream and support butyrate-related activity downstream.",
         tags: ["tributyrin", "butyrate", "gut barrier"],
       },
       {
         q: "What is autophagy?",
-        a: "Autophagy is a cellular recycling process that clears damaged components via lysosomal pathways. It is strongly influenced by lifestyle factors like training and nutrition patterns.",
+        a:
+          "Autophagy is a cellular recycling process that clears damaged components via lysosomal pathways. It is strongly influenced by lifestyle factors like training and nutrition patterns.",
         tags: ["autophagy", "definition"],
       },
       {
         q: "What is cellular senescence?",
-        a: "Cellular senescence is a state where cells stop dividing and alter signaling output. Senolytics are an active research area, but most strong human work involves drug combinations and short protocols.",
+        a:
+          "Cellular senescence is a state where cells stop dividing and alter signaling output. Senolytics are an active research area, but most strong human work involves drug combinations and short protocols.",
         tags: ["senescence", "senolytics", "SASP"],
       },
       {
         q: "Why include methylation support in CELLUNAD+ (TMG, 5-MTHF, methylcobalamin, P-5-P)?",
-        a: "NAD+ metabolism intersects with methylation pathways. CELLUNAD+ includes Betaine (TMG), 5-MTHF, methylcobalamin, and P-5-P as co-factor support designed to keep NAD+ pathway support balanced with consistent daily use.",
+        a:
+          "NAD+ metabolism intersects with methylation pathways. CELLUNAD+ includes Betaine (TMG), 5-MTHF, methylcobalamin, and P-5-P as co-factor support designed to keep NAD+ pathway support balanced with consistent daily use.",
         tags: ["methylation", "TMG", "5-MTHF", "methylcobalamin", "P-5-P", "NAD+"],
       },
       {
         q: "Why is CELLUBIOME enteric-protected?",
-        a: "Enteric protection is used when targeted intestinal release is desirable. It helps protect contents from stomach acid and supports release further into the gut.",
+        a:
+          "Enteric protection is used when targeted intestinal release is desirable. It helps protect contents from stomach acid and supports release further into the gut.",
         tags: ["enteric", "delivery", "CELLUBIOME"],
       },
       {
         q: "What are quercetin and fisetin doing in CELLUNOVA?",
-        a: "Quercetin and fisetin are compounds discussed in senescence research. CELLUNOVA positions them as part of a periodic protocol, not as a drug-equivalent intervention.",
+        a:
+          "Quercetin and fisetin are compounds discussed in senescence research. CELLUNOVA positions them as part of a periodic protocol, not as a drug-equivalent intervention.",
         tags: ["quercetin", "fisetin", "senescence", "CELLUNOVA"],
       },
     ],
@@ -122,17 +137,20 @@ const FAQ_CATEGORIES: FAQCategory[] = [
     items: [
       {
         q: "Who should consult a clinician before using these products?",
-        a: "If you are pregnant, nursing, managing a medical condition, or taking medication, consult a qualified clinician before use.",
+        a:
+          "If you are pregnant, nursing, managing a medical condition, or taking medication, consult a qualified clinician before use.",
         tags: ["safety", "clinician", "pregnant", "medication"],
       },
       {
         q: "Does CELLUNOVA contain allergens?",
-        a: "Yes. CELLUNOVA contains wheat (spermidine source). If you have wheat allergy or celiac disease concerns, review the label and consult a clinician.",
+        a:
+          "Yes. CELLUNOVA contains wheat (spermidine source). If you have wheat allergy or celiac disease concerns, review the label and consult a clinician.",
         tags: ["CELLUNOVA", "wheat", "allergen"],
       },
       {
         q: "Are there side effects?",
-        a: "Some people experience digestive sensitivity with multi-ingredient supplements. If you feel unwell, discontinue use and consult a clinician. Follow label instructions.",
+        a:
+          "Some people experience digestive sensitivity with multi-ingredient supplements. If you feel unwell, discontinue use and consult a clinician. Follow label instructions.",
         tags: ["side effects", "digestive"],
       },
     ],
@@ -144,22 +162,26 @@ const FAQ_CATEGORIES: FAQCategory[] = [
     items: [
       {
         q: "Are your products third-party tested?",
-        a: "Age Revive positions quality around identity and potency verification plus screening for common contaminants. Testing panels can vary by ingredient and risk profile. See the Quality page for the framework.",
+        a:
+          "Age Revive positions quality around identity and potency verification plus screening for common contaminants. Testing panels can vary by ingredient and risk profile. See the Quality page for the framework.",
         tags: ["third-party", "identity", "potency", "contaminants"],
       },
       {
         q: "Can I see batch documentation or a CoA?",
-        a: "Documentation can be provided upon request. Share the product name and the lot number printed on the bottle so the correct records are retrieved.",
+        a:
+          "Documentation can be provided upon request. Share the product name and the lot number printed on the bottle so the correct records are retrieved.",
         tags: ["CoA", "lot number", "documentation"],
       },
       {
         q: "Do you use proprietary blends?",
-        a: "No. Proprietary blends hide doses and prevent meaningful comparison to published research.",
+        a:
+          "No. Proprietary blends hide doses and prevent meaningful comparison to published research.",
         tags: ["proprietary blends", "transparency"],
       },
       {
         q: "Where can I learn the mechanisms and evidence behind ingredients?",
-        a: "Start with the Science page. It explains NAD+ metabolism, mitophagy, gut barrier and butyrate biology, autophagy concepts, and senescence context with references.",
+        a:
+          "Start with the Science page. It explains NAD+ metabolism, mitophagy, gut barrier and butyrate biology, autophagy concepts, and senescence context with references.",
         tags: ["science", "evidence", "mitophagy", "autophagy", "senescence", "NAD+"],
       },
     ],
@@ -167,21 +189,24 @@ const FAQ_CATEGORIES: FAQCategory[] = [
   {
     id: "orders",
     title: "Orders and support",
-    description: "Practical questions about ordering and getting help.",
+    description: "Practical questions that affect conversion without inventing policies.",
     items: [
       {
         q: "Where do I find shipping rates and delivery estimates?",
-        a: "Shipping rates and delivery estimates are shown at checkout and in your order confirmation. For order help, contact support with your order number.",
+        a:
+          "Shipping rates and delivery estimates are shown at checkout and in your order confirmation. For order help, contact support with your order number.",
         tags: ["shipping", "delivery", "orders"],
       },
       {
         q: "Where do I find return or refund details?",
-        a: "Return and refund details are provided in store policy information and during checkout where applicable. For issues, contact support and include your order number.",
+        a:
+          "Return and refund details are provided in store policy information and during checkout where applicable. For issues, contact support and include your order number.",
         tags: ["returns", "refunds"],
       },
       {
         q: "How do I contact support?",
-        a: "Use the Contact page and include your order number for faster resolution.",
+        a:
+          "Use the Contact page and include your order number for faster resolution.",
         tags: ["support", "contact"],
       },
     ],
@@ -305,36 +330,12 @@ function Pill({ children }: { children: React.ReactNode }) {
   );
 }
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Shop", href: "/shop" },
-  { label: "Science", href: "/science" },
-  { label: "Quality", href: "/quality" },
-  { label: "FAQ", href: "/faq" },
-];
-
-export default function FAQ() {
+export default function FaqPage() {
   const allItemsForJsonLd = useMemo(() => FAQ_CATEGORIES.flatMap((c) => c.items), []);
   useFaqSEO(allItemsForJsonLd);
 
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("all");
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [shopOpen, setShopOpen] = useState(false);
-  const cart = useCart();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => { document.body.style.overflow = ""; };
-  }, [mobileOpen]);
 
   const normalizedQuery = query.trim().toLowerCase();
 
@@ -362,93 +363,11 @@ export default function FAQ() {
   }, [filteredCategories]);
 
   return (
-    <div className="min-h-screen bg-[#0b1120] text-white">
-      <nav className="fixed top-0 left-0 right-0 z-[150] bg-white/[0.05] backdrop-blur-md border-b border-white/[0.10] shadow-[0_1px_12px_rgba(0,0,0,0.2)]">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 h-14">
-          <a href="/" aria-label="Go to homepage">
-            <img src={brandLogo} alt="AGE REVIVE" className="h-7 md:h-8 w-auto brightness-0 invert" />
-          </a>
-
-          <div className="hidden md:flex items-center gap-7 font-mono font-medium text-[11px] uppercase tracking-[0.14em]">
-            {navLinks.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                className={l.label === "FAQ" ? "text-teal-300 transition-colors" : "text-white/55 hover:text-teal-300 transition-colors"}
-                data-testid={`nav-link-${l.label.toLowerCase()}`}
-              >
-                {l.label}
-              </a>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <button onClick={cart.openCart} className="relative min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-teal-300 transition-colors" aria-label="Cart" data-testid="nav-cart">
-              <ShoppingBag size={18} />
-              <span className="absolute -top-0.5 -right-0.5 w-[15px] h-[15px] flex items-center justify-center text-[9px] font-mono font-bold rounded-sm leading-none text-teal-300 border border-teal-300/40 bg-white/[0.04]">
-                {cart.totalItems}
-              </span>
-            </button>
-
-            <button
-              className="md:hidden min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-teal-300 transition-colors"
-              aria-label="Menu"
-              data-testid="mobile-menu-toggle"
-              onClick={() => setMobileOpen(!mobileOpen)}
-            >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {mobileOpen && (
-        <div className="fixed inset-0 z-[140] md:hidden">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-          <div className="absolute top-0 left-0 right-0 pt-16 pb-6 px-6 bg-white/[0.04] backdrop-blur-xl border-b border-white/[0.08]">
-            <div className="flex flex-col gap-0">
-              {navLinks.map((l) =>
-                l.label === "Shop" ? (
-                  <div key={l.label} className="border-b border-white/[0.05]">
-                    <button
-                      className="w-full flex items-center justify-between py-3 font-mono text-[12px] uppercase tracking-[0.14em] text-white/60 hover:text-teal-300"
-                      onClick={() => setShopOpen(!shopOpen)}
-                      data-testid="mobile-shop-toggle"
-                    >
-                      Shop
-                      <span className="text-[10px]">{shopOpen ? "\u25B4" : "\u25BE"}</span>
-                    </button>
-                    {shopOpen && (
-                      <div className="pb-3 flex flex-col gap-2 pl-3">
-                        <a href="/product/cellunad" className="text-[12px] font-mono text-white/50 hover:text-teal-300">CELLUNAD+</a>
-                        <a href="/product/cellubiome" className="text-[12px] font-mono text-white/50 hover:text-teal-300">CELLUBIOME</a>
-                        <a href="/product/cellunova" className="text-[12px] font-mono text-white/50 hover:text-teal-300">CELLUNOVA</a>
-                        <a href="/shop" className="text-[12px] font-mono text-white/50 hover:text-teal-300">View all</a>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <a
-                    key={l.label}
-                    href={l.href}
-                    className={clsx(
-                      "py-3 font-mono text-[12px] uppercase tracking-[0.14em] border-b border-white/[0.05]",
-                      l.label === "FAQ" ? "text-teal-300" : "text-white/60 hover:text-teal-300"
-                    )}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {l.label}
-                  </a>
-                )
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-
+    <div className="min-h-screen bg-[#060B14] text-white">
+      {/* HERO */}
       <header className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0f1d30] to-[#0b1120]" />
-        <div className="relative mx-auto max-w-6xl px-6 pt-28 pb-16 md:pt-32 md:pb-20">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B1B2E] to-[#060B14]" />
+        <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-20">
           <p className="text-xs uppercase tracking-[0.32em] text-white/70">FAQ</p>
           <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight md:text-6xl">
             Direct answers. No fog.
@@ -459,16 +378,14 @@ export default function FAQ() {
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
-              href={SCIENCE_URL}
+              to={SCIENCE_URL}
               className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-medium hover:bg-white/15"
-              data-testid="link-read-science"
             >
               Read Science
             </Link>
             <Link
-              href={QUALITY_URL}
+              to={QUALITY_URL}
               className="inline-flex items-center justify-center rounded-full border border-white/15 bg-transparent px-5 py-3 text-sm font-medium text-white/90 hover:bg-white/5"
-              data-testid="link-read-quality"
             >
               Read Quality
             </Link>
@@ -492,8 +409,10 @@ export default function FAQ() {
         </div>
       </header>
 
+      {/* BODY */}
       <div className="mx-auto max-w-6xl px-6 py-10 md:py-12">
         <div className="grid gap-10 lg:grid-cols-[260px,1fr]">
+          {/* Desktop category nav */}
           <aside className="hidden lg:block">
             <div className="sticky top-24 rounded-2xl border border-white/10 bg-white/5 p-5">
               <p className="text-xs uppercase tracking-[0.32em] text-white/60">Categories</p>
@@ -508,7 +427,6 @@ export default function FAQ() {
                       ? "bg-white/10 text-white"
                       : "text-white/75 hover:bg-white/5 hover:text-white"
                   )}
-                  data-testid="filter-all"
                 >
                   All
                 </button>
@@ -524,7 +442,6 @@ export default function FAQ() {
                         ? "bg-white/10 text-white"
                         : "text-white/75 hover:bg-white/5 hover:text-white"
                     )}
-                    data-testid={`filter-${c.id}`}
                   >
                     {c.title}
                   </button>
@@ -540,6 +457,7 @@ export default function FAQ() {
           </aside>
 
           <main>
+            {/* Search + mobile categories */}
             <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
               <label className="text-xs uppercase tracking-[0.32em] text-white/60" htmlFor="faq-search">
                 Search
@@ -550,7 +468,6 @@ export default function FAQ() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search: NAD+, NR, urolithin A, tributyrin, autophagy, senescence..."
                 className="mt-3 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/20"
-                data-testid="input-faq-search"
               />
 
               <div className="mt-4 flex flex-wrap gap-2 lg:hidden">
@@ -563,7 +480,6 @@ export default function FAQ() {
                       ? "border-white/20 bg-white/15 text-white"
                       : "border-white/10 bg-white/5 text-white/75 hover:bg-white/10"
                   )}
-                  data-testid="filter-mobile-all"
                 >
                   All
                 </button>
@@ -578,14 +494,13 @@ export default function FAQ() {
                         ? "border-white/20 bg-white/15 text-white"
                         : "border-white/10 bg-white/5 text-white/75 hover:bg-white/10"
                     )}
-                    data-testid={`filter-mobile-${c.id}`}
                   >
                     {c.title}
                   </button>
                 ))}
               </div>
 
-              <div className="mt-4 text-sm text-white/70" data-testid="text-result-count">
+              <div className="mt-4 text-sm text-white/70">
                 Showing <span className="text-white">{totalResults}</span> result{totalResults === 1 ? "" : "s"}
                 {normalizedQuery ? (
                   <>
@@ -597,9 +512,10 @@ export default function FAQ() {
               </div>
             </div>
 
+            {/* Results */}
             <div className="mt-10 grid gap-10">
               {filteredCategories.length === 0 ? (
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-8" data-testid="text-no-results">
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
                   <h2 className="text-xl font-semibold">No matches found</h2>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
                     Try "NR", "NAD+", "urolithin A", "tributyrin", "mitophagy", "autophagy", "senescence", "quercetin", or "fisetin".
@@ -607,13 +523,13 @@ export default function FAQ() {
                 </div>
               ) : (
                 filteredCategories.map((cat) => (
-                  <section key={cat.id} className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8" data-testid={`section-faq-${cat.id}`}>
+                  <section key={cat.id} className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
                     <h2 className="text-2xl font-semibold">{cat.title}</h2>
                     <p className="mt-2 text-sm text-white/70">{cat.description}</p>
 
                     <div className="mt-6 grid gap-3">
                       {cat.items.map((f) => (
-                        <details key={f.q} className="rounded-2xl border border-white/10 bg-black/10 p-6" data-testid={`faq-item-${f.q.slice(0, 20).replace(/\s+/g, "-").toLowerCase()}`}>
+                        <details key={f.q} className="rounded-2xl border border-white/10 bg-black/10 p-6">
                           <summary className="cursor-pointer text-base font-semibold text-white">
                             {f.q}
                           </summary>
@@ -631,47 +547,60 @@ export default function FAQ() {
               )}
             </div>
 
-            <div className="mt-12 rounded-2xl border border-white/10 bg-white/5 p-8" data-testid="section-build-protocol">
+            {/* Conversion block */}
+            <div className="mt-12 rounded-2xl border border-white/10 bg-white/5 p-8">
               <h2 className="text-2xl font-semibold">Build your protocol</h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">
-                Most people start with CELLUNAD+ as the daily foundation and add CELLUBIOME for gut and mitochondrial signaling stability. CELLUNOVA is designed as a periodic 7-day protocol.
+                Most people start with CELLUNAD+ as the daily foundation and add CELLUBIOME for gut and mitochondrial signaling stability.
+                CELLUNOVA is designed as a periodic 7-day protocol.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
-                  href={PRODUCT_ROUTES.cellunad}
+                  to={PRODUCT_ROUTES.cellunad}
                   className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-medium hover:bg-white/15"
-                  data-testid="link-view-cellunad"
                 >
                   View CELLUNAD+
                 </Link>
                 <Link
-                  href={PRODUCT_ROUTES.cellubiome}
+                  to={PRODUCT_ROUTES.cellubiome}
                   className="inline-flex items-center justify-center rounded-full border border-white/15 bg-transparent px-6 py-3 text-sm font-medium text-white/90 hover:bg-white/5"
-                  data-testid="link-view-cellubiome"
                 >
                   View CELLUBIOME
                 </Link>
                 <Link
-                  href={PRODUCT_ROUTES.cellunova}
+                  to={PRODUCT_ROUTES.cellunova}
                   className="inline-flex items-center justify-center rounded-full border border-white/15 bg-transparent px-6 py-3 text-sm font-medium text-white/90 hover:bg-white/5"
-                  data-testid="link-view-cellunova"
                 >
                   View CELLUNOVA
                 </Link>
               </div>
+
+              <div className="mt-6 border-t border-white/10 pt-6">
+                <p className="text-sm text-white/70">
+                  Need help with an order?{" "}
+                  <Link
+                    to={CONTACT_URL}
+                    className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white/70"
+                  >
+                    Contact support
+                  </Link>
+                  .
+                </p>
+                <p className="mt-2 text-xs text-white/50">
+                  If /contact does not exist, update CONTACT_URL or replace with your support channel.
+                </p>
+              </div>
             </div>
 
-            <div className="pb-8 pt-10">
+            <footer className="pb-16 md:pb-24 pt-12">
               <p className="text-xs text-white/50">
                 These statements have not been evaluated by the FDA. This content is for educational purposes only.
               </p>
-            </div>
+            </footer>
           </main>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }
