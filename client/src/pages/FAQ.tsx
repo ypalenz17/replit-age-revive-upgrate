@@ -484,7 +484,7 @@ export default function FAQ() {
             <Pill>Senescence</Pill>
           </div>
 
-          <div className="mt-10 ar-luxury-disclaimer rounded-xl sm:rounded-2xl p-4 sm:p-6">
+          <div className="mt-10 ar-luxury-disclaimer rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
             <p className="text-sm text-white/70">
               This page is educational content, not medical advice. Products are dietary supplements and are not intended to diagnose, treat, cure, or prevent any disease.
             </p>
@@ -609,11 +609,13 @@ export default function FAQ() {
               ) : (
                 filteredCategories.map((cat) => (
                   <section key={cat.id} className="ar-luxury-card ar-luxury-card-glow p-4 sm:p-6 md:p-8" data-testid={`section-faq-${cat.id}`}>
-                    <p className="ar-luxury-eyebrow text-[10px] mb-3">{cat.id.replace(/-/g, " ")}</p>
-                    <h2 className="text-2xl font-semibold tracking-tight">{cat.title}</h2>
-                    <p className="mt-2 text-sm text-white/55">{cat.description}</p>
+                    <div className="text-center mb-6">
+                      <p className="ar-luxury-eyebrow mx-auto text-[10px] mb-3">{cat.id.replace(/-/g, " ")}</p>
+                      <h2 className="text-2xl font-semibold tracking-tight">{cat.title}</h2>
+                      <p className="mt-2 text-sm text-white/55">{cat.description}</p>
+                    </div>
 
-                    <hr className="ar-luxury-section-divider mt-6 mb-6" />
+                    <hr className="ar-luxury-section-divider mb-6" />
 
                     <div className="grid gap-3">
                       {cat.items.map((f) => (
@@ -635,14 +637,14 @@ export default function FAQ() {
               )}
             </div>
 
-            <div className="mt-12 ar-luxury-card ar-luxury-card-glow p-5 sm:p-7 md:p-10" data-testid="section-build-protocol">
-              <p className="ar-luxury-eyebrow text-[10px]">Next step</p>
+            <div className="mt-12 ar-luxury-card ar-luxury-card-glow p-5 sm:p-7 md:p-10 text-center" data-testid="section-build-protocol">
+              <p className="ar-luxury-eyebrow mx-auto text-[10px]">Next step</p>
               <h2 className="mt-4 text-2xl font-semibold tracking-tight">Build your protocol</h2>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/60">
+              <p className="mt-3 max-w-2xl mx-auto text-sm leading-relaxed text-white/60">
                 Most people start with CELLUNAD+ as the daily foundation and add CELLUBIOME for gut and mitochondrial signaling stability. CELLUNOVA is designed as a periodic 7-day protocol.
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-col sm:flex-row flex-wrap justify-center gap-3">
                 <Link
                   href={PRODUCT_ROUTES.cellunad}
                   className="ar-luxury-btn-primary"

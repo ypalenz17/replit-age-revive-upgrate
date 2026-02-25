@@ -352,7 +352,7 @@ export default function Quality() {
             </Link>
           </div>
 
-          <div className="mt-10 ar-luxury-disclaimer rounded-xl sm:rounded-2xl p-4 sm:p-6">
+          <div className="mt-10 ar-luxury-disclaimer rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
             <p className="text-sm text-white/70">
               This page is educational content, not medical advice. Products are dietary supplements and are not intended to diagnose, treat, cure, or prevent any disease.
             </p>
@@ -708,13 +708,13 @@ export default function Quality() {
                 ))}
               </div>
 
-              <div className="mt-10 ar-luxury-card ar-luxury-card-glow p-5 sm:p-7 md:p-10">
-                <p className="ar-luxury-eyebrow text-[10px]">Next step</p>
+              <div className="mt-10 ar-luxury-card ar-luxury-card-glow p-5 sm:p-7 md:p-10 text-center">
+                <p className="ar-luxury-eyebrow mx-auto text-[10px]">Next step</p>
                 <h3 className="mt-4 text-2xl font-semibold tracking-tight">Explore the full system</h3>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/60">
+                <p className="mt-3 max-w-2xl mx-auto text-sm leading-relaxed text-white/60">
                   Quality is the foundation. Science explains mechanisms. Products implement the protocol.
                 </p>
-                <div className="mt-6 flex flex-wrap gap-3">
+                <div className="mt-6 flex flex-wrap justify-center gap-3">
                   <Link
                     href={SCIENCE_URL}
                     className="ar-luxury-btn-primary"

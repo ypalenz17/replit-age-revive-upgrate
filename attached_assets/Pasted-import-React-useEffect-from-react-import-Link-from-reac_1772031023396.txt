@@ -1,0 +1,177 @@
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { LEGAL, LegalShell, useLegalSeo } from "../legal/legalUtils";
+
+const LAST_UPDATED = "2026-02-25";
+
+const TOC = [
+  { href: "#summary", label: "Summary" },
+  { href: "#data-we-collect", label: "Data we collect" },
+  { href: "#how-we-use", label: "How we use data" },
+  { href: "#sharing", label: "Sharing and service providers" },
+  { href: "#cookies", label: "Cookies and analytics" },
+  { href: "#security", label: "Security" },
+  { href: "#retention", label: "Retention" },
+  { href: "#your-rights", label: "Your rights" },
+  { href: "#children", label: "Children" },
+  { href: "#changes", label: "Changes" },
+  { href: "#contact", label: "Contact" },
+];
+
+function Section(props: { id: string; title: string; children: React.ReactNode }) {
+  return (
+    <section id={props.id} className="scroll-mt-28 py-12 md:py-16 border-t border-white/10">
+      <h2 className="text-2xl font-semibold md:text-4xl">{props.title}</h2>
+      <div className="mt-6 text-sm leading-relaxed text-white/70 space-y-4">{props.children}</div>
+    </section>
+  );
+}
+
+export default function PrivacyPage() {
+  useEffect(() => {
+    useLegalSeo({
+      path: "/privacy",
+      title: `Privacy Policy | ${LEGAL.brand}`,
+      description:
+        "Privacy Policy for Age Revive. Learn what data we collect, how we use it, how cookies work, and how to request access or deletion.",
+      breadcrumbName: "Privacy Policy",
+      lastUpdated: LAST_UPDATED,
+    });
+  }, []);
+
+  return (
+    <LegalShell
+      title="Privacy Policy"
+      subtitle="A clear summary of what we collect, why we collect it, and how you can control it."
+      lastUpdated={LAST_UPDATED}
+      toc={TOC}
+    >
+      <Section id="summary" title="Summary">
+        <p>
+          This Privacy Policy explains how {LEGAL.brand} collects, uses, and shares information when you visit our website,
+          create an account, or purchase products. We collect the minimum data needed to operate the store, support customers,
+          prevent fraud, and improve the site.
+        </p>
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <p className="text-white/80">
+            Trust note: We do not sell personal information for money. We use service providers to run the store and fulfill orders.
+          </p>
+        </div>
+      </Section>
+
+      <Section id="data-we-collect" title="Data we collect">
+        <ul className="space-y-3">
+          <li><span className="text-white">Account data:</span> name, email, password (hashed), and account preferences.</li>
+          <li><span className="text-white">Order data:</span> shipping address, billing details, purchased items, and order history.</li>
+          <li><span className="text-white">Support data:</span> messages you send support and related metadata.</li>
+          <li><span className="text-white">Device and usage data:</span> pages viewed, referral source, approximate location, and browser details.</li>
+          <li><span className="text-white">Payment data:</span> payment processing is handled by payment providers. We do not store full payment card numbers on our servers.</li>
+        </ul>
+      </Section>
+
+      <Section id="how-we-use" title="How we use data">
+        <ul className="space-y-3">
+          <li>Fulfill orders, ship products, and provide customer support.</li>
+          <li>Process payments and prevent fraud.</li>
+          <li>Improve site performance, UX, and product content.</li>
+          <li>Send transactional emails (order confirmations, shipping updates).</li>
+          <li>Send marketing messages only when permitted by your settings and applicable law.</li>
+        </ul>
+      </Section>
+
+      <Section id="sharing" title="Sharing and service providers">
+        <p>
+          We share information with service providers only as needed to operate the store, such as payment processing,
+          shipping and fulfillment, analytics, and customer support tooling. These providers are contractually required
+          to handle data securely and only for the services they provide.
+        </p>
+        <p>
+          We may disclose information if required by law or to protect the rights, safety, and integrity of our customers,
+          our company, or our systems.
+        </p>
+      </Section>
+
+      <Section id="cookies" title="Cookies and analytics">
+        <p>
+          We use cookies and similar technologies to keep you signed in, maintain your cart, measure site performance,
+          and understand which pages and content are useful. You can control cookies through your browser settings.
+        </p>
+        <p>
+          Analytics tools may collect device and usage data. We use analytics to improve conversion, usability, and page speed.
+        </p>
+      </Section>
+
+      <Section id="security" title="Security">
+        <p>
+          We use administrative, technical, and physical safeguards designed to protect personal information. No system
+          can guarantee perfect security, but we design to reduce risk and respond quickly to incidents.
+        </p>
+      </Section>
+
+      <Section id="retention" title="Retention">
+        <p>
+          We keep personal information only as long as needed to operate the store, meet legal obligations, resolve disputes,
+          and enforce agreements. Retention periods vary by data type and local requirements.
+        </p>
+      </Section>
+
+      <Section id="your-rights" title="Your rights">
+        <p>
+          Depending on your location, you may have rights to access, correct, delete, or export certain personal information.
+          You may also have the right to opt out of certain marketing communications.
+        </p>
+        <p>
+          To submit a request, contact us at{" "}
+          <a
+            href={`mailto:${LEGAL.supportEmail}`}
+            className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white/70"
+          >
+            {LEGAL.supportEmail}
+          </a>
+          .
+        </p>
+      </Section>
+
+      <Section id="children" title="Children">
+        <p>
+          Our website is not directed to children under 13, and we do not knowingly collect personal information from children under 13.
+          If you believe a child has provided personal information, contact us so we can delete it.
+        </p>
+      </Section>
+
+      <Section id="changes" title="Changes to this policy">
+        <p>
+          We may update this Privacy Policy from time to time. The Last updated date above reflects the most recent revision.
+          Material changes will be posted here.
+        </p>
+      </Section>
+
+      <Section id="contact" title="Contact">
+        <p>
+          Questions about privacy can be sent to{" "}
+          <a
+            href={`mailto:${LEGAL.supportEmail}`}
+            className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white/70"
+          >
+            {LEGAL.supportEmail}
+          </a>
+          .
+        </p>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link
+            to={LEGAL.faqUrl}
+            className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-medium hover:bg-white/15"
+          >
+            Read FAQ
+          </Link>
+          <Link
+            to={LEGAL.qualityUrl}
+            className="inline-flex items-center justify-center rounded-full border border-white/15 bg-transparent px-6 py-3 text-sm font-medium text-white/90 hover:bg-white/5"
+          >
+            Read Quality
+          </Link>
+        </div>
+      </Section>
+    </LegalShell>
+  );
+}
