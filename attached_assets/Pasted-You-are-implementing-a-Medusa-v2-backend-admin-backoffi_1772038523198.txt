@@ -1,0 +1,73 @@
+You are implementing a Medusa v2 backend + admin “backoffice” for Age Revive.
+
+GOALS
+- Create a Medusa backend that runs in Replit and exposes the Admin UI at /app.
+- Use external Postgres (DATABASE_URL) and external Redis (REDIS_URL).
+- Configure Stripe payments using the official Stripe Module Provider.
+- Configure shipping via ShipStation by implementing the official Medusa ShipStation Fulfillment Module Provider guide.
+- Ensure the server binds to HOST=0.0.0.0 and uses PORT from env (Replit hosting requirement).
+
+CONSTRAINTS
+- Do NOT hardcode ports. Respect process.env.PORT and process.env.HOST via Medusa env vars.
+- Do NOT depend on local Docker Postgres.
+- All secrets must be env vars, never committed.
+
+STEPS
+
+1) Scaffold Medusa
+- If this repo already contains the Vite storefront, create a /backend directory and install Medusa there.
+- Run:
+  npx create-medusa-app@latest backend --skip-db --no-browser
+  (Use --db-url if DATABASE_URL is already available and reachable.)
+
+2) Create backend/.env (or configure Replit Secrets) with:
+- HOST=0.0.0.0
+- PORT=(leave to Replit injected value, or set explicitly if needed)
+- DATABASE_URL=...
+- REDIS_URL=...
+- STORE_CORS=<your storefront origin(s), comma-separated if multiple>
+- ADMIN_CORS=<your admin origin(s), usually same as backend in Replit>
+- AUTH_CORS=<combine store + admin origins>
+- JWT_SECRET=<random>
+- COOKIE_SECRET=<random>
+- STRIPE_API_KEY=<Stripe secret key>
+- STRIPE_WEBHOOK_SECRET=<Stripe webhook secret for deployed env>
+- SHIPSTATION_API_KEY=<ShipStation V2 API key>
+
+3) Update backend/medusa-config.ts
+- Keep existing projectConfig and ensure databaseUrl, redisUrl, and CORS are set from env.
+- Add/override modules configuration to:
+  A) Register Stripe payment provider under Payment Module:
+     resolve: "@medusajs/medusa/payment"
+     providers: [{ resolve: "@medusajs/medusa/payment-stripe", id: "stripe", options: { apiKey: process.env.STRIPE_API_KEY, webhookSecret: process.env.STRIPE_WEBHOOK_SECRET, capture: true } }]
+  B) Register Fulfillment providers under Fulfillment Module:
+     resolve: "@medusajs/medusa/fulfillment"
+     providers: [
+       { resolve: "@medusajs/medusa/fulfillment-manual", id: "manual" },
+       { resolve: "./src/modules/shipstation", id: "shipstation", options: { api_key: process.env.SHIPSTATION_API_KEY } }
+     ]
+
+4) Implement ShipStation Fulfillment Module Provider (official approach)
+- Create backend/src/modules/shipstation with:
+  - service.ts (extends AbstractFulfillmentProviderService, identifier="shipstation")
+  - client.ts (calls https://api.shipstation.com/v2 with "api-key" header)
+  - types.ts (carrier/rates/label types)
+  - index.ts (ModuleProvider(Modules.FULFILLMENT, { services: [ShipStationProviderService] }))
+- Implement the required methods per Medusa’s ShipStation integration guide:
+  getFulfillmentOptions, canCalculate, calculatePrice, createFulfillment, cancelFulfillment, etc.
+
+5) DB setup
+- After DATABASE_URL is configured, run the Medusa DB setup/migrations command so the app boots cleanly.
+
+6) Run + verify
+- Start the backend.
+- Confirm Admin loads at: https://<replit-url>/app
+- Confirm Store API reachable: /store
+- Confirm Admin API reachable: /admin
+
+DELIVERABLES
+- Working Medusa backend in /backend
+- Admin accessible at /app
+- Stripe provider registered and ready
+- ShipStation fulfillment provider registered and ready
+- Clear README notes listing required env vars and webhook endpoint paths
