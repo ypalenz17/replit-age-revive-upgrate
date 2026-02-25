@@ -1,6 +1,66 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { getPageContent, ALL_ROUTES } from "./prerender";
+
+const BOT_UA_PATTERNS = [
+  /chatgpt/i,
+  /gptbot/i,
+  /oai-searchbot/i,
+  /claudebot/i,
+  /anthropic/i,
+  /perplexity/i,
+  /cohere/i,
+  /google-extended/i,
+  /googlebot/i,
+  /bingbot/i,
+  /slurp/i,
+  /duckduckbot/i,
+  /baiduspider/i,
+  /yandexbot/i,
+  /facebookexternalhit/i,
+  /twitterbot/i,
+  /linkedinbot/i,
+  /whatsapp/i,
+  /telegrambot/i,
+  /applebot/i,
+  /ia_archiver/i,
+  /semrushbot/i,
+  /ahrefsbot/i,
+  /mj12bot/i,
+  /dotbot/i,
+  /petalbot/i,
+  /bytespider/i,
+  /ccbot/i,
+];
+
+function isBot(ua: string): boolean {
+  return BOT_UA_PATTERNS.some((p) => p.test(ua));
+}
+
+function buildFullPage(routePath: string): string | null {
+  const page = getPageContent(routePath);
+  if (!page) return null;
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${page.title}</title>
+  <meta name="description" content="${page.description}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Age Revive" />
+  <meta property="og:title" content="${page.title}" />
+  <meta property="og:description" content="${page.description}" />
+  <meta property="og:url" content="https://agerevive.com${routePath === "/" ? "" : routePath}" />
+  <link rel="canonical" href="https://agerevive.com${routePath === "/" ? "" : routePath}" />
+</head>
+<body>
+${page.html}
+</body>
+</html>`;
+}
 
 const SITE_CONTENT = `# Age Revive — Systemic Biological Architecture
 
@@ -65,6 +125,21 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+  app.use((req, res, next) => {
+    if (req.method !== "GET") return next();
+    if (req.path.startsWith("/api") || req.path.includes(".")) return next();
+
+    const ua = req.get("user-agent") || "";
+    if (!isBot(ua)) return next();
+
+    const html = buildFullPage(req.path);
+    if (!html) return next();
+
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
+    res.setHeader("X-Robots-Tag", "all");
+    res.send(html);
+  });
+
   app.get('/api/site-content', (req, res) => {
     if (Object.keys(req.query).length > 0) {
       return res.status(400).json({ message: 'Query parameters are not supported for this endpoint.' });
