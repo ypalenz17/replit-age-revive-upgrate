@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Switch, Route, Redirect } from "wouter";
 import Home from "./Home";
 import CartDrawer from "./components/CartDrawer";
+import { PrerenderReadySignal } from "./components/PrerenderReadySignal";
 
 const Shop = lazy(() => import("./Shop"));
 const ProductDetail = lazy(() => import("./ProductDetail"));
@@ -26,6 +27,7 @@ function LoadingFallback() {
 function App() {
   return (
     <>
+      <PrerenderReadySignal />
       <Suspense fallback={<LoadingFallback />}>
         <Switch>
           <Route path="/" component={Home} />

@@ -1,0 +1,248 @@
+We need to update the Age Revive React + Vite site so crawlers/LLMs can read full page content without executing client JS.
+
+Implement:
+1) Build-time prerendering for key routes using @prerenderer/rollup-plugin + Puppeteer renderer.
+2) A reliable render-ready trigger (custom document event) so prerender captures the real HTML.
+3) Correct sitemap.xml and robots.txt using absolute URLs (Google requirement).
+4) llms.txt in the site root (best-effort hint file).
+5) Ensure prerendered HTML does NOT contain localhost URLs (canonical/og/url replacements via postProcess).
+
+Do NOT change UI layout or marketing copy. Infrastructure only.
+
+------------------------------------------------------------
+A) Install dependencies
+------------------------------------------------------------
+Run:
+npm i -D @prerenderer/rollup-plugin @prerenderer/renderer-puppeteer puppeteer
+
+Notes:
+- Puppeteer is only used at build time for prerendering, not at runtime.
+- If Puppeteer fails in your environment due to sandboxing, we’ll pass launch args in rendererOptions.
+
+------------------------------------------------------------
+B) Add SITE URL env var (critical)
+------------------------------------------------------------
+Add an env var in Replit Secrets (or .env for local):
+SITE_URL=https://YOUR_PRODUCTION_DOMAIN
+Also set the Vite-exposed version (optional but helpful):
+VITE_SITE_URL=https://YOUR_PRODUCTION_DOMAIN
+
+We will use SITE_URL to generate sitemap/robots and to rewrite localhost in prerendered HTML.
+
+------------------------------------------------------------
+C) Add prerender config to vite.config.ts
+------------------------------------------------------------
+Replace your vite.config.ts (or vite.config.js equivalent) with:
+
+========================================================
+FILE: vite.config.ts
+========================================================
+import { defineConfig, loadEnv } from "vite";
+import react from "@vitejs/plugin-react";
+import prerender from "@prerenderer/rollup-plugin";
+
+const ROUTES_TO_PRERENDER = [
+  "/",
+  "/science",
+  "/quality",
+  "/faq",
+  "/privacy",
+  "/terms",
+  "/shipping",
+  "/products",
+  "/products/cellunad",
+  "/products/cellubiome",
+  "/products/cellunova",
+];
+
+export default defineConfig(({ command, mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+  const SITE_URL = (env.SITE_URL || env.VITE_SITE_URL || "").replace(/\/$/, "");
+
+  const shouldPrerender = command === "build";
+
+  return {
+    plugins: [
+      react(),
+      shouldPrerender &&
+        prerender({
+          routes: ROUTES_TO_PRERENDER,
+          renderer: "@prerenderer/renderer-puppeteer",
+          rendererOptions: {
+            // Most reliable: we fire this event from React after first paint
+            renderAfterDocumentEvent: "custom-render-trigger",
+
+            // Avoid flaky builds from analytics/fonts/etc
+            skipThirdPartyRequests: true,
+
+            // Keep resource usage predictable
+            maxConcurrentRoutes: 1,
+            timeout: 60000,
+
+            // Helps in containerized CI environments
+            launchOptions: {
+              args: ["--no-sandbox", "--disable-setuid-sandbox"],
+            },
+          },
+
+          postProcess(renderedRoute) {
+            // Replace localhost URLs inside prerendered HTML
+            if (SITE_URL) {
+              renderedRoute.html = renderedRoute.html.replace(
+                /(https?:\/\/)(localhost|127\.0\.0\.1):\d+/gi,
+                SITE_URL
+              );
+            }
+          },
+        }),
+    ].filter(Boolean),
+  };
+});
+
+------------------------------------------------------------
+D) Add the render-ready trigger in React (required)
+------------------------------------------------------------
+We must fire:
+document.dispatchEvent(new Event("custom-render-trigger"))
+
+Add a tiny component that does this after mount, without touching layout.
+
+========================================================
+FILE: src/components/PrerenderReadySignal.tsx
+========================================================
+import { useEffect } from "react";
+
+export function PrerenderReadySignal() {
+  useEffect(() => {
+    // Delay slightly so child effects (meta tags etc) have time to run too.
+    const id = window.setTimeout(() => {
+      document.dispatchEvent(new Event("custom-render-trigger"));
+    }, 50);
+
+    return () => window.clearTimeout(id);
+  }, []);
+
+  return null;
+}
+
+Now include it once near the root of your app.
+
+Example:
+========================================================
+FILE: src/App.tsx
+========================================================
+import { PrerenderReadySignal } from "./components/PrerenderReadySignal";
+
+// inside App component return JSX:
+<>
+  <PrerenderReadySignal />
+  {/** existing app layout below - unchanged **/}
+  ...
+</>
+
+If your App.tsx path differs, add the component wherever your top-level router/layout renders.
+
+------------------------------------------------------------
+E) Generate correct robots.txt + sitemap.xml + llms.txt (absolute URLs)
+------------------------------------------------------------
+Google requires fully-qualified absolute URLs in sitemap.xml.
+We generate these at build time from SITE_URL.
+
+Create script:
+
+========================================================
+FILE: scripts/generate-seo-files.mjs
+========================================================
+import { mkdirSync, writeFileSync } from "node:fs";
+import { resolve } from "node:path";
+
+const ROUTES = [
+  "/",
+  "/science",
+  "/quality",
+  "/faq",
+  "/privacy",
+  "/terms",
+  "/shipping",
+  "/products",
+  "/products/cellunad",
+  "/products/cellubiome",
+  "/products/cellunova",
+];
+
+const SITE_URL_RAW = process.env.SITE_URL || process.env.VITE_SITE_URL || "";
+const SITE_URL = SITE_URL_RAW.replace(/\/$/, "");
+
+if (!SITE_URL) {
+  console.error(
+    "Missing SITE_URL. Set SITE_URL=https://yourdomain.com (recommended) or VITE_SITE_URL before build."
+  );
+  process.exit(1);
+}
+
+mkdirSync(resolve("public"), { recursive: true });
+
+const urls = ROUTES.map((r) => (r === "/" ? SITE_URL : `${SITE_URL}${r}`));
+
+const sitemapXml =
+  `<?xml version="1.0" encoding="UTF-8"?>\n` +
+  `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+  urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n") +
+  `\n</urlset>\n`;
+
+writeFileSync(resolve("public/sitemap.xml"), sitemapXml, "utf8");
+
+const robotsTxt =
+  `User-agent: *\n` +
+  `Allow: /\n\n` +
+  `Sitemap: ${SITE_URL}/sitemap.xml\n`;
+
+writeFileSync(resolve("public/robots.txt"), robotsTxt, "utf8");
+
+// llms.txt is an emerging convention. Keep it simple and useful.
+const llmsTxt =
+  `User-Agent: *\n` +
+  `Allow: /\n\n` +
+  `# High-signal pages\n` +
+  `Allow: /science\n` +
+  `Allow: /quality\n` +
+  `Allow: /faq\n` +
+  `Allow: /products\n` +
+  `Allow: /products/cellunad\n` +
+  `Allow: /products/cellubiome\n` +
+  `Allow: /products/cellunova\n` +
+  `Allow: /privacy\n` +
+  `Allow: /terms\n` +
+  `Allow: /shipping\n`;
+
+writeFileSync(resolve("public/llms.txt"), llmsTxt, "utf8");
+
+console.log("Generated public/sitemap.xml, public/robots.txt, public/llms.txt using", SITE_URL);
+
+Now wire the script into build:
+
+========================================================
+FILE: package.json
+========================================================
+In scripts, ensure:
+"prebuild": "node scripts/generate-seo-files.mjs"
+This should run automatically before "build".
+
+------------------------------------------------------------
+F) Build and verify (must do)
+------------------------------------------------------------
+Run:
+npm run build
+
+Verify:
+- dist/science/index.html exists and contains real body text (not only <div id="root"></div>)
+- dist/quality/index.html, dist/faq/index.html, dist/privacy/index.html, dist/terms/index.html, dist/shipping/index.html exist
+- dist/sitemap.xml has absolute URLs using your SITE_URL
+- dist/robots.txt points to the absolute sitemap URL
+- dist/llms.txt exists
+
+If Puppeteer fails to launch:
+- Keep the launchOptions args in rendererOptions as provided.
+- If it still fails, switch renderer to "@prerenderer/renderer-jsdom" (less reliable for JS-heavy pages).
+
+Proceed with implementation now.
