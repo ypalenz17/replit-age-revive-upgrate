@@ -6,6 +6,8 @@ import { createServer } from "http";
 const app = express();
 const httpServer = createServer(app);
 app.disable("x-powered-by");
+// Trust proxy headers so canonical HTTPS redirects work behind load balancers/CDNs.
+app.set("trust proxy", true);
 
 const configuredCorsOrigins = new Set(
   (process.env.CORS_ORIGIN ?? "")

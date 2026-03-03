@@ -1,4 +1,16 @@
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /checkout
+Disallow: /order-confirmed
+Disallow: /cart
+Disallow: /account
+Disallow: /product/*/purchase
 
 Sitemap: https://agerevive.com/sitemap.xml

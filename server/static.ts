@@ -14,7 +14,7 @@ export function serveStatic(app: Express) {
   const indexHtml = fs.readFileSync(path.resolve(distPath, "index.html"), "utf-8");
 
   app.use((req, res, next) => {
-    if (req.method !== "GET" || req.path.startsWith("/api") || req.path.includes(".")) {
+    if ((req.method !== "GET" && req.method !== "HEAD") || req.path.startsWith("/api") || req.path.includes(".")) {
       return next();
     }
     const injected = injectContent(indexHtml, req.path);

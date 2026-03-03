@@ -1,35 +1,14 @@
-# Age Revive - Systemic Biological Architecture
-# Protocol-grade cellular support supplements
+# Age Revive
 
-> This file helps LLMs understand the site structure and high-signal pages.
-
-## Brand
-Name: Age Revive
-Domain: https://agerevive.com
-Category: Dietary supplements (cellular health)
-
-## Products
-- CELLUNAD+ (NAD+ Optimization): https://agerevive.com/product/cellunad
-- CELLUBIOME (Gut-Mitochondria Signaling): https://agerevive.com/product/cellubiome
-- CELLUNOVA (7-Day Autophagy Cycle): https://agerevive.com/product/cellunova
-- Shop all: https://agerevive.com/shop
-
-## High-signal pages
-- Science and research: https://agerevive.com/science
-- Quality standards: https://agerevive.com/quality
-- FAQ: https://agerevive.com/faq
-
-## Legal
-- Privacy Policy: https://agerevive.com/privacy
-- Terms of Service: https://agerevive.com/terms
-- Shipping: https://agerevive.com/shipping
-
-## Structured data
-- Every page includes JSON-LD (WebPage + BreadcrumbList)
-- Product pages include Schema.org Product markup
-- Site content is also available at /api/site-content (text/markdown)
-
-## Disclaimers
-- Products are dietary supplements, not medicines
-- Statements have not been evaluated by the FDA
-- Not intended to diagnose, treat, cure, or prevent any disease
+Canonical pages:
+https://agerevive.com/
+https://agerevive.com/science
+https://agerevive.com/quality
+https://agerevive.com/faq
+https://agerevive.com/shop
+https://agerevive.com/product/cellunad
+https://agerevive.com/product/cellubiome
+https://agerevive.com/product/cellunova
+https://agerevive.com/privacy
+https://agerevive.com/terms
+https://agerevive.com/shipping
