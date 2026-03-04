@@ -23,6 +23,7 @@ export default function Footer() {
             <a href="/privacy" className="text-[11px] font-mono text-white/40 uppercase tracking-[0.06em] hover:text-white/60 transition-colors" data-testid="footer-link-privacy">Privacy</a>
             <a href="/terms" className="text-[11px] font-mono text-white/40 uppercase tracking-[0.06em] hover:text-white/60 transition-colors" data-testid="footer-link-terms">Terms</a>
             <a href="/shipping" className="text-[11px] font-mono text-white/40 uppercase tracking-[0.06em] hover:text-white/60 transition-colors" data-testid="footer-link-shipping">Shipping</a>
+            <a href="/returns" className="text-[11px] font-mono text-white/40 uppercase tracking-[0.06em] hover:text-white/60 transition-colors" data-testid="footer-link-returns">Returns</a>
           </div>
         </div>
         <div className="mt-6 pt-4 border-t border-white/[0.06] text-center">

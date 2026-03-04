@@ -2,6 +2,8 @@ import { lazy, Suspense } from "react";
 import { Switch, Route, Redirect } from "wouter";
 import Home from "./Home";
 import CartDrawer from "./components/CartDrawer";
+import CookieConsent from "./components/CookieConsent";
+import Analytics from "./components/Analytics";
 import { PrerenderReadySignal } from "./components/PrerenderReadySignal";
 
 const Shop = lazy(() => import("./Shop"));
@@ -20,6 +22,7 @@ const Signup = lazy(() => import("./pages/Signup"));
 const Account = lazy(() => import("./pages/Account"));
 const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword"));
+const ReturnsPage = lazy(() => import("./pages/ReturnsPage"));
 
 function LoadingFallback() {
   return (
@@ -53,12 +56,15 @@ function App() {
           <Route path="/account" component={Account} />
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/reset-password" component={ResetPassword} />
+          <Route path="/returns" component={ReturnsPage} />
           <Route>
             <Redirect to="/" />
           </Route>
         </Switch>
       </Suspense>
       <CartDrawer />
+      <CookieConsent />
+      <Analytics />
     </>
   );
 }
