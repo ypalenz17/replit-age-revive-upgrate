@@ -1,37 +1,6 @@
 import type { Express } from "express";
 import type { Server } from "http";
-import { isKnownAppRoute, normalizePath, renderPrerenderedPage } from "./prerender";
-
-const BOT_UA_PATTERNS = [
-  /chatgpt/i,
-  /gptbot/i,
-  /oai-searchbot/i,
-  /claudebot/i,
-  /anthropic/i,
-  /perplexity/i,
-  /cohere/i,
-  /google-extended/i,
-  /googlebot/i,
-  /bingbot/i,
-  /slurp/i,
-  /duckduckbot/i,
-  /baiduspider/i,
-  /yandexbot/i,
-  /facebookexternalhit/i,
-  /twitterbot/i,
-  /linkedinbot/i,
-  /whatsapp/i,
-  /telegrambot/i,
-  /applebot/i,
-  /ia_archiver/i,
-  /semrushbot/i,
-  /ahrefsbot/i,
-  /mj12bot/i,
-  /dotbot/i,
-  /petalbot/i,
-  /bytespider/i,
-  /ccbot/i,
-];
+import { isKnownAppRoute, normalizePath } from "./prerender";
 
 const CANONICAL_HOST = (process.env.CANONICAL_HOST ?? "agerevive.com").toLowerCase();
 
@@ -60,10 +29,6 @@ const NOINDEX_ROUTE_PATTERNS = [
   /^\/cart(?:\/.*)?$/i,
   /^\/account(?:\/.*)?$/i,
 ];
-
-function isBot(ua: string): boolean {
-  return BOT_UA_PATTERNS.some((pattern) => pattern.test(ua));
-}
 
 function isLocalHost(hostname: string): boolean {
   return hostname === "localhost" || hostname === "127.0.0.1";
@@ -137,30 +102,6 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     }
 
     next();
-  });
-
-  app.use((req, res, next) => {
-    if (req.method !== "GET") {
-      return next();
-    }
-
-    if (req.path.startsWith("/api") || req.path.includes(".")) {
-      return next();
-    }
-
-    const ua = req.get("user-agent") ?? "";
-    if (!isBot(ua)) {
-      return next();
-    }
-
-    const html = renderPrerenderedPage(req.path);
-    if (!html) {
-      return next();
-    }
-
-    res.setHeader("Content-Type", "text/html; charset=utf-8");
-    res.setHeader("X-Robots-Tag", "all");
-    return res.send(html);
   });
 
   app.get("/api/site-content", (req, res) => {
