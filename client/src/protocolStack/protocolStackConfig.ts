@@ -19,7 +19,7 @@ export type ProtocolConfig = {
 const ITEMS: Record<ProductKey, StackItem> = {
   cellunad:   { key: "cellunad",   name: "CELLUNAD+",   badge: "Daily NAD+",      price: 79.99, productId: "cellunad" },
   cellubiome: { key: "cellubiome", name: "CELLUBIOME",  badge: "Signal Stability", price: 110.00, productId: "cellubiome" },
-  cellunova:  { key: "cellunova",  name: "CELLUNOVA",   badge: "Monthly Reset",    price: 145.00, productId: "cellunova" },
+  cellunova:  { key: "cellunova",  name: "CELLUNOVA",   badge: "Monthly Reset",    price: 49.99, productId: "cellunova" },
 };
 
 const SECTIONS: Record<ProductKey, SectionMap[]> = {

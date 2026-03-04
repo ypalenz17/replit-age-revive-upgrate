@@ -285,7 +285,7 @@ const PRODUCTS = {
     tagline: 'A 7-day monthly reset protocol designed for discipline, not extremes.',
     description:
       'Polyphenol + senolytic stack. 10 actives. 7-day cycle.',
-    price: '$145.00',
+    price: '$49.99',
     serving: '5 caps/day for 7 days',
     specRow: 'Glass bottle \u2022 UV-protected',
     warnings: 'Contains wheat (spermidine source).',

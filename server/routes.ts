@@ -191,7 +191,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
       const SERVER_PRICES: Record<string, { oneTime: number; subscribe: number; name: string }> = {
         cellunad: { oneTime: 79.99, subscribe: 67.99, name: "CELLUNAD+" },
         cellubiome: { oneTime: 110.00, subscribe: 93.50, name: "CELLUBIOME" },
-        cellunova: { oneTime: 145.00, subscribe: 123.25, name: "CELLUNOVA" },
+        cellunova: { oneTime: 49.99, subscribe: 42.49, name: "CELLUNOVA" },
       };
 
       for (const item of items) {
