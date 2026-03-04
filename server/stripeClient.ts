@@ -3,62 +3,20 @@ import { runMigrations, StripeSync } from "stripe-replit-sync";
 
 let cachedSync: StripeSync | null = null;
 
-interface TokenData {
-  access_token: string;
-  token_type: string;
-}
-
-async function fetchStripeCredentials(): Promise<{ secretKey: string; publishableKey: string }> {
-  const connectorsHost = process.env.REPLIT_CONNECTORS_HOSTNAME;
-  if (!connectorsHost) {
-    throw new Error("REPLIT_CONNECTORS_HOSTNAME not set");
-  }
-
-  const identityToken = process.env.REPL_IDENTITY;
-  const renewalToken = process.env.WEB_REPL_RENEWAL;
-
-  let token = identityToken;
-  if (renewalToken) {
-    try {
-      const renewRes = await fetch(renewalToken);
-      if (renewRes.ok) {
-        const data = (await renewRes.json()) as TokenData;
-        token = data.access_token;
-      }
-    } catch {}
-  }
-
-  const headers: Record<string, string> = {};
-  if (token) {
-    headers["Authorization"] = `Bearer ${token}`;
-  }
-
-  const res = await fetch(
-    `http://${connectorsHost}/proxy/stripe/getCredentials`,
-    {
-      method: "POST",
-      headers: { ...headers, "Content-Type": "application/json" },
-      body: JSON.stringify({}),
-    },
-  );
-
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`Failed to fetch Stripe credentials: ${res.status} ${text}`);
-  }
-
-  const creds = (await res.json()) as { publishableKey: string; secretKey: string };
-  return { secretKey: creds.secretKey, publishableKey: creds.publishableKey };
+function getSecretKey(): string {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) throw new Error("STRIPE_SECRET_KEY not set");
+  return key;
 }
 
 export async function getUncachableStripeClient(): Promise<Stripe> {
-  const { secretKey } = await fetchStripeCredentials();
-  return new Stripe(secretKey);
+  return new Stripe(getSecretKey());
 }
 
 export async function getPublishableKey(): Promise<string> {
-  const { publishableKey } = await fetchStripeCredentials();
-  return publishableKey;
+  const key = process.env.STRIPE_PUBLISHABLE_KEY;
+  if (!key) throw new Error("STRIPE_PUBLISHABLE_KEY not set");
+  return key;
 }
 
 export async function getStripeSync(): Promise<StripeSync> {
@@ -67,8 +25,10 @@ export async function getStripeSync(): Promise<StripeSync> {
   const databaseUrl = process.env.DATABASE_URL;
   if (!databaseUrl) throw new Error("DATABASE_URL required");
 
-  const stripe = await getUncachableStripeClient();
-  cachedSync = new StripeSync({ stripe, databaseUrl });
+  cachedSync = new StripeSync({
+    stripeSecretKey: getSecretKey(),
+    databaseUrl,
+  } as any);
   return cachedSync;
 }
 
@@ -76,6 +36,11 @@ export async function initStripe(): Promise<void> {
   const databaseUrl = process.env.DATABASE_URL;
   if (!databaseUrl) {
     console.warn("[stripe] DATABASE_URL not set, skipping Stripe init");
+    return;
+  }
+
+  if (!process.env.STRIPE_SECRET_KEY) {
+    console.warn("[stripe] STRIPE_SECRET_KEY not set, skipping Stripe init");
     return;
   }
 
