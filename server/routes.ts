@@ -16,6 +16,9 @@ const LEGACY_REDIRECTS = new Map<string, string>([
   ["/products/products-cellunad-nad-booster", "/product/cellunad"],
   ["/products/cellubiome-gut-mito-support", "/product/cellubiome"],
   ["/products/products-cellunova-cellular-renewal", "/product/cellunova"],
+  ["/cellunad", "/product/cellunad"],
+  ["/cellubiome", "/product/cellubiome"],
+  ["/cellunova", "/product/cellunova"],
 ]);
 
 // SEO: remove irrelevant legacy sections from the index with 410 Gone.
