@@ -19,12 +19,10 @@ const LEGACY_REDIRECTS = new Map<string, string>([
   ["/cellunad", "/product/cellunad"],
   ["/cellubiome", "/product/cellubiome"],
   ["/cellunova", "/product/cellunova"],
-  ["/pages/contact", "/faq"],
-  ["/pages/about", "/faq"],
 ]);
 
 // SEO: remove irrelevant legacy sections from the index with 410 Gone.
-const GONE_ROUTE_PATTERNS = [/^\/blogs(?:\/.*)?$/i];
+const GONE_ROUTE_PATTERNS = [/^\/blogs(?:\/.*)?$/i, /^\/pages\/contact$/i, /^\/pages\/about$/i];
 
 // SEO: prevent checkout/account utility routes from entering the index.
 const NOINDEX_ROUTE_PATTERNS = [
