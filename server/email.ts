@@ -3,7 +3,7 @@ import type { Order, OrderLineItem } from "@shared/schema";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const FROM_EMAIL = "AGE REVIVE <onboarding@resend.dev>";
+const FROM_EMAIL = "AGE REVIVE <orders@agerevive.com>";
 const BRAND_COLOR = "#1fb8ac";
 const NAVY = "#131d2e";
 const PAPER = "#f5f1eb";
