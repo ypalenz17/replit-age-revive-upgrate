@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type Order, type InsertOrder, users, orders } from "@shared/schema";
+import { type User, type InsertUser, type Order, type InsertOrder, type OrderLineItem, users, orders } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { eq, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/node-postgres";
@@ -162,7 +162,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createOrder(order: InsertOrder): Promise<Order> {
-    const [created] = await this.db.insert(orders).values(order).returning();
+    const [created] = await this.db.insert(orders).values({ ...order, items: [...order.items] as OrderLineItem[] }).returning();
     return created;
   }
 

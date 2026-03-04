@@ -7,7 +7,7 @@ import type { OrderLineItem } from "@shared/schema";
 export class WebhookHandlers {
   static async processWebhook(payload: Buffer, signature: string): Promise<void> {
     const stripeSync = await getStripeSync();
-    await stripeSync.processWebhook({ payload, signature });
+    await stripeSync.processWebhook(payload, signature);
 
     const stripe = await getUncachableStripeClient();
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -152,9 +152,10 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, stripe:
 }
 
 async function handleInvoicePaid(invoice: Stripe.Invoice, _stripe: Stripe): Promise<void> {
-  if (!invoice.subscription) return;
+  const sub = (invoice as any).subscription;
+  if (!sub) return;
 
-  const subscriptionId = typeof invoice.subscription === "string" ? invoice.subscription : invoice.subscription.id;
+  const subscriptionId = typeof sub === "string" ? sub : sub.id;
   const isFirstInvoice = invoice.billing_reason === "subscription_create";
 
   if (isFirstInvoice) {
@@ -211,9 +212,10 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription): Pro
 }
 
 async function handleInvoiceUpcoming(invoice: Stripe.Invoice): Promise<void> {
-  if (!invoice.subscription) return;
+  const sub = (invoice as any).subscription;
+  if (!sub) return;
 
-  const subscriptionId = typeof invoice.subscription === "string" ? invoice.subscription : invoice.subscription.id;
+  const subscriptionId = typeof sub === "string" ? sub : sub.id;
   const order = await storage.getOrderBySubscriptionId(subscriptionId);
 
   if (order && order.status === "active") {
