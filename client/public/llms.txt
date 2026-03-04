@@ -1,6 +1,3 @@
-# Age Revive
-
-Canonical pages:
 https://agerevive.com/
 https://agerevive.com/science
 https://agerevive.com/quality
@@ -12,3 +9,4 @@ https://agerevive.com/product/cellunova
 https://agerevive.com/privacy
 https://agerevive.com/terms
 https://agerevive.com/shipping
+https://agerevive.com/sitemap.xml

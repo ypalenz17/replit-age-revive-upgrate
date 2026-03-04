@@ -39,6 +39,7 @@ const CANONICAL_HOST = (process.env.CANONICAL_HOST ?? "agerevive.com").toLowerCa
 const LEGACY_REDIRECTS = new Map<string, string>([
   ["/pages/science", "/science"],
   ["/pages/faq", "/faq"],
+  ["/pages/data-sharing-opt-out", "/privacy"],
   ["/collections/all", "/shop"],
   ["/products/cellunad", "/product/cellunad"],
   ["/products/cellubiome", "/product/cellubiome"],
