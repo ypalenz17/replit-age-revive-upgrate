@@ -1,6 +1,7 @@
 import type { Express } from "express";
 import type { Server } from "http";
 import { isKnownAppRoute, normalizePath } from "./prerender";
+import { getUncachableStripeClient, getPublishableKey } from "./stripeClient";
 
 const CANONICAL_HOST = (process.env.CANONICAL_HOST ?? "agerevive.com").toLowerCase();
 
@@ -117,6 +118,116 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
     res.setHeader("Content-Type", "text/markdown; charset=utf-8");
     return res.send(SITE_CONTENT);
+  });
+
+  app.get("/api/stripe/publishable-key", async (_req, res) => {
+    try {
+      const key = await getPublishableKey();
+      return res.json({ publishableKey: key });
+    } catch (err) {
+      console.error("[stripe] Failed to get publishable key:", err);
+      return res.status(500).json({ message: "Failed to load payment configuration" });
+    }
+  });
+
+  app.post("/api/checkout/session", async (req, res) => {
+    try {
+      const { items, email, shipping } = req.body as {
+        items: Array<{
+          slug: string;
+          name: string;
+          price: number;
+          quantity: number;
+          isSubscribe: boolean;
+          frequency: string;
+        }>;
+        email: string;
+        shipping: {
+          firstName: string;
+          lastName: string;
+          address: string;
+          apt?: string;
+          city: string;
+          state: string;
+          zip: string;
+          country: string;
+        };
+      };
+
+      if (!items || !Array.isArray(items) || items.length === 0) {
+        return res.status(400).json({ message: "Cart is empty" });
+      }
+      if (!email || !email.includes("@")) {
+        return res.status(400).json({ message: "Valid email is required" });
+      }
+      if (!shipping || !shipping.firstName || !shipping.lastName || !shipping.address || !shipping.city || !shipping.state || !shipping.zip) {
+        return res.status(400).json({ message: "Complete shipping address is required" });
+      }
+
+      const stripe = await getUncachableStripeClient();
+      const host = req.get("host") || "localhost:5000";
+      const protocol = req.protocol;
+      const baseUrl = `${protocol}://${host}`;
+
+      const lineItems = items.map((item) => ({
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: item.name,
+            metadata: {
+              slug: item.slug,
+              isSubscribe: String(item.isSubscribe),
+              frequency: item.frequency,
+            },
+          },
+          unit_amount: Math.round(item.price * 100),
+        },
+        quantity: item.quantity,
+      }));
+
+      const session = await stripe.checkout.sessions.create({
+        mode: "payment",
+        payment_method_types: ["card"],
+        customer_email: email,
+        line_items: lineItems,
+        shipping_address_collection: undefined,
+        metadata: {
+          shipping_first_name: shipping.firstName,
+          shipping_last_name: shipping.lastName,
+          shipping_address: shipping.address,
+          shipping_apt: shipping.apt || "",
+          shipping_city: shipping.city,
+          shipping_state: shipping.state,
+          shipping_zip: shipping.zip,
+          shipping_country: shipping.country || "US",
+        },
+        success_url: `${baseUrl}/order-confirmed?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${baseUrl}/checkout`,
+      });
+
+      return res.json({ url: session.url });
+    } catch (err: any) {
+      console.error("[stripe] Checkout session error:", err);
+      return res.status(500).json({ message: err?.message || "Failed to create checkout session" });
+    }
+  });
+
+  app.get("/api/checkout/session/:sessionId", async (req, res) => {
+    try {
+      const stripe = await getUncachableStripeClient();
+      const session = await stripe.checkout.sessions.retrieve(req.params.sessionId);
+
+      return res.json({
+        status: session.payment_status,
+        customerEmail: session.customer_email || session.customer_details?.email,
+        amountTotal: session.amount_total ? session.amount_total / 100 : 0,
+        currency: session.currency,
+        metadata: session.metadata,
+      });
+    } catch (err: any) {
+      console.error("[stripe] Session retrieve error:", err);
+      return res.status(500).json({ message: "Failed to retrieve session" });
+    }
   });
 
   // SEO: unknown non-asset frontend paths must return a real 404, not a 200 app shell.

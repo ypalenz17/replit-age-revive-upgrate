@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useLocation, Link, Redirect } from 'wouter';
-import { ChevronDown, ChevronLeft, Check, Mail } from 'lucide-react';
+import { ChevronDown, ChevronLeft, Check, Mail, Loader2 } from 'lucide-react';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import { useCart } from '../cartStore';
+import { apiRequest } from '../lib/queryClient';
 
-type Step = 1 | 2 | 3;
+type Step = 1 | 2;
 
 const US_STATES = [
   'Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia',
@@ -19,6 +20,8 @@ export default function Checkout() {
   const cart = useCart();
   const [step, setStep] = useState<Step>(1);
   const [cartExpanded, setCartExpanded] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [error, setError] = useState('');
 
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -30,11 +33,6 @@ export default function Checkout() {
   const [usState, setUsState] = useState('');
   const [zip, setZip] = useState('');
 
-  const [cardNumber, setCardNumber] = useState('');
-  const [expiry, setExpiry] = useState('');
-  const [cvc, setCvc] = useState('');
-  const [nameOnCard, setNameOnCard] = useState('');
-
   const totalPrice = cart.totalPrice;
   const itemCount = cart.totalItems;
 
@@ -45,19 +43,53 @@ export default function Checkout() {
   const handleEmailSubmit = () => {
     if (email.trim() && email.includes('@')) {
       setStep(2);
+      setError('');
     }
   };
 
-  const handleShippingSubmit = () => {
-    if (firstName.trim() && lastName.trim() && address.trim() && city.trim() && usState && zip.trim()) {
-      setStep(3);
+  const handleCheckout = async () => {
+    if (!firstName.trim() || !lastName.trim() || !address.trim() || !city.trim() || !usState || !zip.trim()) {
+      setError('Please fill in all required shipping fields.');
+      return;
     }
-  };
 
-  const handlePaymentSubmit = () => {
-    if (cardNumber.trim() && expiry.trim() && cvc.trim() && nameOnCard.trim()) {
-      cart.clearCart();
-      navigate('/order-confirmed');
+    setIsProcessing(true);
+    setError('');
+
+    try {
+      const response = await apiRequest('POST', '/api/checkout/session', {
+        items: cart.items.map((item) => ({
+          slug: item.slug,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          isSubscribe: item.isSubscribe,
+          frequency: item.frequency,
+        })),
+        email,
+        shipping: {
+          firstName,
+          lastName,
+          address,
+          apt,
+          city,
+          state: usState,
+          zip,
+          country: 'US',
+        },
+      });
+
+      const data = await response.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        setError('Unable to start checkout. Please try again.');
+        setIsProcessing(false);
+      }
+    } catch (err: any) {
+      setError(err?.message || 'Something went wrong. Please try again.');
+      setIsProcessing(false);
     }
   };
 
@@ -105,38 +137,25 @@ export default function Checkout() {
         )}
 
         <div className="px-5 pt-8 pb-32" style={{ paddingBottom: 'calc(8rem + env(safe-area-inset-bottom, 0px))' }}>
+          {error && (
+            <div className="mb-6 px-4 py-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-300 text-[13px]" data-testid="checkout-error">
+              {error}
+            </div>
+          )}
+
           <div className="space-y-8">
             <section data-testid="step-account">
-              <p className="text-[12px] font-mono uppercase tracking-[0.12em] text-white/30 mb-2">1 of 3</p>
+              <p className="text-[12px] font-mono uppercase tracking-[0.12em] text-white/30 mb-2">1 of 2</p>
               {step === 1 ? (
                 <>
-                  <h2 className="text-[22px] font-sans font-semibold text-white mb-6">Create Your Account</h2>
-
-                  <button
-                    className="w-full py-3.5 rounded-lg border border-white/[0.10] bg-white/[0.03] flex items-center justify-center gap-3 hover:bg-white/[0.06] transition-colors"
-                    data-testid="google-signin"
-                  >
-                    <svg viewBox="0 0 24 24" className="w-5 h-5">
-                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/>
-                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                    </svg>
-                    <span className="text-[14px] font-sans font-semibold text-white">Continue with Google</span>
-                  </button>
-
-                  <div className="flex items-center gap-4 my-6">
-                    <div className="flex-1 h-px bg-white/[0.08]" />
-                    <span className="text-[13px] font-sans text-white/30">or</span>
-                    <div className="flex-1 h-px bg-white/[0.08]" />
-                  </div>
-
+                  <h2 className="text-[22px] font-sans font-semibold text-white mb-6">Your Email</h2>
                   <div className="space-y-4">
                     <div className={labelFloat}>
                       <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && handleEmailSubmit()}
                         placeholder="Email address"
                         className={inputClass}
                         data-testid="input-email"
@@ -145,25 +164,20 @@ export default function Checkout() {
                     <button
                       onClick={handleEmailSubmit}
                       className="w-full py-3.5 bg-ar-teal text-[#131d2e] rounded-full text-[14px] font-sans font-semibold hover:bg-ar-teal/90 transition-colors flex items-center justify-center gap-2"
-                      data-testid="button-signup-email"
+                      data-testid="button-continue-email"
                     >
                       <Mail size={16} />
-                      Sign Up with Email
+                      Continue
                     </button>
                   </div>
 
-                  <p className="mt-4 text-[13px] font-sans text-white/40">
-                    Have an account?{' '}
-                    <button className="text-white font-semibold underline underline-offset-2" data-testid="link-signin">Sign in</button>
-                  </p>
-
                   <p className="mt-5 text-[11px] font-sans text-white/25 leading-relaxed">
-                    I understand that by creating an account, I agree to receive updates, AGE REVIVE news, and member-only offers. I understand that I can unsubscribe from emails at any time.
+                    Your order confirmation and tracking details will be sent to this email.
                   </p>
                 </>
               ) : (
                 <div className="flex items-center justify-between">
-                  <h2 className="text-[16px] font-sans font-medium text-white/70">Account</h2>
+                  <h2 className="text-[16px] font-sans font-medium text-white/70">Email</h2>
                   <div className="flex items-center gap-2">
                     <span className="text-[13px] font-sans text-white/40">{email}</span>
                     <div className="w-5 h-5 rounded-full bg-ar-teal/20 flex items-center justify-center">
@@ -177,7 +191,7 @@ export default function Checkout() {
             <div className="h-px bg-white/[0.06]" />
 
             <section data-testid="step-shipping">
-              <p className="text-[12px] font-mono uppercase tracking-[0.12em] text-white/30 mb-2">2 of 3</p>
+              <p className="text-[12px] font-mono uppercase tracking-[0.12em] text-white/30 mb-2">2 of 2</p>
               {step === 2 ? (
                 <>
                   <h2 className="text-[22px] font-sans font-semibold text-white mb-6">Shipping Information</h2>
@@ -265,91 +279,28 @@ export default function Checkout() {
                     </div>
 
                     <button
-                      onClick={handleShippingSubmit}
-                      className="w-full py-3.5 bg-ar-teal text-[#131d2e] rounded-full text-[14px] font-sans font-semibold hover:bg-ar-teal/90 transition-colors mt-2"
-                      data-testid="button-continue-payment"
-                    >
-                      Continue to Payment
-                    </button>
-                  </div>
-                </>
-              ) : step > 2 ? (
-                <div className="flex items-center justify-between">
-                  <h2 className="text-[16px] font-sans font-medium text-white/70">Shipping Information</h2>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[13px] font-sans text-white/40">{firstName} {lastName}, {city}</span>
-                    <div className="w-5 h-5 rounded-full bg-ar-teal/20 flex items-center justify-center">
-                      <Check size={12} className="text-ar-teal" />
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <h2 className="text-[18px] font-sans font-light text-white/20">Shipping Information</h2>
-              )}
-            </section>
-
-            <div className="h-px bg-white/[0.06]" />
-
-            <section data-testid="step-payment">
-              <p className="text-[12px] font-mono uppercase tracking-[0.12em] text-white/30 mb-2">3 of 3</p>
-              {step === 3 ? (
-                <>
-                  <h2 className="text-[22px] font-sans font-semibold text-white mb-6">Payment</h2>
-                  <div className="space-y-4">
-                    <input
-                      type="text"
-                      value={nameOnCard}
-                      onChange={(e) => setNameOnCard(e.target.value)}
-                      placeholder="Name on card*"
-                      className={inputClass}
-                      data-testid="input-card-name"
-                    />
-                    <input
-                      type="text"
-                      value={cardNumber}
-                      onChange={(e) => setCardNumber(e.target.value.replace(/\D/g, '').slice(0, 16))}
-                      placeholder="Card number*"
-                      className={inputClass}
-                      data-testid="input-card-number"
-                    />
-                    <div className="grid grid-cols-2 gap-3">
-                      <input
-                        type="text"
-                        value={expiry}
-                        onChange={(e) => {
-                          let v = e.target.value.replace(/\D/g, '').slice(0, 4);
-                          if (v.length > 2) v = v.slice(0, 2) + '/' + v.slice(2);
-                          setExpiry(v);
-                        }}
-                        placeholder="MM/YY*"
-                        className={inputClass}
-                        data-testid="input-expiry"
-                      />
-                      <input
-                        type="text"
-                        value={cvc}
-                        onChange={(e) => setCvc(e.target.value.replace(/\D/g, '').slice(0, 4))}
-                        placeholder="CVC*"
-                        className={inputClass}
-                        data-testid="input-cvc"
-                      />
-                    </div>
-
-                    <button
-                      onClick={handlePaymentSubmit}
-                      className="w-full py-3.5 bg-ar-teal text-[#131d2e] rounded-full text-[14px] font-sans font-semibold hover:bg-ar-teal/90 transition-colors mt-2"
+                      onClick={handleCheckout}
+                      disabled={isProcessing}
+                      className="w-full py-3.5 bg-ar-teal text-[#131d2e] rounded-full text-[14px] font-sans font-semibold hover:bg-ar-teal/90 transition-colors mt-2 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                       data-testid="button-place-order"
                     >
-                      Place Order &middot; ${totalPrice.toFixed(2)}
+                      {isProcessing ? (
+                        <>
+                          <Loader2 size={16} className="animate-spin" />
+                          Connecting to payment...
+                        </>
+                      ) : (
+                        <>Continue to Payment &middot; ${totalPrice.toFixed(2)}</>
+                      )}
                     </button>
 
                     <p className="text-[11px] font-sans text-white/25 leading-relaxed text-center mt-3">
-                      Your payment information is encrypted and secure. By placing your order, you agree to our Terms of Service and Privacy Policy.
+                      You will be redirected to Stripe for secure payment processing. Your card details are never stored on our servers.
                     </p>
                   </div>
                 </>
               ) : (
-                <h2 className="text-[18px] font-sans font-light text-white/20">Payment</h2>
+                <h2 className="text-[18px] font-sans font-light text-white/20">Shipping Information</h2>
               )}
             </section>
           </div>
@@ -361,15 +312,16 @@ export default function Checkout() {
           <button
             onClick={() => {
               if (step === 1) window.history.back();
-              else setStep((step - 1) as Step);
+              else setStep(1);
             }}
-            className="flex items-center gap-1 text-[13px] font-sans text-white/50 hover:text-white transition-colors"
+            disabled={isProcessing}
+            className="flex items-center gap-1 text-[13px] font-sans text-white/50 hover:text-white transition-colors disabled:opacity-30"
             data-testid="button-back"
           >
             <ChevronLeft size={16} />
             Back
           </button>
-          <span className="text-[12px] font-mono uppercase tracking-[0.12em] text-white/30">Step {step} of 3</span>
+          <span className="text-[12px] font-mono uppercase tracking-[0.12em] text-white/30">Step {step} of 2</span>
         </div>
       </div>
     </div>

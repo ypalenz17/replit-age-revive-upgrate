@@ -2,11 +2,12 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
+import { WebhookHandlers } from "./webhookHandlers";
+import { initStripe } from "./stripeClient";
 
 const app = express();
 const httpServer = createServer(app);
 app.disable("x-powered-by");
-// Trust proxy headers so canonical HTTPS redirects work behind load balancers/CDNs.
 app.set("trust proxy", true);
 
 const configuredCorsOrigins = new Set(
@@ -26,6 +27,25 @@ declare module "http" {
     rawBody: unknown;
   }
 }
+
+app.post(
+  "/api/stripe/webhook",
+  express.raw({ type: "application/json" }),
+  async (req: Request, res: Response) => {
+    const signature = req.headers["stripe-signature"];
+    if (!signature) {
+      return res.status(400).json({ error: "Missing stripe-signature header" });
+    }
+    const sig = Array.isArray(signature) ? signature[0] : signature;
+    try {
+      await WebhookHandlers.processWebhook(req.body as Buffer, sig);
+      return res.status(200).json({ received: true });
+    } catch (err) {
+      console.error("[stripe] Webhook error:", err);
+      return res.status(400).json({ error: "Webhook processing failed" });
+    }
+  },
+);
 
 app.use(
   express.json({
@@ -109,6 +129,12 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  try {
+    await initStripe();
+  } catch (err) {
+    console.error("[stripe] Init failed (non-fatal):", err);
+  }
+
   await registerRoutes(httpServer, app);
 
   app.use((err: any, req: Request, res: Response, next: NextFunction) => {
