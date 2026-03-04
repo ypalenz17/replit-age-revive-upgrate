@@ -8,11 +8,13 @@ import type { Order } from "@shared/schema";
 
 function formatOrderResponse(order: Order) {
   return {
-    status: order.status === "paid" ? "paid" : "unpaid",
+    status: order.status === "paid" || order.status === "active" ? "paid" : "unpaid",
     customerEmail: order.email,
     amountTotal: order.totalAmount / 100,
     currency: order.currency,
     orderId: order.id,
+    orderType: order.orderType,
+    subscriptionId: order.stripeSubscriptionId || null,
     items: order.items,
     metadata: {
       shipping_first_name: order.shippingFirstName,
@@ -186,13 +188,48 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         return res.status(400).json({ message: "Complete shipping address is required" });
       }
 
+      const SERVER_PRICES: Record<string, { oneTime: number; subscribe: number; name: string }> = {
+        cellunad: { oneTime: 79.99, subscribe: 67.99, name: "CELLUNAD+" },
+        cellubiome: { oneTime: 110.00, subscribe: 93.50, name: "CELLUBIOME" },
+        cellunova: { oneTime: 145.00, subscribe: 123.25, name: "CELLUNOVA" },
+      };
+
+      for (const item of items) {
+        const pricing = SERVER_PRICES[item.slug];
+        if (!pricing) {
+          return res.status(400).json({ message: `Unknown product: ${item.slug}` });
+        }
+        const expectedPrice = item.isSubscribe ? pricing.subscribe : pricing.oneTime;
+        if (Math.round(item.price * 100) !== Math.round(expectedPrice * 100)) {
+          console.warn(`[checkout] Price mismatch for ${item.slug}: client sent $${item.price}, expected $${expectedPrice}`);
+          item.price = expectedPrice;
+        }
+        item.name = pricing.name;
+      }
+
       const stripe = await getUncachableStripeClient();
       const host = req.get("host") || "localhost:5000";
       const protocol = req.protocol;
       const baseUrl = `${protocol}://${host}`;
 
-      const lineItems = items.map((item) => ({
-        price_data: {
+      const hasSubscription = items.some((item) => item.isSubscribe);
+      const checkoutMode = hasSubscription ? "subscription" : "payment";
+
+      function parseInterval(frequency: string): "month" | "year" {
+        const f = frequency.toLowerCase();
+        if (f.includes("year") || f.includes("annual")) return "year";
+        return "month";
+      }
+
+      function parseIntervalCount(frequency: string): number {
+        const f = frequency.toLowerCase();
+        if (f.includes("3") || f.includes("quarter")) return 3;
+        if (f.includes("6")) return 6;
+        return 1;
+      }
+
+      const lineItems = items.map((item) => {
+        const priceData: any = {
           currency: "usd",
           product_data: {
             name: item.name,
@@ -203,16 +240,23 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
             },
           },
           unit_amount: Math.round(item.price * 100),
-        },
-        quantity: item.quantity,
-      }));
+        };
 
-      const session = await stripe.checkout.sessions.create({
-        mode: "payment",
+        if (item.isSubscribe) {
+          priceData.recurring = {
+            interval: parseInterval(item.frequency),
+            interval_count: parseIntervalCount(item.frequency),
+          };
+        }
+
+        return { price_data: priceData, quantity: item.quantity };
+      });
+
+      const sessionParams: any = {
+        mode: checkoutMode,
         payment_method_types: ["card"],
         customer_email: email,
         line_items: lineItems,
-        shipping_address_collection: undefined,
         metadata: {
           shipping_first_name: shipping.firstName,
           shipping_last_name: shipping.lastName,
@@ -222,18 +266,38 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
           shipping_state: shipping.state,
           shipping_zip: shipping.zip,
           shipping_country: shipping.country || "US",
+          order_type: hasSubscription ? "subscription" : "one_time",
         },
         success_url: `${baseUrl}/order-confirmed?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${baseUrl}/checkout`,
-      });
+      };
+
+      if (hasSubscription) {
+        sessionParams.subscription_data = {
+          metadata: {
+            shipping_first_name: shipping.firstName,
+            shipping_last_name: shipping.lastName,
+            shipping_address: shipping.address,
+            shipping_apt: shipping.apt || "",
+            shipping_city: shipping.city,
+            shipping_state: shipping.state,
+            shipping_zip: shipping.zip,
+            shipping_country: shipping.country || "US",
+          },
+        };
+      }
+
+      const session = await stripe.checkout.sessions.create(sessionParams);
 
       if (process.env.DATABASE_URL) {
         try {
           await storage.createOrder({
             stripeSessionId: session.id,
             stripePaymentIntentId: null,
+            stripeSubscriptionId: null,
             email,
             status: "pending",
+            orderType: hasSubscription ? "subscription" : "one_time",
             totalAmount: items.reduce((sum, i) => sum + Math.round(i.price * 100) * i.quantity, 0),
             currency: "usd",
             shippingFirstName: shipping.firstName,

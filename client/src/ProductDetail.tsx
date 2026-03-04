@@ -427,7 +427,7 @@ function ProductDetailPage({ data, slug }: { data: ProductDetailData; slug: stri
       slug: stackSlug,
       name: stackData.name,
       image: stackImages?.[0] || '/images/product-bottle_1.jpg',
-      price: stackData.priceOneTime,
+      price: stackData.priceSubscribe,
       isSubscribe: true,
       frequency: stackSlug === 'cellunova' ? '7-day cycle' : 'Delivered monthly',
     });

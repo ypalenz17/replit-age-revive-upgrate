@@ -15,6 +15,8 @@ export interface IStorage {
   updateOrderStatus(id: string, status: string): Promise<Order | undefined>;
   updateOrderFulfillment(id: string, fulfillmentStatus: string, trackingNumber?: string, trackingCarrier?: string): Promise<Order | undefined>;
   updateOrderPaymentIntent(id: string, paymentIntentId: string): Promise<Order | undefined>;
+  updateOrderSubscription(id: string, subscriptionId: string): Promise<Order | undefined>;
+  getOrderBySubscriptionId(subscriptionId: string): Promise<Order | undefined>;
 }
 
 export class MemStorage implements IStorage {
@@ -60,6 +62,12 @@ export class MemStorage implements IStorage {
     throw new Error("Database required for order operations");
   }
   async updateOrderPaymentIntent(_id: string, _paymentIntentId: string): Promise<Order | undefined> {
+    throw new Error("Database required for order operations");
+  }
+  async updateOrderSubscription(_id: string, _subscriptionId: string): Promise<Order | undefined> {
+    throw new Error("Database required for order operations");
+  }
+  async getOrderBySubscriptionId(_subscriptionId: string): Promise<Order | undefined> {
     throw new Error("Database required for order operations");
   }
 }
@@ -125,6 +133,19 @@ export class DatabaseStorage implements IStorage {
       updatedAt: new Date(),
     }).where(eq(orders.id, id)).returning();
     return updated;
+  }
+
+  async updateOrderSubscription(id: string, subscriptionId: string): Promise<Order | undefined> {
+    const [updated] = await this.db.update(orders).set({
+      stripeSubscriptionId: subscriptionId,
+      updatedAt: new Date(),
+    }).where(eq(orders.id, id)).returning();
+    return updated;
+  }
+
+  async getOrderBySubscriptionId(subscriptionId: string): Promise<Order | undefined> {
+    const [order] = await this.db.select().from(orders).where(eq(orders.stripeSubscriptionId, subscriptionId)).limit(1);
+    return order;
   }
 }
 

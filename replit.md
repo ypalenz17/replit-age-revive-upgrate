@@ -28,13 +28,14 @@ Preferred communication style: Simple, everyday language.
 
 ## Database
 - **ORM**: Drizzle ORM configured for PostgreSQL
-- **Schema**: Defined in `shared/schema.ts` — has `users` table (id UUID, username, password) and `orders` table (id UUID, stripe_session_id, email, status, total_amount, currency, shipping fields, items JSONB, fulfillment_status, tracking fields, timestamps)
+- **Schema**: Defined in `shared/schema.ts` — has `users` table (id UUID, username, password) and `orders` table (id UUID, stripe_session_id, stripe_payment_intent_id, stripe_subscription_id, email, status, order_type, total_amount, currency, shipping fields, items JSONB, fulfillment_status, tracking fields, timestamps)
 - **Validation**: `drizzle-zod` generates Zod schemas from Drizzle table definitions
 - **Migrations**: Drizzle Kit configured with `drizzle.config.ts`, migrations output to `./migrations/`. Use `npm run db:push` to push schema changes.
 - **Connection**: Requires `DATABASE_URL` environment variable pointing to a PostgreSQL instance
-- **Stripe Integration**: Uses `stripe-replit-sync` for webhook processing and data sync. Stripe API keys stored as env secrets (`STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`). Webhook registered at `/api/stripe/webhook`. Orders are created as "pending" at checkout session creation, then updated to "paid" when Stripe webhook confirms payment.
-- **Order Flow**: Cart (client) -> POST /api/checkout/session (creates pending order + Stripe session) -> Stripe hosted checkout -> webhook confirms payment -> order status updated to "paid" -> /order-confirmed page shows order details
-- **API Routes**: `GET /api/stripe/publishable-key`, `POST /api/checkout/session`, `GET /api/checkout/session/:sessionId`, `GET /api/orders/:orderId`, `GET /api/orders?email=...`
+- **Stripe Integration**: Uses `stripe-replit-sync` for webhook processing and data sync. Stripe API keys stored as env secrets (`STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`). Webhook registered at `/api/stripe/webhook`. Orders are created as "pending" at checkout session creation, then updated to "paid"/"active" when Stripe webhook confirms payment.
+- **Subscription Support**: Backend creates Stripe Checkout Sessions with `mode: "subscription"` when cart contains subscription items. Line items include `recurring` with interval/interval_count derived from frequency string. Webhook handles `checkout.session.completed`, `invoice.paid`, `customer.subscription.updated`, and `customer.subscription.deleted` events. Orders store `order_type` ("subscription" or "one_time") and `stripe_subscription_id`. Subscription pricing: CELLUNAD+ $67.99/mo, CELLUBIOME $93.50/mo, CELLUNOVA $123.25/mo (15% discount from one-time).
+- **Order Flow**: Cart (client) -> POST /api/checkout/session (creates pending order + Stripe session with mode based on isSubscribe) -> Stripe hosted checkout -> webhook confirms payment -> order status updated to "paid" (one-time) or "active" (subscription) -> /order-confirmed page shows order details with subscription badge
+- **API Routes**: `GET /api/stripe/publishable-key`, `POST /api/checkout/session`, `GET /api/checkout/session/:sessionId`, `GET /api/orders/:orderId`
 
 ## Build System
 - **Dev**: `npm run dev` — runs Express + Vite dev server with HMR via `tsx`

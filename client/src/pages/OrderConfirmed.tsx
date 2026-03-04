@@ -19,6 +19,8 @@ interface SessionData {
   amountTotal: number;
   currency: string;
   orderId?: string;
+  orderType?: string;
+  subscriptionId?: string | null;
   items?: OrderItem[];
   metadata: Record<string, string>;
 }
@@ -90,10 +92,12 @@ export default function OrderConfirmed() {
             </div>
             <p className="text-[12px] font-mono uppercase tracking-[0.12em] text-white/35 mb-3">Order Status</p>
             <h1 className="text-[30px] font-head font-normal uppercase tracking-[-0.03em] text-white mb-4" data-testid="order-confirmed-title">
-              Order Confirmed
+              {session?.orderType === 'subscription' ? 'Subscription Started' : 'Order Confirmed'}
             </h1>
             <p className="text-[14px] text-white/55 leading-relaxed mb-6" data-testid="order-confirmed-body">
-              Your order has been received and payment has been processed successfully.
+              {session?.orderType === 'subscription'
+                ? 'Your subscription is active and your first shipment is on its way. You will be billed automatically on your renewal date.'
+                : 'Your order has been received and payment has been processed successfully.'}
             </p>
 
             {session && (
@@ -122,6 +126,16 @@ export default function OrderConfirmed() {
                       ${session.amountTotal.toFixed(2)} {(session.currency || 'usd').toUpperCase()}
                     </span>
                   </div>
+
+                  {session.orderType === 'subscription' && (
+                    <>
+                      <div className="h-px bg-white/[0.06]" />
+                      <div className="flex items-center justify-between">
+                        <span className="text-[12px] text-white/40">Billing</span>
+                        <span className="text-[13px] text-ar-teal font-semibold" data-testid="order-billing-type">Recurring subscription</span>
+                      </div>
+                    </>
+                  )}
 
                   {session.customerEmail && (
                     <>

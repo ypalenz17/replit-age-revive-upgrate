@@ -24,7 +24,7 @@ export default function Purchase() {
   const productInfo = PRODUCTS.find((p) => p.slug === slug);
   const otherProducts = PRODUCTS.filter((p) => p.slug !== slug);
 
-  const monthlyPrice = data.priceOneTime;
+  const monthlyPrice = data.priceSubscribe;
   const threeMonthFull = Math.round(monthlyPrice * 3 * 100) / 100;
   const threeMonthDiscounted = Math.round(threeMonthFull * 0.9 * 100) / 100;
   const savings = Math.round((threeMonthFull - threeMonthDiscounted) * 100) / 100;

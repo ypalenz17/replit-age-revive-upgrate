@@ -13,9 +13,30 @@ export class WebhookHandlers {
 
     if (webhookSecret) {
       const event = stripe.webhooks.constructEvent(payload, signature, webhookSecret);
-      if (event.type === "checkout.session.completed") {
-        const session = event.data.object as Stripe.Checkout.Session;
-        await handleCheckoutCompleted(session, stripe);
+
+      switch (event.type) {
+        case "checkout.session.completed": {
+          const session = event.data.object as Stripe.Checkout.Session;
+          await handleCheckoutCompleted(session, stripe);
+          break;
+        }
+        case "invoice.paid": {
+          const invoice = event.data.object as Stripe.Invoice;
+          await handleInvoicePaid(invoice, stripe);
+          break;
+        }
+        case "customer.subscription.updated": {
+          const subscription = event.data.object as Stripe.Subscription;
+          await handleSubscriptionUpdated(subscription);
+          break;
+        }
+        case "customer.subscription.deleted": {
+          const subscription = event.data.object as Stripe.Subscription;
+          await handleSubscriptionDeleted(subscription);
+          break;
+        }
+        default:
+          break;
       }
     } else {
       console.warn("[webhook] STRIPE_WEBHOOK_SECRET not set, skipping custom order processing. Orders will be created on session retrieval instead.");
@@ -25,9 +46,14 @@ export class WebhookHandlers {
   static async handleCheckoutSessionDirect(sessionId: string): Promise<void> {
     const stripe = await getUncachableStripeClient();
     const session = await stripe.checkout.sessions.retrieve(sessionId, {
-      expand: ["line_items"],
+      expand: ["line_items", "subscription"],
     });
-    if (session.payment_status === "paid") {
+
+    if (session.mode === "subscription") {
+      if (session.subscription) {
+        await handleCheckoutCompleted(session, stripe);
+      }
+    } else if (session.payment_status === "paid") {
       await handleCheckoutCompleted(session, stripe);
     }
   }
@@ -35,6 +61,7 @@ export class WebhookHandlers {
 
 async function handleCheckoutCompleted(session: Stripe.Checkout.Session, stripe: Stripe): Promise<void> {
   const meta = session.metadata || {};
+  const isSubscription = session.mode === "subscription";
 
   let lineItems: Stripe.LineItem[] = [];
   try {
@@ -57,16 +84,21 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, stripe:
       name: "Order item",
       price: (session.amount_total || 0) / 100,
       quantity: 1,
-      isSubscribe: false,
-      frequency: "One-time",
+      isSubscribe: isSubscription,
+      frequency: isSubscription ? "Delivered monthly" : "One-time",
     });
   }
 
   const existing = await storage.getOrderByStripeSessionId(session.id);
   if (existing) {
-    await storage.updateOrderStatus(existing.id, "paid");
+    const newStatus = isSubscription ? "active" : "paid";
+    await storage.updateOrderStatus(existing.id, newStatus);
+
     if (session.payment_intent) {
       await storage.updateOrderPaymentIntent(existing.id, session.payment_intent as string);
+    }
+    if (isSubscription && session.subscription) {
+      await storage.updateOrderSubscription(existing.id, session.subscription as string);
     }
     return;
   }
@@ -74,8 +106,10 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, stripe:
   await storage.createOrder({
     stripeSessionId: session.id,
     stripePaymentIntentId: (session.payment_intent as string) || null,
+    stripeSubscriptionId: isSubscription ? (session.subscription as string) || null : null,
     email: session.customer_email || session.customer_details?.email || "",
-    status: "paid",
+    status: isSubscription ? "active" : "paid",
+    orderType: isSubscription ? "subscription" : "one_time",
     totalAmount: session.amount_total || 0,
     currency: session.currency || "usd",
     shippingFirstName: meta.shipping_first_name || "",
@@ -93,5 +127,64 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, stripe:
     notes: null,
   });
 
-  console.log(`[orders] Order created for session ${session.id}, email: ${session.customer_email || session.customer_details?.email}`);
+  console.log(`[orders] ${isSubscription ? "Subscription" : "One-time"} order created for session ${session.id}, email: ${session.customer_email || session.customer_details?.email}`);
+}
+
+async function handleInvoicePaid(invoice: Stripe.Invoice, _stripe: Stripe): Promise<void> {
+  if (!invoice.subscription) return;
+
+  const subscriptionId = typeof invoice.subscription === "string" ? invoice.subscription : invoice.subscription.id;
+  const isFirstInvoice = invoice.billing_reason === "subscription_create";
+
+  if (isFirstInvoice) {
+    return;
+  }
+
+  const order = await storage.getOrderBySubscriptionId(subscriptionId);
+  if (order) {
+    await storage.updateOrderStatus(order.id, "active");
+    console.log(`[orders] Renewal invoice paid for subscription ${subscriptionId}, order ${order.id} status set to active`);
+  } else {
+    console.warn(`[orders] Renewal invoice paid but no order found for subscription ${subscriptionId}`);
+  }
+}
+
+async function handleSubscriptionUpdated(subscription: Stripe.Subscription): Promise<void> {
+  const subId = subscription.id;
+  const status = subscription.status;
+
+  const order = await storage.getOrderBySubscriptionId(subId);
+  if (!order) {
+    console.warn(`[orders] Subscription ${subId} updated but no order found`);
+    return;
+  }
+
+  let orderStatus = order.status;
+  if (status === "active") {
+    orderStatus = "active";
+  } else if (status === "past_due") {
+    orderStatus = "past_due";
+  } else if (status === "canceled") {
+    orderStatus = "cancelled";
+  } else if (status === "unpaid") {
+    orderStatus = "unpaid";
+  } else if (status === "paused") {
+    orderStatus = "paused";
+  }
+
+  if (orderStatus !== order.status) {
+    await storage.updateOrderStatus(order.id, orderStatus);
+    console.log(`[orders] Subscription ${subId} status changed: ${order.status} -> ${orderStatus}`);
+  }
+}
+
+async function handleSubscriptionDeleted(subscription: Stripe.Subscription): Promise<void> {
+  const subId = subscription.id;
+  const order = await storage.getOrderBySubscriptionId(subId);
+  if (order) {
+    await storage.updateOrderStatus(order.id, "cancelled");
+    console.log(`[orders] Subscription ${subId} cancelled, order ${order.id} status set to cancelled`);
+  } else {
+    console.warn(`[orders] Subscription ${subId} deleted but no order found`);
+  }
 }

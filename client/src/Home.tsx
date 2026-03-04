@@ -618,7 +618,7 @@ export default function Home() {
       slug: activeProduct.slug,
       name: activeProduct.name,
       image: activeProduct.image,
-      price: detailData.priceOneTime,
+      price: detailData.priceSubscribe,
       isSubscribe: true,
       frequency: activeProduct.slug === 'cellunova' ? '7-day cycle' : 'Delivered monthly',
     });

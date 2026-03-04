@@ -43,7 +43,7 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
       slug: p.slug,
       name: p.name,
       image: p.image,
-      price: detailData.priceOneTime,
+      price: detailData.priceSubscribe,
       isSubscribe: true,
       frequency: p.slug === "cellunova" ? "7-day cycle" : "Delivered monthly",
     });
