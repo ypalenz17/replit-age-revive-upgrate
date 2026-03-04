@@ -8,7 +8,11 @@ export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   getUserByEmail(email: string): Promise<User | undefined>;
+  getUserByResetToken(token: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
+  setResetToken(userId: string, token: string, expiresAt: Date): Promise<void>;
+  clearResetToken(userId: string): Promise<void>;
+  updateUserPassword(userId: string, hashedPassword: string): Promise<void>;
   createOrder(order: InsertOrder): Promise<Order>;
   getOrderByStripeSessionId(sessionId: string): Promise<Order | undefined>;
   getOrderById(id: string): Promise<Order | undefined>;
@@ -18,6 +22,7 @@ export interface IStorage {
   updateOrderPaymentIntent(id: string, paymentIntentId: string): Promise<Order | undefined>;
   updateOrderSubscription(id: string, subscriptionId: string): Promise<Order | undefined>;
   getOrderBySubscriptionId(subscriptionId: string): Promise<Order | undefined>;
+  getActiveSubscriptionOrders(): Promise<Order[]>;
 }
 
 export class MemStorage implements IStorage {
@@ -43,11 +48,40 @@ export class MemStorage implements IStorage {
     );
   }
 
+  async getUserByResetToken(token: string): Promise<User | undefined> {
+    return Array.from(this.userStore.values()).find(
+      (user) => user.resetToken === token,
+    );
+  }
+
   async createUser(insertUser: InsertUser): Promise<User> {
     const id = randomUUID();
-    const user: User = { ...insertUser, id, createdAt: new Date() };
+    const user: User = { ...insertUser, id, resetToken: null, resetTokenExpiresAt: null, createdAt: new Date() };
     this.userStore.set(id, user);
     return user;
+  }
+
+  async setResetToken(userId: string, token: string, expiresAt: Date): Promise<void> {
+    const user = this.userStore.get(userId);
+    if (user) {
+      user.resetToken = token;
+      user.resetTokenExpiresAt = expiresAt;
+    }
+  }
+
+  async clearResetToken(userId: string): Promise<void> {
+    const user = this.userStore.get(userId);
+    if (user) {
+      user.resetToken = null;
+      user.resetTokenExpiresAt = null;
+    }
+  }
+
+  async updateUserPassword(userId: string, hashedPassword: string): Promise<void> {
+    const user = this.userStore.get(userId);
+    if (user) {
+      user.password = hashedPassword;
+    }
   }
 
   async createOrder(_order: InsertOrder): Promise<Order> {
@@ -77,6 +111,9 @@ export class MemStorage implements IStorage {
   async getOrderBySubscriptionId(_subscriptionId: string): Promise<Order | undefined> {
     throw new Error("Database required for order operations");
   }
+  async getActiveSubscriptionOrders(): Promise<Order[]> {
+    throw new Error("Database required for order operations");
+  }
 }
 
 export class DatabaseStorage implements IStorage {
@@ -102,9 +139,26 @@ export class DatabaseStorage implements IStorage {
     return user;
   }
 
+  async getUserByResetToken(token: string): Promise<User | undefined> {
+    const [user] = await this.db.select().from(users).where(eq(users.resetToken, token)).limit(1);
+    return user;
+  }
+
   async createUser(insertUser: InsertUser): Promise<User> {
     const [created] = await this.db.insert(users).values(insertUser).returning();
     return created;
+  }
+
+  async setResetToken(userId: string, token: string, expiresAt: Date): Promise<void> {
+    await this.db.update(users).set({ resetToken: token, resetTokenExpiresAt: expiresAt }).where(eq(users.id, userId));
+  }
+
+  async clearResetToken(userId: string): Promise<void> {
+    await this.db.update(users).set({ resetToken: null, resetTokenExpiresAt: null }).where(eq(users.id, userId));
+  }
+
+  async updateUserPassword(userId: string, hashedPassword: string): Promise<void> {
+    await this.db.update(users).set({ password: hashedPassword }).where(eq(users.id, userId));
   }
 
   async createOrder(order: InsertOrder): Promise<Order> {
@@ -160,6 +214,12 @@ export class DatabaseStorage implements IStorage {
   async getOrderBySubscriptionId(subscriptionId: string): Promise<Order | undefined> {
     const [order] = await this.db.select().from(orders).where(eq(orders.stripeSubscriptionId, subscriptionId)).limit(1);
     return order;
+  }
+
+  async getActiveSubscriptionOrders(): Promise<Order[]> {
+    return this.db.select().from(orders)
+      .where(eq(orders.orderType, "subscription"))
+      .orderBy(desc(orders.createdAt));
   }
 }
 

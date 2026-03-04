@@ -100,7 +100,13 @@ export default function Login() {
           </button>
         </form>
 
-        <p className="mt-8 text-center text-[13px] text-white/40">
+        <div className="mt-6 text-center">
+          <Link href="/forgot-password" className="text-[13px] text-white/40 hover:text-ar-teal transition-colors" data-testid="link-forgot-password">
+            Forgot your password?
+          </Link>
+        </div>
+
+        <p className="mt-4 text-center text-[13px] text-white/40">
           Don't have an account?{' '}
           <Link href="/signup" className="text-ar-teal hover:text-ar-teal/80 transition-colors font-medium" data-testid="link-signup">
             Create one

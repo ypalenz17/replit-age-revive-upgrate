@@ -1,6 +1,7 @@
 import Stripe from "stripe";
 import { getStripeSync, getUncachableStripeClient } from "./stripeClient";
 import { storage } from "./storage";
+import { sendOrderConfirmation, sendSubscriptionRenewalReminder } from "./email";
 import type { OrderLineItem } from "@shared/schema";
 
 export class WebhookHandlers {
@@ -33,6 +34,11 @@ export class WebhookHandlers {
         case "customer.subscription.deleted": {
           const subscription = event.data.object as Stripe.Subscription;
           await handleSubscriptionDeleted(subscription);
+          break;
+        }
+        case "invoice.upcoming": {
+          const invoice = event.data.object as Stripe.Invoice;
+          await handleInvoiceUpcoming(invoice);
           break;
         }
         default:
@@ -100,6 +106,13 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, stripe:
     if (isSubscription && session.subscription) {
       await storage.updateOrderSubscription(existing.id, session.subscription as string);
     }
+
+    const updatedOrder = await storage.getOrderById(existing.id);
+    if (updatedOrder && (newStatus === "paid" || newStatus === "active")) {
+      sendOrderConfirmation(updatedOrder).catch(err =>
+        console.error("[email] Failed to send order confirmation:", err)
+      );
+    }
     return;
   }
 
@@ -129,6 +142,13 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, stripe:
   });
 
   console.log(`[orders] ${isSubscription ? "Subscription" : "One-time"} order created for session ${session.id}, email: ${session.customer_email || session.customer_details?.email}`);
+
+  const newOrder = await storage.getOrderByStripeSessionId(session.id);
+  if (newOrder) {
+    sendOrderConfirmation(newOrder).catch(err =>
+      console.error("[email] Failed to send order confirmation:", err)
+    );
+  }
 }
 
 async function handleInvoicePaid(invoice: Stripe.Invoice, _stripe: Stripe): Promise<void> {
@@ -187,5 +207,23 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription): Pro
     console.log(`[orders] Subscription ${subId} cancelled, order ${order.id} status set to cancelled`);
   } else {
     console.warn(`[orders] Subscription ${subId} deleted but no order found`);
+  }
+}
+
+async function handleInvoiceUpcoming(invoice: Stripe.Invoice): Promise<void> {
+  if (!invoice.subscription) return;
+
+  const subscriptionId = typeof invoice.subscription === "string" ? invoice.subscription : invoice.subscription.id;
+  const order = await storage.getOrderBySubscriptionId(subscriptionId);
+
+  if (order && order.status === "active") {
+    const daysUntilRenewal = invoice.due_date
+      ? Math.max(1, Math.ceil((invoice.due_date * 1000 - Date.now()) / (1000 * 60 * 60 * 24)))
+      : 3;
+
+    sendSubscriptionRenewalReminder(order, daysUntilRenewal).catch(err =>
+      console.error("[email] Failed to send subscription renewal reminder:", err)
+    );
+    console.log(`[orders] Renewal reminder sent for subscription ${subscriptionId}, order ${order.id}`);
   }
 }

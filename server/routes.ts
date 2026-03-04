@@ -1,10 +1,12 @@
 import type { Express } from "express";
 import type { Server } from "http";
+import { randomBytes, createHash } from "crypto";
 import bcrypt from "bcrypt";
 import { isKnownAppRoute, normalizePath } from "./prerender";
 import { getUncachableStripeClient, getPublishableKey } from "./stripeClient";
 import { storage } from "./storage";
 import { WebhookHandlers } from "./webhookHandlers";
+import { sendPasswordResetEmail, sendShippingNotification } from "./email";
 import type { Order } from "@shared/schema";
 
 function formatOrderResponse(order: Order) {
@@ -266,6 +268,99 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
       email: user.email,
       username: user.username,
     });
+  });
+
+  app.post("/api/auth/forgot-password", async (req, res) => {
+    try {
+      const { email } = req.body as { email: string };
+      if (!email || !email.includes("@")) {
+        return res.status(400).json({ message: "Valid email is required" });
+      }
+
+      const user = await storage.getUserByEmail(email.toLowerCase().trim());
+
+      res.json({ message: "If an account with that email exists, a password reset link has been sent." });
+
+      if (user) {
+        const token = randomBytes(32).toString("hex");
+        const tokenHash = createHash("sha256").update(token).digest("hex");
+        const expiresAt = new Date(Date.now() + 60 * 60 * 1000);
+        await storage.setResetToken(user.id, tokenHash, expiresAt);
+
+        const protocol = req.headers["x-forwarded-proto"] || "https";
+        const host = req.headers.host || "localhost:5000";
+        const baseUrl = `${protocol}://${host}`;
+        sendPasswordResetEmail(email, token, baseUrl).catch(err =>
+          console.error("[auth] Failed to send password reset email:", err)
+        );
+      }
+    } catch (err: any) {
+      console.error("[auth] Forgot password error:", err);
+      return res.status(500).json({ message: "Failed to process request" });
+    }
+  });
+
+  app.post("/api/auth/reset-password", async (req, res) => {
+    try {
+      const { token, password } = req.body as { token: string; password: string };
+      if (!token) {
+        return res.status(400).json({ message: "Reset token is required" });
+      }
+      if (!password || password.length < 8) {
+        return res.status(400).json({ message: "Password must be at least 8 characters" });
+      }
+
+      const tokenHash = createHash("sha256").update(token).digest("hex");
+      const user = await storage.getUserByResetToken(tokenHash);
+      if (!user || !user.resetTokenExpiresAt || user.resetTokenExpiresAt < new Date()) {
+        return res.status(400).json({ message: "Invalid or expired reset link. Please request a new one." });
+      }
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+      await storage.updateUserPassword(user.id, hashedPassword);
+      await storage.clearResetToken(user.id);
+
+      return res.json({ message: "Password has been reset successfully. You can now log in." });
+    } catch (err: any) {
+      console.error("[auth] Reset password error:", err);
+      return res.status(500).json({ message: "Failed to reset password" });
+    }
+  });
+
+  app.post("/api/orders/:orderId/ship", async (req, res) => {
+    try {
+      if (!req.session.userId) {
+        return res.status(401).json({ message: "Authentication required" });
+      }
+
+      const { trackingNumber, trackingCarrier } = req.body as {
+        trackingNumber: string;
+        trackingCarrier: string;
+      };
+
+      const order = await storage.getOrderById(req.params.orderId);
+      if (!order) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+
+      const updated = await storage.updateOrderFulfillment(
+        order.id,
+        "shipped",
+        trackingNumber,
+        trackingCarrier,
+      );
+
+      if (updated) {
+        sendShippingNotification(updated).catch(err =>
+          console.error("[email] Failed to send shipping notification:", err)
+        );
+      }
+
+      return res.json({ message: "Shipping notification sent", order: updated });
+    } catch (err: any) {
+      console.error("[orders] Ship error:", err);
+      return res.status(500).json({ message: "Failed to update shipping" });
+    }
   });
 
   app.get("/api/stripe/publishable-key", async (_req, res) => {

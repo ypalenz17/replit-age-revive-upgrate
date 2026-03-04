@@ -14,7 +14,7 @@ Preferred communication style: Simple, everyday language.
 - **Component Library**: shadcn/ui (new-york style) — extensive set of Radix UI primitives in `client/src/components/ui/`
 - **Animations**: GSAP with ScrollTrigger plugin for scroll-based animations
 - **State Management**: TanStack React Query for server state; local React state otherwise
-- **Routing**: Wouter-based routing in `App.tsx`. Routes: `/` → Home (`Home.tsx`), `/shop` → Shop (`Shop.tsx`), `/product/:slug` → Product detail (`Shop.tsx`), `/science` → Science (`pages/Science.tsx`), `/quality` → Quality (`pages/Quality.tsx`), `/faq` → FAQ (`pages/FAQ.tsx`), `/privacy` → Privacy (`pages/PrivacyPage.tsx`), `/terms` → Terms (`pages/TermsPage.tsx`), `/shipping` → Shipping (`pages/ShippingPage.tsx`), `/login` → Login (`pages/Login.tsx`), `/signup` → Signup (`pages/Signup.tsx`), `/account` → Account (`pages/Account.tsx`), fallback → redirect to `/`
+- **Routing**: Wouter-based routing in `App.tsx`. Routes: `/` → Home (`Home.tsx`), `/shop` → Shop (`Shop.tsx`), `/product/:slug` → Product detail (`Shop.tsx`), `/science` → Science (`pages/Science.tsx`), `/quality` → Quality (`pages/Quality.tsx`), `/faq` → FAQ (`pages/FAQ.tsx`), `/privacy` → Privacy (`pages/PrivacyPage.tsx`), `/terms` → Terms (`pages/TermsPage.tsx`), `/shipping` → Shipping (`pages/ShippingPage.tsx`), `/login` → Login (`pages/Login.tsx`), `/signup` → Signup (`pages/Signup.tsx`), `/account` → Account (`pages/Account.tsx`), `/forgot-password` → ForgotPassword (`pages/ForgotPassword.tsx`), `/reset-password` → ResetPassword (`pages/ResetPassword.tsx`), fallback → redirect to `/`
 - **Legal Utilities**: Shared SEO helpers in `client/src/legal/legalUtils.ts` — provides `useLegalSeo()` for meta tags, canonical, OG tags, JSON-LD (WebPage + BreadcrumbList), plus `LEGAL` constants (brand name, support email, internal URLs)
 - **Pre-rendering**: Server-side HTML injection via `server/prerender.ts` — every route returns real HTML content (not just a React shell) for bot/LLM scannability. Route handlers in `server/routes.ts` intercept page requests before Vite/static catch-all and inject per-route content, meta tags, and navigation.
 - **Path Aliases**: `@/` maps to `client/src/`, `@shared/` maps to `shared/`, `@assets/` maps to `attached_assets/`
@@ -36,7 +36,9 @@ Preferred communication style: Simple, everyday language.
 - **Stripe Integration**: Uses `stripe-replit-sync` for webhook processing and data sync. Stripe API keys stored as env secrets (`STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`). Webhook registered at `/api/stripe/webhook`. Orders are created as "pending" at checkout session creation, then updated to "paid"/"active" when Stripe webhook confirms payment.
 - **Subscription Support**: Backend creates Stripe Checkout Sessions with `mode: "subscription"` when cart contains subscription items. Line items include `recurring` with interval/interval_count derived from frequency string. Webhook handles `checkout.session.completed`, `invoice.paid`, `customer.subscription.updated`, and `customer.subscription.deleted` events. Orders store `order_type` ("subscription" or "one_time") and `stripe_subscription_id`. Subscription pricing: CELLUNAD+ $67.99/mo, CELLUBIOME $93.50/mo, CELLUNOVA $42.49/mo (15% discount from one-time $49.99).
 - **Order Flow**: Cart (client) -> POST /api/checkout/session (creates pending order + Stripe session with mode based on isSubscribe) -> Stripe hosted checkout -> webhook confirms payment -> order status updated to "paid" (one-time) or "active" (subscription) -> /order-confirmed page shows order details with subscription badge
-- **API Routes**: `GET /api/stripe/publishable-key`, `POST /api/checkout/session`, `GET /api/checkout/session/:sessionId`, `GET /api/orders/:orderId`
+- **Email Notifications**: Resend (`RESEND_API_KEY`) powers transactional emails via `server/email.ts`. Email types: order confirmation (sent after webhook payment confirmation), shipping notification (sent when fulfillment updated via `POST /api/orders/:orderId/ship`), password reset (sent via `POST /api/auth/forgot-password`), subscription renewal reminder. All emails use branded HTML templates matching AGE REVIVE's navy/teal design system. Requires verified domain in Resend dashboard for production use.
+- **Password Reset**: `POST /api/auth/forgot-password` generates a cryptographic token (1-hour expiry) stored in users table, sends reset email. `POST /api/auth/reset-password` validates token and updates password. Frontend pages: `/forgot-password`, `/reset-password?token=...`.
+- **API Routes**: `GET /api/stripe/publishable-key`, `POST /api/checkout/session`, `GET /api/checkout/session/:sessionId`, `GET /api/orders/:orderId`, `POST /api/orders/:orderId/ship`, `POST /api/auth/forgot-password`, `POST /api/auth/reset-password`
 
 ## Build System
 - **Dev**: `npm run dev` — runs Express + Vite dev server with HMR via `tsx`
@@ -59,8 +61,9 @@ Preferred communication style: Simple, everyday language.
 - **Radix UI**: Headless UI primitives powering all shadcn/ui components
 - **TanStack React Query**: Server state management and data fetching
 - **Replit Plugins**: `@replit/vite-plugin-runtime-error-modal`, `@replit/vite-plugin-cartographer`, and `@replit/vite-plugin-dev-banner` are used in development on Replit
-- **connect-pg-simple**: Available for PostgreSQL-backed session storage (not yet wired up)
-- **express-session**: Session management (available in dependencies)
+- **Resend**: Transactional email service (`RESEND_API_KEY`). Sends order confirmations, shipping notifications, password reset emails, subscription renewal reminders.
+- **connect-pg-simple**: PostgreSQL-backed session storage for express-session
+- **express-session**: Session management with 30-day cookies, httpOnly, secure in production
 
 # Bot / LLM Crawler Support
 
