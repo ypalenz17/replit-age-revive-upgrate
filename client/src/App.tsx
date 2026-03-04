@@ -15,6 +15,9 @@ const ShippingPage = lazy(() => import("./pages/ShippingPage"));
 const Purchase = lazy(() => import("./pages/Purchase"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 const OrderConfirmed = lazy(() => import("./pages/OrderConfirmed"));
+const Login = lazy(() => import("./pages/Login"));
+const Signup = lazy(() => import("./pages/Signup"));
+const Account = lazy(() => import("./pages/Account"));
 
 function LoadingFallback() {
   return (
@@ -43,6 +46,9 @@ function App() {
           <Route path="/privacy" component={PrivacyPage} />
           <Route path="/terms" component={TermsPage} />
           <Route path="/shipping" component={ShippingPage} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/account" component={Account} />
           <Route>
             <Redirect to="/" />
           </Route>

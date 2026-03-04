@@ -14,7 +14,7 @@ Preferred communication style: Simple, everyday language.
 - **Component Library**: shadcn/ui (new-york style) — extensive set of Radix UI primitives in `client/src/components/ui/`
 - **Animations**: GSAP with ScrollTrigger plugin for scroll-based animations
 - **State Management**: TanStack React Query for server state; local React state otherwise
-- **Routing**: Wouter-based routing in `App.tsx`. Routes: `/` → Home (`Home.tsx`), `/shop` → Shop (`Shop.tsx`), `/product/:slug` → Product detail (`Shop.tsx`), `/science` → Science (`pages/Science.tsx`), `/quality` → Quality (`pages/Quality.tsx`), `/faq` → FAQ (`pages/FAQ.tsx`), `/privacy` → Privacy (`pages/PrivacyPage.tsx`), `/terms` → Terms (`pages/TermsPage.tsx`), `/shipping` → Shipping (`pages/ShippingPage.tsx`), fallback → redirect to `/`
+- **Routing**: Wouter-based routing in `App.tsx`. Routes: `/` → Home (`Home.tsx`), `/shop` → Shop (`Shop.tsx`), `/product/:slug` → Product detail (`Shop.tsx`), `/science` → Science (`pages/Science.tsx`), `/quality` → Quality (`pages/Quality.tsx`), `/faq` → FAQ (`pages/FAQ.tsx`), `/privacy` → Privacy (`pages/PrivacyPage.tsx`), `/terms` → Terms (`pages/TermsPage.tsx`), `/shipping` → Shipping (`pages/ShippingPage.tsx`), `/login` → Login (`pages/Login.tsx`), `/signup` → Signup (`pages/Signup.tsx`), `/account` → Account (`pages/Account.tsx`), fallback → redirect to `/`
 - **Legal Utilities**: Shared SEO helpers in `client/src/legal/legalUtils.ts` — provides `useLegalSeo()` for meta tags, canonical, OG tags, JSON-LD (WebPage + BreadcrumbList), plus `LEGAL` constants (brand name, support email, internal URLs)
 - **Pre-rendering**: Server-side HTML injection via `server/prerender.ts` — every route returns real HTML content (not just a React shell) for bot/LLM scannability. Route handlers in `server/routes.ts` intercept page requests before Vite/static catch-all and inject per-route content, meta tags, and navigation.
 - **Path Aliases**: `@/` maps to `client/src/`, `@shared/` maps to `shared/`, `@assets/` maps to `attached_assets/`
@@ -22,6 +22,7 @@ Preferred communication style: Simple, everyday language.
 ## Backend
 - **Framework**: Express 5 on Node.js, written in TypeScript and run via `tsx`
 - **Architecture**: HTTP server created with `createServer()`, routes registered in `server/routes.ts`, all API routes should be prefixed with `/api`
+- **Authentication**: Email + password auth with bcrypt hashing (10 rounds). Session management via `express-session` with `connect-pg-simple` PostgreSQL store (table: `user_sessions`). Session cookie: `ar.sid`, 30-day expiry, httpOnly, secure in production. Auth context via `useAuth()` hook (`client/src/hooks/useAuth.tsx`). API routes: `POST /api/auth/signup`, `POST /api/auth/login`, `POST /api/auth/logout`, `GET /api/auth/me`. Checkout pre-fills email and skips step 1 for logged-in users.
 - **Storage**: Uses `DatabaseStorage` (backed by PostgreSQL) when `DATABASE_URL` is set, falling back to `MemStorage` for basic user ops. Order operations require the database. Both implement the `IStorage` interface in `server/storage.ts`.
 - **Dev Server**: Vite dev server is attached as middleware in development mode (`server/vite.ts`), with HMR support
 - **Production**: Client is built to `dist/public/`, server is bundled with esbuild to `dist/index.cjs`

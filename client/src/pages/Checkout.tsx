@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, Link, Redirect } from 'wouter';
 import { ChevronDown, ChevronLeft, Check, Mail, Loader2 } from 'lucide-react';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import { useCart } from '../cartStore';
+import { useAuth } from '../hooks/useAuth';
 import { apiRequest } from '../lib/queryClient';
 
 type Step = 1 | 2;
@@ -18,12 +19,20 @@ const US_STATES = [
 export default function Checkout() {
   const [, navigate] = useLocation();
   const cart = useCart();
-  const [step, setStep] = useState<Step>(1);
+  const { user, isAuthenticated } = useAuth();
+  const [step, setStep] = useState<Step>(isAuthenticated ? 2 : 1);
   const [cartExpanded, setCartExpanded] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState('');
 
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(user?.email || '');
+
+  useEffect(() => {
+    if (isAuthenticated && user?.email) {
+      setEmail(user.email);
+      setStep(2);
+    }
+  }, [isAuthenticated, user]);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [address, setAddress] = useState('');

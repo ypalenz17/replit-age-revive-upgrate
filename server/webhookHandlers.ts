@@ -107,6 +107,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, stripe:
     stripeSessionId: session.id,
     stripePaymentIntentId: (session.payment_intent as string) || null,
     stripeSubscriptionId: isSubscription ? (session.subscription as string) || null : null,
+    userId: null,
     email: session.customer_email || session.customer_details?.email || "",
     status: isSubscription ? "active" : "paid",
     orderType: isSubscription ? "subscription" : "one_time",

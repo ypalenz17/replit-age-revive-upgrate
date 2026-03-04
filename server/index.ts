@@ -1,9 +1,17 @@
 import express, { type Request, Response, NextFunction } from "express";
+import session from "express-session";
+import connectPgSimple from "connect-pg-simple";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
 import { WebhookHandlers } from "./webhookHandlers";
 import { initStripe } from "./stripeClient";
+
+declare module "express-session" {
+  interface SessionData {
+    userId: string;
+  }
+}
 
 const app = express();
 const httpServer = createServer(app);
@@ -58,6 +66,29 @@ app.use(
 );
 
 app.use(express.urlencoded({ extended: false, limit: "100kb" }));
+
+const PgStore = connectPgSimple(session);
+app.use(
+  session({
+    store: process.env.DATABASE_URL
+      ? new PgStore({
+          conString: process.env.DATABASE_URL,
+          createTableIfMissing: true,
+          tableName: "user_sessions",
+        })
+      : undefined,
+    secret: process.env.SESSION_SECRET || "dev-session-secret-change-me",
+    resave: false,
+    saveUninitialized: false,
+    name: "ar.sid",
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    },
+  }),
+);
 
 app.use((req, res, next) => {
   res.setHeader("X-Content-Type-Options", "nosniff");

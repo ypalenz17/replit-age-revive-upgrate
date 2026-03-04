@@ -1,5 +1,6 @@
 import type { Express } from "express";
 import type { Server } from "http";
+import bcrypt from "bcrypt";
 import { isKnownAppRoute, normalizePath } from "./prerender";
 import { getUncachableStripeClient, getPublishableKey } from "./stripeClient";
 import { storage } from "./storage";
@@ -142,6 +143,129 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
     res.setHeader("Content-Type", "text/markdown; charset=utf-8");
     return res.send(SITE_CONTENT);
+  });
+
+  app.post("/api/auth/signup", async (req, res) => {
+    try {
+      const { email, username, password } = req.body as {
+        email: string;
+        username: string;
+        password: string;
+      };
+
+      if (!email || !email.includes("@") || !email.includes(".")) {
+        return res.status(400).json({ message: "Valid email is required" });
+      }
+      if (!username || username.trim().length < 2) {
+        return res.status(400).json({ message: "Username must be at least 2 characters" });
+      }
+      if (!password || password.length < 8) {
+        return res.status(400).json({ message: "Password must be at least 8 characters" });
+      }
+
+      const normalizedEmail = email.toLowerCase().trim();
+      const normalizedUsername = username.trim();
+
+      const existingEmail = await storage.getUserByEmail(normalizedEmail);
+      if (existingEmail) {
+        return res.status(409).json({ message: "An account with these details already exists" });
+      }
+
+      const existingUsername = await storage.getUserByUsername(normalizedUsername);
+      if (existingUsername) {
+        return res.status(409).json({ message: "An account with these details already exists" });
+      }
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const user = await storage.createUser({
+        email: normalizedEmail,
+        username: normalizedUsername,
+        password: hashedPassword,
+      });
+
+      req.session.regenerate((err) => {
+        if (err) {
+          console.error("[auth] Session regenerate error:", err);
+        }
+        req.session.userId = user.id;
+        req.session.save(() => {
+          return res.status(201).json({
+            id: user.id,
+            email: user.email,
+            username: user.username,
+          });
+        });
+      });
+    } catch (err: any) {
+      console.error("[auth] Signup error:", err);
+      return res.status(500).json({ message: "Failed to create account" });
+    }
+  });
+
+  app.post("/api/auth/login", async (req, res) => {
+    try {
+      const { email, password } = req.body as { email: string; password: string };
+
+      if (!email || !password) {
+        return res.status(400).json({ message: "Email and password are required" });
+      }
+
+      const normalizedEmail = email.toLowerCase().trim();
+      const user = await storage.getUserByEmail(normalizedEmail);
+      if (!user) {
+        return res.status(401).json({ message: "Invalid email or password" });
+      }
+
+      const validPassword = await bcrypt.compare(password, user.password);
+      if (!validPassword) {
+        return res.status(401).json({ message: "Invalid email or password" });
+      }
+
+      req.session.regenerate((err) => {
+        if (err) {
+          console.error("[auth] Session regenerate error:", err);
+        }
+        req.session.userId = user.id;
+        req.session.save(() => {
+          return res.json({
+            id: user.id,
+            email: user.email,
+            username: user.username,
+          });
+        });
+      });
+    } catch (err: any) {
+      console.error("[auth] Login error:", err);
+      return res.status(500).json({ message: "Failed to log in" });
+    }
+  });
+
+  app.post("/api/auth/logout", (req, res) => {
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(500).json({ message: "Failed to log out" });
+      }
+      res.clearCookie("ar.sid");
+      return res.json({ message: "Logged out" });
+    });
+  });
+
+  app.get("/api/auth/me", async (req, res) => {
+    if (!req.session.userId) {
+      return res.status(401).json({ message: "Not authenticated" });
+    }
+
+    const user = await storage.getUser(req.session.userId);
+    if (!user) {
+      req.session.destroy(() => {});
+      return res.status(401).json({ message: "Not authenticated" });
+    }
+
+    return res.json({
+      id: user.id,
+      email: user.email,
+      username: user.username,
+    });
   });
 
   app.get("/api/stripe/publishable-key", async (_req, res) => {
@@ -295,6 +419,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
             stripeSessionId: session.id,
             stripePaymentIntentId: null,
             stripeSubscriptionId: null,
+            userId: req.session.userId || null,
             email,
             status: "pending",
             orderType: hasSubscription ? "subscription" : "one_time",

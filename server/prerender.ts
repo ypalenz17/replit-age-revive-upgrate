@@ -46,7 +46,7 @@ const PRODUCT_SLUG_SET = new Set<ProductSlug>(PRODUCT_SLUGS);
 const PRODUCT_ROUTE_REGEX = /^\/product\/([a-z0-9-]+)$/;
 const PRODUCT_PURCHASE_REGEX = /^\/product\/([a-z0-9-]+)\/purchase$/;
 
-const UTILITY_ROUTE_SET = new Set<string>(["/checkout", "/order-confirmed"]);
+const UTILITY_ROUTE_SET = new Set<string>(["/checkout", "/order-confirmed", "/login", "/signup", "/account"]);
 
 const FAQ_ITEMS: FaqItem[] = FAQ_CATEGORIES.flatMap((category) =>
   category.items.map((item) => ({ question: item.q, answer: item.a })),

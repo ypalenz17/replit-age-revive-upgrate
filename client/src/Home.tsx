@@ -4,10 +4,12 @@ import {
   ChevronDown,
   Menu,
   ShoppingBag,
+  User,
   X
 } from 'lucide-react';
 
 import { gsap } from 'gsap';
+import { useAuth } from './hooks/useAuth';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PRODUCTS as SELECTOR_PRODUCTS, BrandName } from './productsData';
@@ -192,6 +194,7 @@ const SideSheet = ({ isOpen, onClose, title, children }: { isOpen: boolean; onCl
 };
 
 const Navbar = () => {
+  const { isAuthenticated } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
@@ -248,6 +251,9 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-1.5 sm:gap-2">
+            <a href={isAuthenticated ? '/account' : '/login'} className="min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-teal-300 transition-colors" aria-label={isAuthenticated ? 'Account' : 'Sign In'} data-testid="nav-account">
+              <User size={18} />
+            </a>
             <button onClick={cart.openCart} className="relative min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-teal-300 transition-colors" aria-label="Cart" data-testid="nav-cart">
               <ShoppingBag size={18} />
               <span className="absolute -top-0.5 -right-0.5 w-[15px] h-[15px] flex items-center justify-center text-[9px] font-mono font-bold rounded-sm leading-none text-teal-300 border border-teal-300/40 bg-white/[0.04]">
@@ -304,6 +310,14 @@ const Navbar = () => {
                   </a>
                 )
               ))}
+              <a
+                href={isAuthenticated ? '/account' : '/login'}
+                onClick={() => setMobileOpen(false)}
+                className="py-3 min-h-[44px] flex items-center text-[13px] font-mono font-bold uppercase tracking-[0.10em] text-teal-300 hover:text-teal-200 transition-colors border-t border-white/[0.05]"
+                data-testid="mobile-nav-account"
+              >
+                {isAuthenticated ? 'Account' : 'Sign In'}
+              </a>
             </div>
           </div>
         </div>

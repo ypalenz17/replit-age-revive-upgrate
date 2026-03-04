@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type Order, type InsertOrder, orders } from "@shared/schema";
+import { type User, type InsertUser, type Order, type InsertOrder, users, orders } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { eq, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/node-postgres";
@@ -7,6 +7,7 @@ import pg from "pg";
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
+  getUserByEmail(email: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
   createOrder(order: InsertOrder): Promise<Order>;
   getOrderByStripeSessionId(sessionId: string): Promise<Order | undefined>;
@@ -20,26 +21,32 @@ export interface IStorage {
 }
 
 export class MemStorage implements IStorage {
-  private users: Map<string, User>;
+  private userStore: Map<string, User>;
 
   constructor() {
-    this.users = new Map();
+    this.userStore = new Map();
   }
 
   async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
+    return this.userStore.get(id);
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
+    return Array.from(this.userStore.values()).find(
       (user) => user.username === username,
+    );
+  }
+
+  async getUserByEmail(email: string): Promise<User | undefined> {
+    return Array.from(this.userStore.values()).find(
+      (user) => user.email === email,
     );
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
     const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
+    const user: User = { ...insertUser, id, createdAt: new Date() };
+    this.userStore.set(id, user);
     return user;
   }
 
@@ -81,16 +88,23 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getUser(id: string): Promise<User | undefined> {
-    return undefined;
+    const [user] = await this.db.select().from(users).where(eq(users.id, id)).limit(1);
+    return user;
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return undefined;
+    const [user] = await this.db.select().from(users).where(eq(users.username, username)).limit(1);
+    return user;
+  }
+
+  async getUserByEmail(email: string): Promise<User | undefined> {
+    const [user] = await this.db.select().from(users).where(eq(users.email, email)).limit(1);
+    return user;
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
-    return { ...insertUser, id };
+    const [created] = await this.db.insert(users).values(insertUser).returning();
+    return created;
   }
 
   async createOrder(order: InsertOrder): Promise<Order> {
