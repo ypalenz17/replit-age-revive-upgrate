@@ -1,14 +1,25 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearch } from 'wouter';
-import { Loader2 } from 'lucide-react';
+import { Loader2, CheckCircle2 } from 'lucide-react';
 import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import { useCart } from '../cartStore';
+
+interface OrderItem {
+  slug: string;
+  name: string;
+  price: number;
+  quantity: number;
+  isSubscribe: boolean;
+  frequency: string;
+}
 
 interface SessionData {
   status: string;
   customerEmail: string;
   amountTotal: number;
   currency: string;
+  orderId?: string;
+  items?: OrderItem[];
   metadata: Record<string, string>;
 }
 
@@ -74,33 +85,79 @@ export default function OrderConfirmed() {
           </>
         ) : (
           <>
+            <div className="flex justify-center mb-5">
+              <CheckCircle2 size={48} className="text-ar-teal" />
+            </div>
             <p className="text-[12px] font-mono uppercase tracking-[0.12em] text-white/35 mb-3">Order Status</p>
             <h1 className="text-[30px] font-head font-normal uppercase tracking-[-0.03em] text-white mb-4" data-testid="order-confirmed-title">
               Order Confirmed
             </h1>
-            <p className="text-[14px] text-white/55 leading-relaxed mb-4" data-testid="order-confirmed-body">
+            <p className="text-[14px] text-white/55 leading-relaxed mb-6" data-testid="order-confirmed-body">
               Your order has been received and payment has been processed successfully.
             </p>
 
             {session && (
-              <div className="mb-8 space-y-2">
-                {session.customerEmail && (
-                  <p className="text-[13px] text-white/40">
-                    Confirmation sent to <span className="text-white/70">{session.customerEmail}</span>
-                  </p>
-                )}
-                {session.amountTotal > 0 && (
-                  <p className="text-[13px] text-white/40">
-                    Total charged: <span className="text-white/70">${session.amountTotal.toFixed(2)} {(session.currency || 'usd').toUpperCase()}</span>
-                  </p>
-                )}
-                {session.metadata?.shipping_first_name && (
-                  <p className="text-[13px] text-white/40">
-                    Shipping to: <span className="text-white/70">
-                      {session.metadata.shipping_first_name} {session.metadata.shipping_last_name}, {session.metadata.shipping_city}, {session.metadata.shipping_state} {session.metadata.shipping_zip}
+              <div className="mb-8 text-left">
+                <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 space-y-4">
+                  {session.items && session.items.length > 0 && (
+                    <div className="space-y-3">
+                      <p className="text-[11px] font-mono uppercase tracking-[0.1em] text-white/30">Items</p>
+                      {session.items.map((item, idx) => (
+                        <div key={idx} className="flex items-center justify-between" data-testid={`order-item-${idx}`}>
+                          <div>
+                            <p className="text-[13px] font-head font-normal uppercase text-white">{item.name}</p>
+                            <p className="text-[11px] text-white/35">{item.frequency} &middot; Qty {item.quantity}</p>
+                          </div>
+                          <span className="text-[13px] font-sans font-semibold text-white">${(item.price * item.quantity).toFixed(2)}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="h-px bg-white/[0.06]" />
+
+                  <div className="flex items-center justify-between">
+                    <span className="text-[12px] text-white/40">Total</span>
+                    <span className="text-[15px] font-sans font-semibold text-white" data-testid="order-total">
+                      ${session.amountTotal.toFixed(2)} {(session.currency || 'usd').toUpperCase()}
                     </span>
-                  </p>
-                )}
+                  </div>
+
+                  {session.customerEmail && (
+                    <>
+                      <div className="h-px bg-white/[0.06]" />
+                      <div className="flex items-center justify-between">
+                        <span className="text-[12px] text-white/40">Confirmation email</span>
+                        <span className="text-[13px] text-white/70">{session.customerEmail}</span>
+                      </div>
+                    </>
+                  )}
+
+                  {session.metadata?.shipping_first_name && (
+                    <>
+                      <div className="h-px bg-white/[0.06]" />
+                      <div>
+                        <p className="text-[12px] text-white/40 mb-1">Shipping to</p>
+                        <p className="text-[13px] text-white/70">
+                          {session.metadata.shipping_first_name} {session.metadata.shipping_last_name}
+                        </p>
+                        <p className="text-[13px] text-white/50">
+                          {session.metadata.shipping_address}, {session.metadata.shipping_city}, {session.metadata.shipping_state} {session.metadata.shipping_zip}
+                        </p>
+                      </div>
+                    </>
+                  )}
+
+                  {session.orderId && (
+                    <>
+                      <div className="h-px bg-white/[0.06]" />
+                      <div className="flex items-center justify-between">
+                        <span className="text-[12px] text-white/40">Order ID</span>
+                        <span className="text-[11px] font-mono text-white/35">{session.orderId.slice(0, 8)}</span>
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
             )}
 

@@ -22,17 +22,19 @@ Preferred communication style: Simple, everyday language.
 ## Backend
 - **Framework**: Express 5 on Node.js, written in TypeScript and run via `tsx`
 - **Architecture**: HTTP server created with `createServer()`, routes registered in `server/routes.ts`, all API routes should be prefixed with `/api`
-- **Storage**: Currently uses in-memory storage (`MemStorage` class in `server/storage.ts`) implementing an `IStorage` interface. Designed to be swapped for a database-backed implementation.
+- **Storage**: Uses `DatabaseStorage` (backed by PostgreSQL) when `DATABASE_URL` is set, falling back to `MemStorage` for basic user ops. Order operations require the database. Both implement the `IStorage` interface in `server/storage.ts`.
 - **Dev Server**: Vite dev server is attached as middleware in development mode (`server/vite.ts`), with HMR support
 - **Production**: Client is built to `dist/public/`, server is bundled with esbuild to `dist/index.cjs`
 
 ## Database
 - **ORM**: Drizzle ORM configured for PostgreSQL
-- **Schema**: Defined in `shared/schema.ts` — currently has a `users` table with `id` (UUID), `username`, and `password` columns
+- **Schema**: Defined in `shared/schema.ts` — has `users` table (id UUID, username, password) and `orders` table (id UUID, stripe_session_id, email, status, total_amount, currency, shipping fields, items JSONB, fulfillment_status, tracking fields, timestamps)
 - **Validation**: `drizzle-zod` generates Zod schemas from Drizzle table definitions
 - **Migrations**: Drizzle Kit configured with `drizzle.config.ts`, migrations output to `./migrations/`. Use `npm run db:push` to push schema changes.
 - **Connection**: Requires `DATABASE_URL` environment variable pointing to a PostgreSQL instance
-- **Note**: The app currently uses in-memory storage by default. The database schema and Drizzle config are set up but the storage layer hasn't been wired to use PostgreSQL yet.
+- **Stripe Integration**: Uses `stripe-replit-sync` for webhook processing and data sync. Stripe API keys stored as env secrets (`STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`). Webhook registered at `/api/stripe/webhook`. Orders are created as "pending" at checkout session creation, then updated to "paid" when Stripe webhook confirms payment.
+- **Order Flow**: Cart (client) -> POST /api/checkout/session (creates pending order + Stripe session) -> Stripe hosted checkout -> webhook confirms payment -> order status updated to "paid" -> /order-confirmed page shows order details
+- **API Routes**: `GET /api/stripe/publishable-key`, `POST /api/checkout/session`, `GET /api/checkout/session/:sessionId`, `GET /api/orders/:orderId`, `GET /api/orders?email=...`
 
 ## Build System
 - **Dev**: `npm run dev` — runs Express + Vite dev server with HMR via `tsx`

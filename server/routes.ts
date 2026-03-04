@@ -2,6 +2,28 @@ import type { Express } from "express";
 import type { Server } from "http";
 import { isKnownAppRoute, normalizePath } from "./prerender";
 import { getUncachableStripeClient, getPublishableKey } from "./stripeClient";
+import { storage } from "./storage";
+import { WebhookHandlers } from "./webhookHandlers";
+import type { Order } from "@shared/schema";
+
+function formatOrderResponse(order: Order) {
+  return {
+    status: order.status === "paid" ? "paid" : "unpaid",
+    customerEmail: order.email,
+    amountTotal: order.totalAmount / 100,
+    currency: order.currency,
+    orderId: order.id,
+    items: order.items,
+    metadata: {
+      shipping_first_name: order.shippingFirstName,
+      shipping_last_name: order.shippingLastName,
+      shipping_address: order.shippingAddress,
+      shipping_city: order.shippingCity,
+      shipping_state: order.shippingState,
+      shipping_zip: order.shippingZip,
+    },
+  };
+}
 
 const CANONICAL_HOST = (process.env.CANONICAL_HOST ?? "agerevive.com").toLowerCase();
 
@@ -205,6 +227,41 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         cancel_url: `${baseUrl}/checkout`,
       });
 
+      if (process.env.DATABASE_URL) {
+        try {
+          await storage.createOrder({
+            stripeSessionId: session.id,
+            stripePaymentIntentId: null,
+            email,
+            status: "pending",
+            totalAmount: items.reduce((sum, i) => sum + Math.round(i.price * 100) * i.quantity, 0),
+            currency: "usd",
+            shippingFirstName: shipping.firstName,
+            shippingLastName: shipping.lastName,
+            shippingAddress: shipping.address,
+            shippingApt: shipping.apt || null,
+            shippingCity: shipping.city,
+            shippingState: shipping.state,
+            shippingZip: shipping.zip,
+            shippingCountry: shipping.country || "US",
+            items: items.map((i) => ({
+              slug: i.slug,
+              name: i.name,
+              price: i.price,
+              quantity: i.quantity,
+              isSubscribe: i.isSubscribe,
+              frequency: i.frequency,
+            })),
+            fulfillmentStatus: "unfulfilled",
+            trackingNumber: null,
+            trackingCarrier: null,
+            notes: null,
+          });
+        } catch (orderErr) {
+          console.error("[orders] Failed to create pending order:", orderErr);
+        }
+      }
+
       return res.json({ url: session.url });
     } catch (err: any) {
       console.error("[stripe] Checkout session error:", err);
@@ -214,6 +271,24 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   app.get("/api/checkout/session/:sessionId", async (req, res) => {
     try {
+      if (process.env.DATABASE_URL) {
+        const order = await storage.getOrderByStripeSessionId(req.params.sessionId);
+
+        if (order && order.status === "pending") {
+          try {
+            await WebhookHandlers.handleCheckoutSessionDirect(req.params.sessionId);
+            const updated = await storage.getOrderByStripeSessionId(req.params.sessionId);
+            if (updated) {
+              return res.json(formatOrderResponse(updated));
+            }
+          } catch {}
+        }
+
+        if (order) {
+          return res.json(formatOrderResponse(order));
+        }
+      }
+
       const stripe = await getUncachableStripeClient();
       const session = await stripe.checkout.sessions.retrieve(req.params.sessionId);
 
@@ -227,6 +302,34 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     } catch (err: any) {
       console.error("[stripe] Session retrieve error:", err);
       return res.status(500).json({ message: "Failed to retrieve session" });
+    }
+  });
+
+  app.get("/api/orders/:orderId", async (req, res) => {
+    try {
+      const order = await storage.getOrderById(req.params.orderId);
+      if (!order) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+
+      const emailHeader = req.headers["x-order-email"] as string;
+      if (!emailHeader || emailHeader.toLowerCase() !== order.email.toLowerCase()) {
+        return res.status(403).json({ message: "Access denied" });
+      }
+
+      return res.json({
+        id: order.id,
+        status: order.status,
+        totalAmount: order.totalAmount / 100,
+        currency: order.currency,
+        items: order.items,
+        fulfillmentStatus: order.fulfillmentStatus,
+        trackingNumber: order.trackingNumber,
+        trackingCarrier: order.trackingCarrier,
+        createdAt: order.createdAt,
+      });
+    } catch (err: any) {
+      return res.status(500).json({ message: "Failed to retrieve order" });
     }
   });
 
