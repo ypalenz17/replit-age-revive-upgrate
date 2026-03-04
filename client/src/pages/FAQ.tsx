@@ -466,6 +466,21 @@ export default function FAQ() {
               )}
             </div>
 
+            <div className="mt-12 ar-luxury-card ar-luxury-card-glow p-5 sm:p-7 md:p-10 text-center" data-testid="section-contact">
+              <p className="ar-luxury-eyebrow mx-auto text-[10px]">Contact us</p>
+              <h2 className="mt-4 text-2xl font-semibold tracking-tight">Still have questions?</h2>
+              <p className="mt-3 max-w-2xl mx-auto text-sm leading-relaxed text-white/60">
+                Our team is here to help. Reach out any time and we will get back to you as quickly as possible.
+              </p>
+              <a
+                href="mailto:support@agerevive.com"
+                className="ar-luxury-btn-primary mt-6 inline-flex"
+                data-testid="link-contact-email"
+              >
+                support@agerevive.com
+              </a>
+            </div>
+
             <div className="mt-12 ar-luxury-card ar-luxury-card-glow p-5 sm:p-7 md:p-10 text-center" data-testid="section-build-protocol">
               <p className="ar-luxury-eyebrow mx-auto text-[10px]">Next step</p>
               <h2 className="mt-4 text-2xl font-semibold tracking-tight">Build your protocol</h2>
