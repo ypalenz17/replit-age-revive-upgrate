@@ -38,6 +38,7 @@ interface SeoMetadata {
 const BRAND_NAME = "Age Revive";
 const SITE_ORIGIN = "https://agerevive.com";
 const DEFAULT_OG_IMAGE_PATH = "/images/lifestyle-wellness_1.jpg";
+const ORGANIZATION_LOGO_URL = `${SITE_ORIGIN}/favicon.png`;
 
 export const PRODUCT_SLUGS: ProductSlug[] = ["cellunad", "cellubiome", "cellunova"];
 
@@ -531,6 +532,7 @@ function buildCommonJsonLd(): unknown[] {
       "@type": "Organization",
       name: BRAND_NAME,
       url: `${SITE_ORIGIN}/`,
+      logo: ORGANIZATION_LOGO_URL,
       brand: {
         "@type": "Brand",
         name: BRAND_NAME,
