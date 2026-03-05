@@ -1,0 +1,117 @@
+## CELLUNOVA product page rules
+
+This is a top-priority product page and one of the most compliance-sensitive pages on the site.
+It must feel premium, credible, restrained, and extremely clear.
+
+### Core positioning
+CELLUNOVA should be presented as a premium periodic protocol layer.
+It must not be presented like:
+- a daily baseline product
+- a generic supplement PDP
+- a science essay
+- a biotech fantasy page
+- a protocol-builder first
+- a one-size-fits-all product
+
+### What the page must answer fast
+1. What is CELLUNOVA?
+2. Is it a daily product or a periodic protocol?
+3. Who is it best for?
+4. Who is it not for?
+5. Why is it different from generic “autophagy” or “senolytic” blends?
+6. Why should I trust it?
+7. How do I use it?
+8. How does it fit into the broader Age Revive system?
+
+### Core strategy
+This page must convert with honesty.
+It should feel like a premium periodic protocol page built for intelligent buyers, not hype-driven supplement marketing.
+
+The order should be:
+- understand
+- trust
+- buy
+- then explore deeper science
+
+### Absolutely forbidden
+Never introduce:
+- DNA helix icons
+- gene or chromosome imagery
+- molecule graphics
+- neural/circuit/AI motifs
+- futuristic biotech styling
+- glowing particles
+- sci-fi gradients
+- zombie cell cartoons
+- generic wellness icon packs
+- decorative icons that add no meaning
+- glassmorphism
+- holographic UI
+- random blobs
+- stock medical icon clutter
+
+Default to no icons unless they clearly improve comprehension.
+
+### Copy restrictions
+Do not use:
+- AI fluff
+- biotech hype
+- exaggerated senolytic claims
+- drug-like language
+- “zombie cells” language
+- overconfident anti-aging promises
+- vague futurist phrasing
+
+Use calm, evidence-aware, support-oriented language.
+
+### Hard consistency rules
+- Do not let this page inherit copy from other product pages
+- Remove any leftover language that suggests this is a daily baseline product if that language appears
+- Remove any leftover language that suggests this product is enteric-protected if that language appears
+- Remove any leftover language that suggests the wrong serving or cadence if that language appears
+- Do not let protocol-stack UI dominate a single-product landing page
+- The sticky mobile CTA must be product-specific, not a generic protocol-stack bar
+- If approved product content includes allergen or clinician-consult notes, surface them clearly before deep scroll
+- If approved product content positions this as a periodic layer rather than the default starting product, that must be clear throughout the page
+- Do not present senescence/autophagy language more aggressively than approved site content supports
+
+### Visual rules
+Use:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Existing primary accent only
+
+Create real chapter breaks with:
+- tonal shifts
+- spacing
+- card surfaces
+- typography hierarchy
+- restrained section markers
+
+The page must not feel like one long dark slab.
+
+### Product page priorities
+1. Product-truth consistency
+2. Strong hero and buy box
+3. Early trust
+4. Clear periodic-protocol positioning
+5. Clear “who it’s for” guidance
+6. Stronger differentiation
+7. Cleaner mobile sticky buy behavior
+8. Better section separation
+9. Better science hierarchy
+10. Stronger premium feel
+
+### Done when
+The page feels:
+- elite
+- premium
+- honest
+- easy to trust
+- easy to scan
+- easy to buy from
+- clearly structured
+- clearly not generic biotech
+- clearly not generic supplement ecommerce
+- excellent on mobile
