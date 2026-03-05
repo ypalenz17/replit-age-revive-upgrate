@@ -1,0 +1,462 @@
+You are a top-tier DTC landing page strategist, conversion-focused UX designer, and senior front-end engineer.
+
+Audit and improve the CELLUNOVA product page so it feels elite and converts cold or warm paid traffic without overclaiming.
+
+This page is a premium periodic-protocol landing page.
+It must feel clear, trustworthy, high-end, evidence-aware, and easy to buy from on mobile.
+
+Do not just suggest changes.
+Implement them directly in code.
+
+CONTEXT
+
+Brand:
+- Age Revive
+
+Product:
+- CELLUNOVA
+
+Desired perception:
+- premium
+- clinically informed
+- restrained
+- trustworthy
+- sophisticated
+- clearly intentional
+
+This page should not feel like:
+- a generic supplement PDP
+- a biotech sci-fi page
+- a hype-heavy senolytic page
+- a long dark science scroll
+- a protocol-stack UI pretending to be a product page
+
+NON-NEGOTIABLE RULES
+
+Do not introduce:
+- DNA helix icons
+- gene/chromosome imagery
+- molecule graphics
+- neural/circuit/AI motifs
+- decorative icon packs
+- biotech cliché visuals
+- zombie-cell visual language
+- futuristic lab aesthetics
+- glowing particles
+- glassmorphism
+- loud gradients
+- stock medical icon clutter
+- meaningless decorative graphics
+
+Default to zero icons unless they genuinely improve comprehension.
+
+Do not use copy such as:
+- revolutionary
+- next-gen
+- cutting-edge
+- hack your aging
+- optimize your biology
+- engineered longevity
+- breakthrough system
+- zombie cells
+- age reversal promises
+- drug-equivalent language
+- overconfident senolytic claims
+
+Use calm, concise, evidence-aware, premium language.
+
+CRITICAL PRODUCT-TRUTH RULES
+
+Treat the approved current CELLUNOVA product content in the codebase as source of truth.
+Preserve and keep internally consistent:
+- serving and cadence
+- whether it is daily or periodic
+- ingredient list and supplement facts
+- FAQ answers
+- safety notes
+- allergen notes
+- product role in the broader Age Revive system
+
+Important:
+- remove any inherited copy that does not belong on CELLUNOVA
+- if any section currently implies daily use, fix it
+- if any section currently implies enteric protection, fix it
+- if any section currently shows the wrong serving or cadence, fix it
+- do not let this page accidentally borrow CELLUNAD+ or CELLUBIOME language
+
+MAIN UX PROBLEMS TO FIX
+
+1. The page still feels too much like one long dark slab
+2. The hero and buy box are not decisive enough for a premium, more advanced product
+3. Product-truth consistency appears weak in some lower sections and sticky UI
+4. The sticky purchase UI feels too much like a protocol-builder and not enough like a product page
+5. The page needs clearer “who it’s for” guidance
+6. The science should support the conversion path, not overwhelm it
+7. The page needs stronger differentiation from generic autophagy/senolytic blends
+8. The page needs stronger trust presentation
+9. The current page likely uses too many competing CTA styles or labels
+10. The page needs more premium rhythm, better section separation, and cleaner mobile UX
+
+PRIMARY PAGE STRATEGY
+
+This page must convert with honesty.
+
+The sequence should be:
+1. Immediate product clarity
+2. Immediate trust
+3. Immediate understanding of protocol role
+4. Immediate buying path
+5. Then deeper science
+6. Then usage, safety, stack logic, FAQ, and final CTA
+
+The visitor should quickly understand:
+- what this product is
+- that it is a periodic protocol layer if the approved content positions it that way
+- how it fits into the broader system
+- why it is different
+- whether it is right for them
+
+COLOR / SECTION RHYTHM
+
+The page must not remain in nearly the same dark value throughout.
+
+Use:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Existing primary accent only
+
+Create rhythm like:
+dark -> light -> dark -> light -> dark
+
+Use tonal shifts, spacing, card contrast, and typography hierarchy to create real chapter breaks.
+Do not solve this with decorative graphics.
+
+ABOVE-THE-FOLD / HERO / BUY BOX
+
+Refactor the hero and buy box to be premium, direct, and high-trust.
+
+The top section must clearly communicate:
+- product name
+- concise product descriptor
+- protocol role
+- the approved cadence/use format
+- clear primary CTA
+- clean secondary CTA for ingredients/evidence if useful
+- visible trust strip near the CTA
+
+The buy zone must make it obvious:
+- what this product is
+- how it is meant to be used
+- that the label is fully disclosed
+- that the formulation is intentional
+- why the buyer should trust it
+
+If reviews exist:
+- make the review summary useful
+- clicking it should jump to reviews
+- it should not be decorative only
+
+EARLY TRUST STRIP
+
+Add or strengthen a compact trust strip directly near the hero/buy box.
+
+Possible trust items, depending on approved site content:
+- full label disclosure
+- no proprietary blends
+- third-party tested
+- evidence-aware formulation
+- lot/CoA support pathway if approved
+- key safety or allergen visibility if approved
+
+This trust strip must be scannable and feel premium.
+
+WHO IT’S FOR / WHO IT’S NOT FOR
+
+Create or move a strong “Who It’s For” block near the top.
+
+This section should help people self-qualify fast.
+
+It should clarify, in practical buyer language:
+- who this protocol is best suited for
+- whether it is intended as a daily baseline or not
+- whether it works best alongside other Age Revive products
+- whether it is appropriate for people specifically seeking a periodic layer
+
+Also consider a concise “Not ideal for” sub-block if approved positioning supports that level of clarity.
+
+This section should feel helpful, not exclusionary.
+
+WHY IT’S DIFFERENT
+
+Create or strengthen a section explaining why CELLUNOVA is not just another generic “autophagy” or “senolytic” supplement.
+
+This section should clearly explain:
+- why the protocol format matters
+- why cadence matters
+- why full dose disclosure matters
+- why the formula is more complete than low-dose daily blends
+- why this belongs in a premium system
+
+Use structured comparison, cards, or elegant rows.
+Avoid dense paragraphs.
+
+HOW IT WORKS / FORMULA ARCHITECTURE
+
+Refactor the core explanation into a cleaner architecture.
+
+The current page likely has too much dark repetition and too many repetitive cards.
+
+Instead, group the formula into a few clean support buckets such as:
+- autophagy-related support
+- senescence-research compounds
+- mitochondrial resilience / oxidative defense support
+
+Important:
+- do not overstate evidence
+- do not imply all ingredients have the same level of human evidence
+- clearly differentiate mechanism rationale from stronger human research where needed
+- keep this section elegant and easy to scan
+
+If the page currently uses decorative icons or icon tiles like cleanup/removal/recovery, remove or simplify them unless they materially improve understanding.
+
+SCIENCE LANGUAGE RULES
+
+This page requires especially careful language.
+
+Do not imply:
+- guaranteed senolytic outcomes
+- drug-like effects
+- clinical certainty where the evidence is early
+- that model-system evidence equals strong human outcome evidence
+- that the product “clears zombie cells” or similar hype phrases
+
+Prefer:
+- support-oriented language
+- periodic protocol framing
+- pathway-related language
+- evidence-aware explanations
+- clear distinctions between mechanism relevance and stronger human evidence
+
+INGREDIENTS / WHAT’S INSIDE / SUPPLEMENT FACTS
+
+Make the ingredient section feel like premium scientific documentation.
+
+Improve:
+- readability
+- hierarchy
+- spacing
+- mobile scanability
+- grouping
+- contrast
+
+Do not present this as a long exhausting stack of disconnected cards if that is the current implementation.
+
+Use a cleaner structure:
+- grouped architecture
+- then full supplement facts
+- then concise rationale
+
+The visitor should be able to understand the formula without excessive scrolling fatigue.
+
+HOW TO USE
+
+The “how to use” section must be clearer, tighter, and friction-reducing.
+
+It should clearly present and keep consistent:
+- approved cadence
+- approved timing/food guidance
+- whether the product is daily or periodic
+- what happens after the protocol window
+- how it fits with the broader system if stacking is part of approved content
+
+This section should also reduce anxiety and surprises.
+
+If approved product content includes:
+- allergen notes
+- clinician consultation notes
+- sensitivity notes
+surface them in a way that is clear and respectful, not buried.
+
+SAFETY / TRUST / QUALITY
+
+Create or strengthen a dedicated trust/quality section on a light clinical background.
+
+Possible proof points, depending on approved content:
+- no proprietary blends
+- full label disclosure
+- third-party testing
+- contaminant / potency / identity framework
+- documentation availability
+- premium formulation logic
+- safety / clinician consult guidance
+- allergen disclosure
+
+This section should feel like premium documentation, not marketing fluff.
+
+MOBILE STICKY BUY BAR
+
+This needs to be cleaned up aggressively.
+
+The sticky mobile purchase bar should be:
+- product-specific
+- simple
+- friction-reducing
+- visually premium
+- obvious
+
+Preferred direction:
+- product name
+- price
+- one clear purchase action
+
+Do not let the default sticky bar behave like a generic protocol-stack controller unless the user has explicitly entered a stack-building flow.
+
+If the current sticky bar shows things like protocol stack, details, total, or add stack by default, refactor that behavior.
+
+CTA SYSTEM
+
+Simplify CTA logic across the page.
+
+Preferred rule:
+- use one primary commerce action consistently in product-buying zones
+- use secondary actions only for learning more, ingredients, or related products
+
+Do not scatter multiple competing primary verbs.
+
+Primary CTA should:
+- use the site’s primary accent
+- feel premium and obvious
+- have polished hover/active/focus states
+- remain consistent in hero, sticky bar, and final CTA
+
+Do not introduce a second CTA color that competes with the primary accent.
+
+IMAGE DIRECTION
+
+Audit imagery and remove anything that feels:
+- generic
+- biotech cliché
+- off-category
+- not clearly supplement-related
+- filler-like
+
+Prefer:
+- product bottle imagery
+- capsule/use context
+- restrained editorial product photography
+- visuals that explain the formula or protocol role
+- premium close-up product storytelling
+
+Avoid:
+- generic stock wellness scenes
+- meaningless abstract visuals
+- decorative pseudo-science imagery
+
+COMPARE SECTION
+
+If a compare section exists, refine it so it feels credible and premium.
+
+It should answer:
+- why this protocol is more intentional than generic blends
+- why format and cadence matter
+- why full disclosure matters
+- why testing and formulation rigor matter
+
+Do not make it feel aggressive or cheap.
+
+CROSS-SELL / SYSTEM SECTION
+
+Keep system cross-sells secondary to the main purchase.
+
+If the page references the broader Age Revive system:
+- make that elegant
+- make it clearly secondary
+- explain how this product layers into the system
+- do not let it overwhelm the main purchase path
+- do not let it imply this is the baseline product if approved content says otherwise
+
+FINAL CTA
+
+The final CTA must be truthful and product-specific.
+
+It should reinforce:
+- the product’s actual role
+- confidence in the formulation
+- confidence in the protocol format
+- premium, restrained urgency
+
+Do not let the final CTA use:
+- daily baseline language if that is not correct
+- enteric-protected language if that is not correct
+- wrong serving/cadence language
+- vague generic system copy
+
+SPACING / TYPOGRAPHY
+
+Improve the rhythm and scanability of the entire page.
+
+Targets:
+- desktop section padding: 100px to 120px top/bottom
+- mobile section padding: 72px to 88px top/bottom
+
+Typography should feel:
+- premium
+- calm
+- easier to scan
+- less dense
+- more editorial
+- not fashion-brand
+- not SaaS template
+
+Use:
+- white primary text on dark
+- softened secondary text on dark
+- deep navy or near-charcoal text on light backgrounds
+
+ACCESSIBILITY
+
+Maintain or improve:
+- contrast
+- semantic structure
+- keyboard access
+- focus visibility
+- tap target size
+- responsiveness
+
+SELF-QA BEFORE STOPPING
+
+Before stopping, audit your own implementation and fix anything that fails:
+
+1. Does the page immediately explain what CELLUNOVA is?
+2. Is it immediately clear whether this is a daily product or a periodic protocol?
+3. Is the buy box strong enough for paid traffic?
+4. Is trust visible in the first scrolls?
+5. Have all leftover wrong-product references been removed?
+6. Is any inherited daily-use language still present where it does not belong?
+7. Is any inherited enteric-protected language still present where it does not belong?
+8. Are serving/cadence references consistent everywhere?
+9. Does the sticky mobile buy bar now feel product-specific and simple?
+10. Are allergen/safety notes visible early enough if approved content includes them?
+11. Does the page avoid overclaiming around autophagy/senescence?
+12. Do sections feel clearly separated now?
+13. Is the page premium enough to justify the price?
+14. Is anything generic, templated, noisy, or biotech-themed?
+15. Are cross-sells clearly secondary to the main purchase path?
+
+If any answer is no, continue refining before stopping.
+
+WORK STYLE
+
+Inspect the codebase, identify the relevant components/styles/content blocks, and implement the improvements directly.
+Keep code clean, maintainable, and production-ready.
+Do not stop at “better.”
+Stop only when the page feels elite.
+
+WHEN DONE, RETURN
+
+1. Summary of what you changed
+2. Files/components modified
+3. Why the changes improve conversion
+4. Why the changes improve trust
+5. Any optional next-step refinements
