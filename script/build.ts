@@ -15,7 +15,6 @@ const allowlist = [
   "connect-pg-simple",
   "cors",
   "date-fns",
-  "drizzle-orm",
   "drizzle-zod",
   "express",
   "express-rate-limit",
@@ -45,6 +44,7 @@ const forceExternals = [
   "@adminjs/upload",
   "adminjs-drizzle",
   "express-formidable",
+  "drizzle-orm",
 ];
 
 async function buildAll() {
