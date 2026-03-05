@@ -13,14 +13,19 @@ export function serveStatic(app: Express) {
 
   const indexHtml = fs.readFileSync(path.resolve(distPath, "index.html"), "utf-8");
 
+  app.use(express.static(distPath));
+
   app.use((req, res, next) => {
     if ((req.method !== "GET" && req.method !== "HEAD") || req.path.startsWith("/api") || req.path.includes(".")) {
       return next();
     }
-    const injected = injectContent(indexHtml, req.path);
-    res.setHeader("Content-Type", "text/html; charset=utf-8");
-    res.send(injected);
+    try {
+      const injected = injectContent(indexHtml, req.path);
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.send(injected);
+    } catch {
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.send(indexHtml);
+    }
   });
-
-  app.use(express.static(distPath));
 }

@@ -18,6 +18,10 @@ const app = express();
 const httpServer = createServer(app);
 app.disable("x-powered-by");
 
+app.get("/healthz", (_req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 function getTrustProxySetting(): boolean | number {
   const configured = (process.env.TRUST_PROXY ?? "").trim().toLowerCase();
   if (configured === "true") {
@@ -107,27 +111,40 @@ app.use(
 app.use(express.urlencoded({ extended: false, limit: "100kb" }));
 
 const PgStore = connectPgSimple(session);
-app.use(
-  session({
-    store: process.env.DATABASE_URL
-      ? new PgStore({
-          conString: process.env.DATABASE_URL,
-          createTableIfMissing: true,
-          tableName: "user_sessions",
-        })
-      : undefined,
-    secret: sessionSecret,
-    resave: false,
-    saveUninitialized: false,
-    name: "ar.sid",
-    cookie: {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 30 * 24 * 60 * 60 * 1000,
-    },
-  }),
-);
+const pgSessionStore = process.env.DATABASE_URL
+  ? new PgStore({
+      conString: process.env.DATABASE_URL,
+      createTableIfMissing: true,
+      tableName: "user_sessions",
+      errorLog: (err: Error) => {
+        console.error("[session-store]", err.message);
+      },
+    })
+  : undefined;
+
+const sessionMiddleware = session({
+  store: pgSessionStore,
+  secret: sessionSecret,
+  resave: false,
+  saveUninitialized: false,
+  name: "ar.sid",
+  cookie: {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+  },
+});
+
+app.use((req, res, next) => {
+  sessionMiddleware(req, res, (err) => {
+    if (err) {
+      console.error("[session] middleware error:", err);
+      return next();
+    }
+    next();
+  });
+});
 
 app.use((req, res, next) => {
   res.setHeader("X-Content-Type-Options", "nosniff");
