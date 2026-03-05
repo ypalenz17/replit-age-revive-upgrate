@@ -1310,7 +1310,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
       return next();
     }
 
-    if (req.path.startsWith("/api") || req.path.includes(".")) {
+    if (req.path.startsWith("/api") || req.path.startsWith("/admin") || req.path.includes(".")) {
       return next();
     }
 

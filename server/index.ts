@@ -237,6 +237,12 @@ process.on("uncaughtException", (error) => {
 
   await registerRoutes(httpServer, app);
 
+  try {
+    await setupAdmin(app);
+  } catch (err) {
+    console.error("[admin] Init failed (non-fatal):", err);
+  }
+
   app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
     const errObject = typeof err === "object" && err !== null ? (err as Record<string, unknown>) : {};
     const status = Number(errObject.status ?? errObject.statusCode ?? 500);
