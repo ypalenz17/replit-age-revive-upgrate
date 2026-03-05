@@ -151,3 +151,95 @@ The homepage should:
 - avoid all biotech and AI cliches
 - look polished on mobile at 375px width
 - look premium on desktop at 1440px width
+
+---
+
+## CELLUBIOME product page rules
+
+This is one of the most important landing pages on the site because paid traffic may land here first.
+The page must convert cold visitors who do not know the brand yet.
+
+### Primary goal
+Make CELLUBIOME feel:
+- premium
+- trustworthy
+- clinically credible
+- easy to understand
+- clearly worth the price
+- easy to buy from mobile
+
+### The page must quickly answer
+1. What is CELLUBIOME?
+2. What is it best for?
+3. Why is it different?
+4. Why should I trust it?
+5. How do I use it?
+6. Who is it for?
+7. How does it fit into the broader Age Revive system?
+8. Why should I buy now?
+
+### Key page strategy
+This page must behave like a high-conviction paid-traffic landing page, not a generic supplement PDP and not a science essay.
+
+The order should be:
+- understand
+- trust
+- buy
+- then explore deeper science
+
+### Absolutely avoid
+- DNA icons
+- gene/genetic motifs
+- molecule graphics
+- biotech cliche visuals
+- AI fluff
+- generic wellness imagery
+- skincare-style lifestyle imagery
+- decorative icon clutter
+- vague futuristic claims
+- abstract science visuals that do not improve comprehension
+
+### Copy rules
+Use calm, premium, evidence-aware language.
+Do not use hype phrases like:
+- revolutionary
+- cutting-edge
+- next-gen
+- optimize your biology
+- hack your aging
+- engineered longevity
+- breakthrough system
+
+### Visual rules
+The page must not feel like one long dark slab.
+Use clear chapter breaks with tonal changes, spacing, card surfaces, and typography hierarchy.
+
+Use:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Existing mint/teal accent only
+
+### Product page priorities
+1. Strong buy box
+2. Early trust proof
+3. Clear "best for" positioning
+4. Clear differentiation
+5. Visible dosing and delivery clarity
+6. Better section separation
+7. Cleaner CTA hierarchy
+8. Stronger mobile sticky buy behavior
+9. Better alignment between product role and CTA language
+10. Premium visual rhythm
+
+### Done when
+The page feels:
+- premium
+- decisive
+- easy to trust
+- easy to scan
+- easy to buy from
+- clearly structured
+- not generic supplement ecommerce
+- not generic biotech
+- excellent on mobile

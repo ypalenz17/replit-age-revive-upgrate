@@ -1,0 +1,381 @@
+You are a top-tier conversion designer, DTC landing page strategist, and senior front-end engineer.
+
+Audit and improve the CELLUBIOME product page so it is impeccable for paid traffic landing directly on it.
+
+This page is one of the most important pages on the site.
+It must convert cold visitors who may know nothing about Age Revive.
+
+Do not just suggest changes.
+Implement them directly in code.
+
+CONTEXT
+
+Brand:
+- Age Revive
+
+Product page:
+- CELLUBIOME
+
+Positioning:
+- premium longevity supplements
+- clinically informed
+- luxurious, restrained, trustworthy
+
+Main problem:
+- the current page is visually polished but still behaves too much like a science brochure instead of a high-conviction premium product landing page
+- trust is not surfaced strongly enough, early enough
+- sections blend together too much
+- some CTA language is inconsistent
+- the page needs clearer hierarchy, clearer differentiation, and better mobile conversion behavior
+
+NON-NEGOTIABLE RULES
+
+Do not introduce:
+- DNA helix icons
+- gene/chromosome imagery
+- molecule network graphics
+- biotech cliché visuals
+- AI-themed motifs
+- sci-fi graphics
+- glowing particles
+- startup SaaS icon clutter
+- generic wellness icons
+- skincare-style imagery
+- decorative icons that add no meaning
+- loud gradients
+- glassmorphism
+- unnecessary animation
+
+Default to zero icons unless they clearly improve comprehension.
+
+Do not use hype copy such as:
+- revolutionary
+- next-gen
+- cutting-edge
+- optimize your biology
+- hack your aging
+- breakthrough system
+- engineered longevity
+- future of wellness
+
+Use concise, premium, support-oriented, evidence-aware language.
+
+MAIN UX ISSUES TO FIX
+
+1. The page still feels too much like one long dark slab
+2. The buy box does not do enough trust work for a premium-priced daily product
+3. “Why this product” is not decisive enough for cold paid traffic
+4. Important decision-making information should appear earlier
+5. The page needs a clearer “best for” section near the top
+6. The CTA system is too inconsistent and should be simplified
+7. The sticky mobile buy behavior needs to be cleaner and more obvious
+8. Some imagery feels off-category or generic
+9. The product page should feel more like a premium product decision page and less like a long science scroll
+10. The final CTA and protocol language must align with the real role of CELLUBIOME in the system
+
+REQUIRED PAGE STRATEGY
+
+This page must follow this logic:
+
+1. Immediate product clarity
+2. Immediate trust
+3. Immediate buying path
+4. Then deeper science
+5. Then usage, fit, stack logic, FAQ, and final conversion push
+
+The visitor should understand this product in under 5 seconds.
+
+THE PAGE MUST QUICKLY ANSWER
+
+- What is CELLUBIOME?
+- What is it best for?
+- Why is it different from random gut products?
+- Why should I trust it?
+- How do I take it?
+- Who should start here?
+- How does it fit into the Age Revive system?
+
+COLOR / SECTION RHYTHM
+
+The current page needs stronger chaptering.
+Do not let the full page sit in nearly the same navy value throughout.
+
+Use:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Existing mint/teal accent only
+
+Build a clear rhythm such as:
+dark -> light -> dark -> light -> dark
+
+Use tonal background changes, spacing, card contrast, and typography hierarchy to create real separation.
+
+Do not solve separation with more decorative graphics.
+
+ABOVE-THE-FOLD / BUY BOX REQUIREMENTS
+
+The buy box is the most important zone.
+Refactor it to feel premium, decisive, and highly trustworthy.
+
+The top section must include:
+- product name
+- concise premium descriptor
+- price
+- usage cadence
+- exact ingredient anchors if already part of current content
+- clear primary CTA
+- visible trust strip directly near the CTA
+
+The trust strip should surface concise proof such as:
+- transparent dosing
+- no proprietary blends
+- third-party tested
+- documentation / CoA access if already supported by the brand
+- enteric delivery if applicable and already part of the product positioning
+
+The buy box must not feel vague, soft, or under-explained.
+
+Make the CTA strong and singular.
+Do not scatter too many competing verbs.
+
+CTA SYSTEM RULES
+
+Simplify CTA logic across the page.
+
+Choose one primary purchase action for the product page and use it consistently.
+Preferred default:
+- Add to Cart
+
+Only use “Add to Stack” in clearly stack-builder-specific contexts.
+Do not mix multiple primary purchase verbs all over the same page.
+
+Primary CTA must:
+- use the existing mint/teal accent
+- have strong visual weight
+- look clearly tappable
+- have polished hover, active, and focus states
+
+Secondary CTAs should be elegant but visibly secondary.
+
+BEST-FOR / START-HERE BLOCK
+
+Move or create a “Best For” or “Who It’s For” section much higher on the page.
+
+This section should help the visitor self-identify quickly.
+
+Include concise bullets or cards that explain who CELLUBIOME is for, such as:
+- people prioritizing gut-barrier support
+- people interested in gut-mitochondrial support
+- people looking for a daily formula
+- people who want to pair it with the broader Age Revive system
+
+Keep this section concise, clean, and buyer-friendly.
+Do not overcomplicate it with heavy mechanism language.
+
+WHY IT’S DIFFERENT
+
+Create or strengthen a section that answers why this product is different from generic gut products.
+
+This section should clarify:
+- what makes the formula distinctive
+- why the delivery format matters
+- why the formulation is more intentional than commodity alternatives
+- why this belongs in a premium system
+
+Use structured cards, comparison rows, or clean content blocks.
+Make it easier to scan.
+
+DELIVERY / FORMULATION ADVANTAGE
+
+If the page discusses special delivery logic such as enteric protection or formulation strategy, move that closer to the top half of the page.
+
+This is a trust and differentiation lever.
+Do not bury it.
+
+Present it as a premium product design decision, not as dense scientific copy.
+Use clean design and concise explanation.
+
+SCIENCE CONTENT REORDERING
+
+Do not remove scientific sophistication.
+But reorganize the page so science supports the sale instead of delaying it.
+
+Make science sections:
+- shorter at first
+- more structured
+- easier to scan
+- more diagrammatic or card-based if helpful
+- lower on the page than the core buy/trust sections
+
+Avoid long uninterrupted dark sections filled with dense copy.
+
+SUPPLEMENT FACTS / INGREDIENTS
+
+The facts and ingredients section should feel premium and highly legible.
+
+Improve:
+- spacing
+- hierarchy
+- readability
+- section contrast
+- table/card presentation
+- mobile legibility
+
+This section should look like premium documentation, not an afterthought.
+
+TRUST / QUALITY SECTION
+
+Add or strengthen a dedicated trust section with clear proof points.
+
+Possible items, depending on what already exists in brand content:
+- transparent doses
+- no proprietary blends
+- third-party tested
+- premium ingredient standards
+- documentation availability by lot
+- thoughtful delivery design
+- clear daily-use instructions
+
+This section should likely live on a light clinical background for readability and trust.
+
+VISUAL SURFACE RULES
+
+The current page likely has insufficient contrast between sections and cards.
+Fix this.
+
+For dark sections:
+- use a visibly elevated card surface
+- use subtle borders like rgba(255,255,255,0.08)
+- keep shadows restrained
+
+For light sections:
+- use warm white or lightly lifted surfaces
+- subtle border
+- refined, not startup-y shadow
+
+Cards should feel:
+- premium
+- structured
+- easy to scan
+- clearly separated from background
+
+MOBILE STICKY BUY BAR
+
+The sticky mobile buy behavior should be cleaner and more product-specific.
+
+It should clearly communicate:
+- product name
+- price
+- single obvious purchase action
+
+Avoid confusing labels that sound like a system overlay unless the user is explicitly in a stack-building flow.
+
+Make the sticky bar feel premium, clear, and friction-reducing.
+
+IMAGE DIRECTION
+
+Audit the imagery and remove anything that feels off-category, generic, or mismatched.
+
+The page should not use imagery that feels more like skincare, generic wellness, or lifestyle filler.
+
+Prefer:
+- product bottle imagery
+- capsule/use context
+- formula-detail visuals
+- restrained system visuals
+- high-end product storytelling imagery that actually matches supplement use
+
+SECTION ORDER TO TARGET
+
+Refactor the page so it roughly follows this flow:
+
+1. Hero / buy box
+2. Early trust strip
+3. Best For / Who It’s For
+4. Why It’s Different
+5. How It Works / formulation logic
+6. Supplement Facts / ingredients
+7. Quality / trust documentation
+8. How to use
+9. How it fits into the Age Revive system
+10. FAQ / reviews if present
+11. Final CTA
+
+Adapt this to the current structure if needed, but the logic should remain.
+
+FINAL CTA RULES
+
+The final CTA must align with the real role of this product.
+It should not use vague or mismatched system language.
+
+The final CTA should reinforce:
+- daily gut-mito support
+- product fit
+- confidence to buy
+- alignment with the product’s actual role in the Age Revive system
+
+It must feel consistent with the rest of the page.
+
+SPACING / TYPOGRAPHY
+
+Improve section breathing room and hierarchy.
+
+Targets:
+- desktop section padding: 100px to 120px top/bottom
+- mobile section padding: 72px to 88px top/bottom
+
+Typography should be:
+- easier to scan
+- less dense
+- stronger in hierarchy
+- better spaced
+- premium and editorial without feeling fashion-y
+
+Use:
+- white primary text on dark
+- softened secondary text on dark
+- deep navy or near-charcoal text on light backgrounds
+
+ACCESSIBILITY
+
+Maintain or improve:
+- text contrast
+- semantic structure
+- keyboard focus states
+- mobile tap targets
+- responsiveness
+
+SELF-QA BEFORE STOPPING
+
+Before stopping, audit your own work and fix anything that fails:
+
+1. Does the page immediately explain what CELLUBIOME is?
+2. Is trust visible within the first scrolls?
+3. Is the buy box strong enough for cold paid traffic?
+4. Does the page still feel like one long dark slab anywhere?
+5. Is “Best For” or “Who It’s For” clear near the top?
+6. Is the CTA system simplified and consistent?
+7. Does the sticky mobile buy bar reduce friction?
+8. Do the cards and content surfaces clearly separate from backgrounds?
+9. Does any image feel generic or off-category?
+10. Does anything feel like generic biotech, AI, or template design?
+11. Is the final CTA aligned with the true role of CELLUBIOME?
+12. Does the page feel premium enough to justify the pricing?
+
+If any answer is no, continue refining before stopping.
+
+WORK STYLE
+
+Inspect the codebase, identify the relevant components and styles, and implement the improvements directly.
+Keep code clean, production-ready, and maintainable.
+Do not stop at “better.”
+Stop only when the page feels exceptional for paid landing traffic.
+
+WHEN DONE, RETURN
+
+1. Summary of what you changed
+2. Files/components modified
+3. Why the changes improve conversion
+4. Why the changes improve trust
+5. Any optional next-step refinements
