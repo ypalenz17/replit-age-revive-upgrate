@@ -1,0 +1,293 @@
+You are a top-tier product designer, CRO-focused UX strategist, and senior front-end engineer.
+
+Audit the Age Revive website codebase and directly improve the homepage and shared UI so the site feels premium, clinically credible, visually separated, high-trust, and easier to buy from.
+
+Do not just suggest changes. Implement them in code.
+
+Important context:
+- Brand: Age Revive
+- Category: premium longevity supplements
+- Positioning: high-end, science-aware, luxury wellness
+- Goal: improve UI/UX, conversion, trust, clarity, scanability, and premium feel
+- The current site is polished but too visually flat, too abstract in places, and sections blend together
+- The homepage currently feels too much like one long dark canvas
+- The experience should feel like guided chapters, not a single slab
+- No genetic icons, biotech clichés, or AI fluff are allowed
+
+NON-NEGOTIABLE RULES
+
+Do not introduce:
+- DNA helix icons
+- gene/chromosome imagery
+- molecule graphics
+- neuron/network/circuit visuals
+- AI-themed design motifs
+- futuristic biotech styling
+- glowing particles
+- decorative stock medical icons
+- holographic or sci-fi UI
+- glassmorphism
+- loud gradients
+- generic startup SaaS aesthetics
+- random decorative icons
+
+Default to zero icons unless absolutely necessary for comprehension.
+
+Do not use hype copy such as:
+- AI-powered
+- next-gen
+- revolutionary
+- cutting-edge
+- optimize your biology
+- hack your aging
+- upgrade your cells
+- future of wellness
+- engineered longevity
+- breakthrough system
+
+Use calm, concise, evidence-aware, premium language.
+
+MAIN UX PROBLEMS TO FIX
+
+1. The homepage lacks visual section separation
+2. The hero is too abstract and does not quickly explain:
+   - what the brand sells
+   - what the system is
+   - where new users should start
+   - why the brand is trustworthy
+3. Trust proof appears too late
+4. Product roles are not immediately obvious
+5. Product cards need clearer hierarchy
+6. CTA hierarchy is too soft in places
+7. The page should feel more like a guided protocol builder and less like a science manifesto
+8. Scientific sophistication should remain, but heavy systems language should appear later and be easier to scan
+9. The site needs better tonal rhythm, spacing, card contrast, and mobile clarity
+
+COLOR SYSTEM TO IMPLEMENT
+
+Use only these section background tiers:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Accent: the site’s existing mint/teal only
+
+Do not introduce additional accent colors.
+
+Create section rhythm using:
+dark -> lifted dark -> light -> dark -> light -> dark
+
+HOMEPAGE STRUCTURE TO TARGET
+
+Refactor the homepage so it roughly follows this flow:
+
+1. Hero on base dark
+2. Trust strip on secondary dark
+3. Start Here / Choose Your Starting Point / Product comparison on light clinical background
+4. Science / Systems explanation on secondary dark
+5. FAQ / quality / ingredient proof / trust documentation on light clinical background
+6. Final CTA on base dark
+7. Footer on base dark
+
+This structure can be adapted to the current architecture, but the overall rhythm must be clear.
+
+HERO REQUIREMENTS
+
+Rewrite or refine the hero so it clearly communicates the offer in the first seconds.
+
+The hero must include:
+- a strong clear headline
+- a short subhead explaining the 3-part system simply
+- primary CTA: Shop the System
+- secondary CTA: See Ingredients & Evidence or equivalent
+- a compact trust strip directly beneath CTA with:
+  - Transparent doses
+  - No proprietary blends
+  - Third-party tested
+  - CoA available by lot
+
+The hero should feel premium, calm, and authoritative.
+It must not feel cheesy, loud, or generic supplement-y.
+
+EARLY TRUST REQUIREMENTS
+
+Move trust proof earlier in the journey.
+Add or strengthen a “Why trust Age Revive” area near the top of the homepage or within the first major sections.
+
+Surface trust through:
+- transparent doses
+- no proprietary blends
+- third-party testing
+- clinically studied ingredients where applicable
+- lot-based documentation / CoA access if already part of the brand
+- quality/process clarity
+- support / shipping / return clarity if already present in existing content or policies
+
+This section should be visually distinct and easy to scan.
+
+PRODUCT SYSTEM CLARITY
+
+Create or improve a clear “Start Here” / “Choose Your Starting Point” section so a new customer can understand the system very quickly.
+
+Make the 3 products easy to distinguish by role:
+- CELLUNAD+: daily NAD+ foundation, best starting point
+- CELLUBIOME: daily gut + mitochondrial support
+- CELLUNOVA: periodic 7-day monthly reset
+
+Each key product card must clearly show:
+- product name
+- what it is best for
+- cadence / when used
+- price
+- role in the stack
+- 2 to 3 concise ingredient anchors where appropriate
+- primary action
+
+Do not overload these upper sections with technical jargon.
+
+CARD AND SURFACE DESIGN
+
+Increase contrast between cards and section backgrounds.
+
+For dark sections:
+- cards must visibly lift off the background
+- use a darker elevated surface like #162235 or similar
+- use subtle borders like rgba(255,255,255,0.08)
+
+For light sections:
+- use warm white or slightly elevated surfaces
+- subtle border and refined shadow
+- avoid harsh tech-startup shadows
+
+Cards should have:
+- stronger hierarchy
+- cleaner spacing
+- clear hover states
+- clear selected states
+- obvious CTA placement
+- mobile-friendly stacking and tap targets
+
+STACK BUILDER / CONVERSION UX
+
+Make the site feel like a guided system purchase, not a random catalog.
+
+Improve the stack or selection interaction by making it obvious:
+- what the user should start with
+- what can be added next
+- what the overall protocol looks like
+
+If the architecture supports it, improve selected state and consider a sticky or persistent mobile summary bar.
+Selected actions must feel active and intentional, not muted or ambiguous.
+
+CTA HIERARCHY
+
+Strengthen primary actions.
+
+Requirements:
+- primary CTA uses the mint/teal accent
+- primary CTA has stronger visual weight than secondary actions
+- hover, active, and focus states must be polished and obvious
+- secondary CTA must be elegant but clearly secondary
+
+Do not use generic big-box ecommerce styling.
+
+SECTION SEPARATION
+
+The site must feel like designed chapters.
+
+Use:
+- alternating backgrounds
+- spacing resets
+- section markers
+- eyebrow labels where helpful
+- stronger card/background contrast
+- subtle divider lines where helpful
+
+Do not rely on content changes alone to imply new sections.
+
+SCIENCE CONTENT PLACEMENT
+
+Keep scientific sophistication, but move or structure it so clarity comes first and depth comes later.
+
+If sections like Systems Axis or Six Pillars exist:
+- simplify them visually
+- make them easier to scan
+- consider moving them lower if needed
+- make them support credibility instead of blocking comprehension
+
+FAQ / QUALITY / EVIDENCE
+
+Place FAQ, quality proof, evidence, and related trust documentation in light clinical sections where readability is highest.
+
+These sections should feel like premium documentation, not filler.
+
+SPACING AND TYPOGRAPHY
+
+Improve overall rhythm and scanability.
+
+Targets:
+- desktop section padding: 100px to 120px top/bottom
+- mobile section padding: 72px to 88px top/bottom
+
+Typography:
+- stronger contrast hierarchy
+- shorter blocks of copy
+- more readable body text
+- better spacing between heading, supporting copy, cards, and CTAs
+
+Use:
+- white primary text on dark
+- softened secondary text on dark
+- deep navy / near-charcoal text on light sections
+
+MOBILE UX
+
+The design must be excellent on mobile.
+
+Prioritize:
+- clean stacked layouts
+- large tap targets
+- clear section breaks
+- shorter scannable text
+- strong CTA visibility
+- reduced cognitive load
+- elegant card spacing
+
+ACCESSIBILITY
+
+Maintain or improve:
+- text contrast
+- keyboard access
+- focus visibility
+- semantic structure
+- responsive behavior
+
+SELF-QA BEFORE STOPPING
+
+Before stopping, audit your own implementation and fix anything that fails:
+
+1. Does any part of the page still feel generic biotech or AI-themed?
+2. Does any section still blend into the next too much?
+3. Is the hero still too abstract?
+4. Is trust visible within the first scrolls?
+5. Are product roles obvious immediately?
+6. Are primary CTAs clearly stronger than secondary actions?
+7. Do cards clearly separate from their backgrounds?
+8. Does the page feel premium on both desktop and mobile?
+9. Does any part feel templated, noisy, or cheap?
+10. Are there any unnecessary icons or decorative motifs left?
+
+If any answer is yes, keep refining before stopping.
+
+WORK STYLE
+
+Inspect the codebase, identify the relevant layout/components/styles, and implement the improvements directly.
+Keep code clean, maintainable, and production-ready.
+Do not stop at “better.”
+Stop only when the homepage clearly feels more premium, more trustworthy, more visually separated, and easier to buy from.
+
+WHEN FINISHED, RETURN
+
+1. Summary of what you changed
+2. Files/components modified
+3. Why the changes improve conversion and trust
+4. Any optional next-step improvements

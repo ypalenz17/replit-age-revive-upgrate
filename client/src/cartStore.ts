@@ -18,7 +18,7 @@ interface CartState {
 let state: CartState = { items: [], isOpen: false };
 const listeners = new Set<() => void>();
 
-type CartItemInput = Omit<CartItem, 'quantity'>;
+type CartItemInput = Omit<CartItem, 'quantity' | 'frequency'> & { frequency?: string };
 
 function emit() {
   listeners.forEach((l) => l());
@@ -58,10 +58,15 @@ function addItem(item: CartItemInput, qty = 1, silent = false) {
     return;
   }
 
-  const safeItem: CartItemInput = {
-    ...item,
-    price: Number.isFinite(item.price) && item.price >= 0 ? item.price : 0,
-    frequency: item.frequency || (item.isSubscribe ? "Delivered monthly" : "One-time"),
+  const resolvedFrequency = item.frequency || (item.isSubscribe ? "Delivered monthly" : "One-time");
+  const safePrice = Number.isFinite(item.price) && item.price >= 0 ? item.price : 0;
+  const safeItem = {
+    slug: item.slug,
+    name: item.name,
+    image: item.image,
+    price: safePrice,
+    isSubscribe: item.isSubscribe,
+    frequency: resolvedFrequency,
   };
 
   const existing = state.items.find((c) => matchesItem(c, safeItem));

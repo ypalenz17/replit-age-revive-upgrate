@@ -9,44 +9,28 @@ import {
 import { gsap } from 'gsap';
 import SiteNavbar from './components/SiteNavbar';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { PRODUCTS as SELECTOR_PRODUCTS, BrandName } from './productsData';
-import ProtocolSelectorCard from './components/ProtocolSelectorCard';
+import { BrandName } from './productsData';
 import Footer from './components/Footer';
 import { useCart } from './cartStore';
 import { PRODUCT_DETAIL_DATA } from './productData';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const BASE_DARK = '#0A1220';
+const SECONDARY_DARK = '#101B2D';
+const LIGHT_CLINICAL = '#F4F1EA';
+const CARD_DARK = '#162235';
+
 const PRODUCTS = [
-  {
-    slug: 'cellubiome',
-    name: 'CELLUBIOME',
-    category: 'Mitochondrial + Gut Signaling',
-    tagline: 'The Gut–Mitochondria Axis, simplified.',
-    serving: '2 enteric-coated capsules daily',
-    ingredientsBadges: ['Urolithin A 500 mg', 'Tributyrin 500 mg'],
-    outcomes: [
-      'Supports mitophagy signaling*',
-      'Supports mitochondrial renewal pathways*',
-      'Supports gut-derived short-chain fatty acid signaling*'
-    ],
-    color: '#19B3A6',
-    textColor: '#5eead4',
-    image: '/images/cellubiome-render.png',
-    fullIngredients: [
-      { name: 'Urolithin A (≥99%)', dose: '500 mg', purpose: 'Mitophagy support' },
-      { name: 'Tributyrin', dose: '500 mg', purpose: 'Butyrate delivery support' }
-    ],
-    rationale: [
-      { title: 'Mitophagy signal support', text: 'Urolithin A supports mitochondrial recycling signaling (mitophagy support).' },
-      { title: 'Postbiotic support', text: 'Tributyrin supports short-chain fatty acid activity through butyrate delivery.' },
-      { title: 'Enteric precision', text: 'Enteric-coated delivery supports release beyond the upper GI environment.' }
-    ]
-  },
   {
     slug: 'cellunad',
     name: 'CELLUNAD+',
     category: 'Daily NAD+ Optimization',
+    role: 'Best starting point',
+    bestFor: 'Cellular energy and DNA maintenance',
+    cadence: '2 capsules daily',
+    price: '$79.99',
+    subPrice: '$67.99/mo',
     tagline: 'Precision NAD+ support with co-factors, not hype.',
     serving: '2 capsules daily',
     ingredientsBadges: ['NR 500 mg', 'TMG 250 mg', 'Apigenin 100 mg'],
@@ -75,9 +59,44 @@ const PRODUCTS = [
     ]
   },
   {
+    slug: 'cellubiome',
+    name: 'CELLUBIOME',
+    category: 'Mitochondrial + Gut Signaling',
+    role: 'Gut-mito axis support',
+    bestFor: 'Mitochondrial renewal and gut barrier integrity',
+    cadence: '2 enteric-coated capsules daily',
+    price: '$110.00',
+    subPrice: '$93.50/mo',
+    tagline: 'The Gut-Mitochondria Axis, simplified.',
+    serving: '2 enteric-coated capsules daily',
+    ingredientsBadges: ['Urolithin A 500 mg', 'Tributyrin 500 mg'],
+    outcomes: [
+      'Supports mitophagy signaling*',
+      'Supports mitochondrial renewal pathways*',
+      'Supports gut-derived short-chain fatty acid signaling*'
+    ],
+    color: '#19B3A6',
+    textColor: '#5eead4',
+    image: '/images/cellubiome-render.png',
+    fullIngredients: [
+      { name: 'Urolithin A (>=99%)', dose: '500 mg', purpose: 'Mitophagy support' },
+      { name: 'Tributyrin', dose: '500 mg', purpose: 'Butyrate delivery support' }
+    ],
+    rationale: [
+      { title: 'Mitophagy signal support', text: 'Urolithin A supports mitochondrial recycling signaling (mitophagy support).' },
+      { title: 'Postbiotic support', text: 'Tributyrin supports short-chain fatty acid activity through butyrate delivery.' },
+      { title: 'Enteric precision', text: 'Enteric-coated delivery supports release beyond the upper GI environment.' }
+    ]
+  },
+  {
     slug: 'cellunova',
     name: 'CELLUNOVA',
     category: '7-Day Autophagy + Senolytic Protocol',
+    role: 'Monthly cellular reset',
+    bestFor: 'Deep cellular cleanup and renewal',
+    cadence: '5 capsules daily for 7 days (monthly)',
+    price: '$49.99',
+    subPrice: '$42.49/mo',
     tagline: 'Seven days on. Designed as a cycle, not forever.',
     serving: '5 capsules daily for 7 consecutive days',
     warning: 'Contains wheat (spermidine source).',
@@ -111,26 +130,22 @@ const PRODUCTS = [
 ];
 type HomeProduct = (typeof PRODUCTS)[number];
 
-const PILLARS = [
-  { title: 'Genomic Stability', what: 'NAD+ fuels enzymes that repair damaged DNA and maintain chromosomal integrity.', why: 'Without daily NAD+ replenishment, repair enzymes slow and mutations accumulate.', protocol: 'CELLUNAD+', slug: 'cellunad', tags: ['NAD+', 'Sirtuins'], accent: '#3B82F6' },
-  { title: 'Telomere Integrity', what: 'Telomere-protective pathways preserve the replication fidelity of every cell division.', why: 'Shortened telomeres accelerate biological aging and reduce tissue regeneration.', protocol: 'CELLUNAD+', slug: 'cellunad', tags: ['NR', 'Longevity'], accent: '#3B82F6' },
-  { title: 'Epigenetic Signaling', what: 'Gut-derived metabolites like butyrate modulate gene expression across tissues.', why: 'Disrupted gut signaling silences protective genes and amplifies inflammatory ones.', protocol: 'CELLUBIOME', slug: 'cellubiome', tags: ['Methylation', 'Gut Axis'], accent: '#19B3A6' },
-  { title: 'Nutrient Sensing', what: 'AMPK and mTOR pathways detect energy status and trigger cellular maintenance.', why: 'Chronically active mTOR suppresses autophagy, letting damaged proteins accumulate.', protocol: 'CELLUNOVA', slug: 'cellunova', tags: ['AMPK', 'mTOR'], accent: '#6C5CE7' },
-  { title: 'Mitochondrial Function', what: 'Urolithin A activates mitophagy, clearing damaged mitochondria for new ones.', why: 'Dysfunctional mitochondria leak free radicals, draining cellular energy output.', protocol: 'CELLUBIOME', slug: 'cellubiome', tags: ['Mitophagy', 'ATP'], accent: '#19B3A6' },
-  { title: 'Cellular Senescence', what: 'Fisetin-driven senolytic cycles clear zombie cells that secrete inflammatory signals.', why: 'Senescent cell accumulation drives chronic inflammation and tissue breakdown.', protocol: 'CELLUNOVA', slug: 'cellunova', tags: ['Fisetin', 'Senolytic'], accent: '#6C5CE7' }
+const TRUST_POINTS = [
+  { num: '01', title: 'Transparent Doses', desc: 'Every ingredient and amount listed. No hidden proprietary blends.' },
+  { num: '02', title: 'Third-Party Tested', desc: 'Independent lab verification for purity, potency, and heavy metals.' },
+  { num: '03', title: 'Clinically Studied Ingredients', desc: 'Standardized actives with published research at effective doses.' },
+  { num: '04', title: 'CoA Available by Lot', desc: 'Certificate of Analysis available for every production lot on request.' },
+  { num: '05', title: 'Glass Packaging', desc: 'UV-protected glass bottles. No plastic leaching. Better preservation.' },
+  { num: '06', title: 'Free Shipping Included', desc: 'Every order ships free. No hidden fees at checkout.' },
 ];
 
-const NoiseOverlay = () => (
-  <div className="fixed inset-0 z-[50] pointer-events-none opacity-[0.035]" aria-hidden="true">
-    <svg width="100%" height="100%">
-      <filter id="noise">
-        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" />
-        <feColorMatrix type="saturate" values="0" />
-      </filter>
-      <rect width="100%" height="100%" filter="url(#noise)" />
-    </svg>
-  </div>
-);
+const HOME_FAQS = [
+  { q: 'Where should I start?', a: 'Most customers start with CELLUNAD+, our daily NAD+ protocol. It provides foundational cellular energy support that pairs well with any lifestyle. You can add CELLUBIOME or CELLUNOVA later as your system grows.' },
+  { q: 'How long until I feel a difference?', a: 'Individual timelines vary. Many customers report noticing changes in energy and recovery within 2-4 weeks of consistent daily use. Cellular-level support builds over time, so we recommend at least 8 weeks for a meaningful assessment.' },
+  { q: 'Are there any proprietary blends?', a: 'No. Every ingredient and its exact dose is listed on the label and on our website. We believe transparency is non-negotiable in supplement formulation.' },
+  { q: 'Can I take all three products together?', a: 'Yes. The three protocols are designed to work as a system. CELLUNAD+ and CELLUBIOME are taken daily. CELLUNOVA is a 7-day monthly cycle. There are no overlapping ingredients at concerning levels.' },
+  { q: 'What is your return policy?', a: 'We offer a 30-day return window on unopened products. If you have questions about whether a protocol is right for you, our support team is available to help before you purchase.' },
+];
 
 const SideSheet = ({ isOpen, onClose, title, children }: { isOpen: boolean; onClose: () => void; title: React.ReactNode; children: React.ReactNode }) => {
   const sheetRef = useRef<HTMLDivElement | null>(null);
@@ -162,21 +177,19 @@ const SideSheet = ({ isOpen, onClose, title, children }: { isOpen: boolean; onCl
 
   return (
     <div ref={sheetRef} className="fixed inset-0 z-[200] flex justify-end" role="dialog" aria-modal="true">
-      <div data-overlay className="absolute inset-0 bg-ar-navy/60 backdrop-blur-sm" onClick={onClose} />
-      <div data-panel className="relative w-full max-w-xl bg-ar-paper h-full shadow-float p-10 md:p-12 overflow-y-auto border-l border-black/5 rounded-l-2xl">
+      <div data-overlay className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
+      <div data-panel className="relative w-full max-w-xl bg-[#F8F6F1] h-full shadow-float p-10 md:p-12 overflow-y-auto border-l border-black/5 rounded-l-2xl">
         <button onClick={onClose} className="absolute top-7 right-7 z-10 p-2 rounded-lg hover:bg-black/5 transition-colors" aria-label="Close" data-testid="button-close-sidesheet">
           <X size={22} />
         </button>
         <div className="space-y-8">
           <div className="space-y-2">
             <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-ar-teal">Clinical Archive</p>
-            <h3 className="text-3xl md:text-4xl font-head font-normal tracking-[-0.03em] uppercase">{title}</h3>
+            <h3 className="text-3xl md:text-4xl font-head font-normal tracking-[-0.03em] uppercase text-[#0A1220]">{title}</h3>
           </div>
-
-          <div className="text-sm text-black/60 font-medium leading-relaxed space-y-4">
+          <div className="text-sm text-[#0A1220]/60 font-medium leading-relaxed space-y-4">
             {children}
           </div>
-
           <div className="pt-10 border-t border-black/10">
             <p className="text-[12px] font-mono uppercase tracking-[0.22em] text-black/35 mb-3">Supporting Data</p>
             <ul className="space-y-2 text-[12px] font-mono text-black/45 list-none p-0">
@@ -191,12 +204,11 @@ const SideSheet = ({ isOpen, onClose, title, children }: { isOpen: boolean; onCl
 };
 
 
-const Hero = ({ onOpenEvidence, onOpenProduct }: { onOpenEvidence: () => void; onOpenProduct: (slug: string) => void }) => {
+const Hero = ({ onOpenEvidence }: { onOpenEvidence: () => void }) => {
   const [videoReady, setVideoReady] = useState(false);
 
   return (
-    <section className="relative min-h-[100dvh] flex flex-col overflow-hidden bg-[#0f1726]">
-
+    <section className="relative min-h-[100dvh] flex flex-col overflow-hidden" style={{ backgroundColor: BASE_DARK }}>
       <video
         autoPlay
         loop
@@ -217,220 +229,175 @@ const Hero = ({ onOpenEvidence, onOpenProduct }: { onOpenEvidence: () => void; o
         src="/images/hero_video_portrait.mp4"
         preload="auto"
       />
-      <div className="absolute inset-0 z-[1] pointer-events-none hidden md:block" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.5) 0%, rgba(15,23,42,0.35) 40%, rgba(15,23,42,0.6) 80%, rgba(15,23,42,0.9) 100%)' }} />
-      <div className="absolute inset-0 z-[1] pointer-events-none md:hidden" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.45) 0%, rgba(15,23,42,0.55) 30%, rgba(15,23,42,0.75) 60%, rgba(15,23,42,0.95) 100%)' }} />
-      <div className="absolute inset-0 z-[1] pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 70% at 50% 40%, transparent 30%, rgba(15,23,42,0.5) 100%)' }} />
+      <div className="absolute inset-0 z-[1] pointer-events-none hidden md:block" style={{ background: `linear-gradient(180deg, ${BASE_DARK}cc 0%, ${BASE_DARK}55 40%, ${BASE_DARK}99 80%, ${BASE_DARK} 100%)` }} />
+      <div className="absolute inset-0 z-[1] pointer-events-none md:hidden" style={{ background: `linear-gradient(180deg, ${BASE_DARK}bb 0%, ${BASE_DARK}88 30%, ${BASE_DARK}cc 60%, ${BASE_DARK} 100%)` }} />
 
-      <div className="relative z-10 w-full max-w-3xl lg:max-w-7xl mx-auto flex flex-col justify-center text-center lg:text-left px-5 md:px-6 lg:px-12 pt-20 md:pt-36 lg:pt-44 pb-6 md:pb-12 lg:pb-20 min-h-[100dvh]">
-        <div className="lg:grid lg:grid-cols-12 lg:gap-8 lg:items-center">
+      <div className="relative z-10 w-full max-w-3xl lg:max-w-6xl mx-auto flex flex-col justify-center text-center lg:text-left px-5 md:px-8 lg:px-12 pt-20 md:pt-36 lg:pt-44 pb-10 md:pb-16 lg:pb-24 min-h-[100dvh]">
+        <div className="flex flex-col hero-text w-full items-center lg:items-start">
+          <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.90] uppercase" style={{ fontSize: 'clamp(36px, 9vw, 64px)' }}>
+            Premium Longevity
+            <br />
+            <span className="text-white/60">Supplements.</span>
+          </h1>
 
-        <div className="flex flex-col hero-text w-full items-center lg:items-start lg:col-span-7">
-
-          <div className="flex flex-col items-center md:items-start md:pl-[3%] lg:pl-0">
-            <div className="flex items-center gap-2 justify-center lg:justify-start mb-3">
-              <div className="h-px w-4 bg-white/10" />
-              <span className="font-mono text-[10px] text-ar-teal/75 uppercase tracking-[0.10em]">Protocol-Grade Supplements</span>
-              <div className="h-px w-4 bg-white/10" />
-            </div>
-            <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase" style={{ fontSize: 'clamp(38px, 9.5vw, 56px)' }}>
-              <span className="lg:hidden">
-                Cellular Energy.
-                <br />
-                <span className="text-white/70">Gut Resilience.</span>
-              </span>
-              <span className="hidden lg:inline" style={{ fontSize: 'clamp(56px, 5.5vw, 72px)' }}>
-                Cellular Energy.
-                <br />
-                <span className="text-white/70">Gut Resilience.</span>
-              </span>
-            </h1>
-          </div>
-
-          <p className="mt-5 md:mt-6 lg:mt-8 text-[14px] md:text-[16px] lg:text-[17px] text-white/75 font-sans font-medium max-w-[32ch] md:max-w-[42ch] leading-[1.5] mx-auto md:ml-[3%] md:mr-auto md:text-left lg:ml-0">
-            One system. Three protocols. Daily <span className="text-white/95">NAD+</span>, daily <span className="text-white/95">gut-mito</span> repair, and a <span className="text-white/95">7-day</span> monthly reset.
+          <p className="mt-5 md:mt-7 text-[15px] md:text-[17px] text-white/70 font-sans font-medium max-w-[38ch] leading-[1.55] mx-auto lg:mx-0">
+            Three protocols. Daily NAD+ support, daily gut-mitochondria repair, and a 7-day monthly cellular reset. One system built for longevity.
           </p>
 
-          <div className="mt-5 lg:mt-8 flex flex-col sm:flex-row gap-2 w-full max-w-[340px] mx-auto sm:w-auto sm:max-w-none md:justify-center lg:justify-start lg:mx-0">
-            <a href="/shop" className="group relative w-full sm:w-auto px-7 lg:px-9 min-h-[40px] lg:min-h-[46px] flex items-center justify-center bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.10em] overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98]" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 12px rgba(45,212,191,0.15)' }} data-testid="button-shop-system">
+          <div className="mt-6 lg:mt-8 flex flex-col sm:flex-row gap-3 w-full max-w-[340px] mx-auto sm:w-auto sm:max-w-none lg:mx-0">
+            <a
+              href="/shop"
+              className="group relative w-full sm:w-auto px-8 lg:px-10 min-h-[44px] lg:min-h-[48px] flex items-center justify-center bg-ar-teal text-[#0A1220] rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.12em] overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98]"
+              style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 16px rgba(45,212,191,0.15)' }}
+              data-testid="button-shop-system"
+            >
               <span className="relative z-10">Shop the System</span>
               <div className="absolute inset-0 bg-white/12 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </a>
-
             <button
               onClick={onOpenEvidence}
-              className="w-full sm:w-auto px-7 min-h-[40px] lg:min-h-[46px] text-white/40 lg:text-white/35 rounded-lg lg:rounded-none font-mono font-bold uppercase text-[11px] tracking-[0.10em] hover:text-white/65 transition-all lg:border-0 lg:bg-transparent lg:shadow-none"
-              style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.06)' }}
+              className="w-full sm:w-auto px-7 min-h-[44px] lg:min-h-[48px] text-white/45 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.12em] hover:text-white/70 transition-all border border-white/[0.08] hover:border-white/[0.15]"
               data-testid="button-view-evidence"
             >
-              View Evidence
+              See Ingredients & Evidence
             </button>
           </div>
 
-          <div className="mt-5 flex flex-col items-center gap-0 lg:hidden" data-testid="proof-bar">
-            <div className="w-10 h-px bg-white/10 mb-3" />
-            <div className="flex flex-col items-center gap-[2px] leading-snug">
-              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Bioavailability First</span>
-              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Standardized Actives</span>
-              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Clinical Doses</span>
-              <span className="text-[11px] sm:text-[12px] text-white/80 uppercase tracking-[0.08em] font-mono">Glass Packaging</span>
-            </div>
+          <div className="mt-8 lg:mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-x-1 gap-y-1" data-testid="hero-trust-strip">
+            {['Transparent doses', 'No proprietary blends', 'Third-party tested', 'CoA available by lot'].map((item, i) => (
+              <span key={item} className="flex items-center">
+                <span className="text-[10px] md:text-[11px] text-white/50 uppercase tracking-[0.08em] font-mono">{item}</span>
+                {i < 3 && <span className="w-px h-3 bg-white/15 mx-2.5 md:mx-3" />}
+              </span>
+            ))}
           </div>
-
-          <div className="hidden lg:flex items-center gap-0 mt-8" data-testid="proof-bar-desktop">
-            <span className="text-[10px] text-white/50 uppercase tracking-[0.10em] font-mono">Bioavailability First</span>
-            <span className="w-px h-3 bg-white/15 mx-3" />
-            <span className="text-[10px] text-white/50 uppercase tracking-[0.10em] font-mono">Standardized Actives</span>
-            <span className="w-px h-3 bg-white/15 mx-3" />
-            <span className="text-[10px] text-white/50 uppercase tracking-[0.10em] font-mono">Clinical Doses</span>
-            <span className="w-px h-3 bg-white/15 mx-3" />
-            <span className="text-[10px] text-white/50 uppercase tracking-[0.10em] font-mono">Glass Packaging</span>
-          </div>
-
-          <p className="mt-2 text-[11px] text-white/40 font-sans tracking-normal lg:hidden">Start with the bundle or choose a protocol.</p>
-        </div>
-
-
         </div>
       </div>
     </section>
   );
 };
 
-const TheAxis = ({ onOpenEvidence }: { onOpenEvidence: () => void }) => {
-  return (
-    <section id="axis" className="relative py-12 md:py-20 px-6">
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 40%, rgba(25,179,166,0.04) 0%, transparent 70%)' }} />
-      <div className="max-w-7xl mx-auto relative">
-        <div className="text-center mb-8 md:mb-14 reveal-stagger">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-[1px] w-12 bg-ar-teal" />
-            <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">The Foundation</span>
-            <div className="h-[1px] w-12 bg-ar-teal" />
+
+const TrustSection = () => (
+  <section className="relative py-[72px] md:py-[100px] px-5 md:px-8" style={{ backgroundColor: SECONDARY_DARK }}>
+    <div className="max-w-5xl mx-auto">
+      <div className="text-center mb-10 md:mb-14 reveal-stagger">
+        <span className="font-mono text-[11px] text-ar-teal uppercase tracking-[0.18em]">Why Age Revive</span>
+        <h2 className="mt-3 font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.6rem, 4.5vw, 2.8rem)' }}>
+          Built on transparency,
+          <br className="hidden sm:block" />
+          <span className="text-white/50"> not marketing claims.</span>
+        </h2>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+        {TRUST_POINTS.map((tp) => (
+          <div
+            key={tp.num}
+            className="reveal-stagger rounded-lg px-5 py-5 md:px-6 md:py-6"
+            style={{ backgroundColor: CARD_DARK, border: '1px solid rgba(255,255,255,0.06)' }}
+          >
+            <span className="font-mono text-[11px] font-bold text-ar-teal/70 tracking-[0.10em]">{tp.num}</span>
+            <h3 className="mt-2 text-[14px] md:text-[15px] font-sans font-semibold text-white tracking-[-0.01em]">{tp.title}</h3>
+            <p className="mt-1.5 text-[13px] font-sans text-white/50 leading-[1.55]">{tp.desc}</p>
           </div>
-          <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2.2rem, 7vw, 4.5rem)' }}>
-            Age Revive
-            <br />
-            <span className="text-white/50">Systems Axis.</span>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+
+const ProductSystemSection = ({ onOpenProduct }: { onOpenProduct: (slug: string) => void }) => {
+  const cart = useCart();
+
+  const handleAdd = (product: HomeProduct) => {
+    const detailData = PRODUCT_DETAIL_DATA[product.slug as keyof typeof PRODUCT_DETAIL_DATA];
+    if (!detailData) return;
+    cart.addItem({
+      slug: product.slug,
+      name: product.name,
+      image: product.image,
+      price: detailData.priceOneTime,
+      isSubscribe: false,
+    });
+  };
+
+  return (
+    <section className="relative py-[72px] md:py-[110px] px-5 md:px-8" style={{ backgroundColor: LIGHT_CLINICAL }}>
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-10 md:mb-14 reveal-stagger">
+          <span className="font-mono text-[11px] text-ar-teal uppercase tracking-[0.18em]">The System</span>
+          <h2 className="mt-3 font-head font-normal tracking-[-0.03em] uppercase leading-tight" style={{ fontSize: 'clamp(1.6rem, 4.5vw, 2.8rem)', color: '#0A1220' }}>
+            Choose your starting point.
           </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-4">
-          {[
-            {
-              name: 'Gut–Mito Axis',
-              tag: 'GMA',
-              accent: 'rgba(25,179,166,0.5)',
-              accentBg: 'rgba(25,179,166,0.08)',
-              accentBorder: 'rgba(25,179,166,0.25)',
-              accentText: 'rgba(25,179,166,0.8)',
-              desc: 'Postbiotic signaling and mitochondrial renewal support designed for daily repeatability.',
-              steps: ['Enteric delivery', 'Barrier support', 'Mitophagy signaling'],
-              primary: true
-            },
-            {
-              name: 'NAD+ Infrastructure',
-              tag: 'NAD',
-              accent: 'rgba(96,165,250,0.45)',
-              accentBg: 'rgba(96,165,250,0.06)',
-              accentBorder: 'rgba(96,165,250,0.20)',
-              accentText: 'rgba(96,165,250,0.75)',
-              desc: 'Daily NAD+ precursor support with co-factors for consistent pathway support.',
-              steps: ['NAD+ pools', 'Redox support', 'Methylation support'],
-              primary: false
-            },
-            {
-              name: 'Autophagy Pulse',
-              tag: 'APC',
-              accent: 'rgba(108,92,231,0.45)',
-              accentBg: 'rgba(108,92,231,0.06)',
-              accentBorder: 'rgba(108,92,231,0.20)',
-              accentText: 'rgba(108,92,231,0.75)',
-              desc: 'A 7-day cyclical protocol designed to support cellular cleanup processes and resilience.',
-              steps: ['Short cycle', 'Defense layer', 'Return to base'],
-              primary: false
-            }
-          ].map((item, i) => (
-            <div key={i} className="reveal-stagger group relative overflow-hidden rounded-lg transition-all duration-300" style={{ border: `1px solid rgba(255,255,255,${item.primary ? 0.10 : 0.05})` }}>
-              <div className="absolute top-0 left-0 right-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${item.accent}, transparent)` }} />
-              <div className="absolute inset-0" style={{ background: item.primary ? 'rgba(255,255,255,0.045)' : 'rgba(255,255,255,0.015)' }} />
-              <div className="relative z-10 px-[17px] pt-[17px] pb-[14px] flex flex-col gap-2">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-7 h-7 rounded flex items-center justify-center" style={{ border: `2px solid ${item.accentBorder}`, background: item.accentBg }}>
-                    <span className="text-[8px] font-mono font-bold tracking-[0.06em]" style={{ color: item.accentText }}>{item.tag}</span>
-                  </div>
-                  <h3 className="text-[14px] font-head font-normal uppercase tracking-[-0.01em] text-white">{item.name}</h3>
-                </div>
-
-                <p className="text-[12.5px] font-sans text-white leading-[1.5]">{item.desc}</p>
-
-                <div className="flex items-start gap-2 pt-0.5">
-                  <div className="w-px h-full min-h-[40px] shrink-0" style={{ background: `linear-gradient(180deg, ${item.accentBorder}, transparent)` }} />
-                  <div className="flex flex-col gap-[3px]">
-                    {item.steps.map((s) => (
-                      <span key={s} className="text-[10px] font-mono uppercase tracking-[0.06em] text-white">{s}</span>
-                    ))}
-                  </div>
-                </div>
-
-                <button
-                  onClick={onOpenEvidence}
-                  className="mt-0.5 self-start flex items-center gap-1.5 px-3 py-1.5 rounded text-[9px] font-mono font-bold uppercase tracking-[0.1em] text-white/45 hover:text-white/70 transition-all duration-300 group/cta"
-                  style={{ border: `1px solid rgba(255,255,255,0.08)` }}
-                  onMouseEnter={(e) => { (e.target as HTMLElement).style.borderColor = 'rgba(255,255,255,0.15)'; }}
-                  onMouseLeave={(e) => { (e.target as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)'; }}
-                >
-                  Evidence <ArrowRight size={9} className="group-hover/cta:translate-x-0.5 transition-transform" />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const SixPillars = () => {
-  return (
-    <section id="pillars" className="relative py-12 md:py-20 px-6 overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(108,92,231,0.03) 0%, transparent 70%)' }} />
-      <div className="max-w-2xl mx-auto relative">
-        <div className="text-center mb-10 reveal-stagger">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-[1px] w-12 bg-ar-teal" />
-            <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.18em]">Framework</span>
-            <div className="h-[1px] w-12 bg-ar-teal" />
-          </div>
-          <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white" style={{ fontSize: 'clamp(1.4rem, 4.5vw, 3rem)' }}>6 Pillars of Systemic Aging</h2>
-          <p className="text-[13px] text-white/50 font-sans max-w-md mx-auto mt-3 leading-relaxed">
-            A framework for mapping protocols to systems. Not medical advice.
+          <p className="mt-3 text-[14px] md:text-[15px] font-sans text-[#0A1220]/55 max-w-md mx-auto leading-[1.55]">
+            Three protocols that work independently or together. Most customers start with CELLUNAD+.
           </p>
         </div>
 
-        <div className="border-t border-white/[0.08]">
-          {PILLARS.map((p, i) => (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6">
+          {PRODUCTS.map((p) => (
             <div
-              key={p.title}
-              className="border-b border-white/[0.08] py-3.5 md:py-4 reveal-stagger"
-              data-testid={`pillar-${i}`}
+              key={p.slug}
+              className="reveal-stagger relative rounded-xl overflow-hidden bg-white flex flex-col"
+              style={{ border: '1px solid rgba(10,18,32,0.08)', boxShadow: '0 1px 3px rgba(10,18,32,0.04), 0 4px 16px rgba(10,18,32,0.03)' }}
             >
-              <div className="flex items-start gap-4">
-                <span className="font-mono text-[11px] font-bold tracking-[0.1em] text-white/40 pt-0.5 shrink-0 w-5">0{i + 1}</span>
-                <div className="flex-1 min-w-0 border-l-[2px] pl-3.5" style={{ borderColor: `${p.accent}30` }}>
-                  <h4 className="text-[15px] font-head font-normal uppercase tracking-[-0.01em] text-white">{p.title}</h4>
-                  <p className="text-[12.5px] font-sans text-white/55 leading-[1.5] mt-1">{p.what}</p>
-                  <div className="flex items-center gap-3 mt-1.5">
-                    <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/45">{p.tags.join(' — ')}</span>
-                    <div className="h-[10px] w-px bg-white/12" />
-                    <a
-                      href={`/product/${p.slug}`}
-                      className="text-[12px] font-mono font-bold uppercase tracking-[0.08em] transition-colors duration-200 flex items-center gap-1"
-                      style={{ color: `${p.accent}DD` }}
-                      data-testid={`pillar-link-${p.slug}`}
-                    >
-                      {p.protocol} <ArrowRight size={9} />
-                    </a>
+              {p.slug === 'cellunad' && (
+                <div className="absolute top-4 right-4 z-10 px-2.5 py-1 rounded text-[9px] font-mono font-bold uppercase tracking-[0.10em] text-white" style={{ backgroundColor: '#19B3A6' }}>
+                  Start Here
+                </div>
+              )}
+              <div className="relative flex items-center justify-center pt-8 pb-4 px-6" style={{ background: 'linear-gradient(180deg, #f0ede6 0%, #ffffff 100%)' }}>
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  className="h-[160px] md:h-[180px] w-auto object-contain drop-shadow-lg"
+                  loading="lazy"
+                />
+              </div>
+
+              <div className="flex-1 flex flex-col px-5 pb-6 pt-4 md:px-6">
+                <span className="text-[10px] font-mono uppercase tracking-[0.14em] text-[#0A1220]/40">{p.category}</span>
+                <h3 className="mt-1 text-[18px] font-head font-normal uppercase tracking-[-0.02em] text-[#0A1220]">
+                  <BrandName name={p.name} />
+                </h3>
+                <p className="mt-1.5 text-[13px] font-sans text-[#0A1220]/55 leading-[1.5]">{p.bestFor}</p>
+
+                <div className="mt-4 pt-3 border-t border-[#0A1220]/[0.06] grid grid-cols-2 gap-y-2 text-[12px]">
+                  <div>
+                    <span className="font-mono uppercase tracking-[0.08em] text-[#0A1220]/35 text-[10px] block">Cadence</span>
+                    <span className="font-sans text-[#0A1220]/70 mt-0.5 block">{p.cadence}</span>
                   </div>
+                  <div className="text-right">
+                    <span className="font-mono uppercase tracking-[0.08em] text-[#0A1220]/35 text-[10px] block">Price</span>
+                    <span className="font-sans font-semibold text-[#0A1220] mt-0.5 block">{p.price}</span>
+                    <span className="font-sans text-ar-teal text-[11px] block">{p.subPrice} subscribe</span>
+                  </div>
+                </div>
+
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {p.ingredientsBadges.slice(0, 3).map((badge) => (
+                    <span key={badge} className="text-[10px] font-mono uppercase tracking-[0.06em] px-2 py-0.5 rounded bg-[#0A1220]/[0.04] text-[#0A1220]/55">{badge}</span>
+                  ))}
+                </div>
+
+                <div className="mt-auto pt-5 flex flex-col gap-2">
+                  <button
+                    onClick={() => handleAdd(p)}
+                    className="w-full min-h-[42px] flex items-center justify-center gap-2 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.10em] transition-all hover:scale-[1.01] active:scale-[0.99]"
+                    style={{ backgroundColor: '#0A1220', color: '#F4F1EA' }}
+                    data-testid={`button-add-${p.slug}`}
+                  >
+                    Add to Cart <ShoppingBag size={13} />
+                  </button>
+                  <button
+                    onClick={() => onOpenProduct(p.slug)}
+                    className="w-full min-h-[38px] flex items-center justify-center gap-1.5 rounded-lg font-mono font-bold uppercase text-[10px] tracking-[0.10em] text-[#0A1220]/50 hover:text-[#0A1220]/80 transition-colors border border-[#0A1220]/[0.08] hover:border-[#0A1220]/[0.15]"
+                    data-testid={`button-view-${p.slug}`}
+                  >
+                    View Full Protocol <ArrowRight size={11} />
+                  </button>
                 </div>
               </div>
             </div>
@@ -440,6 +407,184 @@ const SixPillars = () => {
     </section>
   );
 };
+
+
+const ScienceSection = () => {
+  const axes = [
+    {
+      tag: '01',
+      name: 'NAD+ Infrastructure',
+      protocol: 'CELLUNAD+',
+      slug: 'cellunad',
+      desc: 'NAD+ declines with age. NR, a clinically studied precursor, supports daily NAD+ replenishment alongside essential methylation cofactors.',
+      accentColor: 'rgba(96,165,250,0.6)',
+    },
+    {
+      tag: '02',
+      name: 'Gut-Mitochondria Axis',
+      protocol: 'CELLUBIOME',
+      slug: 'cellubiome',
+      desc: 'Urolithin A supports mitochondrial recycling (mitophagy). Tributyrin delivers butyrate to support gut barrier integrity and short-chain fatty acid signaling.',
+      accentColor: 'rgba(25,179,166,0.6)',
+    },
+    {
+      tag: '03',
+      name: 'Autophagy Activation',
+      protocol: 'CELLUNOVA',
+      slug: 'cellunova',
+      desc: 'A 7-day monthly cycle of polyphenols and senolytics designed to support cellular cleanup, then step back. The off-period is part of the protocol.',
+      accentColor: 'rgba(108,92,231,0.6)',
+    },
+  ];
+
+  return (
+    <section className="relative py-[72px] md:py-[110px] px-5 md:px-8" style={{ backgroundColor: SECONDARY_DARK }}>
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-10 md:mb-14 reveal-stagger">
+          <span className="font-mono text-[11px] text-ar-teal uppercase tracking-[0.18em]">The Science</span>
+          <h2 className="mt-3 font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.6rem, 4.5vw, 2.8rem)' }}>
+            Three biological axes.
+            <br className="hidden sm:block" />
+            <span className="text-white/50"> One integrated system.</span>
+          </h2>
+          <p className="mt-3 text-[13px] md:text-[14px] font-sans text-white/45 max-w-lg mx-auto leading-[1.55]">
+            Each protocol targets a distinct mechanism of cellular aging. Together, they form a coordinated system.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+          {axes.map((axis) => (
+            <div
+              key={axis.tag}
+              className="reveal-stagger rounded-lg px-5 py-6 md:px-6 md:py-7 flex flex-col"
+              style={{ backgroundColor: CARD_DARK, border: '1px solid rgba(255,255,255,0.06)' }}
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <span className="font-mono text-[11px] font-bold tracking-[0.10em]" style={{ color: axis.accentColor }}>{axis.tag}</span>
+                <div className="h-px flex-1" style={{ backgroundColor: `${axis.accentColor}20` }} />
+              </div>
+              <h3 className="text-[15px] md:text-[16px] font-head font-normal uppercase tracking-[-0.01em] text-white">{axis.name}</h3>
+              <p className="mt-2 text-[13px] font-sans text-white/50 leading-[1.55] flex-1">{axis.desc}</p>
+              <a
+                href={`/product/${axis.slug}`}
+                className="mt-4 self-start flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.10em] transition-colors duration-200"
+                style={{ color: axis.accentColor }}
+                data-testid={`science-link-${axis.slug}`}
+              >
+                {axis.protocol} <ArrowRight size={10} />
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 md:mt-14 text-center reveal">
+          <a
+            href="/science"
+            className="inline-flex items-center gap-1.5 text-[11px] font-mono font-bold uppercase tracking-[0.10em] text-white/40 hover:text-white/65 transition-colors border border-white/[0.08] hover:border-white/[0.15] rounded-lg px-6 py-2.5 min-h-[40px]"
+            data-testid="link-explore-science"
+          >
+            Explore the Science <ArrowRight size={11} />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+const FaqSection = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <section className="relative py-[72px] md:py-[110px] px-5 md:px-8" style={{ backgroundColor: LIGHT_CLINICAL }}>
+      <div className="max-w-3xl mx-auto">
+        <div className="text-center mb-10 md:mb-14 reveal-stagger">
+          <span className="font-mono text-[11px] text-ar-teal uppercase tracking-[0.18em]">Common Questions</span>
+          <h2 className="mt-3 font-head font-normal tracking-[-0.03em] uppercase leading-tight" style={{ fontSize: 'clamp(1.6rem, 4.5vw, 2.8rem)', color: '#0A1220' }}>
+            Before you begin.
+          </h2>
+        </div>
+
+        <div className="border-t" style={{ borderColor: 'rgba(10,18,32,0.08)' }}>
+          {HOME_FAQS.map((faq, i) => (
+            <div
+              key={i}
+              className="reveal-stagger border-b"
+              style={{ borderColor: 'rgba(10,18,32,0.08)' }}
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                className="w-full flex items-center justify-between py-5 text-left gap-4 min-h-[56px]"
+                data-testid={`faq-toggle-${i}`}
+              >
+                <span className="text-[14px] md:text-[15px] font-sans font-semibold text-[#0A1220]/85">{faq.q}</span>
+                <ChevronDown size={16} className={`shrink-0 text-[#0A1220]/30 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`} />
+              </button>
+              <div
+                className="overflow-hidden transition-all duration-300"
+                style={{ maxHeight: openIndex === i ? '300px' : '0', opacity: openIndex === i ? 1 : 0 }}
+              >
+                <p className="pb-5 text-[13px] md:text-[14px] font-sans text-[#0A1220]/55 leading-[1.6] pr-8">{faq.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 reveal">
+          <a
+            href="/faq"
+            className="text-[11px] font-mono font-bold uppercase tracking-[0.10em] text-[#0A1220]/45 hover:text-[#0A1220]/75 transition-colors flex items-center gap-1.5"
+            data-testid="link-full-faq"
+          >
+            View all questions <ArrowRight size={11} />
+          </a>
+          <span className="hidden sm:block w-px h-4 bg-[#0A1220]/10" />
+          <a
+            href="/quality"
+            className="text-[11px] font-mono font-bold uppercase tracking-[0.10em] text-[#0A1220]/45 hover:text-[#0A1220]/75 transition-colors flex items-center gap-1.5"
+            data-testid="link-quality"
+          >
+            Quality standards <ArrowRight size={11} />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+const FinalCTA = () => (
+  <section className="relative py-[72px] md:py-[100px] px-5 md:px-8 text-white overflow-hidden" style={{ backgroundColor: BASE_DARK }}>
+    <div className="max-w-2xl mx-auto text-center relative z-10 reveal">
+      <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 6vw, 3.2rem)' }}>
+        Your system starts
+        <br />
+        <span className="text-white/40">with one protocol.</span>
+      </h2>
+      <p className="mt-4 text-[14px] font-sans text-white/45 max-w-sm mx-auto leading-[1.5]">
+        Most customers begin with CELLUNAD+. Add protocols as your system evolves.
+      </p>
+      <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a
+          href="/shop"
+          className="group relative px-9 min-h-[46px] flex items-center justify-center bg-ar-teal text-[#0A1220] rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] overflow-hidden hover:scale-[1.02] active:scale-[0.98] transition-transform"
+          style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 0 16px rgba(45,212,191,0.12)' }}
+          data-testid="button-cta-shop-system"
+        >
+          <span className="relative z-10">Shop the System</span>
+          <div className="absolute inset-0 bg-white/12 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+        </a>
+        <a
+          href="/shop"
+          className="text-[10px] font-mono uppercase tracking-[0.08em] text-white/40 hover:text-white/65 transition-colors inline-flex items-center gap-1 min-h-[40px]"
+          data-testid="button-cta-explore"
+        >
+          Explore individual protocols <ArrowRight size={9} />
+        </a>
+      </div>
+    </div>
+  </section>
+);
 
 
 export default function Home() {
@@ -453,10 +598,8 @@ export default function Home() {
 
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
-
     const ctx = gsap.context(() => {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (prefersReduced) return;
 
       gsap.from('.hero-text', { opacity: 0, y: 20, duration: 1, ease: 'power3.out' });
@@ -464,20 +607,14 @@ export default function Home() {
       gsap.utils.toArray<HTMLElement>('.reveal-stagger').forEach((el) => {
         gsap.from(el, {
           scrollTrigger: { trigger: el, start: 'top 95%', toggleActions: 'play none none none' },
-          opacity: 0,
-          y: 16,
-          duration: 0.8,
-          ease: 'power3.out'
+          opacity: 0, y: 16, duration: 0.8, ease: 'power3.out'
         });
       });
 
       gsap.utils.toArray<HTMLElement>('.reveal').forEach((el) => {
         gsap.from(el, {
           scrollTrigger: { trigger: el, start: 'top 95%', toggleActions: 'play none none none' },
-          opacity: 0,
-          y: 16,
-          duration: 0.8,
-          ease: 'power3.out'
+          opacity: 0, y: 16, duration: 0.8, ease: 'power3.out'
         });
       });
     }, containerRef);
@@ -495,10 +632,8 @@ export default function Home() {
 
   const addActiveProductToCart = () => {
     if (!activeProduct) return;
-
     const detailData = PRODUCT_DETAIL_DATA[activeProduct.slug as keyof typeof PRODUCT_DETAIL_DATA];
     if (!detailData) return;
-
     cart.addItem({
       slug: activeProduct.slug,
       name: activeProduct.name,
@@ -510,134 +645,40 @@ export default function Home() {
   };
 
   return (
-    <div ref={containerRef} className="relative bg-[#162336] selection:bg-ar-teal selection:text-white">
-      <div className="fixed inset-0 z-0 bg-[#162336]">
-        <img
-          src="https://images.unsplash.com/photo-1614850523296-e8c041de4398?auto=format&fit=crop&q=80&w=2400"
-          className="w-full h-full object-cover grayscale opacity-30 mix-blend-screen"
-          alt=""
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#182840_0%,_#131d2e_120%)] opacity-80" />
-      </div>
-      <div
-        className="fixed inset-0 pointer-events-none z-[1] opacity-[0.02]"
-        style={{
-          backgroundImage: 'linear-gradient(#F4F1EA 1px, transparent 1px), linear-gradient(90deg, #F4F1EA 1px, transparent 1px)',
-          backgroundSize: '100px 100px'
-        }}
-      />
-      <div className="relative z-[2]">
-      <NoiseOverlay />
+    <div ref={containerRef} className="relative selection:bg-ar-teal selection:text-white" style={{ backgroundColor: BASE_DARK }}>
       <SiteNavbar />
 
-      <Hero
-        onOpenEvidence={() => setEvidencePanel(true)}
-        onOpenProduct={(slug: string) => setActiveProduct(productBySlug[slug] ?? null)}
-      />
+      <Hero onOpenEvidence={() => setEvidencePanel(true)} />
 
-      {/* Protocol Selector */}
-      <section className="relative pt-8 pb-12 md:pt-12 md:pb-20 px-6">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 30%, rgba(30,58,138,0.06) 0%, transparent 70%)' }} />
-        <div className="max-w-7xl mx-auto relative">
-          <div className="text-center mb-12 md:mb-28 reveal-stagger">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-[1px] w-12 bg-ar-teal" />
-              <span className="font-mono text-[12px] text-ar-teal uppercase tracking-[0.22em]">Select Your Protocol</span>
-              <div className="h-[1px] w-12 bg-ar-teal" />
-            </div>
-            <h2 className="text-4xl md:text-5xl font-head font-normal text-white tracking-[-0.04em] uppercase leading-tight">
-              The System
-            </h2>
-            <p className="text-[11px] text-white/50 font-mono uppercase tracking-[0.12em] mt-1.5">Choose your starting point</p>
-          </div>
+      <TrustSection />
 
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-0 sm:gap-y-6 items-stretch">
-              {SELECTOR_PRODUCTS.map((p, i) => (
-                <div key={p.slug} className="flex flex-col">
-                  {i > 0 && (
-                    <div className="flex justify-center py-6 sm:hidden">
-                      <div className="w-[60%] h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
-                    </div>
-                  )}
-                  <ProtocolSelectorCard p={p} />
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="max-w-sm md:max-w-5xl mx-auto mt-10 md:mt-14 pt-3 px-2">
-            <div className="border-t border-white/[0.06] grid grid-cols-1 md:grid-cols-4 md:gap-6">
-              {[
-                { title: 'Third-Party Tested', desc: 'Independent lab verification' },
-                { title: 'Standardized Actives', desc: 'Precise concentration, no variability' },
-                { title: 'Enteric Delivery', desc: 'Targeted absorption' },
-                { title: 'Quality Control', desc: 'Multi-stage review process' },
-              ].map((s, i) => (
-                <div key={s.title} className="flex items-start gap-3 py-3 border-b border-white/[0.06] md:border-b-0 md:py-4">
-                  <span className="font-mono text-[13px] font-bold tabular-nums text-ar-teal/80 shrink-0 pt-px w-5">0{i + 1}</span>
-                  <div className="flex-1 min-w-0">
-                    <span className="text-[12px] font-mono font-bold uppercase tracking-[0.06em] text-white/95 leading-tight block">{s.title}</span>
-                    <span className="text-[11px] font-sans text-white/55 leading-snug block mt-0.5">{s.desc}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <ProductSystemSection onOpenProduct={(slug: string) => setActiveProduct(productBySlug[slug] ?? null)} />
 
-      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
+      <ScienceSection />
 
-      <TheAxis onOpenEvidence={() => setEvidencePanel(true)} />
+      <FaqSection />
 
-      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
+      <FinalCTA />
 
-      <SixPillars />
-
-      <div className="max-w-7xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" /></div>
-
-      {/* Final CTA */}
-      <section className="relative py-10 md:py-14 px-6 text-white overflow-hidden">
-        <div className="max-w-2xl mx-auto text-center relative z-10 reveal">
-          <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(2rem, 7vw, 3.5rem)' }}>
-            Activate your
-            <br />
-            <span className="text-white/45">system.</span>
-          </h2>
-          <a href="/shop" className="mt-5 inline-flex items-center justify-center px-8 py-3 min-h-[44px] bg-ar-teal text-ar-navy rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] hover:bg-ar-teal/90 transition-colors" data-testid="button-cta-shop-system">
-            Shop Protocol Stack
-          </a>
-          <div className="mt-3">
-            <a href="/shop" className="text-[10px] font-mono uppercase tracking-[0.08em] text-white/50 hover:text-white/70 transition-colors inline-flex items-center gap-1" data-testid="button-cta-explore">
-              Explore Individual Protocols <ArrowRight size={9} />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <div className="max-w-2xl mx-auto px-6"><div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" /></div>
-
-      <Footer />
+      <div style={{ backgroundColor: BASE_DARK }}>
+        <Footer />
       </div>
 
-      {/* Evidence SideSheet */}
       <SideSheet isOpen={evidencePanel} onClose={() => setEvidencePanel(false)} title="Scientific Evidence & Rationale">
         <div className="space-y-6">
           <section className="space-y-2">
-            <h4 className="font-head font-normal uppercase tracking-tight text-ar-navy">Designed as a system</h4>
+            <h4 className="font-head font-normal uppercase tracking-tight text-[#0A1220]">Designed as a system</h4>
             <p>
               Age Revive protocols are built around standardized actives, defined cadence, and quality controls.
               We keep claims clinically responsible and focus on repeatable execution.
             </p>
           </section>
-
           <section className="space-y-2">
-            <h4 className="font-head font-normal uppercase tracking-tight text-ar-navy">What you will see here</h4>
+            <h4 className="font-head font-normal uppercase tracking-tight text-[#0A1220]">What you will see here</h4>
             <p>
               This panel summarizes protocol intent. Full research references can be linked in the Science section when ready.
             </p>
           </section>
-
           <div className="p-6 bg-ar-teal/5 border border-ar-teal/10 rounded-xl">
             <p className="text-sm italic">
               "Science is the substrate. Purity is the standard. Design is the interface."
@@ -646,39 +687,38 @@ export default function Home() {
         </div>
       </SideSheet>
 
-      {/* Product SideSheet */}
       <SideSheet isOpen={!!activeProduct} onClose={() => setActiveProduct(null)} title={activeProduct ? <BrandName name={activeProduct.name} /> : 'Protocol'}>
         {activeProduct && (
           <div className="space-y-8">
             <div className="space-y-2">
-              <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-black/45">{activeProduct.category}</p>
-              <p className="text-xl font-sans font-extrabold uppercase tracking-[-0.02em]">{activeProduct.tagline}</p>
-              <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-black/40">{activeProduct.serving}</p>
+              <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-[#0A1220]/45">{activeProduct.category}</p>
+              <p className="text-xl font-sans font-extrabold uppercase tracking-[-0.02em] text-[#0A1220]">{activeProduct.tagline}</p>
+              <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-[#0A1220]/40">{activeProduct.serving}</p>
               {activeProduct.warning && (
                 <div className="p-4 bg-red-500/5 border border-red-500/10 rounded-xl">
                   <p className="text-[12px] font-mono font-bold text-red-600 uppercase tracking-[0.18em] mb-1">Warning</p>
-                  <p className="text-sm font-medium">{activeProduct.warning}</p>
+                  <p className="text-sm font-medium text-[#0A1220]/70">{activeProduct.warning}</p>
                 </div>
               )}
             </div>
 
             <div className="space-y-3">
-              <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-black/45">Key outcomes</p>
+              <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-[#0A1220]/45">Key outcomes</p>
               {activeProduct.outcomes.map((o) => (
                 <div key={o} className="flex items-center gap-3 text-sm font-medium">
                   <span className="w-1.5 h-1.5 rounded-full bg-ar-teal shrink-0" />
-                  <span className="text-black/75">{o}</span>
+                  <span className="text-[#0A1220]/70">{o}</span>
                 </div>
               ))}
             </div>
 
             <div className="space-y-4">
-              <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-black/45">Full ingredient panel</p>
+              <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-[#0A1220]/45">Full ingredient panel</p>
               {activeProduct.fullIngredients.map((ing) => (
-                <div key={ing.name} className="flex justify-between items-end border-b border-black/10 pb-3 gap-6">
+                <div key={ing.name} className="flex justify-between items-end border-b border-[#0A1220]/10 pb-3 gap-6">
                   <div className="space-y-1">
-                    <p className="font-sans font-extrabold text-sm uppercase tracking-[-0.01em]">{ing.name}</p>
-                    <p className="text-[12px] font-mono text-black/50 uppercase tracking-[0.18em]">{ing.purpose}</p>
+                    <p className="font-sans font-extrabold text-sm uppercase tracking-[-0.01em] text-[#0A1220]">{ing.name}</p>
+                    <p className="text-[12px] font-mono text-[#0A1220]/50 uppercase tracking-[0.18em]">{ing.purpose}</p>
                   </div>
                   <span className="font-mono text-sm font-bold text-ar-teal">{ing.dose}</span>
                 </div>
@@ -686,20 +726,20 @@ export default function Home() {
             </div>
 
             <div className="space-y-3">
-              <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-black/45">Rationale</p>
+              <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-[#0A1220]/45">Rationale</p>
               {activeProduct.rationale.map((r) => (
-                <div key={r.title} className="rounded-xl bg-white border border-black/5 p-4">
-                  <p className="text-xs font-sans font-extrabold uppercase tracking-[0.12em]">{r.title}</p>
-                  <p className="mt-2 text-sm text-black/60 font-medium leading-relaxed">{r.text}</p>
+                <div key={r.title} className="rounded-xl bg-white border border-[#0A1220]/5 p-4">
+                  <p className="text-xs font-sans font-extrabold uppercase tracking-[0.12em] text-[#0A1220]">{r.title}</p>
+                  <p className="mt-2 text-sm text-[#0A1220]/60 font-medium leading-relaxed">{r.text}</p>
                 </div>
               ))}
             </div>
 
-            <button onClick={addActiveProductToCart} className="w-full py-5 min-h-[48px] bg-ar-navy text-white rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-ar-ink transition-colors flex items-center justify-center gap-2" data-testid="button-add-to-cart">
+            <button onClick={addActiveProductToCart} className="w-full py-5 min-h-[48px] bg-[#0A1220] text-white rounded-lg font-mono font-bold uppercase text-[12px] tracking-[0.18em] hover:bg-[#162235] transition-colors flex items-center justify-center gap-2" data-testid="button-add-to-cart">
               Add to Cart <ArrowRight size={14} />
             </button>
 
-            <p className="text-[12px] font-mono text-black/45 uppercase tracking-[0.18em]">
+            <p className="text-[12px] font-mono text-[#0A1220]/45 uppercase tracking-[0.18em]">
               *These statements have not been evaluated by the FDA.
             </p>
           </div>
