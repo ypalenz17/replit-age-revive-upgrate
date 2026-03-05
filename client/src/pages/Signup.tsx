@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { Loader2, Eye, EyeOff } from 'lucide-react';
-import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
+import SiteNavbar from '../components/SiteNavbar';
 import { useAuth } from '../hooks/useAuth';
 
 export default function Signup() {
   const [, navigate] = useLocation();
   const { signup } = useAuth();
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -17,7 +17,7 @@ export default function Signup() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim() || !username.trim() || !password || !confirmPassword) return;
+    if (!email.trim() || !name.trim() || !password || !confirmPassword) return;
 
     if (password !== confirmPassword) {
       setError('Passwords do not match');
@@ -33,8 +33,8 @@ export default function Signup() {
     setError('');
 
     try {
-      await signup(email, username, password);
-      navigate('/');
+      await signup(email, name, password);
+      navigate('/account');
     } catch (err: any) {
       setError(err.message || 'Signup failed');
     } finally {
@@ -46,15 +46,9 @@ export default function Signup() {
 
   return (
     <div className="min-h-[100dvh] bg-[#131d2e] text-white font-sans antialiased">
-      <nav className="sticky top-0 z-50 bg-[#131d2e]/90 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
-          <Link href="/">
-            <img src={brandLogo} alt="AGE REVIVE" className="h-5 opacity-80" />
-          </Link>
-        </div>
-      </nav>
+      <SiteNavbar />
 
-      <div className="max-w-sm mx-auto px-5 pt-16 pb-24">
+      <div className="max-w-sm mx-auto px-5 pt-24 pb-24">
         <h1 className="text-[26px] font-sans font-semibold text-white mb-2" data-testid="signup-title">Create Account</h1>
         <p className="text-[14px] text-white/40 mb-8">Join AGE REVIVE</p>
 
@@ -79,12 +73,12 @@ export default function Signup() {
           <div>
             <input
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Username"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Full name"
               className={inputClass}
-              autoComplete="username"
-              data-testid="input-signup-username"
+              autoComplete="name"
+              data-testid="input-signup-name"
             />
           </div>
           <div className="relative">

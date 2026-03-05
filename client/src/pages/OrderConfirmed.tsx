@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearch } from 'wouter';
 import { Loader2, CheckCircle2 } from 'lucide-react';
-import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
 import { useCart } from '../cartStore';
+import SiteNavbar from '../components/SiteNavbar';
 
 interface OrderItem {
   slug: string;
@@ -58,13 +58,7 @@ export default function OrderConfirmed() {
 
   return (
     <div className="min-h-[100dvh] bg-[#131d2e] text-white font-sans antialiased">
-      <nav className="sticky top-0 z-50 bg-[#131d2e]/90 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
-          <Link href="/">
-            <img src={brandLogo} alt="AGE REVIVE" className="h-5 opacity-80" />
-          </Link>
-        </div>
-      </nav>
+      <SiteNavbar />
 
       <div className="max-w-lg mx-auto px-5 py-24 text-center">
         {loading ? (

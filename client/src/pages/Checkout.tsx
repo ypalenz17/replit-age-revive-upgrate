@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useLocation, Link, Redirect } from 'wouter';
+import { useLocation, Redirect } from 'wouter';
 import { ChevronDown, ChevronLeft, Check, Mail, Loader2 } from 'lucide-react';
-import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
+import SiteNavbar from '../components/SiteNavbar';
 import { useCart } from '../cartStore';
 import { useAuth } from '../hooks/useAuth';
 import { apiRequest } from '../lib/queryClient';
@@ -107,15 +107,9 @@ export default function Checkout() {
 
   return (
     <div className="min-h-[100dvh] bg-[#131d2e] text-white font-sans antialiased">
-      <nav className="sticky top-0 z-50 bg-[#131d2e]/90 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
-          <Link href="/">
-            <img src={brandLogo} alt="AGE REVIVE" className="h-5 opacity-80" />
-          </Link>
-        </div>
-      </nav>
+      <SiteNavbar />
 
-      <div className="max-w-lg mx-auto">
+      <div className="max-w-lg mx-auto pt-14">
         <button
           onClick={() => setCartExpanded(!cartExpanded)}
           className="w-full flex items-center justify-between px-5 py-3.5 bg-ar-teal/[0.06] border-b border-ar-teal/[0.12]"

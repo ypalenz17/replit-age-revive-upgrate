@@ -1,6 +1,6 @@
-import { Link, useLocation, Redirect } from 'wouter';
+import { useLocation, Redirect } from 'wouter';
 import { User, LogOut, ShoppingBag } from 'lucide-react';
-import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
+import SiteNavbar from '../components/SiteNavbar';
 import { useAuth } from '../hooks/useAuth';
 
 export default function Account() {
@@ -26,18 +26,9 @@ export default function Account() {
 
   return (
     <div className="min-h-[100dvh] bg-[#131d2e] text-white font-sans antialiased">
-      <nav className="sticky top-0 z-50 bg-[#131d2e]/90 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
-          <Link href="/">
-            <img src={brandLogo} alt="AGE REVIVE" className="h-5 opacity-80" />
-          </Link>
-          <Link href="/shop" className="text-[13px] font-sans text-white/50 hover:text-white transition-colors" data-testid="link-shop">
-            Shop
-          </Link>
-        </div>
-      </nav>
+      <SiteNavbar />
 
-      <div className="max-w-sm mx-auto px-5 pt-16 pb-24">
+      <div className="max-w-sm mx-auto px-5 pt-24 pb-24">
         <div className="flex items-center gap-4 mb-10">
           <div className="w-14 h-14 rounded-full bg-ar-teal/10 border border-ar-teal/20 flex items-center justify-center">
             <User size={24} className="text-ar-teal" />
@@ -49,7 +40,7 @@ export default function Account() {
         </div>
 
         <div className="space-y-3">
-          <Link
+          <a
             href="/shop"
             className="flex items-center gap-4 w-full px-5 py-4 rounded-xl border border-white/[0.08] bg-white/[0.02] hover:bg-white/[0.04] transition-colors"
             data-testid="link-browse-products"
@@ -59,7 +50,7 @@ export default function Account() {
               <p className="text-[14px] font-sans font-medium text-white">Browse Products</p>
               <p className="text-[12px] text-white/35">View our supplement protocols</p>
             </div>
-          </Link>
+          </a>
 
           <button
             onClick={handleLogout}

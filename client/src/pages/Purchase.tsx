@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useParams, useLocation, Link, Redirect } from 'wouter';
-import { Plus, Minus, RotateCcw, ShoppingBag, ChevronDown, Diamond } from 'lucide-react';
-import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
+import { Plus, Minus, RotateCcw, Diamond, ChevronDown } from 'lucide-react';
 import { PRODUCT_DETAIL_DATA, PRODUCT_IMAGES } from '../productData';
 import { PRODUCTS } from '../productsData';
 import { useCart } from '../cartStore';
+import SiteNavbar from '../components/SiteNavbar';
 
 export default function Purchase() {
   const { slug } = useParams<{ slug: string }>();
@@ -47,23 +47,7 @@ export default function Purchase() {
 
   return (
     <div className="min-h-[100dvh] bg-[#131d2e] text-white font-sans antialiased">
-      <nav className="sticky top-0 z-50 bg-[#131d2e]/90 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
-          <Link href="/">
-            <img src={brandLogo} alt="AGE REVIVE" className="h-5 opacity-80" />
-          </Link>
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => navigate(`/product/${slug}`)}
-              className="relative flex items-center justify-center w-10 h-10 rounded-full border border-white/[0.10] text-white/60 hover:text-white transition-colors"
-              data-testid="purchase-cart-icon"
-            >
-              <ShoppingBag size={16} />
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-ar-teal text-[#131d2e] text-[10px] font-bold rounded-full flex items-center justify-center">{quantity}</span>
-            </button>
-          </div>
-        </div>
-      </nav>
+      <SiteNavbar />
 
       <div className="max-w-lg mx-auto px-5 pb-52" style={{ paddingBottom: 'calc(13rem + env(safe-area-inset-bottom, 0px))' }}>
         <h1 className="font-sans font-light tracking-[-0.02em] text-white/90 pt-6 pb-6" style={{ fontSize: 'clamp(1.5rem, 5vw, 1.8rem)' }} data-testid="cart-title">Your Cart</h1>

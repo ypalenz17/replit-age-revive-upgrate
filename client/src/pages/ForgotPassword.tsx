@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'wouter';
 import { Loader2, ArrowLeft, CheckCircle } from 'lucide-react';
-import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
+import SiteNavbar from "../components/SiteNavbar";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
@@ -36,15 +36,9 @@ export default function ForgotPassword() {
 
   return (
     <div className="min-h-[100dvh] bg-[#131d2e] text-white font-sans antialiased">
-      <nav className="sticky top-0 z-50 bg-[#131d2e]/90 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
-          <Link href="/">
-            <img src={brandLogo} alt="AGE REVIVE" className="h-5 opacity-80" />
-          </Link>
-        </div>
-      </nav>
+      <SiteNavbar />
 
-      <div className="max-w-sm mx-auto px-5 pt-16 pb-24">
+      <div className="max-w-sm mx-auto px-5 pt-24 pb-24">
         <Link href="/login" className="inline-flex items-center gap-1.5 text-[13px] text-white/40 hover:text-ar-teal transition-colors mb-8" data-testid="link-back-login">
           <ArrowLeft size={14} /> Back to Sign In
         </Link>

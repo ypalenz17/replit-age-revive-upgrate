@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "wouter";
-import { Menu, ShoppingBag, X } from "lucide-react";
-import brandLogo from "@assets/AR_brand_logo_1771613250600.png";
+import SiteNavbar from "../components/SiteNavbar";
 import Footer from "../components/Footer";
-import { useCart } from "../cartStore";
 import { LEGAL, useLegalSeo } from "../legal/legalUtils";
 import "../styles/luxury-pages.css";
 
@@ -35,19 +33,7 @@ function Section(props: { id: string; title: string; children: React.ReactNode }
   );
 }
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Shop", href: "/shop" },
-  { label: "Science", href: "/science" },
-  { label: "Quality", href: "/quality" },
-  { label: "FAQ", href: "/faq" },
-];
-
 export default function TermsPage() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [shopOpen, setShopOpen] = useState(false);
-  const cart = useCart();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -63,93 +49,9 @@ export default function TermsPage() {
     });
   }, []);
 
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => { document.body.style.overflow = ""; };
-  }, [mobileOpen]);
-
   return (
     <div className="ar-luxury-page min-h-screen text-white">
-      <nav className="fixed top-0 left-0 right-0 z-[150] bg-white/[0.05] backdrop-blur-md border-b border-white/[0.10] shadow-[0_1px_12px_rgba(0,0,0,0.2)]">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 h-14">
-          <a href="/" aria-label="Go to homepage">
-            <img src={brandLogo} alt="AGE REVIVE" className="h-7 md:h-8 w-auto brightness-0 invert" />
-          </a>
-          <div className="hidden md:flex items-center gap-7 font-mono font-medium text-[11px] uppercase tracking-[0.14em]">
-            {navLinks.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                className="text-white/55 hover:text-teal-300 transition-colors"
-                data-testid={`nav-link-${l.label.toLowerCase()}`}
-              >
-                {l.label}
-              </a>
-            ))}
-          </div>
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <button onClick={cart.openCart} className="relative min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-teal-300 transition-colors" aria-label="Cart" data-testid="nav-cart">
-              <ShoppingBag size={18} />
-              <span className="absolute -top-0.5 -right-0.5 w-[15px] h-[15px] flex items-center justify-center text-[9px] font-mono font-bold rounded-sm leading-none text-teal-300 border border-teal-300/40 bg-white/[0.04]">
-                {cart.totalItems}
-              </span>
-            </button>
-            <button
-              className="md:hidden min-w-[40px] min-h-[40px] flex items-center justify-center text-white/60 hover:text-teal-300 transition-colors"
-              aria-label="Menu"
-              data-testid="mobile-menu-toggle"
-              onClick={() => setMobileOpen(!mobileOpen)}
-            >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {mobileOpen && (
-        <div className="fixed inset-0 z-[140] md:hidden">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-          <div className="absolute top-0 left-0 right-0 pt-16 pb-6 px-6 bg-white/[0.04] backdrop-blur-xl border-b border-white/[0.08]">
-            <div className="flex flex-col gap-0">
-              {navLinks.map((l) =>
-                l.label === "Shop" ? (
-                  <div key={l.label} className="border-b border-white/[0.05]">
-                    <button
-                      className="w-full flex items-center justify-between py-3 font-mono text-[12px] uppercase tracking-[0.14em] text-white/60 hover:text-teal-300"
-                      onClick={() => setShopOpen(!shopOpen)}
-                      data-testid="mobile-shop-toggle"
-                    >
-                      Shop
-                      <span className="text-[10px]">{shopOpen ? "\u25B4" : "\u25BE"}</span>
-                    </button>
-                    {shopOpen && (
-                      <div className="pb-3 flex flex-col gap-2 pl-3">
-                        <a href="/product/cellunad" className="text-[12px] font-mono text-white/50 hover:text-teal-300">CELLUNAD+</a>
-                        <a href="/product/cellubiome" className="text-[12px] font-mono text-white/50 hover:text-teal-300">CELLUBIOME</a>
-                        <a href="/product/cellunova" className="text-[12px] font-mono text-white/50 hover:text-teal-300">CELLUNOVA</a>
-                        <a href="/shop" className="text-[12px] font-mono text-white/50 hover:text-teal-300">View all</a>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <a
-                    key={l.label}
-                    href={l.href}
-                    className="py-3 font-mono text-[12px] uppercase tracking-[0.14em] border-b border-white/[0.05] text-white/60 hover:text-teal-300"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {l.label}
-                  </a>
-                )
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      <SiteNavbar />
 
       <header className="ar-luxury-hero relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0f1d30] to-[#131d2e]" />

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { Loader2, Eye, EyeOff } from 'lucide-react';
-import brandLogo from '@assets/AR_brand_logo_1771613250600.png';
+import SiteNavbar from '../components/SiteNavbar';
 import { useAuth } from '../hooks/useAuth';
 
 export default function Login() {
@@ -22,7 +22,7 @@ export default function Login() {
 
     try {
       await login(email, password);
-      navigate('/');
+      navigate('/account');
     } catch (err: any) {
       setError(err.message || 'Login failed');
     } finally {
@@ -34,15 +34,9 @@ export default function Login() {
 
   return (
     <div className="min-h-[100dvh] bg-[#131d2e] text-white font-sans antialiased">
-      <nav className="sticky top-0 z-50 bg-[#131d2e]/90 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-lg mx-auto px-5 py-3 flex items-center justify-between">
-          <Link href="/">
-            <img src={brandLogo} alt="AGE REVIVE" className="h-5 opacity-80" />
-          </Link>
-        </div>
-      </nav>
+      <SiteNavbar />
 
-      <div className="max-w-sm mx-auto px-5 pt-16 pb-24">
+      <div className="max-w-sm mx-auto px-5 pt-24 pb-24">
         <h1 className="text-[26px] font-sans font-semibold text-white mb-2" data-testid="login-title">Sign In</h1>
         <p className="text-[14px] text-white/40 mb-8">Welcome back to AGE REVIVE</p>
 
