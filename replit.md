@@ -25,7 +25,7 @@ Preferred communication style: Simple, everyday language.
 - **Authentication**: Email + password auth with bcrypt hashing (10 rounds). Session management via `express-session` with `connect-pg-simple` PostgreSQL store (table: `user_sessions`). Session cookie: `ar.sid`, 30-day expiry, httpOnly, secure in production. Auth context via `useAuth()` hook (`client/src/hooks/useAuth.tsx`). API routes: `POST /api/auth/signup`, `POST /api/auth/login`, `POST /api/auth/logout`, `GET /api/auth/me`. Checkout pre-fills email and skips step 1 for logged-in users.
 - **Storage**: Uses `DatabaseStorage` (backed by PostgreSQL) when `DATABASE_URL` is set, falling back to `MemStorage` for basic user ops. Order operations require the database. Both implement the `IStorage` interface in `server/storage.ts`.
 - **Dev Server**: Vite dev server is attached as middleware in development mode (`server/vite.ts`), with HMR support
-- **Production**: Client is built to `dist/public/`, server is bundled with esbuild to `dist/index.cjs`
+- **Production**: Client is built to `dist/public/`, server is bundled with esbuild to `dist/index.mjs` (ESM format, required for AdminJS compatibility)
 
 ## Database
 - **ORM**: Drizzle ORM configured for PostgreSQL
