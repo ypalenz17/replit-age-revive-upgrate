@@ -210,13 +210,6 @@ process.on("uncaughtException", (error) => {
 });
 
 (async () => {
-  try {
-    await initStripe();
-  } catch (err) {
-    console.error("[stripe] Init failed (non-fatal):", err);
-  }
-
-  await setupAdmin(app);
   await registerRoutes(httpServer, app);
 
   app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
@@ -255,10 +248,6 @@ process.on("uncaughtException", (error) => {
     await setupVite(httpServer, app);
   }
 
-  // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
   const port = parseInt(process.env.PORT || "5000", 10);
   httpServer.on("error", (err) => {
     console.error("Server failed to start:", err);
@@ -274,6 +263,20 @@ process.on("uncaughtException", (error) => {
     listenOptions,
     () => {
       log(`serving on port ${port}`);
+
+      (async () => {
+        try {
+          await initStripe();
+        } catch (err) {
+          console.error("[stripe] Init failed (non-fatal):", err);
+        }
+
+        try {
+          await setupAdmin(app);
+        } catch (err) {
+          console.error("[admin] Init failed (non-fatal):", err);
+        }
+      })();
     },
   );
 })().catch((err) => {
