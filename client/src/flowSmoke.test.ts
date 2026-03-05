@@ -27,8 +27,10 @@ test('add-to-cart CTAs are wired', () => {
   assert.ok(selectorSource.includes('data-testid={`button-add-stack-${p.slug}`}'));
 });
 
-test('checkout completion clears cart and navigates to confirmation', () => {
+test('checkout flow redirects to Stripe and clears cart on confirmation page', () => {
   const checkoutSource = readSource('./pages/Checkout.tsx');
-  assert.ok(checkoutSource.includes('cart.clearCart();'));
-  assert.ok(checkoutSource.includes("navigate('/order-confirmed')"));
+  assert.ok(checkoutSource.includes("window.location.href = data.url;"));
+
+  const confirmedSource = readSource('./pages/OrderConfirmed.tsx');
+  assert.ok(confirmedSource.includes('cart.clearCart();'));
 });

@@ -41,9 +41,18 @@ interface CheckoutRequestItem {
   slug: string;
   name: string;
   price: number;
+  unitAmountCents: number;
   quantity: number;
   isSubscribe: boolean;
   frequency: string;
+}
+
+interface ParsedCheckoutRequestItem {
+  slug: string;
+  quantity: number;
+  isSubscribe: boolean;
+  frequency: string;
+  clientPrice: number | null;
 }
 
 interface CheckoutShippingInfo {
@@ -90,12 +99,6 @@ interface StripeCheckoutCreateParams extends Record<string, unknown> {
 }
 
 type DiscountInvalidReason = "expired" | "max_uses" | "minimum_not_met";
-
-const SERVER_PRICES: Record<string, { oneTime: number; subscribe: number; name: string }> = {
-  cellunad: { oneTime: 79.99, subscribe: 67.99, name: "CELLUNAD+" },
-  cellubiome: { oneTime: 110.0, subscribe: 93.5, name: "CELLUBIOME" },
-  cellunova: { oneTime: 49.99, subscribe: 42.49, name: "CELLUNOVA" },
-};
 
 const AUTH_RATE_LIMIT_PATHS = new Set<string>([
   "/api/auth/signup",
@@ -324,19 +327,12 @@ function formatOrderResponse(order: Order) {
   };
 }
 
-function parseOrderAccessEmailHeader(req: Request): string {
-  const emailHeader = req.headers["x-order-email"];
-  const providedEmail = Array.isArray(emailHeader) ? emailHeader[0] : emailHeader;
-  return typeof providedEmail === "string" ? normalizeEmail(providedEmail) : "";
-}
-
-function hasOrderAccess(req: Request, order: Order): boolean {
+async function hasOrderAccess(req: Request, order: Order): Promise<boolean> {
   if (req.session.userId && order.userId && req.session.userId === order.userId) {
     return true;
   }
 
-  const providedEmail = parseOrderAccessEmailHeader(req);
-  return Boolean(providedEmail && providedEmail === normalizeEmail(order.email));
+  return isAdminSession(req);
 }
 
 async function isAdminSession(req: Request): Promise<boolean> {
@@ -868,22 +864,21 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         return res.status(400).json({ message: "Complete shipping address is required" });
       }
 
-      const items: CheckoutRequestItem[] = [];
+      const parsedItems: ParsedCheckoutRequestItem[] = [];
       for (const rawItem of rawItems) {
         if (!isObject(rawItem)) {
           return res.status(400).json({ message: "Invalid cart item payload" });
         }
 
         const slug = getStringField(rawItem, "slug").trim().toLowerCase();
+        if (!slug) {
+          return res.status(400).json({ message: "Invalid product slug in cart" });
+        }
+
         const clientPriceRaw = rawItem.price;
         const quantityRaw = rawItem.quantity;
         const isSubscribeRaw = rawItem.isSubscribe;
         const frequencyRaw = getStringField(rawItem, "frequency").trim();
-
-        const pricing = SERVER_PRICES[slug];
-        if (!pricing) {
-          return res.status(400).json({ message: `Unknown product: ${slug}` });
-        }
 
         if (typeof quantityRaw !== "number" || !Number.isInteger(quantityRaw) || quantityRaw < 1 || quantityRaw > 10) {
           return res.status(400).json({ message: "Invalid quantity in cart" });
@@ -894,28 +889,55 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         }
 
         const clientPrice =
-          typeof clientPriceRaw === "number" && Number.isFinite(clientPriceRaw) ? clientPriceRaw : NaN;
-        const expectedPrice = isSubscribeRaw ? pricing.subscribe : pricing.oneTime;
-        if (Math.round(clientPrice * 100) !== Math.round(expectedPrice * 100)) {
-          console.warn(
-            `[checkout] Price mismatch for ${slug}: client sent $${clientPrice}, expected $${expectedPrice}`,
-          );
-        }
+          typeof clientPriceRaw === "number" && Number.isFinite(clientPriceRaw) ? clientPriceRaw : null;
 
-        items.push({
+        parsedItems.push({
           slug,
-          name: pricing.name,
-          price: expectedPrice,
           quantity: quantityRaw,
           isSubscribe: isSubscribeRaw,
           frequency: frequencyRaw || "One-time",
+          clientPrice,
         });
       }
 
       const productRecords = await storage.getProductsBySlugs(
-        Array.from(new Set(items.map((item) => item.slug))),
+        Array.from(new Set(parsedItems.map((item) => item.slug))),
       );
       const productBySlug = new Map(productRecords.map((product) => [product.slug, product]));
+
+      const items: CheckoutRequestItem[] = [];
+      for (const item of parsedItems) {
+        const product = productBySlug.get(item.slug);
+        if (!product) {
+          return res.status(400).json({ message: `Unknown or inactive product: ${item.slug}` });
+        }
+
+        if (item.isSubscribe && product.subscriptionPrice === null) {
+          return res.status(400).json({
+            message: `Subscription is not available for product: ${item.slug}`,
+          });
+        }
+
+        const unitAmountCents = item.isSubscribe
+          ? (product.subscriptionPrice ?? product.price)
+          : product.price;
+
+        if (item.clientPrice !== null && Math.round(item.clientPrice * 100) !== unitAmountCents) {
+          console.warn(
+            `[checkout] Price mismatch for ${item.slug}: client sent $${item.clientPrice.toFixed(2)}, expected $${(unitAmountCents / 100).toFixed(2)}`,
+          );
+        }
+
+        items.push({
+          slug: product.slug,
+          name: product.name,
+          price: unitAmountCents / 100,
+          unitAmountCents,
+          quantity: item.quantity,
+          isSubscribe: item.isSubscribe,
+          frequency: item.frequency,
+        });
+      }
 
       const requestedBySlug = new Map<string, number>();
       for (const item of items) {
@@ -933,7 +955,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         }
       }
 
-      const subtotalCents = items.reduce((sum, item) => sum + Math.round(item.price * 100) * item.quantity, 0);
+      const subtotalCents = items.reduce((sum, item) => sum + item.unitAmountCents * item.quantity, 0);
 
       let validatedDiscount: Awaited<ReturnType<typeof storage.getDiscountCodeByCode>> | null = null;
       if (discountCodeInput) {
@@ -1000,7 +1022,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
               frequency: item.frequency,
             },
           },
-          unit_amount: Math.round(item.price * 100),
+          unit_amount: item.unitAmountCents,
         };
 
         if (item.isSubscribe) {
@@ -1186,7 +1208,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         return res.status(404).json({ message: "Order not found" });
       }
 
-      if (!hasOrderAccess(req, order)) {
+      if (!(await hasOrderAccess(req, order))) {
         return res.status(403).json({ message: "Access denied" });
       }
 
@@ -1214,7 +1236,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         return res.status(404).json({ message: "Order not found" });
       }
 
-      if (!hasOrderAccess(req, order)) {
+      if (!(await hasOrderAccess(req, order))) {
         return res.status(403).json({ message: "Access denied" });
       }
 
@@ -1233,7 +1255,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         return res.status(503).json({ message: "ShipStation integration is not configured" });
       }
 
-      if (!isAuthorizedShipStationWebhook(req.headers)) {
+      if (!isAuthorizedShipStationWebhook(req.headers, req.rawBody)) {
         return res.status(401).json({ message: "Unauthorized ShipStation webhook request" });
       }
 

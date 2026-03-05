@@ -1,5 +1,5 @@
 import type { Order, OrderLineItem } from "@shared/schema";
-import { timingSafeEqual } from "crypto";
+import { createHmac, timingSafeEqual } from "crypto";
 
 const SHIPSTATION_API_BASE = "https://api.shipstation.com/v2";
 
@@ -59,6 +59,50 @@ function parseHeaderValue(value: string | string[] | undefined): string {
   return typeof value === "string" ? value.trim() : "";
 }
 
+function toRawBodyBuffer(rawBody: unknown): Buffer | null {
+  if (Buffer.isBuffer(rawBody)) {
+    return rawBody;
+  }
+
+  if (typeof rawBody === "string") {
+    return Buffer.from(rawBody);
+  }
+
+  return null;
+}
+
+function extractWebhookSignature(headers: Readonly<Record<string, string | string[] | undefined>>): string {
+  const signature =
+    parseHeaderValue(headers["x-shipstation-signature"]) ||
+    parseHeaderValue(headers["x-shipstation-hmac-sha256"]);
+
+  if (!signature) {
+    return "";
+  }
+
+  if (signature.toLowerCase().startsWith("sha256=")) {
+    return signature.slice("sha256=".length).trim();
+  }
+
+  return signature;
+}
+
+function isValidWebhookSignature(signature: string, rawBody: Buffer, apiKey: string): boolean {
+  const normalizedSignature = signature.trim();
+  if (!normalizedSignature) {
+    return false;
+  }
+
+  const expectedHex = createHmac("sha256", apiKey).update(rawBody).digest("hex");
+  const expectedBase64 = createHmac("sha256", apiKey).update(rawBody).digest("base64");
+
+  if (/^[a-f0-9]{64}$/i.test(normalizedSignature)) {
+    return constantTimeEquals(normalizedSignature.toLowerCase(), expectedHex);
+  }
+
+  return constantTimeEquals(normalizedSignature, expectedBase64);
+}
+
 function extractWebhookCredential(headers: Readonly<Record<string, string | string[] | undefined>>): string {
   const explicitKey =
     parseHeaderValue(headers["x-shipstation-api-key"]) ||
@@ -80,9 +124,23 @@ function extractWebhookCredential(headers: Readonly<Record<string, string | stri
 
 export function isAuthorizedShipStationWebhook(
   headers: Readonly<Record<string, string | string[] | undefined>>,
+  rawBody?: unknown,
 ): boolean {
   const expectedKey = getShipStationApiKey();
   if (!expectedKey) {
+    return false;
+  }
+
+  const enforceSignedWebhook =
+    (process.env.SHIPSTATION_ENFORCE_SIGNED_WEBHOOK ?? "").trim().toLowerCase() === "true";
+  const bodyBuffer = toRawBodyBuffer(rawBody);
+  const signature = extractWebhookSignature(headers);
+
+  if (signature && bodyBuffer) {
+    return isValidWebhookSignature(signature, bodyBuffer, expectedKey);
+  }
+
+  if (enforceSignedWebhook) {
     return false;
   }
 

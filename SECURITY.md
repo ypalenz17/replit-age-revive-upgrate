@@ -31,6 +31,7 @@ This repository was hardened with low-risk, non-visual changes focused on API an
 
 - Transitive security advisories were addressed using `overrides`:
   - `lodash` -> `4.17.23`
-  - `minimatch` -> `9.0.6`
+  - `minimatch` -> `9.0.7`
   - `qs` -> `6.15.0`
-- `npm audit` now reports `0 vulnerabilities`.
+- Run `npm audit` in CI/CD and review advisories before each release.
+- Some transitive advisories may remain in third-party admin dependencies and should be tracked for upstream fixes.

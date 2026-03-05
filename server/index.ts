@@ -1,6 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
+import compression from "compression";
 import { setupAdmin } from "./admin";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
@@ -17,6 +18,7 @@ declare module "express-session" {
 const app = express();
 const httpServer = createServer(app);
 app.disable("x-powered-by");
+app.use(compression());
 
 app.get("/healthz", (_req, res) => {
   res.status(200).json({ status: "ok" });
@@ -227,6 +229,12 @@ process.on("uncaughtException", (error) => {
 });
 
 (async () => {
+  try {
+    await setupAdmin(app);
+  } catch (err) {
+    console.error("[admin] Init failed (non-fatal):", err);
+  }
+
   await registerRoutes(httpServer, app);
 
   app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
@@ -286,12 +294,6 @@ process.on("uncaughtException", (error) => {
           await initStripe();
         } catch (err) {
           console.error("[stripe] Init failed (non-fatal):", err);
-        }
-
-        try {
-          await setupAdmin(app);
-        } catch (err) {
-          console.error("[admin] Init failed (non-fatal):", err);
         }
       })();
     },
