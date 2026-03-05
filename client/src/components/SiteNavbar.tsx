@@ -43,7 +43,7 @@ export default function SiteNavbar() {
           "fixed top-0 left-0 right-0 z-[150] transition-all duration-500",
           scrolled
             ? "bg-white/[0.05] backdrop-blur-md border-b border-white/[0.10] shadow-[0_1px_12px_rgba(0,0,0,0.2)]"
-            : "bg-transparent border-b border-white/[0.04]",
+            : "bg-transparent",
         ].join(" ")}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 h-14">
