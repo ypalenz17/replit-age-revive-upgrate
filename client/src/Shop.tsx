@@ -4,6 +4,7 @@ import {
   ArrowRight,
   ChevronDown,
   ShoppingBag,
+  X,
 } from 'lucide-react';
 import { useParams } from 'wouter';
 

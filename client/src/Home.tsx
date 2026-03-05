@@ -3,6 +3,7 @@ import {
   ArrowRight,
   ChevronDown,
   ShoppingBag,
+  X,
 } from 'lucide-react';
 
 import { gsap } from 'gsap';

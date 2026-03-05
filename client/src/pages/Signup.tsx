@@ -113,7 +113,7 @@ export default function Signup() {
           </div>
           <button
             type="submit"
-            disabled={isLoading || !email.trim() || !username.trim() || !password || !confirmPassword}
+            disabled={isLoading || !email.trim() || !name.trim() || !password || !confirmPassword}
             className="w-full py-3.5 bg-ar-teal text-[#131d2e] rounded-full text-[14px] font-sans font-semibold hover:bg-ar-teal/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             data-testid="button-signup"
           >
