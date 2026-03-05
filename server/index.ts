@@ -1,6 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
+import { setupAdmin } from "./admin";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
@@ -16,7 +17,42 @@ declare module "express-session" {
 const app = express();
 const httpServer = createServer(app);
 app.disable("x-powered-by");
-app.set("trust proxy", true);
+
+function getTrustProxySetting(): boolean | number {
+  const configured = (process.env.TRUST_PROXY ?? "").trim().toLowerCase();
+  if (configured === "true") {
+    return true;
+  }
+  if (configured === "false") {
+    return false;
+  }
+
+  const asNumber = Number.parseInt(configured, 10);
+  if (Number.isFinite(asNumber) && asNumber >= 0) {
+    return asNumber;
+  }
+
+  // Default to the first reverse proxy hop instead of trusting all.
+  return 1;
+}
+
+app.set("trust proxy", getTrustProxySetting());
+
+function getSessionSecret(): string {
+  const sessionSecret = process.env.SESSION_SECRET;
+  if (sessionSecret && sessionSecret.length >= 16) {
+    return sessionSecret;
+  }
+
+  if (process.env.NODE_ENV === "production") {
+    throw new Error("SESSION_SECRET must be set to a strong value in production");
+  }
+
+  console.warn("[auth] SESSION_SECRET not set; using development fallback secret");
+  return "dev-session-secret-change-me";
+}
+
+const sessionSecret = getSessionSecret();
 
 const configuredCorsOrigins = new Set(
   (process.env.CORS_ORIGIN ?? "")
@@ -38,11 +74,14 @@ declare module "http" {
 
 app.post(
   "/api/stripe/webhook",
-  express.raw({ type: "application/json" }),
+  express.raw({ type: "application/json", limit: "1mb" }),
   async (req: Request, res: Response) => {
     const signature = req.headers["stripe-signature"];
     if (!signature) {
       return res.status(400).json({ error: "Missing stripe-signature header" });
+    }
+    if (!Buffer.isBuffer(req.body)) {
+      return res.status(400).json({ error: "Invalid webhook payload" });
     }
     const sig = Array.isArray(signature) ? signature[0] : signature;
     try {
@@ -77,7 +116,7 @@ app.use(
           tableName: "user_sessions",
         })
       : undefined,
-    secret: process.env.SESSION_SECRET || "dev-session-secret-change-me",
+    secret: sessionSecret,
     resave: false,
     saveUninitialized: false,
     name: "ar.sid",
@@ -159,6 +198,14 @@ app.use((req, res, next) => {
   next();
 });
 
+process.on("unhandledRejection", (reason) => {
+  console.error("[process] Unhandled rejection:", reason);
+});
+
+process.on("uncaughtException", (error) => {
+  console.error("[process] Uncaught exception:", error);
+});
+
 (async () => {
   try {
     await initStripe();
@@ -166,21 +213,23 @@ app.use((req, res, next) => {
     console.error("[stripe] Init failed (non-fatal):", err);
   }
 
+  await setupAdmin(app);
   await registerRoutes(httpServer, app);
 
-  app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-    const status = Number(err?.status || err?.statusCode || 500);
+  app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
+    const errObject = typeof err === "object" && err !== null ? (err as Record<string, unknown>) : {};
+    const status = Number(errObject.status ?? errObject.statusCode ?? 500);
     const isJsonSyntaxError =
       err instanceof SyntaxError &&
-      (err as { status?: number }).status === 400 &&
+      errObject.status === 400 &&
       "body" in err;
     const safeStatus = Number.isFinite(status) && status >= 400 && status < 600 ? status : 500;
     const message = isJsonSyntaxError
       ? "Invalid JSON payload"
       : safeStatus >= 500
         ? "Internal Server Error"
-        : typeof err?.message === "string" && err.message
-          ? err.message
+        : typeof errObject.message === "string" && errObject.message
+          ? errObject.message
           : "Bad Request";
 
     if (safeStatus >= 500) {

@@ -28,7 +28,6 @@ interface FaqItem {
 interface SeoMetadata {
   title: string;
   description: string;
-  canonicalPath: string;
   canonicalUrl: string;
   ogType: "website" | "product";
   ogImageUrl: string;
@@ -45,6 +44,7 @@ export const PRODUCT_SLUGS: ProductSlug[] = ["cellunad", "cellubiome", "cellunov
 const PRODUCT_SLUG_SET = new Set<ProductSlug>(PRODUCT_SLUGS);
 const PRODUCT_ROUTE_REGEX = /^\/product\/([a-z0-9-]+)$/;
 const PRODUCT_PURCHASE_REGEX = /^\/product\/([a-z0-9-]+)\/purchase$/;
+const ADMIN_ROUTE_PREFIX = "/admin";
 
 const UTILITY_ROUTE_SET = new Set<string>(["/checkout", "/order-confirmed", "/login", "/signup", "/account", "/forgot-password", "/reset-password", "/returns"]);
 
@@ -454,6 +454,10 @@ export function normalizePath(pathname: string): string {
   return trimmed || "/";
 }
 
+function isAdminRoute(routePath: string): boolean {
+  return routePath === ADMIN_ROUTE_PREFIX || routePath.startsWith(`${ADMIN_ROUTE_PREFIX}/`);
+}
+
 export function isKnownAppRoute(routePath: string): boolean {
   const normalizedPath = normalizePath(routePath);
 
@@ -679,7 +683,6 @@ function buildSeoMetadata(routePath: string, page: PageContent): SeoMetadata {
   return {
     title: page.title,
     description: page.description,
-    canonicalPath,
     canonicalUrl,
     ogType,
     ogImageUrl: toAbsoluteUrl(page.imagePath || DEFAULT_OG_IMAGE_PATH),
@@ -755,31 +758,12 @@ export function getPageContent(routePath: string): PageContent | null {
   return getProductPage(productMatch[1]);
 }
 
-export function renderPrerenderedPage(routePath: string): string | null {
-  const normalizedPath = normalizePath(routePath);
-  const page = getPageContent(normalizedPath);
-  if (!page) {
-    return null;
-  }
-
-  const metadata = buildSeoMetadata(normalizedPath, page);
-  const seoBlock = renderSeoBlock(metadata).replace(/<!-- SEO:BEGIN -->\n?|\n?<!-- SEO:END -->/g, "");
-
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-${seoBlock}
-</head>
-<body>
-${page.html}
-</body>
-</html>`;
-}
-
 export function injectContent(html: string, routePath: string): string {
   const normalizedPath = normalizePath(routePath);
+  if (isAdminRoute(normalizedPath)) {
+    return html;
+  }
+
   const page = getPageContent(normalizedPath);
   if (!page) {
     return html;

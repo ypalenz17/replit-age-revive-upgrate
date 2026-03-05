@@ -12,6 +12,14 @@ function getConsentState(): ConsentState {
   return null;
 }
 
+function setConsentState(value: Exclude<ConsentState, null>): void {
+  try {
+    localStorage.setItem(COOKIE_CONSENT_KEY, value);
+  } catch {
+    // Ignore storage failures in restricted browser modes.
+  }
+}
+
 export function useCookieConsent() {
   const [consent, setConsent] = useState<ConsentState>(getConsentState);
   return { consent, hasConsented: consent !== null, isAccepted: consent === "accepted" };
@@ -29,13 +37,13 @@ export default function CookieConsent() {
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
+    setConsentState("accepted");
     setVisible(false);
     enableAnalytics();
   };
 
   const handleDecline = () => {
-    localStorage.setItem(COOKIE_CONSENT_KEY, "declined");
+    setConsentState("declined");
     setVisible(false);
   };
 
@@ -81,8 +89,8 @@ export default function CookieConsent() {
 }
 
 function enableAnalytics() {
-  if (typeof window !== "undefined" && (window as any).gtag) {
-    (window as any).gtag("consent", "update", {
+  if (typeof window !== "undefined" && typeof window.gtag === "function") {
+    window.gtag("consent", "update", {
       analytics_storage: "granted",
       ad_storage: "granted",
     });

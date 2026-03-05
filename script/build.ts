@@ -2,6 +2,11 @@ import { build as esbuild } from "esbuild";
 import { build as viteBuild } from "vite";
 import { rm, readFile } from "fs/promises";
 
+interface PackageManifest {
+  dependencies?: Record<string, string>;
+  devDependencies?: Record<string, string>;
+}
+
 // server deps to bundle to reduce openat(2) syscalls
 // which helps cold start times
 const allowlist = [
@@ -33,6 +38,15 @@ const allowlist = [
   "zod-validation-error",
 ];
 
+const forceExternals = [
+  "adminjs",
+  "@adminjs/express",
+  "@adminjs/passwords",
+  "@adminjs/upload",
+  "adminjs-drizzle",
+  "express-formidable",
+];
+
 async function buildAll() {
   await rm("dist", { recursive: true, force: true });
 
@@ -40,12 +54,17 @@ async function buildAll() {
   await viteBuild();
 
   console.log("building server...");
-  const pkg = JSON.parse(await readFile("package.json", "utf-8"));
+  const pkg = JSON.parse(await readFile("package.json", "utf-8")) as PackageManifest;
   const allDeps = [
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.devDependencies || {}),
   ];
-  const externals = allDeps.filter((dep) => !allowlist.includes(dep));
+  const externals = Array.from(
+    new Set([
+      ...allDeps.filter((dep) => !allowlist.includes(dep)),
+      ...forceExternals,
+    ]),
+  );
 
   await esbuild({
     entryPoints: ["server/index.ts"],
