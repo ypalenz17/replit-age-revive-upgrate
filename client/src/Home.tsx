@@ -191,24 +191,30 @@ const SideSheet = ({ isOpen, onClose, title, children }: { isOpen: boolean; onCl
 
 
 const Hero = ({ onOpenEvidence, onOpenProduct }: { onOpenEvidence: () => void; onOpenProduct: (slug: string) => void }) => {
+  const [videoReady, setVideoReady] = useState(false);
+
   return (
-    <section className="relative min-h-[100dvh] flex flex-col overflow-hidden">
+    <section className="relative min-h-[100dvh] flex flex-col overflow-hidden bg-[#0f1726]">
 
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 hidden md:block"
+        onCanPlay={() => setVideoReady(true)}
+        className={`absolute inset-0 w-full h-full object-cover z-0 hidden md:block transition-opacity duration-1000 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
         src="/images/hero_video_cropped.mp4"
+        preload="auto"
       />
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 md:hidden"
+        onCanPlay={() => setVideoReady(true)}
+        className={`absolute inset-0 w-full h-full object-cover z-0 md:hidden transition-opacity duration-1000 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
         src="/images/hero_video_portrait.mp4"
+        preload="auto"
       />
       <div className="absolute inset-0 z-[1] pointer-events-none hidden md:block" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.5) 0%, rgba(15,23,42,0.35) 40%, rgba(15,23,42,0.6) 80%, rgba(15,23,42,0.9) 100%)' }} />
       <div className="absolute inset-0 z-[1] pointer-events-none md:hidden" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.45) 0%, rgba(15,23,42,0.55) 30%, rgba(15,23,42,0.75) 60%, rgba(15,23,42,0.95) 100%)' }} />
