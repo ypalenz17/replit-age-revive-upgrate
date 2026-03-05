@@ -243,3 +243,117 @@ The page feels:
 - not generic supplement ecommerce
 - not generic biotech
 - excellent on mobile
+
+---
+
+## CELLUNAD+ product page rules
+
+This is a top-priority paid landing page.
+Most first-time customers should understand immediately that CELLUNAD+ is the best starting point in the Age Revive system.
+
+### Product truths to preserve
+- CELLUNAD+ is the daily NAD+ foundation
+- It is a daily product, not a reset protocol
+- It is premium, clinically informed, and non-stimulant
+- The page must feel trustworthy enough to justify the price
+- The page must work exceptionally well on mobile
+
+### The page must answer in under 5 seconds
+1. What is CELLUNAD+?
+2. Why should I start here?
+3. What makes it different from a generic NAD booster?
+4. Why should I trust it?
+5. How do I use it?
+6. Is it a stimulant?
+7. How does it fit into the broader system?
+
+### Core strategy
+This page must behave like a premium landing page with product detail depth.
+It should not feel like:
+- a generic supplement PDP
+- a science essay
+- a protocol builder first
+- a dark endless scroll
+- a biotech concept page
+
+The order should be:
+- understand
+- trust
+- buy
+- then explore deeper science
+
+### Absolutely forbidden
+Never introduce:
+- DNA helix icons
+- gene or chromosome imagery
+- molecule network graphics
+- neuron/circuit/AI visuals
+- biotech cliche graphics
+- futuristic lab motifs
+- glowing particles
+- sci-fi gradients
+- stock medical icon clutter
+- decorative icons with no functional purpose
+- skincare-style lifestyle imagery
+- glassmorphism
+- holographic UI
+- random decorative blobs
+
+Default to no icons unless they clearly improve comprehension.
+
+### Copy restrictions
+Do not use hype or AI fluff.
+Never introduce phrases like:
+- revolutionary
+- next-gen
+- cutting-edge
+- optimize your biology
+- hack your aging
+- engineered longevity
+- breakthrough system
+- future of wellness
+
+Use concise, calm, evidence-aware, premium language.
+Support-oriented wording is preferred over hype.
+
+### Hard consistency rules
+- Do not describe CELLUNAD+ as enteric-protected unless that is explicitly verified in approved product content
+- Remove any enteric-protected references from CELLUNAD+ if they are template leftovers
+- Make timing/use instructions consistent across the page
+- If the page says "with a meal" in one area and "with or without food" in another, reconcile that
+- Do not let protocol-builder language dominate a single-product landing page
+- The sticky mobile CTA must be product-specific, not a generic "protocol stack" control bar
+
+### Homepage-level visual discipline still applies
+Use:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Existing mint/teal accent only
+
+Create rhythm like:
+dark -> light -> dark -> light -> dark
+
+### Product page priorities
+1. Stronger buy box
+2. Stronger "start here" positioning
+3. Early trust proof
+4. Clearer differentiation from generic NAD products
+5. Cleaner section separation
+6. Better mobile sticky buy behavior
+7. Stronger CTA hierarchy
+8. Better product-truth consistency
+9. Cleaner science presentation
+10. More premium visual rhythm
+
+### Done when
+The page feels:
+- elite
+- premium
+- easy to trust
+- easy to scan
+- easy to buy from
+- clearly the best first product to start with
+- clearly not generic biotech
+- clearly not generic supplement ecommerce
+- excellent on mobile

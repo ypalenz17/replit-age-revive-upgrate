@@ -1,0 +1,446 @@
+You are a top-tier DTC landing page strategist, conversion-focused product designer, and senior front-end engineer.
+
+Audit and improve the CELLUNAD+ product page so it feels elite and converts cold paid traffic exceptionally well.
+
+This is one of the most important pages on the site.
+It should feel like the best first product for someone entering the Age Revive system.
+
+Do not just suggest changes.
+Implement them directly in code.
+
+CONTEXT
+
+Brand:
+- Age Revive
+
+Product:
+- CELLUNAD+
+
+Positioning:
+- premium longevity supplements
+- clinically informed
+- restrained, luxurious, trustworthy
+- science-aware without feeling like biotech fluff
+
+Known role of the product:
+- daily NAD+ foundation
+- likely the first product most people should start with
+- non-stimulant daily support
+- premium first-purchase product
+
+The product page should feel like:
+- the smart place to start
+- premium and medically credible
+- easy to understand quickly
+- worth the price
+- clean on mobile
+- stronger than a normal ecommerce PDP
+
+NON-NEGOTIABLE RULES
+
+Do not introduce:
+- DNA helix icons
+- gene/chromosome imagery
+- molecule graphics
+- neuron/circuit/AI visuals
+- biotech clichés
+- futuristic science motifs
+- glowing particles
+- generic icon clutter
+- stock medical icons as decoration
+- skincare-style imagery
+- loud gradients
+- glassmorphism
+- unnecessary animation
+
+Default to zero icons unless an icon clearly improves comprehension.
+
+Do not use hype copy such as:
+- revolutionary
+- next-gen
+- cutting-edge
+- optimize your biology
+- hack your aging
+- engineered longevity
+- breakthrough system
+- future of wellness
+
+Use concise, premium, evidence-aware language.
+
+IMPORTANT PRODUCT TRUTH RULES
+
+Treat the following as hard product truths unless code/content already verified says otherwise:
+- CELLUNAD+ is the daily NAD+ foundation
+- It is a daily product, not a periodic reset
+- It should feel like the best place to start in the protocol
+- It should not be described as enteric-protected unless explicitly verified
+- Usage copy must be internally consistent across the page
+- A single-product landing page should not be dominated by protocol-stack UI
+
+CURRENT UX PROBLEMS TO FIX
+
+1. The page still feels too much like one long dark slab
+2. The buy box is decent but not decisive enough for cold ad traffic
+3. Trust proof is too soft and too scattered
+4. The page does not strongly enough say “start here”
+5. Sticky mobile purchase UI is too protocol-builder-oriented and confusing for a single-product page
+6. Some imagery feels off-category and not specific enough to supplements
+7. The science is valuable but should be easier to scan and placed in support of the conversion path
+8. There are likely product-truth inconsistencies that need cleanup
+9. The CTA system should be simpler and more product-specific
+10. The page should feel more premium and intentional than it does now
+
+PRIMARY PAGE STRATEGY
+
+This page must follow this sequence:
+
+1. Immediate product clarity
+2. Immediate “why start here”
+3. Immediate trust
+4. Immediate buying path
+5. Then deeper science and formulation rationale
+6. Then usage, stacking, FAQ, and final conversion
+
+The visitor should understand this product in under 5 seconds.
+
+THE PAGE MUST QUICKLY ANSWER
+
+- What is CELLUNAD+?
+- Why is it the daily foundation?
+- Why should I start here first?
+- Why is it different from generic NAD products?
+- Why should I trust it?
+- How do I use it?
+- Is it a stimulant?
+- How does it pair with the rest of the Age Revive system?
+
+COLOR / SECTION RHYTHM
+
+The page must not remain in nearly the same dark value throughout.
+
+Use:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Existing mint/teal accent only
+
+Create rhythm like:
+dark -> light -> dark -> light -> dark
+
+Use tonal shifts, spacing, card contrast, and typography hierarchy to create real chapter breaks.
+Do not solve this with extra graphics or clutter.
+
+ABOVE-THE-FOLD / BUY BOX REQUIREMENTS
+
+Refactor the top section so it feels premium, decisive, and conversion-ready.
+
+The top section must clearly include:
+- product name
+- short premium descriptor
+- price
+- cadence / daily use clarity
+- concise ingredient anchors
+- one strong primary CTA
+- a clear trust strip
+- optional secondary action for deeper ingredient/evidence viewing
+
+The visitor should immediately understand that this is:
+- a daily NAD+ foundation
+- a non-stimulant product
+- a premium fully disclosed formula
+- a strong first product to start with
+
+Primary CTA recommendation:
+- Add to Cart
+
+Do not scatter multiple competing purchase verbs throughout the top section.
+
+If reviews exist:
+- make rating/review summary actionable
+- clicking stars should jump to reviews
+- the review treatment should feel useful, not decorative
+
+EARLY TRUST STRIP
+
+Add or strengthen a trust strip directly near the buy box.
+Surface concise proof such as:
+- 500 mg NR
+- fully disclosed label
+- no proprietary blends
+- third-party tested
+- cGMP / manufacturing trust if already approved in site content
+- COA or lot-based documentation if already approved in site content
+- non-stimulant daily support
+
+This trust strip must be easy to scan and visually tight.
+
+START HERE / WHY START WITH CELLUNAD+
+
+Create or strengthen a “Why Start Here” section near the top.
+This is one of the highest-converting strategic sections on the page.
+
+It should explain, simply and clearly:
+- this is the daily foundation
+- this is the best starting point for most people
+- this supports daily cellular energy pathways
+- this fits cleanly into the broader protocol if the customer wants to expand later
+
+This section should feel like strong purchase guidance, not fluff.
+
+WHY THIS IS DIFFERENT FROM GENERIC NAD BOOSTERS
+
+Create or refine a section that explains why CELLUNAD+ is not just another NR capsule.
+
+This section should make the value proposition obvious:
+- clinically studied NR dose
+- methylation co-factor support
+- added mitochondrial cofactor support
+- apigenin included intentionally
+- full label disclosure
+- premium system architecture
+
+Present this in a clean, scannable way:
+- comparison table
+- structured cards
+- clean columns
+- or premium feature grid
+
+Avoid dense paragraphs.
+
+CO-FACTOR SECTION
+
+The current “why co-factors matter” concept is directionally good but should be clearer and more buyer-friendly.
+
+Refactor it so the visitor quickly understands:
+- why NR alone is not the whole story
+- why methylation support is included
+- why mitochondrial cofactor support matters
+- why the formula feels more complete than commodity NAD products
+
+Do not make this section too abstract.
+It should feel concrete and premium.
+
+INGREDIENT / WHAT’S INSIDE SECTION
+
+The ingredient section should feel like premium scientific documentation.
+
+Improve:
+- readability
+- structure
+- card hierarchy
+- dose visibility
+- mobile scanability
+- section contrast
+
+If the current implementation uses too many repetitive stacked cards, simplify and tighten it.
+The visitor should be able to understand the formula architecture without excessive scrolling.
+
+Possible structure:
+- NAD+ foundation
+- mitochondrial cofactor support
+- methylation cofactor support
+- full supplement facts
+
+USE / TIMING CONSISTENCY
+
+Clean up use instructions across the entire page.
+
+Important:
+- make all timing and usage language internally consistent
+- do not let one area say “with a meal” while another says “with or without food” unless the difference is intentionally explained
+
+This section should be short, useful, and friction-reducing.
+
+Also add expectation-setting:
+- daily products are usually evaluated over time
+- consistency matters more than exact timing
+- this is not a stimulant experience
+
+Keep this practical and premium.
+
+IMAGE DIRECTION
+
+Audit imagery and replace anything that feels off-category, generic, or skincare-adjacent.
+
+Do not use:
+- hands with lotion/skincare vibes
+- generic wellness filler
+- meaningless stock imagery
+
+Prefer:
+- product bottle imagery
+- capsule imagery
+- restrained use-context imagery that actually fits supplements
+- premium editorial product storytelling
+- science visuals only if they genuinely improve understanding
+
+MOBILE STICKY BUY BAR
+
+This needs a major cleanup if it currently behaves like a protocol-builder footer.
+
+For a single-product paid landing page, the sticky buy bar should be extremely clear:
+- CELLUNAD+
+- price
+- single product-specific purchase action
+
+Preferred direction:
+- CELLUNAD+ | $79.99 | Add to Cart
+
+Do not use a persistent sticky footer that says things like:
+- Protocol Stack
+- Details
+- Total
+- Add Stack
+unless the user has clearly entered a dedicated stack-builder flow
+
+The sticky bar should reduce friction, not add new decisions.
+
+SECTION ORDER TO TARGET
+
+Refactor the page so it roughly follows this flow:
+
+1. Hero / buy box
+2. Early trust strip
+3. Why Start Here
+4. Why It’s Different
+5. Co-factors / formula architecture
+6. Ingredients / supplement facts
+7. Quality / trust proof
+8. How to use
+9. Who it’s for
+10. Pairs well with other Age Revive products
+11. FAQ / reviews
+12. Final CTA
+
+Adapt to the current architecture as needed, but keep this logic.
+
+WHO IT’S FOR
+
+Move or strengthen a concise “Who It’s For” section.
+
+This should make self-selection easier for cold traffic.
+Examples of who it’s for:
+- people looking for a daily foundation product
+- people wanting non-stimulant support
+- people prioritizing cellular energy support
+- people looking for a more complete NAD+ stack than NR alone
+- people who may later pair it with CELLUBIOME or CELLUNOVA
+
+Keep this practical and concise.
+
+QUALITY / TRUST SECTION
+
+Add or strengthen a clean trust section that reinforces:
+- transparent doses
+- full label disclosure
+- no proprietary blends
+- third-party testing
+- quality/process rigor
+- clinically studied ingredients where appropriate
+- evidence-aware positioning
+
+This section should feel like premium documentation, not marketing fluff.
+
+COMPARISON / POSITIONING
+
+If a comparison section exists, improve it so it feels elegant and credible.
+It should answer:
+- why this is better than generic NAD products
+- why the formula is more thoughtfully built
+- why full disclosure matters
+
+Do not make it feel defensive, cheap, or overly aggressive.
+
+PAIRS WELL WITH
+
+Keep system cross-sells, but subordinate them to the main purchase goal.
+The page should first sell CELLUNAD+ clearly on its own.
+Cross-sells should feel intelligent and additive, not distracting.
+
+If this section stays:
+- make it elegant
+- keep card surfaces refined
+- keep CTA hierarchy secondary to the main product
+- position CELLUBIOME and CELLUNOVA as optional next steps
+
+FINAL CTA
+
+The final CTA should reinforce the true role of the product.
+
+Good direction:
+- Start with the Daily NAD+ Foundation
+- Add CELLUNAD+ to Your Daily Routine
+- Daily NAD+ Foundation, Fully Disclosed
+
+Do not mention:
+- enteric protection
+- incorrect delivery claims
+- vague system language that weakens the product truth
+
+The final CTA should feel premium, clear, and product-specific.
+
+SPACING / TYPOGRAPHY
+
+Improve rhythm and clarity.
+
+Targets:
+- desktop section padding: 100px to 120px
+- mobile section padding: 72px to 88px
+
+Typography should feel:
+- premium
+- clean
+- highly legible
+- easier to scan
+- less dense than now
+
+Use:
+- white primary text on dark
+- softened secondary text on dark
+- deep navy / near-charcoal text on light sections
+
+Keep the tone editorial and premium without drifting into fashion-brand styling.
+
+ACCESSIBILITY
+
+Maintain or improve:
+- contrast
+- semantic structure
+- visible focus states
+- keyboard accessibility
+- mobile tap target sizing
+- responsive behavior
+
+SELF-QA BEFORE STOPPING
+
+Before stopping, audit your own implementation and fix anything that fails:
+
+1. Does the page explain what CELLUNAD+ is in under 5 seconds?
+2. Is it obvious that this is the best starting point for most people?
+3. Is trust visible within the first scrolls?
+4. Does the buy box feel strong enough for paid traffic?
+5. Does any section still blend too much into the next?
+6. Is the sticky mobile buy bar now product-specific and simple?
+7. Is timing/use copy fully consistent across the page?
+8. Have all incorrect or unverified enteric-protected references been removed?
+9. Is any imagery still generic or skincare-adjacent?
+10. Does the page feel premium enough to justify the price?
+11. Does anything feel generic biotech, AI-themed, templated, or cheap?
+12. Are cross-sells clearly secondary to the main purchase action?
+
+If any answer is no, continue refining before stopping.
+
+WORK STYLE
+
+Inspect the codebase, identify the relevant components/styles, and implement the improvements directly.
+Keep code clean, production-ready, and maintainable.
+Do not stop at “better.”
+Stop only when the page feels elite.
+
+WHEN DONE, RETURN
+
+1. Summary of what you changed
+2. Files/components modified
+3. Why the changes improve conversion
+4. Why the changes improve trust
+5. Any optional next-step refinements
