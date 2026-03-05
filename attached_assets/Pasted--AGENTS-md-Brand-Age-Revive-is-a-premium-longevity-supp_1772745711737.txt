@@ -1,0 +1,153 @@
+# AGENTS.md
+
+## Brand
+Age Revive is a premium longevity supplements brand.
+The site must feel luxurious, clinically informed, restrained, trustworthy, and easy to buy from.
+
+## Core visual direction
+Aim for:
+- premium
+- editorial
+- calm
+- expensive
+- medically credible
+- elegant
+- timeless
+
+Avoid:
+- generic supplement ecommerce
+- generic wellness startup
+- generic biotech
+- generic AI SaaS
+- futuristic sci-fi design
+- loud trends
+- flashy gradients
+- cheap luxury tropes
+
+## Absolutely forbidden
+Never introduce:
+- DNA helix icons
+- gene or chromosome imagery
+- molecule network graphics
+- neuron or brain-node graphics
+- circuit board motifs
+- glowing particles
+- AI-themed visuals
+- cybernetic or transhuman imagery
+- biotech cliché graphics
+- stock medical icons as decoration
+- decorative icon sets that add no meaning
+- glassmorphism
+- holographic UI
+- overblown shadows
+- random gradients
+- floating abstract blobs
+
+Default to zero icons unless an icon is clearly necessary for comprehension.
+
+## Copy restrictions
+Do not use hype or AI fluff.
+Do not introduce phrases like:
+- AI-powered
+- next-gen
+- revolutionary
+- cutting-edge
+- hack your aging
+- optimize your biology
+- upgrade your cells
+- unlock your potential
+- breakthrough system
+- future of wellness
+- engineered longevity
+
+Use concise, evidence-aware, premium language instead.
+Support-oriented wording is preferred over hype.
+
+## Homepage priorities
+1. Make it immediately clear what Age Revive sells
+2. Make it obvious where a first-time customer should start
+3. Surface trust within the first scrolls
+4. Make product roles easy to understand
+5. Strengthen CTA hierarchy
+6. Improve section separation
+7. Preserve scientific sophistication without overwhelming the visitor
+8. Make mobile exceptionally clean and easy to scan
+
+## Required section rhythm
+The page must not feel like one long dark slab.
+
+Use this background system:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Accent: existing mint/teal only
+
+Use these to create a rhythm like:
+dark -> lifted dark -> light -> dark -> light -> dark
+
+Use tonal shifts, spacing, card surfaces, and section markers to create real chapter breaks.
+
+## Hero requirements
+The hero must quickly answer:
+- what the brand is
+- what the system is
+- where to start
+- why the brand is credible
+
+Include:
+- clear headline
+- short premium subhead
+- primary CTA
+- secondary CTA
+- trust strip with:
+  - Transparent doses
+  - No proprietary blends
+  - Third-party tested
+  - CoA available by lot
+
+## Product section requirements
+Visitors should understand the 3-product system in under 5 seconds.
+
+Each key product card must clearly show:
+- product name
+- what it is best for
+- cadence
+- price
+- role in the stack
+- primary action
+
+Favor clarity over mechanism-heavy language in upper sections.
+
+## UI rules
+Use:
+- tonal section separation
+- refined spacing
+- subtle borders
+- stronger card/background contrast
+- elegant button hierarchy
+- restrained elevation
+- crisp typography hierarchy
+
+Do not solve design problems with:
+- more colors
+- more icons
+- more decoration
+- more animation
+
+## Spacing targets
+Desktop section padding:
+- 100px to 120px top and bottom
+
+Mobile section padding:
+- 72px to 88px top and bottom
+
+## Done when
+The homepage should:
+- feel premium and intentional
+- have clear section separation
+- surface trust early
+- make the product system easy to understand
+- have strong CTA hierarchy
+- avoid all biotech and AI clichés
+- look polished on mobile at 375px width
+- look premium on desktop at 1440px width
