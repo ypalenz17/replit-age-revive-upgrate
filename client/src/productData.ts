@@ -20,7 +20,7 @@ export const PRODUCT_DETAIL_DATA = {
     rating: 4.8,
     reviewCount: 847,
     form: "Capsules",
-    serving: "2 capsules daily with a meal",
+    serving: "2 capsules daily",
     servingsPerContainer: 30,
     priceOneTime: 79.99,
     priceSubscribe: 67.99,

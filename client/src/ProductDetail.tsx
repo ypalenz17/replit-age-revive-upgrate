@@ -45,6 +45,7 @@ import { getProductKeyFromSlug, getProtocolConfig } from './protocolStack/protoc
 import type { StackItem } from './protocolStack/protocolStackConfig';
 
 const LazyCellubiomePDP = lazy(() => import('./CellubiomePDP'));
+const LazyCellunadPDP = lazy(() => import('./CellunadPDP'));
 
 export type ProductDetailData = (typeof PRODUCT_DETAIL_DATA)[keyof typeof PRODUCT_DETAIL_DATA];
 
@@ -1036,6 +1037,14 @@ export default function ProductDetail() {
     return (
       <Suspense fallback={<div className="min-h-screen bg-[#0A1220]" />}>
         <LazyCellubiomePDP data={data} slug={slug} />
+      </Suspense>
+    );
+  }
+
+  if (slug === 'cellunad') {
+    return (
+      <Suspense fallback={<div className="min-h-screen bg-[#0A1220]" />}>
+        <LazyCellunadPDP data={data} slug={slug} />
       </Suspense>
     );
   }
