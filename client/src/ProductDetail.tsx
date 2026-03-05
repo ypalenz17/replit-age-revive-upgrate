@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { createPortal } from 'react-dom';
 import { useParams, useLocation } from 'wouter';
 import {
@@ -44,7 +44,9 @@ import ProtocolStackBar from './components/ProtocolStackBar';
 import { getProductKeyFromSlug, getProtocolConfig } from './protocolStack/protocolStackConfig';
 import type { StackItem } from './protocolStack/protocolStackConfig';
 
-type ProductDetailData = (typeof PRODUCT_DETAIL_DATA)[keyof typeof PRODUCT_DETAIL_DATA];
+const LazyCellubiomePDP = lazy(() => import('./CellubiomePDP'));
+
+export type ProductDetailData = (typeof PRODUCT_DETAIL_DATA)[keyof typeof PRODUCT_DETAIL_DATA];
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,7 +57,7 @@ function getIcon(name: string) {
 }
 
 
-function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () => void; data: ProductDetailData }) {
+export function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () => void; data: ProductDetailData }) {
   if (!isOpen) return null;
   return (
     <div className="fixed inset-0 z-[200] flex items-end sm:items-center justify-center p-0 sm:p-4">
@@ -98,7 +100,7 @@ function ModalFacts({ isOpen, onClose, data }: { isOpen: boolean; onClose: () =>
   );
 }
 
-function ImageLightbox({ images, startIndex, onClose }: { images: string[]; startIndex: number; onClose: () => void }) {
+export function ImageLightbox({ images, startIndex, onClose }: { images: string[]; startIndex: number; onClose: () => void }) {
   const [idx, setIdx] = useState(startIndex);
 
   useEffect(() => {
@@ -158,7 +160,7 @@ function ImageLightbox({ images, startIndex, onClose }: { images: string[]; star
   );
 }
 
-function ImageCarousel({ images, accent, lightMode }: { images: string[]; accent?: string; lightMode?: boolean }) {
+export function ImageCarousel({ images, accent, lightMode }: { images: string[]; accent?: string; lightMode?: boolean }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -1027,6 +1029,14 @@ export default function ProductDetail() {
           <a href="/shop" className="text-teal-400 font-mono text-sm uppercase tracking-wider hover:text-teal-300 transition-colors" data-testid="link-back-shop">Back to Shop</a>
         </div>
       </div>
+    );
+  }
+
+  if (slug === 'cellubiome') {
+    return (
+      <Suspense fallback={<div className="min-h-screen bg-[#0A1220]" />}>
+        <LazyCellubiomePDP data={data} slug={slug} />
+      </Suspense>
     );
   }
 
