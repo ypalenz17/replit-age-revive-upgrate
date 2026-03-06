@@ -1,0 +1,127 @@
+## Shop / Shop All page rules
+
+This page is not a generic catalog.
+It must behave like a guided selector, comparison page, and premium protocol builder.
+
+### Core job
+Help a new visitor understand the 3-product system in seconds:
+- what each product does
+- who should start where
+- how each product fits into the protocol
+- what each one costs
+- how often each one is used
+- what should be bought together
+
+### What this page must do fast
+1. Make the system easy to understand
+2. Make it obvious where most people should start
+3. Make the differences between the 3 products instantly clear
+4. Make price and cadence visible without extra scrolling
+5. Surface trust proof early
+6. Make buying one product or the full system easy
+7. Feel premium and highly intentional on mobile
+
+### Core strategy
+This page must not feel like 3 mini landing pages stacked vertically.
+It must feel like:
+- a guided selector
+- a premium comparison page
+- a clear protocol builder
+- a fast decision page
+
+### Absolutely avoid
+Never introduce:
+- DNA helix icons
+- gene or chromosome imagery
+- molecule graphics
+- neural/circuit/AI visuals
+- biotech cliché motifs
+- decorative icon clutter
+- glassmorphism
+- loud gradients
+- generic startup SaaS design
+- generic ecommerce template styling
+- carousels that hide important product info
+- meaningless graphics or stock wellness filler
+
+Default to zero icons unless they clearly improve comprehension.
+
+### Copy rules
+Do not use hype or AI fluff.
+Do not introduce language like:
+- revolutionary
+- next-gen
+- cutting-edge
+- optimize your biology
+- hack your aging
+- engineered longevity
+- breakthrough system
+- future of wellness
+
+Use concise, calm, evidence-aware, premium language.
+
+### Product-truth rules
+Use current approved product content as source of truth for:
+- pricing
+- cadence
+- serving
+- ingredient anchors
+- product role
+- warnings / allergen notes
+- protocol guidance
+
+Do not let the shop page create contradictions with:
+- FAQ
+- product pages
+- quality page
+- science page
+
+### Hard interaction rules
+- Do not treat all 3 products as equally likely starting points
+- Surface “most people start here” guidance clearly
+- Do not hide price
+- Do not hide cadence
+- Do not hide key product differences
+- Do not let “View Protocol” be the only meaningful action
+- Do not make “Add to Stack” the default language if a clearer action is better
+- If bundle or system pricing is shown, compute from real current product prices only
+- Never invent discounts or savings that do not actually exist
+
+### Visual rules
+Use:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Existing mint/teal accent only
+
+Create real section rhythm:
+dark -> light -> dark -> light -> dark
+
+Do not let the page feel like one long dark slab.
+
+### Product card rules
+Each product card must clearly show:
+- product name
+- role in the system
+- best for
+- cadence
+- price
+- supply
+- 2 to 3 meaningful ingredient or benefit anchors
+- one clear primary action
+- one clear secondary action if needed
+
+Packaging details like glass bottle or UV protection must be secondary, not primary.
+
+### Done when
+The page feels:
+- elite
+- premium
+- easy to understand
+- easy to trust
+- easy to compare
+- easy to buy from
+- clearly guided
+- clearly not generic biotech
+- clearly not generic supplement ecommerce
+- excellent on mobile
