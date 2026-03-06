@@ -261,16 +261,16 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
         bg={LIGHT}
         className="cn-reveal"
       >
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5">
           {trustCards.map((item, i) => (
             <div
               key={i}
-              className="cn-reveal bg-white rounded-lg px-5 py-5 md:py-6 border border-[#0A1220]/[0.05]"
-              style={{ boxShadow: '0 1px 2px rgba(10,18,32,0.03)' }}
+              className="cn-reveal bg-white rounded-lg lg:rounded-xl px-5 py-5 md:py-6 lg:px-6 lg:py-7 border border-[#0A1220]/[0.06]"
+              style={{ boxShadow: '0 1px 3px rgba(10,18,32,0.04)' }}
               data-testid={`trust-badge-${i}`}
             >
               <p className="text-[13px] md:text-[14px] font-sans font-semibold text-[#0A1220]/80 leading-snug">{item.title}</p>
-              <p className="mt-1.5 text-[12px] font-sans text-[#0A1220]/40 leading-[1.5]">{item.desc}</p>
+              <p className="mt-1.5 text-[12px] lg:text-[13px] font-sans text-[#0A1220]/40 leading-[1.5]">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -289,7 +289,7 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
           {whyStartCards.map((text, i) => (
             <div
               key={i}
-              className="cn-reveal flex items-start gap-4 px-5 py-4 md:px-6 md:py-5 rounded-lg border border-white/[0.05]"
+              className="cn-reveal flex items-start gap-4 px-5 py-4 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-lg lg:rounded-xl border border-white/[0.06]"
               style={{ backgroundColor: '#15202F' }}
               data-testid={`start-here-${i}`}
             >
@@ -307,12 +307,12 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
         bg={LIGHT}
         className="cn-reveal"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
           {designedForItems.map((item, i) => (
             <div
               key={i}
-              className="cn-reveal bg-white rounded-lg px-5 py-4 border border-[#0A1220]/[0.05]"
-              style={{ boxShadow: '0 1px 2px rgba(10,18,32,0.03)' }}
+              className="cn-reveal bg-white rounded-lg lg:rounded-xl px-5 py-4 lg:px-6 lg:py-5 border border-[#0A1220]/[0.06]"
+              style={{ boxShadow: '0 1px 3px rgba(10,18,32,0.04)' }}
               data-testid={`best-for-${i}`}
             >
               <span className="text-[13px] font-sans text-[#0A1220]/60 leading-snug">{item}</span>
@@ -329,11 +329,11 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
         dark
         className="cn-reveal"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 lg:gap-6">
           {formulaCards.map((card, i) => (
             <div
               key={i}
-              className="rounded-xl p-6 md:p-7 border border-white/[0.05]"
+              className="rounded-xl p-6 md:p-7 lg:p-8 border border-white/[0.06]"
               style={{ backgroundColor: '#15202F' }}
               data-testid={`cofactor-${i}`}
             >
@@ -427,7 +427,7 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
         bg={LIGHT}
         className="cn-reveal"
       >
-        <div className="bg-white rounded-xl p-6 md:p-8 border border-[#0A1220]/[0.05]" style={{ boxShadow: '0 1px 3px rgba(10,18,32,0.04)' }}>
+        <div className="bg-white rounded-xl p-6 md:p-8 lg:p-9 border border-[#0A1220]/[0.06]" style={{ boxShadow: '0 1px 3px rgba(10,18,32,0.04)' }}>
           <p className="text-[17px] lg:text-[19px] text-[#0A1220]/70 font-sans font-medium leading-relaxed text-center lg:text-left mb-6">Take 2 capsules daily. With or without food.</p>
           <div className="space-y-3 pt-4 border-t border-[#0A1220]/[0.06]">
             {[
@@ -498,27 +498,27 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
       >
         <div className="bg-white rounded-xl border border-[#0A1220]/[0.06] overflow-hidden" style={{ boxShadow: '0 1px 3px rgba(10,18,32,0.04)' }}>
           <div className="grid grid-cols-2">
-            <div className="px-5 md:px-7 py-4 border-b-2 border-ar-teal/30">
+            <div className="px-5 md:px-7 lg:px-9 py-4 lg:py-5 border-b-2 border-ar-teal/30">
               <span className="font-mono text-[11px] font-bold uppercase tracking-[0.10em] text-ar-teal">CELLUNAD+</span>
             </div>
-            <div className="px-5 md:px-7 py-4 border-b border-[#0A1220]/[0.06] border-l border-[#0A1220]/[0.06]">
+            <div className="px-5 md:px-7 lg:px-9 py-4 lg:py-5 border-b border-[#0A1220]/[0.06] border-l border-[#0A1220]/[0.06]">
               <span className="font-mono text-[11px] font-bold uppercase tracking-[0.10em] text-[#0A1220]/25">Generic NAD+</span>
             </div>
           </div>
           <div className="grid grid-cols-2">
-            <div className="px-5 md:px-7 py-5 space-y-3">
+            <div className="px-5 md:px-7 lg:px-9 py-5 lg:py-7 space-y-3 lg:space-y-4">
               {data.comparison.us.map((item, i) => (
                 <div key={i} className="flex items-start gap-2.5">
                   <span className="w-1 h-1 rounded-full bg-ar-teal shrink-0 mt-2" />
-                  <span className="text-[13px] font-sans text-[#0A1220]/60 leading-snug">{item}</span>
+                  <span className="text-[13px] lg:text-[14px] font-sans text-[#0A1220]/60 leading-snug">{item}</span>
                 </div>
               ))}
             </div>
-            <div className="px-5 md:px-7 py-5 space-y-3 border-l border-[#0A1220]/[0.06]">
+            <div className="px-5 md:px-7 lg:px-9 py-5 lg:py-7 space-y-3 lg:space-y-4 border-l border-[#0A1220]/[0.06]">
               {data.comparison.them.map((item, i) => (
                 <div key={i} className="flex items-start gap-2.5">
                   <span className="w-1 h-1 rounded-full bg-[#0A1220]/15 shrink-0 mt-2" />
-                  <span className="text-[13px] font-sans text-[#0A1220]/30 leading-snug">{item}</span>
+                  <span className="text-[13px] lg:text-[14px] font-sans text-[#0A1220]/30 leading-snug">{item}</span>
                 </div>
               ))}
             </div>
@@ -535,11 +535,11 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
         dark
         className="cn-reveal"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
           {data.stack.map((item, i) => (
             <div
               key={i}
-              className="cn-reveal rounded-xl p-6 md:p-7 space-y-3 border border-white/[0.05] hover:border-white/[0.10] transition-colors flex flex-col"
+              className="cn-reveal rounded-xl p-6 md:p-7 lg:p-8 space-y-3 border border-white/[0.06] hover:border-white/[0.10] transition-colors flex flex-col"
               style={{ backgroundColor: '#15202F' }}
             >
               <div className="flex justify-between items-start gap-3">
@@ -588,14 +588,14 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
                 className={`w-full flex items-center justify-between py-5 md:py-6 text-left gap-6 min-h-[56px] ${focusRing} rounded`}
                 data-testid={`faq-toggle-${i}`}
               >
-                <span className="text-[14px] md:text-[15px] font-sans font-semibold text-[#0A1220]/75 leading-snug">{item.q}</span>
+                <span className="text-[14px] md:text-[15px] lg:text-[16px] font-sans font-semibold text-[#0A1220]/75 leading-snug">{item.q}</span>
                 <ChevronDown size={16} className={`shrink-0 text-[#0A1220]/20 transition-transform duration-300 ${faqOpen === i ? 'rotate-180' : ''}`} />
               </button>
               <div
                 className="overflow-hidden transition-all duration-300"
                 style={{ maxHeight: faqOpen === i ? '400px' : '0', opacity: faqOpen === i ? 1 : 0 }}
               >
-                <p className="pb-6 text-[14px] font-sans text-[#0A1220]/45 leading-[1.65] pr-8">{item.a}</p>
+                <p className="pb-6 text-[14px] lg:text-[15px] font-sans text-[#0A1220]/45 leading-[1.65] pr-8">{item.a}</p>
               </div>
             </div>
           ))}

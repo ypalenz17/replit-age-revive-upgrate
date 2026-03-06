@@ -225,7 +225,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         bg={LIGHT}
         className="cb-reveal"
       >
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5">
           {[
             { title: 'cGMP Manufactured', desc: 'Produced in FDA-registered, cGMP-certified facilities.' },
             { title: 'Third-Party Tested', desc: 'Independent verification of purity, potency, and contaminants.' },
@@ -236,12 +236,12 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
           ].map((item, i) => (
             <div
               key={i}
-              className="cb-reveal bg-white rounded-lg px-5 py-5 md:py-6 border border-[#0A1220]/[0.05]"
-              style={{ boxShadow: '0 1px 2px rgba(10,18,32,0.03)' }}
+              className="cb-reveal bg-white rounded-lg lg:rounded-xl px-5 py-5 md:py-6 lg:px-6 lg:py-7 border border-[#0A1220]/[0.06]"
+              style={{ boxShadow: '0 1px 3px rgba(10,18,32,0.04)' }}
               data-testid={`trust-badge-${i}`}
             >
               <p className="text-[13px] md:text-[14px] font-sans font-semibold text-[#0A1220]/80 leading-snug">{item.title}</p>
-              <p className="mt-1.5 text-[12px] font-sans text-[#0A1220]/40 leading-[1.5]">{item.desc}</p>
+              <p className="mt-1.5 text-[12px] lg:text-[13px] font-sans text-[#0A1220]/40 leading-[1.5]">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -256,7 +256,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         dark
         className="cb-reveal"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4">
           {[
             'Adults focused on daily gut barrier and mitochondrial support',
             'People looking for a focused, two-compound daily protocol',
@@ -265,7 +265,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
           ].map((item, i) => (
             <div
               key={i}
-              className="cb-reveal flex items-start gap-4 px-5 py-4 md:px-6 md:py-5 rounded-lg border border-white/[0.05]"
+              className="cb-reveal flex items-start gap-4 px-5 py-4 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-lg lg:rounded-xl border border-white/[0.06]"
               style={{ backgroundColor: '#15202F' }}
               data-testid={`best-for-${i}`}
             >
@@ -283,7 +283,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         bg={LIGHT}
         className="cb-reveal"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 lg:gap-6">
           {[
             { title: 'Research-Informed Doses', body: '500 mg Urolithin A aligns with published human studies. 500 mg Tributyrin provides stable butyrate delivery. No diluted blends.' },
             { title: 'Enteric-Protected Delivery', body: 'Standard capsules degrade in stomach acid. CELLUBIOME uses enteric coating to protect both compounds until they reach the intestine, where absorption and barrier support occur.' },
@@ -292,7 +292,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
           ].map((card, i) => (
             <div
               key={i}
-              className="bg-white rounded-xl p-6 md:p-7 border border-[#0A1220]/[0.05]"
+              className="bg-white rounded-xl p-6 md:p-7 lg:p-8 border border-[#0A1220]/[0.06]"
               style={{ boxShadow: '0 1px 3px rgba(10,18,32,0.04)' }}
               data-testid={`different-${i}`}
             >
@@ -312,11 +312,11 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         dark
         className="cb-reveal"
       >
-        <div className="space-y-3">
+        <div className="space-y-3 lg:space-y-4">
           {data.benefitHighlights.map((h, i) => (
             <div
               key={i}
-              className="p-6 md:p-7 border rounded-xl border-white/[0.05]"
+              className="p-6 md:p-7 lg:p-8 border rounded-xl border-white/[0.06]"
               style={{ backgroundColor: '#15202F' }}
               data-testid={`benefit-${i}`}
             >
@@ -487,7 +487,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         className="cb-reveal"
       >
         <div className="max-w-md lg:max-w-none">
-          <div className="rounded-xl p-6 md:p-8 border border-white/[0.05]" style={{ backgroundColor: '#15202F' }}>
+          <div className="rounded-xl p-6 md:p-8 lg:p-9 border border-white/[0.06]" style={{ backgroundColor: '#15202F' }}>
             <p className="text-[17px] text-white/60 font-sans font-medium leading-relaxed text-center lg:text-left mb-6">{data.howToUse.instruction}</p>
             <div className="space-y-3 pt-4 border-t border-white/[0.06]">
               {data.howToUse.tips.map((tip, i) => (
@@ -509,27 +509,27 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       >
         <div className="bg-white rounded-xl border border-[#0A1220]/[0.06] overflow-hidden" style={{ boxShadow: '0 1px 3px rgba(10,18,32,0.04)' }}>
           <div className="grid grid-cols-2">
-            <div className="px-5 md:px-7 py-4 border-b-2 border-ar-teal/30">
+            <div className="px-5 md:px-7 lg:px-9 py-4 lg:py-5 border-b-2 border-ar-teal/30">
               <span className="font-mono text-[11px] font-bold uppercase tracking-[0.10em] text-ar-teal">CELLUBIOME</span>
             </div>
-            <div className="px-5 md:px-7 py-4 border-b border-[#0A1220]/[0.06] border-l border-[#0A1220]/[0.06]">
+            <div className="px-5 md:px-7 lg:px-9 py-4 lg:py-5 border-b border-[#0A1220]/[0.06] border-l border-[#0A1220]/[0.06]">
               <span className="font-mono text-[11px] font-bold uppercase tracking-[0.10em] text-[#0A1220]/25">Other Brands</span>
             </div>
           </div>
           <div className="grid grid-cols-2">
-            <div className="px-5 md:px-7 py-5 space-y-3">
+            <div className="px-5 md:px-7 lg:px-9 py-5 lg:py-7 space-y-3 lg:space-y-4">
               {data.comparison.us.map((item, i) => (
                 <div key={i} className="flex items-start gap-2.5">
                   <span className="w-1 h-1 rounded-full bg-ar-teal shrink-0 mt-2" />
-                  <span className="text-[13px] font-sans text-[#0A1220]/60 leading-snug">{item}</span>
+                  <span className="text-[13px] lg:text-[14px] font-sans text-[#0A1220]/60 leading-snug">{item}</span>
                 </div>
               ))}
             </div>
-            <div className="px-5 md:px-7 py-5 space-y-3 border-l border-[#0A1220]/[0.06]">
+            <div className="px-5 md:px-7 lg:px-9 py-5 lg:py-7 space-y-3 lg:space-y-4 border-l border-[#0A1220]/[0.06]">
               {data.comparison.them.map((item, i) => (
                 <div key={i} className="flex items-start gap-2.5">
                   <span className="w-1 h-1 rounded-full bg-[#0A1220]/15 shrink-0 mt-2" />
-                  <span className="text-[13px] font-sans text-[#0A1220]/30 leading-snug">{item}</span>
+                  <span className="text-[13px] lg:text-[14px] font-sans text-[#0A1220]/30 leading-snug">{item}</span>
                 </div>
               ))}
             </div>
@@ -545,18 +545,18 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         dark
         className="cb-reveal"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
           {data.stack.map((item, i) => (
             <div
               key={i}
-              className="cb-reveal border border-white/[0.05] rounded-xl p-6 md:p-7 space-y-3 hover:border-white/[0.10] transition-colors"
+              className="cb-reveal border border-white/[0.06] rounded-xl p-6 md:p-7 lg:p-8 space-y-3 hover:border-white/[0.10] transition-colors flex flex-col"
               style={{ backgroundColor: '#15202F' }}
             >
               <div className="flex justify-between items-start gap-3">
-                <h4 className="text-[16px] font-head font-normal uppercase tracking-[-0.02em] text-white/90">{item.name}</h4>
+                <h4 className="text-[16px] lg:text-[18px] font-head font-normal uppercase tracking-[-0.02em] text-white/90">{item.name}</h4>
                 <span className="font-mono text-[9px] px-2.5 py-1 rounded uppercase shrink-0 text-white/30 border border-white/[0.08]">{item.role}</span>
               </div>
-              <p className="text-[13px] text-white/40 font-sans leading-relaxed">{item.add}</p>
+              <p className="text-[13px] text-white/40 font-sans leading-relaxed flex-1">{item.add}</p>
               <p className="text-[10px] font-mono text-white/20 uppercase tracking-[0.10em]">{item.when}</p>
               <div className="flex gap-3 pt-1">
                 <a
@@ -598,14 +598,14 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
                 className={`w-full flex items-center justify-between py-5 md:py-6 text-left gap-6 min-h-[56px] ${focusRing} rounded`}
                 data-testid={`faq-toggle-${i}`}
               >
-                <span className="text-[14px] md:text-[15px] font-sans font-semibold text-[#0A1220]/75 leading-snug">{item.q}</span>
+                <span className="text-[14px] md:text-[15px] lg:text-[16px] font-sans font-semibold text-[#0A1220]/75 leading-snug">{item.q}</span>
                 <ChevronDown size={16} className={`shrink-0 text-[#0A1220]/20 transition-transform duration-300 ${faqOpen === i ? 'rotate-180' : ''}`} />
               </button>
               <div
                 className="overflow-hidden transition-all duration-300"
                 style={{ maxHeight: faqOpen === i ? '400px' : '0', opacity: faqOpen === i ? 1 : 0 }}
               >
-                <p className="pb-6 text-[14px] font-sans text-[#0A1220]/45 leading-[1.65] pr-8">{item.a}</p>
+                <p className="pb-6 text-[14px] lg:text-[15px] font-sans text-[#0A1220]/45 leading-[1.65] pr-8">{item.a}</p>
               </div>
             </div>
           ))}

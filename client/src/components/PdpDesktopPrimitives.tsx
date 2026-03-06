@@ -27,21 +27,21 @@ export function PdpHeroShell({
       </div>
 
       <div className="hidden lg:block relative z-10">
-        <div className="max-w-[1400px] mx-auto px-8 xl:px-10 pt-24 xl:pt-8 pb-8">
+        <div className="max-w-[1400px] mx-auto px-8 xl:px-10 2xl:px-12 pt-20 pb-10">
           <div
-            className="rounded-[28px] overflow-hidden grid min-h-[720px] xl:min-h-[760px]"
+            className="rounded-[28px] overflow-hidden grid min-h-[600px] xl:min-h-[680px] 2xl:min-h-[720px]"
             style={{
               gridTemplateColumns: splitRatio === '6/6' ? '1fr 1fr' : '1.18fr 1fr',
-              boxShadow: '0 8px 40px rgba(0,0,0,0.12)',
+              boxShadow: '0 8px 48px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.08)',
             }}
           >
             <div className="relative flex items-center justify-center" style={{ backgroundColor: mediaBg }}>
-              <div className="w-full h-full flex items-center justify-center p-12 xl:p-14">
+              <div className="w-full h-full flex items-center justify-center p-6 xl:p-8 2xl:p-10">
                 {mediaPanel}
               </div>
             </div>
             <div className="relative flex flex-col justify-center" style={{ backgroundColor: buyBoxBg }}>
-              <div className="px-12 xl:px-14 py-12 xl:py-14">
+              <div className="px-10 xl:px-12 py-10 xl:py-12">
                 {buyBox}
               </div>
             </div>
@@ -86,37 +86,36 @@ export function PdpSectionRow({
 }) {
   const textColor = dark ? 'text-white' : '';
   const eyebrowColor = dark ? 'text-ar-teal/80' : 'text-ar-teal';
-  const headColor = dark ? 'text-white' : '';
   const introColor = dark ? 'text-white/45' : 'text-[#0A1220]/50';
   const py = tight
     ? 'py-[64px] md:py-[88px] lg:py-[72px] xl:py-[72px]'
-    : 'py-[72px] md:py-[100px] lg:py-[88px] xl:py-[88px]';
+    : 'py-[72px] md:py-[100px] lg:py-[80px] xl:py-[88px]';
 
   return (
     <section
       id={sectionId}
-      className={`${py} px-6 md:px-8 ${textColor} ${className}`}
+      className={`${py} px-6 md:px-8 lg:px-10 ${textColor} ${className}`}
       style={{ backgroundColor: bg }}
     >
       <div className="max-w-5xl lg:max-w-[1360px] mx-auto">
         <div className="lg:grid lg:grid-cols-12 lg:gap-10 xl:gap-14">
-          <div className="lg:col-span-4 xl:col-span-4 mb-10 md:mb-12 lg:mb-0">
-            <div className="text-center lg:text-left lg:sticky lg:top-28">
-              <span className={`font-mono text-[10px] md:text-[11px] lg:text-[12px] uppercase tracking-[0.20em] ${eyebrowColor}`}>{eyebrow}</span>
+          <div className="lg:col-span-4 mb-10 md:mb-12 lg:mb-0">
+            <div className="text-center lg:text-left lg:sticky lg:top-24">
+              <span className={`font-mono text-[10px] md:text-[11px] lg:text-[11px] uppercase tracking-[0.20em] ${eyebrowColor}`}>{eyebrow}</span>
               <h2
-                className={`mt-3 lg:mt-4 font-head font-normal tracking-[-0.03em] uppercase leading-[0.95] ${headColor}`}
-                style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.8rem)', color: dark ? undefined : BASE_DARK }}
+                className="mt-3 lg:mt-4 font-head font-normal tracking-[-0.03em] uppercase leading-[0.95]"
+                style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.4rem)', color: dark ? '#fff' : BASE_DARK }}
               >
                 {heading}
               </h2>
               {intro && (
-                <p className={`mt-4 text-[14px] lg:text-[16px] font-sans leading-relaxed ${introColor} max-w-[480px] lg:max-w-none`}>
+                <p className={`mt-4 text-[14px] lg:text-[15px] font-sans leading-relaxed ${introColor} max-w-[480px] lg:max-w-none`}>
                   {intro}
                 </p>
               )}
             </div>
           </div>
-          <div className="lg:col-span-8 xl:col-span-8">
+          <div className="lg:col-span-8">
             {children}
           </div>
         </div>
@@ -147,17 +146,17 @@ export function PdpCenteredSection({
   const textColor = dark ? 'text-white' : '';
   const eyebrowColor = dark ? 'text-ar-teal/80' : 'text-ar-teal';
   const py = tight
-    ? 'py-[56px] md:py-[72px] lg:py-[64px]'
-    : 'py-[72px] md:py-[100px] lg:py-[88px]';
+    ? 'py-[48px] md:py-[64px] lg:py-[52px]'
+    : 'py-[72px] md:py-[100px] lg:py-[80px]';
 
   return (
     <section className={`${py} px-6 md:px-8 ${textColor} ${className}`} style={{ backgroundColor: bg }}>
       <div className="mx-auto" style={{ maxWidth }}>
         {(eyebrow || heading) && (
           <div className="text-center mb-10 md:mb-12 lg:mb-10">
-            {eyebrow && <span className={`font-mono text-[10px] md:text-[11px] lg:text-[12px] uppercase tracking-[0.20em] ${eyebrowColor}`}>{eyebrow}</span>}
+            {eyebrow && <span className={`font-mono text-[10px] md:text-[11px] uppercase tracking-[0.20em] ${eyebrowColor}`}>{eyebrow}</span>}
             {heading && (
-              <h2 className="mt-3 font-head font-normal tracking-[-0.03em] uppercase leading-[0.95]" style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.8rem)', color: dark ? '#fff' : BASE_DARK }}>
+              <h2 className="mt-3 font-head font-normal tracking-[-0.03em] uppercase leading-[0.95]" style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.4rem)', color: dark ? '#fff' : BASE_DARK }}>
                 {heading}
               </h2>
             )}
@@ -188,24 +187,23 @@ export function PdpSupplementFactsShell({
 }) {
   const textColor = dark ? 'text-white' : '';
   const eyebrowColor = dark ? 'text-ar-teal/80' : 'text-ar-teal';
-  const headColor = dark ? 'text-white' : '';
   const introColor = dark ? 'text-white/45' : 'text-[#0A1220]/50';
   const linkColor = dark ? 'text-white/35 hover:text-white/55' : 'text-[#0A1220]/40 hover:text-[#0A1220]/65';
 
   return (
-    <section className={`py-[72px] md:py-[110px] lg:py-[88px] px-6 md:px-8 ${textColor}`} style={{ backgroundColor: bg }}>
+    <section className={`py-[72px] md:py-[100px] lg:py-[80px] px-6 md:px-8 lg:px-10 ${textColor}`} style={{ backgroundColor: bg }}>
       <div className="max-w-5xl lg:max-w-[1360px] mx-auto">
         <div className="lg:grid lg:grid-cols-12 lg:gap-10 xl:gap-14">
           <div className="lg:col-span-4 mb-10 md:mb-12 lg:mb-0">
-            <div className="text-center lg:text-left lg:sticky lg:top-28">
-              <span className={`font-mono text-[10px] md:text-[11px] lg:text-[12px] uppercase tracking-[0.20em] ${eyebrowColor}`}>{eyebrow}</span>
+            <div className="text-center lg:text-left lg:sticky lg:top-24">
+              <span className={`font-mono text-[10px] md:text-[11px] lg:text-[11px] uppercase tracking-[0.20em] ${eyebrowColor}`}>{eyebrow}</span>
               <h2
-                className={`mt-3 lg:mt-4 font-head font-normal tracking-[-0.03em] uppercase leading-[0.95] ${headColor}`}
-                style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.8rem)', color: dark ? undefined : BASE_DARK }}
+                className="mt-3 lg:mt-4 font-head font-normal tracking-[-0.03em] uppercase leading-[0.95]"
+                style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.4rem)', color: dark ? '#fff' : BASE_DARK }}
               >
                 {heading}
               </h2>
-              <p className={`mt-4 text-[14px] lg:text-[16px] font-sans leading-relaxed ${introColor}`}>
+              <p className={`mt-4 text-[14px] lg:text-[15px] font-sans leading-relaxed ${introColor}`}>
                 {intro}
               </p>
               <button
@@ -252,19 +250,19 @@ export function PdpFaqShell({
   const introColor = dark ? 'text-white/40' : 'text-[#0A1220]/45';
 
   return (
-    <section className={`py-[72px] md:py-[110px] lg:py-[88px] px-6 md:px-8 ${dark ? 'text-white' : ''}`} style={{ backgroundColor: bg }}>
+    <section className={`py-[72px] md:py-[100px] lg:py-[80px] px-6 md:px-8 lg:px-10 ${dark ? 'text-white' : ''}`} style={{ backgroundColor: bg }}>
       <div className="max-w-2xl lg:max-w-[1360px] mx-auto">
         <div className="lg:grid lg:grid-cols-12 lg:gap-10 xl:gap-14 lg:items-start">
           <div className="lg:col-span-4 mb-10 md:mb-12 lg:mb-0">
-            <div className="text-center lg:text-left lg:sticky lg:top-28">
-              <span className={`font-mono text-[10px] md:text-[11px] lg:text-[12px] uppercase tracking-[0.20em] ${eyebrowColor}`}>Common Questions</span>
+            <div className="text-center lg:text-left lg:sticky lg:top-24">
+              <span className={`font-mono text-[10px] md:text-[11px] lg:text-[11px] uppercase tracking-[0.20em] ${eyebrowColor}`}>Common Questions</span>
               <h2
                 className="mt-3 lg:mt-4 font-head font-normal tracking-[-0.03em] uppercase leading-[0.95]"
-                style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.8rem)', color: dark ? '#fff' : BASE_DARK }}
+                style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.4rem)', color: dark ? '#fff' : BASE_DARK }}
               >
                 {heading}
               </h2>
-              {intro && <p className={`mt-4 text-[14px] lg:text-[16px] font-sans leading-relaxed ${introColor}`}>{intro}</p>}
+              {intro && <p className={`mt-4 text-[14px] lg:text-[15px] font-sans leading-relaxed ${introColor}`}>{intro}</p>}
               {links && <div className="hidden lg:block mt-6">{links}</div>}
             </div>
           </div>
@@ -294,13 +292,13 @@ export function PdpFinalCtaBand({
   bg?: string;
 }) {
   return (
-    <section className="relative py-[72px] md:py-[88px] lg:py-[64px] px-6 text-white overflow-hidden" style={{ backgroundColor: bg }}>
+    <section className="relative py-[72px] md:py-[80px] lg:py-[56px] px-6 text-white overflow-hidden" style={{ backgroundColor: bg }}>
       <div className="max-w-2xl lg:max-w-3xl mx-auto text-center relative z-10">
         {heading}
         {sub}
-        <div className="mt-7 lg:mt-6">{cta}</div>
-        {footerNote && <p className="mt-4 text-[10px] font-mono uppercase tracking-[0.06em] text-white/20">{footerNote}</p>}
-        {browseLink && <div className="mt-3">{browseLink}</div>}
+        <div className="mt-6 lg:mt-5">{cta}</div>
+        {footerNote && <p className="mt-3 text-[10px] font-mono uppercase tracking-[0.06em] text-white/20">{footerNote}</p>}
+        {browseLink && <div className="mt-2">{browseLink}</div>}
       </div>
     </section>
   );
@@ -322,13 +320,13 @@ export function PdpComparisonShell({
   const eyebrowColor = dark ? 'text-ar-teal/80' : 'text-ar-teal';
 
   return (
-    <section className={`py-[72px] md:py-[110px] lg:py-[88px] px-6 md:px-8 ${dark ? 'text-white' : ''}`} style={{ backgroundColor: bg }}>
+    <section className={`py-[72px] md:py-[100px] lg:py-[80px] px-6 md:px-8 lg:px-10 ${dark ? 'text-white' : ''}`} style={{ backgroundColor: bg }}>
       <div className="max-w-3xl lg:max-w-[1180px] mx-auto">
-        <div className="text-center lg:text-left mb-10 md:mb-14 lg:mb-10">
-          <span className={`font-mono text-[10px] md:text-[11px] lg:text-[12px] uppercase tracking-[0.20em] ${eyebrowColor}`}>{eyebrow}</span>
+        <div className="text-center lg:text-left mb-10 md:mb-12 lg:mb-10">
+          <span className={`font-mono text-[10px] md:text-[11px] lg:text-[11px] uppercase tracking-[0.20em] ${eyebrowColor}`}>{eyebrow}</span>
           <h2
             className="mt-3 lg:mt-4 font-head font-normal tracking-[-0.03em] uppercase leading-[0.95]"
-            style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.8rem)', color: dark ? '#fff' : BASE_DARK }}
+            style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.4rem)', color: dark ? '#fff' : BASE_DARK }}
           >
             {heading}
           </h2>
