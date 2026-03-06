@@ -1239,3 +1239,145 @@ The FAQ page feels:
 - clearly optimized for search and AI retrieval
 - clearly not generic biotech
 - clearly not generic marketing
+
+## Desktop product page rules
+
+These three product pages are the highest-value desktop templates on the site:
+- CELLUNAD+
+- CELLUBIOME
+- CELLUNOVA
+
+They must feel like a premium contained PDP system, not mobile sections stretched wide.
+
+### Core principle
+Desktop PDPs should feel like:
+- luxury ecommerce
+- scientific documentation
+- disciplined conversion design
+- intentional multi-column composition
+
+They must not feel like:
+- stacked mobile cards on a wider screen
+- giant centered posters
+- floating blocks in dead space
+- cheap template sections
+- inconsistent one-off layouts between products
+
+### Desktop-only mandate
+This is a desktop-first refinement pass.
+Preserve mobile.
+Make changes primarily at:
+- lg: 1024px+
+- xl: 1280px+
+- 2xl: 1440px+
+- wide desktop: 1680px
+
+Do not degrade:
+- 375px mobile
+- 768px tablet
+- current mobile CTA behavior
+- current mobile section order
+
+### Shared desktop PDP system
+All 3 product pages must use the same desktop primitives:
+- same desktop nav treatment
+- same contained hero shell
+- same section header pattern
+- same light-section card system
+- same dark-section card system
+- same supplement-facts shell
+- same comparison-matrix system
+- same FAQ shell
+- same final CTA and footer rhythm
+
+The only differences should come from content and grid count, not random styling changes.
+
+### Navigation rules
+Desktop nav must be visually clean and independent from the hero split background.
+Do not let the nav look half-white and half-dark or blur awkwardly across the split hero.
+
+Preferred:
+- one full-width nav bar
+- 72px height
+- dark translucent or solid treatment
+- subtle bottom border
+- consistent readability across all three PDPs
+
+### Hero shell rules
+For desktop only, product heroes should be a contained two-panel shell inside a premium max-width container.
+
+Target:
+- max width: 1400px to 1440px
+- outer radius: 28px
+- overflow hidden
+- left panel: product media
+- right panel: buy box
+- min height: 760px at 1280+, max around 820px at 1440+
+
+The hero should not feel like a full-screen split poster.
+
+### Section header rules
+Do not center every section title on desktop.
+Most sections should use a left-led desktop composition:
+- left column: eyebrow + heading + short intro
+- right column: cards, table, checklist, or accordion
+
+Centered headings should be used sparingly.
+
+### Spacing rules
+Desktop should feel tighter and more composed than the current version.
+
+Targets:
+- section padding: around 88px top / 96px bottom
+- tighter sections: 72px top / 80px bottom
+- hero panel padding: 48px to 56px
+- card padding: 28px to 32px
+- grid gaps: 24px to 28px
+
+Avoid giant empty vertical bands.
+
+### Card rules
+- consistent radius: 16px on normal cards
+- consistent border: 1px
+- subtle shadows only
+- equal-height card rows on desktop
+- CTA buttons aligned at card bottoms
+- no tiny cards floating in oversized containers
+
+### Documentation rules
+Supplement facts, compare sections, and FAQs must use desktop width intelligently.
+Do not center narrow 700px blocks in a 1440px page if the content would benefit from a broader shell.
+
+### Typography rules
+Desktop should feel more expensive and more readable.
+
+Targets:
+- H1: 68px to 80px depending on product
+- major section headings: 44px to 56px
+- intro copy: 18px to 20px
+- card titles: 22px to 26px
+- body copy: 16px to 18px
+- micro labels / eyebrows: 12px to 13px uppercase with restrained tracking
+
+Reduce overuse of all-caps in body interfaces, tabs, and tables.
+
+### Text contrast rules
+Light sections currently feel too faint on desktop.
+Increase body and tertiary text contrast on light backgrounds.
+Do not change the palette drastically.
+Just fix readability.
+
+### Footer rules
+Final CTA and footer areas should be materially tighter on desktop.
+No giant empty dark zones.
+
+### Done when
+All 3 product pages feel:
+- clearly desktop-designed
+- premium
+- consistent
+- intentional
+- conversion-oriented
+- supportive of the current product truths
+- no longer cheap or templated
+- strong enough for a 9-figure brand aspiration
