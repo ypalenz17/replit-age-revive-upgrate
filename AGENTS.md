@@ -867,3 +867,220 @@ The page feels:
 - excellent on mobile
 - clearly not generic biotech
 - clearly not generic supplement marketing
+
+## Sitewide SEO and LLM discoverability rules
+
+These rules apply across the entire site, not just one page.
+
+### Core principle
+Do not treat "LLM optimization" and "Google SEO" as separate hacks.
+Build pages so they are:
+- crawlable
+- semantically clear
+- answer-first
+- text-rich where needed
+- structurally explicit
+- helpful to humans first
+
+### Required on every page
+- one clear H1 that matches the actual page topic
+- unique, descriptive title tag
+- unique, descriptive meta description
+- canonical URL
+- strong internal linking to relevant pages
+- crawlable visible text for all important claims
+- proper heading hierarchy with H2/H3 sections
+- readable URLs and stable slugs
+- descriptive image alt text where images carry meaning
+- Open Graph and Twitter metadata that matches the page topic
+- no keyword stuffing
+- no hidden SEO text
+- no image-only explanations for important content
+
+### Structured data rules
+Use JSON-LD where possible.
+
+Sitewide / homepage:
+- WebSite structured data on the home page
+- Organization structured data on the home page or existing sitewide schema layer
+
+Product pages:
+- Product structured data using the real on-page product data
+- do not fake reviews, ratings, prices, shipping, or return terms
+
+FAQ sections:
+- only use FAQPage structured data when the FAQ content is actually visible on the page
+- markup must match visible content exactly
+
+Breadcrumbs:
+- only use BreadcrumbList structured data if real breadcrumbs exist in the UI or template
+
+### Technical SEO rules
+- titles, H1, og:title, and major visible heading should align
+- meta descriptions should summarize the actual page clearly
+- canonical must match the intended public URL
+- do not ship conflicting canonicals
+- do not ship duplicate titles across major pages
+- do not rely on client-side rendering alone for critical page meaning
+- important content must exist in accessible HTML/DOM text
+
+### LLM readability rules
+Structure pages so AI systems can easily extract accurate answers:
+- use explicit section headings
+- use concise answer-first paragraphs
+- use definitions where useful
+- use bullet lists only when they improve clarity
+- use anchored sections with stable IDs
+- reduce vague marketing language
+- keep entity names consistent
+- state product roles and distinctions clearly
+- separate stronger evidence from emerging evidence
+- make FAQs, checklists, and standards easy to quote accurately
+
+### Validation rules
+After implementing structured data or metadata changes:
+- validate structured data
+- check that no structured data describes content not visible on the page
+- avoid schema duplication conflicts
+- keep metadata, headings, and visible page topic aligned
+
+## Quality page rules
+
+This page is trust infrastructure.
+It must feel like premium documentation and verification guidance, not a generic marketing page.
+
+### Core job
+The quality page should help a visitor quickly understand:
+- what Age Revive means by quality
+- what is actually checked
+- what documentation exists
+- how lot traceability works
+- how to audit a supplement intelligently
+- how quality differs by product format and protocol role
+- why this matters before purchase
+
+### What the page must not feel like
+- a dark endless scroll
+- a marketing page dressed up as science
+- a vague "premium ingredients" page
+- a generic biotech page
+- a stack of nearly identical rounded cards
+- a wall of jargon
+- a page with weak mobile readability
+
+### Absolutely forbidden
+Never introduce:
+- DNA helix icons
+- gene or chromosome imagery
+- molecule graphics unless strictly necessary and explanatory
+- neural/circuit/AI motifs
+- fake data dashboards
+- decorative security or lab icons
+- glassmorphism
+- loud gradients
+- meaningless chip clouds
+- decorative scientific art
+- generic stock medical visuals
+
+Default to zero icons unless they clearly improve comprehension.
+
+### Copy rules
+Use calm, concise, premium, verification-oriented language.
+Do not use:
+- revolutionary
+- next-gen
+- cutting-edge
+- optimize your biology
+- hack your aging
+- engineered longevity
+- breakthrough system
+- generic "premium quality" fluff
+
+Preserve nuance and restraint.
+Do not oversell what quality programs do.
+
+### Content integrity rules
+Use the current approved live quality-page content as source of truth.
+Preserve and improve the clarity of:
+- transparent dosing
+- identity and potency verification
+- contaminant screening categories
+- lot traceability
+- documentation / CoA request logic
+- cGMP baseline framing
+- label transparency
+- allergen disclosure
+- product-specific quality notes
+- educational / not-medical-advice language
+
+Do not invent new claims.
+Do not imply exact testing panels or guarantees that are not already supported.
+
+### SEO / discoverability goals for this page
+This page should rank and be retrievable for queries like:
+- supplement quality standards
+- third-party tested supplements
+- supplement CoA / certificate of analysis
+- lot traceability supplements
+- no proprietary blends
+- how to evaluate supplement quality
+- what does third-party tested mean
+- supplement contaminant screening
+- enteric delivery integrity
+- supplement quality checklist
+
+The page should answer these kinds of questions directly and clearly in visible text.
+
+### Visual rules
+This page should feel lighter and more documentary than the homepage.
+
+Use:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Existing mint/teal accent only
+
+Use more light sections than the homepage where readability matters.
+Especially:
+- testing standards
+- traceability / documentation
+- FAQ
+- final checklist
+
+The page must not feel like one long dark slab.
+
+### Structural priorities
+1. Clear hero / page intro
+2. What quality means here
+3. Testing standards and why each matters
+4. Simple buyer audit checklist
+5. Traceability and how to request documentation
+6. Manufacturing / compliance / label transparency
+7. Product-specific quality notes
+8. Quality FAQ
+9. Final CTA
+
+### CTA rules
+This is not a hard-sell page.
+
+Allowed:
+- one hero CTA to jump to standards
+- one restrained secondary CTA to science or FAQ
+- one restrained final CTA to shop or build the system
+
+Not allowed:
+- repeated sales CTAs after every section
+- aggressive product selling throughout the page
+- turning the quality page into a hidden PDP
+
+### Done when
+The page feels:
+- elite
+- premium
+- transparent
+- easy to trust
+- easy to navigate
+- easy to read on mobile
+- clearly optimized for search and AI retrieval
+- clearly not generic biotech
+- clearly not generic supplement marketing
