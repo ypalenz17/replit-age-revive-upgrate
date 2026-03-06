@@ -1107,189 +1107,226 @@ function ShopCatalog() {
     <div className="min-h-screen text-white" data-testid="shop-page">
       <SiteNavbar />
 
-      {/* ── HERO / SYSTEM INTRO ── (BASE_DARK) */}
+      {/* ═══ S1 · HERO / SYSTEM INTRO ═══ (BASE_DARK) */}
       <section style={{ background: BASE_DARK }} data-testid="section-shop-hero">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 pt-28 md:pt-36 pb-16 md:pb-24">
-          <div className="text-center">
-            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] font-bold text-teal-400/80 mb-4" data-testid="text-shop-eyebrow">The Age Revive Protocol</span>
-            <h1 className="text-4xl md:text-6xl font-head font-normal uppercase tracking-[-0.04em] leading-[0.9] text-white mb-6" data-testid="text-shop-title">
+        <div className="mx-auto max-w-6xl px-5 md:px-8 pt-28 md:pt-36 pb-20 md:pb-28">
+          <div className="text-center mb-14 md:mb-16">
+            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] font-bold text-teal-400/80 mb-5" data-testid="text-shop-eyebrow">The Age Revive Protocol</span>
+            <h1 className="font-head font-normal uppercase tracking-[-0.04em] leading-[0.88] text-white mb-5" style={{ fontSize: 'clamp(2.2rem, 6vw, 3.8rem)' }} data-testid="text-shop-title">
               Three Formulas. One System.
             </h1>
-            <p className="max-w-2xl mx-auto text-[15px] md:text-[17px] font-sans text-white/65 leading-relaxed mb-10">
-              A daily foundation, a gut-mito signal layer, and a monthly reset cycle.
+            <p className="max-w-xl mx-auto text-[15px] md:text-[16px] font-sans text-white/60 leading-relaxed">
+              A daily foundation, a gut-mito signal layer, and a monthly reset.
               Each formula has a distinct role. Together, they cover the full protocol.
             </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
-              <button
-                onClick={scrollToComparison}
-                className="min-h-[48px] px-8 py-3 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] text-white transition-all duration-300"
-                style={{ background: 'linear-gradient(135deg, #19B3A6, #14a899)', boxShadow: '0 2px 12px rgba(25,179,166,0.25)' }}
-                data-testid="button-compare-protocols"
-              >
-                Compare the 3 Protocols
-              </button>
-              <a
-                href="#build-protocol"
-                className="min-h-[48px] px-8 py-3 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] text-white/70 hover:text-white transition-all duration-300"
-                style={{ border: '1px solid rgba(255,255,255,0.12)' }}
-                data-testid="link-build-protocol"
-              >
-                Build Your Protocol
-              </a>
-            </div>
-
-            <div className="flex items-center justify-center gap-3 flex-wrap">
-              <div className="flex items-end justify-center gap-4 md:gap-8">
-                {SHOP_PRODUCTS.map((p) => (
-                  <div key={p.id} className="flex flex-col items-center gap-2" data-testid={`hero-product-${p.id}`}>
-                    <img src={p.image} alt={p.name} className="h-[80px] md:h-[110px] w-auto object-contain" style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.4))' }} />
-                    <span className="text-[10px] font-mono uppercase tracking-[0.10em] text-white/50">{p.role}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
-          <div className="mt-14 flex items-center justify-center gap-4 md:gap-8 flex-wrap" data-testid="trust-strip-hero">
-            {TRUST_ITEMS.map((item) => (
-              <span key={item} className="text-[11px] font-mono uppercase tracking-[0.06em] text-white/40">{item}</span>
+          <div className="grid grid-cols-3 gap-3 md:gap-6 max-w-3xl mx-auto mb-14 md:mb-16">
+            {SHOP_PRODUCTS.map((p) => (
+              <div key={p.id} className="flex flex-col items-center text-center" data-testid={`hero-product-${p.id}`}>
+                <div className="relative mb-3">
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    className="h-[90px] md:h-[130px] w-auto object-contain"
+                    style={{ filter: 'drop-shadow(0 6px 16px rgba(0,0,0,0.45))' }}
+                  />
+                </div>
+                <span className="text-[11px] md:text-[12px] font-head font-normal uppercase tracking-[-0.01em] text-white mb-0.5" data-testid={`text-hero-name-${p.id}`}>
+                  <BrandName name={p.name} />
+                </span>
+                <span className="text-[10px] font-mono uppercase tracking-[0.08em] text-white/40 mb-1">{p.role}</span>
+                <span className="text-[14px] md:text-[15px] font-sans font-bold text-white" data-testid={`text-hero-price-${p.id}`}>${p.price.toFixed(2)}</span>
+                <span className="text-[10px] font-mono text-white/35">{p.isDaily ? 'daily' : '7-day cycle'}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
+            <button
+              onClick={scrollToComparison}
+              className="min-h-[48px] px-8 py-3 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] text-white transition-all duration-300 hover:brightness-110"
+              style={{ background: '#19B3A6' }}
+              data-testid="button-compare-protocols"
+            >
+              Compare All Three
+            </button>
+            <a
+              href="#build-protocol"
+              className="min-h-[48px] px-8 py-3 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] text-white/60 hover:text-white/85 transition-all duration-300"
+              style={{ border: '1px solid rgba(255,255,255,0.10)' }}
+              data-testid="link-build-protocol"
+            >
+              Build Your Protocol
+            </a>
+          </div>
+
+          <div className="flex items-center justify-center gap-2 flex-wrap" data-testid="trust-strip-hero">
+            {TRUST_ITEMS.map((item, i) => (
+              <span key={item} className="flex items-center gap-2">
+                <span className="text-[11px] font-mono uppercase tracking-[0.04em] text-white/45" data-testid={`text-trust-item-${i}`}>{item}</span>
+                {i < TRUST_ITEMS.length - 1 && <span className="text-white/20">·</span>}
+              </span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── START HERE / CHOOSE YOUR PATH ── (LIGHT) */}
+      {/* ═══ S2 · START HERE / GUIDED SELECTOR ═══ (LIGHT) */}
       <section style={{ background: LIGHT }} data-testid="section-start-here">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[100px]">
-          <div className="text-center mb-10 md:mb-14">
-            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-700/70 mb-3">Where to Start</span>
-            <h2 className="text-2xl md:text-4xl font-head font-normal uppercase tracking-[-0.03em] leading-tight text-[#0A1220]" data-testid="text-start-here-title">Choose Your Starting Point</h2>
-            <p className="mt-3 max-w-lg mx-auto text-[14px] md:text-[15px] font-sans text-[#0A1220]/60 leading-relaxed">
-              Not sure where to begin? Here's how most people approach the protocol.
-            </p>
+        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[110px]">
+          <div className="text-center mb-8 md:mb-12">
+            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold mb-3" style={{ color: '#19B3A6' }}>Where to Start</span>
+            <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-[#0A1220]" data-testid="text-start-here-title">Choose Your Starting Point</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-10 md:mb-14">
             {SHOP_PRODUCTS.map((p) => (
               <div
                 key={p.id}
-                className="relative rounded-xl p-6 md:p-8 flex flex-col"
+                className="relative rounded-xl flex flex-col"
                 style={{
                   background: '#FFFFFF',
-                  border: p.startHere ? '2px solid rgba(25,179,166,0.35)' : '1px solid rgba(10,18,32,0.08)',
-                  boxShadow: p.startHere ? '0 4px 24px rgba(25,179,166,0.10), 0 1px 3px rgba(0,0,0,0.06)' : '0 1px 3px rgba(0,0,0,0.05)',
+                  border: p.startHere ? '2px solid rgba(25,179,166,0.40)' : '1px solid rgba(10,18,32,0.07)',
+                  boxShadow: p.startHere
+                    ? '0 6px 28px rgba(25,179,166,0.10), 0 1px 4px rgba(0,0,0,0.06)'
+                    : '0 1px 4px rgba(0,0,0,0.04)',
                 }}
                 data-testid={`start-card-${p.id}`}
               >
                 {p.startHere && (
-                  <span className="absolute -top-3 left-6 px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-[0.14em] text-white" style={{ background: '#19B3A6' }} data-testid="badge-start-here">
+                  <span
+                    className="absolute -top-3 left-6 px-3 py-1 rounded-full text-[9px] font-mono font-bold uppercase tracking-[0.16em] text-white"
+                    style={{ background: '#19B3A6' }}
+                    data-testid="badge-start-here"
+                  >
                     Most people start here
                   </span>
                 )}
 
-                <span className="text-[10px] font-mono uppercase tracking-[0.14em] font-bold mb-2" style={{ color: p.startHere ? '#19B3A6' : '#0A1220', opacity: p.startHere ? 1 : 0.4 }}>{p.role}</span>
-                <h3 className="text-xl font-head font-normal uppercase tracking-[-0.02em] text-[#0A1220] mb-2">
-                  <BrandName name={p.name} />
-                </h3>
-                <p className="text-[14px] font-sans text-[#0A1220]/60 leading-relaxed mb-4 flex-1">{p.bestFor}</p>
-                <div className="flex items-baseline justify-between mb-4">
-                  <span className="text-[11px] font-mono text-[#0A1220]/45 uppercase tracking-[0.06em]">{p.isDaily ? 'Daily' : '7-day monthly cycle'}</span>
-                  <span className="text-lg font-sans font-bold text-[#0A1220]">${p.price.toFixed(2)}</span>
+                <div className="px-6 pt-6 md:pt-7 pb-2">
+                  <span className="text-[10px] font-mono uppercase tracking-[0.14em] font-bold block mb-1" style={{ color: '#19B3A6', opacity: p.startHere ? 1 : 0.55 }}>{p.role}</span>
+                  <h3 className="text-lg font-head font-normal uppercase tracking-[-0.02em] text-[#0A1220] mb-1.5">
+                    <BrandName name={p.name} />
+                  </h3>
                 </div>
-                <a
-                  href={`/product/${p.id}`}
-                  className="w-full min-h-[44px] flex items-center justify-center rounded-lg py-2.5 font-mono font-bold uppercase text-[11px] tracking-[0.14em] transition-all duration-300"
-                  style={{
-                    background: p.startHere ? '#19B3A6' : '#0A1220',
-                    color: '#FFFFFF',
-                  }}
-                  data-testid={`button-view-details-${p.id}`}
-                >
-                  View Details
-                </a>
+
+                <div className="px-6 pb-2">
+                  <div className="flex items-baseline justify-between">
+                    <span className="text-[20px] font-sans font-bold text-[#0A1220]" data-testid={`text-start-price-${p.id}`}>${p.price.toFixed(2)}</span>
+                    <span className="text-[11px] font-mono text-[#0A1220]/40 uppercase tracking-[0.04em]">{p.isDaily ? 'daily' : '7-day monthly cycle'}</span>
+                  </div>
+                </div>
+
+                <div className="px-6 pb-4">
+                  <p className="text-[13px] font-sans text-[#0A1220]/55 leading-relaxed">{p.bestFor}</p>
+                  {!p.isDaily && (
+                    <p className="text-[10px] font-mono text-[#0A1220]/35 mt-1.5">{p.note}</p>
+                  )}
+                </div>
+
+                <div className="mt-auto px-5 pb-5 flex flex-col gap-1.5">
+                  <button
+                    onClick={() => addProduct(p.id)}
+                    className="w-full min-h-[44px] flex items-center justify-center rounded-lg py-2.5 font-mono font-bold uppercase text-[11px] tracking-[0.12em] transition-all duration-300 text-white hover:brightness-110"
+                    style={{ background: '#19B3A6' }}
+                    data-testid={`button-add-cart-start-${p.id}`}
+                  >
+                    Add to Cart — ${p.price.toFixed(2)}
+                  </button>
+                  <a
+                    href={`/product/${p.id}`}
+                    className="w-full min-h-[40px] flex items-center justify-center rounded-lg py-2 font-mono uppercase text-[10px] tracking-[0.12em] font-medium text-[#0A1220]/45 hover:text-[#0A1220]/70 transition-colors duration-200"
+                    data-testid={`button-view-details-${p.id}`}
+                  >
+                    View Full Details
+                  </a>
+                </div>
               </div>
             ))}
+          </div>
+
+          <div className="max-w-2xl mx-auto rounded-lg px-6 py-5" style={{ background: 'rgba(10,18,32,0.04)', border: '1px solid rgba(10,18,32,0.06)' }} data-testid="guidance-block">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-[13px] font-sans text-[#0A1220]/60 leading-relaxed">
+              <p data-testid="guidance-item-0"><span className="font-bold text-[#0A1220]/80">New?</span> Start with CELLUNAD+. It's the daily foundation.</p>
+              <p data-testid="guidance-item-1"><span className="font-bold text-[#0A1220]/80">Gut priority?</span> Start with CELLUBIOME. Enteric-coated.</p>
+              <p data-testid="guidance-item-2"><span className="font-bold text-[#0A1220]/80">Have a baseline?</span> Add CELLUNOVA monthly.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── 3-PRODUCT COMPARISON ── (SECONDARY_DARK) */}
+      {/* ═══ S3 · SIDE-BY-SIDE COMPARISON ═══ (SECONDARY_DARK) */}
       <section ref={comparisonRef} style={{ background: SECONDARY_DARK }} data-testid="section-comparison-cards">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[100px]">
-          <div className="text-center mb-10 md:mb-14">
-            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-400/70 mb-3">Compare</span>
-            <h2 className="text-2xl md:text-4xl font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white" data-testid="text-comparison-title">Side by Side</h2>
+        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[110px]">
+          <div className="text-center mb-8 md:mb-12">
+            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-400/60 mb-3">Compare</span>
+            <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white" data-testid="text-comparison-title">Side by Side</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
             {SHOP_PRODUCTS.map((p) => (
               <div
                 key={p.id}
-                className="relative rounded-xl overflow-hidden flex flex-col"
+                className="relative rounded-xl flex flex-col"
                 style={{
                   background: CARD_SURFACE,
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  boxShadow: '0 2px 12px rgba(0,0,0,0.3)',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  boxShadow: '0 2px 16px rgba(0,0,0,0.25)',
                 }}
                 data-testid={`compare-card-${p.id}`}
               >
-                <div className="flex items-end justify-center pt-6 pb-4 px-4 h-[160px] md:h-[180px]">
+                <div className="flex items-end justify-center pt-5 pb-3 px-4 h-[130px] md:h-[155px]">
                   <img
                     src={p.image}
                     alt={p.name}
-                    className="h-[120px] md:h-[140px] w-auto object-contain"
-                    style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.35))' }}
+                    className="h-[100px] md:h-[120px] w-auto object-contain"
+                    style={{ filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.35))' }}
                   />
                 </div>
 
-                <div className="px-5 pb-6 flex flex-col flex-1">
-                  <span className="text-[10px] font-mono uppercase tracking-[0.14em] font-bold mb-1.5" style={{ color: p.accent }}>{p.role}</span>
-                  <h3 className="text-xl font-head font-normal uppercase tracking-[-0.02em] text-white mb-2">
+                <div className="px-5 pb-5 flex flex-col flex-1">
+                  <span className="text-[9px] font-mono uppercase tracking-[0.16em] font-bold mb-1" style={{ color: p.accent }}>{p.role}</span>
+                  <h3 className="text-lg font-head font-normal uppercase tracking-[-0.02em] text-white mb-1">
                     <BrandName name={p.name} />
                   </h3>
-                  <p className="text-[13px] font-sans text-white/55 leading-relaxed mb-3">{p.bestFor}</p>
 
-                  <div className="space-y-1.5 mb-4">
-                    {p.anchors.map((a) => (
-                      <span key={a} className="block text-[12px] font-mono text-white/40 tracking-[0.02em]">{a}</span>
-                    ))}
+                  <div className="flex items-baseline justify-between mb-2">
+                    <span className="text-[19px] font-sans font-bold text-white" data-testid={`text-compare-price-${p.id}`}>${p.price.toFixed(2)}</span>
+                    <span className="text-[10px] font-mono text-white/35 uppercase tracking-[0.04em]">{p.isDaily ? 'daily' : '7-day cycle'}</span>
                   </div>
 
-                  <div className="mt-auto">
-                    <div className="border-t border-white/[0.06] pt-3 mb-3">
-                      <div className="flex items-baseline justify-between">
-                        <span className="text-[11px] font-mono text-white/45 uppercase tracking-[0.06em]">{p.cadence}</span>
-                        <span className="text-lg font-sans font-bold text-white">${p.price.toFixed(2)}</span>
-                      </div>
-                      <div className="flex items-baseline justify-between mt-1">
-                        <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.04em]">{p.supply}</span>
-                        <span className="text-[11px] font-mono text-white/35">sub: ${p.priceSub.toFixed(2)}/mo</span>
-                      </div>
-                    </div>
+                  <p className="text-[13px] font-sans text-white/50 leading-relaxed mb-3">{p.bestFor}</p>
 
-                    {p.note && (
-                      <p className="text-[10px] font-mono text-white/35 tracking-[0.02em] mb-3">{p.note}</p>
-                    )}
-
-                    <div className="flex flex-col gap-1.5">
-                      <a
-                        href={`/product/${p.id}`}
-                        className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 font-mono font-bold uppercase text-[11px] tracking-[0.14em] transition-all duration-300"
-                        style={{ background: `linear-gradient(135deg, ${p.accent}, ${p.accent}dd)`, color: '#0A1220' }}
-                        data-testid={`button-view-details-compare-${p.id}`}
-                      >
-                        View Details <ArrowRight size={13} />
-                      </a>
-                      <button
-                        onClick={() => addProduct(p.id)}
-                        className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 font-mono uppercase text-[11px] tracking-[0.14em] font-medium text-white/50 hover:text-white/70 hover:bg-white/[0.04] transition-all duration-300"
-                        style={{ border: '1px solid rgba(255,255,255,0.06)' }}
-                        data-testid={`button-add-cart-compare-${p.id}`}
-                      >
-                        Add to Cart — ${p.price.toFixed(2)}
-                      </button>
+                  <div className="border-t border-white/[0.05] pt-2.5 mb-3">
+                    <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.06em] block mb-1.5">{p.cadence} · {p.supply}</span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {p.anchors.map((a, ai) => (
+                        <span key={a} className="text-[10px] font-mono text-white/40 px-2 py-0.5 rounded" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.05)' }} data-testid={`text-anchor-${p.id}-${ai}`}>{a}</span>
+                      ))}
                     </div>
+                  </div>
+
+                  {p.note && (
+                    <p className="text-[10px] font-mono text-white/30 tracking-[0.02em] mb-3" data-testid={`text-note-${p.id}`}>{p.note}</p>
+                  )}
+
+                  <div className="mt-auto flex flex-col gap-1.5">
+                    <button
+                      onClick={() => addProduct(p.id)}
+                      className="w-full min-h-[44px] flex items-center justify-center rounded-lg py-2.5 font-mono font-bold uppercase text-[11px] tracking-[0.12em] transition-all duration-300 text-white hover:brightness-110"
+                      style={{ background: '#19B3A6' }}
+                      data-testid={`button-add-cart-compare-${p.id}`}
+                    >
+                      Add to Cart — ${p.price.toFixed(2)}
+                    </button>
+                    <a
+                      href={`/product/${p.id}`}
+                      className="w-full min-h-[40px] flex items-center justify-center gap-1.5 rounded-lg py-2 font-mono uppercase text-[10px] tracking-[0.12em] font-medium text-white/40 hover:text-white/60 transition-colors duration-200"
+                      data-testid={`button-view-details-compare-${p.id}`}
+                    >
+                      View Full Details <ArrowRight size={11} />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -1298,60 +1335,75 @@ function ShopCatalog() {
         </div>
       </section>
 
-      {/* ── BUILD YOUR PROTOCOL ── (LIGHT) */}
+      {/* ═══ S4 · BUILD YOUR PROTOCOL ═══ (LIGHT) */}
       <section id="build-protocol" style={{ background: LIGHT }} data-testid="section-build-protocol">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[100px]">
-          <div className="text-center mb-10 md:mb-14">
-            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-700/70 mb-3">Build</span>
-            <h2 className="text-2xl md:text-4xl font-head font-normal uppercase tracking-[-0.03em] leading-tight text-[#0A1220]" data-testid="text-build-title">Build Your Protocol</h2>
-            <p className="mt-3 max-w-lg mx-auto text-[14px] md:text-[15px] font-sans text-[#0A1220]/60 leading-relaxed">
-              Start with one product or build the full system. No lock-in, no invented savings.
+        <div className="mx-auto max-w-5xl px-5 md:px-8 py-[72px] md:py-[110px]">
+          <div className="text-center mb-8 md:mb-12">
+            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold mb-3" style={{ color: '#19B3A6' }}>Build</span>
+            <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-[#0A1220]" data-testid="text-build-title">Build Your Protocol</h2>
+            <p className="mt-3 max-w-md mx-auto text-[13px] md:text-[14px] font-sans text-[#0A1220]/50 leading-relaxed">
+              Choose one product or build the full system. Totals computed from current prices.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
             {BUNDLES.map((bundle) => {
               const total = getBundleTotal(bundle.products);
               const bundleProducts = bundle.products.map((pid) => SHOP_PRODUCTS.find((sp) => sp.id === pid)!);
+              const isFull = bundle.id === 'full';
 
               return (
                 <div
                   key={bundle.id}
-                  className="rounded-xl p-6 md:p-8 flex flex-col"
+                  className="relative rounded-xl flex flex-col"
                   style={{
                     background: '#FFFFFF',
-                    border: bundle.id === 'full' ? '2px solid rgba(25,179,166,0.30)' : '1px solid rgba(10,18,32,0.08)',
-                    boxShadow: bundle.id === 'full' ? '0 4px 24px rgba(25,179,166,0.08), 0 1px 3px rgba(0,0,0,0.06)' : '0 1px 3px rgba(0,0,0,0.05)',
+                    border: isFull ? '2px solid rgba(25,179,166,0.35)' : '1px solid rgba(10,18,32,0.07)',
+                    boxShadow: isFull
+                      ? '0 6px 28px rgba(25,179,166,0.10), 0 1px 4px rgba(0,0,0,0.06)'
+                      : '0 1px 4px rgba(0,0,0,0.04)',
                   }}
                   data-testid={`bundle-card-${bundle.id}`}
                 >
-                  <h3 className="text-lg font-head font-normal uppercase tracking-[-0.02em] text-[#0A1220] mb-1">{bundle.label}</h3>
-                  <p className="text-[13px] font-sans text-[#0A1220]/55 leading-relaxed mb-5">{bundle.desc}</p>
+                  {isFull && (
+                    <span
+                      className="absolute -top-3 left-6 px-3 py-1 rounded-full text-[9px] font-mono font-bold uppercase tracking-[0.16em] text-white"
+                      style={{ background: '#19B3A6' }}
+                      data-testid="badge-full-system"
+                    >
+                      Complete Protocol
+                    </span>
+                  )}
 
-                  <div className="space-y-2.5 mb-5 flex-1">
+                  <div className="px-6 pt-6 md:pt-7 pb-3">
+                    <h3 className="text-[16px] font-head font-normal uppercase tracking-[-0.02em] text-[#0A1220] mb-1">{bundle.label}</h3>
+                    <p className="text-[12px] font-sans text-[#0A1220]/45 leading-relaxed">{bundle.desc}</p>
+                  </div>
+
+                  <div className="px-6 pb-3 space-y-2 flex-1">
                     {bundleProducts.map((bp) => (
-                      <div key={bp.id} className="flex items-center gap-3">
-                        <img src={bp.image} alt={bp.name} className="h-[36px] w-auto object-contain" />
+                      <div key={bp.id} className="flex items-center gap-3 py-1" data-testid={`bundle-item-${bundle.id}-${bp.id}`}>
+                        <img src={bp.image} alt={bp.name} className="h-[32px] w-auto object-contain shrink-0" />
                         <div className="flex-1 min-w-0">
-                          <span className="text-[13px] font-sans font-bold text-[#0A1220] block leading-tight">{bp.name}</span>
-                          <span className="text-[11px] font-mono text-[#0A1220]/40">{bp.isDaily ? 'Daily' : '7-day cycle'} · ${bp.price.toFixed(2)}</span>
+                          <span className="text-[12px] font-sans font-bold text-[#0A1220] block leading-tight">{bp.name}</span>
+                          <span className="text-[10px] font-mono text-[#0A1220]/35">{bp.isDaily ? 'Daily' : '7-day cycle'}</span>
                         </div>
+                        <span className="text-[13px] font-sans font-bold text-[#0A1220] shrink-0" data-testid={`text-bundle-item-price-${bundle.id}-${bp.id}`}>${bp.price.toFixed(2)}</span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="border-t border-[#0A1220]/[0.06] pt-4">
-                    <div className="flex items-baseline justify-between mb-3">
-                      <span className="text-[11px] font-mono text-[#0A1220]/40 uppercase tracking-[0.06em]">{bundle.products.length === 1 ? '1 product' : `${bundle.products.length} products`}</span>
-                      <span className="text-lg font-sans font-bold text-[#0A1220]">${total.toFixed(2)}</span>
+                  <div className="px-5 pb-5">
+                    <div className="border-t border-[#0A1220]/[0.06] pt-3 mb-3">
+                      <div className="flex items-baseline justify-between">
+                        <span className="text-[10px] font-mono text-[#0A1220]/35 uppercase tracking-[0.06em]">{bundle.products.length === 1 ? '1 product' : `${bundle.products.length} products`}</span>
+                        <span className="text-[18px] font-sans font-bold text-[#0A1220]" data-testid={`text-bundle-total-${bundle.id}`}>${total.toFixed(2)}</span>
+                      </div>
                     </div>
                     <button
                       onClick={() => addBundle(bundle.products)}
-                      className="w-full min-h-[44px] flex items-center justify-center rounded-lg py-2.5 font-mono font-bold uppercase text-[11px] tracking-[0.14em] transition-all duration-300"
-                      style={{
-                        background: bundle.id === 'full' ? '#19B3A6' : '#0A1220',
-                        color: '#FFFFFF',
-                      }}
+                      className="w-full min-h-[44px] flex items-center justify-center rounded-lg py-2.5 font-mono font-bold uppercase text-[11px] tracking-[0.12em] transition-all duration-300 text-white hover:brightness-110"
+                      style={{ background: '#19B3A6' }}
                       data-testid={`button-add-bundle-${bundle.id}`}
                     >
                       Add to Cart — ${total.toFixed(2)}
@@ -1364,53 +1416,39 @@ function ShopCatalog() {
         </div>
       </section>
 
-      {/* ── TRUST / QUALITY ── (SECONDARY_DARK) */}
+      {/* ═══ S5 · TRUST + COMPARISON MATRIX ═══ (SECONDARY_DARK) */}
       <section style={{ background: SECONDARY_DARK }} data-testid="section-trust">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[100px]">
-          <div className="text-center mb-10 md:mb-14">
-            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-400/70 mb-3">Quality</span>
-            <h2 className="text-2xl md:text-4xl font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white" data-testid="text-trust-title">Built to Document, Not to Impress</h2>
-            <p className="mt-3 max-w-lg mx-auto text-[14px] md:text-[15px] font-sans text-white/55 leading-relaxed">
-              Every formula follows the same quality standard. No shortcuts, no proprietary blends.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[110px]">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-16 md:mb-20" data-testid="trust-grid">
             {[
-              { title: 'Transparent Dosing', desc: 'Every active compound listed with its exact dose. No proprietary blends, no hidden amounts.' },
-              { title: 'Third-Party Tested', desc: 'Independent lab verification for identity, potency, and contaminants on every production lot.' },
-              { title: 'Lot Traceability', desc: 'Every bottle is lot-coded. Full documentation available by request for any production run.' },
-              { title: 'Delivery Integrity', desc: 'Form and release mechanism selected per compound. Enteric coating where gut bypass is required.' },
+              { title: 'Transparent Dosing', desc: 'Every active listed with exact dose. No proprietary blends.' },
+              { title: 'Third-Party Tested', desc: 'Independent lab verification on every production lot.' },
+              { title: 'Lot Traceability', desc: 'Every bottle lot-coded. Documentation by request.' },
+              { title: 'Delivery Integrity', desc: 'Form and release selected per compound. Enteric where needed.' },
             ].map((item, i) => (
               <div
                 key={i}
-                className="rounded-xl p-6"
-                style={{ background: CARD_SURFACE, border: '1px solid rgba(255,255,255,0.06)' }}
+                className="rounded-lg px-4 py-4 md:px-5 md:py-5"
+                style={{ background: CARD_SURFACE, border: '1px solid rgba(255,255,255,0.05)' }}
                 data-testid={`trust-card-${i}`}
               >
-                <h4 className="text-[14px] font-sans font-bold text-white mb-2">{item.title}</h4>
-                <p className="text-[13px] font-sans text-white/50 leading-relaxed">{item.desc}</p>
+                <h4 className="text-[13px] font-sans font-bold text-white/85 mb-1">{item.title}</h4>
+                <p className="text-[12px] font-sans text-white/40 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* ── COMPARISON MATRIX ── (LIGHT) */}
-      <section style={{ background: LIGHT }} data-testid="section-comparison-matrix">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[100px]">
-          <div className="text-center mb-10 md:mb-14">
-            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-700/70 mb-3">Detail</span>
-            <h2 className="text-2xl md:text-4xl font-head font-normal uppercase tracking-[-0.03em] leading-tight text-[#0A1220]" data-testid="text-matrix-title">How They Compare</h2>
+          <div className="text-center mb-8">
+            <h2 className="text-[20px] md:text-[28px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white" data-testid="text-matrix-title">How They Compare</h2>
           </div>
 
-          <div className="overflow-x-auto -mx-5 md:mx-0">
-            <table className="w-full min-w-[600px] text-left" data-testid="comparison-table">
+          <div className="hidden md:block" data-testid="comparison-table-desktop">
+            <table className="w-full text-left">
               <thead>
                 <tr>
-                  <th className="py-3 px-4 text-[11px] font-mono uppercase tracking-[0.10em] text-[#0A1220]/40 font-bold border-b-2 border-[#0A1220]/[0.08] w-[22%]" />
+                  <th className="py-3 px-4 text-[10px] font-mono uppercase tracking-[0.10em] text-white/30 font-bold border-b border-white/[0.06] w-[20%]" />
                   {SHOP_PRODUCTS.map((p) => (
-                    <th key={p.id} className="py-3 px-4 text-[13px] font-head font-normal uppercase tracking-[-0.01em] text-[#0A1220] border-b-2 border-[#0A1220]/[0.08]">
+                    <th key={p.id} className="py-3 px-4 text-[13px] font-head font-normal uppercase tracking-[-0.01em] text-white/80 border-b border-white/[0.06]">
                       <BrandName name={p.name} />
                     </th>
                   ))}
@@ -1418,67 +1456,61 @@ function ShopCatalog() {
               </thead>
               <tbody>
                 {COMPARISON_ROWS.map((row, i) => (
-                  <tr key={i} className={i % 2 === 0 ? 'bg-white/50' : ''}>
-                    <td className="py-3 px-4 text-[11px] font-mono uppercase tracking-[0.06em] text-[#0A1220]/45 font-bold border-b border-[#0A1220]/[0.04]">{row.label}</td>
-                    <td className="py-3 px-4 text-[13px] font-sans text-[#0A1220]/70 leading-snug border-b border-[#0A1220]/[0.04]">{row.cellunad}</td>
-                    <td className="py-3 px-4 text-[13px] font-sans text-[#0A1220]/70 leading-snug border-b border-[#0A1220]/[0.04]">{row.cellubiome}</td>
-                    <td className="py-3 px-4 text-[13px] font-sans text-[#0A1220]/70 leading-snug border-b border-[#0A1220]/[0.04]">{row.cellunova}</td>
+                  <tr key={i}>
+                    <td className="py-2.5 px-4 text-[10px] font-mono uppercase tracking-[0.06em] text-white/30 font-bold border-b border-white/[0.03]">{row.label}</td>
+                    <td className="py-2.5 px-4 text-[12px] font-sans text-white/55 leading-snug border-b border-white/[0.03]">{row.cellunad}</td>
+                    <td className="py-2.5 px-4 text-[12px] font-sans text-white/55 leading-snug border-b border-white/[0.03]">{row.cellubiome}</td>
+                    <td className="py-2.5 px-4 text-[12px] font-sans text-white/55 leading-snug border-b border-white/[0.03]">{row.cellunova}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-        </div>
-      </section>
 
-      {/* ── NOT SURE WHERE TO START ── (SECONDARY_DARK) */}
-      <section style={{ background: SECONDARY_DARK }} data-testid="section-guidance">
-        <div className="mx-auto max-w-3xl px-5 md:px-8 py-[72px] md:py-[100px] text-center">
-          <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-400/70 mb-3">Guidance</span>
-          <h2 className="text-2xl md:text-3xl font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white mb-6" data-testid="text-guidance-title">Not Sure Where to Start?</h2>
-          <div className="space-y-4 text-left max-w-xl mx-auto">
-            <div className="flex gap-4 items-start" data-testid="guidance-item-0">
-              <span className="text-[12px] font-mono font-bold text-teal-400/70 shrink-0 mt-0.5">01</span>
-              <p className="text-[14px] font-sans text-white/65 leading-relaxed">
-                <span className="font-bold text-white/85">New to the protocol?</span> Start with CELLUNAD+. It's the daily foundation most people build on.
-              </p>
-            </div>
-            <div className="flex gap-4 items-start" data-testid="guidance-item-1">
-              <span className="text-[12px] font-mono font-bold text-teal-400/70 shrink-0 mt-0.5">02</span>
-              <p className="text-[14px] font-sans text-white/65 leading-relaxed">
-                <span className="font-bold text-white/85">Gut health is the priority?</span> Start with CELLUBIOME. Enteric-coated for targeted delivery.
-              </p>
-            </div>
-            <div className="flex gap-4 items-start" data-testid="guidance-item-2">
-              <span className="text-[12px] font-mono font-bold text-teal-400/70 shrink-0 mt-0.5">03</span>
-              <p className="text-[14px] font-sans text-white/65 leading-relaxed">
-                <span className="font-bold text-white/85">Already have a daily baseline?</span> Add CELLUNOVA as your monthly reset layer.
-              </p>
-            </div>
+          <div className="md:hidden space-y-4" data-testid="comparison-table-mobile">
+            {SHOP_PRODUCTS.map((p) => (
+              <div
+                key={p.id}
+                className="rounded-lg px-4 py-4"
+                style={{ background: CARD_SURFACE, border: '1px solid rgba(255,255,255,0.05)' }}
+                data-testid={`comparison-mobile-${p.id}`}
+              >
+                <h4 className="text-[13px] font-head font-normal uppercase tracking-[-0.01em] text-white/80 mb-2"><BrandName name={p.name} /></h4>
+                {COMPARISON_ROWS.map((row) => {
+                  const val = row[p.id as keyof typeof row];
+                  return (
+                    <div key={row.label} className="flex justify-between py-1.5 border-b border-white/[0.03] last:border-0">
+                      <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/30 font-bold">{row.label}</span>
+                      <span className="text-[11px] font-sans text-white/50 text-right max-w-[55%]">{val}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── FINAL CTA ── (BASE_DARK) */}
+      {/* ═══ S6 · FINAL CTA ═══ (BASE_DARK) */}
       <section style={{ background: BASE_DARK }} data-testid="section-final-cta">
         <div className="mx-auto max-w-3xl px-5 md:px-8 py-[72px] md:py-[100px] text-center">
-          <h2 className="text-2xl md:text-4xl font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white mb-4" data-testid="text-final-cta">Build Your Age Revive Protocol</h2>
-          <p className="text-[14px] md:text-[15px] font-sans text-white/55 leading-relaxed max-w-lg mx-auto mb-8">
+          <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white mb-4" data-testid="text-final-cta">Build Your Age Revive Protocol</h2>
+          <p className="text-[14px] font-sans text-white/45 leading-relaxed max-w-md mx-auto mb-8">
             Start with one product or build the full system. Every formula is independently useful and designed to pair.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href="/product/cellunad"
-              className="min-h-[48px] px-8 py-3 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] text-white transition-all duration-300"
-              style={{ background: 'linear-gradient(135deg, #19B3A6, #14a899)', boxShadow: '0 2px 12px rgba(25,179,166,0.25)' }}
+              className="min-h-[48px] px-8 py-3 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.12em] text-white transition-all duration-300 hover:brightness-110"
+              style={{ background: '#19B3A6' }}
               data-testid="link-start-daily-foundation"
             >
               Start with the Daily Foundation
             </a>
             <button
               onClick={() => addBundle(['cellunad', 'cellubiome', 'cellunova'])}
-              className="min-h-[48px] px-8 py-3 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] text-white/70 hover:text-white transition-all duration-300"
-              style={{ border: '1px solid rgba(255,255,255,0.12)' }}
+              className="min-h-[48px] px-8 py-3 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.12em] text-white/55 hover:text-white/80 transition-all duration-300"
+              style={{ border: '1px solid rgba(255,255,255,0.10)' }}
               data-testid="button-add-full-system"
             >
               Add Full System — ${getBundleTotal(['cellunad', 'cellubiome', 'cellunova']).toFixed(2)}
