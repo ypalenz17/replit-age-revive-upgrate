@@ -605,3 +605,112 @@ The page feels:
 - clearly not generic biotech
 - clearly not generic supplement ecommerce
 - excellent on mobile
+
+## Cart and checkout rules
+
+This flow exists for one purpose:
+maximize completed purchases with the least possible friction.
+
+### Core principles
+- Checkout is a utility flow, not a brand storytelling page
+- Guest checkout must be the default
+- Fewer screens is better
+- Express checkout must appear before manual form filling
+- The flow must be built mobile-first
+- Do not duplicate customer effort
+- Do not ask for email on one screen and then effectively ask again later
+- Do not keep unnecessary navigation or distractions in checkout
+
+### Architecture preference
+Preferred:
+- single on-site checkout using Stripe Checkout Sessions API + Elements
+
+Use these Stripe components where feasible:
+- Express Checkout Element
+- Link Authentication Element
+- Address Element
+- Payment Element
+
+Fallback only if needed for sprint safety:
+- fully branded Stripe-hosted or embedded checkout
+- but remove redundant pre-checkout steps if using it
+
+### Absolutely required UX rules
+- No mandatory account creation
+- No global nav in checkout
+- No account icon, cart icon, or hamburger menu in checkout
+- No promo field expanded by default
+- No cross-sells above the main checkout action
+- No long dark empty screens
+- No fake step counts
+- No misleading "2 steps" if payment is actually on a later screen
+- No decorative icons unless they improve comprehension
+- No biotech, genetics, AI, or sci-fi motifs in checkout
+
+### Cart rules
+- Express pay options must be visible in cart when eligible
+- Total and primary action must be sticky on mobile
+- Promo code should be collapsed behind a link or accordion
+- Subscription upgrade should be concise and easy to understand
+- Cross-sells should be secondary and outside the main payment path
+- The cart should prioritize:
+  1. product summary
+  2. quantity / cadence
+  3. subscription upgrade if relevant
+  4. total
+  5. express pay
+  6. checkout
+
+### Checkout rules
+- Prefer one-page checkout
+- Express pay first
+- Order summary collapsed but accessible at the top on mobile
+- Contact, shipping, and payment should be compact and clear
+- Billing same as shipping should be default
+- Use address autocomplete
+- Show inline validation, not vague error states
+- Keep CTA visible and keyboard-safe on mobile
+- Preserve entered state on back / refresh when possible
+- Returning buyers should get saved payment / Link benefits where supported
+
+### Visual rules
+Checkout should be lighter and simpler than the rest of the site.
+
+Prefer:
+- off-white or white background
+- white form surfaces
+- navy text
+- mint/teal primary CTA
+- subtle borders
+- clean spacing
+- high contrast
+- very little decoration
+
+Avoid:
+- full dark navy form pages
+- giant empty vertical dead zones
+- excessive borders
+- oversized headers
+- floating cards that look like SaaS templates
+- noisy shadows
+- visual clutter
+
+### Trust rules
+Keep trust cues close to the action:
+- secure checkout
+- free shipping if applicable
+- risk-free guarantee if applicable
+- support availability if applicable
+
+Trust cues should be concise and near CTA zones, not buried.
+
+### Done when
+The cart and checkout feel:
+- faster
+- clearer
+- easier to trust
+- easier to complete on iPhone
+- visually cleaner
+- less step-heavy
+- less distracting
+- clearly better for conversion
