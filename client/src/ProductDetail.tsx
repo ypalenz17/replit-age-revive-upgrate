@@ -965,8 +965,8 @@ function ProductDetailPage({ data, slug }: { data: ProductDetailData; slug: stri
           <div className="flex gap-4 items-start p-6 border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all rounded-lg">
             <Microscope size={18} style={{ color: accentColor }} className="shrink-0 mt-0.5" />
             <div>
-              <p className="text-[14px] font-sans font-semibold text-white mb-1.5">Clinically studied doses</p>
-              <p className="text-[13px] text-white/40 font-sans leading-relaxed">Doses match or exceed amounts used in published research.</p>
+              <p className="text-[14px] font-sans font-semibold text-white mb-1.5">Research-aligned doses</p>
+              <p className="text-[13px] text-white/40 font-sans leading-relaxed">Doses align with amounts used in published research where available.</p>
             </div>
           </div>
         </div>

@@ -1,0 +1,45 @@
+Do a ruthless copy QA pass on the homepage, shop page, and all three product pages.
+
+Assume the first pass is not good enough until proven otherwise.
+
+Your job is to validate:
+- copy clarity
+- conversion impact
+- factual consistency with the rest of the site
+- SEO alignment
+- LLM readability
+- layout safety
+
+Hard rules:
+- do not redesign the pages
+- do not change prices, serving sizes, or ingredient doses
+- do not resize boxes or shrink fonts unless absolutely necessary
+- do not let any copy overstate the current Science or FAQ pages
+- do not let CELLUBIOME imply both compounds have the same human-evidence level
+- do not let CELLUNOVA sound like a drug-equivalent senolytic protocol
+- do not let the homepage or shop page remain vague about where most people should start
+
+Check and fix each of these:
+
+1. No text overflow at 375px mobile width
+2. No awkward wrapping that makes boxes taller than intended
+3. Homepage H1 and subhead are clearer and stronger than before
+4. Shop page makes the starting point obvious in seconds
+5. CELLUNAD+ clearly feels like the best place to start
+6. CELLUBIOME clearly explains value without overclaiming
+7. CELLUNOVA clearly explains value without hype
+8. All product truths align with FAQ and Science page framing
+9. Meta title, meta description, H1, and Product schema description align on each page
+10. Important product-role language is visible in the DOM, not only in schema or images
+11. Product card labels are clearer and more useful than before
+12. CTA labels are not vague
+13. No old copy remains in hidden modules, footer teasers, or OG tags
+14. No duplicate/conflicting schema descriptions remain
+15. The copy is stronger for Google and LLM retrieval without feeling spammy
+
+If any issue exists, fix it directly in code, then return:
+1. what you tightened
+2. what you shortened to protect layout
+3. any copy you had to swap to fallback versions
+4. what you changed in metadata / OG / schema
+5. any remaining manual review items

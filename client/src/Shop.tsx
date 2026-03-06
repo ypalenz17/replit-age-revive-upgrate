@@ -289,7 +289,7 @@ const PRODUCTS = {
     accentText: '#a78bfa',
     heroImage: '/images/cellunova-trimmed.png',
     outcomes: [
-      'Cellular cleanup + renewal pathways',
+      'Autophagy + renewal pathways',
       'Oxidative balance + antioxidant defense',
       'Resilience during higher load'
     ],
@@ -306,12 +306,12 @@ const PRODUCTS = {
           { title: 'Timmers S et al. Calorie restriction-like effects of 30 days of resveratrol supplementation on energy metabolism and metabolic profile in obese humans. Cell Metab. 2011;14(5):612-622.', doi: '10.1016/j.cmet.2011.10.002' }
         ]},
       { name: 'Quercetin', dose: '500 mg', purpose: 'Cellular housekeeping support',
-        mechanism: 'Quercetin acts as a senolytic agent by transiently disabling pro-survival networks in senescent cells, particularly the BCL-2/BCL-XL anti-apoptotic pathway.',
+        mechanism: 'Quercetin is studied in senescence research for its effects on pro-survival networks in senescent cells, particularly the BCL-2/BCL-XL pathway.',
         refs: [
           { title: 'Zhu Y et al. The Achilles\' heel of senescent cells: from transcriptome to senolytic drugs. Aging Cell. 2015;14(4):644-658.', doi: '10.1111/acel.12344' }
         ]},
       { name: 'Fisetin', dose: '100 mg', purpose: 'Cellular maintenance support',
-        mechanism: 'Fisetin demonstrates senolytic activity by reducing senescence-associated secretory phenotype (SASP) factors and selectively inducing apoptosis in senescent cells.',
+        mechanism: 'Fisetin is studied in senescence research for its effects on senescence-associated secretory phenotype (SASP) factors and senescent cell clearance pathways.',
         refs: [
           { title: 'Yousefzadeh MJ et al. Fisetin is a senotherapeutic that extends health and lifespan. EBioMedicine. 2018;36:18-28.', doi: '10.1016/j.ebiom.2018.09.015' }
         ]},
@@ -1014,7 +1014,7 @@ const SHOP_PRODUCTS = [
     id: 'cellunova' as const,
     name: 'CELLUNOVA',
     role: 'Periodic Reset',
-    bestFor: 'Cellular renewal & cleanup',
+    bestFor: 'Autophagy + periodic renewal',
     cadence: '5 caps/day · 7-day cycle',
     supply: '7-day monthly cycle',
     price: 49.99,
@@ -1037,7 +1037,7 @@ const TRUST_ITEMS = [
 
 const COMPARISON_ROWS = [
   { label: 'Protocol Role', cellunad: 'Daily NAD+ foundation', cellubiome: 'Gut–mito signal stability', cellunova: 'Monthly cellular reset' },
-  { label: 'Best For', cellunad: 'Energy, repair, baseline', cellubiome: 'Gut barrier, steady output', cellunova: 'Renewal, cleanup cycles' },
+  { label: 'Best For', cellunad: 'Energy, repair, baseline', cellubiome: 'Gut barrier, steady output', cellunova: 'Autophagy, periodic renewal' },
   { label: 'Use Pattern', cellunad: 'Daily — ongoing', cellubiome: 'Daily — ongoing', cellunova: '7 days per month' },
   { label: 'Serving', cellunad: '2 capsules', cellubiome: '2 enteric capsules', cellunova: '5 capsules' },
   { label: 'Key Actives', cellunad: 'NR, TMG, Apigenin + 5 more', cellubiome: 'Urolithin A, Tributyrin', cellunova: 'Fisetin, Quercetin + 8 more' },

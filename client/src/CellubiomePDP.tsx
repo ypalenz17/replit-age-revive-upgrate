@@ -272,7 +272,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[
               'Adults focused on daily gut barrier and mitochondrial support',
-              'People looking for a clinically dosed, two-compound daily protocol',
+              'People looking for a focused, two-compound daily protocol',
               'Those who want enteric-protected delivery for targeted intestinal absorption',
               'Anyone building a longevity routine and adding gut-mitochondria support',
             ].map((item, i) => (
@@ -304,7 +304,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
             {[
               { title: 'Research-Informed Doses', body: '500 mg Urolithin A aligns with published human studies. 500 mg Tributyrin provides stable butyrate delivery. No diluted blends.' },
               { title: 'Enteric-Protected Delivery', body: 'Standard capsules degrade in stomach acid. CELLUBIOME uses enteric coating to protect both compounds until they reach the intestine, where absorption and barrier support occur.' },
-              { title: 'Two-Compound Focus', body: 'Not a kitchen-sink formula. Two targeted compounds at full clinical doses, each addressing one side of the gut-mitochondria axis.' },
+              { title: 'Two-Compound Focus', body: 'Not a kitchen-sink formula. Two targeted compounds at research-aligned doses, each addressing one side of the gut-mitochondria axis.' },
               { title: 'Full Transparency', body: 'Every ingredient, every dose, printed on the label. No proprietary blends. Certificate of Analysis available by production lot.' },
             ].map((card, i) => (
               <div

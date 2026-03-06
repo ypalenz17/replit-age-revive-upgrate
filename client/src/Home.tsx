@@ -103,7 +103,7 @@ const PRODUCTS = [
     ingredientsBadges: ['10 Compounds', 'Periodic Protocol', 'Fully Disclosed'],
     outcomes: [
       'Supports autophagy pathways*',
-      'Supports cellular cleanup processes*',
+      'Supports autophagy-related cellular maintenance pathways*',
       'Supports oxidative stress defense*'
     ],
     color: '#6C5CE7',
@@ -454,7 +454,7 @@ const ScienceSection = () => {
       name: 'Autophagy Activation',
       protocol: 'CELLUNOVA',
       slug: 'cellunova',
-      desc: 'A 7-day monthly cycle of polyphenols and senolytics designed to support cellular cleanup, then step back. The off-period is part of the protocol.',
+      desc: 'A 7-day monthly cycle of polyphenols and senescence-research compounds designed to support autophagy pathways, then step back. The off-period is part of the protocol.',
       accentColor: '#a78bfa',
     },
   ];

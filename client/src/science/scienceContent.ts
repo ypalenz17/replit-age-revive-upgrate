@@ -1,7 +1,7 @@
 export const SCIENCE_META = {
   title: "Science | Age Revive",
   description:
-    "Learn the protocol design behind Age Revive: NAD+ restoration, gut-mitochondria support, and periodic cellular reset. Clinically studied compounds, transparent doses, and third-party testing.",
+    "Learn the protocol design behind Age Revive: NAD+ restoration, gut-mitochondria support, and periodic renewal. Research-aligned compounds, transparent doses, and third-party testing.",
   canonicalPath: "/science",
 };
 
@@ -71,7 +71,7 @@ export const LAYERS: LayerCard[] = [
   {
     eyebrow: "CONTROLLED RESET",
     productName: "CELLUNOVA",
-    roleTitle: "7-day monthly cellular cleanup protocol",
+    roleTitle: "7-day monthly renewal protocol",
     cadence: "5 capsules daily × 7 days, monthly",
     roleBody:
       "A periodic protocol supporting autophagy-related pathways, mitochondrial resilience, and exposure to senescence research compounds.",

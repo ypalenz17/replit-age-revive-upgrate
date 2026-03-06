@@ -121,7 +121,7 @@ export const PRODUCT_DETAIL_DATA = {
     allergenDisclosure: null as string | null,
     stack: [
       { name: "CELLUBIOME", slug: "cellubiome", role: "Gut + Mitochondria", add: "Pair NAD+ support with gut barrier integrity and mitochondrial renewal.", when: "Daily use" },
-      { name: "CELLUNOVA", slug: "cellunova", role: "Monthly Reset", add: "Add a periodic 7-day cellular cleanup cycle to complement daily NAD+ support.", when: "7-day monthly cycle" }
+      { name: "CELLUNOVA", slug: "cellunova", role: "Monthly Reset", add: "Add a periodic 7-day renewal cycle to complement daily NAD+ support.", when: "7-day monthly cycle" }
     ],
     faq: [
       { q: "How long should I evaluate CELLUNAD+?", a: "Most people assess CELLUNAD+ over 8–12 weeks of consistent daily use.*" },
@@ -306,7 +306,7 @@ export const PRODUCT_DETAIL_DATA = {
       eyebrow: "Biological Function",
       headlinePrimary: "Controlled",
       headlineSecondary: "Reset",
-      subhead: "Designed as a 7-day protocol to periodically support autophagy-related pathways, cellular cleanup, and mitochondrial resilience.",
+      subhead: "Designed as a 7-day protocol to periodically support autophagy-related pathways and mitochondrial resilience.",
     },
     benefitHighlights: [
       { icon: 'RotateCcw', title: "Periodic Support", desc: "Designed for a defined 7-day window, then a return to daily baseline layers." },
@@ -317,8 +317,8 @@ export const PRODUCT_DETAIL_DATA = {
     timelineSubline: 'What a structured 7-day cycle may look like.*',
     timelineConfidence: 'Designed as a periodic cycle alongside daily support, not a daily baseline.',
     benefitsTimeline: [
-      { time: "7-Day Cycle", items: ["Support for autophagy-related pathways*", "Senolytic compound exposure during the protocol window*", "Mitochondrial oxidative defense support*"] },
-      { time: "Monthly", items: ["Compounded cellular cleanup support across cycles*", "Reinforcement of mitochondrial maintenance pathways*", "Structured reset layered onto daily foundation support*"] },
+      { time: "7-Day Cycle", items: ["Support for autophagy-related pathways*", "Exposure to senescence-research compounds during the protocol window*", "Mitochondrial oxidative defense support*"] },
+      { time: "Monthly", items: ["Compounded autophagy and renewal support across cycles*", "Reinforcement of mitochondrial maintenance pathways*", "Structured reset layered onto daily foundation support*"] },
     ],
     howToUse: {
       instruction: "Take 5 capsules daily for 7 days. Repeat monthly.",
@@ -347,7 +347,7 @@ export const PRODUCT_DETAIL_DATA = {
     ],
     qualityBadges: ["cGMP Manufactured", "Third-Party Tested", "Contains Wheat", "Full Label Disclosure", "No Artificial Fillers", "Cyclical Protocol"],
     comparison: {
-      us: ["7-day structured protocol format", "Autophagy + senolytic research compounds in disclosed doses", "Includes mitochondrial resilience support (NAC, PQQ, Astaxanthin, Ca-AKG)", "Third-party tested", "Full label disclosure (no proprietary blends)"],
+      us: ["7-day structured protocol format", "Autophagy + senescence-research compounds in disclosed doses", "Includes mitochondrial resilience support (NAC, PQQ, Astaxanthin, Ca-AKG)", "Third-party tested", "Full label disclosure (no proprietary blends)"],
       them: ["Low-dose daily blends", "Unclear dosing (proprietary blends)", "Incomplete pathway coverage", "Inconsistent testing standards"],
     },
     scienceSection: {
@@ -377,7 +377,7 @@ export const PRODUCT_DETAIL_DATA = {
     allergenDisclosure: 'Contains Wheat (from Wheat Germ derived Spermidine).',
     stack: [
       { name: "CELLUNAD+", slug: "cellunad", role: "Daily NAD+", add: "Continue daily NAD+ support while running the 7-day CELLUNOVA cycle.", when: "Daily use" },
-      { name: "CELLUBIOME", slug: "cellubiome", role: "Gut + Mitochondria", add: "Support gut barrier integrity and mitochondrial renewal alongside periodic cleanup.", when: "Daily use" }
+      { name: "CELLUBIOME", slug: "cellubiome", role: "Gut + Mitochondria", add: "Support gut barrier integrity and mitochondrial renewal alongside periodic protocol cycles.", when: "Daily use" }
     ],
     faq: [
       { q: "Is CELLUNOVA taken daily?", a: "No. CELLUNOVA is a 7-day protocol designed to be repeated monthly." },
