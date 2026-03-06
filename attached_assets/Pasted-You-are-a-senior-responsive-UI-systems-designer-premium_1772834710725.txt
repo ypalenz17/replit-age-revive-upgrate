@@ -1,0 +1,706 @@
+You are a senior responsive UI systems designer, premium ecommerce art director, CRO-focused front-end engineer, and desktop layout specialist.
+
+Your job is to rebuild the DESKTOP experience of the 3 product pages:
+- CELLUNAD+
+- CELLUBIOME
+- CELLUNOVA
+
+This is not a mobile redesign.
+Mobile is already acceptable.
+Do not break mobile.
+
+Do not redesign the whole brand.
+Do not change product truths, pricing, serving sizes, cadence, supplement facts, FAQ content, schema, or SEO structure unless something is already broken.
+Do not add decorative biotech, AI, DNA, neural, molecule, or sci-fi visuals.
+
+PRIMARY GOAL
+
+Make the desktop PDPs feel premium, intentional, consistent, and expensive.
+
+Right now they feel like:
+- stretched mobile
+- too centered
+- too airy
+- too narrow in the wrong places
+- too inconsistent from section to section
+- cheap in composition
+
+The fix is not more decoration.
+The fix is desktop composition, shared structure, width usage, spacing discipline, and stronger section architecture.
+
+WORKFLOW
+
+1. Inspect the current shared product-page components, layout wrappers, nav, cards, comparison modules, FAQ modules, and footer
+2. Create shared desktop-only product-page primitives instead of hacking each page separately
+3. Apply those shared desktop primitives consistently to all 3 product pages
+4. Preserve mobile behavior and current product truths
+5. Validate at 375, 768, 1024, 1280, 1440, and 1680 widths
+
+NON-NEGOTIABLE RULES
+
+Do not:
+- break mobile
+- change mobile section order
+- change prices, serving sizes, doses, or FAQ truths
+- change URLs
+- break schema or metadata
+- add decorative icons
+- add gradients or glowing effects
+- make desktop feel like a different site from mobile
+- shrink fonts just to fit bad layouts
+- use ad hoc one-off fixes where a shared desktop primitive should exist
+
+Do:
+- create desktop-only layout variants
+- use shared spacing and shell tokens
+- make the 3 pages look like one system
+- fix nav, hero, section shells, comparison sections, supplement facts, FAQ shells, and footer rhythm
+
+BUILD SHARED DESKTOP PDP PRIMITIVES
+
+Create or refine shared desktop-only primitives such as:
+- DesktopProductNav
+- DesktopPdpHeroShell
+- DesktopSectionHeaderRow
+- DesktopLightCardGrid
+- DesktopDarkCardGrid
+- DesktopSupplementFactsShell
+- DesktopComparisonMatrix
+- DesktopFaqShell
+- DesktopCrossSellShell
+- DesktopFinalCtaBand
+
+Use the current codebase naming/style system if different, but the structure should be shared and reusable.
+
+GLOBAL DESKTOP LAYOUT SPEC
+
+Use a real desktop page shell.
+
+Targets:
+- page content max width: 1360px to 1440px
+- horizontal padding: 32px at 1280, 40px at 1440+
+- readable text measure: 640px to 760px max
+- align section content to shared container edges
+- stop centering narrow blocks in oversized viewports
+
+HERO SYSTEM FOR ALL 3 PAGES
+
+For desktop only, convert the hero into a contained two-panel shell.
+
+Structure:
+- one premium outer shell inside the page container
+- shared outer radius around 28px
+- overflow hidden
+- left panel = media/gallery surface
+- right panel = buy box surface
+- the shell must sit below a clean unified desktop nav
+
+Nav rule:
+- do not let the nav inherit the awkward split-background blur treatment
+- use one full-width dark nav treatment, around 72px tall
+- make the nav visually stable and consistent on all 3 PDPs
+
+Hero shell targets:
+- min-height around 760px at 1280+
+- no full-screen poster feel
+- the first section below should begin within roughly 56px to 72px after the hero
+- avoid giant voids below the buy box
+
+Media panel targets:
+- product image should feel anchored, not floating
+- product image max height should generally land around 430px to 520px depending on product
+- no more than roughly 72px dead space above/below the bottle
+- narrow side crop/ambient strip should feel intentional, not like a leftover ad asset
+- keep left panel visually calm, premium, and not empty
+
+Buy box targets:
+- width should feel generous enough for the content
+- internal padding around 48px to 56px
+- H1 should feel large and controlled, not cramped
+- descriptor line length should be controlled
+- trust chips should fit neatly in one or two rows max
+- price block should feel clearly separated
+- primary CTA should be visually dominant
+- supporting guarantee/trust line should not be tiny and weak
+- bottom mini-facts should sit in a compact 2-column grid
+
+Use product-specific hero split ratios:
+- CELLUNAD+: 6.5 / 5.5 visual to buy-box ratio
+- CELLUBIOME: 6.5 / 5.5 visual to buy-box ratio
+- CELLUNOVA: 6 / 6 ratio because the jar is wider and the buy-box copy is denser
+
+TYPOGRAPHY RULES
+
+Desktop should feel sharper and more premium than it does now.
+
+Use approximate desktop targets:
+- H1: 68px to 80px, line-height 0.95 to 1.0
+- major section headings: 44px to 56px
+- section intro copy: 18px to 20px
+- card titles: 22px to 26px
+- normal body copy: 16px to 18px
+- eyebrow labels: 12px to 13px uppercase with restrained tracking
+
+Important:
+- reduce overuse of all-caps in body UI
+- keep the display font for branded section headings where it works
+- do not let giant headings become cheap poster text
+- control max-width so large headings break intentionally
+
+SHARED SECTION HEADER PATTERN
+
+Across the PDPs, most desktop sections should use the same composition:
+- left column: eyebrow, H2, short intro
+- right column: actual content module
+
+Preferred split:
+- left column around 4/12 or 5/12
+- right column around 8/12 or 7/12
+
+Stop centering every section heading above a narrow module.
+That is one of the main reasons the pages feel cheap.
+
+SHARED CARD RULES
+
+Apply the same desktop card system everywhere:
+- 16px radius
+- 1px border
+- subtle shadow only if needed
+- 28px to 32px internal padding
+- equal-height rows where cards are meant to compare
+- aligned CTA baselines
+- better contrast on light cards
+- no tiny cards floating in huge empty spaces
+
+SHARED SPACING RULES
+
+Desktop section spacing:
+- normal sections: about 88px top / 96px bottom
+- tighter sections: about 72px top / 80px bottom
+- card gaps: 24px to 28px
+- heading to intro: 16px
+- intro to content: 32px
+
+Do not allow visually dead 160px to 220px empty bands.
+
+==================================================
+CELLUNAD+ PAGE
+==================================================
+
+SECTION 1: HERO
+
+Current issues:
+- split hero feels accidental
+- right panel is too cramped relative to left empty surface
+- nav treatment over the split background looks sloppy
+- product image feels isolated
+- buy box does not feel like a contained premium module
+
+Fix:
+- use shared DesktopPdpHeroShell
+- keep product image large and centered, but reduce empty margins around it
+- make the right buy box feel like a real premium panel, not half a screen
+- tighten spacing between kicker, H1, rating, descriptor, chips, price, subscription line, CTA, and support line
+- bottom micro-facts should form a clean compact 2-column layout
+- keep hero above-the-fold on common desktop heights as much as practical
+
+SECTION 2: BUILT ON TRANSPARENCY
+
+Current issues:
+- too centered
+- too much empty cream space
+- cards look like generic website feature boxes
+
+Fix:
+- make this a real desktop section header row
+- left column: section label + heading + short intro
+- right column: 3x2 card grid
+- card height should be consistent
+- titles should be stronger
+- body copy should be more readable
+- use more horizontal width
+- reduce overall vertical padding
+
+SECTION 3: THE DAILY FOUNDATION MOST PEOPLE START WITH
+
+Current issues:
+- looks like a giant centered poster
+- reasons are too small relative to the empty dark field
+- content does not use desktop width intelligently
+
+Fix:
+- convert this to a 2-column dark section
+- left: heading + short explanation
+- right: stacked numbered reason cards
+- each reason row should feel around 64px to 76px tall
+- make the numbered items feel premium and structured
+- reduce the oversized dark dead space
+
+SECTION 4: DESIGNED FOR
+
+Current issues:
+- grid is acceptable structurally but still too centered and airy
+- cards are too faint and not premium enough
+
+Fix:
+- use the shared section-header-left / grid-right pattern
+- keep a 3x2 desktop grid
+- cards should be shorter and wider
+- increase body text contrast on light background
+- keep all six cards equal height
+- reduce the dead space above and below the grid
+
+SECTION 5: WHY NR ALONE IS NOT THE WHOLE STORY
+
+Current issues:
+- heading is too poster-like
+- architecture cards are too narrow in a giant section
+- section does not feel like serious formulation design
+
+Fix:
+- use left header column + right architecture stack
+- create 3 structured architecture cards in the right column
+- each card should clearly show:
+  - module title
+  - dose tag aligned to the upper right
+  - short rationale
+  - concise support note
+- make the cards wider and more premium
+- keep the accent color limited to dose tags or tiny dividers only
+
+SECTION 6: WHAT'S INSIDE / SUPPLEMENT FACTS
+
+Current issues:
+- centered narrow card wastes desktop width
+- section title floats above a block instead of feeling like documentation
+- table feels more like a mobile card than a desktop facts module
+
+Fix:
+- build a split documentation shell
+- left column: heading, 1 short explanatory paragraph, view/download facts CTA
+- right column: main supplement facts card
+- card width should feel around 820px to 900px
+- improve row height to around 60px to 64px
+- improve table header and footnote contrast
+- keep the product facts readable, not tiny
+
+SECTION 7: METABOLISM / EXPLANATORY DARK BAND
+
+Current issues:
+- too much empty dark field
+- text feels like it is floating
+- section adds atmosphere, not clarity
+
+Fix:
+- do not leave this as a giant dark title band
+- convert to a 2-column explanatory section
+- left: heading + 2 short paragraphs
+- right: 3 concise proof bullets or key ideas
+- tighten vertical space materially
+
+SECTION 8: SIMPLE DAILY ROUTINE
+
+Current issues:
+- one small centered white card in a large cream section
+- does not feel designed for desktop
+
+Fix:
+- use a 2-column utility layout
+- left: heading + short “how to use” intro + 3 step labels
+- right: larger routine card
+- the primary line “Take 2 capsules daily” should be visually strong
+- supporting bullets should be clean and readable
+- do not center a tiny card in a huge field
+
+SECTION 9: WHAT CONSISTENT USE LOOKS LIKE
+
+Current issues:
+- giant title, tiny pill tabs, one centered card
+- feels like a mobile module enlarged on desktop
+
+Fix:
+- use a left rail / right content composition
+- on desktop 1280+, move tabs into a vertical or anchored left rail
+- content card sits to the right and uses more width
+- card should feel around 760px to 900px wide
+- improve the hierarchy of time windows and expected experience notes
+- reduce empty dark space above and below
+
+At 1024 to 1279:
+- tabs may stay horizontal if needed
+- but widen the content card materially
+
+SECTION 10: HOW CELLUNAD+ COMPARES
+
+Current issues:
+- comparison box is too small and too centered
+- feels like a tiny widget instead of a serious comparison tool
+
+Fix:
+- create a full desktop comparison matrix
+- target width: 1080px to 1180px
+- use left feature column + right comparison columns
+- improve row padding and contrast
+- make headings stronger
+- use clean borders and alignment
+- this should feel premium and useful, not decorative
+
+SECTION 11: OPTIONAL NEXT STEPS
+
+Current issues:
+- cards feel generic
+- CTA alignment is only partially solved
+- content does not feel merchandised at a premium level
+
+Fix:
+- use a 2-up cross-sell shell
+- each card should have:
+  - small bottle/thumb visual at top-left if available
+  - product title
+  - role badge in upper-right
+  - short body
+  - cadence line
+  - bottom CTA row with aligned buttons
+- keep cards equal height
+- improve spacing and alignment
+- make this feel like a thoughtful next-step module, not generic upsell cards
+
+SECTION 12: BEFORE YOU START
+
+Current issues:
+- accordion is too narrow on desktop
+- section is too centered
+- answer-finding is slower than it should be
+
+Fix:
+- create a 2-column FAQ shell
+- left: heading, short intro, supporting links to Science / Quality if relevant
+- right: wide accordion column
+- accordion width should feel around 760px to 900px
+- open the first item by default on desktop if that fits the current interaction model
+- improve row spacing and readable answer width
+
+SECTION 13: FINAL CTA + FOOTER
+
+Current issues:
+- too much empty dark space
+- footer feels detached from the CTA
+
+Fix:
+- compress the final CTA into a tighter premium band
+- put the footer closer to it
+- reduce dead vertical space materially
+- keep footer columns readable and aligned
+- do not let the bottom of the page feel empty and weak
+
+==================================================
+CELLUBIOME PAGE
+==================================================
+
+Use the same shared desktop system as CELLUNAD+.
+This page should feel like the same template family, not a cousin.
+
+SECTION 1: HERO
+
+Fix:
+- same shared hero shell
+- slightly enlarge the bottle relative to the crop strip so the product feels more premium
+- keep the right panel generous enough for the descriptor and cadence lines
+- preserve the current product truth and buy-box logic, but tighten spacing and alignment
+- ensure the chips and proof lines fit neatly without awkward wrapping
+
+SECTION 2: BUILT ON TRANSPARENCY
+
+Fix:
+- same 3x2 card-grid system as CELLUNAD+
+- same card widths, heights, spacing, and section-header pattern
+- this section must match the other PDPs visually
+
+SECTION 3: CELLUBIOME IS DESIGNED FOR
+
+Fix:
+- same section-header-left / 3x2-grid-right system as CELLUNAD+
+- same card heights and spacing
+- same contrast improvements on light backgrounds
+
+SECTION 4: TWO COMPOUNDS. ONE DAILY PROTOCOL.
+
+Current issues:
+- current treatment is too poster-like and not structured enough for desktop
+- the page should use desktop width to explain the pairing clearly
+
+Fix:
+- make this a 3-card desktop system
+- card 1: Urolithin A
+- card 2: Enteric Tributyrin
+- card 3: Why pair them
+- keep all 3 cards equal height
+- use concise but premium hierarchy
+- if copy is too long, trim inside the layout only at desktop-safe lengths
+- do not let this become a centered headline with a narrow block underneath
+
+SECTION 5: WHAT CONSISTENT USE LOOKS LIKE
+
+Fix:
+- use the same timeline/tabs system as CELLUNAD+
+- on large desktop, use a left rail or anchored control column
+- keep card width broader
+- reduce the feeling of a tiny module inside a giant empty section
+
+SECTION 6: SIMPLE DAILY ROUTINE
+
+Fix:
+- same 2-column utility section as CELLUNAD+
+- left = heading + short intro + 3 micro steps
+- right = larger routine card
+- keep rhythm and proportions consistent across products
+
+SECTION 7: HOW CELLUBIOME COMPARES
+
+Fix:
+- same desktop comparison matrix system as CELLUNAD+
+- same width, row spacing, contrast, and alignment rules
+- this should feel like a standardized premium compare module
+
+SECTION 8: OPTIONAL NEXT STEPS / CROSS-SELL AREA
+
+If a cross-sell system exists here:
+- use the same cross-sell shell as CELLUNAD+
+- align CTA rows
+- match card height and spacing
+- do not let this page end with a different, weaker merchandising treatment
+
+SECTION 9: BEFORE YOU START
+
+Fix:
+- same FAQ shell as CELLUNAD+
+- same left intro / right accordion structure
+- same spacing rhythm and width rules
+
+SECTION 10: FINAL CTA + FOOTER
+
+Fix:
+- same compression rules as CELLUNAD+
+- same premium band rhythm
+- same tighter footer spacing
+
+==================================================
+CELLUNOVA PAGE
+==================================================
+
+This page needs the same family consistency, but slightly different hero proportions and slightly more careful architecture layout because the product is periodic and denser.
+
+SECTION 1: HERO
+
+Current issues:
+- the product image is wider
+- the buy-box content is denser
+- current split still feels accidental and cramped
+
+Fix:
+- use the shared desktop hero shell
+- use a 6 / 6 media-to-buy split on desktop
+- ensure the buy box has enough width for the cadence and periodic protocol framing
+- keep product image large but well grounded
+- keep the hero feeling premium, not like a stretched landing page panel
+
+SECTION 2: BUILT ON TRANSPARENCY
+
+Fix:
+- same 3x2 card-grid system as the other PDPs
+- same widths, card heights, spacing, and header row treatment
+
+SECTION 3: NOT ANOTHER DAILY AUTOPHAGY BLEND
+
+Current issues:
+- content is useful, but layout is too centered and generic
+
+Fix:
+- use a left-led section header with a 2x2 proof grid to the right
+- cards should be wider and more confident
+- do not let this become a centered poster with little white cards underneath
+- make this feel like protocol framing, not marketing filler
+
+SECTION 4: THREE LAYERS. ONE 7-DAY CYCLE.
+
+Current issues:
+- section reads like a dark spreadsheet
+- architecture is buried inside one visually heavy block
+- desktop width is not helping comprehension
+
+Fix:
+- create a premium architecture module
+- preferred layout at 1280+:
+  - left column: heading + short intro
+  - right column: 3 architecture cards side by side
+- if copy density makes 3 columns feel cramped at 1280, use a stacked card system on the right instead
+- each layer card should clearly show:
+  - layer title
+  - ingredient list
+  - evidence/context tag
+- improve line spacing between ingredients
+- improve the contrast of small labels
+- this section should feel like intentional formula architecture, not admin UI
+
+SECTION 5: WHAT'S INSIDE / SUPPLEMENT FACTS
+
+Fix:
+- use the same supplement-facts split shell as the other PDPs
+- keep the allergen note visible inside the facts area or immediately below it
+- do not bury the wheat note visually
+- facts card should be broad and readable on desktop
+
+SECTION 6: AUTOPHAGY, SENESCENCE, AND CELLULAR RENEWAL
+
+Current issues:
+- currently feels like an oversized dark transition band
+- not enough actual desktop composition
+
+Fix:
+- convert this to a 2-column explanatory section
+- left: heading + 2 short paragraphs
+- right: 3 concise evidence-context bullets
+- keep it sober and premium
+- reduce empty dark field substantially
+
+SECTION 7: HOW CELLUNOVA COMPARES
+
+Fix:
+- use the same comparison-matrix system as the other pages
+- allow slightly more width if needed because the compare points are more nuanced
+- improve row spacing, heading contrast, and general readability
+
+SECTION 8: PAIRS WITH YOUR DAILY FOUNDATION
+
+Current issues:
+- cards feel generic and accessory-like
+- too much empty space around them
+
+Fix:
+- use the same shared cross-sell card system, but in 2-up layout
+- include small product thumbs if available
+- align CTA rows
+- make the section feel like a thoughtful layering guide, not leftover upsell boxes
+
+SECTION 9: BEFORE YOU START
+
+Fix:
+- same FAQ shell as the other PDPs
+- keep allergen / periodic-use clarity strong
+- use the same left intro / right accordion system
+
+SECTION 10: FINAL CTA + FOOTER
+
+Fix:
+- same compression rules as the other pages
+- same premium CTA band
+- same tighter footer spacing
+
+==================================================
+VISUAL CONSISTENCY RULES ACROSS ALL 3 PAGES
+==================================================
+
+Apply these across all 3 product pages:
+- same desktop nav treatment
+- same hero shell radius and behavior
+- same light-section and dark-section density
+- same card radius, border, shadow, padding
+- same compare module design
+- same FAQ module design
+- same footer compression
+- same section alignment to the container grid
+
+Important:
+- reduce the amount of centered layout on desktop
+- use more left-led structure
+- remove giant empty bands
+- remove tiny floating blocks in oversized sections
+- improve light background body-text contrast
+- align CTA baselines in card rows
+- keep desktop feeling premium, not theatrical
+
+DESKTOP BREAKPOINT RULES
+
+At 1024 to 1279:
+- compressed desktop variant
+- keep split hero but tighter
+- use 2-column systems where 3-column systems feel cramped
+- keep FAQ in a widened layout that still reads clearly
+
+At 1280 to 1439:
+- full desktop shell
+- full hero system
+- full section-header-left / content-right structure
+- 3-column systems where the content density supports it
+
+At 1440 and above:
+- allow more room for card spacing and shell breathing room
+- do not let text measures become too wide
+- use extra width for alignment and rhythm, not for dead margins
+
+MOBILE SAFETY RULES
+
+Critical:
+- do not break the current mobile layouts
+- do not reduce mobile text size
+- do not change mobile content order
+- do not remove current mobile CTA behavior
+- do not turn shared components into desktop-only designs that hurt 375px
+
+If a shared component must change:
+- branch desktop variants at lg+ instead of rewriting the base mobile version
+
+SEO / STRUCTURE SAFETY
+
+Preserve:
+- H1
+- product facts
+- price
+- serving/cadence
+- schema
+- FAQ DOM visibility
+- current metadata unless already broken
+- internal link behavior
+
+Do not break semantic headings or structured data.
+
+DESKTOP ACCEPTANCE CRITERIA
+
+The final desktop product pages should feel:
+- premium
+- composed
+- expensive
+- consistent
+- intentional
+- readable
+- merchandised intelligently
+- clearly desktop-designed
+- no longer like stretched mobile
+- no longer cheap or inconsistent
+
+SELF-QA BEFORE STOPPING
+
+Before stopping, directly fix anything that fails:
+
+1. Does the nav now look clean and intentional over the hero?
+2. Does the hero feel like a contained luxury product shell?
+3. Are the right buy boxes spacious and composed?
+4. Do section headers use desktop width intelligently?
+5. Are light sections broader and less faint?
+6. Are dark sections less empty and less poster-like?
+7. Are supplement-facts modules now premium and readable?
+8. Do routine sections feel designed, not centered leftovers?
+9. Are timeline / expectation sections properly laid out on desktop?
+10. Are comparison modules actually useful now?
+11. Are cross-sell cards aligned and premium?
+12. Is the FAQ shell now strong on desktop?
+13. Are footer and final CTA zones materially tighter?
+14. Do all 3 pages clearly feel like one refined system?
+15. Is mobile still intact at 375 and 768?
+
+WHEN DONE, RETURN:
+1. files changed
+2. shared desktop primitives created or updated
+3. page-by-page section changes
+4. any mobile regressions found and fixed
+5. any remaining weak spots
