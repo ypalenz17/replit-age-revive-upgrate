@@ -1109,10 +1109,10 @@ function ShopCatalog() {
 
       {/* ═══ S1 · HERO / SYSTEM INTRO ═══ (BASE_DARK) */}
       <section style={{ background: BASE_DARK }} data-testid="section-shop-hero">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 pt-28 md:pt-36 pb-20 md:pb-28">
-          <div className="text-center mb-14 md:mb-16">
-            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] font-bold text-teal-400/80 mb-5" data-testid="text-shop-eyebrow">Three fully disclosed formulas. One system.</span>
-            <h1 className="font-head font-normal uppercase tracking-[-0.04em] leading-[0.88] text-white mb-5" style={{ fontSize: 'clamp(2.2rem, 6vw, 3.8rem)' }} data-testid="text-shop-title">
+        <div className="mx-auto max-w-6xl px-5 md:px-8 pt-28 md:pt-36 lg:pt-28 pb-20 md:pb-28 lg:pb-20">
+          <div className="text-center mb-14 md:mb-16 lg:mb-12">
+            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] font-bold text-teal-400/80 mb-5 lg:mb-4" data-testid="text-shop-eyebrow">Three fully disclosed formulas. One system.</span>
+            <h1 className="font-head font-normal uppercase tracking-[-0.04em] leading-[0.88] text-white mb-5 lg:mb-4" style={{ fontSize: 'clamp(2.2rem, 6vw, 3.8rem)' }} data-testid="text-shop-title">
               Daily NAD+. Gut Resilience. Monthly Reset.
             </h1>
             <p className="max-w-xl mx-auto text-[15px] md:text-[16px] font-sans text-white/60 leading-relaxed">
@@ -1121,7 +1121,7 @@ function ShopCatalog() {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-3 md:gap-6 max-w-3xl mx-auto mb-14 md:mb-16">
+          <div className="grid grid-cols-3 gap-3 md:gap-6 max-w-3xl lg:max-w-4xl mx-auto mb-14 md:mb-16 lg:mb-12">
             {SHOP_PRODUCTS.map((p) => (
               <div key={p.id} className="flex flex-col items-center text-center" data-testid={`hero-product-${p.id}`}>
                 <div className="relative mb-3">
@@ -1174,13 +1174,13 @@ function ShopCatalog() {
 
       {/* ═══ S2 · START HERE / GUIDED SELECTOR ═══ (LIGHT) */}
       <section style={{ background: LIGHT }} data-testid="section-start-here">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[110px]">
-          <div className="text-center mb-8 md:mb-12">
+        <div className="mx-auto max-w-6xl lg:max-w-7xl px-5 md:px-8 py-[72px] md:py-[110px] lg:py-[80px]">
+          <div className="text-center mb-8 md:mb-12 lg:mb-10">
             <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold mb-3" style={{ color: '#19B3A6' }}>Where to Start</span>
             <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-[#0A1220]" data-testid="text-start-here-title">Choose Your Starting Point</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-10 md:mb-14">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 lg:gap-6 mb-10 md:mb-14 lg:mb-10">
             {SHOP_PRODUCTS.map((p) => (
               <div
                 key={p.id}
@@ -1204,21 +1204,21 @@ function ShopCatalog() {
                   </span>
                 )}
 
-                <div className="px-6 pt-6 md:pt-7 pb-2">
+                <div className="px-6 lg:px-5 pt-6 md:pt-7 lg:pt-5 pb-2 lg:pb-1.5">
                   <span className="text-[10px] font-mono uppercase tracking-[0.14em] font-bold block mb-1" style={{ color: '#19B3A6', opacity: p.startHere ? 1 : 0.55 }}>{p.role}</span>
                   <h3 className="text-lg font-head font-normal uppercase tracking-[-0.02em] text-[#0A1220] mb-1.5">
                     <BrandName name={p.name} />
                   </h3>
                 </div>
 
-                <div className="px-6 pb-2">
-                  <div className="flex items-baseline justify-between">
+                <div className="px-6 lg:px-5 pb-2 lg:pb-1.5">
+                  <div className="flex items-baseline justify-between lg:gap-2">
                     <span className="text-[20px] font-sans font-bold text-[#0A1220]" data-testid={`text-start-price-${p.id}`}>${p.price.toFixed(2)}</span>
                     <span className="text-[11px] font-mono text-[#0A1220]/40 uppercase tracking-[0.04em]">{p.isDaily ? 'daily' : '7-day monthly cycle'}</span>
                   </div>
                 </div>
 
-                <div className="px-6 pb-4">
+                <div className="px-6 lg:px-5 pb-4 lg:pb-3">
                   <p className="text-[13px] font-sans text-[#0A1220]/55 leading-relaxed">{p.bestFor}</p>
                   {!p.isDaily && (
                     <p className="text-[10px] font-mono text-[#0A1220]/35 mt-1.5">{p.note}</p>
@@ -1258,13 +1258,13 @@ function ShopCatalog() {
 
       {/* ═══ S3 · SIDE-BY-SIDE COMPARISON ═══ (SECONDARY_DARK) */}
       <section ref={comparisonRef} style={{ background: SECONDARY_DARK }} data-testid="section-comparison-cards">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[110px]">
-          <div className="text-center mb-8 md:mb-12">
+        <div className="mx-auto max-w-6xl lg:max-w-7xl px-5 md:px-8 py-[72px] md:py-[110px] lg:py-[80px]">
+          <div className="text-center mb-8 md:mb-12 lg:mb-10">
             <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-400/60 mb-3">Compare</span>
             <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white" data-testid="text-comparison-title">Side by Side</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
             {SHOP_PRODUCTS.map((p) => (
               <div
                 key={p.id}
@@ -1337,7 +1337,7 @@ function ShopCatalog() {
 
       {/* ═══ S4 · BUILD YOUR PROTOCOL ═══ (LIGHT) */}
       <section id="build-protocol" style={{ background: LIGHT }} data-testid="section-build-protocol">
-        <div className="mx-auto max-w-5xl px-5 md:px-8 py-[72px] md:py-[110px]">
+        <div className="mx-auto max-w-5xl lg:max-w-6xl px-5 md:px-8 py-[72px] md:py-[110px] lg:py-[80px]">
           <div className="text-center mb-8 md:mb-12">
             <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold mb-3" style={{ color: '#19B3A6' }}>Build</span>
             <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-[#0A1220]" data-testid="text-build-title">Build Your Protocol</h2>
@@ -1375,12 +1375,12 @@ function ShopCatalog() {
                     </span>
                   )}
 
-                  <div className="px-6 pt-6 md:pt-7 pb-3">
+                  <div className="px-6 lg:px-5 pt-6 md:pt-7 lg:pt-5 pb-3 lg:pb-2">
                     <h3 className="text-[16px] font-head font-normal uppercase tracking-[-0.02em] text-[#0A1220] mb-1">{bundle.label}</h3>
                     <p className="text-[12px] font-sans text-[#0A1220]/45 leading-relaxed">{bundle.desc}</p>
                   </div>
 
-                  <div className="px-6 pb-3 space-y-2 flex-1">
+                  <div className="px-6 lg:px-5 pb-3 lg:pb-2 space-y-2 flex-1">
                     {bundleProducts.map((bp) => (
                       <div key={bp.id} className="flex items-center gap-3 py-1" data-testid={`bundle-item-${bundle.id}-${bp.id}`}>
                         <img src={bp.image} alt={bp.name} className="h-[32px] w-auto object-contain shrink-0" />
@@ -1418,8 +1418,8 @@ function ShopCatalog() {
 
       {/* ═══ S5 · TRUST + COMPARISON MATRIX ═══ (SECONDARY_DARK) */}
       <section style={{ background: SECONDARY_DARK }} data-testid="section-trust">
-        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[110px]">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-16 md:mb-20" data-testid="trust-grid">
+        <div className="mx-auto max-w-6xl lg:max-w-7xl px-5 md:px-8 py-[72px] md:py-[110px] lg:py-[80px]">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-16 md:mb-20 lg:mb-14" data-testid="trust-grid">
             {[
               { title: 'Transparent Dosing', desc: 'Every active listed with exact dose. No proprietary blends.' },
               { title: 'Third-Party Tested', desc: 'Independent lab verification on every production lot.' },
@@ -1457,10 +1457,10 @@ function ShopCatalog() {
               <tbody>
                 {COMPARISON_ROWS.map((row, i) => (
                   <tr key={i}>
-                    <td className="py-2.5 px-4 text-[10px] font-mono uppercase tracking-[0.06em] text-white/30 font-bold border-b border-white/[0.03]">{row.label}</td>
-                    <td className="py-2.5 px-4 text-[12px] font-sans text-white/55 leading-snug border-b border-white/[0.03]">{row.cellunad}</td>
-                    <td className="py-2.5 px-4 text-[12px] font-sans text-white/55 leading-snug border-b border-white/[0.03]">{row.cellubiome}</td>
-                    <td className="py-2.5 px-4 text-[12px] font-sans text-white/55 leading-snug border-b border-white/[0.03]">{row.cellunova}</td>
+                    <td className="py-2.5 lg:py-3 px-4 lg:px-5 text-[10px] font-mono uppercase tracking-[0.06em] text-white/30 font-bold border-b border-white/[0.03]">{row.label}</td>
+                    <td className="py-2.5 lg:py-3 px-4 lg:px-5 text-[12px] font-sans text-white/55 leading-snug border-b border-white/[0.03]">{row.cellunad}</td>
+                    <td className="py-2.5 lg:py-3 px-4 lg:px-5 text-[12px] font-sans text-white/55 leading-snug border-b border-white/[0.03]">{row.cellubiome}</td>
+                    <td className="py-2.5 lg:py-3 px-4 lg:px-5 text-[12px] font-sans text-white/55 leading-snug border-b border-white/[0.03]">{row.cellunova}</td>
                   </tr>
                 ))}
               </tbody>
@@ -1493,7 +1493,7 @@ function ShopCatalog() {
 
       {/* ═══ S6 · FINAL CTA ═══ (BASE_DARK) */}
       <section style={{ background: BASE_DARK }} data-testid="section-final-cta">
-        <div className="mx-auto max-w-3xl px-5 md:px-8 py-[72px] md:py-[100px] text-center">
+        <div className="mx-auto max-w-3xl px-5 md:px-8 py-[72px] md:py-[100px] lg:py-[64px] text-center">
           <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white mb-4" data-testid="text-final-cta">Build Your Age Revive Protocol</h2>
           <p className="text-[14px] font-sans text-white/45 leading-relaxed max-w-md mx-auto mb-8">
             Start with one product or build the full system. Every formula is independently useful and designed to pair.

@@ -226,7 +226,7 @@ const Hero = () => {
   const [videoReady, setVideoReady] = useState(false);
 
   return (
-    <section className="relative min-h-[100dvh] flex flex-col overflow-hidden" style={{ backgroundColor: BASE_DARK }}>
+    <section className="relative min-h-[100dvh] lg:min-h-[72vh] flex flex-col overflow-hidden" style={{ backgroundColor: BASE_DARK }}>
       <video
         autoPlay loop muted playsInline
         onCanPlay={() => setVideoReady(true)}
@@ -244,7 +244,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-[1] pointer-events-none hidden md:block" style={{ background: `linear-gradient(180deg, ${BASE_DARK}dd 0%, ${BASE_DARK}44 30%, ${BASE_DARK}66 60%, ${BASE_DARK}aa 80%, ${BASE_DARK} 100%)` }} />
       <div className="absolute inset-0 z-[1] pointer-events-none md:hidden" style={{ background: `linear-gradient(180deg, ${BASE_DARK}cc 0%, ${BASE_DARK}77 25%, ${BASE_DARK}99 55%, ${BASE_DARK}dd 75%, ${BASE_DARK} 100%)` }} />
 
-      <div className="relative z-10 w-full max-w-3xl lg:max-w-6xl mx-auto flex flex-col justify-center text-center lg:text-left px-6 md:px-8 lg:px-12 pt-24 md:pt-40 lg:pt-48 pb-12 md:pb-20 lg:pb-28 min-h-[100dvh]">
+      <div className="relative z-10 w-full max-w-3xl lg:max-w-6xl mx-auto flex flex-col justify-center text-center lg:text-left px-6 md:px-8 lg:px-12 pt-24 md:pt-40 lg:pt-36 pb-12 md:pb-20 lg:pb-20 min-h-[100dvh] lg:min-h-[72vh]">
         <div className="flex flex-col hero-text w-full items-center lg:items-start">
 
           <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.16em] mb-4 md:mb-5">Three fully disclosed formulas. One system.</span>
@@ -278,7 +278,7 @@ const Hero = () => {
             </a>
           </div>
 
-          <div className="mt-10 lg:mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-x-0 gap-y-2" data-testid="hero-trust-strip">
+          <div className="mt-10 lg:mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-x-0 gap-y-2" data-testid="hero-trust-strip">
             {['Full dose disclosure', 'No proprietary blends', 'Third-party tested', 'Lot traceability'].map((item, i) => (
               <span key={item} className="flex items-center">
                 <span className="text-[10px] md:text-[11px] text-white/40 uppercase tracking-[0.10em] font-mono whitespace-nowrap">{item}</span>
@@ -294,9 +294,9 @@ const Hero = () => {
 
 
 const TrustSection = () => (
-  <section className="relative py-[80px] md:py-[110px] px-6 md:px-8" style={{ backgroundColor: SECONDARY_DARK }}>
+  <section className="relative py-[80px] md:py-[110px] lg:py-[72px] px-6 md:px-8" style={{ backgroundColor: SECONDARY_DARK }}>
     <div className="max-w-5xl mx-auto">
-      <div className="text-center mb-12 md:mb-16 reveal-stagger">
+      <div className="text-center mb-12 md:mb-16 lg:mb-12 reveal-stagger">
         <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.20em]">Why Age Revive</span>
         <h2 className="mt-4 font-head font-normal tracking-[-0.03em] uppercase text-white leading-[0.95]" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)' }}>
           Built on transparency,
@@ -309,7 +309,7 @@ const TrustSection = () => (
         {TRUST_POINTS.map((tp) => (
           <div
             key={tp.num}
-            className="reveal-stagger rounded-lg px-5 py-5 md:px-6 md:py-6 relative overflow-hidden"
+            className="reveal-stagger rounded-lg px-5 py-5 md:px-6 md:py-6 lg:px-5 lg:py-5 relative overflow-hidden"
             style={{ backgroundColor: CARD_DARK, border: '1px solid rgba(255,255,255,0.05)' }}
           >
             <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent 10%, rgba(45,212,191,0.15), transparent 90%)' }} />
@@ -340,9 +340,9 @@ const ProductSystemSection = ({ onOpenProduct }: { onOpenProduct: (slug: string)
   };
 
   return (
-    <section className="relative py-[80px] md:py-[120px] px-6 md:px-8" style={{ backgroundColor: LIGHT_CLINICAL }}>
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-12 md:mb-16 reveal-stagger">
+    <section className="relative py-[80px] md:py-[120px] lg:py-[80px] px-6 md:px-8" style={{ backgroundColor: LIGHT_CLINICAL }}>
+      <div className="max-w-5xl lg:max-w-7xl mx-auto">
+        <div className="text-center mb-12 md:mb-16 lg:mb-12 reveal-stagger">
           <span className="font-mono text-[10px] md:text-[11px] text-ar-teal uppercase tracking-[0.20em]">The System</span>
           <h2 className="mt-4 font-head font-normal tracking-[-0.03em] uppercase leading-[0.95]" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)', color: BASE_DARK }}>
             Choose your starting point.
@@ -365,11 +365,11 @@ const ProductSystemSection = ({ onOpenProduct }: { onOpenProduct: (slug: string)
                 </div>
               )}
 
-              <div className="relative flex items-center justify-center py-10 px-8" style={{ background: `linear-gradient(180deg, #ece9e1 0%, #f7f5f0 50%, #ffffff 100%)` }}>
+              <div className="relative flex items-center justify-center py-10 lg:py-7 px-8" style={{ background: `linear-gradient(180deg, #ece9e1 0%, #f7f5f0 50%, #ffffff 100%)` }}>
                 <img
                   src={p.image}
                   alt={p.name}
-                  className="h-[150px] md:h-[170px] w-auto object-contain"
+                  className="h-[150px] md:h-[170px] lg:h-[150px] w-auto object-contain"
                   style={{ filter: 'drop-shadow(0 8px 16px rgba(10,18,32,0.08))' }}
                   loading="lazy"
                 />
@@ -460,9 +460,9 @@ const ScienceSection = () => {
   ];
 
   return (
-    <section className="relative py-[80px] md:py-[120px] px-6 md:px-8" style={{ backgroundColor: SECONDARY_DARK }}>
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-12 md:mb-16 reveal-stagger">
+    <section className="relative py-[80px] md:py-[120px] lg:py-[72px] px-6 md:px-8" style={{ backgroundColor: SECONDARY_DARK }}>
+      <div className="max-w-5xl lg:max-w-7xl mx-auto">
+        <div className="text-center mb-12 md:mb-16 lg:mb-10 reveal-stagger">
           <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.20em]">The Science</span>
           <h2 className="mt-4 font-head font-normal tracking-[-0.03em] uppercase text-white leading-[0.95]" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)' }}>
             Three biological axes.
@@ -516,41 +516,59 @@ const FaqSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative py-[80px] md:py-[120px] px-6 md:px-8" style={{ backgroundColor: LIGHT_CLINICAL }}>
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-12 md:mb-16 reveal-stagger">
-          <span className="font-mono text-[10px] md:text-[11px] text-ar-teal uppercase tracking-[0.20em]">Common Questions</span>
-          <h2 className="mt-4 font-head font-normal tracking-[-0.03em] uppercase leading-[0.95]" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)', color: BASE_DARK }}>
-            Before you begin.
-          </h2>
-        </div>
-
-        <div className="border-t" style={{ borderColor: 'rgba(10,18,32,0.08)' }}>
-          {HOME_FAQS.map((faq, i) => (
-            <div
-              key={i}
-              className="reveal-stagger border-b"
-              style={{ borderColor: 'rgba(10,18,32,0.08)' }}
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className={`w-full flex items-center justify-between py-5 md:py-6 text-left gap-6 min-h-[60px] ${focusRing} rounded`}
-                data-testid={`faq-toggle-${i}`}
+    <section className="relative py-[80px] md:py-[120px] lg:py-[72px] px-6 md:px-8" style={{ backgroundColor: LIGHT_CLINICAL }}>
+      <div className="max-w-2xl lg:max-w-6xl mx-auto">
+        <div className="lg:grid lg:grid-cols-[1fr_1.5fr] lg:gap-16 lg:items-start">
+          <div className="text-center lg:text-left mb-12 md:mb-16 lg:mb-0 lg:sticky lg:top-32 reveal-stagger">
+            <span className="font-mono text-[10px] md:text-[11px] text-ar-teal uppercase tracking-[0.20em]">Common Questions</span>
+            <h2 className="mt-4 font-head font-normal tracking-[-0.03em] uppercase leading-[0.95]" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)', color: BASE_DARK }}>
+              Before you begin.
+            </h2>
+            <div className="hidden lg:flex flex-col gap-5 mt-10">
+              <a
+                href="/faq"
+                className={`text-[11px] font-mono font-bold uppercase tracking-[0.12em] text-[#0A1220]/40 hover:text-[#0A1220]/70 transition-colors flex items-center gap-2 min-h-[44px] ${focusRing} rounded px-2`}
+                data-testid="link-full-faq-desktop"
               >
-                <span className="text-[14px] md:text-[16px] font-sans font-semibold text-[#0A1220]/80 leading-snug">{faq.q}</span>
-                <ChevronDown size={18} className={`shrink-0 text-[#0A1220]/25 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`} />
-              </button>
-              <div
-                className="overflow-hidden transition-all duration-300"
-                style={{ maxHeight: openIndex === i ? '400px' : '0', opacity: openIndex === i ? 1 : 0 }}
+                View all questions <ArrowRight size={11} />
+              </a>
+              <a
+                href="/quality"
+                className={`text-[11px] font-mono font-bold uppercase tracking-[0.12em] text-[#0A1220]/40 hover:text-[#0A1220]/70 transition-colors flex items-center gap-2 min-h-[44px] ${focusRing} rounded px-2`}
+                data-testid="link-quality-desktop"
               >
-                <p className="pb-6 text-[14px] md:text-[15px] font-sans text-[#0A1220]/50 leading-[1.65] pr-10">{faq.a}</p>
-              </div>
+                Quality standards <ArrowRight size={11} />
+              </a>
             </div>
-          ))}
+          </div>
+
+          <div className="border-t" style={{ borderColor: 'rgba(10,18,32,0.08)' }}>
+            {HOME_FAQS.map((faq, i) => (
+              <div
+                key={i}
+                className="reveal-stagger border-b"
+                style={{ borderColor: 'rgba(10,18,32,0.08)' }}
+              >
+                <button
+                  onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                  className={`w-full flex items-center justify-between py-5 md:py-6 text-left gap-6 min-h-[60px] ${focusRing} rounded`}
+                  data-testid={`faq-toggle-${i}`}
+                >
+                  <span className="text-[14px] md:text-[16px] font-sans font-semibold text-[#0A1220]/80 leading-snug">{faq.q}</span>
+                  <ChevronDown size={18} className={`shrink-0 text-[#0A1220]/25 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`} />
+                </button>
+                <div
+                  className="overflow-hidden transition-all duration-300"
+                  style={{ maxHeight: openIndex === i ? '400px' : '0', opacity: openIndex === i ? 1 : 0 }}
+                >
+                  <p className="pb-6 text-[14px] md:text-[15px] font-sans text-[#0A1220]/50 leading-[1.65] pr-10">{faq.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5 reveal">
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5 reveal lg:hidden">
           <a
             href="/faq"
             className={`text-[11px] font-mono font-bold uppercase tracking-[0.12em] text-[#0A1220]/40 hover:text-[#0A1220]/70 transition-colors flex items-center gap-2 min-h-[44px] ${focusRing} rounded px-2`}
@@ -574,9 +592,9 @@ const FaqSection = () => {
 
 
 const FinalCTA = () => (
-  <section className="relative py-[88px] md:py-[120px] px-6 md:px-8 text-white overflow-hidden" style={{ backgroundColor: BASE_DARK }}>
+  <section className="relative py-[88px] md:py-[120px] lg:py-[64px] px-6 md:px-8 text-white overflow-hidden" style={{ backgroundColor: BASE_DARK }}>
     <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 60% 50% at 50% 50%, rgba(45,212,191,0.03) 0%, transparent 70%)` }} />
-    <div className="max-w-2xl mx-auto text-center relative z-10 reveal">
+    <div className="max-w-2xl lg:max-w-xl mx-auto text-center relative z-10 reveal">
       <span className="font-mono text-[10px] text-ar-teal/60 uppercase tracking-[0.20em]">Get Started</span>
       <h2 className="mt-4 font-head font-normal tracking-[-0.04em] uppercase text-white leading-[0.92]" style={{ fontSize: 'clamp(1.7rem, 5.5vw, 3rem)' }}>
         Your system starts

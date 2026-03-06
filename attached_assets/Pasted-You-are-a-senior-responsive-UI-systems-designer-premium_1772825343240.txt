@@ -1,0 +1,438 @@
+You are a senior responsive UI systems designer, premium CRO-focused front-end engineer, and layout specialist.
+
+Your job is to improve DESKTOP ONLY across the following pages:
+- Home
+- Shop / Shop All
+- Science
+- Quality
+- FAQ
+
+This is a desktop optimization pass.
+Mobile is already in a decent place and must NOT be broken.
+
+Do not redesign the brand.
+Do not rewrite the pages from scratch.
+Do not add new major sections unless absolutely necessary.
+Refine the current implementation so desktop feels intentional, premium, structured, and conversion-focused.
+
+PRIMARY GOAL
+
+Fix the desktop experience without screwing up mobile.
+
+The current issue is that many components still behave like mobile-first stacked sections placed inside a wider screen.
+Desktop needs real layout logic, not just wider containers.
+
+NON-NEGOTIABLE RULES
+
+Do not:
+- break mobile layouts
+- change mobile spacing unnecessarily
+- change the order of important mobile content
+- remove current SEO / schema / semantic structure
+- change URLs or slugs
+- add decorative biotech / AI visuals
+- add more icons
+- add more gradients
+- add more visual noise
+- make desktop feel like a different site from mobile
+
+Do:
+- make changes primarily at desktop breakpoints only
+- use shared responsive layout tokens where possible
+- preserve current content and metadata unless a tiny supporting copy trim is needed for layout
+- preserve accessibility and crawlable text
+- preserve current semantic headings and section IDs
+
+BREAKPOINT STRATEGY
+
+Implement improvements mostly at:
+- lg: 1024px+
+- xl: 1280px+
+- 2xl / wide desktop: 1440px+
+
+Mobile and tablet should remain visually and behaviorally stable.
+
+Use desktop-specific grid/layout variants instead of changing the base mobile structure.
+
+GLOBAL DESKTOP FIXES TO IMPLEMENT
+
+1. Create stronger desktop layout tokens
+Add or refine shared layout utilities/tokens such as:
+- max-width content shell for marketing pages: around 1280px to 1360px
+- max-width docs shell for Science/Quality/FAQ: around 1320px to 1400px
+- readable text measure for long-form copy: 640px to 760px max
+- desktop section padding: reduce giant dead space
+  target roughly 80px to 104px top/bottom instead of oversized padding
+- hero min-heights should be reduced from full-screen feeling to more intentional
+  target roughly 68vh to 82vh depending on page
+
+2. Stop centering narrow mobile blocks inside giant desktop canvases
+Across all pages:
+- widen useful content areas
+- reduce side gutter waste
+- turn repeated stacked cards into 2-column or 3-column desktop grids
+- align CTAs and prices consistently across card bottoms
+- use CSS grid/flex for desktop-specific re-layout
+- do not just stretch existing mobile cards taller
+
+3. Improve desktop density without making it cramped
+Desktop should feel:
+- more structured
+- more efficient
+- less vertically exhausting
+- more usefully comparative
+- more premium
+
+4. Tighten footer / final CTA sections on desktop
+Current footer/final CTA zones are too tall and airy.
+Reduce vertical dead space.
+Keep the CTA visible, but compress the empty area around it.
+
+5. Improve contrast on light sections for desktop
+Some light-background sections use microcopy that is too faint on larger screens.
+Raise text contrast slightly for tertiary text on light backgrounds.
+Do not change the brand palette. Just improve readability.
+
+6. Preserve mobile
+Important:
+- desktop changes should mostly live in desktop-only classes/media queries
+- avoid changing default base styles if a desktop override will do the job
+- do not touch mobile spacing, stacking, or button sizing unless a clear bug is found
+
+PAGE-BY-PAGE DESKTOP CHANGES
+
+==================================================
+HOME PAGE
+==================================================
+
+MAIN ISSUES TO FIX
+- Hero is too tall on desktop
+- Too much empty vertical space between sections
+- Trust section and science section feel oversized vertically
+- Product/starting-point cards are still using mobile proportions
+- FAQ teaser is too narrow and too centered
+- Final CTA/footer zone is too tall
+
+HOME DESKTOP FIXES
+
+1. Hero
+- Keep the split hero concept
+- Reduce hero height so the next section feels closer
+- Keep text max-width around 560px to 640px
+- Keep image dominant on the right, but ensure left text block feels anchored and not floating
+- Tighten vertical spacing between eyebrow, H1, subhead, CTAs, and trust strip
+- Trust strip should read as one horizontal row on desktop with proper spacing and separators if helpful
+- Avoid a full-screen “poster” feel
+
+2. “Built on transparency” section
+- Convert this into a tighter 3-column or 4-column desktop layout
+- Increase useful card width
+- Reduce empty vertical padding above and below
+- Make card heights consistent
+- Use more of the desktop width
+
+3. “Choose your starting point”
+- This should be a clean 3-column desktop system
+- Cards should be wider and slightly shorter than they are now
+- Reduce empty white space inside each card
+- Make the bottle image, title, short description, cadence, price, and CTA feel more balanced
+- Keep CTA aligned at the bottom of each card
+- Make price/cadence more legible on desktop
+- Keep card heights equal
+
+4. “Three biological axes” / science teaser
+- Keep this as a 3-column desktop grid
+- Increase card width and reduce vertical dead space
+- Cards should feel less cramped horizontally
+- Reduce the oversized top padding of this whole section
+- Keep the CTA but do not let it float too far below the cards
+
+5. “Before you begin” FAQ teaser
+- Re-layout this on desktop as a 2-column section:
+  - left: heading + short intro
+  - right: accordion list
+- Stop using a narrow centered single-column layout on large screens
+- The accordion column should feel broad enough to scan quickly
+
+6. Final CTA + footer
+- Reduce dead space
+- Tighten the relationship between CTA, links, and footer copy
+- Keep the premium feel, but remove the excessive empty dark area
+
+==================================================
+SHOP PAGE
+==================================================
+
+MAIN ISSUES TO FIX
+- Hero is too tall
+- Product overview is too vertically spaced
+- Desktop cards are still too “mobile card” in proportion
+- Comparison is not using desktop width efficiently
+- Build-your-protocol cards are too sparse and airy
+- Final compare/footer sections feel oversized
+
+SHOP DESKTOP FIXES
+
+1. Shop hero
+- Reduce hero height significantly
+- Bring key comparison/value info higher
+- The three product overview items should feel like a compact desktop selector, not tiny bottles floating in a large dark void
+- Keep hero text readable and centered, but not overly tall
+
+2. “Choose your starting point”
+- Keep 3-up layout
+- Increase card width and reduce internal dead space
+- Make price and cadence more prominent
+- Ensure descriptions fit without looking too faint or too low-contrast
+- CTA should be clear and anchored
+- The small helper notes below the cards should feel integrated, not like an afterthought strip
+
+3. “Side by side”
+- This section currently still feels like enlarged mobile cards
+- Rebuild desktop version as either:
+  - a denser 3-column comparison grid
+  - or a real comparison matrix with aligned rows
+- Reduce chip clutter
+- Improve horizontal rhythm
+- Use the extra desktop width for comparison clarity, not for more empty gutters
+
+4. “Build your protocol”
+- Keep the 3-tier card structure
+- Make cards denser, more premium, and less sparse
+- Reduce wasted vertical space inside cards
+- Improve hierarchy:
+  - section label
+  - included products
+  - total
+  - CTA
+- Keep equal card heights
+- Make total visually strong without overpowering the section
+
+5. Trust / compare sections
+- Trust cards should sit in a balanced 4-up row on desktop
+- The “How they compare” matrix should be wider, cleaner, and easier to read
+- Increase row padding and text clarity
+- Avoid tiny low-contrast comparison text floating in a huge dark section
+
+6. Final section / footer
+- Compress oversized vertical padding
+- Keep the CTA, but tighten the section
+
+==================================================
+SCIENCE PAGE
+==================================================
+
+MAIN ISSUES TO FIX
+- Desktop shell is awkward
+- Left-side page nav feels like a floating card in a wasted gutter
+- Light sections are trapped in a narrow central lane with large dark side gutters
+- Hero is too tall
+- Documentation content is not using desktop layout intelligently enough
+
+SCIENCE DESKTOP FIXES
+
+1. Build a real desktop documentation shell
+Create a proper desktop layout:
+- left column: sticky section nav, around 250px to 290px wide
+- right column: main content, using remaining width intelligently
+- container width should feel deliberate and premium
+- avoid huge empty side gutters
+
+2. Hero
+- Reduce hero height
+- Keep the H1 and support copy centered, but bring the content closer together
+- Make the hero feel like a documentation entry point, not a giant landing-page poster
+
+3. “Understanding the evidence”
+- Let this section use the desktop shell properly
+- Improve the evidence legend layout into a balanced desktop grid
+- Avoid cramped small blocks inside oversized empty space
+
+4. Protocol architecture
+- Make this a true 3-column desktop system
+- Improve card width and readability
+- Reduce the sense that the section is floating inside a narrow lane
+
+5. Standards + formulation sections
+- Use desktop grid layouts where appropriate
+- Light sections should visually fill the main content region cleanly
+- Remove the awkward visual effect of narrow white blocks surrounded by oversized dark side margins
+
+6. Evidence/dosing tables
+- On desktop, widen the tables/content cards
+- Improve header contrast and row spacing
+- Keep evidence context labels readable
+- Use the width for clarity, not longer line lengths
+- Tables should look like premium documentation, not squeezed admin tables
+
+7. References / FAQ / final CTA
+- Improve width and grouping
+- Keep desktop reading comfortable
+- Reduce over-tall dark footer/CTA spacing
+
+==================================================
+QUALITY PAGE
+==================================================
+
+MAIN ISSUES TO FIX
+- Same shell problem as Science
+- Hero is too tall
+- Left nav wastes space
+- Documentation sections could use stronger desktop grids
+- FAQ and final sections are too narrow / too airy
+
+QUALITY DESKTOP FIXES
+
+1. Use the same desktop documentation shell as Science
+- sticky left nav
+- stronger right content column
+- better width usage
+- less wasted space
+
+2. Hero
+- Reduce height
+- Tighten spacing
+- Keep trust/documentation feel, not landing-page poster feel
+
+3. “What quality should mean in practice”
+- Rebuild as a stronger desktop card grid
+- 2-column or 3-column depending content density
+- cards should feel broader and more deliberate
+
+4. Testing standards
+- This should feel like premium documentation on desktop
+- If table-based, make it clean and fully readable
+- If row-based, use a 3-column structure:
+  - category
+  - what it checks
+  - why it matters
+- Use the desktop width intelligently
+
+5. Buyer checklist
+- Present it as a clean 2-column or structured checklist block
+- Avoid too much centered whitespace
+
+6. Traceability / compliance / product notes
+- Use 3-up documentation cards or a strong structured grid
+- Keep these informative, not salesy
+- Improve width, spacing, and hierarchy
+
+7. Quality FAQ + final CTA
+- Widen the FAQ area
+- Reduce empty space
+- Compress final CTA/footer zone
+
+==================================================
+FAQ PAGE
+==================================================
+
+MAIN ISSUES TO FIX
+- Hero is too tall for an answer page
+- Search/filter sits too low
+- Most-asked cards are too faint and not making full desktop use
+- FAQ groups are still narrow centered columns
+- Desktop needs a better answer-hub shell
+
+FAQ DESKTOP FIXES
+
+1. Hero
+- Make it materially shorter
+- This is an answer page, not a hero page
+- Search and category navigation should appear higher on desktop
+- Reduce the amount of dark space above the utility tools
+
+2. Search + category toolbar
+- Make this a proper desktop utility bar
+- Search should be clearly prominent
+- Category chips/tabs should be easier to scan and use
+- Consider sticky behavior for the toolbar on desktop if it improves utility
+
+3. Most Asked
+- Convert into a balanced 2x2 desktop grid
+- Improve contrast/readability of the answer text
+- Use wider cards
+- Reduce the feeling of small cards floating in a large pale field
+
+4. Main FAQ groups
+- Stop using overly narrow centered accordions on desktop
+- Re-layout into one of these:
+  - left sticky category nav + right wide accordion column
+  - or a wider single-column answer shell with stronger group anchors
+- The accordion area should feel around 960px to 1080px wide where appropriate
+- Improve question-row hierarchy and row padding
+
+5. Group spacing
+- Keep clear category separation, but reduce oversized blank vertical gaps
+- Desktop should feel efficient and scannable
+
+6. Support / help / footer
+- Keep this useful
+- Compress any oversized final section spacing
+
+SHARED DESKTOP IMPROVEMENTS
+
+Apply these shared improvements across the pages in this pass:
+- better use of desktop width
+- fewer oversized empty gaps
+- wider and denser cards
+- more intentional multi-column layouts
+- better alignment of CTAs at card bottoms
+- tighter final CTA/footer sections
+- improved light-section body contrast
+- more consistent desktop max-widths
+- stronger section rhythm
+
+MOBILE SAFETY REQUIREMENTS
+
+This is critical:
+- do not degrade mobile card stacking
+- do not break mobile spacing
+- do not move mobile CTA hierarchy around
+- do not make mobile text smaller
+- do not remove mobile sticky/utility behavior already working
+- if a shared component must change, add desktop-only variants rather than changing the base mobile style
+
+TECHNICAL IMPLEMENTATION PREFERENCE
+
+Prefer this workflow:
+1. inspect current shared layout/container tokens
+2. create or refine shared desktop layout utilities
+3. update each page using desktop-only grid overrides
+4. preserve current DOM/content structure where possible
+5. keep CSS clean and maintainable
+6. avoid one-off hacks unless unavoidable
+
+DESKTOP ACCEPTANCE CRITERIA
+
+The final result should feel like:
+- desktop-specific
+- intentionally laid out
+- less vertically bloated
+- more comparative
+- more premium
+- easier to scan
+- stronger for conversion
+- stronger for trust
+- consistent with mobile, not conflicting with it
+
+SELF-QA BEFORE STOPPING
+
+Before stopping, directly fix anything that fails:
+
+1. Does desktop now look intentionally designed, not just stretched from mobile?
+2. Are heroes shorter and more efficient on desktop?
+3. Are cards wider and less vertically bloated?
+4. Are there fewer giant empty gaps?
+5. Do Science and Quality use a real desktop docs shell now?
+6. Does FAQ behave like a desktop answer hub now?
+7. Are footer/CTA sections tighter?
+8. Are light-section text contrasts improved?
+9. Is mobile still visually/functionally intact?
+10. Are 375px, 768px, 1024px, 1280px, and 1440px all working well?
+
+WHEN DONE, RETURN:
+1. files changed
+2. shared desktop layout changes made
+3. page-by-page desktop improvements made
+4. any mobile regressions found and fixed
+5. any remaining desktop weak spots

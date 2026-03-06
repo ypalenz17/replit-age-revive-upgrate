@@ -875,6 +875,12 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .q-hero {
+    padding: 72px 0 16px;
+  }
+}
+
 @media (min-width: 1200px) {
   .q-pageBody {
     grid-template-columns: 200px 1fr;
@@ -883,5 +889,65 @@
 
   .ar-quality h1 {
     font-size: 50px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .ar-quality .q-container {
+    max-width: 1100px;
+  }
+
+  .q-contentInner {
+    max-width: 1100px;
+  }
+
+  .q-pageBody {
+    grid-template-columns: 220px 1fr;
+    gap: 36px;
+    max-width: 1320px;
+  }
+
+  .q-hero {
+    padding: 64px 0 14px;
+  }
+
+  .q-section {
+    padding: 52px 0;
+  }
+
+  .q-light .q-lede {
+    color: rgba(0, 0, 0, 0.52);
+  }
+
+  .q-light .q-cardBody {
+    color: rgba(0, 0, 0, 0.56);
+  }
+
+  .q-light .q-bulletItem {
+    color: rgba(0, 0, 0, 0.56);
+  }
+
+  .ar-quality td {
+    color: rgba(0, 0, 0, 0.62);
+  }
+
+  .q-tdWhy {
+    color: rgba(0, 0, 0, 0.46);
+  }
+
+  .q-traceText {
+    color: rgba(0, 0, 0, 0.58);
+  }
+
+  .q-testingCardWhat {
+    color: rgba(0, 0, 0, 0.58);
+  }
+
+  .q-light .q-footnote {
+    color: rgba(0, 0, 0, 0.42);
+  }
+
+  .q-accPanel {
+    color: rgba(0, 0, 0, 0.54);
   }
 }
