@@ -1,0 +1,463 @@
+You are a top-tier UX writer, trust-page strategist, technical SEO lead, and senior front-end engineer.
+
+Audit and redesign the Age Revive FAQ page so it feels elite, direct, searchable, premium, mobile-friendly, and optimized for both Google Search and LLM retrieval.
+
+Do not just suggest changes.
+Implement them directly in code.
+
+CONTEXT
+
+Brand:
+- Age Revive
+
+Page:
+- FAQ
+
+Role of this page:
+- direct-answer hub
+- canonical FAQ page
+- support and objection-handling page
+- trust infrastructure
+- internal-link hub to Science, Quality, Shop, Shipping, and Contact
+
+Main problem:
+- the current FAQ page has strong raw content but weak packaging
+- the hero is too tall and too branding-heavy for an answer page
+- the page is too dark for too long
+- there are too many same-looking dark accordion cards
+- answer discovery is slower than it should be
+- the current category chips are directionally right but not enough
+- the page needs better search, better anchorability, better mobile scanability, and stronger SEO / LLM structure
+
+NON-NEGOTIABLE RULES
+
+Do not introduce:
+- DNA helix icons
+- gene/chromosome imagery
+- molecule graphics unless strictly functional
+- neural/circuit/AI visuals
+- biotech cliché motifs
+- decorative icon packs
+- fake data dashboards
+- stock medical icon clutter
+- glassmorphism
+- loud gradients
+- giant decorative hero treatments
+- meaningless scientific art
+
+Default to zero icons unless they materially improve comprehension.
+
+Do not use hype copy such as:
+- revolutionary
+- next-gen
+- cutting-edge
+- optimize your biology
+- hack your aging
+- engineered longevity
+- breakthrough system
+
+Use concise, direct, premium, answer-first language.
+
+CONTENT TRUTH RULES
+
+Use the current approved live FAQ content in the codebase as source of truth.
+
+Preserve and clarify the current approved answers around:
+- protocol structure
+- start-here guidance
+- evaluation window
+- daily vs periodic use
+- ingredient definitions
+- safety and clinician-consult guidance
+- allergen notes
+- third-party testing framing
+- CoA / batch documentation requests
+- proprietary blends
+- shipping / delivery estimates
+- refund / return information
+- support contact
+
+Do not invent new claims.
+Do not overstate evidence.
+Do not turn the FAQ into marketing copy.
+
+SEO AND LLM REQUIREMENTS
+
+This page must be optimized for Google Search and LLM retrieval without becoming spammy.
+
+Implement the following:
+
+1. Unique metadata
+- Create or refine a unique title tag
+- Create or refine a unique meta description
+- Keep them aligned with the visible H1 and page topic
+- Ensure canonical points to the intended public URL
+
+Suggested direction:
+Title:
+FAQ | Protocol, Ingredients, Safety, Quality & Orders | Age Revive
+
+Meta description:
+Direct answers about Age Revive protocol structure, ingredients, safety, quality testing, batch documentation, shipping, returns, and support.
+
+2. Semantic structure
+- Use one clear H1
+- Use strong H2/H3 section hierarchy
+- Ensure important answers exist in crawlable visible text
+- Add stable section IDs and stable per-question IDs
+- Keep the content useful to humans first
+
+3. Internal linking
+Add or improve descriptive links to:
+- Science
+- Quality
+- Shop / Shop All
+- Shipping
+- Contact
+- relevant product pages where it helps clarify a question
+
+Use descriptive anchor text, not vague “learn more”.
+
+4. Structured data
+Implement page-appropriate JSON-LD only where valid.
+
+For this page:
+- add FAQPage structured data only if the FAQ content is visibly present on the page and matches exactly
+- if the same FAQ appears elsewhere on the site, mark up only this canonical FAQ page instance sitewide
+- add BreadcrumbList only if real breadcrumbs exist in the UI/template
+- do not add Product schema to this page
+- do not duplicate sitewide Organization/WebSite schema if that already exists elsewhere
+
+5. Crawlability and machine readability
+- all FAQ content must exist in accessible HTML/DOM text
+- do not lazy-fetch answers only after click
+- accordion answers can be collapsed, but the content must already be present in the DOM
+- make key answers easy to quote and extract accurately
+- avoid vague marketing language
+
+IMPORTANT REAL-WORLD RULE
+
+Do not optimize this page around a guaranteed FAQ rich result.
+Implement valid FAQPage markup if appropriate, but the main goal is cleaner structure, stronger retrieval, and better user experience.
+
+CURRENT UX PROBLEMS TO FIX
+
+1. The hero is too large for an FAQ page
+2. Answers start too low on the page
+3. The page stays too dark for too long
+4. Too many same-style dark cards create visual monotony
+5. Search is missing or not strong enough
+6. Category navigation is not functional enough
+7. Popular high-intent questions are not surfaced strongly enough
+8. “Read Science” and “Read Quality” are too prominent at the top for what should be an answer page
+9. Deep-linking and shareability per question are not strong enough
+10. The page needs better mobile utility and stronger answer-first hierarchy
+
+PRIMARY STRATEGY
+
+Rebuild this page as a premium answer hub.
+
+This page should do 6 jobs:
+1. Let users search for answers immediately
+2. Surface the most important questions near the top
+3. Let users browse by category quickly
+4. Preserve all answers in readable, crawlable HTML
+5. Route people to the right supporting page when needed
+6. Support search and AI retrieval with explicit structure
+
+The page should feel like:
+- direct
+- premium
+- useful
+- restrained
+- easy to trust
+- easier to search than before
+
+PAGE STRUCTURE TO TARGET
+
+Refactor the page so it roughly follows this sequence:
+
+1. Compact hero / page intro
+2. Search + category navigation
+3. Quick Answers / Most Asked
+4. Protocol & Stacking
+5. Ingredients & Mechanisms
+6. Safety & Suitability
+7. Quality & Testing
+8. Orders & Support
+9. Need more help? section
+10. Restrained final CTA
+
+Adapt to the codebase as needed, but keep this logic.
+
+HERO / PAGE INTRO REQUIREMENTS
+
+The hero must behave like the entry to an answer hub, not a landing page.
+
+Required hero elements:
+- clear H1
+- concise supporting subhead
+- visible search field or immediate jump to search
+- optional restrained secondary links to Science and Quality
+- brief boundary note if helpful, such as educational information not medical advice for mechanism questions
+
+The hero must be materially shorter than it is now.
+Do not let decorative treatment push the first answers too far below the fold.
+
+SEARCH REQUIREMENTS
+
+Add or substantially improve FAQ search.
+
+Requirements:
+- search field near the top
+- searches across both questions and answers
+- instant client-side filtering
+- result count
+- clear reset
+- useful no-results state
+- preserve all FAQ content in DOM for crawlability
+- do not fetch answers from an API only after searching
+
+Consider:
+- query param support like ?q=
+- preserving search state in the URL when practical
+- highlighting matched terms in a restrained way
+
+CATEGORY NAVIGATION REQUIREMENTS
+
+Refactor category browsing into a stronger utility layer.
+
+Use these category groups:
+- Protocol & Stacking
+- Ingredients & Mechanisms
+- Safety & Suitability
+- Quality & Testing
+- Orders & Support
+
+Requirements:
+- category chips or tabs must be functional, not decorative
+- mobile-friendly
+- ideally sticky after hero
+- allow jump-to-section behavior
+- visually obvious which section is active
+
+QUICK ANSWERS / MOST ASKED
+
+Create a high-utility quick-answers block near the top.
+
+Prioritize these high-intent questions from the existing FAQ content:
+- How do the three products fit together?
+- Can I take all three together?
+- If I start with one product, which one should it be?
+- How long should I evaluate daily products?
+- Is CELLUNOVA taken daily?
+
+This block can use:
+- pre-expanded accordions
+- concise answer cards
+- or a compact featured-Q&A format
+
+The goal is to answer the most important questions without making users dig.
+
+FAQ GROUP DESIGN
+
+Refactor each FAQ group so it feels structured and easy to scan.
+
+Requirements:
+- clear H2 group heading
+- concise group intro if useful
+- accessible accordion rows
+- stronger question hierarchy
+- answers that feel readable and not visually buried
+- clear spacing between groups
+- better visual separation between categories
+
+Do not let every category feel like the same dark rounded-card block repeated endlessly.
+
+DEEP LINKING / SHAREABILITY
+
+This is important.
+
+Implement stable per-question deep links.
+Each FAQ item should:
+- have a stable ID
+- be linkable via hash
+- auto-expand when visited by hash
+- support copy-link behavior if practical and elegant
+- allow internal links to jump directly to the answer
+
+This improves UX, support efficiency, SEO clarity, and LLM retrievability.
+
+ANSWER PRESENTATION RULES
+
+Answers should be:
+- concise
+- direct
+- premium in tone
+- easy to quote accurately
+- not bloated
+- not hyped
+
+Use answer-first formatting.
+Where useful, include a short first sentence that gives the answer immediately, then one short clarifying sentence.
+
+Do not rewrite accurate answers into vaguer marketing language.
+
+CONTEXTUAL LINKING
+
+Within answers, add restrained contextual links where useful:
+- ingredient definition answers can link to Science
+- testing / CoA questions can link to Quality
+- ordering questions can link to Shipping or Contact
+- product-role answers can link to the relevant product pages or Shop
+
+These links should be useful, not salesy.
+
+VISUAL DESIGN RULES
+
+This page should feel lighter, more direct, and more utility-focused than the homepage.
+
+Use:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Existing mint/teal accent only
+
+Suggested rhythm:
+dark -> light -> dark -> light -> light
+
+Use more light sections where readability matters, especially:
+- quick answers
+- quality and orders sections
+- help / contact section
+- final utility section
+
+Do not let the page remain one long dark slab.
+
+CARD / ACCORDION RULES
+
+The current repeated dark-card treatment is too monotonous.
+
+Improve:
+- contrast
+- borders
+- spacing
+- distinction between section wrappers and individual FAQ rows
+- scannability of questions
+- readability of answers
+
+For dark sections:
+- use elevated but restrained surfaces
+- subtle borders
+- avoid giant heavy blocks
+
+For light sections:
+- use very clean surfaces with subtle borders
+- prioritize readability and calmness
+
+MOBILE RULES
+
+This page must become materially better on mobile.
+
+Prioritize:
+- search visible early
+- compact hero
+- sticky category navigation if appropriate
+- easy thumb-friendly accordions
+- shorter visual blocks
+- clear answer hierarchy
+- no giant repeated dark slabs
+- no horizontal overflow
+- no clipped text
+
+HELP / SUPPORT SECTION
+
+Near the bottom, add a clean support utility section.
+
+It should help users quickly find:
+- shipping information
+- return/refund guidance
+- contact support
+- order help
+
+This should feel like a practical next-step section, not a hard-sell CTA.
+
+CTA STRATEGY
+
+Keep CTA usage restrained.
+
+Allowed:
+- subtle top links to Science and Quality
+- contextual links inside answers
+- restrained final CTA to Shop or Contact
+
+Not allowed:
+- repeated large product CTAs
+- FAQ page turning into a marketing funnel page
+- large distracting product promotions inside the answer flow
+
+ANALYTICS / INSTRUMENTATION
+
+Add or improve analytics hooks for:
+- faq_search
+- faq_zero_results
+- faq_category_selected
+- faq_question_opened
+- faq_deeplink_opened
+- faq_support_click
+- faq_cta_click
+
+Use the site’s existing analytics conventions if present.
+If no wrapper exists, add clean data attributes or simple event hooks for future wiring.
+
+ACCESSIBILITY
+
+Maintain or improve:
+- semantic headings
+- accessible accordion behavior
+- aria-expanded / aria-controls
+- keyboard accessibility
+- focus states
+- anchor-link usability
+- contrast
+- tap target size
+
+SELF-QA BEFORE STOPPING
+
+Before stopping, audit your own implementation and directly fix anything that fails:
+
+1. Does the page immediately feel like an FAQ hub, not a hero page?
+2. Is search visible and useful near the top?
+3. Are the most important questions surfaced early?
+4. Does the page still feel too dark for too long anywhere?
+5. Are category groups clearly separated now?
+6. Are question rows easier to scan?
+7. Are answers easier to read on mobile?
+8. Do per-question deep links work and auto-open correctly?
+9. Is all FAQ content present in visible HTML/DOM text?
+10. Is FAQPage schema only used if the visible content matches exactly?
+11. Is the page optimized for SEO without looking spammy?
+12. Are title, H1, meta description, canonical, and visible topic aligned?
+13. Are internal links useful and descriptive?
+14. Is anything still generic biotech, AI-themed, decorative, or templated?
+15. Does the page feel premium enough for the brand?
+
+If any answer is no, continue refining before stopping.
+
+WORK STYLE
+
+Inspect the codebase, identify the relevant layout/components/styles/content blocks, and implement the improvements directly.
+Keep code clean, maintainable, and production-ready.
+Do not stop at “better.”
+Stop only when the FAQ page feels elite.
+
+WHEN DONE, RETURN
+
+1. Summary of what you changed
+2. Files/components modified
+3. What changed in page structure
+4. What changed in search / navigation / deep-linking
+5. What changed in SEO / metadata / structured data
+6. What improved trust
+7. What improved readability and mobile UX
+8. Any optional next-step refinements

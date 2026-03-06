@@ -1084,3 +1084,158 @@ The page feels:
 - clearly optimized for search and AI retrieval
 - clearly not generic biotech
 - clearly not generic supplement marketing
+
+## FAQ page rules
+
+This page is a direct-answer hub.
+It must feel fast, searchable, trustworthy, and easy to scan on mobile.
+
+### Core job
+Help a visitor get the right answer in seconds about:
+- protocol structure
+- where to start
+- ingredient definitions
+- safety and suitability
+- quality and testing
+- shipping, refunds, and support
+
+### Core strategy
+This page must not behave like a marketing hero page.
+It must behave like:
+- a searchable answer hub
+- a premium support and trust page
+- a canonical FAQ page for SEO and LLM retrieval
+- a clean bridge to Science, Quality, Shop, Shipping, and Contact when needed
+
+### What the page must do fast
+1. Let people search questions immediately
+2. Surface the most important answers near the top
+3. Make category browsing obvious
+4. Make every answer easy to open, share, and link to
+5. Keep all important FAQ text crawlable and visible in the HTML
+6. Reduce repetition and visual monotony
+7. Preserve trust and scientific nuance
+
+### Current categories to preserve and improve
+- Protocol & Stacking
+- Ingredients & Mechanisms
+- Safety & Suitability
+- Quality & Testing
+- Orders & Support
+
+### Top-priority questions to surface early
+- How do the three products fit together?
+- Can I take all three together?
+- If I start with one product, which one should it be?
+- How long should I evaluate daily products?
+- Is CELLUNOVA taken daily?
+
+### Absolutely forbidden
+Never introduce:
+- DNA helix icons
+- gene or chromosome imagery
+- molecule graphics unless strictly necessary and explanatory
+- neural/circuit/AI motifs
+- generic biotech visuals
+- decorative icon clutter
+- glassmorphism
+- loud gradients
+- fake dashboards
+- meaningless chip clouds
+- giant abstract hero treatments
+- heavy decorative visuals that slow down answer-finding
+
+Default to zero icons unless they clearly improve comprehension.
+
+### Copy rules
+Use concise, direct, premium, answer-first language.
+Do not use:
+- revolutionary
+- next-gen
+- cutting-edge
+- optimize your biology
+- hack your aging
+- engineered longevity
+- breakthrough system
+- hypey supplement language
+
+Keep answers calm, factual, and easy to quote accurately.
+
+### SEO and LLM rules
+This page is the canonical FAQ hub.
+
+Required:
+- one clear H1
+- unique title tag
+- unique meta description
+- canonical URL
+- strong H2/H3 hierarchy
+- stable section IDs
+- stable question IDs / anchor links
+- important answers present in visible HTML text
+- all FAQ content rendered in the DOM, not fetched only after interaction
+- internal links to relevant pages using descriptive anchor text
+- FAQPage structured data only if it matches visible questions and answers exactly
+- if the same FAQ appears on multiple pages, mark up only the canonical FAQ page instance sitewide
+- no hidden SEO text
+- no image-only answers
+
+### Structured data rules
+- Use FAQPage JSON-LD only if the Q&A content is visibly present on the page
+- Structured data must match the visible question and answer text exactly
+- Do not assume FAQ rich results will appear
+- Do not use Product schema on this page
+- Use BreadcrumbList only if real breadcrumbs exist in the UI
+- Keep title, H1, meta description, canonical, and page topic aligned
+
+### UX rules
+- Search must be near the top
+- Category filtering must be easy on mobile
+- Quick answers must appear before the long scroll
+- Accordions must be accessible
+- Deep links must open the correct FAQ item
+- Question text must be highly scannable
+- Answers must not feel buried in giant dark cards
+- "Read Science" and "Read Quality" should be secondary, not the main top action
+
+### Visual rules
+This page should be lighter and more utility-focused than the homepage.
+
+Use:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Existing mint/teal accent only
+
+Use more light sections where readability matters, especially:
+- quick answers
+- quality / orders / support
+- FAQ groups deeper in the page
+- final help section
+
+The page must not feel like one long dark slab.
+
+### CTA rules
+This is not a hard-sell page.
+
+Allowed:
+- one restrained hero CTA to Science or Quality
+- one restrained final CTA to Shop or Contact
+- subtle contextual links inside answers
+
+Not allowed:
+- repeated sales CTAs
+- giant product-selling sections
+- FAQ page behaving like a PDP
+
+### Done when
+The FAQ page feels:
+- elite
+- direct
+- easy to search
+- easy to trust
+- easy to navigate
+- excellent on mobile
+- clearly optimized for search and AI retrieval
+- clearly not generic biotech
+- clearly not generic marketing
