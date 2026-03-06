@@ -1,13 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'wouter';
 import {
-  ArrowRight,
-  Check,
   ChevronDown,
-  X,
-  FileText,
   Star,
-  ShoppingBag,
 } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -45,23 +39,20 @@ function StickyMobileBuyBar({ data, onAdd }: { data: ProductDetailData; onAdd: (
   return (
     <div
       className={`fixed bottom-0 left-0 right-0 z-[100] lg:hidden transition-transform duration-300 ease-out ${visible ? 'translate-y-0' : 'translate-y-full'}`}
-      style={{ background: 'rgba(10,18,32,0.95)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderTop: '1px solid rgba(255,255,255,0.06)' }}
+      style={{ background: 'rgba(10,18,32,0.96)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderTop: '1px solid rgba(255,255,255,0.06)' }}
     >
       <div className="flex items-center justify-between px-5 py-3 gap-4 safe-bottom">
         <div className="min-w-0">
           <p className="font-mono text-[10px] uppercase tracking-[0.10em] text-white/45 truncate">CELLUBIOME</p>
-          <div className="flex items-baseline gap-2">
-            <span className="text-[16px] font-sans font-semibold text-white">${data.priceOneTime.toFixed(2)}</span>
-            <span className="text-[10px] font-mono text-white/30">/30 days</span>
-          </div>
+          <span className="text-[16px] font-sans font-semibold text-white">${data.priceOneTime.toFixed(2)}</span>
         </div>
         <button
           onClick={onAdd}
-          className={`shrink-0 px-6 min-h-[44px] bg-ar-teal text-[#0A1220] rounded-lg font-mono font-bold uppercase text-[10px] tracking-[0.10em] hover:brightness-110 active:scale-[0.97] transition-all ${focusRing}`}
+          className={`shrink-0 px-5 min-h-[44px] bg-ar-teal text-[#0A1220] rounded-lg font-mono font-bold uppercase text-[10px] tracking-[0.08em] hover:brightness-110 active:scale-[0.97] transition-all ${focusRing}`}
           style={{ boxShadow: '0 0 16px rgba(45,212,191,0.15)' }}
           data-testid="sticky-add-to-cart"
         >
-          Add to Cart
+          Add to Cart -- ${data.priceOneTime.toFixed(2)}
         </button>
       </div>
     </div>
@@ -72,7 +63,6 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
   const [isFactsOpen, setIsFactsOpen] = useState(false);
   const [activeTimeline, setActiveTimeline] = useState(0);
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
-  const [, navigate] = useLocation();
   const cart = useCart();
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -93,7 +83,6 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
   }, []);
 
   const images = PRODUCT_IMAGES.cellubiome;
-  const accentColor = data.accentText;
 
   const handleAddToCart = () => {
     cart.addItem({
@@ -122,11 +111,11 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
   const savings = data.priceOneTime - data.priceSubscribe;
 
   return (
-    <div ref={containerRef} className="min-h-screen font-sans antialiased selection:bg-teal-500/30 selection:text-white" style={{ backgroundColor: BASE_DARK }}>
+    <div ref={containerRef} className="min-h-screen font-sans antialiased selection:bg-teal-400/20 selection:text-white" style={{ backgroundColor: BASE_DARK }}>
       <ModalFacts isOpen={isFactsOpen} onClose={() => setIsFactsOpen(false)} data={data} />
       <SiteNavbar />
 
-      {/* ─── 1. HERO / BUY BOX ─── */}
+      {/* ─── 1. HERO / BUY BOX — BASE_DARK ─── */}
       <section className="relative pt-16 lg:pt-0 overflow-hidden" style={{ backgroundColor: BASE_DARK }}>
         <div className="absolute inset-0 hidden lg:block">
           <div className="absolute top-0 left-0 w-1/2 h-full" style={{ backgroundColor: '#f0f0ec' }} />
@@ -151,8 +140,8 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
             <div className="lg:sticky lg:top-20 space-y-4 lg:space-y-5 pt-5 lg:pt-0 pb-8 lg:pb-0">
               <div className="space-y-2 lg:space-y-3">
                 <div className="flex items-center gap-3">
-                  <p className="font-mono text-[10px] lg:text-[11px] uppercase tracking-[0.14em]" style={{ color: accentColor }}>Daily Gut-Mitochondria Support</p>
-                  <span className="px-2 py-0.5 rounded text-[9px] font-mono font-bold uppercase tracking-[0.06em] bg-ar-teal/15 text-ar-teal border border-ar-teal/20" data-testid="bestseller-badge">Bestseller</span>
+                  <p className="font-mono text-[10px] lg:text-[11px] uppercase tracking-[0.14em] text-ar-teal">Daily Gut-Mitochondria Support</p>
+                  <span className="px-2 py-0.5 rounded text-[9px] font-mono font-bold uppercase tracking-[0.06em] bg-ar-teal/10 text-ar-teal border border-ar-teal/20" data-testid="bestseller-badge">Bestseller</span>
                 </div>
                 <h1 className="font-head font-normal tracking-[-0.04em] leading-[0.9] uppercase text-white" style={{ fontSize: 'clamp(2rem, 5.5vw, 3.5rem)' }}>
                   CELLUBIOME
@@ -182,20 +171,27 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
                 500 mg Urolithin A and 500 mg Tributyrin in enteric-protected capsules. Clinically studied doses for mitochondrial renewal and gut barrier support.*
               </p>
 
+              <div className="flex flex-wrap gap-2">
+                <span className="text-[10px] font-mono uppercase tracking-[0.06em] px-2.5 py-1.5 rounded-md text-white/55 bg-white/[0.05] border border-white/[0.07]">Enteric-Protected</span>
+                <span className="text-[10px] font-mono uppercase tracking-[0.06em] px-2.5 py-1.5 rounded-md text-white/55 bg-white/[0.05] border border-white/[0.07]">2 Compounds</span>
+                <span className="text-[10px] font-mono uppercase tracking-[0.06em] px-2.5 py-1.5 rounded-md text-white/55 bg-white/[0.05] border border-white/[0.07]">Fully Disclosed</span>
+              </div>
+
               <div className="space-y-2 pt-1">
                 <div className="flex items-baseline gap-3">
                   <span className="text-[26px] font-sans font-semibold text-white tracking-tight">${data.priceOneTime.toFixed(2)}</span>
+                  <span className="text-[12px] text-white/30 font-sans">/ 30-day supply</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[13px] font-sans font-medium" style={{ color: accentColor }}>Subscribe: ${data.priceSubscribe.toFixed(2)}/mo</span>
-                  <span className="text-[10px] font-mono uppercase tracking-[0.06em] px-2 py-0.5 rounded" style={{ backgroundColor: 'rgba(45,212,191,0.1)', color: accentColor }}>Save ${savings.toFixed(2)}</span>
+                  <span className="text-[13px] font-sans font-medium text-ar-teal">Subscribe: ${data.priceSubscribe.toFixed(2)}/mo</span>
+                  <span className="text-[10px] font-mono uppercase tracking-[0.06em] px-2 py-0.5 rounded bg-ar-teal/10 text-ar-teal">Save ${savings.toFixed(2)}</span>
                 </div>
                 <p className="text-[12px] text-white/35 font-sans">30-day supply · 2 enteric capsules daily · Free US shipping</p>
               </div>
 
               <button
                 onClick={handleAddToCart}
-                className={`w-full py-3.5 bg-ar-teal text-[#0A1220] rounded-xl font-mono text-[11px] font-bold uppercase tracking-[0.10em] hover:brightness-110 active:scale-[0.97] transition-all flex items-center justify-center gap-2 min-h-[50px] ${focusRing}`}
+                className={`w-full py-3.5 bg-ar-teal text-[#0A1220] rounded-xl font-mono text-[11px] font-bold uppercase tracking-[0.10em] hover:brightness-110 active:scale-[0.97] transition-all flex items-center justify-center min-h-[50px] ${focusRing}`}
                 style={{ boxShadow: '0 2px 16px rgba(45,212,191,0.2)' }}
                 data-testid="hero-add-to-cart"
               >
@@ -230,7 +226,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         </div>
       </section>
 
-      {/* ─── 2. TRUST STRIP — Light ─── */}
+      {/* ─── 2. TRUST STRIP — LIGHT ─── */}
       <section className="cb-reveal py-[72px] md:py-[100px] px-6 md:px-8" style={{ backgroundColor: LIGHT }}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10 md:mb-12">
@@ -263,7 +259,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         </div>
       </section>
 
-      {/* ─── 3. BEST FOR — Secondary dark ─── */}
+      {/* ─── 3. BEST FOR — SECONDARY_DARK ─── */}
       <section className="cb-reveal py-[72px] md:py-[100px] px-6 md:px-8 text-white" style={{ backgroundColor: SECONDARY_DARK }}>
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10 md:mb-12">
@@ -273,7 +269,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
             </h2>
           </div>
 
-          <div className="space-y-2.5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[
               'Adults focused on daily gut barrier and mitochondrial support',
               'People looking for a clinically dosed, two-compound daily protocol',
@@ -286,7 +282,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
                 style={{ backgroundColor: '#15202F' }}
                 data-testid={`best-for-${i}`}
               >
-                <span className="font-mono text-[10px] font-bold text-ar-teal/60 tracking-[0.10em] mt-0.5 shrink-0">0{i + 1}</span>
+                <span className="font-mono text-[10px] font-bold text-ar-teal/50 tracking-[0.10em] mt-0.5 shrink-0">0{i + 1}</span>
                 <span className="text-[14px] font-sans text-white/55 leading-snug">{item}</span>
               </div>
             ))}
@@ -294,8 +290,8 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         </div>
       </section>
 
-      {/* ─── 4. WHY IT'S DIFFERENT — Light ─── */}
-      <section className="cb-reveal py-[72px] md:py-[100px] px-6 md:px-8" style={{ backgroundColor: LIGHT }}>
+      {/* ─── 4. WHY IT'S DIFFERENT — LIGHT ─── */}
+      <section className="cb-reveal py-[72px] md:py-[110px] px-6 md:px-8" style={{ backgroundColor: LIGHT }}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10 md:mb-14">
             <span className="font-mono text-[10px] md:text-[11px] text-ar-teal uppercase tracking-[0.20em]">What Makes It Different</span>
@@ -311,7 +307,12 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
               { title: 'Two-Compound Focus', body: 'Not a kitchen-sink formula. Two targeted compounds at full clinical doses, each addressing one side of the gut-mitochondria axis.' },
               { title: 'Full Transparency', body: 'Every ingredient, every dose, printed on the label. No proprietary blends. Certificate of Analysis available by production lot.' },
             ].map((card, i) => (
-              <div key={i} className="bg-white rounded-xl p-6 md:p-7 border border-[#0A1220]/[0.05]" style={{ boxShadow: '0 1px 3px rgba(10,18,32,0.04)' }}>
+              <div
+                key={i}
+                className="bg-white rounded-xl p-6 md:p-7 border border-[#0A1220]/[0.05]"
+                style={{ boxShadow: '0 1px 3px rgba(10,18,32,0.04)' }}
+                data-testid={`different-${i}`}
+              >
                 <h3 className="text-[15px] md:text-[16px] font-head font-normal uppercase tracking-[-0.01em]" style={{ color: BASE_DARK }}>{card.title}</h3>
                 <p className="mt-3 text-[13px] font-sans text-[#0A1220]/50 leading-[1.6]">{card.body}</p>
               </div>
@@ -320,7 +321,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         </div>
       </section>
 
-      {/* ─── 5. WHAT IT DOES — Secondary dark ─── */}
+      {/* ─── 5. WHAT IT DOES — SECONDARY_DARK ─── */}
       <section className="cb-reveal py-[72px] md:py-[110px] px-6 md:px-8 text-white" style={{ backgroundColor: SECONDARY_DARK }}>
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10 md:mb-12">
@@ -337,11 +338,8 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
             {data.benefitHighlights.map((h, i) => (
               <div
                 key={i}
-                className="p-6 md:p-7 border rounded-xl"
-                style={{
-                  background: 'rgba(255,255,255,0.02)',
-                  borderColor: 'rgba(244,241,234,0.06)',
-                }}
+                className="p-6 md:p-7 border rounded-xl border-white/[0.05]"
+                style={{ backgroundColor: '#15202F' }}
                 data-testid={`benefit-${i}`}
               >
                 <div className="flex items-start gap-4">
@@ -357,7 +355,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         </div>
       </section>
 
-      {/* ─── 6. INGREDIENTS — Light ─── */}
+      {/* ─── 6. SUPPLEMENT FACTS — LIGHT ─── */}
       <section className="cb-reveal py-[72px] md:py-[110px] px-6 md:px-8" style={{ backgroundColor: LIGHT }}>
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10 md:mb-12">
@@ -399,32 +397,29 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
               View Full Supplement Facts →
             </button>
           </div>
+
+          <div className="mt-10 text-center">
+            <p className="text-[14px] font-sans text-[#0A1220]/45 leading-relaxed mb-5">
+              Two clinically studied compounds. Enteric-protected. Fully transparent.
+            </p>
+            <button
+              onClick={handleAddToCart}
+              className={`px-10 min-h-[48px] bg-ar-teal text-[#0A1220] rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.12em] hover:brightness-110 active:scale-[0.97] transition-all ${focusRing}`}
+              style={{ boxShadow: '0 2px 12px rgba(45,212,191,0.18)' }}
+              data-testid="mid-add-to-cart"
+            >
+              Add to Cart -- ${data.priceOneTime.toFixed(2)}
+            </button>
+            <p className="mt-3 text-[10px] font-mono uppercase tracking-[0.06em] text-[#0A1220]/25">or ${data.priceSubscribe.toFixed(2)}/mo with subscription</p>
+          </div>
         </div>
       </section>
 
-      {/* ─── MID-PAGE CTA — Base dark ─── */}
-      <section className="py-[56px] md:py-[72px] px-6 text-white" style={{ backgroundColor: BASE_DARK }}>
-        <div className="max-w-md mx-auto text-center">
-          <p className="text-[14px] font-sans text-white/45 leading-relaxed mb-5">
-            Two clinically studied compounds. Enteric-protected. Fully transparent.
-          </p>
-          <button
-            onClick={handleAddToCart}
-            className={`px-10 min-h-[48px] bg-ar-teal text-[#0A1220] rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.12em] hover:brightness-110 active:scale-[0.97] transition-all ${focusRing}`}
-            style={{ boxShadow: '0 2px 12px rgba(45,212,191,0.18)' }}
-            data-testid="mid-add-to-cart"
-          >
-            Add to Cart -- ${data.priceOneTime.toFixed(2)}
-          </button>
-          <p className="mt-3 text-[10px] font-mono uppercase tracking-[0.06em] text-white/20">or ${data.priceSubscribe.toFixed(2)}/mo with subscription</p>
-        </div>
-      </section>
-
-      {/* ─── 7. SCIENCE — Secondary dark ─── */}
+      {/* ─── 7. SCIENCE — BASE_DARK ─── */}
       {(() => {
         const sci = data.scienceSection as any;
         return (
-          <section className="cb-reveal py-[72px] md:py-[110px] px-6 md:px-8 text-white" style={{ backgroundColor: SECONDARY_DARK }}>
+          <section className="cb-reveal py-[72px] md:py-[110px] px-6 md:px-8 text-white" style={{ backgroundColor: BASE_DARK }}>
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-10 md:mb-14">
                 <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.20em]">The Science</span>
@@ -446,7 +441,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         );
       })()}
 
-      {/* ─── 8. RESULTS OVER TIME — Light ─── */}
+      {/* ─── 8. RESULTS OVER TIME — LIGHT ─── */}
       <section className="cb-reveal py-[72px] md:py-[110px] px-6 md:px-8" style={{ backgroundColor: LIGHT }}>
         <div className="max-w-3xl mx-auto">
           <div className="text-center space-y-3 mb-10">
@@ -492,28 +487,30 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         </div>
       </section>
 
-      {/* ─── 9. HOW TO USE — Secondary dark ─── */}
+      {/* ─── 9. HOW TO USE — SECONDARY_DARK ─── */}
       <section className="cb-reveal py-[72px] md:py-[100px] px-6 md:px-8 text-white" style={{ backgroundColor: SECONDARY_DARK }}>
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10 md:mb-12">
             <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.20em]">How to Use</span>
             <h2 className="mt-3 font-head font-normal tracking-[-0.03em] uppercase text-white leading-tight" style={{ fontSize: 'clamp(1.4rem, 3.5vw, 2.2rem)' }}>Simple daily routine</h2>
           </div>
-          <div className="max-w-md mx-auto space-y-6">
-            <p className="text-[17px] text-white/55 font-sans font-medium leading-relaxed text-center">{data.howToUse.instruction}</p>
-            <div className="space-y-3">
-              {data.howToUse.tips.map((tip, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <span className="w-1 h-1 rounded-full bg-white/25 shrink-0 mt-2" />
-                  <span className="text-[14px] text-white/40 font-sans leading-snug">{tip}</span>
-                </div>
-              ))}
+          <div className="max-w-md mx-auto">
+            <div className="rounded-xl p-6 md:p-8 border border-white/[0.05]" style={{ backgroundColor: '#15202F' }}>
+              <p className="text-[17px] text-white/60 font-sans font-medium leading-relaxed text-center mb-6">{data.howToUse.instruction}</p>
+              <div className="space-y-3 pt-4 border-t border-white/[0.06]">
+                {data.howToUse.tips.map((tip, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span className="w-1 h-1 rounded-full bg-ar-teal shrink-0 mt-2" />
+                    <span className="text-[13px] text-white/40 font-sans leading-snug">{tip}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── 10. COMPARISON — Light ─── */}
+      {/* ─── 10. COMPARISON — LIGHT ─── */}
       <section className="cb-reveal py-[72px] md:py-[110px] px-6 md:px-8" style={{ backgroundColor: LIGHT }}>
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10 md:mb-14">
@@ -554,7 +551,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         </div>
       </section>
 
-      {/* ─── 11. STACKING — Secondary dark ─── */}
+      {/* ─── 11. STACKING — SECONDARY_DARK ─── */}
       <section className="cb-reveal py-[72px] md:py-[110px] px-6 md:px-8 text-white" style={{ backgroundColor: SECONDARY_DARK }}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10 md:mb-12">
@@ -599,7 +596,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         </div>
       </section>
 
-      {/* ─── 12. FAQ — Light ─── */}
+      {/* ─── 12. FAQ — LIGHT ─── */}
       <section className="cb-reveal py-[72px] md:py-[110px] px-6 md:px-8" style={{ backgroundColor: LIGHT }}>
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10 md:mb-12">
@@ -632,7 +629,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         </div>
       </section>
 
-      {/* ─── 13. FINAL CTA — Base dark ─── */}
+      {/* ─── 13. FINAL CTA — BASE_DARK ─── */}
       <section className="relative py-[88px] md:py-[120px] px-6 text-white overflow-hidden" style={{ backgroundColor: BASE_DARK }}>
         <div className="max-w-2xl mx-auto text-center relative z-10">
           <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-[0.92]" style={{ fontSize: 'clamp(1.7rem, 5.5vw, 3rem)' }}>
@@ -656,8 +653,8 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
           </div>
           <p className="mt-4 text-[10px] font-mono uppercase tracking-[0.06em] text-white/20">2 capsules daily · Enteric-protected · Fully disclosed</p>
           <div className="mt-3">
-            <a href="/shop" className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/30 hover:text-white/50 transition-colors inline-flex items-center gap-1">
-              Browse all products <ArrowRight size={9} />
+            <a href="/shop" className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/30 hover:text-white/50 transition-colors" data-testid="link-browse-products">
+              Browse all products →
             </a>
           </div>
         </div>
