@@ -51,7 +51,7 @@
 }
 
 .f-hero {
-  padding: 72px 0 18px;
+  padding: 68px 0 16px;
   text-align: center;
   background: #0A1220;
 }
@@ -62,7 +62,7 @@
   justify-content: center;
   gap: 10px;
   margin: 0 0 6px;
-  color: rgba(122, 246, 224, 0.60);
+  color: rgba(122, 246, 224, 0.55);
   letter-spacing: 0.14em;
   font-size: 10px;
   text-transform: uppercase;
@@ -70,23 +70,23 @@
 }
 
 .f-light .f-eyebrow {
-  color: rgba(25, 179, 166, 0.60);
+  color: rgba(25, 179, 166, 0.55);
 }
 
 .ar-faq .f-eyebrowLine {
   width: 18px;
   height: 1px;
-  background: rgba(122, 246, 224, 0.22);
+  background: rgba(122, 246, 224, 0.18);
   flex-shrink: 0;
 }
 
 .f-light .f-eyebrowLine {
-  background: rgba(25, 179, 166, 0.22);
+  background: rgba(25, 179, 166, 0.18);
 }
 
 .ar-faq h1 {
   margin: 0;
-  font-size: 26px;
+  font-size: 24px;
   line-height: 1.15;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -95,19 +95,20 @@
 }
 
 .ar-faq .f-subhead {
-  margin: 10px auto 0;
-  max-width: 560px;
-  font-size: 14px;
-  line-height: 1.7;
-  color: rgba(244, 241, 234, 0.50);
+  margin: 8px auto 0;
+  max-width: 520px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(244, 241, 234, 0.45);
   font-weight: 400;
 }
 
 .ar-faq .f-heroLinks {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-top: 14px;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
   flex-wrap: wrap;
 }
 
@@ -115,23 +116,28 @@
   font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(244, 241, 234, 0.45);
+  color: rgba(244, 241, 234, 0.40);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .ar-faq .f-heroLink:hover {
-  color: rgba(244, 241, 234, 0.70);
+  color: rgba(244, 241, 234, 0.65);
+}
+
+.ar-faq .f-heroLinkSep {
+  color: rgba(244, 241, 234, 0.18);
+  font-size: 11px;
 }
 
 .ar-faq .f-boundaryNote {
   display: inline-block;
-  margin-top: 14px;
-  padding: 4px 10px;
+  margin-top: 12px;
+  padding: 3px 9px;
   border-radius: 4px;
-  border: 1px solid rgba(244, 241, 234, 0.06);
-  font-size: 11px;
-  color: rgba(244, 241, 234, 0.32);
+  border: 1px solid rgba(244, 241, 234, 0.05);
+  font-size: 10px;
+  color: rgba(244, 241, 234, 0.28);
   letter-spacing: 0.03em;
 }
 
@@ -141,7 +147,7 @@
   z-index: 20;
   background: #F4F1EA;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 12px 0;
+  padding: 10px 0;
 }
 
 .f-searchInner {
@@ -152,19 +158,19 @@
 
 .f-searchInput {
   width: 100%;
-  height: 40px;
-  padding: 0 14px;
-  border-radius: 6px;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   background: #fff;
-  font-size: 14px;
+  font-size: 13px;
   font-family: inherit;
   color: #1a1a1a;
   transition: border-color 0.15s ease;
 }
 
 .f-searchInput::placeholder {
-  color: rgba(0, 0, 0, 0.32);
+  color: rgba(0, 0, 0, 0.30);
 }
 
 .f-searchInput:focus {
@@ -177,18 +183,18 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-top: 8px;
-  min-height: 22px;
+  margin-top: 6px;
+  min-height: 20px;
 }
 
 .f-resultCount {
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.40);
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.35);
   letter-spacing: 0.02em;
 }
 
 .f-resultCountBold {
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(0, 0, 0, 0.55);
   font-weight: 600;
 }
 
@@ -196,7 +202,7 @@
   font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(25, 179, 166, 0.70);
+  color: rgba(25, 179, 166, 0.65);
   background: none;
   border: none;
   cursor: pointer;
@@ -210,9 +216,9 @@
 
 .f-catPills {
   display: flex;
-  gap: 5px;
+  gap: 4px;
   overflow-x: auto;
-  margin-top: 8px;
+  margin-top: 6px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -230,14 +236,14 @@
 
 .ar-faq .f-catPill {
   flex: 0 0 auto;
-  padding: 5px 10px;
-  border-radius: 6px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 4px 9px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
   background: transparent;
   font-size: 11px;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.45);
+  color: rgba(0, 0, 0, 0.40);
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   font-family: inherit;
@@ -245,23 +251,23 @@
 }
 
 .ar-faq .f-catPillActive {
-  background: rgba(25, 179, 166, 0.08);
-  border-color: rgba(25, 179, 166, 0.20);
-  color: rgba(25, 179, 166, 0.85);
+  background: rgba(25, 179, 166, 0.07);
+  border-color: rgba(25, 179, 166, 0.18);
+  color: rgba(25, 179, 166, 0.80);
 }
 
 .ar-faq .f-catPill:hover:not(.f-catPillActive) {
-  border-color: rgba(0, 0, 0, 0.14);
-  color: rgba(0, 0, 0, 0.60);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.55);
 }
 
 .f-body {
-  padding: 0 0 8px;
+  padding: 0 0 12px;
 }
 
 .f-section {
-  padding: 32px 0;
-  scroll-margin-top: 130px;
+  padding: 28px 0;
+  scroll-margin-top: 120px;
 }
 
 .f-sectionDivider {
@@ -277,8 +283,8 @@
 
 .ar-faq h2 {
   margin: 0;
-  font-size: 18px;
-  line-height: 1.2;
+  font-size: 16px;
+  line-height: 1.25;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-weight: 600;
@@ -291,70 +297,72 @@
 }
 
 .ar-faq .f-sectionLede {
-  margin: 6px auto 0;
-  max-width: 600px;
+  margin: 5px auto 0;
+  max-width: 580px;
   font-size: 13px;
-  line-height: 1.7;
-  color: rgba(0, 0, 0, 0.42);
+  line-height: 1.65;
+  color: rgba(0, 0, 0, 0.40);
   text-align: center;
 }
 
 .f-dark .f-sectionLede {
-  color: rgba(244, 241, 234, 0.45);
+  color: rgba(244, 241, 234, 0.42);
 }
 
 .f-quickGrid {
   display: grid;
-  gap: 8px;
-  margin-top: 16px;
+  gap: 6px;
+  margin-top: 14px;
 }
 
 .f-quickCard {
-  padding: 14px;
-  border-radius: 6px;
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.f-quickCard:hover {
+  border-color: rgba(25, 179, 166, 0.14);
 }
 
 .f-quickQ {
-  margin: 0 0 4px;
+  margin: 0 0 3px;
   font-size: 13px;
   font-weight: 600;
   color: #0A1220;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .f-quickA {
   margin: 0;
-  font-size: 13px;
-  line-height: 1.65;
-  color: rgba(0, 0, 0, 0.48);
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.42);
 }
 
 .f-accordion {
   display: grid;
-  gap: 5px;
-  margin-top: 14px;
+  gap: 4px;
+  margin-top: 12px;
 }
 
 .f-accItem {
-  border-radius: 6px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
   background: #fff;
   transition: border-color 0.15s ease;
+  scroll-margin-top: 120px;
 }
 
 .f-accItem:hover {
-  border-color: rgba(25, 179, 166, 0.12);
-}
-
-.f-dark .f-accItem {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(244, 241, 234, 0.06);
-}
-
-.f-dark .f-accItem:hover {
-  border-color: rgba(122, 246, 224, 0.10);
+  border-color: rgba(25, 179, 166, 0.10);
 }
 
 .f-accItemHighlight {
@@ -367,25 +375,21 @@
   background: transparent;
   color: #0A1220;
   border: none;
-  padding: 11px 14px;
+  padding: 10px 12px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   gap: 10px;
   align-items: center;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
   font-family: inherit;
   line-height: 1.4;
 }
 
-.f-dark .f-accButton {
-  color: rgba(244, 241, 234, 0.85);
-}
-
 .f-accChevron {
-  font-size: 11px;
-  opacity: 0.30;
+  font-size: 10px;
+  opacity: 0.25;
   transition: transform 0.2s ease;
   flex-shrink: 0;
 }
@@ -395,14 +399,10 @@
 }
 
 .f-accPanel {
-  padding: 0 14px 12px;
-  color: rgba(0, 0, 0, 0.48);
-  line-height: 1.7;
+  padding: 0 12px 10px;
+  color: rgba(0, 0, 0, 0.45);
+  line-height: 1.65;
   font-size: 13px;
-}
-
-.f-dark .f-accPanel {
-  color: rgba(244, 241, 234, 0.52);
 }
 
 .f-accAnswer a {
@@ -411,103 +411,83 @@
   text-underline-offset: 2px;
 }
 
-.f-dark .f-accAnswer a {
-  color: rgba(122, 246, 224, 0.70);
-}
-
-.f-accTags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 6px;
-}
-
-.f-tag {
-  font-size: 10px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 2px 6px;
-  border-radius: 3px;
-  background: rgba(0, 0, 0, 0.04);
-  color: rgba(0, 0, 0, 0.35);
-}
-
-.f-dark .f-tag {
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(244, 241, 234, 0.35);
-}
-
 .f-noResults {
-  padding: 28px 14px;
+  padding: 32px 14px;
   text-align: center;
 }
 
 .f-noResultsTitle {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   color: #0A1220;
-  margin: 0 0 6px;
+  margin: 0 0 5px;
   text-transform: none;
   letter-spacing: normal;
 }
 
 .f-noResultsBody {
   font-size: 13px;
-  color: rgba(0, 0, 0, 0.42);
-  margin: 0;
+  color: rgba(0, 0, 0, 0.40);
+  margin: 0 0 12px;
+  line-height: 1.6;
 }
 
-.f-helpCopy {
-  margin: 0;
+.f-noResultsReset {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(25, 179, 166, 0.70);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 4px 8px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.f-noResultsReset:hover {
+  color: rgba(25, 179, 166, 1);
 }
 
 .f-helpAction {
   text-align: center;
-  margin-top: 18px;
+  margin-top: 16px;
 }
 
 .ar-faq .f-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 38px;
+  height: 36px;
   padding: 0 14px;
-  border-radius: 6px;
+  border-radius: 5px;
   letter-spacing: 0.10em;
   text-transform: uppercase;
   font-size: 11px;
-  border: 1px solid rgba(244, 241, 234, 0.12);
+  border: 1px solid rgba(244, 241, 234, 0.10);
   background: transparent;
   white-space: nowrap;
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
   font-family: inherit;
-  color: rgba(244, 241, 234, 0.60);
+  color: rgba(244, 241, 234, 0.55);
 }
 
 .ar-faq .f-btn:hover {
   background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(244, 241, 234, 0.18);
-}
-
-.f-light .f-btn {
-  color: #1a1a1a;
-  border-color: rgba(0, 0, 0, 0.10);
-}
-
-.f-light .f-btn:hover {
-  background: rgba(0, 0, 0, 0.03);
-  border-color: rgba(0, 0, 0, 0.16);
+  border-color: rgba(244, 241, 234, 0.16);
 }
 
 .f-fdaDisclaimer {
   margin: 0;
-  padding: 18px 20px;
-  font-size: 11px;
-  color: rgba(244, 241, 234, 0.28);
+  padding: 16px 20px;
+  font-size: 10px;
+  color: rgba(244, 241, 234, 0.24);
   text-align: center;
   background: #0A1220;
   letter-spacing: 0.02em;
+  line-height: 1.5;
 }
 
 .f-inlineLink {
@@ -517,12 +497,52 @@
 }
 
 .f-dark .f-inlineLink {
-  color: rgba(122, 246, 224, 0.65);
+  color: rgba(122, 246, 224, 0.60);
+}
+
+.f-footerWrap {
+  background: #060E1A;
 }
 
 @media (min-width: 480px) {
   .ar-faq h1 {
-    font-size: 34px;
+    font-size: 30px;
+  }
+
+  .ar-faq h2 {
+    font-size: 18px;
+  }
+
+  .ar-faq .f-subhead {
+    font-size: 14px;
+  }
+
+  .f-hero {
+    padding: 76px 0 18px;
+  }
+
+  .f-section {
+    padding: 32px 0;
+  }
+
+  .f-searchInput {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .f-accButton {
+    font-size: 14px;
+    padding: 11px 14px;
+  }
+
+  .f-accPanel {
+    padding: 0 14px 12px;
+  }
+}
+
+@media (min-width: 720px) {
+  .ar-faq h1 {
+    font-size: 36px;
   }
 
   .ar-faq h2 {
@@ -534,60 +554,36 @@
   }
 
   .f-hero {
-    padding: 82px 0 20px;
+    padding: 84px 0 20px;
   }
 
   .f-section {
     padding: 36px 0;
   }
 
-
-  .f-accButton {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 720px) {
-  .ar-faq h1 {
-    font-size: 40px;
-  }
-
-  .ar-faq h2 {
-    font-size: 22px;
-  }
-
-  .ar-faq .f-subhead {
-    font-size: 16px;
-  }
-
-  .f-hero {
-    padding: 90px 0 22px;
-  }
-
-  .f-section {
-    padding: 40px 0;
-  }
-
   .f-searchInput {
-    height: 44px;
-    font-size: 15px;
+    height: 42px;
+    font-size: 14px;
   }
 
   .f-quickGrid {
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 8px;
   }
-
 }
 
 @media (min-width: 980px) {
   .ar-faq h1 {
-    font-size: 44px;
+    font-size: 40px;
   }
 
   .f-section {
-    padding: 44px 0;
-    scroll-margin-top: 140px;
+    padding: 40px 0;
+    scroll-margin-top: 130px;
+  }
+
+  .f-accItem {
+    scroll-margin-top: 130px;
   }
 
   .f-container {

@@ -1,0 +1,75 @@
+Do a ruthless final QA and polish pass on the FAQ page.
+
+Assume the first pass is not good enough until proven otherwise.
+
+Review the rendered page as a premium answer hub on both mobile and desktop.
+Then directly fix anything that still feels:
+- too much like a hero page
+- too dark for too long
+- visually repetitive
+- too card-heavy
+- too slow to answer a question
+- weak in search
+- weak in category navigation
+- weak in deep-linking
+- weak in SEO structure
+- weak in LLM readability
+- too salesy
+- cluttered
+- templated
+- not premium enough
+
+Hard rules:
+- remove any decorative icons or motifs that are not essential
+- remove any biotech, DNA, gene, molecule, neural, AI, or sci-fi visuals
+- remove oversized hero treatment
+- keep all important answers in visible HTML text
+- keep FAQPage schema only if the visible content matches exactly
+- if duplicate FAQ content exists elsewhere, keep this page as the canonical marked-up instance
+- do not let title, H1, meta description, and canonical drift apart
+- do not let the page become SEO spam
+- keep the page utility-first, not marketing-first
+
+Refine specifically:
+1. hero compactness
+2. search usefulness
+3. quick-answer visibility
+4. category-nav usefulness
+5. question-row hierarchy
+6. answer readability
+7. per-question deep-link behavior
+8. light/dark section rhythm
+9. support-section usefulness
+10. metadata quality
+11. canonical correctness
+12. structured-data correctness
+13. internal-link usefulness
+14. spacing rhythm
+15. typography hierarchy
+16. border / radius / shadow consistency
+17. anything that still feels like a template
+
+Test and fix:
+- FAQ search on mobile
+- no-results search state
+- category filter state
+- hash deep links opening the correct item
+- anchor navigation on mobile
+- accordion keyboard behavior
+- no horizontal overflow
+- no text clipping
+- metadata exists and is page-specific
+- title / H1 / meta alignment
+- visible text matches FAQ schema
+- no duplicate/conflicting schema blocks
+- final CTA restraint
+
+Do not explain first.
+Fix first, then summarize:
+- what you removed
+- what you refined
+- what changed for SEO / structured data
+- what improved trust
+- what improved answer-finding
+- what improved mobile readability
+- what improved premium feel

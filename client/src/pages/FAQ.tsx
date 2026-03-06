@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState, useCallback } from "react";
-import { Link } from "wouter";
+import { useEffect, useMemo, useState, useCallback } from "react";
+import { Link, useSearch } from "wouter";
 import Footer from "../components/Footer";
 import SiteNavbar from "../components/SiteNavbar";
 import { FAQ_CATEGORIES, type FAQItem } from "../content/faqContent";
@@ -42,16 +42,6 @@ function injectJsonLd(id: string, data: unknown) {
   script.text = JSON.stringify(data);
 }
 
-function Eyebrow({ label }: { label: string }) {
-  return (
-    <div className="f-eyebrow">
-      <span className="f-eyebrowLine" />
-      <span>{label}</span>
-      <span className="f-eyebrowLine" />
-    </div>
-  );
-}
-
 function enrichAnswer(answer: string): React.ReactNode {
   const replacements: Array<[RegExp, string, string]> = [
     [/\bScience page\b/i, "/science", "Science page"],
@@ -60,14 +50,9 @@ function enrichAnswer(answer: string): React.ReactNode {
     [/\bContact page\b/i, "/faq#need-help", "Contact page"],
   ];
 
-  let result = answer;
-  const parts: React.ReactNode[] = [];
-  let lastIndex = 0;
-  let key = 0;
-
   const allMatches: Array<{ index: number; length: number; href: string; text: string }> = [];
   for (const [regex, href, text] of replacements) {
-    const match = result.match(regex);
+    const match = answer.match(regex);
     if (match && match.index !== undefined) {
       allMatches.push({ index: match.index, length: match[0].length, href, text });
     }
@@ -76,20 +61,18 @@ function enrichAnswer(answer: string): React.ReactNode {
 
   if (allMatches.length === 0) return answer;
 
+  const parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let key = 0;
+
   for (const m of allMatches) {
-    if (m.index > lastIndex) {
-      parts.push(result.slice(lastIndex, m.index));
-    }
+    if (m.index > lastIndex) parts.push(answer.slice(lastIndex, m.index));
     parts.push(
-      <Link key={key++} to={m.href} className="f-inlineLink">
-        {m.text}
-      </Link>
+      <Link key={key++} to={m.href} className="f-inlineLink">{m.text}</Link>
     );
     lastIndex = m.index + m.length;
   }
-  if (lastIndex < result.length) {
-    parts.push(result.slice(lastIndex));
-  }
+  if (lastIndex < answer.length) parts.push(answer.slice(lastIndex));
   return <>{parts}</>;
 }
 
@@ -128,13 +111,6 @@ function AccItem({ faq, isOpen, onToggle, slug }: AccItemProps) {
         hidden={!isOpen}
       >
         <div className="f-accAnswer">{enrichAnswer(faq.a)}</div>
-        {faq.tags.length > 0 && (
-          <div className="f-accTags">
-            {faq.tags.slice(0, 5).map((t) => (
-              <span key={t} className="f-tag">{t}</span>
-            ))}
-          </div>
-        )}
       </div>
     </div>
   );
@@ -149,12 +125,33 @@ export default function FAQ() {
       .filter((it): it is FAQItem => !!it);
   }, [allItems]);
 
-  const [query, setQuery] = useState("");
+  const searchString = useSearch();
+
+  const [query, setQuery] = useState(() => {
+    const params = new URLSearchParams(searchString);
+    return params.get("q") || "";
+  });
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [openSlugs, setOpenSlugs] = useState<Set<string>>(new Set());
-  const searchRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchString);
+    const urlQ = params.get("q") || "";
+    if (urlQ !== query) setQuery(urlQ);
+  }, [searchString]);
 
   const normalizedQuery = query.trim().toLowerCase();
+  const isFiltered = !!normalizedQuery || activeCategory !== "all";
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (normalizedQuery) {
+      url.searchParams.set("q", query.trim());
+    } else {
+      url.searchParams.delete("q");
+    }
+    history.replaceState(null, "", url.pathname + url.search + url.hash);
+  }, [normalizedQuery, query]);
 
   const filteredCategories = useMemo(() => {
     const cats =
@@ -188,9 +185,9 @@ export default function FAQ() {
       else next.delete(slug);
 
       if (willOpen) {
-        history.replaceState(null, "", `#${slug}`);
+        history.replaceState(null, "", `${window.location.pathname}${window.location.search}#${slug}`);
       } else if (window.location.hash === `#${slug}`) {
-        history.replaceState(null, "", window.location.pathname);
+        history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
       }
       return next;
     });
@@ -225,7 +222,7 @@ export default function FAQ() {
   useEffect(() => {
     const siteUrl = typeof window !== "undefined" ? window.location.origin : "";
     const canonical = `${siteUrl}/faq`;
-    const title = "FAQ | Protocol, Ingredients, Safety, Quality & Orders | Age Revive";
+    const title = "FAQ — Protocol, Ingredients, Safety, Quality & Orders | Age Revive";
     const description = "Direct answers about Age Revive protocol structure, ingredients, safety, quality testing, batch documentation, shipping, returns, and support.";
 
     document.title = title;
@@ -258,7 +255,7 @@ export default function FAQ() {
     const webPageJsonLd = {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      name: "FAQ — Protocol, Ingredients, Safety, Quality & Orders",
+      name: title,
       url: canonical,
       description,
       dateModified: LAST_UPDATED,
@@ -289,7 +286,21 @@ export default function FAQ() {
     }
   };
 
-  const showQuickAnswers = !normalizedQuery && activeCategory === "all";
+  const handleClearAll = () => {
+    setQuery("");
+    setActiveCategory("all");
+  };
+
+  const jumpToQuestion = (q: string) => {
+    const slug = slugify(q);
+    setOpenSlugs((prev) => new Set([...prev, slug]));
+    history.replaceState(null, "", `${window.location.pathname}${window.location.search}#${slug}`);
+    setTimeout(() => {
+      document.getElementById(slug)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
+
+  const showQuickAnswers = !isFiltered;
 
   return (
     <>
@@ -298,13 +309,19 @@ export default function FAQ() {
 
         <header className="f-hero">
           <div className="f-container">
-            <Eyebrow label="FAQ" />
-            <h1 data-testid="text-faq-h1">Direct answers</h1>
+            <div className="f-eyebrow">
+              <span className="f-eyebrowLine" />
+              <span>FREQUENTLY ASKED</span>
+              <span className="f-eyebrowLine" />
+            </div>
+            <h1 data-testid="text-faq-h1">FAQ — Direct answers</h1>
             <p className="f-subhead">
               Protocol structure, ingredients, safety, quality verification, and ordering help.
             </p>
             <div className="f-heroLinks">
-              <Link to="/science" className="f-heroLink" data-testid="link-hero-science">Read Science</Link>
+              <Link to="/science" className="f-heroLink" data-testid="link-hero-science">Science</Link>
+              <span className="f-heroLinkSep">·</span>
+              <Link to="/quality" className="f-heroLink" data-testid="link-hero-quality">Quality</Link>
             </div>
             <p className="f-boundaryNote">Educational content — not medical advice</p>
           </div>
@@ -314,7 +331,6 @@ export default function FAQ() {
           <div className="f-searchBar">
             <div className="f-searchInner">
               <input
-                ref={searchRef}
                 type="search"
                 className="f-searchInput"
                 placeholder="Search questions and answers..."
@@ -325,15 +341,21 @@ export default function FAQ() {
                 aria-label="Search frequently asked questions"
               />
               <div className="f-searchMeta">
-                <span className="f-resultCount" data-testid="text-result-count">
-                  <span className="f-resultCountBold">{totalResults}</span> result{totalResults === 1 ? "" : "s"}
-                  {normalizedQuery ? <> for &ldquo;{query.trim()}&rdquo;</> : null}
-                </span>
-                {(normalizedQuery || activeCategory !== "all") && (
+                {isFiltered ? (
+                  <span className="f-resultCount" data-testid="text-result-count">
+                    <span className="f-resultCountBold">{totalResults}</span> result{totalResults === 1 ? "" : "s"}
+                    {normalizedQuery ? <> for &ldquo;{query.trim()}&rdquo;</> : null}
+                  </span>
+                ) : (
+                  <span className="f-resultCount" data-testid="text-result-count">
+                    <span className="f-resultCountBold">{totalResults}</span> questions
+                  </span>
+                )}
+                {isFiltered && (
                   <button
                     type="button"
                     className="f-clearBtn"
-                    onClick={() => { setQuery(""); setActiveCategory("all"); }}
+                    onClick={handleClearAll}
                     data-testid="button-clear-search"
                     data-analytics="faq_search_clear"
                   >
@@ -341,9 +363,11 @@ export default function FAQ() {
                   </button>
                 )}
               </div>
-              <div className="f-catPills" aria-label="Filter by category" data-analytics="faq_category_selected">
+              <div className="f-catPills" role="tablist" aria-label="Filter by category" data-analytics="faq_category_selected">
                 <button
                   type="button"
+                  role="tab"
+                  aria-selected={activeCategory === "all"}
                   className={`f-catPill${activeCategory === "all" ? " f-catPillActive" : ""}`}
                   onClick={() => handleCategoryClick("all")}
                   data-testid="filter-all"
@@ -354,6 +378,8 @@ export default function FAQ() {
                   <button
                     key={c.id}
                     type="button"
+                    role="tab"
+                    aria-selected={activeCategory === c.id}
                     className={`f-catPill${activeCategory === c.id ? " f-catPillActive" : ""}`}
                     onClick={() => handleCategoryClick(c.id)}
                     data-testid={`filter-${c.id}`}
@@ -370,15 +396,23 @@ export default function FAQ() {
 
               {showQuickAnswers && (
                 <section className="f-section" id="quick-answers">
-                  <Eyebrow label="MOST ASKED" />
-                  <h2>Quick answers</h2>
+                  <h2>Most asked</h2>
                   <div className="f-quickGrid">
-                    {quickAnswers.map((faq) => (
-                      <div key={faq.q} className="f-quickCard" data-testid={`quick-${slugify(faq.q)}`}>
-                        <p className="f-quickQ">{faq.q}</p>
-                        <p className="f-quickA">{faq.a}</p>
-                      </div>
-                    ))}
+                    {quickAnswers.map((faq) => {
+                      const slug = slugify(faq.q);
+                      return (
+                        <button
+                          key={faq.q}
+                          type="button"
+                          className="f-quickCard"
+                          onClick={() => jumpToQuestion(faq.q)}
+                          data-testid={`quick-${slug}`}
+                        >
+                          <p className="f-quickQ">{faq.q}</p>
+                          <p className="f-quickA">{faq.a}</p>
+                        </button>
+                      );
+                    })}
                   </div>
                 </section>
               )}
@@ -389,6 +423,14 @@ export default function FAQ() {
                   <p className="f-noResultsBody">
                     Try searching for NR, NAD+, urolithin A, tributyrin, mitophagy, autophagy, senescence, quercetin, or fisetin.
                   </p>
+                  <button
+                    type="button"
+                    className="f-noResultsReset"
+                    onClick={handleClearAll}
+                    data-testid="button-reset-search"
+                  >
+                    Show all questions
+                  </button>
                 </div>
               ) : (
                 filteredCategories.map((cat, catIdx) => (
@@ -399,7 +441,6 @@ export default function FAQ() {
                       className="f-section"
                       data-testid={`section-faq-${cat.id}`}
                     >
-                      <Eyebrow label={cat.id.replace(/-/g, " ").toUpperCase()} />
                       <h2>{cat.title}</h2>
                       <p className="f-sectionLede">{cat.description}</p>
 
@@ -428,14 +469,9 @@ export default function FAQ() {
         <div className="f-dark">
           <div className="f-container">
             <section className="f-section" id="need-help">
-              <Eyebrow label="NEED HELP?" />
-              <h2>Get support</h2>
+              <h2>Need more help?</h2>
               <p className="f-sectionLede">
-                Shipping, returns, order issues, or general questions — reach out and we will respond promptly.
-              </p>
-
-              <p className="f-sectionLede f-helpCopy">
-                For <Link to="/shipping" className="f-inlineLink" data-testid="link-help-shipping" data-analytics="faq_support_click">shipping details</Link> and <Link to="/shop" className="f-inlineLink" data-testid="link-help-shop">product information</Link>, visit the relevant pages.
+                For <Link to="/shipping" className="f-inlineLink" data-testid="link-help-shipping" data-analytics="faq_support_click">shipping and delivery details</Link> or to <Link to="/shop" className="f-inlineLink" data-testid="link-help-shop">browse products</Link>, visit the relevant pages. For everything else, reach out directly.
               </p>
               <div className="f-helpAction">
                 <a href="mailto:support@agerevive.com" className="f-btn" data-testid="link-help-email" data-analytics="faq_support_click">
@@ -447,10 +483,10 @@ export default function FAQ() {
         </div>
 
         <p className="f-fdaDisclaimer">
-          These statements have not been evaluated by the FDA. This content is for educational purposes only.
+          These statements have not been evaluated by the FDA. Products are dietary supplements, not intended to diagnose, treat, cure, or prevent any disease.
         </p>
       </main>
-      <div className="bg-[#060E1A]">
+      <div className="f-footerWrap">
         <Footer />
       </div>
     </>
