@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { User, ShoppingBag, Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import brandLogo from "@assets/AR_brand_logo_1771613250600.png";
 import { useAuth } from "../hooks/useAuth";
@@ -10,6 +10,9 @@ export default function SiteNavbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
+  const [desktopShopOpen, setDesktopShopOpen] = useState(false);
+  const desktopShopTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const desktopShopRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 50);
@@ -56,16 +59,81 @@ export default function SiteNavbar() {
           </a>
 
           <div className="hidden md:flex items-center gap-7 font-mono font-medium text-[11px] uppercase tracking-[0.14em]">
-            {navLinks.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                className="text-white/55 hover:text-teal-300 transition-colors"
-                data-testid={`nav-link-${l.label.toLowerCase()}`}
-              >
-                {l.label}
-              </a>
-            ))}
+            {navLinks.map((l) =>
+              l.label === "Shop" ? (
+                <div
+                  key={l.label}
+                  ref={desktopShopRef}
+                  className="relative"
+                  onMouseEnter={() => {
+                    if (desktopShopTimeout.current) clearTimeout(desktopShopTimeout.current);
+                    setDesktopShopOpen(true);
+                  }}
+                  onMouseLeave={() => {
+                    desktopShopTimeout.current = setTimeout(() => setDesktopShopOpen(false), 200);
+                  }}
+                >
+                  <a
+                    href={l.href}
+                    className="text-white/55 hover:text-teal-300 transition-colors flex items-center gap-1"
+                    data-testid={`nav-link-${l.label.toLowerCase()}`}
+                  >
+                    {l.label}
+                    <ChevronDown
+                      size={11}
+                      className={`transition-transform duration-200 ${desktopShopOpen ? "rotate-180" : ""}`}
+                    />
+                  </a>
+                  {desktopShopOpen && (
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3">
+                      <div
+                        className="min-w-[200px] py-2 rounded-lg border border-white/[0.08] bg-[#101B2D]/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+                        data-testid="desktop-shop-dropdown"
+                      >
+                        <a
+                          href="/product/cellunad"
+                          className="flex items-center gap-3 px-4 py-2.5 text-[11px] font-mono font-bold uppercase tracking-[0.10em] text-white/60 hover:text-teal-300 hover:bg-white/[0.04] transition-colors"
+                          data-testid="desktop-nav-product-cellunad"
+                        >
+                          CELLUNAD+
+                        </a>
+                        <a
+                          href="/product/cellubiome"
+                          className="flex items-center gap-3 px-4 py-2.5 text-[11px] font-mono font-bold uppercase tracking-[0.10em] text-white/60 hover:text-teal-300 hover:bg-white/[0.04] transition-colors"
+                          data-testid="desktop-nav-product-cellubiome"
+                        >
+                          CELLUBIOME
+                        </a>
+                        <a
+                          href="/product/cellunova"
+                          className="flex items-center gap-3 px-4 py-2.5 text-[11px] font-mono font-bold uppercase tracking-[0.10em] text-white/60 hover:text-teal-300 hover:bg-white/[0.04] transition-colors"
+                          data-testid="desktop-nav-product-cellunova"
+                        >
+                          CELLUNOVA
+                        </a>
+                        <div className="mx-3 my-1 h-px bg-white/[0.06]" />
+                        <a
+                          href="/shop"
+                          className="flex items-center gap-2 px-4 py-2.5 text-[11px] font-mono uppercase tracking-[0.10em] text-white/45 hover:text-teal-300 hover:bg-white/[0.04] transition-colors"
+                          data-testid="desktop-nav-shop-viewall"
+                        >
+                          Shop All <ArrowRight size={10} className="ml-auto" />
+                        </a>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  className="text-white/55 hover:text-teal-300 transition-colors"
+                  data-testid={`nav-link-${l.label.toLowerCase()}`}
+                >
+                  {l.label}
+                </a>
+              )
+            )}
           </div>
 
           <div className="flex items-center gap-1.5 sm:gap-2">
