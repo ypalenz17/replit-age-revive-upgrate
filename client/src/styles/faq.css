@@ -1,0 +1,600 @@
+.ar-faq {
+  min-height: 100vh;
+  color: rgba(244, 241, 234, 0.92);
+  overflow-x: hidden;
+  position: relative;
+}
+
+.ar-faq *,
+.ar-faq *::before,
+.ar-faq *::after {
+  box-sizing: border-box;
+}
+
+.ar-faq a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ar-faq a:hover {
+  opacity: 0.92;
+}
+
+.ar-faq a:focus-visible,
+.ar-faq button:focus-visible,
+.ar-faq input:focus-visible {
+  outline: 2px solid rgba(122, 246, 224, 0.6);
+  outline-offset: 2px;
+}
+
+.ar-faq .f-light a:focus-visible,
+.ar-faq .f-light button:focus-visible,
+.ar-faq .f-light input:focus-visible {
+  outline-color: rgba(25, 179, 166, 0.6);
+}
+
+.f-dark {
+  background: #0A1220;
+  color: rgba(244, 241, 234, 0.92);
+}
+
+.f-light {
+  background: #F4F1EA;
+  color: #1a1a1a;
+}
+
+.f-container {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.f-hero {
+  padding: 72px 0 18px;
+  text-align: center;
+  background: #0A1220;
+}
+
+.ar-faq .f-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 6px;
+  color: rgba(122, 246, 224, 0.60);
+  letter-spacing: 0.14em;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.f-light .f-eyebrow {
+  color: rgba(25, 179, 166, 0.60);
+}
+
+.ar-faq .f-eyebrowLine {
+  width: 18px;
+  height: 1px;
+  background: rgba(122, 246, 224, 0.22);
+  flex-shrink: 0;
+}
+
+.f-light .f-eyebrowLine {
+  background: rgba(25, 179, 166, 0.22);
+}
+
+.ar-faq h1 {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
+  overflow-wrap: break-word;
+}
+
+.ar-faq .f-subhead {
+  margin: 10px auto 0;
+  max-width: 560px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(244, 241, 234, 0.50);
+  font-weight: 400;
+}
+
+.ar-faq .f-heroLinks {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.ar-faq .f-heroLink {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 234, 0.45);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ar-faq .f-heroLink:hover {
+  color: rgba(244, 241, 234, 0.70);
+}
+
+.ar-faq .f-boundaryNote {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(244, 241, 234, 0.06);
+  font-size: 11px;
+  color: rgba(244, 241, 234, 0.32);
+  letter-spacing: 0.03em;
+}
+
+.f-searchBar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #F4F1EA;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 12px 0;
+}
+
+.f-searchInner {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.f-searchInput {
+  width: 100%;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  color: #1a1a1a;
+  transition: border-color 0.15s ease;
+}
+
+.f-searchInput::placeholder {
+  color: rgba(0, 0, 0, 0.32);
+}
+
+.f-searchInput:focus {
+  border-color: rgba(25, 179, 166, 0.40);
+  outline: none;
+}
+
+.f-searchMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 8px;
+  min-height: 22px;
+}
+
+.f-resultCount {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.40);
+  letter-spacing: 0.02em;
+}
+
+.f-resultCountBold {
+  color: rgba(0, 0, 0, 0.65);
+  font-weight: 600;
+}
+
+.f-clearBtn {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(25, 179, 166, 0.70);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 2px 6px;
+}
+
+.f-clearBtn:hover {
+  color: rgba(25, 179, 166, 1);
+}
+
+.f-catPills {
+  display: flex;
+  gap: 5px;
+  overflow-x: auto;
+  margin-top: 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 2px;
+}
+
+.f-catPills::-webkit-scrollbar {
+  display: none;
+}
+
+.f-catPills::after {
+  content: "";
+  flex: 0 0 10px;
+}
+
+.ar-faq .f-catPill {
+  flex: 0 0 auto;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: transparent;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.ar-faq .f-catPillActive {
+  background: rgba(25, 179, 166, 0.08);
+  border-color: rgba(25, 179, 166, 0.20);
+  color: rgba(25, 179, 166, 0.85);
+}
+
+.ar-faq .f-catPill:hover:not(.f-catPillActive) {
+  border-color: rgba(0, 0, 0, 0.14);
+  color: rgba(0, 0, 0, 0.60);
+}
+
+.f-body {
+  padding: 0 0 8px;
+}
+
+.f-section {
+  padding: 32px 0;
+  scroll-margin-top: 130px;
+}
+
+.f-sectionDivider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  margin: 0 auto;
+  max-width: 680px;
+}
+
+.f-dark .f-sectionDivider {
+  background: rgba(244, 241, 234, 0.05);
+}
+
+.ar-faq h2 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.f-light h2 {
+  color: #0A1220;
+}
+
+.ar-faq .f-sectionLede {
+  margin: 6px auto 0;
+  max-width: 600px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.42);
+  text-align: center;
+}
+
+.f-dark .f-sectionLede {
+  color: rgba(244, 241, 234, 0.45);
+}
+
+.f-quickGrid {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.f-quickCard {
+  padding: 14px;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.f-quickQ {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0A1220;
+  line-height: 1.4;
+}
+
+.f-quickA {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(0, 0, 0, 0.48);
+}
+
+.f-accordion {
+  display: grid;
+  gap: 5px;
+  margin-top: 14px;
+}
+
+.f-accItem {
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #fff;
+  transition: border-color 0.15s ease;
+}
+
+.f-accItem:hover {
+  border-color: rgba(25, 179, 166, 0.12);
+}
+
+.f-dark .f-accItem {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(244, 241, 234, 0.06);
+}
+
+.f-dark .f-accItem:hover {
+  border-color: rgba(122, 246, 224, 0.10);
+}
+
+.f-accItemHighlight {
+  border-color: rgba(25, 179, 166, 0.16);
+}
+
+.f-accButton {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: #0A1220;
+  border: none;
+  padding: 11px 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+.f-dark .f-accButton {
+  color: rgba(244, 241, 234, 0.85);
+}
+
+.f-accChevron {
+  font-size: 11px;
+  opacity: 0.30;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.f-accChevronOpen {
+  transform: rotate(180deg);
+}
+
+.f-accPanel {
+  padding: 0 14px 12px;
+  color: rgba(0, 0, 0, 0.48);
+  line-height: 1.7;
+  font-size: 13px;
+}
+
+.f-dark .f-accPanel {
+  color: rgba(244, 241, 234, 0.52);
+}
+
+.f-accAnswer a {
+  color: rgba(25, 179, 166, 0.75);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.f-dark .f-accAnswer a {
+  color: rgba(122, 246, 224, 0.70);
+}
+
+.f-accTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.f-tag {
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.f-dark .f-tag {
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(244, 241, 234, 0.35);
+}
+
+.f-noResults {
+  padding: 28px 14px;
+  text-align: center;
+}
+
+.f-noResultsTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0A1220;
+  margin: 0 0 6px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.f-noResultsBody {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.42);
+  margin: 0;
+}
+
+.f-helpCopy {
+  margin: 0;
+}
+
+.f-helpAction {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.ar-faq .f-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 6px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  font-size: 11px;
+  border: 1px solid rgba(244, 241, 234, 0.12);
+  background: transparent;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  font-family: inherit;
+  color: rgba(244, 241, 234, 0.60);
+}
+
+.ar-faq .f-btn:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(244, 241, 234, 0.18);
+}
+
+.f-light .f-btn {
+  color: #1a1a1a;
+  border-color: rgba(0, 0, 0, 0.10);
+}
+
+.f-light .f-btn:hover {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.16);
+}
+
+.f-fdaDisclaimer {
+  margin: 0;
+  padding: 18px 20px;
+  font-size: 11px;
+  color: rgba(244, 241, 234, 0.28);
+  text-align: center;
+  background: #0A1220;
+  letter-spacing: 0.02em;
+}
+
+.f-inlineLink {
+  color: rgba(25, 179, 166, 0.70);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.f-dark .f-inlineLink {
+  color: rgba(122, 246, 224, 0.65);
+}
+
+@media (min-width: 480px) {
+  .ar-faq h1 {
+    font-size: 34px;
+  }
+
+  .ar-faq h2 {
+    font-size: 20px;
+  }
+
+  .ar-faq .f-subhead {
+    font-size: 15px;
+  }
+
+  .f-hero {
+    padding: 82px 0 20px;
+  }
+
+  .f-section {
+    padding: 36px 0;
+  }
+
+
+  .f-accButton {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 720px) {
+  .ar-faq h1 {
+    font-size: 40px;
+  }
+
+  .ar-faq h2 {
+    font-size: 22px;
+  }
+
+  .ar-faq .f-subhead {
+    font-size: 16px;
+  }
+
+  .f-hero {
+    padding: 90px 0 22px;
+  }
+
+  .f-section {
+    padding: 40px 0;
+  }
+
+  .f-searchInput {
+    height: 44px;
+    font-size: 15px;
+  }
+
+  .f-quickGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+}
+
+@media (min-width: 980px) {
+  .ar-faq h1 {
+    font-size: 44px;
+  }
+
+  .f-section {
+    padding: 44px 0;
+    scroll-margin-top: 140px;
+  }
+
+  .f-container {
+    max-width: 820px;
+  }
+
+  .f-searchInner {
+    max-width: 820px;
+  }
+}
