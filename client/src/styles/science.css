@@ -1,25 +1,8 @@
 .ar-science {
   min-height: 100vh;
-  background: radial-gradient(900px 600px at 50% 0%,
-      rgba(122, 246, 224, 0.10) 0%,
-      rgba(8, 18, 33, 0.0) 55%),
-    linear-gradient(180deg, #081221 0%, #060E1A 100%);
   color: rgba(244, 241, 234, 0.92);
   overflow-x: hidden;
   position: relative;
-}
-
-.ar-science::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.30;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 180px;
-  mix-blend-mode: overlay;
 }
 
 .ar-science *,
@@ -34,82 +17,57 @@
 }
 
 .ar-science a:hover {
-  opacity: 0.95;
+  opacity: 0.92;
 }
 
 .ar-science .ar-container {
   width: 100%;
-  max-width: 1140px;
+  max-width: 920px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 20px;
 }
 
-.ar-science .ar-mainGrid > article {
-  overflow: hidden;
+.ar-dark {
+  background: linear-gradient(180deg, #0A1220 0%, #060E1A 100%);
+  color: rgba(244, 241, 234, 0.92);
 }
 
-.ar-science .ar-hero {
-  padding: 72px 0 20px;
+.ar-light {
+  background: #F4F1EA;
+  color: #1a1a1a;
+}
+
+.ar-hero {
+  padding: 80px 0 32px;
   text-align: center;
-}
-
-.ar-science .ar-heroIcon {
-  width: 56px;
-  height: 56px;
-  border-radius: 999px;
-  border: 1px solid rgba(122, 246, 224, 0.18);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 18px;
-  background: radial-gradient(circle, rgba(122, 246, 224, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
-  box-shadow:
-    0 0 40px rgba(122, 246, 224, 0.08),
-    0 14px 40px rgba(0, 0, 0, 0.25),
-    inset 0 0 20px rgba(122, 246, 224, 0.04);
-}
-
-.ar-science .ar-eyebrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin: 0 0 12px;
-  color: rgba(122, 246, 224, 0.92);
-  letter-spacing: 0.20em;
-  font-size: 11px;
-  text-transform: uppercase;
-}
-
-.ar-science .ar-eyebrowLine {
-  width: 28px;
-  height: 1px;
-  background: rgba(122, 246, 224, 0.55);
-  flex-shrink: 0;
+  background: radial-gradient(700px 500px at 50% 0%,
+      rgba(122, 246, 224, 0.08) 0%,
+      rgba(8, 18, 33, 0.0) 55%),
+    linear-gradient(180deg, #0A1220 0%, #060E1A 100%);
 }
 
 .ar-science h1 {
   margin: 0;
-  font-size: 26px;
-  line-height: 1.1;
-  letter-spacing: 0.04em;
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   overflow-wrap: break-word;
 }
 
 .ar-science .ar-subhead {
   margin: 14px auto 0;
-  max-width: 860px;
+  max-width: 680px;
   font-size: 15px;
-  line-height: 1.6;
-  color: rgba(244, 241, 234, 0.72);
+  line-height: 1.65;
+  color: rgba(244, 241, 234, 0.70);
 }
 
 .ar-science .ar-heroCtas {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 22px;
   flex-wrap: wrap;
 }
 
@@ -118,33 +76,33 @@
   align-items: center;
   justify-content: center;
   height: 42px;
-  padding: 0 14px;
-  border-radius: 12px;
-  letter-spacing: 0.14em;
+  padding: 0 16px;
+  border-radius: 10px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   font-size: 11px;
   border: 1px solid rgba(244, 241, 234, 0.16);
   background: rgba(255, 255, 255, 0.02);
   white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 .ar-science .ar-btnPrimary {
-  background: linear-gradient(135deg, rgba(122, 246, 224, 0.90) 0%, rgba(100, 220, 200, 0.85) 100%);
+  background: rgba(122, 246, 224, 0.88);
   color: rgba(10, 18, 32, 0.95);
-  border-color: rgba(122, 246, 224, 0.55);
+  border-color: rgba(122, 246, 224, 0.50);
   font-weight: 600;
-  box-shadow: 0 0 20px rgba(122, 246, 224, 0.12), 0 2px 8px rgba(0, 0, 0, 0.20);
-  transition: transform 0.2s ease, box-shadow 0.25s ease, filter 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .ar-science .ar-btnPrimary:hover {
   filter: brightness(1.06);
   transform: translateY(-1px);
-  box-shadow: 0 0 28px rgba(122, 246, 224, 0.18), 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
 .ar-science .ar-btnGhost {
-  transition: background 0.25s ease, border-color 0.25s ease;
+  color: rgba(244, 241, 234, 0.80);
 }
 
 .ar-science .ar-btnGhost:hover {
@@ -152,524 +110,795 @@
   border-color: rgba(244, 241, 234, 0.22);
 }
 
-.ar-science .ar-trustGrid {
+.ar-light .ar-btnGhost {
+  color: #1a1a1a;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.ar-light .ar-btnGhost:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+.ar-science .ar-boundaryNote {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(244, 241, 234, 0.10);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: rgba(244, 241, 234, 0.50);
+}
+
+.ar-science .ar-trustStrip {
   margin: 24px auto 0;
-  max-width: 980px;
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 1fr;
-}
-
-.ar-science .ar-card {
-  border-radius: 16px;
-  border: 1px solid rgba(244, 241, 234, 0.08);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.012) 100%);
-  box-shadow:
-    0 1px 0 0 rgba(255, 255, 255, 0.05) inset,
-    0 20px 60px rgba(0, 0, 0, 0.30),
-    0 0 0 0.5px rgba(0, 0, 0, 0.20);
-  min-width: 0;
-  overflow: hidden;
-  backdrop-filter: blur(8px);
-  transition: border-color 0.35s ease, box-shadow 0.35s ease;
-}
-
-.ar-science .ar-card:hover {
-  border-color: rgba(122, 246, 224, 0.14);
-  box-shadow:
-    0 1px 0 0 rgba(255, 255, 255, 0.06) inset,
-    0 24px 72px rgba(0, 0, 0, 0.35),
-    0 0 60px rgba(122, 246, 224, 0.03),
-    0 0 0 0.5px rgba(0, 0, 0, 0.20);
-}
-
-.ar-science .ar-trustCard {
-  padding: 14px;
-  text-align: left;
-}
-
-.ar-science .ar-trustTitle {
-  margin: 0;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(244, 241, 234, 0.92);
-}
-
-.ar-science .ar-trustDetail {
-  margin: 6px 0 0;
-  font-size: 13px;
-  line-height: 1.55;
-  color: rgba(244, 241, 234, 0.68);
-}
-
-.ar-science .ar-mainGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-  padding: 22px 0 96px;
-  min-width: 0;
-}
-
-.ar-science .ar-toc {
-  display: none;
-}
-
-.ar-science .ar-tocTitle {
-  margin: 0 0 10px;
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(122, 246, 224, 0.82);
-}
-
-.ar-science .ar-tocLink {
-  display: block;
-  padding: 10px 10px;
-  border-radius: 12px;
-  font-size: 14px;
-  color: rgba(244, 241, 234, 0.78);
-}
-
-.ar-science .ar-tocLinkActive {
-  background: rgba(122, 246, 224, 0.10);
-  border: 1px solid rgba(122, 246, 224, 0.22);
-  color: rgba(244, 241, 234, 0.92);
-  box-shadow: 0 0 16px rgba(122, 246, 224, 0.06);
-}
-
-.ar-science .ar-tocMobilePills {
+  max-width: 680px;
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 16px;
+}
+
+.ar-science .ar-trustItem {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(122, 246, 224, 0.75);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ar-science .ar-trustDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(122, 246, 224, 0.50);
+}
+
+.ar-tocMobilePills {
+  display: flex;
+  gap: 7px;
   overflow-x: auto;
-  padding: 10px 16px 4px 16px;
+  padding: 14px 20px 6px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-.ar-science .ar-tocMobilePills::after {
+.ar-tocMobilePills::after {
   content: "";
-  flex: 0 0 16px;
+  flex: 0 0 20px;
 }
 
-.ar-science .ar-tocMobilePills::-webkit-scrollbar {
+.ar-tocMobilePills::-webkit-scrollbar {
   display: none;
-}
-
-.ar-science .ar-swipeHint {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 16px 2px;
-  opacity: 0.45;
-  transition: opacity 0.5s ease;
-}
-
-.ar-science .ar-swipeHintHidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.ar-science .ar-swipeLine {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(122, 246, 224, 0.25), transparent);
-}
-
-.ar-science .ar-swipeText {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(122, 246, 224, 0.55);
-  white-space: nowrap;
 }
 
 .ar-science .ar-pill {
   flex: 0 0 auto;
-  padding: 8px 12px;
+  padding: 7px 12px;
   border-radius: 999px;
   border: 1px solid rgba(244, 241, 234, 0.14);
-  background: rgba(255, 255, 255, 0.02);
+  background: transparent;
   font-size: 11px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: rgba(244, 241, 234, 0.72);
+  color: rgba(244, 241, 234, 0.65);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .ar-science .ar-pillActive {
-  background: rgba(122, 246, 224, 0.16);
+  background: rgba(122, 246, 224, 0.14);
   border-color: rgba(122, 246, 224, 0.28);
   color: rgba(244, 241, 234, 0.92);
-  box-shadow: 0 0 14px rgba(122, 246, 224, 0.10);
 }
 
-.ar-science .ar-section {
-  padding: 36px 0;
-  border-top: none;
+.ar-pageBody {
   position: relative;
 }
 
-.ar-science .ar-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(90%, 600px);
-  height: 1px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(122, 246, 224, 0.12) 20%,
-    rgba(122, 246, 224, 0.22) 50%,
-    rgba(122, 246, 224, 0.12) 80%,
-    transparent 100%);
+.ar-content {
+  min-width: 0;
 }
 
-.ar-science .ar-section:first-of-type {
-  padding-top: 20px;
+.ar-contentInner {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.ar-science .ar-section:first-of-type::before {
+.ar-toc {
   display: none;
+}
+
+.ar-tocTitle {
+  margin: 0 0 8px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(122, 246, 224, 0.75);
+}
+
+.ar-tocLink {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: rgba(244, 241, 234, 0.65);
+  transition: all 0.2s ease;
+}
+
+.ar-tocLink:hover {
+  color: rgba(244, 241, 234, 0.85);
+}
+
+.ar-tocLinkActive {
+  background: rgba(122, 246, 224, 0.10);
+  border: 1px solid rgba(122, 246, 224, 0.18);
+  color: rgba(244, 241, 234, 0.92);
+}
+
+.ar-section {
+  padding: 48px 0;
+  position: relative;
+}
+
+.ar-section + .ar-section {
+  border-top: 1px solid rgba(244, 241, 234, 0.06);
+}
+
+.ar-light .ar-section + .ar-section {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+.ar-science .ar-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 10px;
+  color: rgba(122, 246, 224, 0.85);
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.ar-light .ar-eyebrow {
+  color: rgba(25, 179, 166, 0.85);
+}
+
+.ar-science .ar-eyebrowLine {
+  width: 24px;
+  height: 1px;
+  background: rgba(122, 246, 224, 0.45);
+  flex-shrink: 0;
+}
+
+.ar-light .ar-eyebrowLine {
+  background: rgba(25, 179, 166, 0.40);
 }
 
 .ar-science h2 {
   margin: 0;
   font-size: 22px;
   line-height: 1.15;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   text-align: center;
   overflow-wrap: break-word;
-  text-shadow: 0 0 40px rgba(122, 246, 224, 0.08);
 }
 
 .ar-science .ar-lede {
-  margin: 12px auto 0;
-  max-width: 900px;
+  margin: 10px auto 0;
+  max-width: 720px;
   font-size: 14px;
   line-height: 1.7;
-  color: rgba(244, 241, 234, 0.70);
+  color: rgba(244, 241, 234, 0.65);
   text-align: center;
 }
 
-.ar-science .ar-grid2 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  margin-top: 18px;
+.ar-light .ar-lede {
+  color: rgba(0, 0, 0, 0.55);
 }
 
-.ar-science .ar-grid3 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.ar-science .ar-gridStandards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.ar-science .ar-layerCard {
-  padding: 16px;
-}
-
-.ar-science .ar-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-size: 11px;
-  color: rgba(122, 246, 224, 0.90);
-}
-
-.ar-science .ar-layerTitle {
-  margin: 10px 0 0;
-  font-size: 18px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  overflow-wrap: break-word;
-}
-
-.ar-science .ar-layerBody {
-  margin: 8px 0 0;
-  font-size: 14px;
-  line-height: 1.65;
-  color: rgba(244, 241, 234, 0.68);
-}
-
-.ar-science .ar-list {
-  margin: 12px 0 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 8px;
-}
-
-.ar-science .ar-list li {
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-  color: rgba(244, 241, 234, 0.78);
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-.ar-science .ar-check {
-  width: 18px;
-  height: 18px;
-  margin-top: 1px;
-  border-radius: 6px;
-  border: 1px solid rgba(122, 246, 224, 0.30);
-  background: linear-gradient(135deg, rgba(122, 246, 224, 0.14) 0%, rgba(122, 246, 224, 0.06) 100%);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 18px;
-  box-shadow: 0 0 10px rgba(122, 246, 224, 0.06);
-}
-
-.ar-science .ar-entities {
-  margin-top: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.ar-science .ar-chip {
-  font-size: 11px;
-  padding: 6px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(244, 241, 234, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  color: rgba(244, 241, 234, 0.72);
-}
-
-.ar-science .ar-layerCtas {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 14px;
-}
-
-.ar-science .ar-layerCtas .ar-btn {
-  width: 100%;
-}
-
-.ar-science .ar-standardCard {
-  padding: 14px;
-}
-
-.ar-science .ar-standardTitle {
-  margin: 0;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.ar-science .ar-standardBody {
-  margin: 8px 0 0;
-  font-size: 13px;
-  line-height: 1.65;
-  color: rgba(244, 241, 234, 0.68);
-}
-
-.ar-science .ar-divider {
-  height: 1px;
-  margin: 18px 0 0;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(122, 246, 224, 0.10) 30%,
-    rgba(244, 241, 234, 0.08) 50%,
-    rgba(122, 246, 224, 0.10) 70%,
-    transparent 100%);
-}
-
-.ar-science .ar-richBlock {
-  padding: 14px;
-  margin-top: 16px;
+.ar-light h2 {
+  color: #0A1220;
 }
 
 .ar-science h3 {
   margin: 0;
   font-size: 14px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   overflow-wrap: break-word;
 }
 
-.ar-science .ar-paras {
-  margin-top: 8px;
+.ar-light h3 {
+  color: #0A1220;
+}
+
+.ar-grid3 {
   display: grid;
-  gap: 8px;
-  color: rgba(244, 241, 234, 0.70);
-  font-size: 14px;
-  line-height: 1.7;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 24px;
 }
 
-.ar-science .ar-paras p {
-  overflow-wrap: break-word;
+.ar-gridStandards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 20px;
 }
 
-.ar-science .ar-tableWrap {
-  margin-top: 16px;
-  overflow-x: auto;
-  border-radius: 16px;
+.ar-card {
+  border-radius: 12px;
   border: 1px solid rgba(244, 241, 234, 0.08);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.008) 100%);
+  background: rgba(255, 255, 255, 0.025);
+  min-width: 0;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.ar-card:hover {
+  border-color: rgba(122, 246, 224, 0.12);
+}
+
+.ar-light .ar-card {
+  background: #fff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.ar-light .ar-card:hover {
+  border-color: rgba(25, 179, 166, 0.25);
+}
+
+.ar-layerCard {
+  padding: 18px;
+}
+
+.ar-layerTag {
+  display: inline-block;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: rgba(122, 246, 224, 0.85);
+  margin-bottom: 6px;
+}
+
+.ar-layerName {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.ar-layerRole {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(244, 241, 234, 0.65);
+}
+
+.ar-layerMeta {
+  margin: 12px 0 0;
+  display: grid;
+  gap: 6px;
+}
+
+.ar-layerMetaRow {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.ar-layerMetaLabel {
+  flex: 0 0 auto;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(122, 246, 224, 0.70);
+  font-weight: 600;
+  min-width: 72px;
+}
+
+.ar-layerMetaValue {
+  color: rgba(244, 241, 234, 0.72);
+}
+
+.ar-standardCard {
+  padding: 16px;
+}
+
+.ar-light .ar-standardCard {
+  padding: 18px;
+}
+
+.ar-standardTitle {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.ar-light .ar-standardTitle {
+  color: #0A1220;
+}
+
+.ar-standardBody {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(244, 241, 234, 0.62);
+}
+
+.ar-light .ar-standardBody {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.ar-frameworkGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.ar-frameworkItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(244, 241, 234, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ar-frameworkLabel {
+  flex: 0 0 auto;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(122, 246, 224, 0.85);
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(122, 246, 224, 0.08);
+  border: 1px solid rgba(122, 246, 224, 0.15);
+  white-space: nowrap;
+}
+
+.ar-frameworkDesc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(244, 241, 234, 0.65);
+}
+
+.ar-deepDiveProduct {
+  margin-top: 32px;
+}
+
+.ar-deepDiveProduct:first-child {
+  margin-top: 24px;
+}
+
+.ar-deepDiveHeader {
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(244, 241, 234, 0.08);
+}
+
+.ar-deepDiveName {
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0;
+}
+
+.ar-deepDiveGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.ar-deepDiveBlock {
+  padding: 0;
+}
+
+.ar-deepDiveBlockLabel {
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(122, 246, 224, 0.75);
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+.ar-deepDiveBlockText {
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(244, 241, 234, 0.68);
+  margin: 0;
+}
+
+.ar-evidenceDesktop {
+  display: none;
+}
+
+.ar-evidenceMobile {
+  display: block;
+}
+
+.ar-evidenceProductGroup {
+  margin-top: 28px;
+}
+
+.ar-evidenceProductGroup:first-child {
+  margin-top: 20px;
+}
+
+.ar-evidenceProductName {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: #0A1220;
+}
+
+.ar-evidenceCaption {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.50);
+  margin: 0 0 14px;
+}
+
+.ar-ingredientCards {
+  display: grid;
+  gap: 10px;
+}
+
+.ar-ingredientCard {
+  padding: 14px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.ar-ingredientHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.ar-ingredientName {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0A1220;
+  margin: 0;
+}
+
+.ar-ingredientDose {
+  font-size: 12px;
+  color: rgba(25, 179, 166, 0.90);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.ar-ingredientWhy {
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.55);
+  margin: 0 0 6px;
+}
+
+.ar-ingredientFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ar-evidenceTag {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 3px 7px;
+  border-radius: 4px;
+}
+
+.ar-evidenceTag[data-level="Human data"] {
+  background: rgba(25, 179, 166, 0.10);
+  color: rgba(20, 130, 120, 0.90);
+  border: 1px solid rgba(25, 179, 166, 0.20);
+}
+
+.ar-evidenceTag[data-level="Emerging human data"] {
+  background: rgba(180, 160, 80, 0.10);
+  color: rgba(140, 120, 40, 0.85);
+  border: 1px solid rgba(180, 160, 80, 0.20);
+}
+
+.ar-evidenceTag[data-level="Mechanistic / preclinical"] {
+  background: rgba(120, 120, 160, 0.10);
+  color: rgba(90, 90, 130, 0.85);
+  border: 1px solid rgba(120, 120, 160, 0.20);
+}
+
+.ar-evidenceTag[data-level="Formulation choice"] {
+  background: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.ar-ingredientNote {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.40);
+  font-style: italic;
+}
+
+.ar-tableWrap {
+  margin-top: 18px;
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
   -webkit-overflow-scrolling: touch;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.20);
 }
 
 .ar-science table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 600px;
 }
 
 .ar-science caption {
   text-align: left;
-  padding: 14px 14px 0;
-  color: rgba(244, 241, 234, 0.70);
+  padding: 14px 16px 8px;
+  color: rgba(0, 0, 0, 0.50);
   font-size: 13px;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .ar-science th,
 .ar-science td {
-  padding: 10px 12px;
-  border-top: 1px solid rgba(244, 241, 234, 0.08);
+  padding: 10px 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
   vertical-align: top;
 }
 
 .ar-science th {
-  font-size: 11px;
-  letter-spacing: 0.14em;
+  font-size: 10px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(122, 246, 224, 0.85);
+  color: rgba(25, 179, 166, 0.85);
   text-align: left;
   border-top: none;
+  font-weight: 600;
 }
 
 .ar-science td {
   font-size: 13px;
-  color: rgba(244, 241, 234, 0.74);
+  color: rgba(0, 0, 0, 0.65);
   line-height: 1.55;
 }
 
-.ar-science .ar-muted {
-  color: rgba(244, 241, 234, 0.60);
-  font-size: 12px;
+.ar-muted {
+  color: rgba(0, 0, 0, 0.40);
+  font-size: 11px;
+  font-style: italic;
 }
 
-.ar-science .ar-dl {
-  margin-top: 16px;
+.ar-dark .ar-muted {
+  color: rgba(244, 241, 234, 0.50);
+}
+
+.ar-glossaryGrid {
+  margin-top: 20px;
   display: grid;
-  gap: 12px;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 
-.ar-science dt {
-  font-weight: 600;
-  letter-spacing: 0.06em;
+.ar-glossaryItem {
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.ar-glossaryTerm {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  font-size: 12px;
-  color: rgba(244, 241, 234, 0.90);
+  color: #0A1220;
+  margin: 0 0 4px;
 }
 
-.ar-science dd {
-  margin: 6px 0 0;
-  color: rgba(244, 241, 234, 0.70);
+.ar-glossaryDef {
+  font-size: 13px;
   line-height: 1.65;
-  font-size: 14px;
+  color: rgba(0, 0, 0, 0.55);
+  margin: 0;
 }
 
-.ar-science .ar-accordion {
-  margin-top: 16px;
+.ar-accordion {
+  margin-top: 18px;
   display: grid;
   gap: 8px;
 }
 
-.ar-science .ar-accItem {
-  border-radius: 14px;
-  border: 1px solid rgba(244, 241, 234, 0.08);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-  transition: border-color 0.3s ease;
+.ar-accItem {
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #fff;
+  transition: border-color 0.2s ease;
 }
 
-.ar-science .ar-accItem:hover {
+.ar-accItem:hover {
+  border-color: rgba(25, 179, 166, 0.20);
+}
+
+.ar-dark .ar-accItem {
+  border-color: rgba(244, 241, 234, 0.08);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.ar-dark .ar-accItem:hover {
   border-color: rgba(122, 246, 224, 0.14);
 }
 
-.ar-science .ar-accButton {
+.ar-accButton {
   width: 100%;
   text-align: left;
   background: transparent;
-  color: rgba(244, 241, 234, 0.90);
+  color: #0A1220;
   border: none;
-  padding: 12px;
+  padding: 14px 16px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   gap: 10px;
   align-items: center;
   font-size: 14px;
+  font-weight: 500;
 }
 
-.ar-science .ar-accPanel {
-  padding: 0 12px 12px;
-  color: rgba(244, 241, 234, 0.70);
+.ar-dark .ar-accButton {
+  color: rgba(244, 241, 234, 0.90);
+}
+
+.ar-accPanel {
+  padding: 0 16px 14px;
+  color: rgba(0, 0, 0, 0.55);
   line-height: 1.7;
-  font-size: 14px;
-}
-
-.ar-science .ar-refList {
-  margin-top: 16px;
-  padding-left: 16px;
-  display: grid;
-  gap: 10px;
-  color: rgba(244, 241, 234, 0.72);
-  line-height: 1.65;
   font-size: 13px;
 }
 
-.ar-science .ar-refList a {
-  overflow-wrap: break-word;
-  word-break: break-all;
+.ar-dark .ar-accPanel {
+  color: rgba(244, 241, 234, 0.65);
 }
 
-.ar-science .ar-footnote {
-  margin: 22px 0 0;
-  padding: 12px;
-  border-radius: 14px;
+.ar-refGroupTitle {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 24px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  color: #0A1220;
+}
+
+.ar-refGroupTitle:first-child {
+  margin-top: 20px;
+}
+
+.ar-refItem {
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 8px;
+}
+
+.ar-refCitation {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.65);
+  margin: 0;
+}
+
+.ar-refCitation a {
+  color: rgba(25, 179, 166, 0.85);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.ar-refNote {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.40);
+  margin: 4px 0 0;
+  font-style: italic;
+}
+
+.ar-footnote {
+  margin: 24px 0 0;
+  padding: 14px 16px;
+  border-radius: 10px;
   border: 1px solid rgba(244, 241, 234, 0.06);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.008) 100%);
-  color: rgba(244, 241, 234, 0.62);
+  background: rgba(255, 255, 255, 0.02);
+  color: rgba(244, 241, 234, 0.50);
   line-height: 1.7;
   font-size: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.ar-light .ar-footnote {
+  border-color: rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.02);
+  color: rgba(0, 0, 0, 0.40);
+}
+
+.ar-finalCtaCards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.ar-finalCtaCard {
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(244, 241, 234, 0.08);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.ar-finalCtaTag {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(122, 246, 224, 0.75);
+  margin-bottom: 4px;
+}
+
+.ar-finalCtaName {
+  font-size: 16px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.ar-finalCtaBody {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(244, 241, 234, 0.60);
+  margin: 0 0 12px;
 }
 
 @media (min-width: 480px) {
   .ar-science h1 {
-    font-size: 32px;
-    letter-spacing: 0.05em;
+    font-size: 36px;
+    letter-spacing: 0.04em;
   }
 
   .ar-science h2 {
     font-size: 26px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
   }
 
   .ar-science h3 {
-    font-size: 16px;
-    letter-spacing: 0.08em;
+    font-size: 15px;
   }
 
   .ar-science .ar-subhead {
@@ -680,384 +909,157 @@
     font-size: 15px;
   }
 
-  .ar-science .ar-container {
-    padding: 0 18px;
+  .ar-section {
+    padding: 56px 0;
   }
 
-  .ar-science .ar-hero {
-    padding: 80px 0 24px;
-  }
-
-  .ar-science .ar-section {
-    padding: 44px 0;
-  }
-
-  .ar-science .ar-layerTitle {
-    font-size: 20px;
-    letter-spacing: 0.06em;
-  }
-
-  .ar-science .ar-layerBody {
-    font-size: 15px;
-  }
-
-  .ar-science .ar-list li {
-    font-size: 14px;
-  }
-
-  .ar-science .ar-paras {
-    font-size: 15px;
-  }
-
-  .ar-science .ar-standardBody {
-    font-size: 14px;
+  .ar-hero {
+    padding: 88px 0 36px;
   }
 
   .ar-science .ar-btn {
     height: 44px;
-    padding: 0 16px;
+    padding: 0 18px;
     font-size: 11px;
-    letter-spacing: 0.18em;
   }
 
-  .ar-science .ar-layerCtas {
-    flex-direction: row;
+  .ar-layerName {
+    font-size: 20px;
   }
 
-  .ar-science .ar-layerCtas .ar-btn {
-    width: auto;
-  }
-
-  .ar-science .ar-accButton {
-    font-size: 15px;
-    padding: 14px;
-  }
-
-  .ar-science .ar-accPanel {
-    font-size: 15px;
-    padding: 0 14px 14px;
-  }
-
-  .ar-science .ar-eyebrow {
-    font-size: 12px;
-    letter-spacing: 0.24em;
-    gap: 12px;
-  }
-
-  .ar-science .ar-eyebrowLine {
-    width: 44px;
-  }
-
-  .ar-science .ar-trustTitle {
-    font-size: 13px;
-    letter-spacing: 0.14em;
-  }
-
-  .ar-science .ar-trustDetail {
+  .ar-layerRole {
     font-size: 14px;
   }
 
-  .ar-science .ar-chip {
-    font-size: 12px;
-    padding: 8px 10px;
+  .ar-deepDiveName {
+    font-size: 18px;
   }
 
-  .ar-science dd {
+  .ar-accButton {
     font-size: 15px;
+  }
+
+  .ar-accPanel {
+    font-size: 14px;
+  }
+
+  .ar-glossaryGrid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (min-width: 720px) {
-  .ar-science .ar-trustGrid {
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
+  .ar-science h1 {
+    font-size: 44px;
   }
 
-  .ar-science .ar-grid2 {
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
+  .ar-science h2 {
+    font-size: 30px;
   }
 
-  .ar-science .ar-grid3 {
+  .ar-science .ar-subhead {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .ar-grid3 {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 16px;
   }
 
-  .ar-science .ar-gridStandards {
+  .ar-gridStandards {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .ar-layerCard {
+    padding: 22px;
+  }
+
+  .ar-frameworkGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ar-deepDiveGrid {
     grid-template-columns: 1fr 1fr;
     gap: 16px;
   }
 
-  .ar-science h1 {
-    font-size: 44px;
-    letter-spacing: 0.08em;
+  .ar-evidenceDesktop {
+    display: block;
   }
 
-  .ar-science h2 {
-    font-size: 34px;
-    letter-spacing: 0.08em;
+  .ar-evidenceMobile {
+    display: none;
   }
 
-  .ar-science h3 {
-    font-size: 18px;
-    letter-spacing: 0.10em;
+  .ar-section {
+    padding: 64px 0;
   }
 
-  .ar-science .ar-subhead {
-    font-size: 18px;
-    line-height: 1.65;
+  .ar-hero {
+    padding: 96px 0 40px;
   }
 
-  .ar-science .ar-hero {
-    padding: 88px 0 28px;
-  }
-
-  .ar-science .ar-section {
-    padding: 56px 0;
-  }
-
-  .ar-science .ar-lede {
-    font-size: 16px;
-    line-height: 1.75;
-  }
-
-  .ar-science .ar-layerCard {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .ar-science .ar-layerBody {
-    flex: 1;
-  }
-
-  .ar-science .ar-layerCtas {
-    margin-top: auto;
-    padding-top: 16px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .ar-science .ar-layerCtas .ar-btn {
-    width: auto;
-    flex: 0 1 auto;
-    min-width: 0;
-    font-size: 10px;
-    padding: 0 12px;
-    letter-spacing: 0.12em;
-    height: 42px;
-  }
-
-  .ar-science .ar-layerTitle {
-    font-size: 22px;
-    letter-spacing: 0.10em;
-  }
-
-  .ar-science .ar-standardCard {
-    padding: 24px;
-  }
-
-  .ar-science .ar-standardTitle {
-    font-size: 14px;
-    letter-spacing: 0.16em;
-  }
-
-  .ar-science .ar-richBlock {
-    padding: 24px;
-    margin-top: 22px;
-  }
-
-  .ar-science .ar-btn {
-    height: 46px;
-    padding: 0 16px;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-  }
-
-  .ar-science .ar-card {
-    border-radius: 18px;
-  }
-
-  .ar-science .ar-eyebrow {
-    font-size: 12px;
-    letter-spacing: 0.28em;
-    gap: 14px;
-  }
-
-  .ar-science .ar-eyebrowLine {
-    width: 56px;
-  }
-
-  .ar-science .ar-paras {
-    font-size: 15px;
-    line-height: 1.75;
-  }
-
-  .ar-science .ar-accButton {
-    font-size: 16px;
-  }
-
-  .ar-science .ar-accPanel {
-    font-size: 15px;
-  }
-
-  .ar-science .ar-footnote {
-    padding: 16px;
-    font-size: 13px;
-  }
-
-  .ar-science .ar-refList {
-    font-size: 14px;
-  }
-
-  .ar-science .ar-muted {
-    font-size: 13px;
-  }
-
-  .ar-science td {
-    font-size: 14px;
-  }
-
-  .ar-science caption {
-    font-size: 14px;
+  .ar-finalCtaCards {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
   }
 }
 
 @media (min-width: 980px) {
   .ar-science h1 {
-    font-size: 56px;
+    font-size: 52px;
   }
 
-  .ar-science .ar-mainGrid {
-    grid-template-columns: 240px 1fr;
-    align-items: start;
-    gap: 32px;
+  .ar-pageBody {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
-  .ar-science .ar-grid2 {
-    gap: 20px;
-  }
-
-  .ar-science .ar-grid3 {
-    gap: 20px;
-  }
-
-  .ar-science .ar-layerCard {
-    padding: 28px;
-  }
-
-  .ar-science .ar-layerCtas .ar-btn {
-    font-size: 11px;
-    padding: 0 14px;
-    letter-spacing: 0.14em;
-    height: 44px;
-  }
-
-  .ar-science .ar-standardCard {
-    padding: 28px;
-  }
-
-  .ar-science .ar-richBlock {
-    padding: 28px;
-  }
-
-  .ar-science .ar-btn {
-    height: 48px;
-    padding: 0 20px;
-    font-size: 12px;
-    letter-spacing: 0.20em;
-  }
-
-  .ar-science .ar-gridStandards {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-
-  .ar-science .ar-gridStandards .ar-card:nth-child(4),
-  .ar-science .ar-gridStandards .ar-card:nth-child(5) {
-    grid-column: span 1;
-  }
-
-  .ar-science .ar-toc {
+  .ar-toc {
     display: block;
     border: 1px solid rgba(244, 241, 234, 0.08);
-    border-radius: 18px;
+    border-radius: 12px;
     padding: 14px;
-    background: linear-gradient(165deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    background: rgba(16, 27, 45, 0.95);
     position: sticky;
-    top: 96px;
-    box-shadow:
-      0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
-      0 16px 48px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(8px);
+    top: 88px;
+    align-self: start;
+    margin-left: 20px;
+    margin-top: 48px;
+    z-index: 10;
   }
 
-  .ar-science .ar-tocMobilePills {
+  .ar-tocMobilePills {
     display: none;
   }
 
-  .ar-science .ar-swipeHint {
-    display: none;
-  }
-
-  .ar-science .ar-section {
-    padding: 64px 0;
-  }
-
-  .ar-science .ar-trustGrid {
-    grid-template-columns: 1fr 1fr 1fr;
+  .ar-gridStandards {
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
 
-  .ar-science .ar-hero {
-    padding: 100px 0 36px;
+  .ar-gridStandards .ar-card:nth-child(4),
+  .ar-gridStandards .ar-card:nth-child(5) {
+    grid-column: span 1;
   }
 
-  .ar-science .ar-subhead {
-    font-size: 19px;
-    line-height: 1.7;
+  .ar-section {
+    padding: 72px 0;
   }
 }
 
 @media (min-width: 1200px) {
-  .ar-science .ar-mainGrid {
-    grid-template-columns: 280px 1fr;
+  .ar-pageBody {
+    grid-template-columns: 220px 1fr;
     gap: 44px;
   }
 
-  .ar-science .ar-layerCard {
-    padding: 32px;
-  }
-
-  .ar-science .ar-layerCtas .ar-btn {
-    font-size: 12px;
-    padding: 0 18px;
-    letter-spacing: 0.18em;
-    height: 46px;
-  }
-
-  .ar-science .ar-standardCard {
-    padding: 32px;
-  }
-
-  .ar-science .ar-richBlock {
-    padding: 32px;
-  }
-
-  .ar-science .ar-grid2 {
-    gap: 22px;
-  }
-
-  .ar-science .ar-grid3 {
-    gap: 22px;
-  }
-
-  .ar-science .ar-gridStandards {
-    gap: 22px;
-  }
-
   .ar-science h1 {
-    font-size: 60px;
+    font-size: 56px;
   }
 }

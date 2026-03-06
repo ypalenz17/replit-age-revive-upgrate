@@ -1,10 +1,13 @@
 import {
+  DEEP_DIVES,
+  EVIDENCE_FRAMEWORK,
   EVIDENCE_TABLES,
   FAQ as SCIENCE_FAQ_ITEMS,
   FINAL_CTA,
   GLOSSARY,
   LAYERS,
   REFERENCES,
+  REFERENCE_GROUPS,
   STANDARDS,
   TRUST_MARKERS,
 } from "../client/src/science/scienceContent";
@@ -121,7 +124,7 @@ function buildScienceHtml(): string {
     (layer) => `<article>
   <h3>${escapeHtml(layer.productName)}</h3>
   <p><strong>${escapeHtml(layer.roleTitle)}.</strong> ${escapeHtml(layer.roleBody)}</p>
-  ${buildSimpleList(layer.bullets)}
+  <p>Cadence: ${escapeHtml(layer.cadence)} · Key: ${escapeHtml(layer.keyIngredients)}</p>
 </article>`,
   ).join("")}</section>`;
 
@@ -134,9 +137,9 @@ function buildScienceHtml(): string {
   <h3>${escapeHtml(table.product)}</h3>
   <p>${escapeHtml(table.caption)}</p>
   <table>
-    <thead><tr><th>Ingredient</th><th>Dose</th><th>Purpose</th></tr></thead>
+    <thead><tr><th>Ingredient</th><th>Dose</th><th>Evidence</th><th>Purpose</th></tr></thead>
     <tbody>${table.rows
-      .map((row) => `<tr><td>${escapeHtml(row.ingredient)}</td><td>${escapeHtml(row.dose)}</td><td>${escapeHtml(row.why)}${row.notes ? ` (${escapeHtml(row.notes)})` : ""}</td></tr>`)
+      .map((row) => `<tr><td>${escapeHtml(row.ingredient)}</td><td>${escapeHtml(row.dose)}</td><td>${escapeHtml(row.evidence)}</td><td>${escapeHtml(row.why)}${row.notes ? ` (${escapeHtml(row.notes)})` : ""}</td></tr>`)
       .join("")}</tbody>
   </table>
 </article>`,
@@ -146,39 +149,46 @@ function buildScienceHtml(): string {
     (item) => `<dt>${escapeHtml(item.term)}</dt><dd>${escapeHtml(item.definition)}</dd>`,
   ).join("")}</dl></section>`;
 
-  const references = `<section><h2>References</h2><ol>${REFERENCES.map(
-    (item) => `<li><a href="${escapeHtml(item.url)}">${escapeHtml(item.label)}</a>${item.note ? `<p>${escapeHtml(item.note)}</p>` : ""}</li>`,
-  ).join("")}</ol></section>`;
+  const references = `<section><h2>References</h2>${REFERENCE_GROUPS.map(
+    (group) => {
+      const items = REFERENCES.filter((r) => r.group === group);
+      return `<h3>${escapeHtml(group)}</h3><ul>${items.map(
+        (item) => `<li><a href="${escapeHtml(item.url)}">${escapeHtml(item.label)}</a>${item.note ? `<p>${escapeHtml(item.note)}</p>` : ""}</li>`,
+      ).join("")}</ul>`;
+    },
+  ).join("")}</section>`;
 
-  const deepDive = `<section>
-  <h2>NAD+ foundation</h2>
-  <p>NAD+ is a coenzyme central to cellular energy metabolism and enzymatic processes associated with cellular maintenance. NR is a precursor cells use to synthesize NAD+.</p>
-  <p>CELLUNAD+ uses 500 mg Nicotinamide Riboside (NR) as a daily foundation to support intracellular NAD+ availability, with methylation and co-factor support including TMG, 5-MTHF, methylcobalamin, and P-5-P.</p>
-  <h2>Gut-mitochondria axis</h2>
-  <p>CELLUBIOME targets the gut-mito interface by pairing urolithin A mitophagy support with tributyrin butyrate delivery and enteric protection.</p>
-  <h2>Controlled reset</h2>
-  <p>CELLUNOVA is intentionally not daily. It is a 7-day protocol designed to periodically support autophagy-related pathways, mitochondrial resilience, and exposure to senescence research compounds.</p>
-  <h2>Delivery matters</h2>
-  <p>If the goal is intestinal action, formulation delivery integrity is required. Enteric protection is used when stomach exposure compromises intended downstream action.</p>
-  <h2>Quality and testing</h2>
-  <p>Quality is built around cGMP manufacturing baseline, label transparency, and third-party testing for identity, potency, and contaminant screening.</p>
-</section>`;
+  const evidenceFramework = `<section><h2>Understanding the evidence</h2><p>Not all evidence is equal. Labels clarify what level of research supports each ingredient.</p><dl>${EVIDENCE_FRAMEWORK.map(
+    (f) => `<dt>${escapeHtml(f.label)}</dt><dd>${escapeHtml(f.description)}</dd>`,
+  ).join("")}</dl></section>`;
+
+  const deepDive = `<section><h2>Formulation logic</h2>${DEEP_DIVES.map(
+    (dd) => `<article>
+  <h3>${escapeHtml(dd.product)}</h3>
+  <p><strong>What it is for:</strong> ${escapeHtml(dd.whatItIsFor)}</p>
+  <p><strong>What it is not:</strong> ${escapeHtml(dd.whatItIsNot)}</p>
+  <p><strong>How it is used:</strong> ${escapeHtml(dd.howItIsUsed)}</p>
+  <p><strong>Formulation rationale:</strong> ${escapeHtml(dd.formulationRationale)}</p>
+  <p><strong>Confidence note:</strong> ${escapeHtml(dd.confidenceNote)}</p>
+</article>`,
+  ).join("")}</section>`;
 
   const finalCta = `<section><h2>${escapeHtml(FINAL_CTA.headline)}</h2><p>${escapeHtml(FINAL_CTA.body)}</p><ul>${FINAL_CTA.cards
-    .map((card) => `<li><a href="${escapeHtml(card.href)}">${escapeHtml(card.title)}</a> - ${escapeHtml(card.body)}</li>`)
+    .map((card) => `<li><a href="${escapeHtml(card.href)}">Shop ${escapeHtml(card.title)}</a> - ${escapeHtml(card.body)}</li>`)
     .join("")}</ul></section>`;
 
   return `<article>
   <h1>Science | Age Revive</h1>
   ${BASE_NAV_HTML}
-  <p>This page explains protocol architecture, ingredient rationale, delivery, testing, and evidence summaries.</p>
+  <p>This page explains protocol architecture, ingredient rationale, delivery, testing, and evidence summaries. Educational information — not medical advice.</p>
+  ${evidenceFramework}
   ${trustMarkers}
   ${protocolLayers}
   ${standards}
   ${deepDive}
-  <section><h2>Science FAQ</h2>${buildFaqHtml(SCIENCE_FAQ_ITEMS.map((item) => ({ question: item.q, answer: item.a })))}</section>
   ${evidence}
   ${glossary}
+  <section><h2>Science FAQ</h2>${buildFaqHtml(SCIENCE_FAQ_ITEMS.map((item) => ({ question: item.q, answer: item.a })))}</section>
   ${references}
   ${finalCta}
 </article>`;

@@ -1,0 +1,435 @@
+You are a top-tier scientific communication designer, premium DTC trust-page strategist, and senior front-end engineer.
+
+Audit and improve the Age Revive science page so it feels elite, credible, premium, and exceptionally readable on mobile.
+
+Do not just suggest changes.
+Implement them directly in code.
+
+CONTEXT
+
+Brand:
+- Age Revive
+
+Page:
+- Science
+
+Role of this page:
+- trust infrastructure
+- education page
+- evidence page
+- premium documentation hub
+- conversion support page for skeptical or detail-oriented visitors
+
+Main problem:
+- the current page has strong raw content, but the UX packaging is not elite enough
+- it is too dark for too long
+- too many sections reuse the same rounded-card visual treatment
+- there is too much visual repetition
+- product CTAs are too frequent for a science page
+- evidence tables are not mobile-friendly enough
+- references are present but not organized like premium documentation
+- the page feels more like a long science-branded product page than a clean evidence hub
+
+NON-NEGOTIABLE RULES
+
+Do not introduce:
+- DNA helix icons
+- gene/chromosome imagery
+- neural/circuit/AI motifs
+- generic biotech visuals
+- decorative molecule graphics
+- zombie-cell imagery
+- fake data charts
+- decorative icon packs
+- stock medical icon clutter
+- glassmorphism
+- loud gradients
+- meaningless scientific-looking graphics
+- decorative chip clouds that add little value
+
+Default to zero icons unless they materially improve comprehension.
+
+Do not use hype copy such as:
+- revolutionary
+- next-gen
+- cutting-edge
+- optimize your biology
+- hack your aging
+- engineered longevity
+- breakthrough system
+- future of wellness
+- overconfident certainty language
+
+Use concise, premium, evidence-aware language.
+
+EVIDENCE INTEGRITY RULES
+
+This is critical.
+
+Preserve and improve the page’s scientific honesty:
+- do not make all ingredients sound equally proven
+- do not remove nuance around evidence levels
+- do not convert mechanism language into outcome promises
+- do not overstate human evidence where it is early
+- do not remove caveats just to make copy shorter
+- do not turn references into marketing decorations
+
+Make the page easier to understand without making it less honest.
+
+CURRENT UX PROBLEMS TO FIX
+
+1. The page feels too much like one long dark slab
+2. There is too much repeated dark-card treatment
+3. The hero does not feel like a clean documentation entry point
+4. The page lacks a clear “how to read this page” framework near the top
+5. The architecture section is useful but still too verbose and repetitive
+6. The evidence tables are weak on mobile and feel cramped
+7. The glossary and FAQ are good ideas but could be packaged more cleanly
+8. The references section feels like a wall instead of a usable source library
+9. The page leans too salesy in places for what should be a trust page
+10. The page needs better section rhythm, hierarchy, and readability
+
+PRIMARY STRATEGY
+
+This page should do 5 jobs:
+
+1. Explain what the Age Revive system is
+2. Explain how Age Revive thinks about evidence, dosing, delivery, and testing
+3. Make each product’s role and rationale understandable
+4. Give the visitor definitions and references without overwhelming them
+5. Route the visitor to the right product or protocol once trust is built
+
+This page should feel like a premium evidence dossier.
+
+COLOR / SECTION RHYTHM
+
+Do not let the page remain in nearly the same dark value throughout.
+
+Use:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Existing mint/teal accent only
+
+Suggested rhythm:
+dark -> light -> dark -> light -> light -> dark
+
+Use more light sections than the homepage where documentation readability matters.
+
+Use tonal shifts, spacing, card contrast, and typography hierarchy to create real chapter breaks.
+Do not solve this with decorative graphics.
+
+HERO / PAGE INTRO REQUIREMENTS
+
+Refactor the top of the page so it clearly behaves like a science hub.
+
+The top section must quickly answer:
+- what this page is
+- what the visitor will learn
+- how the science page differs from marketing copy
+
+Required hero elements:
+- clear H1
+- concise supporting subhead
+- one primary CTA such as Jump to Evidence or Explore the Science
+- one restrained secondary CTA such as Shop the System or Build Your Protocol
+- compact trust strip or standards strip
+- a visible boundary note such as educational, not medical advice
+
+Do not make the hero feel like a product page.
+Do not bury the actual H1 under buttons or chips.
+
+SECTION NAVIGATION
+
+This page is long enough to benefit from functional navigation.
+
+Add a clean anchored section navigation or sticky section chips for key areas such as:
+- Overview
+- Standards
+- Evidence
+- Glossary
+- FAQ
+- References
+
+This navigation should be subtle, premium, and useful.
+It must not feel like decorative pills with no function.
+
+HOW TO READ THIS PAGE / STANDARDS SECTION
+
+Create a strong section near the top that teaches the visitor how to interpret the page.
+
+This section should explain, simply:
+- human research where available
+- mechanism relevance
+- formulation and delivery design
+- transparent dosing
+- third-party testing
+- references for transparency, not promises
+
+Consider a small legend or evidence-context system such as:
+- Human data
+- Emerging human data
+- Mechanistic / preclinical
+- Formulation choice
+
+Keep this elegant and non-gimmicky.
+No fake scoring systems.
+No stars.
+No hype badges.
+
+THREE-LAYER ARCHITECTURE SECTION
+
+Refactor the current 3-product architecture section into something cleaner and more scannable.
+
+Each product card or row should clearly show:
+- product name
+- protocol role
+- cadence
+- why it exists
+- what makes it distinct
+- concise key ingredients or ingredient families
+- optional restrained CTA
+
+This section should help the visitor understand the whole system quickly.
+Do not make each card read like a mini product landing page.
+
+DEEP DIVE / FORMULATION LOGIC
+
+Refactor the deeper product explanations so they are more structured and less repetitive.
+
+Possible structure:
+- CELLUNAD+ foundation
+- CELLUBIOME gut-mito interface
+- CELLUNOVA periodic protocol
+
+For each, present:
+- what it is for
+- what it is not
+- how it is used
+- why the formulation is built that way
+- where confidence is stronger vs more emerging
+
+Keep these sections premium and clear.
+Reduce repeated chip clouds unless they materially improve scanning.
+
+DELIVERY MATTERS / QUALITY LOGIC
+
+The formulation and delivery rationale is a major trust advantage.
+Keep it, but present it better.
+
+This section should clearly explain:
+- why delivery matters
+- when delivery design is critical
+- why transparent formulations are easier to evaluate
+- how quality and testing fit into trust
+
+Important:
+- avoid making delivery language sound universal across all products if it is product-specific in practice
+- keep it precise and restrained
+
+EVIDENCE AND DOSING SECTION
+
+This is one of the most important sections and likely the biggest current UX problem.
+
+Refactor it aggressively.
+
+Required behavior:
+- desktop can use structured tables
+- mobile must not use cramped 3-column scientific tables
+- mobile should switch to stacked ingredient cards, accordions, or a better responsive format
+- every ingredient entry should clearly show:
+  - ingredient name
+  - dose
+  - why it is included
+  - evidence context
+  - reference or note if relevant
+
+Consider grouping by product:
+- CELLUNAD+
+- CELLUBIOME
+- CELLUNOVA
+
+For mobile, possible ingredient card structure:
+- ingredient
+- dose
+- why included
+- evidence note
+- citation or study context link
+
+Do not create horizontal-scroll data tables that are painful to read on phone.
+Do not compress the text until it becomes illegible.
+
+Use evidence-context labels sparingly and functionally.
+Examples:
+- Human data
+- Mechanistic support
+- Emerging human evidence
+- Formulation choice
+
+These labels should clarify nuance, not pretend certainty.
+
+GLOSSARY
+
+The glossary is strategically useful and should stay.
+But refactor it so it feels lighter and easier to navigate.
+
+Options:
+- accordion glossary
+- alphabetized definition cards
+- anchored mini-nav
+- 2-column desktop / stacked mobile definitions
+
+Definitions must be:
+- concise
+- readable
+- premium
+- not buried inside giant same-style cards
+
+FAQ
+
+The FAQ is a strong trust section.
+Keep it, but make it more readable and less repetitive visually.
+
+Requirements:
+- concise accordion structure
+- stronger hierarchy
+- clear section separation
+- good contrast
+- light clinical background strongly preferred
+
+Make this feel like premium documentation, not leftover template FAQ.
+
+REFERENCES
+
+The current references section likely needs the largest structural rethink after the evidence tables.
+
+Refactor references so they are:
+- grouped logically
+- clearly linked
+- easy to scan
+- useful to a real reader
+- elegant on mobile
+
+Possible organization:
+- NAD+ / NR
+- Gut barrier / butyrate / urolithin A
+- Autophagy / spermidine / senescence context
+- General definitions / consensus references
+
+Each reference item should ideally show:
+- citation title
+- publication / year
+- DOI or source link
+- a very short note such as what this reference supports
+
+Do not present references as one long undifferentiated wall of text.
+
+CTA STRATEGY
+
+Reduce sales pressure on this page.
+
+Rules:
+- one strong hero CTA
+- limited secondary CTAs inside architecture or final section
+- final CTA can be Build Your Protocol or Shop the System
+- do not repeat Explore Product buttons over and over
+- do not let product CTAs dominate the science page
+
+This page should earn trust first and then route users cleanly.
+
+VISUAL DESIGN RULES
+
+This page should feel lighter, more structured, and more documentary than the homepage or product pages.
+
+Use:
+- premium typography hierarchy
+- cleaner spacing
+- subtler card usage
+- fewer repeated card styles
+- more distinction between informational and conversion sections
+- elegant borders
+- restrained shadows
+- strong readability
+
+Avoid:
+- same-size rounded cards for every concept
+- too many pill tags
+- visual monotony
+- dark-on-dark tables
+- decorative noise
+- “tech platform” styling
+
+TYPOGRAPHY RULES
+
+Make long-form reading easier.
+
+Requirements:
+- stronger contrast hierarchy
+- better paragraph spacing
+- tighter control over line length
+- more readable tables/cards
+- use all-caps or wide tracking sparingly
+- major headings can stay branded, but body and subheads must prioritize readability
+
+MOBILE RULES
+
+This page must become dramatically better on mobile.
+
+Prioritize:
+- readable hero above the fold
+- functional section navigation
+- shorter denser but clear sections
+- evidence layout that does not break on phone
+- easy glossary reading
+- FAQ readability
+- references that do not feel impossible to use
+- CTA restraint
+
+ACCESSIBILITY
+
+Maintain or improve:
+- semantic headings
+- semantic tables where tables remain
+- accessible accordion behavior
+- keyboard focus states
+- anchor-link usability
+- contrast
+- tap targets
+- external link clarity
+
+SELF-QA BEFORE STOPPING
+
+Before stopping, audit your own implementation and directly fix anything that fails:
+
+1. Does the top of the page clearly explain what this page is?
+2. Is there a clear “how to read the evidence” framework near the top?
+3. Does the page still feel too dark for too long anywhere?
+4. Are section breaks now obvious?
+5. Are evidence tables actually usable on mobile?
+6. Are references now structured and useful?
+7. Is the page still scientifically careful and not overhyped?
+8. Did you preserve nuance around stronger vs weaker evidence?
+9. Are glossary and FAQ easier to use now?
+10. Are CTAs restrained enough for a science page?
+11. Does the page feel premium and documentary rather than templated?
+12. Does anything still feel generic biotech, AI-themed, or decorative?
+
+If any answer is no, continue refining before stopping.
+
+WORK STYLE
+
+Inspect the codebase, identify the relevant layout/components/styles/content blocks, and implement the improvements directly.
+Keep code clean, maintainable, and production-ready.
+Do not stop at “better.”
+Stop only when the science page feels elite.
+
+WHEN DONE, RETURN
+
+1. Summary of what you changed
+2. Files/components modified
+3. What changed in page structure
+4. What changed in evidence presentation
+5. What changed in glossary / FAQ / references
+6. What improved trust
+7. What improved readability and mobile UX
+8. Any optional next-step refinements
