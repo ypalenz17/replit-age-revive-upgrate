@@ -1,0 +1,446 @@
+You are a top-tier DTC checkout CRO strategist, mobile commerce designer, and senior front-end engineer.
+
+Audit and refactor the Age Revive cart and checkout flow to maximize completed purchases and reduce friction as much as possible.
+
+This is one of the highest-priority conversion projects in the business.
+
+Do not just suggest changes.
+Implement them directly in code.
+
+CONTEXT
+
+Brand:
+- Age Revive
+
+Payment processor:
+- Stripe
+
+Current problem:
+- the current flow appears to be a hybrid:
+  cart drawer -> email step -> shipping step -> separate Stripe payment page
+- this creates too many checkpoints and too much context switching on mobile
+- express checkout appears too late
+- the cart includes extra friction points before the main action
+- checkout still contains unnecessary navigation and visual weight
+- the flow does not yet feel frictionless or elite
+
+Reference:
+- use the Seed screenshot only as a reference for lower-friction cart behavior and clearer action hierarchy
+- do not copy Seed’s brand identity, layout, color palette, or exact UI
+- copy only the principles:
+  - obvious total
+  - obvious express pay
+  - obvious checkout CTA
+  - concise subscription upgrade
+  - fewer distractions
+
+PRIMARY OBJECTIVE
+
+Build the cleanest, fastest, most trustworthy mobile checkout possible using Stripe.
+
+The flow should:
+- reduce abandonment
+- reduce redundant input
+- reduce context switching
+- increase wallet usage
+- increase subscription take-rate where relevant
+- preserve premium brand quality without making checkout feel heavy
+
+NON-NEGOTIABLE RULES
+
+Do not:
+- keep unnecessary steps
+- keep a separate email-only page unless absolutely unavoidable
+- keep full site navigation inside checkout
+- keep promo code expanded by default
+- keep cross-sells above the primary checkout action
+- keep misleading step counts
+- keep duplicate email collection
+- keep giant empty dead space on checkout screens
+- let the payment flow feel like a different company
+- add decorative icons, biotech visuals, AI motifs, or any nonfunctional art
+- add unnecessary animations
+- add modal friction
+- create a long dark “wizard” experience
+
+CHECKOUT ARCHITECTURE
+
+First inspect the current codebase and determine whether the site currently uses:
+A. custom cart + custom pre-checkout pages + hosted Stripe payment page
+B. embedded Stripe checkout
+C. another hybrid
+
+Then refactor to the preferred architecture:
+
+PREFERRED ARCHITECTURE
+- one-page, on-domain checkout using Stripe Checkout Sessions API + Elements
+
+Preferred component stack:
+- Express Checkout Element at the top
+- Link Authentication Element for email + Link authentication
+- Address Element in shipping mode
+- shipping method section if needed
+- Payment Element for manual payment entry
+- saved payment methods for returning customers where supported
+
+FALLBACK ARCHITECTURE
+Only if the preferred architecture is genuinely unsafe for the current sprint:
+- use Stripe Checkout in the cleanest possible hosted or embedded form
+- remove redundant pre-checkout pages
+- fully brand the Stripe experience
+- minimize any visual or interaction handoff
+- clearly document any Stripe dashboard/domain steps still required
+
+Do not keep the current hybrid multi-step approach unless there is a hard technical reason.
+
+HIGH-PRIORITY PROBLEMS TO FIX
+
+1. Cart does not surface fast-pay strongly enough
+2. Promo code is too prominent in the current path
+3. Cross-sell placement is distracting
+4. Checkout has too many screens before payment
+5. Navigation/icons create distraction in checkout
+6. Address entry is too manual and heavy
+7. The design handoff into Stripe is jarring
+8. The checkout UI is visually heavier than it should be
+9. Mobile CTA persistence is not strong enough
+10. Subscription upgrade could be clearer and more compelling without being pushy
+
+CART REQUIREMENTS
+
+Refactor the cart so it behaves like a conversion tool, not a mini merchandising page.
+
+The cart must prioritize:
+1. line item summary
+2. quantity / cadence clarity
+3. subscription upgrade if relevant
+4. total
+5. express checkout
+6. primary checkout CTA
+
+Required cart changes:
+- Add or surface express checkout buttons in the cart when eligible
+- Keep total and primary actions sticky at the bottom on mobile
+- Collapse promo code behind a link or accordion
+- Move “You Might Also Like” below the main CTA area or remove it from the critical path
+- Keep cross-sells secondary and non-blocking
+- Make subscription upgrade concise, persuasive, and one-tap
+- Clearly show one-time vs subscription state
+- Keep quantity controls large and easy to use
+- Keep trust microcopy near the main action:
+  - secure checkout
+  - free shipping if applicable
+  - risk-free guarantee if applicable
+
+Use the Seed reference only for action hierarchy, not visual copying.
+
+CHECKOUT PAGE STRUCTURE
+
+Preferred manual checkout structure:
+1. Express checkout row
+2. Order summary accordion
+3. Contact / Link authentication
+4. Shipping address
+5. Shipping method if needed
+6. Payment
+7. Final place-order CTA
+8. concise trust / support microcopy
+
+This should ideally be one page, not separate “email” and “shipping” pages.
+
+If a multi-step flow is absolutely required:
+- it must be truthful
+- it must be minimal
+- payment must not unexpectedly live on a hidden extra page
+- the user should always know exactly where they are
+
+EMAIL / CONTACT RULES
+
+Do not keep a standalone email-only screen unless unavoidable.
+Use one of these approaches:
+- Link Authentication Element as the first real checkout field
+- or pass existing email directly into the payment flow without asking twice
+
+Rules:
+- email should be collected once
+- Link should be able to accelerate returning users
+- do not create repeated email friction
+
+ADDRESS RULES
+
+Use Stripe’s address collection tools where feasible.
+The address experience must:
+- support autocomplete
+- minimize manual typing
+- reduce validation errors
+- feel fast on mobile
+
+Use:
+- Address Element in shipping mode if implementing Elements
+
+Rules:
+- billing same as shipping should be default
+- apartment / suite remains optional
+- validation errors should be inline and specific
+- country / state / postal should format naturally for locale
+- avoid giant forms with no assistance
+
+PAYMENT RULES
+
+The payment section must feel fast and obvious.
+
+Requirements:
+- Express checkout appears before manual card entry
+- Manual card entry uses Stripe Payment Element or best equivalent in the chosen architecture
+- Saved payment methods should be enabled for returning customers where supported
+- Card entry should be clean and visually integrated with the page
+- No jarring redirect to an obviously different-looking page unless architecture makes it unavoidable
+- If redirect remains, brand continuity must be improved as much as possible
+
+Handle:
+- wallet availability
+- Link
+- card entry
+- 3DS / authentication
+- errors inline
+- processing states
+- success state cleanly
+
+SUBSCRIPTION RULES
+
+The cart currently presents a subscription upgrade.
+Improve that logic without creating pressure or confusion.
+
+Requirements:
+- clearly explain the benefit
+- keep the savings visible but honest
+- show cadence clearly
+- show cancel/skip flexibility if that is part of the business rules
+- make upgrade one tap
+- do not let subscription language feel sneaky
+- keep one-time and subscription states obvious throughout cart and checkout
+
+Do not invent discounts or terms.
+Use real current business rules only.
+
+ORDER SUMMARY RULES
+
+Order summary should be:
+- visible
+- easy to access
+- collapsed by default on mobile once checkout begins
+- expandable without page jump
+
+It should show:
+- product image
+- product name
+- quantity
+- cadence
+- price
+- discount if real
+- shipping
+- tax
+- total
+
+Do not make the order summary a giant visual block that pushes the form below the fold.
+
+VISUAL DESIGN RULES
+
+Checkout should not look like the rest of the storytelling site.
+It should look cleaner, lighter, and more utility-focused.
+
+Use:
+- off-white or white page background
+- white or very light cards/surfaces
+- Age Revive navy for text and accents
+- mint/teal for primary CTA
+- subtle borders
+- clean spacing
+- strong readability
+
+Avoid:
+- long full-dark form pages
+- giant headers
+- extra icons
+- decorative motifs
+- premium-for-premium’s-sake styling
+- trendy startup UI
+- heavy gradients
+- visual noise
+
+The goal is premium clarity, not drama.
+
+HEADER / FOOTER RULES
+
+In checkout:
+- remove account icon
+- remove cart icon clutter
+- remove hamburger/menu
+- remove normal site nav
+- remove anything not needed to complete purchase
+
+Keep only:
+- minimal logo / wordmark
+- maybe a concise support link if useful
+- order summary access
+- possibly a very small trust indicator
+
+MOBILE RULES
+
+This must be excellent on iPhone Safari.
+
+Requirements:
+- sticky bottom CTA zone
+- wallet options visible without scrolling too far
+- keyboard-safe layout
+- no field hidden behind sticky footer
+- no excessive scroll distance
+- compact vertical rhythm
+- tap targets sized correctly
+- no dead space
+- no duplicated information
+
+PROMO CODE RULES
+
+Do not show the promo code field expanded by default.
+Use a simple text link or accordion:
+- “Promo code”
+- or “Have a promo code?”
+
+Only expand when tapped.
+Do not encourage coupon-hunting behavior in the main purchase path.
+
+CROSS-SELL RULES
+
+Cross-sells must not sit above the main purchase action in cart or checkout.
+Move them:
+- below the primary action area
+- or to a post-purchase / add-on step
+- or remove them from the critical path
+
+If kept in cart:
+- make them optional
+- compact
+- easy to dismiss
+- secondary to checkout
+
+TRUST / SUPPORT RULES
+
+Place concise trust cues near CTA zones:
+- secure checkout
+- shipping promise if applicable
+- guarantee if applicable
+- support contact if applicable
+
+Do not overdo lock icons or cliché security badges.
+Keep it clean and believable.
+
+STATE MANAGEMENT RULES
+
+Preserve customer progress wherever possible.
+The user should not lose work when:
+- going back
+- refreshing
+- reopening checkout
+- switching between cart and checkout
+
+ANALYTICS / INSTRUMENTATION
+
+Add or improve analytics hooks for:
+- cart_view
+- begin_checkout
+- express_checkout_shown
+- express_checkout_clicked
+- subscription_upgrade_viewed
+- subscription_upgrade_accepted
+- promo_opened
+- promo_applied
+- checkout_email_completed
+- address_autocomplete_used
+- shipping_completed
+- payment_method_selected
+- payment_submit
+- payment_failed
+- payment_succeeded
+- checkout_abandonment_by_stage
+
+Use the app’s existing analytics conventions if present.
+If no analytics wrapper exists, add clean event hooks or data attributes for future wiring.
+
+STRIPE-SPECIFIC IMPLEMENTATION REQUIREMENTS
+
+Use Stripe in the cleanest way the codebase supports.
+
+Preferred:
+- Checkout Sessions API + Elements for one-page on-site checkout
+
+Use these Stripe capabilities where appropriate:
+- Express Checkout Element
+- Link Authentication Element
+- Address Element
+- Payment Element
+- saved payment methods
+- branded appearance
+- proper wallet support
+
+If using a hosted Stripe fallback:
+- apply Stripe branding settings
+- improve continuity
+- document any dashboard steps required
+- note if custom domain is recommended
+- note if Apple Pay domain registration is required
+- note if Apple Pay merchant tokens are required for subscription flows
+
+Do not hardcode fake payment logic.
+Use the real Stripe integration path.
+
+DESIGN QUALITY BAR
+
+The final result should feel:
+- frictionless
+- obvious
+- premium
+- trustworthy
+- faster
+- simpler
+- more decisive
+- more mobile-native
+- less step-heavy
+- less confusing
+- more conversion-focused
+
+SELF-QA BEFORE STOPPING
+
+Before stopping, audit your own implementation and directly fix anything that fails:
+
+1. Is express checkout visible early enough?
+2. Is the cart action area clearer than before?
+3. Is promo code hidden by default?
+4. Are cross-sells no longer blocking the main action?
+5. Did you remove unnecessary checkout navigation?
+6. Did you eliminate the standalone email page if possible?
+7. Is checkout now one page or at least materially fewer steps?
+8. Is email collected once?
+9. Is address entry materially easier and faster?
+10. Is order summary easier to access without dominating the screen?
+11. Is the checkout visually lighter and clearer than before?
+12. Is the sticky CTA zone strong on mobile?
+13. Does the flow feel less jarring than the current redirect-heavy version?
+14. Are one-time and subscription states clear?
+15. Are trust cues close to action zones?
+16. Does the page feel premium but utility-first?
+17. Does it work well for iPhone Safari specifically?
+18. Is anything still generic, clunky, distracting, or unnecessary?
+
+If any answer is no, keep refining before stopping.
+
+WHEN DONE, RETURN
+
+1. Summary of architecture changes
+2. Files/components modified
+3. What changed in cart
+4. What changed in checkout
+5. What changed in Stripe integration
+6. What improves conversion
+7. What improves trust
+8. Any required Stripe Dashboard/domain steps still needed outside code
