@@ -1,0 +1,74 @@
+Do a ruthless final checkout conversion QA pass.
+
+Assume the first pass is not good enough until proven otherwise.
+
+Review the rendered cart and checkout on mobile first, especially iPhone Safari sized screens.
+Then directly fix anything that still feels:
+- step-heavy
+- distracting
+- slower than necessary
+- too dark
+- too cluttered
+- too form-heavy
+- too manual
+- too far from one-tap payment
+- visually inconsistent
+- low-trust
+- weak in CTA hierarchy
+- weak in wallet visibility
+- weak in mobile stickiness
+- templated
+- not premium enough
+- not frictionless enough
+
+Hard rules:
+- remove any unnecessary navigation from checkout
+- remove any duplicate email collection
+- remove any fake or misleading step counts
+- keep promo code collapsed by default
+- keep cross-sells out of the critical path
+- keep checkout utility-first, not brand-story-first
+- keep the UI light, readable, and compact
+- do not introduce decorative icons or gimmicky visuals
+- do not turn checkout into a SaaS wizard
+
+Refine specifically:
+1. cart bottom action zone
+2. express checkout visibility
+3. subscription upgrade clarity
+4. order summary clarity
+5. promo code friction
+6. cross-sell placement
+7. one-page checkout structure
+8. address speed and autocomplete UX
+9. payment section clarity
+10. mobile sticky CTA behavior
+11. keyboard overlap issues
+12. visual continuity with brand
+13. loading / processing states
+14. inline errors and recovery
+15. trust microcopy placement
+16. anything that still feels slower or more complicated than it should
+
+TEST THESE FLOWS AND FIX ANY FAILURES:
+- new guest buyer, one-time purchase
+- new guest buyer, subscription purchase
+- returning buyer with Link
+- iPhone Safari with Apple Pay available
+- device/browser with no wallet available
+- invalid email
+- invalid address
+- coupon open / apply / invalid coupon
+- back button and refresh persistence
+- payment error / retry
+- 3DS / authentication flow if supported
+
+Do not explain first.
+Fix first, then summarize:
+- what you removed
+- what you simplified
+- what you changed in Stripe integration
+- what improved conversion
+- what improved trust
+- what improved mobile completion
+- what still requires Stripe Dashboard or domain configuration outside code

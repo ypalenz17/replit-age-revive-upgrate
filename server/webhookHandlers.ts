@@ -327,6 +327,20 @@ async function handleCheckoutCompleted(session: StripeCheckoutSession, stripe: S
   const email = session.customer_email || session.customer_details?.email || "";
   let createdOrder = false;
 
+  const isExpressOrder = meta.express_checkout === "true";
+  const stripeShipping = (session as any).shipping_details || (session as any).shipping || null;
+
+  const resolvedShipping = {
+    firstName: meta.shipping_first_name || stripeShipping?.name?.split(" ")[0] || "",
+    lastName: meta.shipping_last_name || stripeShipping?.name?.split(" ").slice(1).join(" ") || "",
+    address: meta.shipping_address || stripeShipping?.address?.line1 || "",
+    apt: meta.shipping_apt || stripeShipping?.address?.line2 || null,
+    city: meta.shipping_city || stripeShipping?.address?.city || "",
+    state: meta.shipping_state || stripeShipping?.address?.state || "",
+    zip: meta.shipping_zip || stripeShipping?.address?.postal_code || "",
+    country: meta.shipping_country || stripeShipping?.address?.country || "US",
+  };
+
   try {
     await storage.createOrder({
       stripeSessionId: session.id,
@@ -338,19 +352,19 @@ async function handleCheckoutCompleted(session: StripeCheckoutSession, stripe: S
       orderType: isSubscription ? "subscription" : "one_time",
       totalAmount: session.amount_total || 0,
       currency: session.currency || "usd",
-      shippingFirstName: meta.shipping_first_name || "",
-      shippingLastName: meta.shipping_last_name || "",
-      shippingAddress: meta.shipping_address || "",
-      shippingApt: meta.shipping_apt || null,
-      shippingCity: meta.shipping_city || "",
-      shippingState: meta.shipping_state || "",
-      shippingZip: meta.shipping_zip || "",
-      shippingCountry: meta.shipping_country || "US",
+      shippingFirstName: resolvedShipping.firstName,
+      shippingLastName: resolvedShipping.lastName,
+      shippingAddress: resolvedShipping.address,
+      shippingApt: resolvedShipping.apt,
+      shippingCity: resolvedShipping.city,
+      shippingState: resolvedShipping.state,
+      shippingZip: resolvedShipping.zip,
+      shippingCountry: resolvedShipping.country,
       items,
       fulfillmentStatus: "unfulfilled",
       trackingNumber: null,
       trackingCarrier: null,
-      notes: null,
+      notes: isExpressOrder ? "Express checkout — shipping from Stripe" : null,
     });
     createdOrder = true;
   } catch (error) {

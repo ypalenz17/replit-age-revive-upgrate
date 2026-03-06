@@ -86,7 +86,6 @@ interface StripeLineItemCreateInput {
 
 interface StripeCheckoutCreateParams extends Record<string, unknown> {
   mode: "payment" | "subscription";
-  payment_method_types: string[];
   customer_email: string;
   line_items: StripeLineItemCreateInput[];
   metadata: Record<string, string>;
@@ -95,6 +94,9 @@ interface StripeCheckoutCreateParams extends Record<string, unknown> {
   discounts?: Array<{ coupon: string }>;
   subscription_data?: {
     metadata: Record<string, string>;
+  };
+  shipping_address_collection?: {
+    allowed_countries: string[];
   };
 }
 
@@ -585,18 +587,27 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     try {
       const code = getStringField(req.body, "code").trim();
       if (!code) {
-        return res.status(400).json({ message: "Discount code is required" });
+        return res.json({ valid: false, reason: "invalid", code: "", description: "" });
       }
 
       const discount = await storage.validateDiscountCode(code);
       if (!discount) {
-        return res.status(404).json({ message: "Discount code is invalid" });
+        return res.json({ valid: false, reason: "invalid", code: "", description: "" });
       }
 
-      return res.json(discount);
+      const cartTotal = typeof req.body?.cartTotal === "number" ? req.body.cartTotal : 0;
+      if (discount.minimumOrderAmount && cartTotal < discount.minimumOrderAmount) {
+        return res.json({ valid: false, reason: "minimum_not_met", code: discount.code, description: `Minimum order $${discount.minimumOrderAmount} required` });
+      }
+
+      const description = discount.discountType === "percentage"
+        ? `${discount.discountValue}% off`
+        : `$${(discount.discountValue / 100).toFixed(2)} off`;
+
+      return res.json({ valid: true, code: discount.code, description });
     } catch (err) {
       console.error("[discount] Failed to validate discount code:", err);
-      return res.status(500).json({ message: "Failed to validate discount code" });
+      return res.json({ valid: false, reason: "invalid", code: "", description: "" });
     }
   });
 
@@ -853,13 +864,17 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         country: getStringField(shippingInput, "country").trim() || "US",
       };
 
+      const isExpressCheckout = body?.expressCheckout === true;
+
       if (
-        !shipping.firstName ||
-        !shipping.lastName ||
-        !shipping.address ||
-        !shipping.city ||
-        !shipping.state ||
-        !shipping.zip
+        !isExpressCheckout && (
+          !shipping.firstName ||
+          !shipping.lastName ||
+          !shipping.address ||
+          !shipping.city ||
+          !shipping.state ||
+          !shipping.zip
+        )
       ) {
         return res.status(400).json({ message: "Complete shipping address is required" });
       }
@@ -1035,27 +1050,35 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         return { price_data: priceData, quantity: item.quantity };
       });
 
+      const isExpress = body?.expressCheckout === true;
+
       const sessionParams: StripeCheckoutCreateParams = {
         mode: checkoutMode,
-        payment_method_types: ["card"],
         customer_email: email,
         line_items: lineItems,
         metadata: {
-          shipping_first_name: shipping.firstName,
-          shipping_last_name: shipping.lastName,
-          shipping_address: shipping.address,
-          shipping_apt: shipping.apt || "",
-          shipping_city: shipping.city,
-          shipping_state: shipping.state,
-          shipping_zip: shipping.zip,
+          shipping_first_name: isExpress ? "" : shipping.firstName,
+          shipping_last_name: isExpress ? "" : shipping.lastName,
+          shipping_address: isExpress ? "" : shipping.address,
+          shipping_apt: isExpress ? "" : (shipping.apt || ""),
+          shipping_city: isExpress ? "" : shipping.city,
+          shipping_state: isExpress ? "" : shipping.state,
+          shipping_zip: isExpress ? "" : shipping.zip,
           shipping_country: shipping.country || "US",
           order_type: hasSubscription ? "subscription" : "one_time",
           discount_code_id: validatedDiscount?.id ?? "",
           discount_code: validatedDiscount?.code ?? "",
+          express_checkout: isExpress ? "true" : "false",
         },
         success_url: `${baseUrl}/order-confirmed?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${baseUrl}/checkout`,
       };
+
+      if (isExpress) {
+        sessionParams.shipping_address_collection = {
+          allowed_countries: ["US"],
+        };
+      }
 
       if (validatedDiscount) {
         if (validatedDiscount.discountType === "percentage") {

@@ -12,6 +12,8 @@ export const PRODUCTS = [
     textColor: '#60a5fa',
     image: '/images/cellunad-render.png',
     ingredients: ['NR 500 mg', 'TMG 250 mg', 'Apigenin 100 mg'],
+    price: 79.99,
+    subscribePrice: 67.99,
   },
   {
     slug: 'cellubiome',
@@ -26,6 +28,8 @@ export const PRODUCTS = [
     textColor: '#5eead4',
     image: '/images/cellubiome-render.png',
     ingredients: ['Urolithin A 500 mg', 'Tributyrin 500 mg'],
+    price: 110.00,
+    subscribePrice: 93.50,
   },
   {
     slug: 'cellunova',
@@ -40,6 +44,8 @@ export const PRODUCTS = [
     textColor: '#a78bfa',
     image: '/images/cellunova_cropped.png',
     ingredients: ['Fisetin', 'Spermidine', 'PQQ'],
+    price: 49.99,
+    subscribePrice: 42.49,
   }
 ];
 
