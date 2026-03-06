@@ -1,0 +1,74 @@
+Do a ruthless final QA and polish pass on the Quality page.
+
+Assume the first pass is not good enough until proven otherwise.
+
+Review the rendered page as a premium trust and documentation page on both mobile and desktop.
+Then directly fix anything that still feels:
+- generic
+- too dark for too long
+- visually repetitive
+- too card-heavy
+- too much like a styled memo
+- too salesy
+- too vague
+- hard to scan
+- weak in section hierarchy
+- weak in documentation clarity
+- weak in SEO structure
+- weak in LLM readability
+- cluttered
+- templated
+- not premium enough
+
+Hard rules:
+- remove any decorative icons or motifs that are not essential
+- remove any biotech, DNA, gene, molecule, neural, AI, or sci-fi visuals
+- remove decorative chip clutter
+- keep the palette restrained
+- preserve the trust-first documentary feel
+- keep all important claims in visible text
+- do not use FAQ schema unless the FAQ is visibly present and matching
+- do not use breadcrumb schema unless breadcrumbs are actually real and valid
+- do not let metadata and H1 drift apart
+- do not let the page become SEO spam
+
+Refine specifically:
+1. hero clarity
+2. section-nav usefulness
+3. standards summary clarity
+4. testing matrix readability
+5. checklist packaging
+6. traceability / documentation clarity
+7. manufacturing / compliance packaging
+8. product-notes clarity
+9. FAQ readability
+10. metadata quality
+11. canonical correctness
+12. structured-data correctness
+13. internal-link usefulness
+14. spacing rhythm
+15. typography hierarchy
+16. border / radius / shadow consistency
+17. anything that still feels like a template
+
+Test and fix:
+- anchor navigation on mobile
+- no horizontal overflow in standards sections
+- accordion behavior
+- metadata exists and is page-specific
+- title / H1 / meta alignment
+- canonical tag correctness
+- visible text mirrors structured data
+- no duplicate/conflicting schema blocks
+- no text clipping
+- keyboard/focus accessibility
+- final CTA restraint
+
+Do not explain first.
+Fix first, then summarize:
+- what you removed
+- what you refined
+- what changed for SEO / structured data
+- what improved trust
+- what improved readability
+- what improved premium feel

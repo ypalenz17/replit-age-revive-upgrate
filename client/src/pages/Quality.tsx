@@ -43,7 +43,7 @@ const QUALITY_FAQS: FAQItem[] = [
   },
   {
     q: "How do you handle allergens?",
-    a: "Known allergens should be disclosed on-label. CELLUNOVA contains wheat (spermidine source). If you have allergies or sensitivities, review Supplement Facts and consult a clinician if needed.",
+    a: "Known allergens are disclosed on-label. CELLUNOVA contains wheat (spermidine source). If you have allergies or sensitivities, review Supplement Facts and consult a clinician if needed.",
   },
   {
     q: "How do I find my lot number?",
@@ -59,7 +59,7 @@ const AUDIT_CHECKLIST: string[] = [
   "Is the full dose disclosed for each core active (no proprietary blend)?",
   "Is there identity verification for each lot?",
   "Is there potency verification for the finished product (not just raw materials)?",
-  "Is there contaminant screening appropriate to the ingredient risk profile (heavy metals, micro, and others as needed)?",
+  "Is there contaminant screening appropriate to the ingredient risk profile?",
   "Is there traceability with lot numbers and batch records?",
   "If delivery claims exist (enteric protection), is the delivery integrity validated?",
 ];
@@ -67,7 +67,7 @@ const AUDIT_CHECKLIST: string[] = [
 const TESTING_ROWS = [
   { cat: "Identity", what: "Confirms the ingredient matches the label claim.", why: "Prevents substitution and sourcing errors." },
   { cat: "Potency", what: "Confirms labeled actives are present at labeled doses in finished product.", why: "Dose is the bridge between research and reality." },
-  { cat: "Heavy metals", what: "Screens for metals such as lead, arsenic, cadmium, mercury (panel depends on method).", why: "Reduces avoidable exposure risk from raw material variability." },
+  { cat: "Heavy metals", what: "Screens for lead, arsenic, cadmium, mercury (panel depends on method).", why: "Reduces avoidable exposure risk from raw material variability." },
   { cat: "Microbiological", what: "Screens for microbial contamination and baseline microbiological standards.", why: "Protects against contamination issues in production or storage." },
   { cat: "Residual solvents", what: "Screens for extraction-related residues where applicable.", why: "Some extracts can carry residues if poorly controlled." },
   { cat: "Format integrity", what: "Checks delivery characteristics such as enteric protection integrity.", why: "Delivery claims are meaningless if integrity fails." },
@@ -146,7 +146,7 @@ function AccordionItem({ index, question, answer, openIndex, setOpenIndex }: Acc
         data-testid={`button-quality-faq-${index}`}
       >
         <span>{question}</span>
-        <span aria-hidden="true" style={{ fontSize: 11, opacity: 0.4, transition: "transform 0.2s", transform: isOpen ? "rotate(180deg)" : "none" }}>▾</span>
+        <span className={`q-accChevron${isOpen ? " q-accChevronOpen" : ""}`} aria-hidden="true">▾</span>
       </button>
       {isOpen && (
         <div id={panelId} role="region" aria-labelledby={buttonId} className="q-accPanel">
@@ -159,7 +159,7 @@ function AccordionItem({ index, question, answer, openIndex, setOpenIndex }: Acc
 
 export default function Quality() {
   const [activeId, setActiveId] = useState<string>(TOC[0]?.id || "overview");
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
   const faqJsonLd = useMemo(() => ({
@@ -177,7 +177,7 @@ export default function Quality() {
     return {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      name: "Quality Standards",
+      name: "Quality You Can Verify — Testing, Traceability & Transparency",
       description: "How Age Revive approaches supplement quality: transparent dosing, identity and potency verification, contaminant screening, lot traceability, and documentation requests.",
       url: `${origin}/quality`,
       isPartOf: { "@type": "WebSite", name: "Age Revive", url: origin || "https://example.com" },
@@ -185,11 +185,10 @@ export default function Quality() {
     };
   }, []);
 
-
   useEffect(() => {
     const siteUrl = typeof window !== "undefined" ? window.location.origin : "";
     const canonical = `${siteUrl}/quality`;
-    const title = "Quality Standards | Testing, Traceability & Transparency | Age Revive";
+    const title = "Quality You Can Verify | Testing, Traceability & Transparency | Age Revive";
     const description = "How Age Revive approaches supplement quality: transparent dosing, identity and potency verification, contaminant screening, lot traceability, and documentation requests.";
 
     document.title = title;
@@ -235,7 +234,7 @@ export default function Quality() {
           if (id) setActiveId(id);
         }
       },
-      { root: null, threshold: [0.15, 0.25, 0.35], rootMargin: "-20% 0px -60% 0px" }
+      { root: null, threshold: [0.1, 0.2, 0.35], rootMargin: "-18% 0px -62% 0px" }
     );
     ids.forEach((id) => {
       const el = sectionRefs.current[id];
@@ -264,7 +263,7 @@ export default function Quality() {
             <Eyebrow label="QUALITY" />
             <h1 data-testid="text-quality-h1">Quality you can verify</h1>
             <p className="q-subhead">
-              Credibility comes from discipline: transparent dosing, identity and potency verification, contaminant screening, lot traceability, and documentation that matches what is on the label.
+              Transparent dosing, identity and potency verification, contaminant screening, lot traceability, and documentation that matches what is on the label.
             </p>
 
             <div className="q-heroCtas">
@@ -322,7 +321,7 @@ export default function Quality() {
 
           <div className="q-content">
 
-            {/* LIGHT: What quality means */}
+            {/* ── LIGHT: Overview + Testing ── */}
             <div className="q-light">
               <div className="q-contentInner">
                 <section
@@ -345,12 +344,9 @@ export default function Quality() {
                     ))}
                   </div>
                 </section>
-              </div>
-            </div>
 
-            {/* LIGHT: Testing standards */}
-            <div className="q-light">
-              <div className="q-contentInner">
+                <div className="q-sectionDivider" />
+
                 <section
                   id="testing"
                   className="q-section"
@@ -367,17 +363,17 @@ export default function Quality() {
                       <table>
                         <thead>
                           <tr>
-                            <th style={{ width: "18%" }}>Category</th>
-                            <th style={{ width: "42%" }}>What it checks</th>
+                            <th>Category</th>
+                            <th>What it checks</th>
                             <th>Why it matters</th>
                           </tr>
                         </thead>
                         <tbody>
                           {TESTING_ROWS.map((row) => (
                             <tr key={row.cat}>
-                              <td style={{ fontWeight: 600, color: "#0A1220" }}>{row.cat}</td>
+                              <td className="q-tdCategory">{row.cat}</td>
                               <td>{row.what}</td>
-                              <td style={{ color: "rgba(0,0,0,0.45)", fontStyle: "italic" }}>{row.why}</td>
+                              <td className="q-tdWhy">{row.why}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -398,7 +394,7 @@ export default function Quality() {
               </div>
             </div>
 
-            {/* DARK: Buyer audit checklist */}
+            {/* ── DARK: Buyer audit checklist ── */}
             <div className="q-dark">
               <div className="q-contentInner">
                 <section
@@ -412,25 +408,23 @@ export default function Quality() {
                     If you are evaluating any longevity supplement — ours included — these checks catch most marketing games.
                   </p>
 
-                  <div style={{ marginTop: 20 }}>
+                  <div>
                     {AUDIT_CHECKLIST.map((item, idx) => (
-                      <div key={item} className="q-card" style={{ marginTop: idx > 0 ? 6 : 0, display: "flex", gap: 12, alignItems: "baseline" }}>
-                        <span style={{ flex: "0 0 auto", fontSize: 11, fontWeight: 700, color: "rgba(122, 246, 224, 0.65)", minWidth: 18, letterSpacing: "0.02em" }}>
-                          {String(idx + 1).padStart(2, "0")}
-                        </span>
-                        <span style={{ fontSize: 13, lineHeight: 1.6, color: "rgba(244, 241, 234, 0.62)" }}>{item}</span>
+                      <div key={item} className="q-checkItem">
+                        <span className="q-checkNum">{String(idx + 1).padStart(2, "0")}</span>
+                        <span className="q-checkText">{item}</span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="q-footnote" style={{ marginTop: 20 }}>
+                  <div className="q-footnote">
                     This checklist applies to any supplement, not just Age Revive products. If a brand fails most of these checks, the quality claims are likely marketing.
                   </div>
                 </section>
               </div>
             </div>
 
-            {/* LIGHT: Traceability and documentation */}
+            {/* ── LIGHT: Traceability ── */}
             <div className="q-light">
               <div className="q-contentInner">
                 <section
@@ -439,7 +433,7 @@ export default function Quality() {
                   ref={(el) => { sectionRefs.current["traceability"] = el; }}
                 >
                   <Eyebrow label="TRACEABILITY" />
-                  <h2>Lot traceability and how to request verification</h2>
+                  <h2>Lot traceability and documentation</h2>
                   <p className="q-lede">
                     You should not have to trust a vibe. You should be able to reference a lot number and request batch documentation.
                   </p>
@@ -447,7 +441,7 @@ export default function Quality() {
                   <div className="q-grid2">
                     <div className="q-card">
                       <p className="q-cardTitle">What to look for on your bottle</p>
-                      <ul className="q-bulletList" style={{ marginTop: 10 }}>
+                      <ul className="q-bulletList">
                         {[
                           "Lot number printed on the bottle",
                           "Clear Supplement Facts panel",
@@ -464,7 +458,7 @@ export default function Quality() {
 
                     <div className="q-card">
                       <p className="q-cardTitle">How to request documentation</p>
-                      <div style={{ marginTop: 10 }}>
+                      <div>
                         {[
                           "Find the lot number on your bottle.",
                           "Share the product name and lot number with support.",
@@ -476,18 +470,17 @@ export default function Quality() {
                           </div>
                         ))}
                       </div>
-                      <div style={{ marginTop: 14 }}>
-                        <Link className="q-btn q-btnGhost" to="/faq" data-testid="link-traceability-faq">
-                          Read FAQ
-                        </Link>
-                      </div>
                     </div>
                   </div>
+
+                  <p className="q-footnote">
+                    Lot-level traceability connects raw material checks, finished product testing, and shipping records to a single batch identifier. It is one of the clearest signals of manufacturing discipline.
+                  </p>
                 </section>
               </div>
             </div>
 
-            {/* DARK: Manufacturing / compliance / label transparency */}
+            {/* ── DARK: Compliance ── */}
             <div className="q-dark">
               <div className="q-contentInner">
                 <section
@@ -506,9 +499,9 @@ export default function Quality() {
                       { t: "cGMP manufacturing", b: "Dietary supplements in the US are commonly manufactured under current Good Manufacturing Practices. This is baseline, not a flex." },
                       { t: "Supplier qualification", b: "Raw material variability is real. A serious program verifies identity and screens relevant risk categories per lot." },
                       { t: "Release criteria", b: "A product should be released only after it meets identity, potency, and contaminant standards appropriate to its ingredients." },
-                      { t: "No proprietary blends", b: "Proprietary blends prevent dose comparison to published research. They are incompatible with science-forward positioning." },
-                      { t: "Core actives disclosed", b: "Across the system this includes NR, urolithin A, tributyrin, quercetin, fisetin, trans-resveratrol, spermidine, Ca-AKG, PQQ, and supporting co-factors." },
-                      { t: "Allergen disclosure", b: "Known allergens are disclosed on-label. CELLUNOVA contains wheat (spermidine source). Review Supplement Facts if you have sensitivities." },
+                      { t: "No proprietary blends", b: "Proprietary blends prevent dose comparison to published research. Age Revive discloses core actives and doses." },
+                      { t: "Core actives disclosed", b: "Includes NR, urolithin A, tributyrin, quercetin, fisetin, trans-resveratrol, spermidine, Ca-AKG, PQQ, and co-factors." },
+                      { t: "Allergen disclosure", b: "Known allergens are disclosed on-label. CELLUNOVA contains wheat (spermidine source)." },
                     ].map((c) => (
                       <div key={c.t} className="q-card">
                         <p className="q-cardTitle">{c.t}</p>
@@ -520,7 +513,7 @@ export default function Quality() {
               </div>
             </div>
 
-            {/* LIGHT: Product-specific notes */}
+            {/* ── LIGHT: Product notes + FAQ ── */}
             <div className="q-light">
               <div className="q-contentInner">
                 <section
@@ -547,23 +540,23 @@ export default function Quality() {
                         eyebrow: "Signal stability",
                         name: "CELLUBIOME",
                         body: "Gut and mitochondrial support using urolithin A and tributyrin. Enteric protection is part of the design intent.",
-                        note: "Delivery integrity matters because enteric protection changes real behavior. Format integrity checks should exist where delivery is a key claim.",
+                        note: "Delivery integrity matters because enteric protection changes real behavior.",
                         href: PRODUCT_ROUTES.cellubiome,
                       },
                       {
                         eyebrow: "Monthly reset",
                         name: "CELLUNOVA",
                         body: "A 7-day protocol with autophagy-related compounds, senescence research compounds, and mitochondrial resilience support.",
-                        note: "Contains wheat (spermidine source). Multi-ingredient protocols require strong batch controls and allergen disclosure.",
+                        note: "Contains wheat (spermidine source). Multi-ingredient protocols require strong batch controls.",
                         href: PRODUCT_ROUTES.cellunova,
                       },
                     ].map((card) => (
                       <div key={card.name} className="q-card" data-testid={`card-product-${card.name.toLowerCase().replace("+", "")}`}>
-                        <p className="q-cardTitle" style={{ fontSize: 10, letterSpacing: "0.10em", color: "rgba(25,179,166,0.65)", marginBottom: 4 }}>{card.eyebrow}</p>
-                        <h3 style={{ fontSize: 15 }}>{card.name}</h3>
-                        <p className="q-cardBody" style={{ marginTop: 6 }}>{card.body}</p>
-                        <p style={{ marginTop: 8, fontSize: 12, lineHeight: 1.6, color: "rgba(0,0,0,0.42)", fontStyle: "italic" }}>{card.note}</p>
-                        <div style={{ marginTop: 12 }}>
+                        <p className="q-productCardEyebrow">{card.eyebrow}</p>
+                        <h3>{card.name}</h3>
+                        <p className="q-cardBody">{card.body}</p>
+                        <p className="q-productCardNote">{card.note}</p>
+                        <div className="q-productCardCta">
                           <Link className="q-btn q-btnGhost" to={card.href} data-testid={`link-view-${card.name.toLowerCase().replace("+", "")}`}>
                             View {card.name}
                           </Link>
@@ -572,12 +565,9 @@ export default function Quality() {
                     ))}
                   </div>
                 </section>
-              </div>
-            </div>
 
-            {/* LIGHT: FAQ */}
-            <div className="q-light">
-              <div className="q-contentInner">
+                <div className="q-sectionDivider" />
+
                 <section
                   id="quality-faq"
                   className="q-section"
@@ -605,14 +595,14 @@ export default function Quality() {
               </div>
             </div>
 
-            {/* DARK: Final CTA */}
+            {/* ── DARK: Final CTA ── */}
             <div className="q-dark">
               <div className="q-contentInner">
                 <section className="q-section">
                   <Eyebrow label="NEXT STEP" />
                   <h2>Explore the full system</h2>
                   <p className="q-lede">
-                    Quality is the foundation. <Link to="/science" style={{ color: "rgba(122,246,224,0.75)", textDecoration: "underline", textUnderlineOffset: 2 }}>Science</Link> explains mechanisms. Products implement the protocol.
+                    Quality is the foundation. <Link to="/science" className="q-inlineLink">Science</Link> explains mechanisms. Products implement the protocol.
                   </p>
 
                   <div className="q-finalCtaCards">
@@ -626,8 +616,8 @@ export default function Quality() {
                     </div>
                     <div className="q-finalCtaCard">
                       <div className="q-finalCtaTag">Products</div>
-                      <p className="q-finalCtaName">View the system</p>
-                      <p className="q-finalCtaBody">Three products, one protocol. Daily foundation, signal stability, and periodic reset.</p>
+                      <p className="q-finalCtaName">View the protocol</p>
+                      <p className="q-finalCtaBody">Three products, one system. Daily foundation, signal stability, and periodic reset.</p>
                       <Link className="q-btn q-btnGhost" to="/shop" data-testid="link-explore-shop">
                         Shop products
                       </Link>
@@ -648,6 +638,9 @@ export default function Quality() {
           </div>
         </div>
 
+        <p className="q-fdaDisclaimer">
+          These statements have not been evaluated by the FDA. This content is for educational purposes only.
+        </p>
       </main>
       <div className="bg-[#060E1A]">
         <Footer />

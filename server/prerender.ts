@@ -400,7 +400,7 @@ const PAGE_CONTENT: Record<string, PageContent> = {
     html: buildScienceHtml(),
   },
   "/quality": {
-    title: "Quality Standards | Testing, Traceability, Transparency | Age Revive",
+    title: "Quality You Can Verify | Testing, Traceability & Transparency | Age Revive",
     description:
       "How Age Revive approaches supplement quality: transparent dosing, identity and potency verification, contaminant screening concepts, lot traceability, and documentation requests.",
     imagePath: "/images/lab-testing.jpg",
