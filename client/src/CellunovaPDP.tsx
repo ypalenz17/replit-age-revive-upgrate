@@ -168,7 +168,7 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
               </div>
 
               <p className="text-[14px] lg:text-[15px] text-white/55 font-sans leading-relaxed max-w-md">
-                A structured 7-day monthly protocol for periodic cellular renewal support. {data.supplementFacts.items.length} fully disclosed compounds targeting autophagy, senescence-related, and mitochondrial resilience pathways. Not a daily supplement.*
+                7-day monthly protocol for autophagy-related support and mitochondrial resilience. {data.supplementFacts.items.length} fully disclosed compounds. Not a daily supplement.*
               </p>
 
               <div className="flex flex-wrap gap-2">

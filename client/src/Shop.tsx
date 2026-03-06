@@ -39,8 +39,8 @@ function usePrefersReducedMotion() {
 const COPY_MAP = {
   cellunad: {
     overline: 'Foundation Layer',
-    subtitle: 'CELLUNAD+ restores daily NAD+ input so your cells don\u2019t run on deficit.',
-    microLine: 'Protocol: 2 caps daily \u2022 Target: energy + repair',
+    subtitle: 'Precision NAD+ support with methylation co-factors. Every dose disclosed.',
+    microLine: '2 capsules daily \u2022 NAD+ metabolism + methylation support',
     narrative: {
       label: 'Foundation Layer',
       headline: 'Your energy system has a supply chain.',
@@ -81,8 +81,8 @@ const COPY_MAP = {
   },
   cellubiome: {
     overline: 'Signal Stability',
-    subtitle: 'CELLUBIOME reinforces the gut\u2013mitochondria axis so output stays clean.',
-    microLine: 'Protocol: 2 enteric caps daily \u2022 Target: gut\u2013mito signaling',
+    subtitle: 'Urolithin A + Tributyrin. Two ingredients, one gut-mitochondria axis.',
+    microLine: '2 enteric-coated capsules daily \u2022 Gut barrier + mito renewal support',
     narrative: {
       label: 'Signal Stability',
       headline: 'Your gut is an energy organ.',
@@ -123,8 +123,8 @@ const COPY_MAP = {
   },
   cellunova: {
     overline: 'Controlled Reset',
-    subtitle: 'CELLUNOVA is a 7-day autophagy-aligned cycle designed to clear accumulated stress without extremes.',
-    microLine: 'Protocol: 7 days \u2022 5 caps/day \u2022 Target: renewal cadence',
+    subtitle: 'Ten compounds. Seven days on. The off-cycle is part of the design.',
+    microLine: '5 capsules daily \u2022 7-day monthly cycle \u2022 Autophagy + cellular maintenance',
     narrative: {
       label: 'Controlled Reset',
       headline: 'Progress requires renewal.',
@@ -178,10 +178,10 @@ const PRODUCTS = {
   cellunad: {
     id: 'cellunad',
     name: 'CELLUNAD+',
-    category: 'NAD+ Optimization',
-    tagline: 'Daily NAD+ support engineered for consistency, not hype.',
+    category: 'Daily NAD+ Foundation',
+    tagline: 'Precision NAD+ support with methylation co-factors. Every dose disclosed.',
     description:
-      'NR + cofactors. 8 actives. Clinically aligned.',
+      'NR + TMG + Apigenin and 5 more actives. Full-dose transparency.',
     price: '$79.99',
     serving: '2 capsules daily',
     specRow: 'Glass bottle \u2022 UV-protected',
@@ -242,10 +242,10 @@ const PRODUCTS = {
   cellubiome: {
     id: 'cellubiome',
     name: 'CELLUBIOME',
-    category: 'Gut–Mito Signaling',
-    tagline: 'Daily gut-mito support designed to reinforce your foundation.',
+    category: 'Daily Gut-Mito Support',
+    tagline: 'Urolithin A + Tributyrin. Two ingredients, one gut-mitochondria axis.',
     description:
-      'Urolithin A + tributyrin. 2-compound precision.',
+      'Urolithin A + Tributyrin. Enteric-coated, two-compound precision.',
     price: '$110.00',
     serving: '2 enteric caps daily',
     specRow: 'Glass bottle \u2022 UV-protected',
@@ -277,10 +277,10 @@ const PRODUCTS = {
   cellunova: {
     id: 'cellunova',
     name: 'CELLUNOVA',
-    category: 'Renewal Cadence + Cleanup',
-    tagline: 'A 7-day monthly reset protocol designed for discipline, not extremes.',
+    category: '7-Day Monthly Protocol',
+    tagline: 'Ten compounds. Seven days on. The off-cycle is part of the design.',
     description:
-      'Polyphenol + senolytic stack. 10 actives. 7-day cycle.',
+      '10 actives. 7-day monthly cycle. Fully disclosed dosing.',
     price: '$49.99',
     serving: '5 caps/day for 7 days',
     specRow: 'Glass bottle \u2022 UV-protected',
@@ -346,7 +346,7 @@ const PRODUCTS = {
           { title: 'Shoba G et al. Influence of piperine on the pharmacokinetics of curcumin in animals and human volunteers. Planta Med. 1998;64(4):353-356.', doi: '10.1055/s-2006-957450' }
         ]}
     ],
-    telemetry: ['Autophagy Support', 'Cellular Cleanup', 'Phase Design']
+    telemetry: ['Autophagy Support', 'Mitochondrial Resilience', 'Phase Design']
   }
 };
 
@@ -1111,13 +1111,13 @@ function ShopCatalog() {
       <section style={{ background: BASE_DARK }} data-testid="section-shop-hero">
         <div className="mx-auto max-w-6xl px-5 md:px-8 pt-28 md:pt-36 pb-20 md:pb-28">
           <div className="text-center mb-14 md:mb-16">
-            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] font-bold text-teal-400/80 mb-5" data-testid="text-shop-eyebrow">The Age Revive Protocol</span>
+            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] font-bold text-teal-400/80 mb-5" data-testid="text-shop-eyebrow">Three fully disclosed formulas. One system.</span>
             <h1 className="font-head font-normal uppercase tracking-[-0.04em] leading-[0.88] text-white mb-5" style={{ fontSize: 'clamp(2.2rem, 6vw, 3.8rem)' }} data-testid="text-shop-title">
-              Three Formulas. One System.
+              Daily NAD+. Gut Resilience. Monthly Reset.
             </h1>
             <p className="max-w-xl mx-auto text-[15px] md:text-[16px] font-sans text-white/60 leading-relaxed">
-              A daily foundation, a gut-mito signal layer, and a monthly reset.
-              Each formula has a distinct role. Together, they cover the full protocol.
+              Each formula has a distinct role. Every dose is disclosed.
+              Together, they cover the full protocol.
             </p>
           </div>
 

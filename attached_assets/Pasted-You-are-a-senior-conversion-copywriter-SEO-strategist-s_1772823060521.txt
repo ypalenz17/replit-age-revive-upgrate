@@ -1,0 +1,434 @@
+You are a senior conversion copywriter, SEO strategist, supplement compliance-aware content editor, and senior front-end engineer.
+
+Your job is to update ONLY the copy, metadata, and schema descriptions on the Age Revive homepage, shop page, and the three product pages:
+- Home
+- Shop / Shop All
+- CELLUNAD+
+- CELLUBIOME
+- CELLUNOVA
+
+Do not redesign the pages.
+Do not change spacing, card sizes, component structure, breakpoints, or visual layout unless absolutely required to prevent text overflow.
+The goal is to make the content:
+- more impactful
+- clearer for average people
+- still educated and evidence-aware
+- better aligned with the brand’s actual science and FAQ pages
+- stronger for conversion
+- better for Google SEO and LLM retrieval
+- roughly the same length as the current text so the design does not break
+
+NON-NEGOTIABLE GUARDRAILS
+
+Do not:
+- change prices
+- change serving sizes
+- change ingredient doses
+- change product roles
+- invent claims not supported by the current site content
+- overstate early-stage evidence
+- make disease claims
+- use hype like “revolutionary,” “next-gen,” “hack your aging,” “engineered longevity,” or “deep cellular cleanup”
+- shrink font sizes or resize boxes just to fit copy
+- add extra sections if the current layout does not already support them
+- change URLs or slugs
+- change the visual design unless text overflow forces a tiny non-structural adjustment
+
+IMPORTANT PRODUCT-TRUTH RULES
+
+Anchor all copy to the current approved live product truths already reflected across the site:
+- CELLUNAD+ is the daily NAD+ foundation and the best starting point for most people
+- CELLUBIOME is a targeted gut-barrier + mitochondrial support product, not a probiotic
+- CELLUBIOME should not imply that Tributyrin has the same level of human evidence as Urolithin A
+- CELLUNOVA is a periodic 7-day monthly protocol, not a daily baseline
+- CELLUNOVA should not be framed like a drug-equivalent senolytic protocol
+- The brand uses full label disclosure, no proprietary blends, third-party testing, and lot-based documentation support
+
+SEO / LLM RULES
+
+Implement the copy so it is good for both users and retrieval:
+- keep one clear H1 per page
+- align title tag, H1, hero copy, og:title, and schema description
+- keep important product truths in visible HTML text
+- use exact product names consistently
+- use plain-English product-role phrases near the top of each page
+- keep all FAQ/common-question content in the DOM if it already exists
+- update Product schema descriptions on product pages so they match the visible copy
+- update Open Graph descriptions if present
+- keep canonicals unchanged unless broken
+- do not keyword stuff
+- do not add hidden text
+
+LENGTH / LAYOUT GUARDRAILS
+
+Keep copy roughly within these limits:
+- hero H1: max 60 characters if possible
+- hero subhead: max 110 characters
+- card title: max 40 characters
+- badge / helper line: max 36 characters
+- card body: max 95 characters
+- protocol highlight bullet: max 58 characters
+- key benefit bullet: max 160 characters
+- common-question answer: max 170 characters when possible
+- meta title: aim for ~50 to 65 characters
+- meta description: aim for ~140 to 160 characters
+
+If overflow happens:
+1. use the shorter fallback copy provided below
+2. do not resize components
+3. do not reduce font size unless absolutely necessary and only minimally
+
+IMPLEMENTATION RULE
+
+Find the existing content source layer first.
+Prefer editing centralized content/data objects or page-level copy constants rather than scattered inline strings.
+If the site uses shared components, update page-specific content props rather than duplicating copy in multiple places.
+
+NOW MAKE THESE EXACT COPY CHANGES
+
+==================================================
+HOME PAGE
+==================================================
+
+Update metadata:
+- Title tag:
+  Age Revive | Longevity Protocols for NAD+ & Gut-Mito Support
+
+- Meta description:
+  Three fully disclosed protocols: CELLUNAD+ for daily NAD+ support, CELLUBIOME for gut-barrier and mitochondrial support, and CELLUNOVA as a 7-day monthly protocol.
+
+If there is a hero eyebrow / kicker, replace with:
+- Three fully disclosed formulas. One system.
+
+Replace the homepage H1 with:
+- Daily NAD+. Gut resilience. One smarter longevity system.
+
+Replace the homepage hero subhead with:
+- Start with CELLUNAD+, add CELLUBIOME, and layer in CELLUNOVA as a 7-day monthly protocol.
+
+If there is a primary CTA in the hero, use:
+- Shop the System
+
+If there is a secondary CTA in the hero, use:
+- Explore the Science
+
+If there is a trust strip / trust chips section near the hero, use these items:
+- Full dose disclosure
+- No proprietary blends
+- Third-party tested
+- Lot traceability
+
+Replace homepage product-card / system-card titles with:
+- CELLUNAD+ — Daily NAD+ Foundation
+- CELLUBIOME — Daily Gut-Mito Support
+- CELLUNOVA — 7-Day Monthly Protocol
+
+If cards have a short badge / helper line, use:
+- CELLUNAD+: Best place to start
+- CELLUBIOME: Best if gut support is the priority
+- CELLUNOVA: Add as a periodic layer
+
+If cards have a body/description field, use:
+- CELLUNAD+: 500 mg NR with methylation and mitochondrial co-factors.
+- CELLUBIOME: Urolithin A plus enteric tributyrin for gut-barrier and mitochondrial support.
+- CELLUNOVA: Periodic support for autophagy-related pathways and mitochondrial resilience.
+
+If the homepage uses shorter one-line card bodies, use these shorter fallbacks instead:
+- CELLUNAD+: 500 mg NR plus co-factors for a stronger daily foundation.
+- CELLUBIOME: Daily gut-mito support with urolithin A and enteric tributyrin.
+- CELLUNOVA: 7-day monthly support for autophagy-related pathways and resilience.
+
+==================================================
+SHOP PAGE
+==================================================
+
+Update metadata:
+- Title tag:
+  Shop Longevity Supplements | Age Revive
+
+- Meta description:
+  Compare CELLUNAD+, CELLUBIOME, and CELLUNOVA by role, cadence, and price to build your Age Revive protocol.
+
+If there is a hero eyebrow / kicker, use:
+- Three formulas. One system.
+
+Replace the shop-page H1 with:
+- Choose your starting point.
+
+Replace the shop-page hero subhead with:
+- Daily NAD+ foundation, daily gut-mito support, or a 7-day monthly protocol.
+
+If there is a short helper line under the hero, use:
+- Compare role, cadence, and price at a glance.
+
+If the shop page has product cards, comparison cards, or collection cards, replace visible product role labels with:
+- CELLUNAD+ — Daily NAD+ Foundation
+- CELLUBIOME — Daily Gut-Mito Support
+- CELLUNOVA — 7-Day Monthly Protocol
+
+If the cards support a small badge / helper label, use:
+- CELLUNAD+: Most people start here
+- CELLUBIOME: Best if gut support is the priority
+- CELLUNOVA: Add as a periodic layer
+
+If the cards support a description/body field, use:
+- CELLUNAD+: Daily NAD+ foundation with 500 mg NR and essential co-factors.
+- CELLUBIOME: Daily gut-barrier and mitochondrial support with urolithin A and enteric tributyrin.
+- CELLUNOVA: 7-day monthly protocol for autophagy-related support and mitochondrial resilience.
+
+If the cards only support one compact line, use these shorter versions:
+- CELLUNAD+: Daily NAD+ foundation with 500 mg NR and co-factors.
+- CELLUBIOME: Daily gut-mito support with urolithin A and enteric tributyrin.
+- CELLUNOVA: 7-day monthly protocol for autophagy-related support.
+
+If any generic CTA like “View Protocol” feels vague on the shop page, change it to:
+- View Details
+
+If there is a secondary quick-action CTA, use:
+- Add to Protocol
+
+==================================================
+CELLUNAD+ PRODUCT PAGE
+==================================================
+
+Update metadata:
+- Title tag:
+  CELLUNAD+ | Daily NAD+ Foundation with 500 mg NR | Age Revive
+
+- Meta description:
+  CELLUNAD+ is Age Revive’s daily NAD+ foundation with 500 mg nicotinamide riboside plus methylation and mitochondrial co-factors. 2 capsules daily.
+
+Keep the H1 as:
+- CELLUNAD+
+
+Replace the long hero descriptor with:
+- Daily NAD+ foundation with 500 mg NR, methylation support, and mitochondrial co-factors.
+
+Replace the short hero descriptor / helper line with:
+- Best place to start for most people.
+
+Keep price and serving unchanged.
+
+Replace the 3 “Protocol highlights” bullets with:
+- 500 mg NR for daily NAD+ support
+- TMG + active B vitamins for methylation support
+- R-lipoic acid + apigenin for co-factor support
+
+Replace the 3 “Key benefits” bullets with:
+- Daily NAD+ support: 500 mg NR supports NAD+ metabolism tied to cellular energy and maintenance pathways.
+- More complete than NR alone: methylation co-factors and mitochondrial support ingredients round out the formula.
+- Non-stimulant by design: built for consistency over time, not short-term energy spikes.
+
+Keep Supplement Facts unchanged.
+
+If the product page has a “Common questions” section, replace question text and answers with:
+
+Question 1:
+- How long should I evaluate CELLUNAD+?
+Answer:
+- Most people assess CELLUNAD+ over 8-12 weeks of consistent daily use.*
+
+Question 2:
+- Can I take CELLUNAD+ with food?
+Answer:
+- Yes. Take with or without food. Consistency matters more than timing.
+
+Question 3:
+- What is Nicotinamide Riboside (NR)?
+Answer:
+- NR is a precursor your cells use to build NAD+, a coenzyme involved in cellular energy metabolism.
+
+Question 4:
+- Why include methylation support ingredients?
+Answer:
+- CELLUNAD+ pairs NR with TMG and active B vitamins because NAD+ metabolism intersects with methylation pathways.
+
+Question 5:
+- Is CELLUNAD+ a stimulant?
+Answer:
+- No. CELLUNAD+ supports NAD+ metabolism and cellular energy pathways without stimulant compounds.
+
+If Product schema exists on this page:
+- set the schema description to match the visible long hero descriptor
+- do not change price, availability, or dosage fields unless already broken
+
+==================================================
+CELLUBIOME PRODUCT PAGE
+==================================================
+
+Update metadata:
+- Title tag:
+  CELLUBIOME | Daily Gut-Mito Support | Age Revive
+
+- Meta description:
+  CELLUBIOME pairs 500 mg urolithin A with 500 mg enteric tributyrin for daily gut-barrier and mitochondrial support. 2 enteric capsules daily.
+
+Keep the H1 as:
+- CELLUBIOME
+
+Replace the long hero descriptor with:
+- Daily gut-barrier and mitochondrial support with urolithin A plus enteric tributyrin.
+
+Replace the short hero descriptor / helper line with:
+- Best if gut support is the priority.
+
+Keep price and serving unchanged.
+
+Replace the 3 “Protocol highlights” bullets with:
+- 500 mg Urolithin A for mitochondrial renewal support
+- 500 mg enteric tributyrin for downstream butyrate delivery
+- Daily support for gut-barrier and gut-mito signaling
+
+Replace the 3 “Key benefits” bullets with:
+- Mitochondrial renewal: Urolithin A is studied in humans for mitochondrial-related biomarkers and mitophagy pathways.
+- Gut-barrier support: Tributyrin is a stable butyrate precursor designed for downstream delivery.
+- Targeted daily formula: enteric protection helps more of the formula reach the intestine intact.
+
+Keep Supplement Facts unchanged.
+
+If the product page has a “Common questions” section, replace question text and answers with:
+
+Question 1:
+- How long should I evaluate CELLUBIOME?
+Answer:
+- Most people assess CELLUBIOME over 8-12 weeks of daily use.* Some notice digestive comfort sooner.*
+
+Question 2:
+- Can I take CELLUBIOME with food?
+Answer:
+- Yes. Take with or without food. Consistency matters more than timing.
+
+Question 3:
+- Is CELLUBIOME a probiotic?
+Answer:
+- No. CELLUBIOME is a targeted compound formula, not a probiotic blend.
+
+Question 4:
+- Why 500 mg Urolithin A?
+Answer:
+- 500 mg aligns with published human studies of Urolithin A and mitochondrial-related biomarkers.
+
+Question 5:
+- Why tributyrin instead of butyrate salts?
+Answer:
+- Tributyrin is used for stability and downstream butyrate delivery rather than relying on common butyrate salts.
+
+IMPORTANT:
+- remove or revise any copy that suggests BOTH CELLUBIOME compounds are equally “clinically studied”
+- do not flatten the evidence level of tributyrin to match urolithin A
+
+If Product schema exists on this page:
+- set the schema description to match the visible long hero descriptor
+- do not change price, availability, or dosage fields unless already broken
+
+==================================================
+CELLUNOVA PRODUCT PAGE
+==================================================
+
+Update metadata:
+- Title tag:
+  CELLUNOVA | 7-Day Monthly Protocol | Age Revive
+
+- Meta description:
+  CELLUNOVA is a 7-day monthly protocol combining autophagy-related support, senescence-research compounds, and mitochondrial resilience support. Contains wheat.
+
+Keep the H1 as:
+- CELLUNOVA
+
+Replace the long hero descriptor with:
+- 7-day monthly protocol for autophagy-related support and mitochondrial resilience.
+
+Replace the short hero descriptor / helper line with:
+- Add as a periodic 7-day layer.
+
+Keep price and serving unchanged.
+
+Replace the 3 “Protocol highlights” bullets with:
+- 7-day monthly protocol, not a daily baseline
+- Autophagy-related support plus mitochondrial resilience
+- Includes compounds discussed in senescence research
+
+Replace the 3 “Key benefits” bullets with:
+- Periodic support: designed for a defined 7-day window, then a return to daily baseline layers.
+- Evidence-aware formula: combines autophagy-related support, mitochondrial resilience, and senescence-research context.
+- Fully disclosed label: every ingredient and dose is listed for direct evaluation.
+
+Keep Supplement Facts unchanged.
+
+If the product page has a “Common questions” section, replace question text and answers with:
+
+Question 1:
+- Is CELLUNOVA taken daily?
+Answer:
+- No. CELLUNOVA is a 7-day protocol designed to be repeated monthly.
+
+Question 2:
+- What is autophagy?
+Answer:
+- Autophagy is a cellular recycling process involved in how cells manage damaged components.
+
+Question 3:
+- Can I stack it with CELLUNAD+ and CELLUBIOME?
+Answer:
+- Yes. CELLUNOVA is designed as a periodic layer on top of daily CELLUNAD+ and CELLUBIOME.
+
+Question 4:
+- Should I take it with food?
+Answer:
+- You can take it with or without food. Many people prefer taking it with food for comfort.
+
+Question 5:
+- Does it contain allergens?
+Answer:
+- Yes. CELLUNOVA contains wheat from the spermidine source.
+
+IMPORTANT:
+- remove or revise any copy using phrases like “deep cellular cleanup,” “senolytics target damaged cells,” or language that feels more aggressive than the Science page
+- keep the page clearly framed as a periodic protocol, not a daily baseline
+- do not imply drug-like senolytic outcomes
+
+If Product schema exists on this page:
+- set the schema description to match the visible long hero descriptor
+- do not change price, availability, or dosage fields unless already broken
+
+==================================================
+SHARED / REUSABLE COPY
+==================================================
+
+If there is a reusable footer teaser / system-summary module shared across Home, Shop, and product pages, update it to:
+
+Heading:
+- Three fully disclosed protocols. One system.
+
+Subheading:
+- Daily NAD+ foundation, daily gut-barrier and mitochondrial support, plus a 7-day monthly protocol.
+
+Shared product labels:
+- CELLUNAD+ — Daily NAD+ Foundation
+- CELLUBIOME — Daily Gut-Mito Support
+- CELLUNOVA — 7-Day Monthly Protocol
+
+Do this only if the component is already shared.
+Do not add a new footer teaser if one does not exist.
+
+==================================================
+IMPLEMENTATION / TECHNICAL INSTRUCTIONS
+==================================================
+
+1. Update only content, metadata, and schema descriptions.
+2. Preserve current layout and visual design.
+3. Keep all important copy in visible HTML text.
+4. Keep current URLs and canonicals.
+5. Update Open Graph / Twitter descriptions if present so they match page topic.
+6. Update Product JSON-LD descriptions on product pages to match visible hero copy.
+7. If FAQ structured data exists on product pages, keep it aligned with the visible questions/answers exactly.
+8. Do not let any page title, H1, meta description, OG title, or schema description drift out of alignment.
+9. Do not leave old duplicate strings in hidden components, schema, or metadata.
+10. Do not make unsupported claim escalations.
+
+WHEN DONE, RETURN:
+1. files changed
+2. exact text fields changed
+3. any places where copy had to use the shorter fallback
+4. whether metadata / OG / Product schema were updated
+5. any remaining overflow or layout risk

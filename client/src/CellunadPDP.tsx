@@ -168,7 +168,7 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
               </div>
 
               <p className="text-[14px] lg:text-[15px] text-white/55 font-sans leading-relaxed max-w-md">
-                Daily NAD+ support with clinically studied NR, methylation co-factors, and mitochondrial support. Non-stimulant. Fully disclosed formula.*
+                Daily NAD+ foundation with 500 mg NR, methylation support, and mitochondrial co-factors. Non-stimulant. Fully disclosed formula.*
               </p>
 
               <div className="flex flex-wrap gap-2">

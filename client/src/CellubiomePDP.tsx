@@ -168,7 +168,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
               </div>
 
               <p className="text-[14px] lg:text-[15px] text-white/55 font-sans leading-relaxed max-w-md">
-                500 mg Urolithin A and 500 mg Tributyrin in enteric-protected capsules. Clinically studied doses for mitochondrial renewal and gut barrier support.*
+                Daily gut-barrier and mitochondrial support with urolithin A plus enteric tributyrin. Fully disclosed formula.*
               </p>
 
               <div className="flex flex-wrap gap-2">
@@ -302,7 +302,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
             {[
-              { title: 'Clinically Studied Doses', body: '500 mg Urolithin A and 500 mg Tributyrin. Doses used in published research on mitochondrial function and gut barrier integrity. No diluted blends.' },
+              { title: 'Research-Informed Doses', body: '500 mg Urolithin A aligns with published human studies. 500 mg Tributyrin provides stable butyrate delivery. No diluted blends.' },
               { title: 'Enteric-Protected Delivery', body: 'Standard capsules degrade in stomach acid. CELLUBIOME uses enteric coating to protect both compounds until they reach the intestine, where absorption and barrier support occur.' },
               { title: 'Two-Compound Focus', body: 'Not a kitchen-sink formula. Two targeted compounds at full clinical doses, each addressing one side of the gut-mitochondria axis.' },
               { title: 'Full Transparency', body: 'Every ingredient, every dose, printed on the label. No proprietary blends. Certificate of Analysis available by production lot.' },
@@ -400,7 +400,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
 
           <div className="mt-10 text-center">
             <p className="text-[14px] font-sans text-[#0A1220]/45 leading-relaxed mb-5">
-              Two clinically studied compounds. Enteric-protected. Fully transparent.
+              Two targeted compounds. Enteric-protected. Fully transparent.
             </p>
             <button
               onClick={handleAddToCart}
@@ -638,7 +638,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
             <span className="text-white/30">starts here.</span>
           </h2>
           <p className="mt-5 text-[14px] font-sans text-white/35 max-w-[36ch] mx-auto leading-[1.6]">
-            Two clinically studied compounds. Enteric-protected. Transparent dosing. One daily protocol.
+            Two targeted compounds. Enteric-protected. Transparent dosing. One daily protocol.
           </p>
           <div className="mt-7">
             <button

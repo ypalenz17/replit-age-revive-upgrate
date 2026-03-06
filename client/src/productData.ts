@@ -7,14 +7,14 @@ export const PRODUCT_IMAGES: Record<string, string[]> = {
 export const PRODUCT_DETAIL_DATA = {
   cellunad: {
     name: "CELLUNAD+",
-    tagline: "Daily NAD+ Optimization",
-    subtitle: "Clinically studied NAD+ precursor with essential co-factors for energy, DNA maintenance, and healthy aging.*",
+    tagline: "Daily NAD+ Foundation",
+    subtitle: "Daily NAD+ foundation with 500 mg NR, methylation support, and mitochondrial co-factors.",
     heroBullets: {
-      lead: "Clinically studied NAD+ precursor with essential co-factors.*",
+      lead: "Best place to start for most people.",
       points: [
-        "500 mg NR for daily cellular energy*",
-        "Complete methylation support with TMG + B vitamins*",
-        "Apigenin shields NAD+ from age-related depletion*"
+        "500 mg NR for daily NAD+ support",
+        "TMG + active B vitamins for methylation support",
+        "R-lipoic acid + apigenin for co-factor support"
       ]
     },
     rating: 4.8,
@@ -51,9 +51,9 @@ export const PRODUCT_DETAIL_DATA = {
       subhead: "Supports NAD+ regeneration, mitochondrial energy metabolism, and methylation balance at the cellular level.",
     },
     benefitHighlights: [
-      { icon: 'Zap', title: "NAD+ Restoration", desc: "Delivers 500 mg Nicotinamide Riboside (NR) to support intracellular NAD+ levels. NAD+ supports cellular energy production, DNA repair processes, and sirtuin pathway activity." },
-      { icon: 'Shield', title: "Mitochondrial Support", desc: "Supports mitochondrial function and oxidative balance through R-Lipoic Acid and NAD+-dependent metabolic pathways." },
-      { icon: 'Dna', title: "Methylation Support", desc: "Includes Betaine (TMG), P-5-P, 5-MTHF, and Methylcobalamin to support methylation processes associated with NAD+ metabolism and homocysteine balance." },
+      { icon: 'Zap', title: "Daily NAD+ Support", desc: "500 mg NR supports NAD+ metabolism tied to cellular energy and maintenance pathways." },
+      { icon: 'Shield', title: "More Complete Than NR Alone", desc: "Methylation co-factors and mitochondrial support ingredients round out the formula." },
+      { icon: 'Dna', title: "Non-Stimulant by Design", desc: "Built for consistency over time, not short-term energy spikes." },
     ],
     timelineHeadline: 'Biological Improvements Over Time',
     timelineSubline: 'What consistent NAD+ support may look like.*',
@@ -124,11 +124,11 @@ export const PRODUCT_DETAIL_DATA = {
       { name: "CELLUNOVA", slug: "cellunova", role: "Monthly Reset", add: "Add a periodic 7-day cellular cleanup cycle to complement daily NAD+ support.", when: "7-day monthly cycle" }
     ],
     faq: [
-      { q: "How long before I notice anything?", a: "Most people evaluate meaningful changes after 8–12 weeks of consistent daily use.*" },
-      { q: "Can I take it with food?", a: "Yes. Take with or without food. Consistency matters more than timing." },
-      { q: "What is Nicotinamide Riboside (NR)?", a: "Nicotinamide Riboside (NR) is a precursor to NAD+, a coenzyme required for mitochondrial energy production and cellular repair processes." },
-      { q: "Why include methylation support ingredients?", a: "NAD+ metabolism interacts with methylation pathways. Betaine (TMG), P-5-P, 5-MTHF, and Methylcobalamin support balanced NAD+ metabolism with consistent use." },
-      { q: "Is this a stimulant?", a: "No. CELLUNAD+ supports cellular energy metabolism through NAD+ pathways, not stimulant compounds." }
+      { q: "How long should I evaluate CELLUNAD+?", a: "Most people assess CELLUNAD+ over 8–12 weeks of consistent daily use.*" },
+      { q: "Can I take CELLUNAD+ with food?", a: "Yes. Take with or without food. Consistency matters more than timing." },
+      { q: "What is Nicotinamide Riboside (NR)?", a: "NR is a precursor your cells use to build NAD+, a coenzyme involved in cellular energy metabolism." },
+      { q: "Why include methylation support ingredients?", a: "CELLUNAD+ pairs NR with TMG and active B vitamins because NAD+ metabolism intersects with methylation pathways." },
+      { q: "Is CELLUNAD+ a stimulant?", a: "No. CELLUNAD+ supports NAD+ metabolism and cellular energy pathways without stimulant compounds." }
     ],
     ctaHeadline: ['Start your', 'daily foundation.'],
     ctaBody: 'Add CELLUNAD+ to your routine for daily NAD+ and energy support.',
@@ -137,14 +137,14 @@ export const PRODUCT_DETAIL_DATA = {
 
   cellubiome: {
     name: "CELLUBIOME",
-    tagline: "Gut–Mitochondria Axis",
-    subtitle: "Recycle damaged mitochondria. Reinforce gut barrier integrity. Two clinically studied compounds working together to restore cellular energy from the inside out.*",
+    tagline: "Daily Gut-Mito Support",
+    subtitle: "Daily gut-barrier and mitochondrial support with urolithin A plus enteric tributyrin.",
     heroBullets: {
-      lead: "Two clinically studied compounds for gut and mitochondrial health.*",
+      lead: "Best if gut support is the priority.",
       points: [
-        "Recycles damaged mitochondria for renewed energy*",
-        "Reinforces gut barrier integrity*",
-        "Restores cellular energy from the inside out*"
+        "500 mg Urolithin A for mitochondrial renewal support",
+        "500 mg enteric tributyrin for downstream butyrate delivery",
+        "Daily support for gut-barrier and gut-mito signaling"
       ]
     },
     rating: 4.9,
@@ -175,8 +175,9 @@ export const PRODUCT_DETAIL_DATA = {
       subhead: "Supports mitochondrial renewal and gut barrier resilience to preserve internal signaling balance.",
     },
     benefitHighlights: [
-      { icon: 'RotateCcw', title: "Mitochondrial Renewal", desc: "500 mg Urolithin A supports mitophagy and the renewal of aging mitochondria. Sustains cellular energy efficiency over time." },
-      { icon: 'Layers', title: "Gut Barrier Integrity", desc: "Enteric Tributyrin delivers bioavailable butyrate to reinforce intestinal barrier integrity. Supports microbial balance and long-term signaling stability." },
+      { icon: 'RotateCcw', title: "Mitochondrial Renewal", desc: "Urolithin A is studied in humans for mitochondrial-related biomarkers and mitophagy pathways." },
+      { icon: 'Layers', title: "Gut-Barrier Support", desc: "Tributyrin is a stable butyrate precursor designed for downstream delivery." },
+      { icon: 'Shield', title: "Targeted Daily Formula", desc: "Enteric protection helps more of the formula reach the intestine intact." },
     ],
     timelineHeadline: 'Biological Improvements Over Time',
     timelineSubline: 'What consistent cellular support may look like.*',
@@ -215,9 +216,9 @@ export const PRODUCT_DETAIL_DATA = {
       headline: 'The Gut–Mitochondria Axis',
       paragraphs: [
         'The gut barrier and mitochondrial function are biologically interconnected. Disruption in either system can amplify inflammation, impair cellular energy production, and accelerate biological aging.',
-        'CELLUBIOME delivers clinically studied doses of <strong>Urolithin A</strong> and <strong>Tributyrin</strong> to support <strong>mitophagy</strong> activation, intestinal barrier integrity, and gut–mitochondria signaling resilience.',
+        'CELLUBIOME pairs <strong>Urolithin A</strong>, studied in humans for mitochondrial-related biomarkers, with <strong>Tributyrin</strong>, a stable butyrate precursor designed for downstream delivery to support intestinal barrier integrity and gut–mitochondria signaling.',
       ],
-      microProof: 'Formulated to target both mitochondrial renewal and butyrate-mediated gut repair.',
+      microProof: 'Formulated to support mitochondrial renewal and butyrate-mediated gut-barrier resilience.',
       ctaSupport: 'Restore internal signal stability at the cellular level.',
       diagramLabel: 'Gut–Mito Axis',
       diagramCenter: { label: 'Mitochondria', icon: 'Zap' },
@@ -249,11 +250,11 @@ export const PRODUCT_DETAIL_DATA = {
       { name: "CELLUNOVA", slug: "cellunova", role: "Monthly Reset", add: "Add a periodic 7-day reset cycle to complement daily support.", when: "7-day monthly cycle" }
     ],
     faq: [
-      { q: "How long before I notice anything?", a: "Most people evaluate meaningful changes after 8–12 weeks of consistent daily use.* Early digestive comfort may appear sooner.*" },
-      { q: "Can I take it with food?", a: "Yes. Take with or without food. Consistency matters more than timing." },
-      { q: "Is this a probiotic?", a: "No. CELLUBIOME is not a probiotic. It provides Urolithin A and Tributyrin to support mitochondrial function, mitophagy pathways, and gut barrier integrity." },
-      { q: "Why 500 mg Urolithin A?", a: "500 mg is the clinically studied dose used in published research on mitochondrial function and cellular recycling (mitophagy)." },
-      { q: "Why Tributyrin instead of butyrate salts?", a: "Tributyrin is a stable butyrate precursor designed to deliver bioavailable butyrate support without relying on common butyrate salts." }
+      { q: "How long should I evaluate CELLUBIOME?", a: "Most people assess CELLUBIOME over 8–12 weeks of daily use.* Some notice digestive comfort sooner.*" },
+      { q: "Can I take CELLUBIOME with food?", a: "Yes. Take with or without food. Consistency matters more than timing." },
+      { q: "Is CELLUBIOME a probiotic?", a: "No. CELLUBIOME is a targeted compound formula, not a probiotic blend." },
+      { q: "Why 500 mg Urolithin A?", a: "500 mg aligns with published human studies of Urolithin A and mitochondrial-related biomarkers." },
+      { q: "Why tributyrin instead of butyrate salts?", a: "Tributyrin is used for stability and downstream butyrate delivery rather than relying on common butyrate salts." }
     ],
     ctaHeadline: ['Strengthen the', 'foundation.'],
     ctaBody: 'Add CELLUBIOME for daily gut barrier and mitochondrial support.',
@@ -262,14 +263,14 @@ export const PRODUCT_DETAIL_DATA = {
 
   cellunova: {
     name: "CELLUNOVA",
-    tagline: "7-Day Autophagy Cycle",
-    subtitle: "A focused 7-day cycle with senolytics and autophagy activators for deep cellular cleanup and renewal.*",
+    tagline: "7-Day Monthly Protocol",
+    subtitle: "7-day monthly protocol for autophagy-related support and mitochondrial resilience.",
     heroBullets: {
-      lead: "A focused 7-day cycle for deep cellular cleanup and renewal.*",
+      lead: "Add as a periodic 7-day layer.",
       points: [
-        "Senolytic compounds target damaged cells*",
-        "Autophagy activators promote cellular recycling*",
-        "Cyclical protocol for sustained renewal*"
+        "7-day monthly protocol, not a daily baseline",
+        "Autophagy-related support plus mitochondrial resilience",
+        "Includes compounds discussed in senescence research"
       ]
     },
     rating: 4.7,
@@ -308,9 +309,9 @@ export const PRODUCT_DETAIL_DATA = {
       subhead: "Designed as a 7-day protocol to periodically support autophagy-related pathways, cellular cleanup, and mitochondrial resilience.",
     },
     benefitHighlights: [
-      { icon: 'RotateCcw', title: "Autophagy Support", desc: "Includes Spermidine, Trans-Resveratrol, and Green Tea Extract (50% EGCG) to support autophagy pathways involved in cellular maintenance." },
-      { icon: 'Wind', title: "Senolytic Support", desc: "Quercetin and Fisetin are studied for their role in supporting the body's natural clearance processes associated with cellular senescence." },
-      { icon: 'Flame', title: "Mitochondrial Resilience", desc: "NAC, PQQ, Astaxanthin, and Ca-AKG support mitochondrial and oxidative defense pathways during metabolic stress." },
+      { icon: 'RotateCcw', title: "Periodic Support", desc: "Designed for a defined 7-day window, then a return to daily baseline layers." },
+      { icon: 'Wind', title: "Evidence-Aware Formula", desc: "Combines autophagy-related support, mitochondrial resilience, and senescence-research context." },
+      { icon: 'Flame', title: "Fully Disclosed Label", desc: "Every ingredient and dose is listed for direct evaluation." },
     ],
     timelineHeadline: 'Protocol Effects Over Time',
     timelineSubline: 'What a structured 7-day cycle may look like.*',
@@ -380,13 +381,13 @@ export const PRODUCT_DETAIL_DATA = {
     ],
     faq: [
       { q: "Is CELLUNOVA taken daily?", a: "No. CELLUNOVA is a 7-day protocol designed to be repeated monthly." },
-      { q: "What is autophagy?", a: "Autophagy is a cellular recycling process involved in maintaining mitochondrial function and cellular homeostasis." },
-      { q: "Can I stack it with CELLUNAD+ and CELLUBIOME?", a: "Yes. CELLUNOVA is designed as a periodic reset layered onto daily NAD+ and gut–mitochondria support." },
+      { q: "What is autophagy?", a: "Autophagy is a cellular recycling process involved in how cells manage damaged components." },
+      { q: "Can I stack it with CELLUNAD+ and CELLUBIOME?", a: "Yes. CELLUNOVA is designed as a periodic layer on top of daily CELLUNAD+ and CELLUBIOME." },
       { q: "Should I take it with food?", a: "You can take it with or without food. Many people prefer taking it with food for comfort." },
-      { q: "Does it contain allergens?", a: "Contains wheat (spermidine source)." }
+      { q: "Does it contain allergens?", a: "Yes. CELLUNOVA contains wheat from the spermidine source." }
     ],
     ctaHeadline: ['Reset.', 'Renew.'],
-    ctaBody: 'Add CELLUNOVA for a focused 7-day cellular cleanup cycle.',
+    ctaBody: 'Add CELLUNOVA as a periodic 7-day protocol for autophagy-related support.',
     ctaButton: 'Start Now',
   }
 };

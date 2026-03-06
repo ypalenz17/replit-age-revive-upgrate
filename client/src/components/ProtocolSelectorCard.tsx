@@ -104,7 +104,7 @@ export default function ProtocolSelectorCard({ p }: ProductCardProps) {
               style={{ boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08), inset 0 0 0 1px ${hexToRgba(accent, 0.18)}, 0 1px 3px rgba(0,0,0,0.2)` }}
               data-testid={`button-view-protocol-${p.slug}`}
             >
-              View Protocol <ArrowRight size={13} />
+              View Details <ArrowRight size={13} />
             </Link>
 
             <button

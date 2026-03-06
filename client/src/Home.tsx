@@ -25,13 +25,13 @@ const PRODUCTS = [
   {
     slug: 'cellunad',
     name: 'CELLUNAD+',
-    category: 'Daily NAD+ Optimization',
-    role: 'Best starting point',
-    bestFor: 'Cellular energy and DNA maintenance support.',
+    category: 'Daily NAD+ Foundation',
+    role: 'Best place to start',
+    bestFor: '500 mg NR with methylation and mitochondrial co-factors.',
     cadence: '2 capsules daily',
     price: '$79.99',
     subPrice: '$67.99/mo',
-    tagline: 'Precision NAD+ support with co-factors, not hype.',
+    tagline: 'Precision NAD+ support with methylation co-factors. Every dose disclosed.',
     serving: '2 capsules daily',
     ingredientsBadges: ['NR 500 mg', 'TMG 250 mg', 'Apigenin 100 mg'],
     outcomes: [
@@ -61,13 +61,13 @@ const PRODUCTS = [
   {
     slug: 'cellubiome',
     name: 'CELLUBIOME',
-    category: 'Gut-Mitochondria Axis',
-    role: 'Gut-mito axis support',
-    bestFor: 'Mitochondrial renewal and gut barrier integrity.',
+    category: 'Daily Gut-Mito Support',
+    role: 'Best if gut support is the priority',
+    bestFor: 'Urolithin A plus enteric tributyrin for gut-barrier and mitochondrial support.',
     cadence: '2 enteric-coated capsules daily',
     price: '$110.00',
     subPrice: '$93.50/mo',
-    tagline: 'The Gut-Mitochondria Axis, simplified.',
+    tagline: 'Urolithin A + Tributyrin. Two ingredients, one gut-mitochondria axis.',
     serving: '2 enteric-coated capsules daily',
     ingredientsBadges: ['Urolithin A 500 mg', 'Tributyrin 500 mg'],
     outcomes: [
@@ -91,13 +91,13 @@ const PRODUCTS = [
   {
     slug: 'cellunova',
     name: 'CELLUNOVA',
-    category: '7-Day Autophagy Pulse',
-    role: 'Monthly cellular reset',
-    bestFor: 'Monthly cellular cleanup and renewal support.',
+    category: '7-Day Monthly Protocol',
+    role: 'Add as a periodic layer',
+    bestFor: 'Periodic support for autophagy-related pathways and mitochondrial resilience.',
     cadence: '7-day monthly cycle',
     price: '$49.99',
     subPrice: '$42.49/mo',
-    tagline: 'Seven days on. Designed as a cycle, not forever.',
+    tagline: 'Ten compounds. Seven days on. The off-cycle is part of the design.',
     serving: '5 capsules daily · 7-day cycle',
     warning: 'Contains wheat (spermidine source).',
     ingredientsBadges: ['10 Compounds', 'Periodic Protocol', 'Fully Disclosed'],
@@ -222,7 +222,7 @@ const SideSheet = ({ isOpen, onClose, title, children }: { isOpen: boolean; onCl
 };
 
 
-const Hero = ({ onOpenEvidence }: { onOpenEvidence: () => void }) => {
+const Hero = () => {
   const [videoReady, setVideoReady] = useState(false);
 
   return (
@@ -247,16 +247,16 @@ const Hero = ({ onOpenEvidence }: { onOpenEvidence: () => void }) => {
       <div className="relative z-10 w-full max-w-3xl lg:max-w-6xl mx-auto flex flex-col justify-center text-center lg:text-left px-6 md:px-8 lg:px-12 pt-24 md:pt-40 lg:pt-48 pb-12 md:pb-20 lg:pb-28 min-h-[100dvh]">
         <div className="flex flex-col hero-text w-full items-center lg:items-start">
 
-          <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.16em] mb-4 md:mb-5">Age Revive</span>
+          <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.16em] mb-4 md:mb-5">Three fully disclosed formulas. One system.</span>
 
           <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase" style={{ fontSize: 'clamp(34px, 8.5vw, 68px)' }}>
-            Cellular longevity,
+            Daily NAD+. Gut resilience.
             <br />
-            <span className="text-white/55">protocol-grade.</span>
+            <span className="text-white/55">One smarter longevity system.</span>
           </h1>
 
           <p className="mt-5 md:mt-7 text-[15px] md:text-[17px] text-white/65 font-sans font-normal max-w-[40ch] leading-[1.6] mx-auto lg:mx-0">
-            Three targeted protocols -- daily NAD+ support, daily gut-mitochondria repair, and a 7-day monthly cellular reset. Built as one system.
+            Start with CELLUNAD+, add CELLUBIOME, and layer in CELLUNOVA as a 7-day monthly protocol.
           </p>
 
           <div className="mt-7 lg:mt-9 flex flex-col sm:flex-row gap-3 w-full max-w-[360px] sm:max-w-none mx-auto lg:mx-0">
@@ -269,17 +269,17 @@ const Hero = ({ onOpenEvidence }: { onOpenEvidence: () => void }) => {
               <span className="relative z-10">Shop the System</span>
               <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </a>
-            <button
-              onClick={onOpenEvidence}
-              className={`w-full sm:w-auto px-7 min-h-[48px] lg:min-h-[52px] text-white/50 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.12em] hover:text-white/75 transition-all border border-white/[0.10] hover:border-white/[0.20] ${focusRing}`}
-              data-testid="button-view-evidence"
+            <a
+              href="/science"
+              className={`w-full sm:w-auto px-7 min-h-[48px] lg:min-h-[52px] flex items-center justify-center text-white/50 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.12em] hover:text-white/75 transition-all border border-white/[0.10] hover:border-white/[0.20] ${focusRing}`}
+              data-testid="button-explore-science"
             >
-              See Ingredients & Evidence
-            </button>
+              Explore the Science
+            </a>
           </div>
 
           <div className="mt-10 lg:mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-x-0 gap-y-2" data-testid="hero-trust-strip">
-            {['Transparent doses', 'No proprietary blends', 'Third-party tested', 'CoA by lot'].map((item, i) => (
+            {['Full dose disclosure', 'No proprietary blends', 'Third-party tested', 'Lot traceability'].map((item, i) => (
               <span key={item} className="flex items-center">
                 <span className="text-[10px] md:text-[11px] text-white/40 uppercase tracking-[0.10em] font-mono whitespace-nowrap">{item}</span>
                 {i < 3 && <span className="w-px h-[10px] bg-white/12 mx-3 md:mx-4 shrink-0" />}
@@ -666,7 +666,7 @@ export default function Home() {
     <div ref={containerRef} className="relative selection:bg-ar-teal selection:text-white" style={{ backgroundColor: BASE_DARK }}>
       <SiteNavbar />
 
-      <Hero onOpenEvidence={() => setEvidencePanel(true)} />
+      <Hero />
 
       <TrustSection />
 

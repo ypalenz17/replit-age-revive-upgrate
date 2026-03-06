@@ -359,26 +359,26 @@ function buildShippingHtml(): string {
 
 const PAGE_CONTENT: Record<string, PageContent> = {
   "/": {
-    title: "AGE REVIVE | Systemic Biological Architecture",
+    title: "Age Revive | Longevity Protocols for NAD+ & Gut-Mito Support",
     description:
-      "Protocol-grade cellular support. Three engineered formulas for NAD+ optimization, gut-mito signaling, and a 7-day autophagy cadence.",
+      "Three fully disclosed protocols: CELLUNAD+ for daily NAD+ support, CELLUBIOME for gut-barrier and mitochondrial support, and CELLUNOVA as a 7-day monthly protocol.",
     imagePath: "/images/lifestyle-wellness_1.jpg",
     html: `
 <article>
-  <h1>Age Revive - Systemic Biological Architecture</h1>
+  <h1>Age Revive - Longevity Protocols for NAD+ & Gut-Mito Support</h1>
   ${BASE_NAV_HTML}
-  <p>Three protocols designed as one system: CELLUNAD+, CELLUBIOME, and CELLUNOVA.</p>
+  <p>Three fully disclosed protocols designed as one system: CELLUNAD+, CELLUBIOME, and CELLUNOVA.</p>
   <ul>
-    <li><a href="/product/cellunad">CELLUNAD+ - NAD+ Optimization</a></li>
-    <li><a href="/product/cellubiome">CELLUBIOME - Gut-Mito Signaling</a></li>
-    <li><a href="/product/cellunova">CELLUNOVA - 7-Day Autophagy Cycle</a></li>
+    <li><a href="/product/cellunad">CELLUNAD+ — Daily NAD+ Foundation</a></li>
+    <li><a href="/product/cellubiome">CELLUBIOME — Daily Gut-Mito Support</a></li>
+    <li><a href="/product/cellunova">CELLUNOVA — 7-Day Monthly Protocol</a></li>
   </ul>
 </article>`,
   },
   "/shop": {
-    title: "Shop All Products | Age Revive",
+    title: "Shop Longevity Supplements | Age Revive",
     description:
-      "Browse the complete Age Revive product line: CELLUNAD+, CELLUBIOME, and CELLUNOVA.",
+      "Compare CELLUNAD+, CELLUBIOME, and CELLUNOVA by role, cadence, and price to build your Age Revive protocol.",
     imagePath: "/images/product-bottle_1.jpg",
     html: `
 <article>
@@ -580,9 +580,20 @@ function getProductPage(slug: ProductSlug): PageContent {
   const subtitle = (detail.subtitle || detail.tagline || "").replace(/\*/g, "").trim();
   const lead = detail.heroBullets.lead.replace(/\*/g, "").trim();
 
+  const productTitles: Record<string, string> = {
+    cellunad: "CELLUNAD+ | Daily NAD+ Foundation with 500 mg NR | Age Revive",
+    cellubiome: "CELLUBIOME | Daily Gut-Mito Support | Age Revive",
+    cellunova: "CELLUNOVA | 7-Day Monthly Protocol | Age Revive",
+  };
+  const productDescriptions: Record<string, string> = {
+    cellunad: "CELLUNAD+ is Age Revive's daily NAD+ foundation with 500 mg nicotinamide riboside plus methylation and mitochondrial co-factors. 2 capsules daily.",
+    cellubiome: "CELLUBIOME pairs 500 mg urolithin A with 500 mg enteric tributyrin for daily gut-barrier and mitochondrial support. 2 enteric capsules daily.",
+    cellunova: "CELLUNOVA is a 7-day monthly protocol combining autophagy-related support, senescence-research compounds, and mitochondrial resilience support. Contains wheat.",
+  };
+
   return {
-    title: `${detail.name} | Age Revive`,
-    description: subtitle,
+    title: productTitles[slug] || `${detail.name} | Age Revive`,
+    description: productDescriptions[slug] || subtitle,
     imagePath,
     html: `
 <article>
