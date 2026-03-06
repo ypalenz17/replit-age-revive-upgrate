@@ -1039,7 +1039,7 @@
   .ar-pageBody {
     display: grid;
     grid-template-columns: 190px 1fr;
-    gap: 0;
+    gap: 24px;
     max-width: 1180px;
     margin: 0 auto;
   }
@@ -1074,11 +1074,11 @@
 
 @media (min-width: 1024px) {
   .ar-hero {
-    padding: 64px 0 20px;
+    padding: 56px 0 16px;
   }
 
   .ar-section {
-    padding: 64px 0;
+    padding: 52px 0;
   }
 
   .ar-science .ar-lede {
@@ -1171,5 +1171,21 @@
 
   .ar-science table {
     min-width: 700px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .ar-science .ar-container {
+    max-width: 1200px;
+  }
+
+  .ar-contentInner {
+    max-width: 1200px;
+  }
+
+  .ar-pageBody {
+    grid-template-columns: 230px 1fr;
+    gap: 48px;
+    max-width: 1400px;
   }
 }

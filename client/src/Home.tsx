@@ -295,7 +295,7 @@ const Hero = () => {
 
 const TrustSection = () => (
   <section className="relative py-[80px] md:py-[110px] lg:py-[72px] px-6 md:px-8" style={{ backgroundColor: SECONDARY_DARK }}>
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-5xl lg:max-w-6xl mx-auto">
       <div className="text-center mb-12 md:mb-16 lg:mb-12 reveal-stagger">
         <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.20em]">Why Age Revive</span>
         <h2 className="mt-4 font-head font-normal tracking-[-0.03em] uppercase text-white leading-[0.95]" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)' }}>
@@ -352,7 +352,7 @@ const ProductSystemSection = ({ onOpenProduct }: { onOpenProduct: (slug: string)
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-7 items-start">
           {PRODUCTS.map((p) => (
             <div
               key={p.slug}
@@ -471,7 +471,7 @@ const ScienceSection = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 lg:gap-5">
           {axes.map((axis) => (
             <div
               key={axis.tag}
@@ -592,9 +592,9 @@ const FaqSection = () => {
 
 
 const FinalCTA = () => (
-  <section className="relative py-[88px] md:py-[120px] lg:py-[64px] px-6 md:px-8 text-white overflow-hidden" style={{ backgroundColor: BASE_DARK }}>
+  <section className="relative py-[88px] md:py-[120px] lg:py-[56px] px-6 md:px-8 text-white overflow-hidden" style={{ backgroundColor: BASE_DARK }}>
     <div className="absolute inset-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 60% 50% at 50% 50%, rgba(45,212,191,0.03) 0%, transparent 70%)` }} />
-    <div className="max-w-2xl lg:max-w-xl mx-auto text-center relative z-10 reveal">
+    <div className="max-w-2xl mx-auto text-center relative z-10 reveal">
       <span className="font-mono text-[10px] text-ar-teal/60 uppercase tracking-[0.20em]">Get Started</span>
       <h2 className="mt-4 font-head font-normal tracking-[-0.04em] uppercase text-white leading-[0.92]" style={{ fontSize: 'clamp(1.7rem, 5.5vw, 3rem)' }}>
         Your system starts

@@ -846,7 +846,7 @@
   .q-pageBody {
     display: grid;
     grid-template-columns: 180px 1fr;
-    gap: 0;
+    gap: 20px;
     max-width: 1160px;
     margin: 0 auto;
   }
@@ -877,7 +877,11 @@
 
 @media (min-width: 1024px) {
   .q-hero {
-    padding: 72px 0 16px;
+    padding: 56px 0 14px;
+  }
+
+  .q-section {
+    padding: 48px 0;
   }
 }
 
@@ -949,5 +953,21 @@
 
   .q-accPanel {
     color: rgba(0, 0, 0, 0.54);
+  }
+}
+
+@media (min-width: 1440px) {
+  .ar-quality .q-container {
+    max-width: 1200px;
+  }
+
+  .q-contentInner {
+    max-width: 1200px;
+  }
+
+  .q-pageBody {
+    grid-template-columns: 230px 1fr;
+    gap: 44px;
+    max-width: 1400px;
   }
 }

@@ -675,3 +675,17 @@
     color: rgba(122, 246, 224, 0.65);
   }
 }
+
+@media (min-width: 1440px) {
+  .f-container {
+    max-width: 1120px;
+  }
+
+  .f-searchInner {
+    max-width: 1120px;
+  }
+
+  .f-section {
+    padding: 32px 0;
+  }
+}
