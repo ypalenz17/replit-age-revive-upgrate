@@ -20,6 +20,17 @@
   opacity: 0.92;
 }
 
+.ar-science a:focus-visible,
+.ar-science button:focus-visible {
+  outline: 2px solid rgba(122, 246, 224, 0.6);
+  outline-offset: 2px;
+}
+
+.ar-light a:focus-visible,
+.ar-light button:focus-visible {
+  outline-color: rgba(25, 179, 166, 0.6);
+}
+
 .ar-science .ar-container {
   width: 100%;
   max-width: 920px;
@@ -28,7 +39,7 @@
 }
 
 .ar-dark {
-  background: linear-gradient(180deg, #0A1220 0%, #060E1A 100%);
+  background: #0A1220;
   color: rgba(244, 241, 234, 0.92);
 }
 
@@ -38,36 +49,38 @@
 }
 
 .ar-hero {
-  padding: 80px 0 32px;
+  padding: 80px 0 28px;
   text-align: center;
-  background: radial-gradient(700px 500px at 50% 0%,
-      rgba(122, 246, 224, 0.08) 0%,
-      rgba(8, 18, 33, 0.0) 55%),
-    linear-gradient(180deg, #0A1220 0%, #060E1A 100%);
+  background: radial-gradient(600px 420px at 50% 0%,
+      rgba(122, 246, 224, 0.05) 0%,
+      transparent 60%),
+    #0A1220;
 }
 
 .ar-science h1 {
   margin: 0;
-  font-size: 28px;
-  line-height: 1.15;
-  letter-spacing: 0.03em;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   overflow-wrap: break-word;
+  font-weight: 600;
 }
 
 .ar-science .ar-subhead {
   margin: 14px auto 0;
-  max-width: 680px;
-  font-size: 15px;
-  line-height: 1.65;
-  color: rgba(244, 241, 234, 0.70);
+  max-width: 620px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(244, 241, 234, 0.58);
+  font-weight: 400;
 }
 
 .ar-science .ar-heroCtas {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 22px;
+  margin-top: 24px;
   flex-wrap: wrap;
 }
 
@@ -75,17 +88,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 42px;
+  height: 40px;
   padding: 0 16px;
-  border-radius: 10px;
-  letter-spacing: 0.12em;
+  border-radius: 8px;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   font-size: 11px;
-  border: 1px solid rgba(244, 241, 234, 0.16);
-  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(244, 241, 234, 0.14);
+  background: transparent;
   white-space: nowrap;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .ar-science .ar-btnPrimary {
@@ -93,75 +106,83 @@
   color: rgba(10, 18, 32, 0.95);
   border-color: rgba(122, 246, 224, 0.50);
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .ar-science .ar-btnPrimary:hover {
-  filter: brightness(1.06);
-  transform: translateY(-1px);
+  background: rgba(122, 246, 224, 1);
 }
 
 .ar-science .ar-btnGhost {
-  color: rgba(244, 241, 234, 0.80);
+  color: rgba(244, 241, 234, 0.70);
 }
 
 .ar-science .ar-btnGhost:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(244, 241, 234, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(244, 241, 234, 0.20);
+}
+
+.ar-light .ar-btnPrimary {
+  background: rgba(25, 179, 166, 0.90);
+  color: #fff;
+  border-color: rgba(25, 179, 166, 0.60);
+}
+
+.ar-light .ar-btnPrimary:hover {
+  background: rgba(25, 179, 166, 1);
 }
 
 .ar-light .ar-btnGhost {
   color: #1a1a1a;
-  border-color: rgba(0, 0, 0, 0.15);
+  border-color: rgba(0, 0, 0, 0.12);
 }
 
 .ar-light .ar-btnGhost:hover {
-  background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.20);
 }
 
 .ar-science .ar-boundaryNote {
   display: inline-block;
-  margin-top: 18px;
-  padding: 6px 14px;
-  border-radius: 6px;
-  border: 1px solid rgba(244, 241, 234, 0.10);
+  margin-top: 20px;
+  padding: 5px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(244, 241, 234, 0.08);
   font-size: 11px;
-  letter-spacing: 0.06em;
-  color: rgba(244, 241, 234, 0.50);
+  letter-spacing: 0.05em;
+  color: rgba(244, 241, 234, 0.40);
 }
 
 .ar-science .ar-trustStrip {
-  margin: 24px auto 0;
-  max-width: 680px;
+  margin: 22px auto 0;
+  max-width: 620px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 6px 16px;
+  gap: 4px 14px;
 }
 
 .ar-science .ar-trustItem {
   font-size: 11px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(122, 246, 224, 0.75);
+  color: rgba(122, 246, 224, 0.60);
   display: flex;
   align-items: center;
   gap: 5px;
 }
 
 .ar-science .ar-trustDot {
-  width: 4px;
-  height: 4px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
-  background: rgba(122, 246, 224, 0.50);
+  background: rgba(122, 246, 224, 0.35);
 }
 
 .ar-tocMobilePills {
   display: flex;
-  gap: 7px;
+  gap: 6px;
   overflow-x: auto;
-  padding: 14px 20px 6px;
+  padding: 16px 20px 8px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -178,22 +199,23 @@
 
 .ar-science .ar-pill {
   flex: 0 0 auto;
-  padding: 7px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(244, 241, 234, 0.14);
+  padding: 6px 11px;
+  border-radius: 6px;
+  border: 1px solid rgba(244, 241, 234, 0.10);
   background: transparent;
   font-size: 11px;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(244, 241, 234, 0.65);
+  color: rgba(244, 241, 234, 0.55);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  font-family: inherit;
 }
 
 .ar-science .ar-pillActive {
-  background: rgba(122, 246, 224, 0.14);
-  border-color: rgba(122, 246, 224, 0.28);
-  color: rgba(244, 241, 234, 0.92);
+  background: rgba(122, 246, 224, 0.10);
+  border-color: rgba(122, 246, 224, 0.22);
+  color: rgba(244, 241, 234, 0.88);
 }
 
 .ar-pageBody {
@@ -216,38 +238,40 @@
 
 .ar-tocTitle {
   margin: 0 0 8px;
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  font-size: 10px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(122, 246, 224, 0.75);
+  color: rgba(122, 246, 224, 0.60);
+  font-weight: 600;
 }
 
 .ar-tocLink {
   display: block;
-  padding: 8px 10px;
-  border-radius: 8px;
+  padding: 7px 10px;
+  border-radius: 6px;
   font-size: 13px;
-  color: rgba(244, 241, 234, 0.65);
-  transition: all 0.2s ease;
+  color: rgba(244, 241, 234, 0.55);
+  transition: color 0.2s ease, background 0.2s ease;
+  border: 1px solid transparent;
 }
 
 .ar-tocLink:hover {
-  color: rgba(244, 241, 234, 0.85);
+  color: rgba(244, 241, 234, 0.80);
 }
 
 .ar-tocLinkActive {
-  background: rgba(122, 246, 224, 0.10);
-  border: 1px solid rgba(122, 246, 224, 0.18);
-  color: rgba(244, 241, 234, 0.92);
+  background: rgba(122, 246, 224, 0.08);
+  border-color: rgba(122, 246, 224, 0.14);
+  color: rgba(244, 241, 234, 0.90);
 }
 
 .ar-section {
-  padding: 48px 0;
+  padding: 44px 0;
   position: relative;
 }
 
 .ar-section + .ar-section {
-  border-top: 1px solid rgba(244, 241, 234, 0.06);
+  border-top: 1px solid rgba(244, 241, 234, 0.05);
 }
 
 .ar-light .ar-section + .ar-section {
@@ -259,49 +283,51 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin: 0 0 10px;
-  color: rgba(122, 246, 224, 0.85);
-  letter-spacing: 0.18em;
-  font-size: 11px;
+  margin: 0 0 8px;
+  color: rgba(122, 246, 224, 0.70);
+  letter-spacing: 0.14em;
+  font-size: 10px;
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 .ar-light .ar-eyebrow {
-  color: rgba(25, 179, 166, 0.85);
+  color: rgba(25, 179, 166, 0.70);
 }
 
 .ar-science .ar-eyebrowLine {
-  width: 24px;
+  width: 20px;
   height: 1px;
-  background: rgba(122, 246, 224, 0.45);
+  background: rgba(122, 246, 224, 0.30);
   flex-shrink: 0;
 }
 
 .ar-light .ar-eyebrowLine {
-  background: rgba(25, 179, 166, 0.40);
+  background: rgba(25, 179, 166, 0.30);
 }
 
 .ar-science h2 {
   margin: 0;
-  font-size: 22px;
-  line-height: 1.15;
-  letter-spacing: 0.03em;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   text-align: center;
   overflow-wrap: break-word;
+  font-weight: 600;
 }
 
 .ar-science .ar-lede {
   margin: 10px auto 0;
-  max-width: 720px;
-  font-size: 14px;
+  max-width: 680px;
+  font-size: 13px;
   line-height: 1.7;
-  color: rgba(244, 241, 234, 0.65);
+  color: rgba(244, 241, 234, 0.55);
   text-align: center;
 }
 
 .ar-light .ar-lede {
-  color: rgba(0, 0, 0, 0.55);
+  color: rgba(0, 0, 0, 0.50);
 }
 
 .ar-light h2 {
@@ -310,10 +336,11 @@
 
 .ar-science h3 {
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   overflow-wrap: break-word;
+  font-weight: 700;
 }
 
 .ar-light h3 {
@@ -323,56 +350,47 @@
 .ar-grid3 {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
+  gap: 12px;
   margin-top: 24px;
 }
 
 .ar-gridStandards {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 10px;
   margin-top: 20px;
 }
 
 .ar-card {
-  border-radius: 12px;
-  border: 1px solid rgba(244, 241, 234, 0.08);
-  background: rgba(255, 255, 255, 0.025);
+  border-radius: 8px;
+  border: 1px solid rgba(244, 241, 234, 0.06);
+  background: rgba(255, 255, 255, 0.02);
   min-width: 0;
   overflow: hidden;
-  transition: border-color 0.3s ease;
-}
-
-.ar-card:hover {
-  border-color: rgba(122, 246, 224, 0.12);
 }
 
 .ar-light .ar-card {
   background: #fff;
-  border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
-
-.ar-light .ar-card:hover {
-  border-color: rgba(25, 179, 166, 0.25);
+  border-color: rgba(0, 0, 0, 0.07);
 }
 
 .ar-layerCard {
-  padding: 18px;
+  padding: 16px;
 }
 
 .ar-layerTag {
   display: inline-block;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   font-size: 10px;
-  color: rgba(122, 246, 224, 0.85);
-  margin-bottom: 6px;
+  color: rgba(122, 246, 224, 0.70);
+  margin-bottom: 4px;
+  font-weight: 600;
 }
 
 .ar-layerName {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   font-weight: 700;
@@ -382,13 +400,13 @@
   margin: 6px 0 0;
   font-size: 13px;
   line-height: 1.6;
-  color: rgba(244, 241, 234, 0.65);
+  color: rgba(244, 241, 234, 0.58);
 }
 
 .ar-layerMeta {
   margin: 12px 0 0;
   display: grid;
-  gap: 6px;
+  gap: 5px;
 }
 
 .ar-layerMetaRow {
@@ -401,28 +419,26 @@
 .ar-layerMetaLabel {
   flex: 0 0 auto;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: rgba(122, 246, 224, 0.70);
+  letter-spacing: 0.05em;
+  color: rgba(122, 246, 224, 0.55);
   font-weight: 600;
-  min-width: 72px;
+  min-width: 64px;
+  font-size: 11px;
 }
 
 .ar-layerMetaValue {
-  color: rgba(244, 241, 234, 0.72);
+  color: rgba(244, 241, 234, 0.62);
+  font-size: 12px;
 }
 
 .ar-standardCard {
   padding: 16px;
 }
 
-.ar-light .ar-standardCard {
-  padding: 18px;
-}
-
 .ar-standardTitle {
   margin: 0;
   font-size: 12px;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -432,70 +448,70 @@
 }
 
 .ar-standardBody {
-  margin: 6px 0 0;
+  margin: 5px 0 0;
   font-size: 13px;
   line-height: 1.65;
-  color: rgba(244, 241, 234, 0.62);
+  color: rgba(244, 241, 234, 0.55);
 }
 
 .ar-light .ar-standardBody {
-  color: rgba(0, 0, 0, 0.55);
+  color: rgba(0, 0, 0, 0.52);
 }
 
 .ar-frameworkGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 8px;
   margin-top: 20px;
 }
 
 .ar-frameworkItem {
   display: flex;
   gap: 12px;
-  align-items: flex-start;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(244, 241, 234, 0.06);
-  background: rgba(255, 255, 255, 0.02);
+  align-items: baseline;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(244, 241, 234, 0.05);
+  background: rgba(255, 255, 255, 0.015);
 }
 
 .ar-frameworkLabel {
   flex: 0 0 auto;
   font-size: 10px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   font-weight: 700;
-  color: rgba(122, 246, 224, 0.85);
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: rgba(122, 246, 224, 0.08);
-  border: 1px solid rgba(122, 246, 224, 0.15);
+  color: rgba(122, 246, 224, 0.80);
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: rgba(122, 246, 224, 0.06);
+  border: 1px solid rgba(122, 246, 224, 0.12);
   white-space: nowrap;
 }
 
 .ar-frameworkDesc {
   font-size: 13px;
   line-height: 1.6;
-  color: rgba(244, 241, 234, 0.65);
+  color: rgba(244, 241, 234, 0.55);
 }
 
 .ar-deepDiveProduct {
-  margin-top: 32px;
+  margin-top: 28px;
 }
 
 .ar-deepDiveProduct:first-child {
-  margin-top: 24px;
+  margin-top: 22px;
 }
 
 .ar-deepDiveHeader {
-  margin: 0 0 14px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(244, 241, 234, 0.08);
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(244, 241, 234, 0.06);
 }
 
 .ar-deepDiveName {
-  font-size: 16px;
-  letter-spacing: 0.06em;
+  font-size: 15px;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   font-weight: 700;
   margin: 0;
@@ -504,7 +520,7 @@
 .ar-deepDiveGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 10px;
 }
 
 .ar-deepDiveBlock {
@@ -513,17 +529,17 @@
 
 .ar-deepDiveBlockLabel {
   font-size: 11px;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(122, 246, 224, 0.75);
-  margin: 0 0 6px;
+  color: rgba(122, 246, 224, 0.60);
+  margin: 0 0 4px;
   font-weight: 600;
 }
 
 .ar-deepDiveBlockText {
   font-size: 13px;
   line-height: 1.7;
-  color: rgba(244, 241, 234, 0.68);
+  color: rgba(244, 241, 234, 0.60);
   margin: 0;
 }
 
@@ -544,29 +560,29 @@
 }
 
 .ar-evidenceProductName {
-  font-size: 14px;
-  letter-spacing: 0.08em;
+  font-size: 13px;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   font-weight: 700;
-  margin: 0 0 6px;
+  margin: 0 0 4px;
   color: #0A1220;
 }
 
 .ar-evidenceCaption {
   font-size: 13px;
   line-height: 1.6;
-  color: rgba(0, 0, 0, 0.50);
-  margin: 0 0 14px;
+  color: rgba(0, 0, 0, 0.45);
+  margin: 0 0 12px;
 }
 
 .ar-ingredientCards {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .ar-ingredientCard {
-  padding: 14px;
-  border-radius: 10px;
+  padding: 14px 16px;
+  border-radius: 8px;
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
@@ -576,7 +592,7 @@
   justify-content: space-between;
   align-items: baseline;
   gap: 8px;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .ar-ingredientName {
@@ -588,7 +604,7 @@
 
 .ar-ingredientDose {
   font-size: 12px;
-  color: rgba(25, 179, 166, 0.90);
+  color: rgba(25, 179, 166, 0.85);
   font-weight: 600;
   flex-shrink: 0;
 }
@@ -596,7 +612,7 @@
 .ar-ingredientWhy {
   font-size: 12px;
   line-height: 1.6;
-  color: rgba(0, 0, 0, 0.55);
+  color: rgba(0, 0, 0, 0.52);
   margin: 0 0 6px;
 }
 
@@ -605,53 +621,54 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .ar-evidenceTag {
   display: inline-block;
   font-size: 10px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   font-weight: 600;
-  padding: 3px 7px;
-  border-radius: 4px;
+  padding: 2px 6px;
+  border-radius: 3px;
 }
 
 .ar-evidenceTag[data-level="Human data"] {
-  background: rgba(25, 179, 166, 0.10);
-  color: rgba(20, 130, 120, 0.90);
-  border: 1px solid rgba(25, 179, 166, 0.20);
+  background: rgba(25, 179, 166, 0.08);
+  color: rgba(18, 120, 112, 0.90);
+  border: 1px solid rgba(25, 179, 166, 0.16);
 }
 
 .ar-evidenceTag[data-level="Emerging human data"] {
-  background: rgba(180, 160, 80, 0.10);
-  color: rgba(140, 120, 40, 0.85);
-  border: 1px solid rgba(180, 160, 80, 0.20);
+  background: rgba(170, 150, 70, 0.08);
+  color: rgba(130, 110, 35, 0.85);
+  border: 1px solid rgba(170, 150, 70, 0.16);
 }
 
 .ar-evidenceTag[data-level="Mechanistic / preclinical"] {
-  background: rgba(120, 120, 160, 0.10);
-  color: rgba(90, 90, 130, 0.85);
-  border: 1px solid rgba(120, 120, 160, 0.20);
+  background: rgba(110, 110, 150, 0.08);
+  color: rgba(85, 85, 120, 0.85);
+  border: 1px solid rgba(110, 110, 150, 0.16);
 }
 
 .ar-evidenceTag[data-level="Formulation choice"] {
-  background: rgba(0, 0, 0, 0.04);
-  color: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.03);
+  color: rgba(0, 0, 0, 0.40);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .ar-ingredientNote {
   font-size: 11px;
-  color: rgba(0, 0, 0, 0.40);
+  color: rgba(0, 0, 0, 0.38);
   font-style: italic;
 }
 
 .ar-tableWrap {
-  margin-top: 18px;
+  margin-top: 14px;
   overflow-x: auto;
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
   background: #fff;
   -webkit-overflow-scrolling: touch;
 }
@@ -659,103 +676,99 @@
 .ar-science table {
   width: 100%;
   border-collapse: collapse;
-}
-
-.ar-science caption {
-  text-align: left;
-  padding: 14px 16px 8px;
-  color: rgba(0, 0, 0, 0.50);
-  font-size: 13px;
-  line-height: 1.5;
+  min-width: 580px;
 }
 
 .ar-science th,
 .ar-science td {
   padding: 10px 14px;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
   vertical-align: top;
 }
 
 .ar-science th {
   font-size: 10px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: rgba(25, 179, 166, 0.85);
+  color: rgba(25, 179, 166, 0.75);
   text-align: left;
   border-top: none;
   font-weight: 600;
+  padding-bottom: 8px;
 }
 
 .ar-science td {
   font-size: 13px;
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(0, 0, 0, 0.60);
   line-height: 1.55;
 }
 
 .ar-muted {
-  color: rgba(0, 0, 0, 0.40);
+  color: rgba(0, 0, 0, 0.38);
   font-size: 11px;
   font-style: italic;
 }
 
 .ar-dark .ar-muted {
-  color: rgba(244, 241, 234, 0.50);
+  color: rgba(244, 241, 234, 0.42);
 }
 
 .ar-glossaryGrid {
-  margin-top: 20px;
+  margin-top: 18px;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 1px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .ar-glossaryItem {
-  padding: 14px 16px;
-  border-radius: 10px;
+  padding: 12px 16px;
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .ar-glossaryTerm {
   font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.04em;
+  font-size: 12px;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #0A1220;
-  margin: 0 0 4px;
+  margin: 0 0 2px;
 }
 
 .ar-glossaryDef {
   font-size: 13px;
-  line-height: 1.65;
-  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.50);
   margin: 0;
 }
 
 .ar-accordion {
-  margin-top: 18px;
+  margin-top: 16px;
   display: grid;
-  gap: 8px;
+  gap: 6px;
 }
 
 .ar-accItem {
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   background: #fff;
   transition: border-color 0.2s ease;
 }
 
 .ar-accItem:hover {
-  border-color: rgba(25, 179, 166, 0.20);
+  border-color: rgba(25, 179, 166, 0.16);
 }
 
 .ar-dark .ar-accItem {
-  border-color: rgba(244, 241, 234, 0.08);
-  background: rgba(255, 255, 255, 0.025);
+  border-color: rgba(244, 241, 234, 0.06);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .ar-dark .ar-accItem:hover {
-  border-color: rgba(122, 246, 224, 0.14);
+  border-color: rgba(122, 246, 224, 0.12);
 }
 
 .ar-accButton {
@@ -764,7 +777,7 @@
   background: transparent;
   color: #0A1220;
   border: none;
-  padding: 14px 16px;
+  padding: 13px 16px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -772,167 +785,174 @@
   align-items: center;
   font-size: 14px;
   font-weight: 500;
+  font-family: inherit;
 }
 
 .ar-dark .ar-accButton {
-  color: rgba(244, 241, 234, 0.90);
+  color: rgba(244, 241, 234, 0.88);
 }
 
 .ar-accPanel {
-  padding: 0 16px 14px;
-  color: rgba(0, 0, 0, 0.55);
+  padding: 0 16px 13px;
+  color: rgba(0, 0, 0, 0.50);
   line-height: 1.7;
   font-size: 13px;
 }
 
 .ar-dark .ar-accPanel {
-  color: rgba(244, 241, 234, 0.65);
+  color: rgba(244, 241, 234, 0.58);
 }
 
 .ar-refGroupTitle {
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   font-weight: 700;
-  margin: 24px 0 10px;
+  margin: 22px 0 8px;
   padding-bottom: 6px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  color: #0A1220;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.65);
 }
 
 .ar-refGroupTitle:first-child {
-  margin-top: 20px;
+  margin-top: 18px;
 }
 
 .ar-refItem {
-  padding: 12px 14px;
-  border-radius: 8px;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  margin-bottom: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.ar-refItem:last-child {
+  border-bottom: none;
 }
 
 .ar-refCitation {
   font-size: 13px;
   line-height: 1.6;
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(0, 0, 0, 0.58);
   margin: 0;
 }
 
 .ar-refCitation a {
-  color: rgba(25, 179, 166, 0.85);
+  color: rgba(25, 179, 166, 0.80);
   text-decoration: underline;
   text-underline-offset: 2px;
+  text-decoration-color: rgba(25, 179, 166, 0.30);
+}
+
+.ar-refCitation a:hover {
+  color: rgba(25, 179, 166, 1);
+  text-decoration-color: rgba(25, 179, 166, 0.60);
+  opacity: 1;
 }
 
 .ar-refNote {
   font-size: 11px;
-  color: rgba(0, 0, 0, 0.40);
-  margin: 4px 0 0;
+  color: rgba(0, 0, 0, 0.38);
+  margin: 3px 0 0;
   font-style: italic;
 }
 
 .ar-footnote {
-  margin: 24px 0 0;
-  padding: 14px 16px;
-  border-radius: 10px;
-  border: 1px solid rgba(244, 241, 234, 0.06);
-  background: rgba(255, 255, 255, 0.02);
-  color: rgba(244, 241, 234, 0.50);
+  margin: 22px 0 0;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(244, 241, 234, 0.05);
+  background: rgba(255, 255, 255, 0.015);
+  color: rgba(244, 241, 234, 0.40);
   line-height: 1.7;
   font-size: 12px;
 }
 
 .ar-light .ar-footnote {
-  border-color: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.05);
   background: rgba(0, 0, 0, 0.02);
-  color: rgba(0, 0, 0, 0.40);
+  color: rgba(0, 0, 0, 0.38);
 }
 
 .ar-finalCtaCards {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 10px;
   margin-top: 24px;
 }
 
 .ar-finalCtaCard {
-  padding: 18px;
-  border-radius: 12px;
-  border: 1px solid rgba(244, 241, 234, 0.08);
-  background: rgba(255, 255, 255, 0.025);
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(244, 241, 234, 0.06);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .ar-finalCtaTag {
   font-size: 10px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: rgba(122, 246, 224, 0.75);
-  margin-bottom: 4px;
+  color: rgba(122, 246, 224, 0.55);
+  margin-bottom: 3px;
+  font-weight: 600;
 }
 
 .ar-finalCtaName {
-  font-size: 16px;
+  font-size: 15px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   font-weight: 700;
-  margin: 0 0 6px;
+  margin: 0 0 4px;
 }
 
 .ar-finalCtaBody {
   font-size: 13px;
   line-height: 1.6;
-  color: rgba(244, 241, 234, 0.60);
+  color: rgba(244, 241, 234, 0.50);
   margin: 0 0 12px;
 }
 
 @media (min-width: 480px) {
   .ar-science h1 {
-    font-size: 36px;
-    letter-spacing: 0.04em;
+    font-size: 34px;
   }
 
   .ar-science h2 {
-    font-size: 26px;
-    letter-spacing: 0.04em;
+    font-size: 24px;
   }
 
   .ar-science h3 {
-    font-size: 15px;
-  }
-
-  .ar-science .ar-subhead {
-    font-size: 16px;
-  }
-
-  .ar-science .ar-lede {
-    font-size: 15px;
-  }
-
-  .ar-section {
-    padding: 56px 0;
-  }
-
-  .ar-hero {
-    padding: 88px 0 36px;
-  }
-
-  .ar-science .ar-btn {
-    height: 44px;
-    padding: 0 18px;
-    font-size: 11px;
-  }
-
-  .ar-layerName {
-    font-size: 20px;
-  }
-
-  .ar-layerRole {
     font-size: 14px;
   }
 
-  .ar-deepDiveName {
+  .ar-science .ar-subhead {
+    font-size: 15px;
+  }
+
+  .ar-science .ar-lede {
+    font-size: 14px;
+  }
+
+  .ar-section {
+    padding: 52px 0;
+  }
+
+  .ar-hero {
+    padding: 88px 0 32px;
+  }
+
+  .ar-science .ar-btn {
+    height: 42px;
+    padding: 0 18px;
+  }
+
+  .ar-layerName {
     font-size: 18px;
+  }
+
+  .ar-layerRole {
+    font-size: 13px;
+  }
+
+  .ar-deepDiveName {
+    font-size: 16px;
   }
 
   .ar-accButton {
@@ -940,7 +960,7 @@
   }
 
   .ar-accPanel {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .ar-glossaryGrid {
@@ -950,30 +970,30 @@
 
 @media (min-width: 720px) {
   .ar-science h1 {
-    font-size: 44px;
+    font-size: 40px;
   }
 
   .ar-science h2 {
-    font-size: 30px;
+    font-size: 28px;
   }
 
   .ar-science .ar-subhead {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.7;
   }
 
   .ar-grid3 {
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
+    gap: 14px;
   }
 
   .ar-gridStandards {
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    gap: 12px;
   }
 
   .ar-layerCard {
-    padding: 22px;
+    padding: 20px;
   }
 
   .ar-frameworkGrid {
@@ -982,7 +1002,7 @@
 
   .ar-deepDiveGrid {
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 14px;
   }
 
   .ar-evidenceDesktop {
@@ -994,38 +1014,42 @@
   }
 
   .ar-section {
-    padding: 64px 0;
+    padding: 60px 0;
   }
 
   .ar-hero {
-    padding: 96px 0 40px;
+    padding: 96px 0 36px;
   }
 
   .ar-finalCtaCards {
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
+    gap: 14px;
+  }
+
+  .ar-glossaryGrid {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
 @media (min-width: 980px) {
   .ar-science h1 {
-    font-size: 52px;
+    font-size: 48px;
   }
 
   .ar-pageBody {
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 190px 1fr;
     gap: 0;
-    max-width: 1200px;
+    max-width: 1180px;
     margin: 0 auto;
   }
 
   .ar-toc {
     display: block;
-    border: 1px solid rgba(244, 241, 234, 0.08);
-    border-radius: 12px;
-    padding: 14px;
-    background: rgba(16, 27, 45, 0.95);
+    border: 1px solid rgba(244, 241, 234, 0.06);
+    border-radius: 8px;
+    padding: 12px;
+    background: rgba(16, 27, 45, 0.92);
     position: sticky;
     top: 88px;
     align-self: start;
@@ -1040,26 +1064,21 @@
 
   .ar-gridStandards {
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-
-  .ar-gridStandards .ar-card:nth-child(4),
-  .ar-gridStandards .ar-card:nth-child(5) {
-    grid-column: span 1;
+    gap: 14px;
   }
 
   .ar-section {
-    padding: 72px 0;
+    padding: 68px 0;
   }
 }
 
 @media (min-width: 1200px) {
   .ar-pageBody {
-    grid-template-columns: 220px 1fr;
-    gap: 44px;
+    grid-template-columns: 210px 1fr;
+    gap: 36px;
   }
 
   .ar-science h1 {
-    font-size: 56px;
+    font-size: 52px;
   }
 }

@@ -1,0 +1,67 @@
+Do a ruthless final QA and polish pass on the Science page.
+
+Assume the first pass is not good enough until proven otherwise.
+
+Review the rendered page as a premium evidence and trust page on both mobile and desktop.
+Then directly fix anything that still feels:
+- generic
+- too dark for too long
+- visually repetitive
+- too much like a product page
+- too salesy
+- too dense
+- hard to read on mobile
+- weak in evidence hierarchy
+- weak in scientific nuance
+- weak in reference usability
+- cluttered with pills, chips, or repeated cards
+- templated
+- not premium enough
+
+Hard rules:
+- remove any decorative icons or motifs that are not essential
+- remove any biotech, DNA, gene, molecule, neural, AI, or sci-fi visuals
+- remove any fake charts or meaningless evidence graphics
+- remove CTA clutter
+- keep the palette restrained
+- keep evidence nuance intact
+- do not flatten human, mechanistic, preclinical, in vitro, and emerging evidence into one category
+- do not let mobile tables stay cramped or cut off
+- preserve the premium clinical documentary feel
+
+Refine specifically:
+1. hero clarity
+2. section-nav usefulness
+3. standards / “how to read this page” clarity
+4. protocol architecture clarity
+5. card repetition
+6. evidence and dosing readability
+7. mobile ingredient-card layout
+8. glossary readability
+9. FAQ readability
+10. references grouping and link usability
+11. CTA restraint
+12. spacing rhythm
+13. typography hierarchy
+14. border / radius / shadow consistency
+15. anything that still feels like a template
+
+Test and fix:
+- anchor navigation on mobile
+- accordion behavior
+- evidence cards on narrow screens
+- references opening correctly
+- no horizontal overflow in evidence sections
+- no text clipping
+- keyboard/focus accessibility
+- dark/light contrast balance
+- final CTA not overpowering the page
+
+Do not explain first.
+Fix first, then summarize:
+- what you removed
+- what you refined
+- what improved trust
+- what improved scientific clarity
+- what improved mobile readability
+- what improved premium feel

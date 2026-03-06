@@ -84,7 +84,7 @@ function AccordionItem({ index, question, answer, openIndex, setOpenIndex }: Acc
         data-testid={`button-faq-${index}`}
       >
         <span>{question}</span>
-        <span aria-hidden="true" style={{ fontSize: 12, opacity: 0.5 }}>{isOpen ? "▴" : "▾"}</span>
+        <span aria-hidden="true" style={{ fontSize: 11, opacity: 0.4, transition: "transform 0.2s", transform: isOpen ? "rotate(180deg)" : "none" }}>▾</span>
       </button>
       {isOpen && (
         <div id={panelId} role="region" aria-labelledby={buttonId} className="ar-accPanel">
@@ -192,13 +192,12 @@ export default function SciencePage() {
       <SiteNavbar />
       <main className="ar-science">
 
-        {/* ── Hero ── */}
         <header className="ar-hero">
           <div className="ar-container">
             <Eyebrow label="SCIENCE" />
-            <h1>The science behind the protocol</h1>
+            <h1 data-testid="text-science-h1">The science behind the protocol</h1>
             <p className="ar-subhead">
-              What each product does, why we chose these compounds, what the evidence says, and where confidence is stronger versus more emerging. Documentation first. No proprietary blends.
+              What each product does, why we chose these compounds, what the evidence says, and where confidence is stronger versus more emerging.
             </p>
 
             <div className="ar-heroCtas">
@@ -206,7 +205,7 @@ export default function SciencePage() {
                 Jump to evidence
               </a>
               <Link className="ar-btn ar-btnGhost" to="/shop" data-testid="link-browse-products">
-                Shop the system
+                Browse products
               </Link>
             </div>
 
@@ -237,7 +236,6 @@ export default function SciencePage() {
           </div>
         </header>
 
-        {/* ── Page body with persistent TOC ── */}
         <div className="ar-pageBody">
           <aside className="ar-toc" aria-label="Table of contents">
             <p className="ar-tocTitle">On this page</p>
@@ -256,7 +254,6 @@ export default function SciencePage() {
 
           <div className="ar-content">
 
-            {/* ── DARK: How to Read + Protocol Architecture ── */}
             <div className="ar-dark">
               <div className="ar-contentInner">
                 <section
@@ -267,7 +264,7 @@ export default function SciencePage() {
                   <Eyebrow label="HOW TO READ THIS PAGE" />
                   <h2>Understanding the evidence</h2>
                   <p className="ar-lede">
-                    Not all evidence is equal. We use these labels throughout the page to clarify what level of research supports each ingredient. References are included for transparency — not as promises.
+                    Not all evidence is equal. These labels clarify what level of research supports each ingredient. References are included for transparency — not as promises.
                   </p>
 
                   <div className="ar-frameworkGrid">
@@ -318,7 +315,6 @@ export default function SciencePage() {
               </div>
             </div>
 
-            {/* ── LIGHT: Standards ── */}
             <div className="ar-light">
               <div className="ar-contentInner">
                 <section
@@ -344,7 +340,6 @@ export default function SciencePage() {
               </div>
             </div>
 
-            {/* ── DARK: Deep Dives / Formulation Logic ── */}
             <div className="ar-dark">
               <div className="ar-contentInner">
                 <section
@@ -391,7 +386,6 @@ export default function SciencePage() {
               </div>
             </div>
 
-            {/* ── LIGHT: Evidence & Dosing ── */}
             <div className="ar-light">
               <div className="ar-contentInner">
                 <section
@@ -402,7 +396,7 @@ export default function SciencePage() {
                   <Eyebrow label="EVIDENCE AND DOSING" />
                   <h2>Ingredient-level detail</h2>
                   <p className="ar-lede">
-                    Every ingredient, dose, and evidence context. Strength varies by compound and endpoint — labels clarify what level of research applies.
+                    Every ingredient, dose, and evidence context. Strength varies by compound — labels clarify what level of research applies.
                   </p>
 
                   {EVIDENCE_TABLES.map((t) => (
@@ -416,15 +410,15 @@ export default function SciencePage() {
                             <thead>
                               <tr>
                                 <th style={{ width: "22%" }}>Ingredient</th>
-                                <th style={{ width: "12%" }}>Dose</th>
-                                <th style={{ width: "14%" }}>Evidence</th>
+                                <th style={{ width: "11%" }}>Dose</th>
+                                <th style={{ width: "15%" }}>Evidence</th>
                                 <th>Why included</th>
                               </tr>
                             </thead>
                             <tbody>
                               {t.rows.map((r) => (
                                 <tr key={`${t.product}-${r.ingredient}`}>
-                                  <td style={{ fontWeight: 600 }}>{r.ingredient}</td>
+                                  <td style={{ fontWeight: 600, color: "#0A1220" }}>{r.ingredient}</td>
                                   <td>{r.dose}</td>
                                   <td>
                                     <span className="ar-evidenceTag" data-level={r.evidence}>{r.evidence}</span>
@@ -467,7 +461,6 @@ export default function SciencePage() {
               </div>
             </div>
 
-            {/* ── LIGHT: Glossary + FAQ ── */}
             <div className="ar-light">
               <div className="ar-contentInner">
                 <section
@@ -477,7 +470,6 @@ export default function SciencePage() {
                 >
                   <Eyebrow label="GLOSSARY" />
                   <h2>Key terms</h2>
-                  <p className="ar-lede">Short definitions to remove ambiguity.</p>
 
                   <div className="ar-glossaryGrid">
                     {GLOSSARY.map((g) => (
@@ -496,7 +488,6 @@ export default function SciencePage() {
                 >
                   <Eyebrow label="FAQ" />
                   <h2>Common questions</h2>
-                  <p className="ar-lede">Short answers. Clear boundaries.</p>
 
                   <div className="ar-accordion">
                     {FAQ.map((item, idx) => (
@@ -514,7 +505,6 @@ export default function SciencePage() {
               </div>
             </div>
 
-            {/* ── LIGHT: References ── */}
             <div className="ar-light">
               <div className="ar-contentInner">
                 <section
@@ -549,7 +539,6 @@ export default function SciencePage() {
               </div>
             </div>
 
-            {/* ── DARK: Final CTA ── */}
             <div className="ar-dark">
               <div className="ar-contentInner">
                 <section className="ar-section">
@@ -563,8 +552,8 @@ export default function SciencePage() {
                         <div className="ar-finalCtaTag">{c.tag}</div>
                         <p className="ar-finalCtaName">{c.title}</p>
                         <p className="ar-finalCtaBody">{c.body}</p>
-                        <Link className="ar-btn ar-btnPrimary" to={c.href} data-testid={`link-shop-${c.title.toLowerCase().replace("+", "")}`}>
-                          Shop {c.title}
+                        <Link className="ar-btn ar-btnGhost" to={c.href} data-testid={`link-shop-${c.title.toLowerCase().replace("+", "")}`}>
+                          View {c.title}
                         </Link>
                       </div>
                     ))}
