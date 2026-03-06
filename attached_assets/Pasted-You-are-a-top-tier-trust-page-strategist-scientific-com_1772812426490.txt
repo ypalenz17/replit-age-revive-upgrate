@@ -1,0 +1,478 @@
+You are a top-tier trust-page strategist, scientific communication designer, technical SEO lead, and senior front-end engineer.
+
+Audit and redesign the Age Revive Quality page so it feels elite, credible, premium, mobile-readable, and optimized for both Google Search and LLM retrieval.
+
+Do not just suggest changes.
+Implement them directly in code.
+
+CONTEXT
+
+Brand:
+- Age Revive
+
+Page:
+- Quality
+
+Role of this page:
+- trust infrastructure
+- quality verification explainer
+- premium documentation page
+- objection-handling page for skeptical buyers
+- conversion support page for users who want proof, not hype
+
+Main problem:
+- the current page has strong raw content but weak packaging
+- it is too dark for too long
+- too many sections reuse the same rounded dark-card treatment
+- visual rhythm is repetitive
+- “jump to section” is not strong enough as navigation
+- the testing standards content is not packaged as clean documentation
+- the page feels more like a long styled memo than a premium trust hub
+- it needs to work better for SEO and LLM retrieval across visible text, metadata, and structured data
+
+NON-NEGOTIABLE RULES
+
+Do not introduce:
+- DNA helix icons
+- gene/chromosome imagery
+- molecule graphics unless strictly functional
+- neural/circuit/AI visuals
+- biotech cliché motifs
+- fake lab dashboards
+- decorative badge clutter
+- stock medical icon sets
+- glassmorphism
+- loud gradients
+- decorative chip clouds
+- meaningless “scientific” art
+
+Default to zero icons unless they materially improve comprehension.
+
+Do not use hype copy such as:
+- revolutionary
+- next-gen
+- cutting-edge
+- optimize your biology
+- hack your aging
+- engineered longevity
+- breakthrough system
+- premium ingredients as empty fluff
+
+Use concise, premium, verification-oriented language.
+
+CONTENT TRUTH RULES
+
+Use the current approved live quality-page content in the codebase as source of truth.
+
+Preserve and clarify the existing approved concepts, including:
+- transparent dosing
+- identity and potency verification
+- contaminant screening categories
+- lot traceability
+- delivery integrity validation where applicable
+- cGMP baseline framing
+- supplier qualification / release discipline if already present
+- no proprietary blends
+- allergen disclosure
+- documentation or CoA request guidance
+- educational / not-medical-advice language
+
+Do not invent new testing claims.
+Do not overstate what is checked if the current content is more qualified.
+Do not turn the page into a compliance boast page.
+
+SEO AND LLM REQUIREMENTS
+
+This page must be optimized for Google Search and LLM retrieval without becoming spammy.
+
+Implement the following:
+
+1. Unique metadata
+- Create or refine a unique title tag for the quality page
+- Create or refine a unique meta description
+- Keep them aligned with the visible H1 and page topic
+- Ensure canonical points to the intended public URL
+
+Suggested direction:
+Title:
+Quality Standards | Testing, Traceability & Transparency | Age Revive
+
+Meta description:
+Learn how Age Revive approaches supplement quality through transparent dosing, identity and potency verification, contaminant screening, lot traceability, and documentation support.
+
+2. Semantic structure
+- Use one clear H1
+- Use strong H2/H3 section hierarchy
+- Ensure important trust claims exist in crawlable visible text
+- Do not rely on visuals alone to communicate standards
+- Add stable section IDs for internal anchor linking
+
+3. Internal linking
+- link to Science where appropriate
+- link to FAQ where appropriate
+- link to relevant product pages where helpful
+- link to Shop / Shop All in restrained ways
+- use descriptive anchor text, not vague “learn more”
+
+4. Structured data
+Implement page-appropriate JSON-LD only where valid.
+
+For this page:
+- add FAQPage structured data only if the FAQ content is visibly present on the page and matches exactly
+- add BreadcrumbList structured data only if breadcrumbs or a breadcrumb path are present and valid in the UI/template
+- do not incorrectly add Product structured data to this page
+- do not duplicate WebSite or Organization structured data if they already live in the sitewide layout
+- if the sitewide schema layer is missing or broken, note it in your final summary and fix it in the shared layout if safe
+
+5. LLM readability
+Structure the page so AI systems can quote or summarize it accurately:
+- use direct question-based subheads where useful
+- use concise answer-first paragraphs
+- use explicit definitions
+- use checklists and standards blocks that are semantically clean
+- keep entity naming consistent
+- reduce vague marketing language
+- make section labels clear and stable
+
+CURRENT UX PROBLEMS TO FIX
+
+1. The page feels too much like one long dark slab
+2. There is too much repeated dark-card treatment
+3. The hero is visually decent but still too marketing-forward for a documentation page
+4. The navigation structure is weak for a long page
+5. Testing standards are not packaged as clean documentation
+6. The buyer audit logic is strong but too buried in repetitive styling
+7. Traceability and documentation guidance should feel more concrete and scannable
+8. Product-specific notes are useful but visually blend with the rest of the page
+9. FAQ packaging is generic
+10. The page needs stronger search/discoverability structure without becoming SEO spam
+
+PRIMARY STRATEGY
+
+This page should do 5 jobs:
+
+1. Explain what “quality” means at Age Revive
+2. Explain what is actually checked and why it matters
+3. Explain how a buyer can audit these products intelligently
+4. Explain how documentation / lot traceability works
+5. Route the visitor to the right next step once trust is built
+
+This page should feel like premium documentation, not a landing page.
+
+COLOR / SECTION RHYTHM
+
+Do not let the page stay in nearly the same dark value throughout.
+
+Use:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Existing mint/teal accent only
+
+Suggested rhythm:
+dark -> light -> dark -> light -> dark -> light
+
+Use more light sections than the homepage where readability matters.
+Especially:
+- testing standards
+- buyer checklist
+- traceability / documentation
+- FAQ
+
+Use tonal shifts, spacing, card contrast, and typography hierarchy to create real chapter breaks.
+Do not solve this with decorative graphics.
+
+HERO / PAGE INTRO REQUIREMENTS
+
+Refactor the top of the page so it behaves like a high-trust documentation hub.
+
+The hero must quickly answer:
+- what this page is
+- what “quality” means here
+- why this matters to a buyer
+- what the visitor can verify
+
+Required hero elements:
+- clear H1
+- concise supporting subhead
+- one primary CTA such as See Testing Standards
+- one restrained secondary CTA such as Read Science or Browse FAQ
+- compact trust strip or standards strip
+- visible “educational content, not medical advice” boundary note
+- visible last updated date if already present
+
+Do not make the hero feel like a product hero.
+Do not bury the actual page topic under decorative treatments.
+
+SECTION NAVIGATION
+
+This page is long enough to need better navigation.
+
+Replace or improve the current jump-to-section treatment.
+
+Preferred directions:
+- sticky anchored section nav
+- compact in-page nav row
+- or a cleaner accordion nav that feels obviously useful
+
+Key sections to support:
+- Overview
+- Standards
+- Checklist
+- Traceability
+- Compliance
+- Product Notes
+- FAQ
+
+This must be functional, not decorative.
+
+PAGE STRUCTURE TO TARGET
+
+Refactor the page to roughly follow this order:
+
+1. Hero / intro
+2. What quality means here
+3. Testing standards
+4. Simple buyer audit checklist
+5. Traceability and documentation
+6. Manufacturing / compliance / label transparency
+7. Product-specific notes
+8. FAQ
+9. Final CTA
+
+Adapt to the codebase as needed, but keep this logic.
+
+WHAT QUALITY MEANS HERE
+
+Create a strong section early in the page that defines the framework simply.
+
+This section should explain:
+- transparent dosing
+- identity and potency verification
+- contaminant screening
+- lot traceability
+- delivery integrity validation where relevant
+- documentation that matches the label
+
+Keep this concise and scannable.
+This should feel like a standards summary, not a slogan block.
+
+TESTING STANDARDS SECTION
+
+This section needs a major packaging upgrade.
+
+Turn the current testing standards into premium documentation.
+
+Preferred structure:
+- a clean matrix or rows showing:
+  - category
+  - what it checks
+  - why it matters
+
+Categories may include, if present in approved content:
+- identity
+- potency
+- heavy metals
+- microbiological
+- residual solvents
+- format / delivery integrity where applicable
+
+Requirements:
+- desktop can use a clean table or structured row layout
+- mobile must not turn into cramped unreadable mini-columns
+- mobile should use stacked rows/cards if needed
+- typography must remain highly readable
+- section should likely sit on a light clinical background
+
+Do not keep this as a dense dark block.
+
+BUYER AUDIT CHECKLIST
+
+The “simple buyer audit checklist” is strategically strong.
+Keep it, but make it feel more authoritative and useful.
+
+Refactor it into a clean, high-trust checklist section.
+The visitor should be able to scan it quickly and understand:
+- what good supplement quality should include
+- what to watch out for
+- what red flags to avoid
+
+This section should feel like a practical auditing tool, not a generic bulleted box.
+
+TRACEABILITY AND DOCUMENTATION
+
+Refactor this into one of the clearest sections on the page.
+
+This section should explain:
+- what lot traceability means
+- where the lot number is found
+- what documentation connects to a lot
+- how to request documentation / CoA
+- why lot-level traceability matters for real quality
+
+Possible structure:
+- short intro
+- “What to look for on your bottle”
+- “How to request documentation”
+- “Why this matters”
+
+This section should be very easy to scan and especially strong on mobile.
+
+MANUFACTURING / COMPLIANCE / LABEL TRANSPARENCY
+
+This content is important, but currently too visually repetitive.
+
+Refactor it into a cleaner, more documentation-like section.
+
+It should clearly communicate:
+- cGMP baseline framing
+- supplier qualification / release criteria if present
+- no proprietary blends
+- disclosed core actives and doses
+- allergen disclosure where relevant
+
+Do not overstate “compliance” as though it alone proves excellence.
+Keep the tone restrained and credible.
+
+PRODUCT-SPECIFIC NOTES
+
+Keep the product-specific notes, but simplify the presentation.
+
+Preferred structure:
+- 3 concise product cards or rows
+- one for CELLUNAD+
+- one for CELLUBIOME
+- one for CELLUNOVA
+
+Each should clearly show:
+- product name
+- protocol role
+- the quality concern that matters most
+- any specific note such as delivery integrity or allergen disclosure if applicable
+- optional restrained CTA to product page
+
+Do not let these cards feel like mini sales cards.
+They are documentation cards first.
+
+FAQ
+
+Keep the Quality FAQ, but improve packaging.
+
+Requirements:
+- readable accordion structure
+- stronger hierarchy
+- better spacing
+- light clinical background strongly preferred
+- visible questions in crawlable HTML
+- content must match any FAQ schema exactly if schema is used
+
+This section should help both human readers and AI retrieval.
+
+FINAL CTA
+
+Keep the final CTA restrained.
+
+Allowed directions:
+- Explore the System
+- Read the Science
+- Shop the Protocol
+
+The final CTA should feel like a clean next step, not a hard sell.
+
+VISUAL DESIGN RULES
+
+This page should feel lighter, cleaner, and more documentary than the homepage or product pages.
+
+Use:
+- premium typography hierarchy
+- fewer repeated card styles
+- more distinction between documentation sections and conversion sections
+- elegant borders
+- restrained shadows
+- strong contrast and readability
+- calmer spacing
+
+Avoid:
+- same-size rounded cards for every concept
+- dark-on-dark monotony
+- decorative chips
+- repeated gradient glows
+- over-stylized “luxury science” visuals
+
+TYPOGRAPHY RULES
+
+Make reading easier.
+
+Requirements:
+- stronger contrast hierarchy
+- better paragraph spacing
+- shorter line lengths where possible
+- more readable section intros
+- less all-caps and wide tracking overuse
+- premium but highly legible type rhythm
+
+MOBILE RULES
+
+This page must become materially better on mobile.
+
+Prioritize:
+- readable hero
+- strong anchor navigation
+- clean standards matrix behavior on narrow screens
+- compact but readable checklist design
+- excellent FAQ readability
+- no horizontal overflow
+- no giant same-looking cards for every section
+- shorter and clearer content blocks
+
+ACCESSIBILITY
+
+Maintain or improve:
+- semantic headings
+- accessible accordion behavior
+- anchor-link usability
+- keyboard focus states
+- contrast
+- tap targets
+- external link clarity
+- schema matching visible content
+
+SELF-QA BEFORE STOPPING
+
+Before stopping, audit your own implementation and directly fix anything that fails:
+
+1. Does the page immediately explain what “Quality” means here?
+2. Does the page still feel too dark for too long anywhere?
+3. Are section breaks now obvious?
+4. Is the testing standards section dramatically clearer?
+5. Is the buyer audit checklist easier to scan?
+6. Is the traceability / CoA request logic easy to understand?
+7. Are product-specific notes cleaner and less salesy?
+8. Is the FAQ more useful and more readable?
+9. Is the page optimized for SEO without looking spammy?
+10. Are title, H1, meta description, canonical, and visible topic aligned?
+11. Is the important content in visible crawlable text?
+12. Is FAQ schema only used if the FAQ content is visible and matching?
+13. Is breadcrumb schema only used if breadcrumbs are real and valid?
+14. Is anything still generic biotech, AI-themed, or decorative?
+15. Does the page feel premium enough for the brand?
+
+If any answer is no, continue refining before stopping.
+
+WORK STYLE
+
+Inspect the codebase, identify the relevant layout/components/styles/content blocks, and implement the improvements directly.
+Keep code clean, maintainable, and production-ready.
+Do not stop at “better.”
+Stop only when the quality page feels elite.
+
+WHEN DONE, RETURN
+
+1. Summary of what you changed
+2. Files/components modified
+3. What changed in page structure
+4. What changed in SEO / metadata / structured data
+5. What changed in standards / checklist / FAQ packaging
+6. What improved trust
+7. What improved readability and mobile UX
+8. Any optional next-step refinements
