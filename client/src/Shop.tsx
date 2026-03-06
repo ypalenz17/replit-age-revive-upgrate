@@ -1,9 +1,7 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { CSSProperties, MouseEventHandler, ReactNode } from 'react';
 import {
   ArrowRight,
-  ChevronDown,
-  ShoppingBag,
   X,
 } from 'lucide-react';
 import { useParams } from 'wouter';
@@ -12,8 +10,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SiteNavbar from './components/SiteNavbar';
 import Footer from './components/Footer';
-import { BrandName, PRODUCTS as CATALOG_PRODUCTS } from './productsData';
-import ProtocolSelectorCard from './components/ProtocolSelectorCard';
+import { BrandName } from './productsData';
 import { useCart } from './cartStore';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -975,58 +972,520 @@ function ProductTemplate({ product }: ProductTemplateProps) {
   );
 }
 
+const BASE_DARK = '#0A1220';
+const SECONDARY_DARK = '#101B2D';
+const LIGHT = '#F4F1EA';
+const CARD_SURFACE = '#15202F';
+
+const SHOP_PRODUCTS = [
+  {
+    id: 'cellunad' as const,
+    name: 'CELLUNAD+',
+    role: 'Daily Foundation',
+    bestFor: 'Energy, repair & NAD+ support',
+    cadence: '2 capsules daily',
+    supply: '30-day supply',
+    price: 79.99,
+    priceSub: 67.99,
+    image: '/images/cellunad-render.png',
+    accent: '#60a5fa',
+    anchors: ['NR 500 mg', 'TMG 250 mg', 'Apigenin 100 mg'],
+    startHere: true,
+    note: 'Most people start here',
+    isDaily: true,
+  },
+  {
+    id: 'cellubiome' as const,
+    name: 'CELLUBIOME',
+    role: 'Signal Stability',
+    bestFor: 'Gut-mito axis & steady output',
+    cadence: '2 enteric caps daily',
+    supply: '30-day supply',
+    price: 110.00,
+    priceSub: 93.50,
+    image: '/images/cellubiome-render.png',
+    accent: '#5eead4',
+    anchors: ['Urolithin A 500 mg', 'Tributyrin 500 mg'],
+    startHere: false,
+    note: 'Enteric-coated delivery',
+    isDaily: true,
+  },
+  {
+    id: 'cellunova' as const,
+    name: 'CELLUNOVA',
+    role: 'Periodic Reset',
+    bestFor: 'Cellular renewal & cleanup',
+    cadence: '5 caps/day · 7-day cycle',
+    supply: '7-day monthly cycle',
+    price: 49.99,
+    priceSub: 42.49,
+    image: '/images/cellunova_cropped.png',
+    accent: '#a78bfa',
+    anchors: ['Fisetin', 'Spermidine', 'Quercetin'],
+    startHere: false,
+    note: 'Contains wheat (spermidine source)',
+    isDaily: false,
+  },
+];
+
+const TRUST_ITEMS = [
+  'Full dose disclosure',
+  'No proprietary blends',
+  'Third-party tested',
+  'Lot-level traceability',
+];
+
+const COMPARISON_ROWS = [
+  { label: 'Protocol Role', cellunad: 'Daily NAD+ foundation', cellubiome: 'Gut–mito signal stability', cellunova: 'Monthly cellular reset' },
+  { label: 'Best For', cellunad: 'Energy, repair, baseline', cellubiome: 'Gut barrier, steady output', cellunova: 'Renewal, cleanup cycles' },
+  { label: 'Use Pattern', cellunad: 'Daily — ongoing', cellubiome: 'Daily — ongoing', cellunova: '7 days per month' },
+  { label: 'Serving', cellunad: '2 capsules', cellubiome: '2 enteric capsules', cellunova: '5 capsules' },
+  { label: 'Key Actives', cellunad: 'NR, TMG, Apigenin + 5 more', cellubiome: 'Urolithin A, Tributyrin', cellunova: 'Fisetin, Quercetin + 8 more' },
+  { label: 'Supply', cellunad: '30-day', cellubiome: '30-day', cellunova: '7-day cycle' },
+  { label: 'Pairs With', cellunad: 'CELLUBIOME + CELLUNOVA', cellubiome: 'CELLUNAD+ + CELLUNOVA', cellunova: 'CELLUNAD+ + CELLUBIOME' },
+  { label: 'Note', cellunad: 'Non-stimulant', cellubiome: 'Enteric-coated', cellunova: 'Contains wheat' },
+];
+
+const BUNDLES = [
+  {
+    id: 'single',
+    label: 'Start with One',
+    desc: 'Begin with the daily foundation most people choose first.',
+    products: ['cellunad'] as string[],
+  },
+  {
+    id: 'daily',
+    label: 'Daily Foundation',
+    desc: 'Pair the two daily protocols for full baseline coverage.',
+    products: ['cellunad', 'cellubiome'] as string[],
+  },
+  {
+    id: 'full',
+    label: 'Full System',
+    desc: 'All three protocols. Daily foundation plus monthly reset.',
+    products: ['cellunad', 'cellubiome', 'cellunova'] as string[],
+  },
+];
+
 function ShopCatalog() {
   const cart = useCart();
+  const comparisonRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const addToCart = (productId: string) => {
-    const p = PRODUCTS[productId as ProductId];
+  const addProduct = (productId: string, subscribe = false) => {
+    const p = SHOP_PRODUCTS.find((sp) => sp.id === productId);
     if (!p) return;
     cart.addItem({
       slug: p.id,
       name: p.name,
-      image: p.heroImage,
-      price: parseFloat(p.price.replace('$', '')),
-      isSubscribe: false,
-      frequency: 'One-time',
+      image: p.image,
+      price: subscribe ? p.priceSub : p.price,
+      isSubscribe: subscribe,
+      frequency: subscribe ? (p.id === 'cellunova' ? '7-day cycle' : 'Delivered monthly') : 'One-time',
     });
   };
 
+  const addBundle = (productIds: string[]) => {
+    productIds.forEach((id) => addProduct(id, false));
+  };
+
+  const getBundleTotal = (productIds: string[]) => {
+    return productIds.reduce((sum, id) => {
+      const p = SHOP_PRODUCTS.find((sp) => sp.id === id);
+      return sum + (p?.price || 0);
+    }, 0);
+  };
+
+  const scrollToComparison = () => {
+    comparisonRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
-    <div className="min-h-screen bg-[#131d2e] text-white">
-      <NoiseOverlay />
+    <div className="min-h-screen text-white" data-testid="shop-page">
       <SiteNavbar />
 
-      <header className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#152538] to-[#131d2e]" />
-        <div className="relative mx-auto max-w-6xl px-5 md:px-8 pt-28 md:pt-36 pb-12 md:pb-16 text-center">
-          <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] font-bold text-teal-400/80 mb-4">The Protocol</span>
-          <h1 className="text-4xl md:text-6xl font-head font-normal uppercase tracking-[-0.04em] leading-[0.9] text-white">
-            Shop All Products
-          </h1>
-          <p className="mt-5 max-w-xl mx-auto text-[15px] md:text-[17px] font-sans text-white/65 leading-relaxed">
-            Three formulas. One system. Build your protocol from the ground up.
-          </p>
-        </div>
-      </header>
+      {/* ── HERO / SYSTEM INTRO ── (BASE_DARK) */}
+      <section style={{ background: BASE_DARK }} data-testid="section-shop-hero">
+        <div className="mx-auto max-w-6xl px-5 md:px-8 pt-28 md:pt-36 pb-16 md:pb-24">
+          <div className="text-center">
+            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] font-bold text-teal-400/80 mb-4" data-testid="text-shop-eyebrow">The Age Revive Protocol</span>
+            <h1 className="text-4xl md:text-6xl font-head font-normal uppercase tracking-[-0.04em] leading-[0.9] text-white mb-6" data-testid="text-shop-title">
+              Three Formulas. One System.
+            </h1>
+            <p className="max-w-2xl mx-auto text-[15px] md:text-[17px] font-sans text-white/65 leading-relaxed mb-10">
+              A daily foundation, a gut-mito signal layer, and a monthly reset cycle.
+              Each formula has a distinct role. Together, they cover the full protocol.
+            </p>
 
-      <div className="mx-auto max-w-5xl px-5 md:px-8 pb-20 md:pb-28">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-0 sm:gap-y-6 items-stretch">
-          {CATALOG_PRODUCTS.map((p, i) => (
-            <div key={p.slug} className="flex flex-col">
-              {i > 0 && (
-                <div className="flex justify-center py-6 sm:hidden">
-                  <div className="w-[60%] h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
-                </div>
-              )}
-              <ProtocolSelectorCard p={p} />
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
+              <button
+                onClick={scrollToComparison}
+                className="min-h-[48px] px-8 py-3 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] text-white transition-all duration-300"
+                style={{ background: 'linear-gradient(135deg, #19B3A6, #14a899)', boxShadow: '0 2px 12px rgba(25,179,166,0.25)' }}
+                data-testid="button-compare-protocols"
+              >
+                Compare the 3 Protocols
+              </button>
+              <a
+                href="#build-protocol"
+                className="min-h-[48px] px-8 py-3 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] text-white/70 hover:text-white transition-all duration-300"
+                style={{ border: '1px solid rgba(255,255,255,0.12)' }}
+                data-testid="link-build-protocol"
+              >
+                Build Your Protocol
+              </a>
             </div>
-          ))}
+
+            <div className="flex items-center justify-center gap-3 flex-wrap">
+              <div className="flex items-end justify-center gap-4 md:gap-8">
+                {SHOP_PRODUCTS.map((p) => (
+                  <div key={p.id} className="flex flex-col items-center gap-2" data-testid={`hero-product-${p.id}`}>
+                    <img src={p.image} alt={p.name} className="h-[80px] md:h-[110px] w-auto object-contain" style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.4))' }} />
+                    <span className="text-[10px] font-mono uppercase tracking-[0.10em] text-white/50">{p.role}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-14 flex items-center justify-center gap-4 md:gap-8 flex-wrap" data-testid="trust-strip-hero">
+            {TRUST_ITEMS.map((item) => (
+              <span key={item} className="text-[11px] font-mono uppercase tracking-[0.06em] text-white/40">{item}</span>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* ── START HERE / CHOOSE YOUR PATH ── (LIGHT) */}
+      <section style={{ background: LIGHT }} data-testid="section-start-here">
+        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[100px]">
+          <div className="text-center mb-10 md:mb-14">
+            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-700/70 mb-3">Where to Start</span>
+            <h2 className="text-2xl md:text-4xl font-head font-normal uppercase tracking-[-0.03em] leading-tight text-[#0A1220]" data-testid="text-start-here-title">Choose Your Starting Point</h2>
+            <p className="mt-3 max-w-lg mx-auto text-[14px] md:text-[15px] font-sans text-[#0A1220]/60 leading-relaxed">
+              Not sure where to begin? Here's how most people approach the protocol.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+            {SHOP_PRODUCTS.map((p) => (
+              <div
+                key={p.id}
+                className="relative rounded-xl p-6 md:p-8 flex flex-col"
+                style={{
+                  background: '#FFFFFF',
+                  border: p.startHere ? '2px solid rgba(25,179,166,0.35)' : '1px solid rgba(10,18,32,0.08)',
+                  boxShadow: p.startHere ? '0 4px 24px rgba(25,179,166,0.10), 0 1px 3px rgba(0,0,0,0.06)' : '0 1px 3px rgba(0,0,0,0.05)',
+                }}
+                data-testid={`start-card-${p.id}`}
+              >
+                {p.startHere && (
+                  <span className="absolute -top-3 left-6 px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-[0.14em] text-white" style={{ background: '#19B3A6' }} data-testid="badge-start-here">
+                    Most people start here
+                  </span>
+                )}
+
+                <span className="text-[10px] font-mono uppercase tracking-[0.14em] font-bold mb-2" style={{ color: p.startHere ? '#19B3A6' : '#0A1220', opacity: p.startHere ? 1 : 0.4 }}>{p.role}</span>
+                <h3 className="text-xl font-head font-normal uppercase tracking-[-0.02em] text-[#0A1220] mb-2">
+                  <BrandName name={p.name} />
+                </h3>
+                <p className="text-[14px] font-sans text-[#0A1220]/60 leading-relaxed mb-4 flex-1">{p.bestFor}</p>
+                <div className="flex items-baseline justify-between mb-4">
+                  <span className="text-[11px] font-mono text-[#0A1220]/45 uppercase tracking-[0.06em]">{p.isDaily ? 'Daily' : '7-day monthly cycle'}</span>
+                  <span className="text-lg font-sans font-bold text-[#0A1220]">${p.price.toFixed(2)}</span>
+                </div>
+                <a
+                  href={`/product/${p.id}`}
+                  className="w-full min-h-[44px] flex items-center justify-center rounded-lg py-2.5 font-mono font-bold uppercase text-[11px] tracking-[0.14em] transition-all duration-300"
+                  style={{
+                    background: p.startHere ? '#19B3A6' : '#0A1220',
+                    color: '#FFFFFF',
+                  }}
+                  data-testid={`button-view-details-${p.id}`}
+                >
+                  View Details
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3-PRODUCT COMPARISON ── (SECONDARY_DARK) */}
+      <section ref={comparisonRef} style={{ background: SECONDARY_DARK }} data-testid="section-comparison-cards">
+        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[100px]">
+          <div className="text-center mb-10 md:mb-14">
+            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-400/70 mb-3">Compare</span>
+            <h2 className="text-2xl md:text-4xl font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white" data-testid="text-comparison-title">Side by Side</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+            {SHOP_PRODUCTS.map((p) => (
+              <div
+                key={p.id}
+                className="relative rounded-xl overflow-hidden flex flex-col"
+                style={{
+                  background: CARD_SURFACE,
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  boxShadow: '0 2px 12px rgba(0,0,0,0.3)',
+                }}
+                data-testid={`compare-card-${p.id}`}
+              >
+                <div className="flex items-end justify-center pt-6 pb-4 px-4 h-[160px] md:h-[180px]">
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    className="h-[120px] md:h-[140px] w-auto object-contain"
+                    style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.35))' }}
+                  />
+                </div>
+
+                <div className="px-5 pb-6 flex flex-col flex-1">
+                  <span className="text-[10px] font-mono uppercase tracking-[0.14em] font-bold mb-1.5" style={{ color: p.accent }}>{p.role}</span>
+                  <h3 className="text-xl font-head font-normal uppercase tracking-[-0.02em] text-white mb-2">
+                    <BrandName name={p.name} />
+                  </h3>
+                  <p className="text-[13px] font-sans text-white/55 leading-relaxed mb-3">{p.bestFor}</p>
+
+                  <div className="space-y-1.5 mb-4">
+                    {p.anchors.map((a) => (
+                      <span key={a} className="block text-[12px] font-mono text-white/40 tracking-[0.02em]">{a}</span>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto">
+                    <div className="border-t border-white/[0.06] pt-3 mb-3">
+                      <div className="flex items-baseline justify-between">
+                        <span className="text-[11px] font-mono text-white/45 uppercase tracking-[0.06em]">{p.cadence}</span>
+                        <span className="text-lg font-sans font-bold text-white">${p.price.toFixed(2)}</span>
+                      </div>
+                      <div className="flex items-baseline justify-between mt-1">
+                        <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.04em]">{p.supply}</span>
+                        <span className="text-[11px] font-mono text-white/35">sub: ${p.priceSub.toFixed(2)}/mo</span>
+                      </div>
+                    </div>
+
+                    {p.note && (
+                      <p className="text-[10px] font-mono text-white/35 tracking-[0.02em] mb-3">{p.note}</p>
+                    )}
+
+                    <div className="flex flex-col gap-1.5">
+                      <a
+                        href={`/product/${p.id}`}
+                        className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 font-mono font-bold uppercase text-[11px] tracking-[0.14em] transition-all duration-300"
+                        style={{ background: `linear-gradient(135deg, ${p.accent}, ${p.accent}dd)`, color: '#0A1220' }}
+                        data-testid={`button-view-details-compare-${p.id}`}
+                      >
+                        View Details <ArrowRight size={13} />
+                      </a>
+                      <button
+                        onClick={() => addProduct(p.id)}
+                        className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-lg py-2.5 font-mono uppercase text-[11px] tracking-[0.14em] font-medium text-white/50 hover:text-white/70 hover:bg-white/[0.04] transition-all duration-300"
+                        style={{ border: '1px solid rgba(255,255,255,0.06)' }}
+                        data-testid={`button-add-cart-compare-${p.id}`}
+                      >
+                        Add to Cart — ${p.price.toFixed(2)}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── BUILD YOUR PROTOCOL ── (LIGHT) */}
+      <section id="build-protocol" style={{ background: LIGHT }} data-testid="section-build-protocol">
+        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[100px]">
+          <div className="text-center mb-10 md:mb-14">
+            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-700/70 mb-3">Build</span>
+            <h2 className="text-2xl md:text-4xl font-head font-normal uppercase tracking-[-0.03em] leading-tight text-[#0A1220]" data-testid="text-build-title">Build Your Protocol</h2>
+            <p className="mt-3 max-w-lg mx-auto text-[14px] md:text-[15px] font-sans text-[#0A1220]/60 leading-relaxed">
+              Start with one product or build the full system. No lock-in, no invented savings.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+            {BUNDLES.map((bundle) => {
+              const total = getBundleTotal(bundle.products);
+              const bundleProducts = bundle.products.map((pid) => SHOP_PRODUCTS.find((sp) => sp.id === pid)!);
+
+              return (
+                <div
+                  key={bundle.id}
+                  className="rounded-xl p-6 md:p-8 flex flex-col"
+                  style={{
+                    background: '#FFFFFF',
+                    border: bundle.id === 'full' ? '2px solid rgba(25,179,166,0.30)' : '1px solid rgba(10,18,32,0.08)',
+                    boxShadow: bundle.id === 'full' ? '0 4px 24px rgba(25,179,166,0.08), 0 1px 3px rgba(0,0,0,0.06)' : '0 1px 3px rgba(0,0,0,0.05)',
+                  }}
+                  data-testid={`bundle-card-${bundle.id}`}
+                >
+                  <h3 className="text-lg font-head font-normal uppercase tracking-[-0.02em] text-[#0A1220] mb-1">{bundle.label}</h3>
+                  <p className="text-[13px] font-sans text-[#0A1220]/55 leading-relaxed mb-5">{bundle.desc}</p>
+
+                  <div className="space-y-2.5 mb-5 flex-1">
+                    {bundleProducts.map((bp) => (
+                      <div key={bp.id} className="flex items-center gap-3">
+                        <img src={bp.image} alt={bp.name} className="h-[36px] w-auto object-contain" />
+                        <div className="flex-1 min-w-0">
+                          <span className="text-[13px] font-sans font-bold text-[#0A1220] block leading-tight">{bp.name}</span>
+                          <span className="text-[11px] font-mono text-[#0A1220]/40">{bp.isDaily ? 'Daily' : '7-day cycle'} · ${bp.price.toFixed(2)}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="border-t border-[#0A1220]/[0.06] pt-4">
+                    <div className="flex items-baseline justify-between mb-3">
+                      <span className="text-[11px] font-mono text-[#0A1220]/40 uppercase tracking-[0.06em]">{bundle.products.length === 1 ? '1 product' : `${bundle.products.length} products`}</span>
+                      <span className="text-lg font-sans font-bold text-[#0A1220]">${total.toFixed(2)}</span>
+                    </div>
+                    <button
+                      onClick={() => addBundle(bundle.products)}
+                      className="w-full min-h-[44px] flex items-center justify-center rounded-lg py-2.5 font-mono font-bold uppercase text-[11px] tracking-[0.14em] transition-all duration-300"
+                      style={{
+                        background: bundle.id === 'full' ? '#19B3A6' : '#0A1220',
+                        color: '#FFFFFF',
+                      }}
+                      data-testid={`button-add-bundle-${bundle.id}`}
+                    >
+                      Add to Cart — ${total.toFixed(2)}
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TRUST / QUALITY ── (SECONDARY_DARK) */}
+      <section style={{ background: SECONDARY_DARK }} data-testid="section-trust">
+        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[100px]">
+          <div className="text-center mb-10 md:mb-14">
+            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-400/70 mb-3">Quality</span>
+            <h2 className="text-2xl md:text-4xl font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white" data-testid="text-trust-title">Built to Document, Not to Impress</h2>
+            <p className="mt-3 max-w-lg mx-auto text-[14px] md:text-[15px] font-sans text-white/55 leading-relaxed">
+              Every formula follows the same quality standard. No shortcuts, no proprietary blends.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+            {[
+              { title: 'Transparent Dosing', desc: 'Every active compound listed with its exact dose. No proprietary blends, no hidden amounts.' },
+              { title: 'Third-Party Tested', desc: 'Independent lab verification for identity, potency, and contaminants on every production lot.' },
+              { title: 'Lot Traceability', desc: 'Every bottle is lot-coded. Full documentation available by request for any production run.' },
+              { title: 'Delivery Integrity', desc: 'Form and release mechanism selected per compound. Enteric coating where gut bypass is required.' },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="rounded-xl p-6"
+                style={{ background: CARD_SURFACE, border: '1px solid rgba(255,255,255,0.06)' }}
+                data-testid={`trust-card-${i}`}
+              >
+                <h4 className="text-[14px] font-sans font-bold text-white mb-2">{item.title}</h4>
+                <p className="text-[13px] font-sans text-white/50 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── COMPARISON MATRIX ── (LIGHT) */}
+      <section style={{ background: LIGHT }} data-testid="section-comparison-matrix">
+        <div className="mx-auto max-w-6xl px-5 md:px-8 py-[72px] md:py-[100px]">
+          <div className="text-center mb-10 md:mb-14">
+            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-700/70 mb-3">Detail</span>
+            <h2 className="text-2xl md:text-4xl font-head font-normal uppercase tracking-[-0.03em] leading-tight text-[#0A1220]" data-testid="text-matrix-title">How They Compare</h2>
+          </div>
+
+          <div className="overflow-x-auto -mx-5 md:mx-0">
+            <table className="w-full min-w-[600px] text-left" data-testid="comparison-table">
+              <thead>
+                <tr>
+                  <th className="py-3 px-4 text-[11px] font-mono uppercase tracking-[0.10em] text-[#0A1220]/40 font-bold border-b-2 border-[#0A1220]/[0.08] w-[22%]" />
+                  {SHOP_PRODUCTS.map((p) => (
+                    <th key={p.id} className="py-3 px-4 text-[13px] font-head font-normal uppercase tracking-[-0.01em] text-[#0A1220] border-b-2 border-[#0A1220]/[0.08]">
+                      <BrandName name={p.name} />
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {COMPARISON_ROWS.map((row, i) => (
+                  <tr key={i} className={i % 2 === 0 ? 'bg-white/50' : ''}>
+                    <td className="py-3 px-4 text-[11px] font-mono uppercase tracking-[0.06em] text-[#0A1220]/45 font-bold border-b border-[#0A1220]/[0.04]">{row.label}</td>
+                    <td className="py-3 px-4 text-[13px] font-sans text-[#0A1220]/70 leading-snug border-b border-[#0A1220]/[0.04]">{row.cellunad}</td>
+                    <td className="py-3 px-4 text-[13px] font-sans text-[#0A1220]/70 leading-snug border-b border-[#0A1220]/[0.04]">{row.cellubiome}</td>
+                    <td className="py-3 px-4 text-[13px] font-sans text-[#0A1220]/70 leading-snug border-b border-[#0A1220]/[0.04]">{row.cellunova}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* ── NOT SURE WHERE TO START ── (SECONDARY_DARK) */}
+      <section style={{ background: SECONDARY_DARK }} data-testid="section-guidance">
+        <div className="mx-auto max-w-3xl px-5 md:px-8 py-[72px] md:py-[100px] text-center">
+          <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-400/70 mb-3">Guidance</span>
+          <h2 className="text-2xl md:text-3xl font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white mb-6" data-testid="text-guidance-title">Not Sure Where to Start?</h2>
+          <div className="space-y-4 text-left max-w-xl mx-auto">
+            <div className="flex gap-4 items-start" data-testid="guidance-item-0">
+              <span className="text-[12px] font-mono font-bold text-teal-400/70 shrink-0 mt-0.5">01</span>
+              <p className="text-[14px] font-sans text-white/65 leading-relaxed">
+                <span className="font-bold text-white/85">New to the protocol?</span> Start with CELLUNAD+. It's the daily foundation most people build on.
+              </p>
+            </div>
+            <div className="flex gap-4 items-start" data-testid="guidance-item-1">
+              <span className="text-[12px] font-mono font-bold text-teal-400/70 shrink-0 mt-0.5">02</span>
+              <p className="text-[14px] font-sans text-white/65 leading-relaxed">
+                <span className="font-bold text-white/85">Gut health is the priority?</span> Start with CELLUBIOME. Enteric-coated for targeted delivery.
+              </p>
+            </div>
+            <div className="flex gap-4 items-start" data-testid="guidance-item-2">
+              <span className="text-[12px] font-mono font-bold text-teal-400/70 shrink-0 mt-0.5">03</span>
+              <p className="text-[14px] font-sans text-white/65 leading-relaxed">
+                <span className="font-bold text-white/85">Already have a daily baseline?</span> Add CELLUNOVA as your monthly reset layer.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FINAL CTA ── (BASE_DARK) */}
+      <section style={{ background: BASE_DARK }} data-testid="section-final-cta">
+        <div className="mx-auto max-w-3xl px-5 md:px-8 py-[72px] md:py-[100px] text-center">
+          <h2 className="text-2xl md:text-4xl font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white mb-4" data-testid="text-final-cta">Build Your Age Revive Protocol</h2>
+          <p className="text-[14px] md:text-[15px] font-sans text-white/55 leading-relaxed max-w-lg mx-auto mb-8">
+            Start with one product or build the full system. Every formula is independently useful and designed to pair.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/product/cellunad"
+              className="min-h-[48px] px-8 py-3 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] text-white transition-all duration-300"
+              style={{ background: 'linear-gradient(135deg, #19B3A6, #14a899)', boxShadow: '0 2px 12px rgba(25,179,166,0.25)' }}
+              data-testid="link-start-daily-foundation"
+            >
+              Start with the Daily Foundation
+            </a>
+            <button
+              onClick={() => addBundle(['cellunad', 'cellubiome', 'cellunova'])}
+              className="min-h-[48px] px-8 py-3 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] text-white/70 hover:text-white transition-all duration-300"
+              style={{ border: '1px solid rgba(255,255,255,0.12)' }}
+              data-testid="button-add-full-system"
+            >
+              Add Full System — ${getBundleTotal(['cellunad', 'cellubiome', 'cellunova']).toFixed(2)}
+            </button>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>

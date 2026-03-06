@@ -1,0 +1,465 @@
+You are a top-tier DTC conversion strategist, premium ecommerce designer, and senior front-end engineer.
+
+Audit and improve the Age Revive Shop / Shop All page so it feels elite and converts like a guided protocol selector, not a generic collection page.
+
+Do not just suggest changes.
+Implement them directly in code.
+
+CONTEXT
+
+Brand:
+- Age Revive
+
+Page:
+- Shop / Shop All
+
+Desired perception:
+- premium
+- clinically informed
+- restrained
+- trustworthy
+- luxurious
+- clearly designed
+- easy to shop
+
+Main problem:
+- the current page is visually polished, but on mobile it behaves too much like three stacked product mini-pages
+- the page takes too long to compare
+- the page is too dark for too long
+- section separation is weak
+- price and comparison clarity are not strong enough
+- product selection is not guided enough
+- the shop page should do more conversion work with start-here guidance, comparison clarity, trust proof, and bundle/protocol logic
+
+NON-NEGOTIABLE RULES
+
+Do not introduce:
+- DNA helix icons
+- gene/chromosome imagery
+- molecule graphics
+- biotech cliché visuals
+- neural/circuit/AI motifs
+- decorative icon packs
+- random decorative graphics
+- glassmorphism
+- loud gradients
+- generic startup SaaS styling
+- generic marketplace grid styling
+- stock wellness filler imagery
+- carousels that hide important product information
+
+Default to zero icons unless an icon genuinely improves comprehension.
+
+Do not use hype copy such as:
+- revolutionary
+- next-gen
+- cutting-edge
+- optimize your biology
+- hack your aging
+- engineered longevity
+- breakthrough system
+- future of wellness
+
+Use calm, concise, evidence-aware, premium language.
+
+CRITICAL PRODUCT-TRUTH RULES
+
+Use the current approved live product content and FAQ as source of truth.
+Preserve and keep consistent:
+- pricing
+- cadence
+- serving
+- ingredient anchors
+- product role
+- start-here guidance
+- safety/allergen notes
+- product positioning in the broader system
+
+Important:
+- do not let the shop page contradict the FAQ or product pages
+- do not treat all 3 products as equally likely starting points if approved site guidance says otherwise
+- do not invent discounts or savings
+- if bundle totals are shown, compute them from real current prices only
+- do not let the shop page misstate which product is daily, enteric-protected, periodic, or allergen-containing
+- do not let quick-add or builder language create product-truth confusion
+
+CURRENT UX PROBLEMS TO FIX
+
+1. The hero bleeds directly into the first product instead of behaving like a distinct page-level introduction
+2. The page feels like three full-height product sections stacked vertically instead of a clean comparison page
+3. The page is too dark for too long and lacks visual chapter breaks
+4. Price is not prominent enough in the current visual treatment
+5. The repeated CTA pattern is too abstract and not decisive enough
+6. There is not enough “start here” guidance
+7. The page makes comparison slower than it should be
+8. Packaging details get too much emphasis relative to price, cadence, and trust
+9. There is not enough trust proof near the top
+10. The page does not currently earn enough AOV with system-building logic
+
+PRIMARY STRATEGY
+
+Rebuild this page as a premium decision page with 3 jobs:
+1. Help users choose the right starting point
+2. Help users compare the 3 products quickly
+3. Help users buy either one product or the full system
+
+The page should not feel like a neutral catalog.
+It should feel like guided protocol selection.
+
+The visitor should understand the system in under 10 seconds.
+
+WHAT THE PAGE MUST ANSWER FAST
+
+- What are the 3 products?
+- Which product should I start with?
+- Which one is daily vs periodic?
+- Which one is best for gut priority vs foundation vs monthly layer?
+- What does each one cost?
+- How often is each used?
+- Can I build the full protocol here?
+- Why should I trust this brand?
+
+PAGE ARCHITECTURE TO TARGET
+
+Refactor the shop page so it roughly follows this sequence:
+
+1. Hero / system intro
+2. Start Here / Choose Your Path
+3. 3-product comparison section
+4. Build Your Protocol / quick-select bundle section
+5. Trust / quality strip
+6. Optional deeper compare or FAQ section
+7. Final CTA / protocol summary
+8. Footer
+
+Adapt to the current codebase as needed, but keep this logic.
+
+HERO REQUIREMENTS
+
+The hero must feel like a true top-level shop page, not just the beginning of the first product card.
+
+Refactor it so it includes:
+- strong page title
+- concise subhead explaining the 3-part system simply
+- visual treatment that references all 3 products, not just one
+- primary CTA: Compare the 3 Protocols or Shop the System
+- secondary CTA: Build Your Protocol or View All Details
+- compact proof strip near the hero
+
+The hero should not immediately collapse into a full CELLUNAD+ card.
+Create a real transition between page intro and product comparison.
+
+START HERE / CHOOSE YOUR PATH
+
+Create a clear decision block near the top that helps visitors self-sort quickly.
+
+This should make it obvious:
+- what most people start with
+- what to choose if gut signaling is the priority
+- what is a periodic monthly layer rather than a daily baseline
+
+Possible formats:
+- 3 decision cards
+- a segmented selector
+- a clean “Start here / Gut priority / Monthly reset” chooser
+
+This section should be high clarity, low friction, and premium.
+It should feel like expert guidance, not a quiz.
+
+3-PRODUCT COMPARISON SECTION
+
+This is the core of the page.
+
+Refactor the current stacked product treatment into a cleaner comparison system.
+
+On desktop:
+- prefer a 3-column comparison layout or elegant 3-card system
+
+On mobile:
+- use compact stacked cards or a segmented jump system
+- do not make each product card a giant full-screen mini-landing page
+- the user should be able to compare all 3 without exhausting scroll
+
+Each product card must clearly show:
+- product name
+- protocol role
+- best for
+- cadence
+- price
+- supply
+- 2 to 3 concise benefit or ingredient anchors
+- one primary CTA
+- one secondary CTA if needed
+- any critical note that affects choice
+
+Examples of critical-note type content:
+- best starting point
+- daily use
+- periodic use
+- targeted delivery
+- allergen note if current approved content requires it
+
+Do not bury any of this.
+
+CTA RULES FOR PRODUCT CARDS
+
+The current CTA logic is too repetitive and abstract.
+
+Improve the card CTA hierarchy.
+
+Recommended structure:
+- primary CTA: View Details
+- secondary CTA: Add to Protocol or Quick Add
+
+Alternative if testing suggests stronger commerce intent:
+- primary CTA: Add to Cart
+- secondary CTA: View Details
+
+But whichever system you choose, keep it consistent.
+Do not mix random verbs across the page.
+
+Avoid making “View Protocol” the only meaningful action if it feels vague.
+Avoid making “Add to Stack” the default if “Protocol” or a clearer ecommerce action is better.
+
+BUILD YOUR PROTOCOL SECTION
+
+Add a clearer system-builder section below comparison.
+
+This section should allow the visitor to:
+- choose one product
+- choose a daily baseline pair
+- choose the full system
+
+This should feel premium and restrained, not like aggressive upsell ecommerce.
+
+Requirements:
+- compute real totals from current live prices
+- do not invent savings if there are none
+- if there are existing bundle mechanics in code, make them elegant and more visible
+- if a dynamic summary bar exists, improve it
+
+Possible structure:
+- Start with One
+- Daily Foundation
+- Full System
+
+This section should increase AOV without becoming cheesy.
+
+TRUST / QUALITY SECTION
+
+Surface trust earlier and more cleanly.
+
+Create or strengthen a section that merchandises the brand’s actual trust assets:
+- transparent dosing
+- no proprietary blends
+- third-party testing
+- lot traceability / documentation access
+- product-specific quality rigor
+- delivery integrity verification where relevant
+- clear allergen disclosure where relevant
+
+This section should likely use a light clinical background for readability and credibility.
+
+Make it feel like premium documentation, not fluff.
+
+VISUAL RHYTHM / SECTION SEPARATION
+
+The page must not feel like a continuous dark slab.
+
+Use:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Existing mint/teal accent only
+
+Create a clear rhythm such as:
+dark -> light -> dark -> light -> dark
+
+Use:
+- tonal shifts
+- spacing resets
+- card surface contrast
+- section markers
+- eyebrow labels where useful
+- cleaner transitions between sections
+
+Do not solve this with extra graphics or noise.
+
+CARD AND SURFACE DESIGN
+
+The current cards/surfaces need stronger hierarchy.
+
+For dark sections:
+- use visibly elevated surfaces
+- subtle borders like rgba(255,255,255,0.08)
+- restrained shadows
+
+For light sections:
+- use warm white or slightly lifted surfaces
+- subtle border
+- elegant shadow, not tech-startup shadow
+
+Product cards must feel:
+- structured
+- premium
+- scannable
+- comparison-friendly
+- clearly separate from the background
+
+PRICE / CADENCE / MICROCOPY PRIORITY
+
+Refactor information priority on every product card.
+
+This order should win:
+1. name / role
+2. best for
+3. price
+4. cadence
+5. primary benefits or ingredient anchors
+6. CTA
+7. supply and secondary notes
+8. packaging details
+
+If glass bottle or UV-protected details remain, demote them to tertiary microcopy.
+
+MOBILE UX
+
+This page must be excellent on mobile.
+
+Prioritize:
+- quick comparison
+- shorter product cards
+- clear section breaks
+- prominent price and cadence
+- strong CTA visibility
+- easy jump between products
+- protocol summary that is useful, not intrusive
+
+Consider:
+- sticky jump chips for the 3 products
+- a minimal sticky protocol summary only after selection
+- tap-friendly comparison cards
+
+Do not make mobile users scroll through three giant quasi-landing pages.
+
+TRUST STRIP NEAR TOP
+
+Add a compact trust strip near the hero or just below the chooser section.
+
+Possible proof items:
+- Full dose disclosure
+- No proprietary blends
+- Third-party tested
+- Lot-level traceability
+- CoA/documentation available by request
+
+Keep it concise, premium, and useful.
+
+NOT SURE WHERE TO START BLOCK
+
+Add a very short guidance section that helps reduce decision paralysis.
+
+It should clarify something like:
+- Start with the daily foundation if you are new
+- Choose the gut-focused option if that is your priority
+- Add the periodic layer once the baseline is in place
+
+Keep it elegant and practical.
+Do not turn it into a long explainer.
+
+COMPARISON MATRIX OR DETAIL SECTION
+
+If helpful, add a second-level comparison area that makes differences explicit.
+
+Potential rows:
+- use pattern
+- best for
+- key actives
+- product role
+- supply format
+- who it pairs with
+- caution / note
+
+Keep it premium and legible.
+No clutter.
+
+FINAL CTA
+
+The final CTA should help users act clearly.
+
+Good directions:
+- Build Your Age Revive Protocol
+- Start with the Daily Foundation
+- Shop the Full System
+
+The final CTA should feel decisive and premium.
+It should not feel like generic ecommerce urgency.
+
+SPACING / TYPOGRAPHY
+
+Improve section rhythm and legibility.
+
+Targets:
+- desktop section padding: 100px to 120px top/bottom
+- mobile section padding: 72px to 88px top/bottom
+
+Typography should feel:
+- premium
+- editorial
+- highly legible
+- easier to scan
+- not templated
+- not fashion-brand
+- not SaaS
+
+Use:
+- white primary text on dark
+- softened secondary text on dark
+- deep navy / near-charcoal text on light backgrounds
+
+ACCESSIBILITY
+
+Maintain or improve:
+- contrast
+- semantic structure
+- focus states
+- tap target size
+- keyboard accessibility
+- responsive behavior
+
+SELF-QA BEFORE STOPPING
+
+Before stopping, audit your own implementation and fix anything that fails:
+
+1. Does the page clearly explain the 3-product system in under 10 seconds?
+2. Is it obvious where most people should start?
+3. Is it obvious which product is daily vs periodic?
+4. Are price and cadence clearly visible for all 3 products?
+5. Does the page still feel like 3 stacked mini-landing pages anywhere?
+6. Do sections now feel distinct instead of one dark slab?
+7. Are trust assets visible near the top?
+8. Is the CTA system consistent and clear?
+9. Is the protocol builder useful and not cheesy?
+10. Are bundle totals truthful and computed from real prices only?
+11. Is mobile comparison dramatically easier than before?
+12. Does anything still feel generic biotech, generic ecommerce, or templated?
+13. Are product-specific notes and warnings preserved accurately?
+14. Is the page premium enough to justify the brand positioning?
+
+If any answer is no, continue refining before stopping.
+
+WORK STYLE
+
+Inspect the codebase, identify the relevant layout/components/styles, and implement the improvements directly.
+Keep code clean, maintainable, and production-ready.
+Do not stop at “better.”
+Stop only when the shop page feels elite.
+
+WHEN DONE, RETURN
+
+1. Summary of what you changed
+2. Files/components modified
+3. Why the changes improve conversion
+4. Why the changes improve trust
+5. Why the changes improve AOV / protocol-building
+6. Any optional next-step refinements
