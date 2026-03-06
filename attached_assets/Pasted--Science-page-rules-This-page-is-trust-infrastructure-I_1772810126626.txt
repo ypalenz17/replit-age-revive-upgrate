@@ -1,0 +1,152 @@
+## Science page rules
+
+This page is trust infrastructure.
+It must feel like premium scientific documentation for intelligent buyers, not a generic marketing page and not an academic wall of text.
+
+### Core job
+The science page should help a visitor quickly understand:
+- what this page is
+- how to read the evidence
+- how the 3-product system is structured
+- why each formula exists
+- what standards Age Revive uses
+- what confidence level to place on different ingredients and claims
+- where to go next
+
+### Core strategy
+Documentation first.
+Sales second.
+
+This page should reduce skepticism and support premium pricing by making the brand feel:
+- careful
+- transparent
+- evidence-aware
+- restrained
+- credible
+- premium
+
+### The page must not feel like
+- another product landing page
+- a generic biotech site
+- a fake scientific dashboard
+- a wall of dark cards
+- a pile of PubMed citations with no hierarchy
+- a page that oversells early-stage evidence
+
+### Absolutely forbidden
+Never introduce:
+- DNA helix icons
+- gene or chromosome imagery
+- molecule graphics unless strictly functional and genuinely explanatory
+- neural/circuit/AI motifs
+- decorative charts or fake data visualizations
+- generic biotech motifs
+- stock medical icon clutter
+- glassmorphism
+- holographic UI
+- loud gradients
+- decorative chips that add no real meaning
+- zombie-cell visuals
+- meaningless “scientific” art
+
+Default to zero icons unless they clearly improve comprehension.
+
+### Copy restrictions
+Do not use:
+- AI fluff
+- biotech hype
+- revolutionary
+- next-gen
+- cutting-edge
+- optimize your biology
+- hack your aging
+- breakthrough system
+- engineered longevity
+- overconfident claims
+- language that makes all ingredients sound equally proven
+
+Use calm, concise, evidence-aware, premium language.
+
+### Hard evidence rules
+- Preserve and strengthen scientific nuance
+- Do not flatten evidence levels
+- Do not imply mechanistic, observational, in vitro, preclinical, and human outcomes are the same
+- Do not remove caveats that currently make the page more credible
+- Keep “educational, not medical advice” language visible
+- Keep “references are transparency, not promises” logic visible
+- Make standards and boundaries easier to understand, not weaker
+
+### Mobile evidence rules
+Evidence tables must not become cramped or horizontally unreadable on mobile.
+
+Required:
+- desktop can use structured tables
+- mobile must use stacked cards, accordions, or other readable responsive layouts
+- no cutoff columns
+- no tiny compressed scientific text
+- no exhausting endless repeated rows with weak hierarchy
+
+### References rules
+References must be usable, not just present.
+
+Required:
+- group references logically
+- make them easy to scan
+- make them clearly linked
+- show why each reference matters
+- keep citation presentation elegant and mobile-readable
+
+### CTA rules
+This page is not a hard-sell page.
+Keep CTA usage disciplined.
+
+Allowed:
+- one strong hero CTA to jump into evidence or browse the system
+- one restrained final CTA to shop or build the protocol
+- limited product-specific CTAs in the architecture section if necessary
+
+Not allowed:
+- repeated sales CTAs after every section
+- CTA clutter
+- science page behaving like a product detail page
+
+### Visual rules
+This page can and should be more documentation-like than the homepage.
+
+Use:
+- Base dark: #0A1220
+- Secondary dark: #101B2D
+- Light clinical: #F4F1EA
+- Existing mint/teal accent only
+
+Use more light sections than the homepage where readability matters.
+Especially:
+- standards
+- evidence/dosing
+- FAQ
+- references
+
+The page must not feel like one long dark slab.
+
+### Structural priorities
+1. Clear page intro
+2. How to read the evidence
+3. Three-layer architecture
+4. Standards and delivery logic
+5. Evidence and dosing by product
+6. Glossary
+7. FAQ
+8. References
+9. Final protocol CTA
+
+### Done when
+The page feels:
+- elite
+- premium
+- scientifically careful
+- easy to understand
+- easy to trust
+- easy to navigate
+- excellent on mobile
+- clearly not generic biotech
+- clearly not generic supplement marketing
