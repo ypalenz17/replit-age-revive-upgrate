@@ -1471,21 +1471,24 @@ function ShopCatalog() {
             </table>
           </div>
 
-          <div className="md:hidden space-y-4" data-testid="comparison-table-mobile">
+          <div className="md:hidden space-y-5" data-testid="comparison-table-mobile">
             {SHOP_PRODUCTS.map((p) => (
               <div
                 key={p.id}
-                className="rounded-lg px-4 py-4"
-                style={{ background: CARD_SURFACE, border: '1px solid rgba(255,255,255,0.05)' }}
+                className="rounded-xl px-5 py-5"
+                style={{ background: CARD_SURFACE, border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 2px 12px rgba(0,0,0,0.2)' }}
                 data-testid={`comparison-mobile-${p.id}`}
               >
-                <h4 className="text-[13px] font-head font-normal uppercase tracking-[-0.01em] text-white/80 mb-2"><BrandName name={p.name} /></h4>
+                <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-white/[0.06]">
+                  <h4 className="text-[17px] font-head font-normal uppercase tracking-[-0.02em] text-white"><BrandName name={p.name} /></h4>
+                  <span className="text-[9px] font-mono uppercase tracking-[0.10em] font-bold px-2 py-0.5 rounded" style={{ backgroundColor: 'rgba(25,179,166,0.15)', color: '#5eead4' }}>{SHOP_PRODUCTS.find(sp => sp.id === p.id)?.role}</span>
+                </div>
                 {COMPARISON_ROWS.map((row) => {
                   const val = row[p.id as keyof typeof row];
                   return (
-                    <div key={row.label} className="flex justify-between py-1.5 border-b border-white/[0.03] last:border-0">
-                      <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/30 font-bold">{row.label}</span>
-                      <span className="text-[11px] font-sans text-white/50 text-right max-w-[55%]">{val}</span>
+                    <div key={row.label} className="flex justify-between py-2.5 border-b border-white/[0.04] last:border-0 gap-4">
+                      <span className="text-[10px] font-mono uppercase tracking-[0.08em] text-white/40 font-bold shrink-0 pt-0.5">{row.label}</span>
+                      <span className="text-[12px] font-sans text-white/65 text-right leading-snug">{val}</span>
                     </div>
                   );
                 })}
