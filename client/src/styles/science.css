@@ -1038,10 +1038,11 @@
 
   .ar-pageBody {
     display: grid;
-    grid-template-columns: 190px 1fr;
-    gap: 24px;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
     max-width: 1180px;
     margin: 0 auto;
+    padding: 0 24px;
   }
 
   .ar-toc {
@@ -1053,9 +1054,14 @@
     position: sticky;
     top: 88px;
     align-self: start;
-    margin-left: 20px;
     margin-top: 48px;
     z-index: 10;
+  }
+
+  .ar-contentInner {
+    max-width: none;
+    margin: 0;
+    padding: 0 0 0 8px;
   }
 
   .ar-tocMobilePills {
@@ -1137,7 +1143,8 @@
 @media (min-width: 1200px) {
   .ar-pageBody {
     grid-template-columns: 210px 1fr;
-    gap: 36px;
+    gap: 40px;
+    max-width: 1280px;
   }
 
   .ar-science h1 {
@@ -1150,18 +1157,13 @@
     max-width: 1100px;
   }
 
-  .ar-contentInner {
-    max-width: 1100px;
-  }
-
   .ar-pageBody {
     grid-template-columns: 220px 1fr;
-    gap: 40px;
-    max-width: 1320px;
+    gap: 44px;
+    max-width: 1360px;
   }
 
   .ar-toc {
-    margin-left: 24px;
     padding: 14px;
   }
 
@@ -1179,13 +1181,9 @@
     max-width: 1200px;
   }
 
-  .ar-contentInner {
-    max-width: 1200px;
-  }
-
   .ar-pageBody {
     grid-template-columns: 230px 1fr;
     gap: 48px;
-    max-width: 1400px;
+    max-width: 1440px;
   }
 }
