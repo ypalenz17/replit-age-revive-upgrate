@@ -1,0 +1,712 @@
+You are a senior luxury DTC creative director, CRO-focused UX strategist, SEO lead, and front-end engineer.
+
+You are updating ONLY the Home page and Shop page of Age Revive based on the latest mobile implementation already in the codebase.
+
+This review is based on the updated version, not the older version.
+
+Goal:
+Refine Home and Shop so they feel more premium, more disciplined, more trustworthy, more conversion-oriented, and more like a $100M brand.
+
+Important:
+- Mobile is directionally good and must remain intact
+- Do not redesign the whole site
+- Do not break current mobile behavior
+- Do not add decorative biotech visuals
+- Do not add random icons
+- Do not add visual noise
+- Improve copy, hierarchy, visual authority, and functional information design
+
+NON-NEGOTIABLE RULES
+
+Do not:
+- change prices
+- change serving sizes
+- change ingredient doses
+- change product roles
+- invent claims
+- overstate evidence
+- break mobile layouts
+- add DNA, molecule, AI, neural, or sci-fi visuals
+- add gradient gimmicks or decorative glows
+- create text overflow
+- change URLs or slugs
+- break metadata, canonicals, or schema
+
+Do:
+- improve the Home hero visual strategy
+- make Home and Shop feel more distinct from each other
+- make Shop feel like a selector/decision page
+- tighten copy
+- improve trust proof
+- use functional visual elements only
+- preserve crawlable visible text
+- keep schema aligned with visible text
+
+GLOBAL UI REFINEMENTS FOR HOME + SHOP
+
+1. Reduce overuse of extreme letter spacing
+- reduce tracking on button labels, trust-strip items, and small helper text by around 20% to 30%
+- keep the aesthetic, but improve readability and reduce the “template sci-fi” feel
+
+2. Strengthen trust-strip readability
+- trust strips should not feel like decorative ghost text
+- increase contrast slightly
+- tighten spacing between items
+- use separators or dots only if they improve scanability
+- trust text should be readable in one quick glance
+
+3. Tighten vertical spacing in transition areas
+- reduce oversized dark gaps between hero CTAs, trust strip, and next section
+- especially on Shop between hero buttons/trust strip and the “Choose your starting point” section
+
+4. Keep cards equal height where they compare
+- all 3 product cards in Home and Shop should align
+- CTA rows should align at the bottom
+- product images should use consistent crop and baseline alignment
+
+5. Preserve mobile
+- do not degrade current mobile section order
+- do not make text smaller
+- do not move important CTAs further down the page
+- use desktop/tablet enhancements through breakpoint-specific overrides if needed
+
+==================================================
+HOME PAGE
+==================================================
+
+MAIN HOME PAGE ASSESSMENT TO FIX
+
+The updated Home page is directionally good, but still has 4 major issues:
+1. The hero visual is wrong for the brand
+2. The H1 still feels slightly generic/marketing-heavy
+3. The trust-proof grid includes lower-value proof points
+4. The science teaser is still too abstract for average people
+
+HOME HERO — REQUIRED CHANGES
+
+Most important change:
+Remove the current face/hand lifestyle-style hero image.
+
+Replace it with a product-led system composition.
+
+Required visual direction:
+- use all 3 products as the hero visual
+- show them as one coordinated system
+- CELLUNAD+ should read as the lead product
+- CELLUBIOME should read as the second layer
+- CELLUNOVA should read as the periodic layer
+- keep the visual restrained and premium
+- no floating decorative particles
+- no biotech art
+- no human lifestyle photo
+- no skincare-ad feel
+
+Preferred hero visual composition:
+- dark background
+- three product packs arranged in a clear left-to-right or staggered composition
+- subtle lighting only
+- very restrained glow or depth if already part of the existing system, but no obvious gradient gimmick
+- strong baseline alignment
+- no visual clutter
+
+If the current hero component supports only one image:
+- replace the face image with a composed product-system image
+- if that is not possible in this sprint, reduce the current face image opacity dramatically and layer a 3-product composition in front of it
+- but the goal is to remove the face as the dominant visual
+
+HOME HERO — EXACT TEXT REPLACEMENTS
+
+Keep the eyebrow if it currently reads:
+Three fully disclosed formulas. One system.
+
+Replace the H1 with:
+Daily NAD+ support. Gut resilience. One coordinated system.
+
+Replace the subhead with:
+Start with CELLUNAD+, add CELLUBIOME, and layer in CELLUNOVA as a 7-day monthly protocol.
+
+Keep primary CTA:
+Shop the System
+
+Keep secondary CTA:
+Explore the Science
+
+Replace the hero trust strip items with:
+- Full dose disclosure
+- No proprietary blends
+- Third-party tested
+- Lot traceability
+
+HOME HERO — LAYOUT REFINEMENTS
+
+- keep the hero visually rich but more product-led
+- reduce the sense that the text is floating over an ad image
+- ensure H1 stays strong and readable at first glance
+- trust strip should sit closer to the CTA area and feel like proof, not fine print
+- do not let the hero feel like a generic wellness campaign
+
+HOME SECTION: BUILT ON TRANSPARENCY
+
+Keep the section heading:
+Built on transparency, not marketing claims.
+
+Replace the 6 cards with the following exact content:
+
+Card 1 title:
+Full dose disclosure
+Card 1 body:
+Every core active and dose is listed on the label.
+
+Card 2 title:
+Third-party tested
+Card 2 body:
+Identity, potency, and contaminant checks support release.
+
+Card 3 title:
+Lot traceability
+Card 3 body:
+Each lot can be matched to documentation support.
+
+Card 4 title:
+No proprietary blends
+Card 4 body:
+You can evaluate the formula without guesswork.
+
+Card 5 title:
+Targeted delivery
+Card 5 body:
+Delivery and format are matched to the product’s role.
+
+Card 6 title:
+Documentation support
+Card 6 body:
+Batch documentation can be requested by lot.
+
+Important:
+Remove or replace these weaker current cards if they exist:
+- Clinically Studied Ingredients
+- Glass Packaging
+- Shipping Included
+
+Reason:
+They are either too broad, too low-value, or too merchant-like relative to the premium proof this section should lead with.
+
+HOME SECTION: CHOOSE YOUR STARTING POINT
+
+Keep the section heading:
+Choose your starting point.
+
+Replace the intro with:
+Three protocols that work alone or together. Most people start with CELLUNAD+.
+
+For the 3 product cards, use these exact labels and bodies:
+
+CARD 1
+Role label:
+Daily NAD+ Foundation
+Product title:
+CELLUNAD+
+Helper badge:
+Start here
+Body:
+500 mg NR plus methylation and mitochondrial co-factors.
+Cadence line:
+2 capsules daily
+Primary CTA:
+View CELLUNAD+
+
+CARD 2
+Role label:
+Daily Gut-Mito Support
+Product title:
+CELLUBIOME
+Helper badge:
+Gut support priority
+Body:
+Urolithin A plus enteric tributyrin for daily gut-mito support.
+Cadence line:
+2 enteric capsules daily
+Primary CTA:
+View CELLUBIOME
+
+CARD 3
+Role label:
+7-Day Monthly Protocol
+Product title:
+CELLUNOVA
+Helper badge:
+Periodic layer
+Body:
+7-day monthly protocol for autophagy-related support and resilience.
+Cadence line:
+5 capsules daily for 7 days
+Primary CTA:
+View CELLUNOVA
+
+HOME SECTION: SYSTEM EXPLANATION / SCIENCE TEASER
+
+The current “Three biological axes” language is too abstract for the homepage.
+
+Replace the section eyebrow with:
+How the system works
+
+Replace the section heading with:
+Three roles. One coordinated protocol.
+
+Replace the section intro with:
+Each formula has a distinct job. Together, they cover the full protocol more clearly than any one product alone.
+
+Replace the 3 science teaser cards with:
+
+Card 1 title:
+Daily NAD+ foundation
+Card 1 body:
+Supports daily NAD+ metabolism with 500 mg NR and co-factors.
+
+Card 2 title:
+Daily gut-mito support
+Card 2 body:
+Pairs urolithin A and enteric tributyrin for gut-barrier and mitochondrial support.
+
+Card 3 title:
+7-day monthly layer
+Card 3 body:
+Adds a defined monthly protocol built around autophagy-related support and resilience.
+
+CTA:
+Explore the Science
+
+Important:
+Do not use “biological axes” on the homepage.
+That language belongs deeper in Science, not in the core buying path.
+
+HOME SECTION: FAQ TEASER
+
+Replace the heading with:
+Before you start.
+
+Replace the intro with:
+Most first-time buyers begin with CELLUNAD+. Use the FAQ for protocol logic, safety notes, and quality answers.
+
+Keep accordion questions, but ensure the top 3 are:
+- Where should I start?
+- How long until I notice a difference?
+- Are there any proprietary blends?
+
+If the first accordion item can be open by default without harming mobile UX, open it.
+
+Add two restrained utility links near this section if layout supports them:
+- Read the FAQ
+- View Quality Standards
+
+HOME FINAL CTA
+
+Replace the final CTA heading with:
+Most people start with the daily foundation.
+
+Replace the subhead with:
+Begin with CELLUNAD+, then add the other layers when the time is right.
+
+Primary CTA:
+Start with CELLUNAD+
+
+Secondary CTA:
+Compare the 3 Protocols
+
+Do not let the final CTA feel like a generic banner.
+It should feel decisive and product-guiding.
+
+==================================================
+SHOP PAGE
+==================================================
+
+MAIN SHOP PAGE ASSESSMENT TO FIX
+
+The updated Shop page is much better than before, but still has 5 major issues:
+1. It still feels too similar to Home at the top
+2. The hero should act like a selector, not a manifesto
+3. Some labels are too abstract
+4. Product cards need clearer plain-English value language
+5. The comparison and builder sections need slightly sharper messaging
+
+SHOP HERO — REQUIRED CHANGES
+
+Shop must feel like a selector/decision page immediately.
+
+Do not use a Home-style headline at the top.
+
+Replace the eyebrow with:
+Shop the system
+
+Replace the H1 with:
+Choose your starting point.
+
+Replace the subhead with:
+Compare the daily foundation, the gut-mito formula, and the 7-day monthly protocol.
+
+Add this helper line below the subhead:
+Most people start with CELLUNAD+.
+
+Keep the primary CTA:
+Compare all three
+
+Keep the secondary CTA:
+Build your protocol
+
+SHOP HERO — SELECTOR VISUAL
+
+Keep the 3-product row, but make it feel more functional and less like hero decoration.
+
+For each of the 3 mini product modules under the hero, use these labels:
+
+CELLUNAD+
+Label:
+Daily NAD+ Foundation
+Helper:
+Most people start here
+
+CELLUBIOME
+Label:
+Daily Gut-Mito Support
+Helper:
+Best if gut support is the priority
+
+CELLUNOVA
+Label:
+7-Day Monthly Protocol
+Helper:
+Add after your baseline is in place
+
+Important:
+Replace vague or abstract labels like:
+- Signal Stability
+- Periodic Reset
+if those still appear anywhere in the hero or selector zone.
+
+Use clearer, more retrievable language.
+
+SHOP SECTION: CHOOSE YOUR STARTING POINT
+
+Keep the section heading:
+Choose your starting point.
+
+Replace the 3 main product cards with this exact copy:
+
+CARD 1
+Role label:
+Daily NAD+ Foundation
+Product title:
+CELLUNAD+
+Helper badge:
+Most people start here
+Price:
+keep current price
+Body:
+Daily NAD+ support with 500 mg NR and co-factors.
+Cadence line:
+2 capsules daily
+Primary CTA:
+Add to Cart
+Secondary CTA:
+View Full Details
+
+CARD 2
+Role label:
+Daily Gut-Mito Support
+Product title:
+CELLUBIOME
+Helper badge:
+Best if gut support is the priority
+Price:
+keep current price
+Body:
+Gut-barrier and mitochondrial support with urolithin A and enteric tributyrin.
+Cadence line:
+2 enteric capsules daily
+Primary CTA:
+Add to Cart
+Secondary CTA:
+View Full Details
+
+CARD 3
+Role label:
+7-Day Monthly Protocol
+Product title:
+CELLUNOVA
+Helper badge:
+Add after your baseline is in place
+Price:
+keep current price
+Body:
+7-day monthly protocol for autophagy-related support and mitochondrial resilience.
+Cadence line:
+5 capsules daily for 7 days
+Primary CTA:
+Add to Cart
+Secondary CTA:
+View Full Details
+
+Important:
+Replace weaker current lines such as:
+- Energy, repair & NAD+ support
+- Gut-mito axis & steady output
+- Autophagy + periodic renewal
+
+Use plain-English value language instead.
+
+SHOP SECTION: QUICK GUIDE BOX
+
+The current small guidance box is directionally good, but it needs to feel more intentional.
+
+Add a small label above it if possible:
+Quick guide
+
+Replace the 3 lines with:
+
+New to the system?
+Start with CELLUNAD+.
+
+Gut support is the priority?
+Start with CELLUBIOME.
+
+Already have your daily baseline?
+Add CELLUNOVA monthly.
+
+Keep this compact, but make it feel designed, not like leftover helper text.
+
+SHOP SECTION: HOW THEY COMPARE
+
+Keep the section heading:
+How they compare
+
+But rewrite the row labels and values to be clearer and more retrievable.
+
+Use these row labels:
+- Best for
+- Role
+- Cadence
+- Key actives
+- When to start
+- Supply
+
+Use visible plain-text values based on current product truths:
+
+CELLUNAD+
+Best for:
+Most first-time buyers
+Role:
+Daily NAD+ foundation
+Cadence:
+2 capsules daily
+Key actives:
+500 mg NR + co-factors
+When to start:
+Best first step for most people
+Supply:
+30-day supply
+
+CELLUBIOME
+Best for:
+Gut-priority buyers
+Role:
+Daily gut-mito support
+Cadence:
+2 enteric capsules daily
+Key actives:
+Urolithin A + enteric tributyrin
+When to start:
+Start here if gut support is the priority
+Supply:
+30-day supply
+
+CELLUNOVA
+Best for:
+Periodic monthly layer
+Role:
+7-day monthly protocol
+Cadence:
+5 capsules daily for 7 days
+Key actives:
+Autophagy-related support formula
+When to start:
+Add after your daily baseline is in place
+Supply:
+Monthly cycle
+
+Important:
+Use plain-English labels.
+Do not use overly internal brand language.
+Keep the comparison readable and quoteable for both people and LLM retrieval.
+
+SHOP SECTION: BUILD YOUR PROTOCOL
+
+Replace the section heading with:
+Build the protocol that fits now.
+
+Replace the intro with:
+Start with one, build a stronger daily base, or shop all three together.
+
+Replace the builder cards with:
+
+CARD 1
+Title:
+Start with One
+Body:
+Best first purchase for most people.
+Included line:
+CELLUNAD+
+CTA:
+Start with CELLUNAD+
+
+CARD 2
+Title:
+Daily Foundation Pair
+Body:
+Best if you want a stronger daily base.
+Included line:
+CELLUNAD+ + CELLUBIOME
+CTA:
+Build Daily Foundation
+
+CARD 3
+Title:
+Full System
+Body:
+All three protocols in one coordinated stack.
+Included line:
+CELLUNAD+ + CELLUBIOME + CELLUNOVA
+CTA:
+Shop Full System
+
+Rules:
+- keep real prices/totals only
+- do not invent discounts
+- keep total visually clear
+- keep cards equal height
+- make the total readable without overpowering the card
+
+SHOP SECTION: TRUST
+
+Keep the trust section, but tighten the language.
+
+Heading:
+Why trust Age Revive.
+
+Intro:
+Every formula is fully disclosed, third-party tested, and structured to be evaluated directly.
+
+Use these 4 cards:
+
+Card 1 title:
+Transparent dosing
+Card 1 body:
+Every core active is listed with its exact dose.
+
+Card 2 title:
+Third-party tested
+Card 2 body:
+Independent checks support identity, potency, and contaminants.
+
+Card 3 title:
+Lot traceability
+Card 3 body:
+Each bottle ties back to its production lot.
+
+Card 4 title:
+Targeted delivery
+Card 4 body:
+Form and release are matched to the product’s role.
+
+Important:
+If the current fourth card is “Delivery Integrity,” you may keep that title only if it still sounds natural within the layout.
+“Targeted delivery” is clearer for normal buyers.
+
+SHOP FINAL CTA
+
+Replace the final CTA heading with:
+Still not sure where to start?
+
+Replace the subhead with:
+Most first-time buyers start with CELLUNAD+. Use the FAQ if you want protocol guidance before you choose.
+
+Primary CTA:
+Start with CELLUNAD+
+
+Secondary CTA:
+Read the FAQ
+
+Do not end the Shop page with a vague generic CTA.
+End it with clear decision support.
+
+==================================================
+SEO / LLM / STRUCTURED DATA RULES
+==================================================
+
+1. Keep important product-role language in visible HTML text
+2. Align title tag, H1, hero copy, OG title, and meta description to each page’s real purpose
+3. Home must feel like the system introduction
+4. Shop must feel like the protocol selector
+5. Do not leave stale older copy in hidden modules, OG tags, or schema descriptions
+6. Keep internal links descriptive
+7. Do not keyword stuff
+8. Keep one clear H1 per page
+
+Update metadata as follows:
+
+HOME
+Title:
+Age Revive | Daily NAD+, Gut-Mito Support & Monthly Protocol
+Meta description:
+Three fully disclosed formulas: daily NAD+ support, daily gut-mito support, and a 7-day monthly protocol designed to work together.
+
+SHOP
+Title:
+Shop Age Revive | Compare Daily NAD+, Gut-Mito & 7-Day Protocols
+Meta description:
+Compare CELLUNAD+, CELLUBIOME, and CELLUNOVA by role, cadence, and price to build the Age Revive protocol that fits now.
+
+If OG / Twitter metadata exists, align it closely.
+Do not let metadata drift away from visible page purpose.
+
+==================================================
+VISUAL ELEMENT RULES
+==================================================
+
+Add only functional visual elements:
+
+1. Home hero product-system composition
+2. Home protocol flow ribbon
+3. Shop selector ribbon under hero
+4. Quick guide box on Shop
+5. Stronger comparison matrix treatment
+6. Cleaner trust proof blocks
+
+Do NOT add:
+- decorative icons
+- biotech graphics
+- molecule patterns
+- DNA visuals
+- fake scientific art
+- extra gradients
+- ornamental motion
+
+==================================================
+FINAL IMPLEMENTATION RULES
+==================================================
+
+1. Preserve current layout structure where it is already working
+2. Update copy in centralized content/config objects where possible
+3. Protect mobile
+4. Check for text overflow at 375px
+5. Keep schema aligned with visible text
+6. Keep current prices and product truths intact
+7. Remove weaker generic copy and replace it with clearer, more premium, more retrievable language
+
+WHEN DONE, RETURN:
+1. files changed
+2. exact text fields changed
+3. hero visual changes made
+4. any functional visual elements added
+5. metadata / OG / schema changes
+6. any places where shorter fallback copy was required
+7. any remaining layout risks

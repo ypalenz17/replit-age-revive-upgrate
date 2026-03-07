@@ -38,11 +38,11 @@ function usePrefersReducedMotion() {
 
 const COPY_MAP = {
   cellunad: {
-    overline: 'Foundation Layer',
+    overline: 'Daily NAD+ Foundation',
     subtitle: 'Precision NAD+ support with methylation co-factors. Every dose disclosed.',
     microLine: '2 capsules daily \u2022 NAD+ metabolism + methylation support',
     narrative: {
-      label: 'Foundation Layer',
+      label: 'Daily NAD+ Foundation',
       headline: 'Your energy system has a supply chain.',
       bodyLines: [
         'Energy rarely collapses overnight. It erodes.',
@@ -80,11 +80,11 @@ const COPY_MAP = {
     }
   },
   cellubiome: {
-    overline: 'Signal Stability',
+    overline: 'Daily Gut-Mito Support',
     subtitle: 'Urolithin A + Tributyrin. Two ingredients, one gut-mitochondria axis.',
     microLine: '2 enteric-coated capsules daily \u2022 Gut barrier + mito renewal support',
     narrative: {
-      label: 'Signal Stability',
+      label: 'Daily Gut-Mito Support',
       headline: 'Your gut is an energy organ.',
       bodyLines: [
         'When gut signaling is unstable, energy feels noisy.',
@@ -122,11 +122,11 @@ const COPY_MAP = {
     }
   },
   cellunova: {
-    overline: 'Controlled Reset',
+    overline: '7-Day Monthly Protocol',
     subtitle: 'Ten compounds. Seven days on. The off-cycle is part of the design.',
     microLine: '5 capsules daily \u2022 7-day monthly cycle \u2022 Autophagy + cellular maintenance',
     narrative: {
-      label: 'Controlled Reset',
+      label: '7-Day Monthly Protocol',
       headline: 'Progress requires renewal.',
       bodyLines: [
         'Daily inputs build.',
@@ -981,8 +981,8 @@ const SHOP_PRODUCTS = [
   {
     id: 'cellunad' as const,
     name: 'CELLUNAD+',
-    role: 'Daily Foundation',
-    bestFor: 'Energy, repair & NAD+ support',
+    role: 'Daily NAD+ Foundation',
+    bestFor: 'NAD+ metabolism, methylation support, daily energy baseline',
     cadence: '2 capsules daily',
     supply: '30-day supply',
     price: 79.99,
@@ -997,8 +997,8 @@ const SHOP_PRODUCTS = [
   {
     id: 'cellubiome' as const,
     name: 'CELLUBIOME',
-    role: 'Signal Stability',
-    bestFor: 'Gut-mito axis & steady output',
+    role: 'Daily Gut-Mito Support',
+    bestFor: 'Gut barrier integrity, mitochondrial recycling, output stability',
     cadence: '2 enteric caps daily',
     supply: '30-day supply',
     price: 110.00,
@@ -1007,14 +1007,14 @@ const SHOP_PRODUCTS = [
     accent: '#5eead4',
     anchors: ['Urolithin A 500 mg', 'Tributyrin 500 mg'],
     startHere: false,
-    note: 'Enteric-coated delivery',
+    note: 'Enteric-coated for targeted delivery',
     isDaily: true,
   },
   {
     id: 'cellunova' as const,
     name: 'CELLUNOVA',
-    role: 'Periodic Reset',
-    bestFor: 'Autophagy + periodic renewal',
+    role: '7-Day Monthly Protocol',
+    bestFor: 'Autophagy, senescence pathways, structured monthly renewal',
     cadence: '5 caps/day · 7-day cycle',
     supply: '7-day monthly cycle',
     price: 49.99,
@@ -1036,33 +1036,33 @@ const TRUST_ITEMS = [
 ];
 
 const COMPARISON_ROWS = [
-  { label: 'Protocol Role', cellunad: 'Daily NAD+ foundation', cellubiome: 'Gut–mito signal stability', cellunova: 'Monthly cellular reset' },
-  { label: 'Best For', cellunad: 'Energy, repair, baseline', cellubiome: 'Gut barrier, steady output', cellunova: 'Autophagy, periodic renewal' },
-  { label: 'Use Pattern', cellunad: 'Daily — ongoing', cellubiome: 'Daily — ongoing', cellunova: '7 days per month' },
+  { label: 'Role', cellunad: 'Daily NAD+ foundation', cellubiome: 'Daily gut-mito support', cellunova: '7-day monthly protocol' },
+  { label: 'Best For', cellunad: 'NAD+ metabolism, methylation, energy baseline', cellubiome: 'Gut barrier, mito recycling, output stability', cellunova: 'Autophagy, senescence pathways, renewal' },
+  { label: 'Use Pattern', cellunad: 'Daily — ongoing', cellubiome: 'Daily — ongoing', cellunova: '7 days on / 23 days off' },
   { label: 'Serving', cellunad: '2 capsules', cellubiome: '2 enteric capsules', cellunova: '5 capsules' },
-  { label: 'Key Actives', cellunad: 'NR, TMG, Apigenin + 5 more', cellubiome: 'Urolithin A, Tributyrin', cellunova: 'Fisetin, Quercetin + 8 more' },
-  { label: 'Supply', cellunad: '30-day', cellubiome: '30-day', cellunova: '7-day cycle' },
+  { label: 'Key Actives', cellunad: 'NR 500 mg, TMG, Apigenin + 5 more', cellubiome: 'Urolithin A 500 mg, Tributyrin 500 mg', cellunova: 'Fisetin, Quercetin, Spermidine + 7 more' },
+  { label: 'Supply', cellunad: '30-day', cellubiome: '30-day', cellunova: '7-day monthly cycle' },
   { label: 'Pairs With', cellunad: 'CELLUBIOME + CELLUNOVA', cellubiome: 'CELLUNAD+ + CELLUNOVA', cellunova: 'CELLUNAD+ + CELLUBIOME' },
-  { label: 'Note', cellunad: 'Non-stimulant', cellubiome: 'Enteric-coated', cellunova: 'Contains wheat' },
+  { label: 'Delivery', cellunad: 'Standard capsule', cellubiome: 'Enteric-coated', cellunova: 'Standard capsule' },
 ];
 
 const BUNDLES = [
   {
     id: 'single',
     label: 'Start with One',
-    desc: 'Begin with the daily foundation most people choose first.',
+    desc: 'The daily NAD+ foundation most people choose first.',
     products: ['cellunad'] as string[],
   },
   {
     id: 'daily',
-    label: 'Daily Foundation',
-    desc: 'Pair the two daily protocols for full baseline coverage.',
+    label: 'Daily Foundation Pair',
+    desc: 'NAD+ plus gut-mito support. Full daily baseline coverage.',
     products: ['cellunad', 'cellubiome'] as string[],
   },
   {
     id: 'full',
     label: 'Full System',
-    desc: 'All three protocols. Daily foundation plus monthly reset.',
+    desc: 'Daily foundation pair plus the 7-day monthly protocol.',
     products: ['cellunad', 'cellubiome', 'cellunova'] as string[],
   },
 ];
@@ -1111,13 +1111,15 @@ function ShopCatalog() {
       <section style={{ background: BASE_DARK }} data-testid="section-shop-hero">
         <div className="mx-auto max-w-6xl px-5 md:px-8 pt-28 md:pt-36 lg:pt-28 pb-20 md:pb-28 lg:pb-20">
           <div className="text-center mb-14 md:mb-16 lg:mb-12">
-            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.22em] font-bold text-teal-400/80 mb-5 lg:mb-4" data-testid="text-shop-eyebrow">Three fully disclosed formulas. One system.</span>
+            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.16em] font-bold text-teal-400/80 mb-5 lg:mb-4" data-testid="text-shop-eyebrow">Shop the system</span>
             <h1 className="font-head font-normal uppercase tracking-[-0.04em] leading-[0.88] text-white mb-5 lg:mb-4" style={{ fontSize: 'clamp(2.2rem, 6vw, 3.8rem)' }} data-testid="text-shop-title">
-              Daily NAD+. Gut Resilience. Monthly Reset.
+              Choose your starting point.
             </h1>
-            <p className="max-w-xl mx-auto text-[15px] md:text-[16px] font-sans text-white/60 leading-relaxed">
-              Each formula has a distinct role. Every dose is disclosed.
-              Together, they cover the full protocol.
+            <p className="max-w-xl mx-auto text-[15px] md:text-[16px] font-sans text-white/60 leading-relaxed mb-2">
+              Compare the daily foundation, the gut-mito formula, and the 7-day monthly protocol.
+            </p>
+            <p className="text-[13px] font-mono text-teal-400/70 tracking-[0.02em]">
+              Most people start with CELLUNAD+.
             </p>
           </div>
 
@@ -1248,9 +1250,9 @@ function ShopCatalog() {
 
           <div className="max-w-2xl mx-auto rounded-lg px-6 py-5" style={{ background: 'rgba(10,18,32,0.04)', border: '1px solid rgba(10,18,32,0.06)' }} data-testid="guidance-block">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-[13px] font-sans text-[#0A1220]/60 leading-relaxed">
-              <p data-testid="guidance-item-0"><span className="font-bold text-[#0A1220]/80">New?</span> Start with CELLUNAD+. It's the daily foundation.</p>
-              <p data-testid="guidance-item-1"><span className="font-bold text-[#0A1220]/80">Gut priority?</span> Start with CELLUBIOME. Enteric-coated.</p>
-              <p data-testid="guidance-item-2"><span className="font-bold text-[#0A1220]/80">Have a baseline?</span> Add CELLUNOVA monthly.</p>
+              <p data-testid="guidance-item-0"><span className="font-bold text-[#0A1220]/80">New to the system?</span> Start with CELLUNAD+. It's the daily NAD+ foundation.</p>
+              <p data-testid="guidance-item-1"><span className="font-bold text-[#0A1220]/80">Gut-mito priority?</span> Start with CELLUBIOME. Enteric-coated for targeted delivery.</p>
+              <p data-testid="guidance-item-2"><span className="font-bold text-[#0A1220]/80">Already have a daily baseline?</span> Layer in CELLUNOVA as a 7-day monthly protocol.</p>
             </div>
           </div>
         </div>
@@ -1340,9 +1342,9 @@ function ShopCatalog() {
         <div className="mx-auto max-w-5xl lg:max-w-7xl px-5 md:px-8 py-[72px] md:py-[110px] lg:py-[72px]">
           <div className="text-center mb-8 md:mb-12">
             <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold mb-3" style={{ color: '#19B3A6' }}>Build</span>
-            <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-[#0A1220]" data-testid="text-build-title">Build Your Protocol</h2>
+            <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-[#0A1220]" data-testid="text-build-title">Build the protocol that fits now.</h2>
             <p className="mt-3 max-w-md mx-auto text-[13px] md:text-[14px] font-sans text-[#0A1220]/50 leading-relaxed">
-              Choose one product or build the full system. Totals computed from current prices.
+              Start with one product or combine for broader coverage. Every formula works on its own.
             </p>
           </div>
 
@@ -1421,10 +1423,10 @@ function ShopCatalog() {
         <div className="mx-auto max-w-6xl lg:max-w-7xl px-5 md:px-8 py-[72px] md:py-[110px] lg:py-[72px]">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-5 mb-16 md:mb-20 lg:mb-14" data-testid="trust-grid">
             {[
-              { title: 'Transparent Dosing', desc: 'Every active listed with exact dose. No proprietary blends.' },
+              { title: 'Full Dose Disclosure', desc: 'Every active ingredient listed with its exact dose. No proprietary blends.' },
               { title: 'Third-Party Tested', desc: 'Independent lab verification on every production lot.' },
-              { title: 'Lot Traceability', desc: 'Every bottle lot-coded. Documentation by request.' },
-              { title: 'Delivery Integrity', desc: 'Form and release selected per compound. Enteric where needed.' },
+              { title: 'Lot-Level Traceability', desc: 'Every bottle is lot-coded. Documentation available by request.' },
+              { title: 'Targeted Delivery', desc: 'Capsule form and release profile selected per compound. Enteric coating where needed.' },
             ].map((item, i) => (
               <div
                 key={i}
@@ -1433,7 +1435,7 @@ function ShopCatalog() {
                 data-testid={`trust-card-${i}`}
               >
                 <h4 className="text-[13px] font-sans font-bold text-white/85 mb-1">{item.title}</h4>
-                <p className="text-[12px] font-sans text-white/40 leading-relaxed">{item.desc}</p>
+                <p className="text-[12px] font-sans text-white/45 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -1494,9 +1496,9 @@ function ShopCatalog() {
       {/* ═══ S6 · FINAL CTA ═══ (BASE_DARK) */}
       <section style={{ background: BASE_DARK }} data-testid="section-final-cta">
         <div className="mx-auto max-w-3xl lg:max-w-4xl px-5 md:px-8 py-[72px] md:py-[100px] lg:py-[56px] text-center">
-          <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white mb-4" data-testid="text-final-cta">Build Your Age Revive Protocol</h2>
+          <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white mb-4" data-testid="text-final-cta">Most people start with the daily foundation.</h2>
           <p className="text-[14px] font-sans text-white/45 leading-relaxed max-w-md mx-auto mb-8">
-            Start with one product or build the full system. Every formula is independently useful and designed to pair.
+            One product, fully disclosed, designed to pair with the rest of the system when you're ready.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
@@ -1505,15 +1507,15 @@ function ShopCatalog() {
               style={{ background: '#19B3A6' }}
               data-testid="link-start-daily-foundation"
             >
-              Start with the Daily Foundation
+              Start with CELLUNAD+
             </a>
             <button
-              onClick={() => addBundle(['cellunad', 'cellubiome', 'cellunova'])}
+              onClick={scrollToComparison}
               className="min-h-[48px] px-8 py-3 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.12em] text-white/55 hover:text-white/80 transition-all duration-300"
               style={{ border: '1px solid rgba(255,255,255,0.10)' }}
-              data-testid="button-add-full-system"
+              data-testid="button-compare-protocols-final"
             >
-              Add Full System — ${getBundleTotal(['cellunad', 'cellubiome', 'cellunova']).toFixed(2)}
+              Compare the 3 Protocols
             </button>
           </div>
         </div>

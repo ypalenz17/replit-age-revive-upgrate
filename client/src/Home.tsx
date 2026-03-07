@@ -26,8 +26,8 @@ const PRODUCTS = [
     slug: 'cellunad',
     name: 'CELLUNAD+',
     category: 'Daily NAD+ Foundation',
-    role: 'Best place to start',
-    bestFor: '500 mg NR with methylation and mitochondrial co-factors.',
+    role: 'Start here',
+    bestFor: '500 mg NR with methylation and mitochondrial co-factors. The daily foundation most people begin with.',
     cadence: '2 capsules daily',
     price: '$79.99',
     subPrice: '$67.99/mo',
@@ -62,8 +62,8 @@ const PRODUCTS = [
     slug: 'cellubiome',
     name: 'CELLUBIOME',
     category: 'Daily Gut-Mito Support',
-    role: 'Best if gut support is the priority',
-    bestFor: 'Urolithin A plus enteric tributyrin for gut-barrier and mitochondrial support.',
+    role: 'Gut support priority',
+    bestFor: 'Urolithin A plus enteric tributyrin for gut-barrier and mitochondrial support. Add when gut health is the focus.',
     cadence: '2 enteric-coated capsules daily',
     price: '$110.00',
     subPrice: '$93.50/mo',
@@ -92,8 +92,8 @@ const PRODUCTS = [
     slug: 'cellunova',
     name: 'CELLUNOVA',
     category: '7-Day Monthly Protocol',
-    role: 'Add as a periodic layer',
-    bestFor: 'Periodic support for autophagy-related pathways and mitochondrial resilience.',
+    role: 'Periodic layer',
+    bestFor: 'Periodic support for autophagy-related pathways and mitochondrial resilience. Layer in after your daily base is set.',
     cadence: '7-day monthly cycle',
     price: '$49.99',
     subPrice: '$42.49/mo',
@@ -131,16 +131,16 @@ const PRODUCTS = [
 type HomeProduct = (typeof PRODUCTS)[number];
 
 const TRUST_POINTS = [
-  { num: '01', title: 'Transparent Doses', desc: 'Every ingredient and its exact amount listed on the label. No hidden proprietary blends.' },
-  { num: '02', title: 'Third-Party Tested', desc: 'Independent lab verification for purity, potency, and heavy metals on every batch.' },
-  { num: '03', title: 'Clinically Studied Ingredients', desc: 'Standardized actives backed by published research, dosed at effective levels.' },
-  { num: '04', title: 'CoA Available by Lot', desc: 'Certificate of Analysis available for every production lot, on request.' },
-  { num: '05', title: 'Glass Packaging', desc: 'UV-protected glass bottles. No plastic leaching. Better ingredient preservation.' },
-  { num: '06', title: 'Shipping Included', desc: 'Every order ships free. Price on the label is the price you pay.' },
+  { num: '01', title: 'Full Dose Disclosure', desc: 'Every ingredient and its exact dose printed on the label. No proprietary blends, ever.' },
+  { num: '02', title: 'Third-Party Tested', desc: 'Independent lab verification for purity, potency, and heavy metals on every production lot.' },
+  { num: '03', title: 'Lot Traceability', desc: 'Certificate of Analysis available for every lot. Request yours any time.' },
+  { num: '04', title: 'No Proprietary Blends', desc: 'What you see is what you get. No hidden formulas, no undisclosed amounts.' },
+  { num: '05', title: 'Targeted Delivery', desc: 'Enteric-coated capsules where the science calls for it. Precision release, not generic capsules.' },
+  { num: '06', title: 'Documentation Support', desc: 'Full ingredient panels, research references, and protocol guides published on-site.' },
 ];
 
 const HOME_FAQS = [
-  { q: 'Where should I start?', a: 'Most customers start with CELLUNAD+, our daily NAD+ protocol. It provides foundational cellular energy support that pairs well with any lifestyle. You can add CELLUBIOME or CELLUNOVA later as your system grows.' },
+  { q: 'Where should I start?', a: 'Most people start with CELLUNAD+, our daily NAD+ protocol. It provides foundational cellular energy support that pairs well with any lifestyle. You can add CELLUBIOME or CELLUNOVA later as your system grows.' },
   { q: 'How long until I notice a difference?', a: 'Individual timelines vary. Many customers report noticing changes in energy and recovery within 2-4 weeks of consistent daily use. Cellular-level support builds over time -- we recommend at least 8 weeks for a meaningful assessment.' },
   { q: 'Are there any proprietary blends?', a: 'No. Every ingredient and its exact dose is listed on the label and on our website. We believe transparency is non-negotiable in supplement formulation.' },
   { q: 'Can I take all three products together?', a: 'Yes. The three protocols are designed to work as a system. CELLUNAD+ and CELLUBIOME are taken daily. CELLUNOVA is a 7-day monthly cycle. There are no overlapping ingredients at concerning levels.' },
@@ -250,9 +250,9 @@ const Hero = () => {
           <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.16em] mb-4 md:mb-5">Three fully disclosed formulas. One system.</span>
 
           <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase" style={{ fontSize: 'clamp(34px, 8.5vw, 68px)' }}>
-            Daily NAD+. Gut resilience.
+            Daily NAD+ support. Gut resilience.
             <br />
-            <span className="text-white/55">One smarter longevity system.</span>
+            <span className="text-white/55">One coordinated system.</span>
           </h1>
 
           <p className="mt-5 md:mt-7 text-[15px] md:text-[17px] text-white/65 font-sans font-normal max-w-[40ch] leading-[1.6] mx-auto lg:mx-0">
@@ -281,7 +281,7 @@ const Hero = () => {
           <div className="mt-10 lg:mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-x-0 gap-y-2" data-testid="hero-trust-strip">
             {['Full dose disclosure', 'No proprietary blends', 'Third-party tested', 'Lot traceability'].map((item, i) => (
               <span key={item} className="flex items-center">
-                <span className="text-[10px] md:text-[11px] text-white/40 uppercase tracking-[0.10em] font-mono whitespace-nowrap">{item}</span>
+                <span className="text-[10px] md:text-[11px] text-white/50 uppercase tracking-[0.10em] font-mono whitespace-nowrap">{item}</span>
                 {i < 3 && <span className="w-px h-[10px] bg-white/12 mx-3 md:mx-4 shrink-0" />}
               </span>
             ))}
@@ -348,7 +348,7 @@ const ProductSystemSection = ({ onOpenProduct }: { onOpenProduct: (slug: string)
             Choose your starting point.
           </h2>
           <p className="mt-4 text-[14px] md:text-[15px] font-sans text-[#0A1220]/50 max-w-[42ch] mx-auto leading-[1.6]">
-            Three protocols that work independently or together. Most customers start with CELLUNAD+.
+            Three protocols that work independently or together. Most people start with CELLUNAD+.
           </p>
         </div>
 
@@ -359,9 +359,9 @@ const ProductSystemSection = ({ onOpenProduct }: { onOpenProduct: (slug: string)
               className="reveal-stagger group relative rounded-xl overflow-hidden bg-white flex flex-col transition-shadow duration-300 hover:shadow-lg"
               style={{ border: '1px solid rgba(10,18,32,0.07)', boxShadow: '0 1px 2px rgba(10,18,32,0.04), 0 4px 20px rgba(10,18,32,0.04)' }}
             >
-              {p.slug === 'cellunad' && (
-                <div className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-md text-[9px] font-mono font-bold uppercase tracking-[0.12em] text-white" style={{ backgroundColor: '#19B3A6', boxShadow: '0 2px 8px rgba(25,179,166,0.25)' }}>
-                  Start Here
+              {p.role && (
+                <div className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-md text-[9px] font-mono font-bold uppercase tracking-[0.12em] text-white" style={{ backgroundColor: p.slug === 'cellunad' ? '#19B3A6' : 'rgba(255,255,255,0.12)', boxShadow: p.slug === 'cellunad' ? '0 2px 8px rgba(25,179,166,0.25)' : 'none', color: p.slug === 'cellunad' ? 'white' : 'rgba(10,18,32,0.55)' }}>
+                  {p.role}
                 </div>
               )}
 
@@ -418,7 +418,7 @@ const ProductSystemSection = ({ onOpenProduct }: { onOpenProduct: (slug: string)
                     className={`w-full min-h-[42px] flex items-center justify-center gap-1.5 rounded-lg font-mono font-bold uppercase text-[10px] tracking-[0.10em] text-[#0A1220]/45 hover:text-[#0A1220]/75 transition-all duration-200 border border-[#0A1220]/[0.08] hover:border-[#0A1220]/[0.18] hover:bg-[#0A1220]/[0.02] ${focusRing}`}
                     data-testid={`button-view-${p.slug}`}
                   >
-                    View Full Protocol <ArrowRight size={11} />
+                    View {p.name} <ArrowRight size={11} />
                   </button>
                 </div>
               </div>
@@ -435,26 +435,26 @@ const ScienceSection = () => {
   const axes = [
     {
       tag: '01',
-      name: 'NAD+ Infrastructure',
+      name: 'Daily NAD+ Foundation',
       protocol: 'CELLUNAD+',
       slug: 'cellunad',
-      desc: 'NAD+ declines with age. NR, a clinically studied precursor, supports daily NAD+ replenishment alongside essential methylation cofactors.',
+      desc: 'NR supports daily NAD+ replenishment. Methylation co-factors keep the pathway balanced. This is where most people start.',
       accentColor: '#60a5fa',
     },
     {
       tag: '02',
-      name: 'Gut-Mitochondria Axis',
+      name: 'Daily Gut-Mito Support',
       protocol: 'CELLUBIOME',
       slug: 'cellubiome',
-      desc: 'Urolithin A supports mitochondrial recycling (mitophagy). Tributyrin delivers butyrate to support gut barrier integrity and signaling.',
+      desc: 'Urolithin A supports mitochondrial recycling. Enteric tributyrin delivers butyrate where the gut needs it most.',
       accentColor: '#2dd4bf',
     },
     {
       tag: '03',
-      name: 'Autophagy Activation',
+      name: '7-Day Monthly Protocol',
       protocol: 'CELLUNOVA',
       slug: 'cellunova',
-      desc: 'A 7-day monthly cycle of polyphenols and senescence-research compounds designed to support autophagy pathways, then step back. The off-period is part of the protocol.',
+      desc: 'A 7-day monthly cycle of polyphenols and autophagy-research compounds. The off-period is intentional — it is part of the design.',
       accentColor: '#a78bfa',
     },
   ];
@@ -463,12 +463,13 @@ const ScienceSection = () => {
     <section className="relative py-[80px] md:py-[120px] lg:py-[72px] px-6 md:px-8" style={{ backgroundColor: SECONDARY_DARK }}>
       <div className="max-w-5xl lg:max-w-7xl mx-auto">
         <div className="text-center mb-12 md:mb-16 lg:mb-10 reveal-stagger">
-          <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.20em]">The Science</span>
+          <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.20em]">How the system works</span>
           <h2 className="mt-4 font-head font-normal tracking-[-0.03em] uppercase text-white leading-[0.95]" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)' }}>
-            Three biological axes.
-            <br className="hidden sm:block" />
-            <span className="text-white/45"> One coordinated system.</span>
+            Three roles. One coordinated protocol.
           </h2>
+          <p className="mt-4 text-[14px] md:text-[15px] font-sans text-white/50 max-w-[42ch] mx-auto leading-[1.6]">
+            Each formula has a distinct job. Together they cover energy, gut resilience, and periodic renewal.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 lg:gap-5">
@@ -522,8 +523,11 @@ const FaqSection = () => {
           <div className="text-center lg:text-left mb-12 md:mb-16 lg:mb-0 lg:sticky lg:top-32 reveal-stagger">
             <span className="font-mono text-[10px] md:text-[11px] text-ar-teal uppercase tracking-[0.20em]">Common Questions</span>
             <h2 className="mt-4 font-head font-normal tracking-[-0.03em] uppercase leading-[0.95]" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)', color: BASE_DARK }}>
-              Before you begin.
+              Before you start.
             </h2>
+            <p className="mt-4 text-[13px] font-sans text-[#0A1220]/45 leading-[1.6] max-w-[30ch] mx-auto lg:mx-0">
+              Answers to the questions most people ask before their first order.
+            </p>
             <div className="hidden lg:flex flex-col gap-5 mt-10">
               <a
                 href="/faq"
@@ -597,21 +601,21 @@ const FinalCTA = () => (
     <div className="max-w-2xl mx-auto text-center relative z-10 reveal">
       <span className="font-mono text-[10px] text-ar-teal/60 uppercase tracking-[0.20em]">Get Started</span>
       <h2 className="mt-4 font-head font-normal tracking-[-0.04em] uppercase text-white leading-[0.92]" style={{ fontSize: 'clamp(1.7rem, 5.5vw, 3rem)' }}>
-        Your system starts
+        Most people start
         <br />
-        <span className="text-white/35">with one protocol.</span>
+        <span className="text-white/35">with the daily foundation.</span>
       </h2>
       <p className="mt-5 text-[14px] md:text-[15px] font-sans text-white/40 max-w-[36ch] mx-auto leading-[1.6]">
-        Most customers begin with CELLUNAD+. Add protocols as your routine evolves.
+        CELLUNAD+ is the daily NAD+ base. Add CELLUBIOME or CELLUNOVA when you are ready to expand.
       </p>
       <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
         <a
-          href="/shop"
+          href="/product/cellunad"
           className={`group relative px-10 min-h-[50px] flex items-center justify-center bg-ar-teal text-[#0A1220] rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] overflow-hidden hover:scale-[1.02] active:scale-[0.98] transition-transform ${focusRing}`}
           style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.2), 0 2px 8px rgba(45,212,191,0.2), 0 0 24px rgba(45,212,191,0.08)' }}
           data-testid="button-cta-shop-system"
         >
-          <span className="relative z-10">Shop the System</span>
+          <span className="relative z-10">Start with CELLUNAD+</span>
           <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
         </a>
         <a
@@ -619,7 +623,7 @@ const FinalCTA = () => (
           className={`text-[10px] font-mono uppercase tracking-[0.10em] text-white/35 hover:text-white/60 transition-colors inline-flex items-center gap-1.5 min-h-[44px] ${focusRing} rounded px-3`}
           data-testid="button-cta-explore"
         >
-          Explore individual protocols <ArrowRight size={10} />
+          Compare the 3 Protocols <ArrowRight size={10} />
         </a>
       </div>
     </div>
