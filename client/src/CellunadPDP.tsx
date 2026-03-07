@@ -239,7 +239,7 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
   ];
 
   const formulaCards = [
-    { layer: 'NAD+ Foundation', compound: 'Nicotinamide Riboside -- 500 mg', why: 'Clinically studied NAD+ precursor. Cells use NR to synthesize NAD+, which supports energy production, DNA repair, and sirtuin activity.' },
+    { layer: 'NAD+ Foundation', compound: 'Nicotinamide Riboside -- 500 mg', why: 'Clinically studied NAD+ precursor. Cells use NR to synthesize NAD+, which supports energy production, cellular maintenance, and sirtuin activity.' },
     { layer: 'Methylation Balance', compound: 'TMG 250 mg + B6, Folate, B12', why: 'NAD+ biosynthesis consumes methyl groups. TMG and activated B vitamins replenish methylation capacity so NAD+ production does not deplete other pathways.' },
     { layer: 'Mitochondrial Cofactor', compound: 'R-Lipoic Acid -- 200 mg', why: 'Supports mitochondrial oxidative balance. Works alongside NAD+-dependent metabolic processes inside the mitochondria.' },
     { layer: 'NAD+ Conservation', compound: 'Apigenin -- 100 mg', why: 'Supports CD38 modulation to help preserve NAD+. Keeps more of the NAD+ your body produces available for cellular use.' },
@@ -533,8 +533,8 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
       {/* ─── 11. PAIRS WELL WITH — SECONDARY_DARK ─── */}
       <PdpSectionRow
         eyebrow="The System"
-        heading="What to add later."
-        intro="Start with the daily foundation, then add the next layer when needed."
+        heading="Build the protocol in layers."
+        intro="Start with the daily foundation, add gut-mito support, then layer in the 7-day monthly protocol."
         bg={SECONDARY_DARK}
         dark
         className="cn-reveal"

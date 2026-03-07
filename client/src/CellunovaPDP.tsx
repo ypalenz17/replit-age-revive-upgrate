@@ -531,8 +531,8 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
       {/* ─── 11. PAIRS WELL WITH — LIGHT ─── */}
       <PdpSectionRow
         eyebrow="The System"
-        heading="Layer it onto the daily foundation."
-        intro="CELLUNOVA is designed to sit on top of daily CELLUNAD+ and CELLUBIOME, not replace them."
+        heading="Build the protocol in layers."
+        intro="Start with the daily foundation, add gut-mito support, then layer in the 7-day monthly protocol."
         bg={LIGHT}
         className="cv-reveal"
       >

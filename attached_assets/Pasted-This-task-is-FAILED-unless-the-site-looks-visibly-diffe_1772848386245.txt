@@ -1,0 +1,549 @@
+This task is FAILED unless the site looks visibly different to a non-designer in screenshots.
+
+You are not allowed to stop after changing copy, metadata, or hidden schema.
+You must change the visible UI layer.
+
+You are updating:
+- Home
+- Shop
+- CELLUNAD+
+- CELLUBIOME
+- CELLUNOVA
+
+PRIMARY RULE
+
+If the before/after screenshots still look materially the same, keep working.
+Do not stop and do not summarize until the visible UI is obviously stronger.
+
+DO THIS IN 2 PHASES.
+
+==================================================
+PHASE 1: LOCATE THE REAL COMPONENT OWNERSHIP
+==================================================
+
+Before making changes, inspect the codebase and identify the exact files controlling:
+
+HOME
+- home hero
+- home trust / transparency grid
+- home product trio / start-here cards
+- home science/system teaser
+- home FAQ teaser
+- home final CTA
+- any shared footer/system module used on home
+
+SHOP
+- shop hero
+- shop top selector / product row
+- shop main product cards
+- shop comparison matrix
+- shop quick guide / helper box
+- shop builder cards
+- shop trust section
+- shop final CTA
+- any shared footer/system module used on shop
+
+PRODUCT PAGES
+- shared product-page hero
+- shared sticky add-to-cart bar
+- shared post-hero light proof section
+- shared compare section
+- shared system / cross-sell section
+- shared FAQ shell
+- shared final CTA / footer teaser
+- any centralized content/config objects for PDP copy
+- any metadata / OG / Product schema description sources
+- any stale old SEO string sources
+
+Return the exact file paths first.
+
+Then proceed to Phase 2.
+
+==================================================
+PHASE 2: MAKE VISIBLE DIFFERENCES
+==================================================
+
+This is a visible UI pass, not a metadata pass.
+
+NON-NEGOTIABLE RULES
+
+Do not:
+- change prices
+- change ingredient doses
+- change serving sizes
+- change product roles
+- invent claims
+- overstate evidence
+- add biotech, DNA, molecule, neural, AI, or sci-fi visuals
+- add decorative icon clutter
+- add random gradients or glow gimmicks
+- break mobile
+- change URLs or slugs
+- stop after text-only edits
+
+Do:
+- change visible layout and repeated modules
+- make Home and Shop feel distinct
+- make PDPs feel differentiated from each other
+- remove repeated generic footer/system sameness
+- clean up stale old SEO strings
+- preserve current mobile behavior unless a visible improvement is clearly better
+
+==================================================
+REQUIRED VISIBLE CHANGES: HOME
+==================================================
+
+1. HOME HERO
+- Remove any face-led or generic wellness-ad feeling if it still exists
+- Make the hero product-led
+- Use all 3 products in one coordinated visual composition
+- CELLUNAD+ should read as the lead
+- CELLUBIOME should read as the second layer
+- CELLUNOVA should read as the periodic layer
+- Do not use decorative particles or biotech art
+
+Replace visible hero text with:
+Eyebrow:
+Three fully disclosed formulas. One coordinated system.
+
+H1:
+Daily NAD+ support. Gut resilience. One coordinated system.
+
+Subhead:
+Start with CELLUNAD+, add CELLUBIOME, and layer in CELLUNOVA as a 7-day monthly protocol.
+
+Primary CTA:
+Shop the System
+
+Secondary CTA:
+Explore the Science
+
+Trust strip:
+- Full dose disclosure
+- No proprietary blends
+- Third-party tested
+- Lot traceability
+
+2. HOME TRANSPARENCY SECTION
+Replace weaker generic proof cards with these exact cards:
+
+- Full dose disclosure
+  Every core active and dose is listed on the label.
+
+- Third-party tested
+  Identity, potency, and contaminant checks support release.
+
+- Lot traceability
+  Each lot can be matched to documentation support.
+
+- No proprietary blends
+  You can evaluate the formula without guesswork.
+
+- Targeted delivery
+  Delivery and format are matched to the product’s role.
+
+- Documentation support
+  Batch documentation can be requested by lot.
+
+Remove or replace cards like:
+- Glass Packaging
+- Shipping Included
+- vague “clinically studied” proof cards
+
+3. HOME PRODUCT TRIO
+Use these exact labels:
+
+CARD 1
+Role label:
+Daily NAD+ Foundation
+Title:
+CELLUNAD+
+Badge:
+Start here
+Body:
+500 mg NR plus methylation and mitochondrial co-factors.
+Cadence:
+2 capsules daily
+CTA:
+View CELLUNAD+
+
+CARD 2
+Role label:
+Daily Gut-Mito Support
+Title:
+CELLUBIOME
+Badge:
+Gut support priority
+Body:
+Urolithin A plus enteric tributyrin for daily gut-mito support.
+Cadence:
+2 enteric capsules daily
+CTA:
+View CELLUBIOME
+
+CARD 3
+Role label:
+7-Day Monthly Protocol
+Title:
+CELLUNOVA
+Badge:
+Periodic layer
+Body:
+7-day monthly protocol for autophagy-related support and resilience.
+Cadence:
+5 capsules daily for 7 days
+CTA:
+View CELLUNOVA
+
+4. HOME SYSTEM SECTION
+Replace abstract language like “Three biological axes” with:
+
+Eyebrow:
+How the system works
+
+Heading:
+Three roles. One coordinated protocol.
+
+Intro:
+Each formula has a distinct job. Together, they cover the protocol more clearly than any one product alone.
+
+Cards:
+- Daily NAD+ foundation
+- Daily gut-mito support
+- 7-day monthly layer
+
+5. HOME FINAL CTA
+Replace generic final CTA with:
+
+Heading:
+Most people start with the daily foundation.
+
+Subhead:
+Begin with CELLUNAD+, then add the other layers when the time is right.
+
+Primary CTA:
+Start with CELLUNAD+
+
+Secondary CTA:
+Compare the 3 Protocols
+
+6. HOME VISIBLE LAYOUT REQUIREMENTS
+- Make hero visibly different
+- Tighten dead space
+- Keep cards equal height
+- Make FAQ teaser more obviously useful
+- Compress footer / final CTA spacing
+- If a shared generic footer/system module is repeated, reduce its dominance or replace its copy so the page does not end with the same generic message as Shop and PDPs
+
+==================================================
+REQUIRED VISIBLE CHANGES: SHOP
+==================================================
+
+1. SHOP HERO
+Shop must stop feeling like a second homepage.
+
+Replace visible hero text with:
+Eyebrow:
+Shop the system
+
+H1:
+Choose your starting point.
+
+Subhead:
+Compare the daily foundation, the gut-mito formula, and the 7-day monthly protocol.
+
+Helper line:
+Most people start with CELLUNAD+.
+
+Primary CTA:
+Compare all three
+
+Secondary CTA:
+Build your protocol
+
+2. SHOP SELECTOR STRIP
+Under the hero, build a visibly functional selector row with these labels:
+
+CELLUNAD+
+Daily NAD+ Foundation
+Most people start here
+
+CELLUBIOME
+Daily Gut-Mito Support
+Best if gut support is the priority
+
+CELLUNOVA
+7-Day Monthly Protocol
+Add after your baseline is in place
+
+Remove vague labels like:
+- Signal Stability
+- Periodic Reset
+- abstract internal phrasing
+
+3. SHOP MAIN PRODUCT CARDS
+Use these exact labels:
+
+CELLUNAD+
+Role:
+Daily NAD+ Foundation
+Badge:
+Most people start here
+Body:
+Daily NAD+ support with 500 mg NR and co-factors.
+Cadence:
+2 capsules daily
+Primary CTA:
+Add to Cart
+Secondary CTA:
+View Full Details
+
+CELLUBIOME
+Role:
+Daily Gut-Mito Support
+Badge:
+Best if gut support is the priority
+Body:
+Gut-barrier and mitochondrial support with urolithin A and enteric tributyrin.
+Cadence:
+2 enteric capsules daily
+Primary CTA:
+Add to Cart
+Secondary CTA:
+View Full Details
+
+CELLUNOVA
+Role:
+7-Day Monthly Protocol
+Badge:
+Add after your baseline is in place
+Body:
+7-day monthly protocol for autophagy-related support and mitochondrial resilience.
+Cadence:
+5 capsules daily for 7 days
+Primary CTA:
+Add to Cart
+Secondary CTA:
+View Full Details
+
+4. SHOP QUICK GUIDE
+Add or tighten a compact quick-guide box:
+
+Label:
+Quick guide
+
+Line 1:
+New to the system? Start with CELLUNAD+.
+
+Line 2:
+Gut support is the priority? Start with CELLUBIOME.
+
+Line 3:
+Already have your daily baseline? Add CELLUNOVA monthly.
+
+5. SHOP COMPARISON MATRIX
+Make the matrix visibly useful and plain-English.
+
+Use rows:
+- Best for
+- Role
+- Cadence
+- Key actives
+- When to start
+- Supply
+
+Use visible values based on current product truths only.
+
+6. SHOP BUILDER CARDS
+Use these exact titles:
+- Start with One
+- Daily Foundation Pair
+- Full System
+
+Do not invent discounts.
+Use real totals only.
+Make the cards visibly stronger than they are now.
+
+7. SHOP FINAL CTA
+Replace generic ending with:
+
+Heading:
+Still not sure where to start?
+
+Subhead:
+Most first-time buyers start with CELLUNAD+. Use the FAQ if you want protocol guidance before you choose.
+
+Primary CTA:
+Start with CELLUNAD+
+
+Secondary CTA:
+Read the FAQ
+
+==================================================
+REQUIRED VISIBLE CHANGES: PRODUCT PAGES
+==================================================
+
+GLOBAL PDP RULE
+The 3 PDPs must stop using the same generic first proof section and the same generic ending.
+Differentiate them visibly.
+
+1. CLEAN STALE SEARCH-FACING COPY
+Audit and replace old strings like:
+- DNA repair
+- Probiotic
+- cellular cleanup
+- any outdated subtitle or OG description
+
+Use these exact metadata targets:
+
+CELLUNAD+
+Title:
+CELLUNAD+ | Daily NAD+ Foundation with 500 mg NR | Age Revive
+Meta description:
+CELLUNAD+ is Age Revive’s daily NAD+ foundation with 500 mg NR plus methylation and mitochondrial co-factors. Non-stimulant. 2 capsules daily.
+
+CELLUBIOME
+Title:
+CELLUBIOME | Daily Gut-Mito Support with Urolithin A | Age Revive
+Meta description:
+CELLUBIOME pairs urolithin A with enteric tributyrin for daily gut-barrier and mitochondrial support. Not a probiotic. 2 enteric capsules daily.
+
+CELLUNOVA
+Title:
+CELLUNOVA | 7-Day Monthly Protocol | Age Revive
+Meta description:
+CELLUNOVA is a 7-day monthly protocol for autophagy-related support and mitochondrial resilience. Fully disclosed formula. Contains wheat.
+
+2. FIRST POST-HERO SECTION MUST BE PRODUCT-SPECIFIC
+
+CELLUNAD+ first proof section:
+Eyebrow:
+Why start here
+
+Heading:
+Why most people start with CELLUNAD+.
+
+Cards:
+- 500 mg NR foundation
+- Co-factors built in
+- Non-stimulant daily use
+- More complete than NR alone
+- Easy to stack later
+- Fully disclosed label
+
+CELLUBIOME first proof section:
+Eyebrow:
+What makes it different
+
+Heading:
+Why this is not another gut blend.
+
+Cards:
+- Not a probiotic blend
+- 500 mg urolithin A
+- Enteric tributyrin
+- Gut-barrier support
+- Mitochondrial support
+- Fully disclosed label
+
+CELLUNOVA first proof section:
+Eyebrow:
+What makes it different
+
+Heading:
+Why this is not a daily longevity blend.
+
+Cards:
+- 7-day monthly cycle
+- Not a daily baseline
+- Fully disclosed doses
+- Periodic protocol logic
+- Mitochondrial resilience included
+- Contains wheat
+
+3. DIFFERENTIATE FINAL CTA BY PRODUCT
+
+CELLUNAD+ final CTA:
+Heading:
+Start with the daily foundation.
+Subhead:
+CELLUNAD+ is the clearest first step for most people entering the Age Revive system.
+Primary CTA:
+Add CELLUNAD+ to Cart
+
+CELLUBIOME final CTA:
+Heading:
+Add targeted gut-mito support.
+Subhead:
+Best if gut support is the priority or if you want a stronger daily base.
+Primary CTA:
+Add CELLUBIOME to Cart
+
+CELLUNOVA final CTA:
+Heading:
+Add the monthly layer when you are ready.
+Subhead:
+CELLUNOVA is a periodic 7-day protocol designed to layer onto the daily foundation.
+Primary CTA:
+Add CELLUNOVA to Cart
+
+4. STICKY BAR CLEANUP
+Refine the sticky purchase bar:
+- reduce height slightly
+- left side: product name + price + cadence
+- right side: only “Add to Cart”
+- do not repeat price inside button if already shown
+- keep button strong
+- keep mobile friction low
+
+5. KEEP FAQ, FACTS, AND PRODUCT TRUTHS
+Do not change:
+- price
+- serving
+- ingredient doses
+- supplement facts
+- FAQ truth
+- cadence
+
+6. SHARED FOOTER / SYSTEM TEASER
+If a shared footer/system module is repeated on all 3 PDPs, replace generic copy with:
+
+Heading:
+Build the protocol in layers.
+
+Subheading:
+Start with the daily foundation, add gut-mito support, then layer in the 7-day monthly protocol.
+
+Keep product links if they already exist.
+Do not let this block overpower the product-specific final CTA.
+
+==================================================
+SCREENSHOT PROOF REQUIREMENT
+==================================================
+
+Before finishing, generate and inspect screenshots for:
+- Home hero
+- Home product trio
+- Shop hero
+- Shop comparison matrix
+- CELLUNAD+ hero + first proof section
+- CELLUBIOME hero + first proof section
+- CELLUNOVA hero + first proof section
+- one final CTA screenshot from each PDP
+
+If the screenshots still look materially the same as before, keep working.
+
+This task is not complete until the visible UI is obviously different and clearly better.
+
+==================================================
+OUTPUT REQUIREMENT
+==================================================
+
+When done, return:
+1. exact files changed
+2. exact visible sections changed
+3. exact text fields changed
+4. stale SEO strings removed
+5. metadata / OG / Product schema changes
+6. screenshot checklist completed
+7. any remaining layout risks

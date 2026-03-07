@@ -553,8 +553,8 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       {/* ─── 11. STACKING — SECONDARY_DARK ─── */}
       <PdpSectionRow
         eyebrow="The System"
-        heading="Build around gut-mito support."
-        intro="Pair CELLUBIOME with CELLUNAD+ as a stronger daily base, then add CELLUNOVA as a periodic layer."
+        heading="Build the protocol in layers."
+        intro="Start with the daily foundation, add gut-mito support, then layer in the 7-day monthly protocol."
         bg={SECONDARY_DARK}
         dark
         className="cb-reveal"

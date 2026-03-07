@@ -89,7 +89,7 @@ export const PRODUCT_DETAIL_DATA = {
         ingredients: ["Betaine (TMG) — 250 mg", "P-5-P — 10 mg", "5-MTHF — 400 mcg DFE", "Methylcobalamin — 1,000 mcg", "Apigenin — 100 mg", "BioPerine — 5 mg"],
       },
     ],
-    qualityBadges: ["cGMP Manufactured", "Third-Party Tested", "Vegan", "No Artificial Fillers", "Full Label Disclosure", "Glass Packaging"],
+    qualityBadges: ["cGMP Manufactured", "Third-Party Tested", "Vegan", "No Artificial Fillers", "Full Label Disclosure", "Documentation Support"],
     comparison: {
       us: ["500 mg Nicotinamide Riboside (NR)", "Includes methylation co-factors (TMG, 5-MTHF, methyl-B12)", "Designed for daily NAD+ pathway support", "Third-party tested", "Full label disclosure (no proprietary blends)"],
       them: ["Lower NR dosing common", "Missing co-factor support", "Inconsistent testing standards", "Proprietary blends (unclear dosing)"],

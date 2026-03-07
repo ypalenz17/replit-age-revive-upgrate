@@ -27,7 +27,7 @@ const PRODUCTS = [
     name: 'CELLUNAD+',
     category: 'Daily NAD+ Foundation',
     role: 'Start here',
-    bestFor: 'Daily cellular energy and recovery support. 8 actives, fully disclosed. The foundation most people start with.',
+    bestFor: '500 mg NR plus methylation and mitochondrial co-factors.',
     cadence: '2 capsules daily',
     price: '$79.99',
     subPrice: '$67.99/mo',
@@ -63,7 +63,7 @@ const PRODUCTS = [
     name: 'CELLUBIOME',
     category: 'Daily Gut-Mito Support',
     role: 'Gut support priority',
-    bestFor: 'Gut lining and energy-production support. Two actives, enteric-coated for targeted delivery. Add when gut health is the priority.',
+    bestFor: 'Urolithin A plus enteric tributyrin for daily gut-mito support.',
     cadence: '2 enteric-coated capsules daily',
     price: '$110.00',
     subPrice: '$93.50/mo',
@@ -93,7 +93,7 @@ const PRODUCTS = [
     name: 'CELLUNOVA',
     category: '7-Day Monthly Protocol',
     role: 'Periodic layer',
-    bestFor: 'Supports the body\'s natural cleanup and renewal process. 7 days on, 23 days off. Layer in after your daily base is set.',
+    bestFor: '7-day monthly protocol for autophagy-related support and resilience.',
     cadence: '7-day monthly cycle',
     price: '$49.99',
     subPrice: '$42.49/mo',
@@ -134,9 +134,9 @@ const TRUST_POINTS = [
   { num: '01', title: 'Full Dose Disclosure', desc: 'Every ingredient and its exact dose printed on the label. No proprietary blends, ever.' },
   { num: '02', title: 'Third-Party Tested', desc: 'Independent lab verification for purity, potency, and heavy metals on every production lot.' },
   { num: '03', title: 'Lot Traceability', desc: 'Certificate of Analysis available for every lot. Request yours any time.' },
-  { num: '04', title: 'Clinically Studied Ranges', desc: 'Actives dosed at levels informed by published research. No fairy-dusting, no token amounts.' },
-  { num: '05', title: 'Targeted Delivery', desc: 'Enteric-coated capsules where the science calls for it. Precision release, not generic capsules.' },
-  { num: '06', title: 'Glass Packaging', desc: 'UV-protected glass bottles. No plastic leaching. Better ingredient preservation over time.' },
+  { num: '04', title: 'No Proprietary Blends', desc: 'You can evaluate the formula without guesswork.' },
+  { num: '05', title: 'Targeted Delivery', desc: 'Delivery and format are matched to the product\'s role.' },
+  { num: '06', title: 'Documentation Support', desc: 'Batch documentation can be requested by lot.' },
 ];
 
 const HOME_FAQS = [
@@ -247,12 +247,12 @@ const Hero = () => {
       <div className="relative z-10 w-full max-w-3xl lg:max-w-6xl mx-auto flex flex-col justify-center text-center lg:text-left px-6 md:px-8 lg:px-12 pt-24 md:pt-40 lg:pt-36 pb-12 md:pb-20 lg:pb-20 min-h-[100dvh] lg:min-h-[72vh]">
         <div className="flex flex-col hero-text w-full items-center lg:items-start">
 
-          <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.16em] mb-4 md:mb-5">Three fully disclosed formulas. One system.</span>
+          <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.16em] mb-4 md:mb-5">Three fully disclosed formulas. One coordinated system.</span>
 
           <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase" style={{ fontSize: 'clamp(34px, 8.5vw, 68px)' }}>
-            Daily NAD+. Gut resilience.
+            Daily NAD+ support. Gut resilience.
             <br />
-            <span className="text-white/55">Monthly renewal. One system.</span>
+            <span className="text-white/55">One coordinated system.</span>
           </h1>
 
           <p className="mt-5 md:mt-7 text-[15px] md:text-[17px] text-white/65 font-sans font-normal max-w-[40ch] leading-[1.6] mx-auto lg:mx-0">
@@ -299,9 +299,9 @@ const TrustSection = () => (
       <div className="text-center mb-12 md:mb-16 lg:mb-12 reveal-stagger">
         <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.20em]">Why Age Revive</span>
         <h2 className="mt-4 font-head font-normal tracking-[-0.03em] uppercase text-white leading-[0.95]" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)' }}>
-          Built on transparency,
+          What we disclose,
           <br className="hidden sm:block" />
-          <span className="text-white/45"> not marketing claims.</span>
+          <span className="text-white/45"> not what we claim.</span>
         </h2>
       </div>
 
@@ -435,7 +435,7 @@ const ScienceSection = () => {
   const axes = [
     {
       tag: '01',
-      name: 'Daily NAD+ Foundation',
+      name: 'Daily NAD+ foundation',
       protocol: 'CELLUNAD+',
       slug: 'cellunad',
       desc: 'NR supports daily NAD+ replenishment. Methylation co-factors keep the pathway balanced. This is where most people start.',
@@ -443,7 +443,7 @@ const ScienceSection = () => {
     },
     {
       tag: '02',
-      name: 'Daily Gut-Mito Support',
+      name: 'Daily gut-mito support',
       protocol: 'CELLUBIOME',
       slug: 'cellubiome',
       desc: 'Urolithin A supports mitochondrial recycling. Enteric tributyrin delivers butyrate where the gut needs it most.',
@@ -451,7 +451,7 @@ const ScienceSection = () => {
     },
     {
       tag: '03',
-      name: '7-Day Monthly Protocol',
+      name: '7-day monthly layer',
       protocol: 'CELLUNOVA',
       slug: 'cellunova',
       desc: 'A 7-day monthly cycle of polyphenols and autophagy-research compounds. The off-period is intentional — it is part of the design.',
@@ -465,10 +465,10 @@ const ScienceSection = () => {
         <div className="text-center mb-12 md:mb-16 lg:mb-10 reveal-stagger">
           <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.20em]">How the system works</span>
           <h2 className="mt-4 font-head font-normal tracking-[-0.03em] uppercase text-white leading-[0.95]" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)' }}>
-            Three distinct roles. One protocol.
+            Three roles. One coordinated protocol.
           </h2>
           <p className="mt-4 text-[14px] md:text-[15px] font-sans text-white/50 max-w-[42ch] mx-auto leading-[1.6]">
-            Each formula has a distinct job. Together they cover energy, gut resilience, and periodic renewal.
+            Each formula has a distinct job. Together, they cover the protocol more clearly than any one product alone.
           </p>
         </div>
 
@@ -606,7 +606,7 @@ const FinalCTA = () => (
         <span className="text-white/35">with the daily foundation.</span>
       </h2>
       <p className="mt-5 text-[14px] md:text-[15px] font-sans text-white/40 max-w-[36ch] mx-auto leading-[1.6]">
-        CELLUNAD+ is the daily NAD+ base. Add CELLUBIOME or CELLUNOVA when you are ready to expand.
+        Begin with CELLUNAD+, then add the other layers when the time is right.
       </p>
       <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
         <a

@@ -62,7 +62,7 @@ const COPY_MAP = {
     },
     spec: {
       meta: 'Actives: 8 \u2022 Serving: 2 capsules daily',
-      reassurance: 'All dosages reflect clinically studied ranges and bioavailable forms.',
+      reassurance: 'All dosages are fully disclosed and use bioavailable forms.',
       declaration: 'No proprietary formulations.'
     },
     arc: {
@@ -851,7 +851,7 @@ function ProductTemplate({ product }: ProductTemplateProps) {
           </div>
 
           <div className="mt-5 space-y-1 max-w-4xl">
-            <p className="text-[11px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All dosages reflect clinically studied ranges</p>
+            <p className="text-[11px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All dosages fully disclosed and bioavailable</p>
             <p className="text-[11px] font-mono text-white/50 tracking-[0.06em] leading-relaxed">All compounds listed in bioavailable forms</p>
           </div>
         </div>
@@ -1036,14 +1036,12 @@ const TRUST_ITEMS = [
 ];
 
 const COMPARISON_ROWS = [
+  { label: 'Best For', cellunad: 'Daily cellular energy and NAD+ support', cellubiome: 'Gut barrier integrity and mito efficiency', cellunova: 'Autophagy and cellular renewal pathways' },
   { label: 'Role', cellunad: 'Daily NAD+ foundation', cellubiome: 'Daily gut-mito support', cellunova: '7-day monthly protocol' },
-  { label: 'Best For', cellunad: 'Daily cellular energy and recovery', cellubiome: 'Gut lining and energy production', cellunova: 'Natural cleanup and renewal' },
-  { label: 'Use Pattern', cellunad: 'Daily — ongoing', cellubiome: 'Daily — ongoing', cellunova: '7 days on / 23 days off' },
-  { label: 'Serving', cellunad: '2 capsules', cellubiome: '2 enteric capsules', cellunova: '5 capsules' },
-  { label: 'Key Actives', cellunad: 'NR 500 mg, TMG, Apigenin + 5 more', cellubiome: 'Urolithin A 500 mg, Tributyrin 500 mg', cellunova: 'Fisetin, Quercetin, Spermidine + 7 more' },
-  { label: 'Supply', cellunad: '30-day', cellubiome: '30-day', cellunova: '7-day monthly cycle' },
-  { label: 'Pairs With', cellunad: 'CELLUBIOME + CELLUNOVA', cellubiome: 'CELLUNAD+ + CELLUNOVA', cellunova: 'CELLUNAD+ + CELLUBIOME' },
-  { label: 'Delivery', cellunad: 'Standard capsule', cellubiome: 'Enteric-coated', cellunova: 'Standard capsule' },
+  { label: 'Cadence', cellunad: '2 capsules daily — ongoing', cellubiome: '2 enteric capsules daily — ongoing', cellunova: '5 capsules/day for 7 days per month' },
+  { label: 'Key Actives', cellunad: 'NR 500 mg, TMG 250 mg, Apigenin 100 mg + 5 more', cellubiome: 'Urolithin A 500 mg, Tributyrin 500 mg', cellunova: 'Fisetin 100 mg, Quercetin 500 mg, Spermidine 15 mg + 7 more' },
+  { label: 'When to Start', cellunad: 'First — this is the daily foundation', cellubiome: 'Second — add gut-mito support to the daily base', cellunova: 'Third — layer in monthly after daily is consistent' },
+  { label: 'Supply', cellunad: '30-day supply', cellubiome: '30-day supply', cellunova: '7-day monthly cycle' },
 ];
 
 const BUNDLES = [
@@ -1500,9 +1498,9 @@ function ShopCatalog() {
       {/* ═══ S6 · FINAL CTA ═══ (BASE_DARK) */}
       <section style={{ background: BASE_DARK }} data-testid="section-final-cta">
         <div className="mx-auto max-w-3xl lg:max-w-4xl px-5 md:px-8 py-[72px] md:py-[100px] lg:py-[56px] text-center">
-          <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white mb-4" data-testid="text-final-cta">Most people start with the daily foundation.</h2>
+          <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white mb-4" data-testid="text-final-cta">Still not sure where to start?</h2>
           <p className="text-[14px] font-sans text-white/45 leading-relaxed max-w-md mx-auto mb-8">
-            One product, fully disclosed, designed to pair with the rest of the system when you're ready.
+            Most first-time buyers start with CELLUNAD+. Use the FAQ if you want protocol guidance before you choose.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
@@ -1513,14 +1511,14 @@ function ShopCatalog() {
             >
               Start with CELLUNAD+
             </a>
-            <button
-              onClick={scrollToComparison}
+            <a
+              href="/faq"
               className="min-h-[48px] px-8 py-3 rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.12em] text-white/55 hover:text-white/80 transition-all duration-300"
               style={{ border: '1px solid rgba(255,255,255,0.10)' }}
-              data-testid="button-compare-protocols-final"
+              data-testid="link-read-faq"
             >
-              Compare the 3 Protocols
-            </button>
+              Read the FAQ
+            </a>
           </div>
         </div>
       </section>
