@@ -1122,13 +1122,15 @@ function ShopCatalog() {
           </div>
 
           <div className="grid grid-cols-3 gap-3 md:gap-6 max-w-3xl lg:max-w-5xl mx-auto mb-14 md:mb-16 lg:mb-12">
-            {SHOP_PRODUCTS.map((p) => (
-              <div key={p.id} className="flex flex-col items-center text-center" data-testid={`hero-product-${p.id}`}>
-                <div className="relative mb-3">
+            {SHOP_PRODUCTS.map((p) => {
+              const imgH = p.id === 'cellunova' ? 'h-[72px] md:h-[104px]' : 'h-[90px] md:h-[130px]';
+              return (
+              <a key={p.id} href={`/product/${p.id}`} className="flex flex-col items-center text-center group cursor-pointer no-underline" data-testid={`hero-product-${p.id}`}>
+                <div className="relative mb-3 transition-transform duration-300 group-hover:scale-105">
                   <img
                     src={p.image}
                     alt={p.name}
-                    className="h-[90px] md:h-[130px] w-auto object-contain"
+                    className={`${imgH} w-auto object-contain`}
                     style={{ filter: 'drop-shadow(0 6px 16px rgba(0,0,0,0.45))' }}
                   />
                 </div>
@@ -1138,8 +1140,9 @@ function ShopCatalog() {
                 <span className="text-[9px] md:text-[10px] font-mono uppercase tracking-[0.06em] md:tracking-[0.08em] text-white/40 mb-1 leading-tight">{p.role}</span>
                 <span className="text-[14px] md:text-[15px] font-sans font-bold text-white" data-testid={`text-hero-price-${p.id}`}>${p.price.toFixed(2)}</span>
                 <span className="text-[10px] font-mono text-white/35">{p.isDaily ? 'daily' : '7-day cycle'}</span>
-              </div>
-            ))}
+              </a>
+              );
+            })}
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
@@ -1276,14 +1279,14 @@ function ShopCatalog() {
                 }}
                 data-testid={`compare-card-${p.id}`}
               >
-                <div className="flex items-end justify-center pt-5 pb-3 px-4 h-[130px] md:h-[155px]">
+                <a href={`/product/${p.id}`} className="flex items-end justify-center pt-5 pb-3 px-4 h-[130px] md:h-[155px] cursor-pointer group/img" data-testid={`link-compare-img-${p.id}`}>
                   <img
                     src={p.image}
                     alt={p.name}
-                    className="h-[100px] md:h-[120px] w-auto object-contain"
+                    className={`${p.id === 'cellunova' ? 'h-[80px] md:h-[96px]' : 'h-[100px] md:h-[120px]'} w-auto object-contain transition-transform duration-300 group-hover/img:scale-105`}
                     style={{ filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.35))' }}
                   />
-                </div>
+                </a>
 
                 <div className="px-5 pb-5 flex flex-col flex-1">
                   <span className="text-[9px] font-mono uppercase tracking-[0.16em] font-bold mb-1" style={{ color: p.accent }}>{p.role}</span>
