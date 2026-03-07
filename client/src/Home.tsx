@@ -94,7 +94,7 @@ const PRODUCTS = [
     category: '7-Day Monthly Protocol',
     role: 'Periodic layer',
     bestFor: '7-day monthly protocol for autophagy-related support and resilience.',
-    cadence: '7-day monthly cycle',
+    cadence: '5 capsules daily for 7 days',
     price: '$49.99',
     subPrice: '$42.49/mo',
     tagline: 'Ten compounds. Seven days on. The off-cycle is part of the design.',
@@ -134,9 +134,9 @@ const TRUST_POINTS = [
   { num: '01', title: 'Full Dose Disclosure', desc: 'Every ingredient and its exact dose printed on the label. No proprietary blends, ever.' },
   { num: '02', title: 'Third-Party Tested', desc: 'Independent lab verification for purity, potency, and heavy metals on every production lot.' },
   { num: '03', title: 'Lot Traceability', desc: 'Certificate of Analysis available for every lot. Request yours any time.' },
-  { num: '04', title: 'No Proprietary Blends', desc: 'You can evaluate the formula without guesswork.' },
-  { num: '05', title: 'Targeted Delivery', desc: 'Delivery and format are matched to the product\'s role.' },
-  { num: '06', title: 'Documentation Support', desc: 'Batch documentation can be requested by lot.' },
+  { num: '04', title: 'No Proprietary Blends', desc: 'You can evaluate the formula without guesswork. Every active is listed with its exact dose.' },
+  { num: '05', title: 'Targeted Delivery', desc: 'Capsule form and release profile are matched to the product\'s role. Enteric coating where needed.' },
+  { num: '06', title: 'Documentation Support', desc: 'Batch documentation can be requested by lot number. We keep records so you can verify.' },
 ];
 
 const HOME_FAQS = [
@@ -343,12 +343,12 @@ const ProductSystemSection = ({ onOpenProduct }: { onOpenProduct: (slug: string)
     <section className="relative py-[80px] md:py-[120px] lg:py-[80px] px-6 md:px-8" style={{ backgroundColor: LIGHT_CLINICAL }}>
       <div className="max-w-5xl lg:max-w-7xl mx-auto">
         <div className="text-center mb-12 md:mb-16 lg:mb-12 reveal-stagger">
-          <span className="font-mono text-[10px] md:text-[11px] text-ar-teal uppercase tracking-[0.20em]">The System</span>
+          <span className="font-mono text-[10px] md:text-[11px] text-ar-teal uppercase tracking-[0.20em]">The Protocol</span>
           <h2 className="mt-4 font-head font-normal tracking-[-0.03em] uppercase leading-[0.95]" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)', color: BASE_DARK }}>
-            Choose your starting point.
+            Three products. Three roles.
           </h2>
           <p className="mt-4 text-[14px] md:text-[15px] font-sans text-[#0A1220]/50 max-w-[42ch] mx-auto leading-[1.6]">
-            Three protocols that work independently or together. Most people start with CELLUNAD+.
+            Each works on its own. Together, they form a coordinated system. Most people start with CELLUNAD+.
           </p>
         </div>
 

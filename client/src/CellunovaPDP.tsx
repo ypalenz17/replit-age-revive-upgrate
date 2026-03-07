@@ -231,7 +231,7 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
 
       {/* ─── 2. WHAT MAKES IT DIFFERENT — LIGHT ─── */}
       <PdpSectionRow
-        eyebrow="What makes it different"
+        eyebrow="Why It's Periodic"
         heading="Why this is not a daily longevity blend."
         intro="CELLUNOVA is a defined 7-day monthly protocol. The time between cycles is part of the design."
         bg={LIGHT}
@@ -268,7 +268,7 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
       {/* ─── 3. WHO IT'S FOR — SECONDARY_DARK ─── */}
       <PdpSectionRow
         eyebrow="Best For"
-        heading="CELLUNOVA is designed for"
+        heading="Who should consider CELLUNOVA."
         bg={SECONDARY_DARK}
         dark
         className="cv-reveal"
@@ -341,7 +341,7 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
       {/* ─── 6. SUPPLEMENT FACTS — LIGHT ─── */}
       <PdpSupplementFactsShell
         eyebrow="Supplement Facts"
-        heading="What's inside."
+        heading="Ten compounds. Every dose listed."
         intro={<>{data.supplementFacts.items.length} compounds, fully disclosed. Every ingredient listed for direct evaluation.</>}
         onViewFacts={() => setIsFactsOpen(true)}
         dark={false}
@@ -394,8 +394,8 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
 
       {/* ─── 7. HOW TO USE — LIGHT ─── */}
       <PdpSectionRow
-        eyebrow="Routine"
-        heading="How to use it."
+        eyebrow="The 7-Day Routine"
+        heading="How to run the CELLUNOVA cycle."
         bg={LIGHT}
         className="cv-reveal"
       >
@@ -450,7 +450,7 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
       {/* ─── 9. RESULTS OVER TIME — LIGHT ─── */}
       <PdpSectionRow
         eyebrow="Protocol Effects Over Time"
-        heading="What consistent use can look like."
+        heading="What the 7-day cycle can look like over months."
         intro={(data as any).timelineSubline}
         bg={LIGHT}
         className="cv-reveal"
@@ -530,9 +530,9 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
 
       {/* ─── 11. PAIRS WELL WITH — LIGHT ─── */}
       <PdpSectionRow
-        eyebrow="The System"
-        heading="Build the protocol in layers."
-        intro="Start with the daily foundation, add gut-mito support, then layer in the 7-day monthly protocol."
+        eyebrow="Complete the Protocol"
+        heading="Layer CELLUNOVA onto the daily foundation."
+        intro="CELLUNOVA is the periodic layer. Most people start with CELLUNAD+ daily, then add this monthly cycle."
         bg={LIGHT}
         className="cv-reveal"
       >

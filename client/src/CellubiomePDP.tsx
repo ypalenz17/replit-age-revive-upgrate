@@ -255,7 +255,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       {/* ─── 3. BEST FOR — SECONDARY_DARK ─── */}
       <PdpSectionRow
         eyebrow="Best For"
-        heading="CELLUBIOME is designed for"
+        heading="Who CELLUBIOME is built for."
         intro="Targeted gut-barrier and mitochondrial support for adults who want more than a generic gut supplement."
         bg={SECONDARY_DARK}
         dark
@@ -343,8 +343,8 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       {/* ─── 6. SUPPLEMENT FACTS — LIGHT ─── */}
       <PdpSupplementFactsShell
         eyebrow="Supplement Facts"
-        heading="What's inside."
-        intro="Two targeted compounds. Enteric-protected. Fully disclosed."
+        heading="Two compounds. Nothing else."
+        intro="Enteric-protected. Research-aligned doses. No fillers, no blends."
         onViewFacts={() => setIsFactsOpen(true)}
         bg={LIGHT}
         dark={false}
@@ -445,8 +445,8 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       {/* ─── 8. RESULTS OVER TIME — LIGHT ─── */}
       <PdpSectionRow
         eyebrow="Results Over Time"
-        heading="What consistent use can look like."
-        intro="Gut-mito support is usually assessed over weeks, not days."
+        heading="What consistent gut-mito support can look like."
+        intro="Gut-barrier and mitochondrial adaptation is assessed over weeks, not days."
         bg={LIGHT}
         className="cb-reveal"
       >
@@ -489,7 +489,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       {/* ─── 9. HOW TO USE — SECONDARY_DARK ─── */}
       <PdpSectionRow
         eyebrow="How to Use"
-        heading="How to use it."
+        heading="How to take CELLUBIOME."
         bg={SECONDARY_DARK}
         dark
         className="cb-reveal"
@@ -552,9 +552,9 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
 
       {/* ─── 11. STACKING — SECONDARY_DARK ─── */}
       <PdpSectionRow
-        eyebrow="The System"
-        heading="Build the protocol in layers."
-        intro="Start with the daily foundation, add gut-mito support, then layer in the 7-day monthly protocol."
+        eyebrow="Where It Fits"
+        heading="Where CELLUBIOME sits in the system."
+        intro="CELLUBIOME adds a gut-mito layer to your daily routine. Most people pair it with CELLUNAD+ first."
         bg={SECONDARY_DARK}
         dark
         className="cb-reveal"

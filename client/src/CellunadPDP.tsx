@@ -355,8 +355,8 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
       {/* ─── 6. SUPPLEMENT FACTS — SECONDARY_DARK ─── */}
       <PdpSupplementFactsShell
         eyebrow="Supplement Facts"
-        heading="What's inside."
-        intro="Full label transparency. Every ingredient and dose listed directly."
+        heading="Full formula, fully disclosed."
+        intro="8 active ingredients. Every dose listed directly on the label."
         onViewFacts={() => setIsFactsOpen(true)}
         factsTable={
           <div className="rounded-xl border border-white/[0.06] overflow-hidden" style={{ backgroundColor: '#15202F' }}>
@@ -427,7 +427,7 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
       {/* ─── 8. HOW TO USE — LIGHT ─── */}
       <PdpSectionRow
         eyebrow="Routine"
-        heading="How to use it."
+        heading="How to take CELLUNAD+."
         bg={LIGHT}
         className="cn-reveal"
       >
@@ -532,9 +532,9 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
 
       {/* ─── 11. PAIRS WELL WITH — SECONDARY_DARK ─── */}
       <PdpSectionRow
-        eyebrow="The System"
-        heading="Build the protocol in layers."
-        intro="Start with the daily foundation, add gut-mito support, then layer in the 7-day monthly protocol."
+        eyebrow="What Pairs With It"
+        heading="Add to the daily foundation."
+        intro="CELLUNAD+ is the starting layer. These two protocols extend it into gut-mito support and monthly renewal."
         bg={SECONDARY_DARK}
         dark
         className="cn-reveal"
