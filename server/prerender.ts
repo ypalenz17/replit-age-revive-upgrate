@@ -39,7 +39,7 @@ interface SeoMetadata {
 
 const BRAND_NAME = "Age Revive";
 const SITE_ORIGIN = "https://agerevive.com";
-const DEFAULT_OG_IMAGE_PATH = "/images/lifestyle-wellness_1.jpg";
+const DEFAULT_OG_IMAGE_PATH = "/images/og-default.jpg";
 const ORGANIZATION_LOGO_URL = `${SITE_ORIGIN}/favicon.png`;
 
 export const PRODUCT_SLUGS: ProductSlug[] = ["cellunad", "cellubiome", "cellunova"];
@@ -362,7 +362,7 @@ const PAGE_CONTENT: Record<string, PageContent> = {
     title: "Age Revive | Longevity Protocols for NAD+ & Gut-Mito Support",
     description:
       "Three fully disclosed protocols: CELLUNAD+ for daily NAD+ support, CELLUBIOME for gut-barrier and mitochondrial support, and CELLUNOVA as a 7-day monthly protocol.",
-    imagePath: "/images/lifestyle-wellness_1.jpg",
+    imagePath: "/images/og-default.jpg",
     html: `
 <article>
   <h1>Age Revive - Longevity Protocols for NAD+ & Gut-Mito Support</h1>
