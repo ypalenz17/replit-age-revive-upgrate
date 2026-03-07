@@ -197,7 +197,7 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
 
       <div className="pt-3 border-t border-white/[0.06] space-y-2">
         <div className="grid grid-cols-2 gap-x-3 gap-y-1.5">
-          {['500 mg NR', 'Third-party tested', 'Fully disclosed label', 'No proprietary blends'].map((label) => (
+          {['8 active ingredients', 'Third-party tested', 'Fully disclosed label', 'No proprietary blends'].map((label) => (
             <p key={label} className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/35">{label}</p>
           ))}
         </div>
@@ -222,11 +222,11 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
   ];
 
   const whyStartCards = [
-    'Designed as the daily foundation of the Age Revive system',
-    'Clinically studied 500 mg NR dose for NAD+ biosynthesis support',
-    'Includes methylation and mitochondrial co-factors most NR products leave out',
-    'Non-stimulant -- supports energy metabolism, not temporary alertness',
-    'Pairs naturally with CELLUBIOME or CELLUNOVA when you are ready to expand',
+    'NAD+ is a coenzyme that supports cellular energy, DNA maintenance, and metabolic resilience',
+    'NAD+ levels decline naturally with age, reducing mitochondrial efficiency over time',
+    '500 mg NR provides a clinically studied precursor for NAD+ biosynthesis',
+    'Methylation co-factors help balance pathways affected by NAD+ metabolism',
+    'Consistent daily use is designed for cumulative adaptation, not transient stimulation',
   ];
 
   const designedForItems = [
@@ -280,11 +280,11 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
         </div>
       </PdpSectionRow>
 
-      {/* ─── 3. WHY START HERE — SECONDARY_DARK ─── */}
+      {/* ─── 3. WHAT NAD+ DOES — SECONDARY_DARK ─── */}
       <PdpSectionRow
-        eyebrow="Where to Begin"
-        heading="The daily foundation most people start with."
-        intro="NAD+ supports cellular energy, DNA maintenance, and metabolic resilience. It declines with age. CELLUNAD+ is designed to support that pathway every day."
+        eyebrow="NAD+ Biology"
+        heading="What NAD+ does and why it matters."
+        intro="NAD+ is a coenzyme involved in cellular energy metabolism and DNA maintenance. Levels decline with age. CELLUNAD+ is designed to support that pathway every day."
         bg={SECONDARY_DARK}
         dark
         className="cn-reveal"
@@ -328,7 +328,7 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
       {/* ─── 5. WHY IT'S DIFFERENT — SECONDARY_DARK ─── */}
       <PdpSectionRow
         eyebrow="What Makes It Different"
-        heading="Why NR alone is not the whole story."
+        heading="Why CELLUNAD+ includes more than NR."
         intro="CELLUNAD+ pairs NR with methylation and mitochondrial co-factors so the daily foundation is more complete from the start."
         bg={SECONDARY_DARK}
         dark
@@ -387,7 +387,7 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
       <section className="py-[56px] md:py-[72px] lg:py-[56px] px-6" style={{ backgroundColor: LIGHT }}>
         <div className="max-w-md lg:max-w-xl mx-auto text-center">
           <p className="text-[14px] font-sans text-[#0A1220]/45 leading-relaxed mb-5">
-            500 mg NR. Methylation co-factors. Mitochondrial support. Non-stimulant. Fully transparent.
+            The most common starting point in the Age Revive system. Built for daily consistency.
           </p>
           <button
             onClick={handleAddToCart}
@@ -581,7 +581,7 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
 
       {/* ─── 12. FAQ — LIGHT ─── */}
       <PdpFaqShell
-        heading="Before you start"
+        heading="Common questions"
         intro="Answers to common questions about CELLUNAD+ and daily NAD+ support."
         links={
           <a href="/faq" className={`text-[11px] font-mono uppercase tracking-[0.08em] text-ar-teal/60 hover:text-ar-teal transition-colors ${focusRing} rounded`} data-testid="link-all-faq">

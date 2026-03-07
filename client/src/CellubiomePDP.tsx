@@ -52,7 +52,7 @@ function StickyMobileBuyBar({ data, onAdd }: { data: ProductDetailData; onAdd: (
           <p className="font-mono text-[10px] uppercase tracking-[0.10em] text-white/45 truncate">CELLUBIOME</p>
           <div className="flex items-baseline gap-2">
             <span className="text-[16px] font-sans font-semibold text-white">${data.priceOneTime.toFixed(2)}</span>
-            <span className="text-[10px] text-white/30 font-sans">/ 30-day supply</span>
+            <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/30">2 enteric caps daily</span>
           </div>
         </div>
         <button
@@ -232,7 +232,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       >
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5">
           {[
-            { title: 'Not a probiotic blend', desc: 'This is a targeted compound formula, not a probiotic label swap.' },
+            { title: 'Not a probiotic blend', desc: 'This is a targeted compound formula, not a repackaged probiotic.' },
             { title: '500 mg urolithin A', desc: 'Human-studied dose used for mitochondrial-related biomarkers.' },
             { title: 'Enteric tributyrin', desc: 'Designed for downstream butyrate delivery, not a basic butyrate salt.' },
             { title: 'Gut-barrier support', desc: 'Built around intestinal barrier and butyrate-related biology.' },
@@ -295,7 +295,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
           {[
             { title: 'Research-Informed Doses', body: '500 mg Urolithin A aligns with published human studies. 500 mg Tributyrin provides stable butyrate delivery. No diluted blends.' },
             { title: 'Enteric-Protected Delivery', body: 'Standard capsules degrade in stomach acid. CELLUBIOME uses enteric coating to protect both compounds until they reach the intestine, where absorption and barrier support occur.' },
-            { title: 'Two-Compound Focus', body: 'Not a kitchen-sink formula. Two targeted compounds at research-aligned doses, each addressing one side of the gut-mitochondria axis.' },
+            { title: 'Two-Compound Focus', body: 'Two targeted compounds at research-aligned doses, each addressing one side of the gut-mitochondria axis. Nothing extra.' },
             { title: 'Full Transparency', body: 'Every ingredient, every dose, printed on the label. No proprietary blends. Certificate of Analysis available by production lot.' },
           ].map((card, i) => (
             <div
@@ -311,11 +311,11 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         </div>
       </PdpSectionRow>
 
-      {/* ─── 5. WHAT IT DOES — SECONDARY_DARK ─── */}
+      {/* ─── 5. WHAT EACH COMPOUND DOES — SECONDARY_DARK ─── */}
       <PdpSectionRow
-        eyebrow="How It Works"
-        heading={<>Two compounds.<br className="hidden lg:inline" /> One daily protocol.</>}
-        intro="CELLUBIOME pairs urolithin A and enteric tributyrin because gut-barrier support and mitochondrial renewal are connected, but not identical."
+        eyebrow="Biological Function"
+        heading={<>What each compound<br className="hidden lg:inline" /> is designed to do.</>}
+        intro="Each side of the formula has a distinct biological role. Together, they address the gut-mitochondria connection."
         bg={SECONDARY_DARK}
         dark
         className="cb-reveal"
@@ -375,7 +375,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
 
             <div className="mt-10 text-center">
               <p className="text-[14px] font-sans text-[#0A1220]/45 leading-relaxed mb-5">
-                Two targeted compounds. Enteric-protected. Fully transparent.
+                Research-aligned doses. Enteric-protected delivery. No proprietary blends.
               </p>
               <button
                 onClick={handleAddToCart}
@@ -654,7 +654,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         footerNote="2 capsules daily · Enteric-protected · Fully disclosed"
         browseLink={
           <a href="/shop" className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/30 hover:text-white/50 transition-colors" data-testid="link-browse-products">
-            Browse All Protocols
+            Browse All Protocols →
           </a>
         }
       />

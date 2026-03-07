@@ -120,8 +120,8 @@ export const PRODUCT_DETAIL_DATA = {
     safetyNote: 'Consult your healthcare provider before use if you are pregnant, nursing, on medication, or managing a medical condition.',
     allergenDisclosure: null as string | null,
     stack: [
-      { name: "CELLUBIOME", slug: "cellubiome", role: "Gut + Mitochondria", add: "Pair NAD+ support with gut barrier integrity and mitochondrial renewal.", when: "Daily use" },
-      { name: "CELLUNOVA", slug: "cellunova", role: "Monthly Reset", add: "Add a periodic 7-day renewal cycle to complement daily NAD+ support.", when: "7-day monthly cycle" }
+      { name: "CELLUBIOME", slug: "cellubiome", role: "Daily Gut-Mito", add: "Pair NAD+ support with gut barrier integrity and mitochondrial renewal.", when: "Daily use" },
+      { name: "CELLUNOVA", slug: "cellunova", role: "7-Day Monthly", add: "Add a periodic 7-day protocol to complement daily NAD+ support.", when: "7-day monthly cycle" }
     ],
     faq: [
       { q: "How long should I evaluate CELLUNAD+?", a: "Most people assess CELLUNAD+ over 8–12 weeks of consistent daily use.*" },
@@ -246,8 +246,8 @@ export const PRODUCT_DETAIL_DATA = {
     safetyNote: 'Consult your healthcare provider before use if pregnant, nursing, taking medication, or managing a medical condition.',
     allergenDisclosure: null as string | null,
     stack: [
-      { name: "CELLUNAD+", slug: "cellunad", role: "Daily NAD+ foundation", add: "Pair mitochondrial renewal with daily NAD+ support for a stronger daily base.", when: "Daily use" },
-      { name: "CELLUNOVA", slug: "cellunova", role: "7-day monthly protocol", add: "Add a periodic 7-day protocol to complement daily support.", when: "7-day monthly cycle" }
+      { name: "CELLUNAD+", slug: "cellunad", role: "Daily NAD+", add: "Pair mitochondrial renewal with daily NAD+ support for a stronger daily base.", when: "Daily use" },
+      { name: "CELLUNOVA", slug: "cellunova", role: "7-Day Monthly", add: "Add a periodic 7-day protocol to complement daily support.", when: "7-day monthly cycle" }
     ],
     faq: [
       { q: "How long should I evaluate CELLUBIOME?", a: "Most people assess CELLUBIOME over 8–12 weeks of daily use.* Some notice digestive comfort sooner.*" },
@@ -360,9 +360,9 @@ export const PRODUCT_DETAIL_DATA = {
       diagramLabel: '7-Day Cycle',
       diagramCenter: null as { label: string; icon: string } | null,
       diagramNodes: [
-        { label: "Cleanup", icon: 'RotateCcw' },
-        { label: "Removal", icon: 'Wind' },
-        { label: "Recovery", icon: 'Zap' }
+        { label: "Autophagy Support", icon: 'RotateCcw' },
+        { label: "Senescence Research", icon: 'Wind' },
+        { label: "Mito Resilience", icon: 'Zap' }
       ],
       diagramFooter: { label: '7-Day Focused Cycle', text: 'Seven days of targeted support, then time off. The rest period is part of the design.' }
     },
@@ -377,7 +377,7 @@ export const PRODUCT_DETAIL_DATA = {
     allergenDisclosure: 'Contains Wheat (from Wheat Germ derived Spermidine).',
     stack: [
       { name: "CELLUNAD+", slug: "cellunad", role: "Daily NAD+", add: "Continue daily NAD+ support while running the 7-day CELLUNOVA cycle.", when: "Daily use" },
-      { name: "CELLUBIOME", slug: "cellubiome", role: "Gut + Mitochondria", add: "Support gut barrier integrity and mitochondrial renewal alongside periodic protocol cycles.", when: "Daily use" }
+      { name: "CELLUBIOME", slug: "cellubiome", role: "Daily Gut-Mito", add: "Support gut barrier integrity and mitochondrial renewal alongside periodic protocol cycles.", when: "Daily use" }
     ],
     faq: [
       { q: "Is CELLUNOVA taken daily?", a: "No. CELLUNOVA is a 7-day protocol designed to be repeated monthly." },
@@ -386,8 +386,8 @@ export const PRODUCT_DETAIL_DATA = {
       { q: "Should I take it with food?", a: "You can take it with or without food. Many people prefer taking it with food for comfort." },
       { q: "Does it contain allergens?", a: "Yes. CELLUNOVA contains wheat from the spermidine source." }
     ],
-    ctaHeadline: ['Reset.', 'Renew.'],
-    ctaBody: 'Add CELLUNOVA as a periodic 7-day protocol for autophagy-related support.',
+    ctaHeadline: ['Add the', 'monthly layer.'],
+    ctaBody: 'CELLUNOVA is a periodic 7-day protocol designed to layer onto the daily foundation.',
     ctaButton: 'Start Now',
   }
 };
