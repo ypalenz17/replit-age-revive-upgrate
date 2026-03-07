@@ -88,8 +88,8 @@ export function PdpSectionRow({
   const eyebrowColor = dark ? 'text-ar-teal/80' : 'text-ar-teal';
   const introColor = dark ? 'text-white/45' : 'text-[#0A1220]/50';
   const py = tight
-    ? 'py-[64px] md:py-[88px] lg:py-[72px] xl:py-[72px]'
-    : 'py-[72px] md:py-[100px] lg:py-[80px] xl:py-[88px]';
+    ? 'py-[56px] md:py-[72px] lg:py-[64px] xl:py-[64px]'
+    : 'py-[64px] md:py-[80px] lg:py-[72px] xl:py-[80px]';
 
   return (
     <section
@@ -146,8 +146,8 @@ export function PdpCenteredSection({
   const textColor = dark ? 'text-white' : '';
   const eyebrowColor = dark ? 'text-ar-teal/80' : 'text-ar-teal';
   const py = tight
-    ? 'py-[48px] md:py-[64px] lg:py-[52px]'
-    : 'py-[72px] md:py-[100px] lg:py-[80px]';
+    ? 'py-[48px] md:py-[56px] lg:py-[48px]'
+    : 'py-[64px] md:py-[80px] lg:py-[72px]';
 
   return (
     <section className={`${py} px-6 md:px-8 ${textColor} ${className}`} style={{ backgroundColor: bg }}>
@@ -191,7 +191,7 @@ export function PdpSupplementFactsShell({
   const linkColor = dark ? 'text-white/35 hover:text-white/55' : 'text-[#0A1220]/40 hover:text-[#0A1220]/65';
 
   return (
-    <section className={`py-[72px] md:py-[100px] lg:py-[80px] px-6 md:px-8 lg:px-10 ${textColor}`} style={{ backgroundColor: bg }}>
+    <section className={`py-[64px] md:py-[80px] lg:py-[72px] px-6 md:px-8 lg:px-10 ${textColor}`} style={{ backgroundColor: bg }}>
       <div className="max-w-5xl lg:max-w-[1360px] mx-auto">
         <div className="lg:grid lg:grid-cols-12 lg:gap-10 xl:gap-14">
           <div className="lg:col-span-4 mb-10 md:mb-12 lg:mb-0">
@@ -250,7 +250,7 @@ export function PdpFaqShell({
   const introColor = dark ? 'text-white/40' : 'text-[#0A1220]/45';
 
   return (
-    <section className={`py-[72px] md:py-[100px] lg:py-[80px] px-6 md:px-8 lg:px-10 ${dark ? 'text-white' : ''}`} style={{ backgroundColor: bg }}>
+    <section className={`py-[64px] md:py-[80px] lg:py-[72px] px-6 md:px-8 lg:px-10 ${dark ? 'text-white' : ''}`} style={{ backgroundColor: bg }}>
       <div className="max-w-2xl lg:max-w-[1360px] mx-auto">
         <div className="lg:grid lg:grid-cols-12 lg:gap-10 xl:gap-14 lg:items-start">
           <div className="lg:col-span-4 mb-10 md:mb-12 lg:mb-0">
@@ -320,7 +320,7 @@ export function PdpComparisonShell({
   const eyebrowColor = dark ? 'text-ar-teal/80' : 'text-ar-teal';
 
   return (
-    <section className={`py-[72px] md:py-[100px] lg:py-[80px] px-6 md:px-8 lg:px-10 ${dark ? 'text-white' : ''}`} style={{ backgroundColor: bg }}>
+    <section className={`py-[64px] md:py-[80px] lg:py-[72px] px-6 md:px-8 lg:px-10 ${dark ? 'text-white' : ''}`} style={{ backgroundColor: bg }}>
       <div className="max-w-3xl lg:max-w-[1180px] mx-auto">
         <div className="text-center lg:text-left mb-10 md:mb-12 lg:mb-10">
           <span className={`font-mono text-[10px] md:text-[11px] lg:text-[11px] uppercase tracking-[0.20em] ${eyebrowColor}`}>{eyebrow}</span>

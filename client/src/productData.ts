@@ -246,8 +246,8 @@ export const PRODUCT_DETAIL_DATA = {
     safetyNote: 'Consult your healthcare provider before use if pregnant, nursing, taking medication, or managing a medical condition.',
     allergenDisclosure: null as string | null,
     stack: [
-      { name: "CELLUNAD+", slug: "cellunad", role: "Daily NAD+", add: "Pair mitochondrial renewal with daily NAD+ support for your Foundation Layer.", when: "Daily use" },
-      { name: "CELLUNOVA", slug: "cellunova", role: "Monthly Reset", add: "Add a periodic 7-day reset cycle to complement daily support.", when: "7-day monthly cycle" }
+      { name: "CELLUNAD+", slug: "cellunad", role: "Daily NAD+ foundation", add: "Pair mitochondrial renewal with daily NAD+ support for a stronger daily base.", when: "Daily use" },
+      { name: "CELLUNOVA", slug: "cellunova", role: "7-day monthly protocol", add: "Add a periodic 7-day protocol to complement daily support.", when: "7-day monthly cycle" }
     ],
     faq: [
       { q: "How long should I evaluate CELLUBIOME?", a: "Most people assess CELLUBIOME over 8–12 weeks of daily use.* Some notice digestive comfort sooner.*" },

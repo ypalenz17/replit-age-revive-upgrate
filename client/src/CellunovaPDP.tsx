@@ -59,7 +59,7 @@ function StickyMobileBuyBar({ price, onAdd }: { price: number; onAdd: () => void
           style={{ boxShadow: '0 0 16px rgba(45,212,191,0.15)' }}
           data-testid="sticky-add-to-cart"
         >
-          Add to Cart -- ${price.toFixed(2)}
+          Add to Cart
         </button>
       </div>
     </div>
@@ -229,21 +229,22 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
         }
       />
 
-      {/* ─── 2. TRUST + SAFETY — LIGHT ─── */}
+      {/* ─── 2. WHAT MAKES IT DIFFERENT — LIGHT ─── */}
       <PdpSectionRow
-        eyebrow="Quality & Safety"
-        heading="Built on transparency."
+        eyebrow="What makes it different"
+        heading="Why this is not a daily longevity blend."
+        intro="CELLUNOVA is a defined 7-day monthly protocol. The time between cycles is part of the design."
         bg={LIGHT}
         className="cv-reveal"
       >
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
           {[
-            { title: 'cGMP Manufactured', desc: 'Produced in FDA-registered, cGMP-certified facilities.' },
-            { title: 'Third-Party Tested', desc: 'Independent verification of purity, potency, and contaminants.' },
-            { title: 'Full Label Disclosure', desc: 'Every ingredient and dose listed. No proprietary blends.' },
-            { title: 'Periodic Protocol', desc: '7-day cycle designed for monthly use. The rest period is part of the design.' },
-            { title: 'No Artificial Fillers', desc: 'Clean formulation. No unnecessary additives or excipients.' },
-            { title: 'CoA by Lot', desc: 'Certificate of Analysis available for every production lot.' },
+            { title: '7-day monthly cycle', desc: 'Designed for a defined 7-day window, not everyday use.' },
+            { title: 'Not a daily baseline', desc: 'Meant to layer onto the daily foundation, not replace it.' },
+            { title: 'Fully disclosed doses', desc: 'Every ingredient and dose is listed for direct evaluation.' },
+            { title: 'Periodic protocol logic', desc: 'Format and cadence are part of what makes it distinct.' },
+            { title: 'Mitochondrial resilience included', desc: 'Formula goes beyond single-theme autophagy positioning.' },
+            { title: 'Contains wheat', desc: 'Spermidine is sourced from wheat germ and should be checked before use.' },
           ].map((item, i) => (
             <div
               key={i}
@@ -252,7 +253,7 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
               data-testid={`trust-badge-${i}`}
             >
               <p className="text-[13px] lg:text-[14px] font-sans font-semibold text-[#0A1220]/80 leading-snug">{item.title}</p>
-              <p className="mt-1.5 text-[12px] lg:text-[13px] font-sans text-[#0A1220]/40 leading-[1.5]">{item.desc}</p>
+              <p className="mt-1.5 text-[12px] lg:text-[13px] font-sans text-[#0A1220]/50 leading-[1.5]">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -303,38 +304,13 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
         </div>
       </PdpSectionRow>
 
-      {/* ─── 4. THREE LAYERS — LIGHT ─── */}
-      <PdpSectionRow
-        eyebrow="What Makes It Different"
-        heading="Not another daily autophagy blend."
-        bg={LIGHT}
-        className="cv-reveal"
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
-          {[
-            { title: 'Periodic Protocol Format', body: 'A structured 7-day cycle repeated monthly — not a diluted daily dose. The rest period between cycles is part of the design.' },
-            { title: 'Full-Dose Disclosure', body: 'Every compound, every dose, printed on the label. No proprietary blends hiding behind "cellular support complex" labels.' },
-            { title: 'Multi-Pathway Coverage', body: 'Autophagy support, senescence research compounds, and mitochondrial resilience — three layers in one protocol, not one compound stretched thin.' },
-            { title: 'System-Aware Design', body: 'Built to layer onto daily CELLUNAD+ or CELLUBIOME support. The periodic format complements rather than conflicts with your daily routine.' },
-          ].map((card, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-xl p-6 lg:p-8 border border-[#0A1220]/[0.06]"
-              style={{ boxShadow: '0 1px 3px rgba(10,18,32,0.04)' }}
-              data-testid={`different-${i}`}
-            >
-              <h3 className="text-[15px] lg:text-[16px] font-head font-normal uppercase tracking-[-0.01em]" style={{ color: BASE_DARK }}>{card.title}</h3>
-              <p className="mt-3 text-[13px] font-sans text-[#0A1220]/50 leading-[1.6]">{card.body}</p>
-            </div>
-          ))}
-        </div>
-      </PdpSectionRow>
+      {/* ─── 4. WHO IT'S FOR removed, kept in section 3 ─── */}
 
       {/* ─── 5. FORMULA ARCHITECTURE — SECONDARY_DARK ─── */}
       <PdpSectionRow
         eyebrow="Formula Architecture"
         heading={<>Three layers. One 7-day cycle.</>}
-        intro="Each layer targets a different aspect of cellular maintenance during the protocol window."
+        intro="CELLUNOVA combines autophagy-related support, senescence-research context, and mitochondrial resilience in a defined monthly format."
         bg={SECONDARY_DARK}
         dark
         className="cv-reveal"
@@ -365,8 +341,8 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
       {/* ─── 6. SUPPLEMENT FACTS — LIGHT ─── */}
       <PdpSupplementFactsShell
         eyebrow="Supplement Facts"
-        heading="What's inside"
-        intro={<>{data.supplementFacts.items.length} compounds at fully disclosed doses. Every ingredient listed for direct evaluation.</>}
+        heading="What's inside."
+        intro={<>{data.supplementFacts.items.length} compounds, fully disclosed. Every ingredient listed for direct evaluation.</>}
         onViewFacts={() => setIsFactsOpen(true)}
         dark={false}
         bg={LIGHT}
@@ -418,20 +394,20 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
 
       {/* ─── 7. HOW TO USE — LIGHT ─── */}
       <PdpSectionRow
-        eyebrow="How to Use"
-        heading="7-day monthly protocol"
+        eyebrow="Routine"
+        heading="How to use it."
         bg={LIGHT}
         className="cv-reveal"
       >
         <div>
           <div className="bg-white rounded-xl p-6 lg:p-8 border border-[#0A1220]/[0.06]" style={{ boxShadow: '0 1px 3px rgba(10,18,32,0.04)' }}>
-            <p className="text-[17px] text-[#0A1220]/70 font-sans font-medium leading-relaxed text-center lg:text-left mb-6">Take 5 capsules daily for 7 days. Repeat monthly.</p>
+            <p className="text-[17px] text-[#0A1220]/70 font-sans font-medium leading-relaxed text-center lg:text-left mb-6">Take 5 capsules daily for 7 consecutive days.</p>
             <div className="space-y-3 pt-4 border-t border-[#0A1220]/[0.06]">
               {[
-                'This is a periodic protocol, not daily use. Take for 7 consecutive days, then stop until next month.',
-                'The rest period between cycles is intentional — it is part of the protocol design.',
-                'Stacks with CELLUNAD+ and CELLUBIOME as your daily foundation support.',
-                'Take with food if preferred for comfort.',
+                'This is a periodic cycle, not a daily supplement.',
+                'Many people prefer taking it with food for comfort.',
+                'After the 7-day cycle, return to the daily baseline layers.',
+                'Review the allergen note before starting.',
               ].map((tip, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <span className="w-1 h-1 rounded-full bg-ar-teal shrink-0 mt-2" />
@@ -474,7 +450,7 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
       {/* ─── 9. RESULTS OVER TIME — LIGHT ─── */}
       <PdpSectionRow
         eyebrow="Protocol Effects Over Time"
-        heading="What structured cycles look like"
+        heading="What consistent use can look like."
         intro={(data as any).timelineSubline}
         bg={LIGHT}
         className="cv-reveal"
@@ -518,7 +494,7 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
       {/* ─── 10. COMPARISON — SECONDARY_DARK ─── */}
       <PdpComparisonShell
         eyebrow="Compare"
-        heading="How CELLUNOVA compares"
+        heading="How CELLUNOVA differs from low-dose daily longevity blends."
         bg={SECONDARY_DARK}
         dark
       >
@@ -555,8 +531,8 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
       {/* ─── 11. PAIRS WELL WITH — LIGHT ─── */}
       <PdpSectionRow
         eyebrow="The System"
-        heading="Pairs with your daily foundation"
-        intro="CELLUNOVA is a periodic layer. These are the daily products it complements."
+        heading="Layer it onto the daily foundation."
+        intro="CELLUNOVA is designed to sit on top of daily CELLUNAD+ and CELLUBIOME, not replace them."
         bg={LIGHT}
         className="cv-reveal"
       >
@@ -586,7 +562,7 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
                   className={`flex-1 py-2.5 rounded-lg font-mono text-[10px] font-bold uppercase tracking-[0.06em] transition-all min-h-[38px] bg-ar-teal text-[#0A1220] hover:brightness-110 active:scale-[0.97] ${focusRing}`}
                   data-testid={`stack-add-${item.slug}`}
                 >
-                  Add to Cart
+                  {item.slug === 'cellunad' ? 'Add the foundation' : 'Add gut-mito support'}
                 </button>
               </div>
             </div>
@@ -632,14 +608,14 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
       <PdpFinalCtaBand
         heading={
           <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-[0.92]" style={{ fontSize: 'clamp(1.7rem, 5.5vw, 3rem)' }}>
-            A periodic reset
+            Add the monthly layer
             <br />
-            <span className="text-white/30">for cellular renewal.</span>
+            <span className="text-white/30">when you are ready.</span>
           </h2>
         }
         sub={
           <p className="mt-5 text-[14px] font-sans text-white/35 max-w-[36ch] mx-auto leading-[1.6]">
-            {data.supplementFacts.items.length} research compounds. 7-day protocol. Monthly cycle. Full-dose disclosure. Designed alongside daily support.
+            CELLUNOVA is a periodic 7-day protocol designed to layer onto the daily foundation.
           </p>
         }
         cta={
@@ -649,14 +625,14 @@ export default function CellunovaPDP({ data, slug }: { data: ProductDetailData; 
             style={{ boxShadow: '0 2px 12px rgba(45,212,191,0.2), 0 0 24px rgba(45,212,191,0.06)' }}
             data-testid="final-add-to-cart"
           >
-            <span className="relative z-10">Add to Cart -- ${data.priceOneTime.toFixed(2)}</span>
+            <span className="relative z-10">Add CELLUNOVA to Cart</span>
             <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
           </button>
         }
         footerNote="5 capsules daily · 7-day cycle · Monthly protocol"
         browseLink={
           <a href="/shop" className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/30 hover:text-white/50 transition-colors" data-testid="link-browse-products">
-            Browse all products →
+            Browse All Protocols →
           </a>
         }
       />

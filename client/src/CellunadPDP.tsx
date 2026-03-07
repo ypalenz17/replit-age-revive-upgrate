@@ -50,7 +50,10 @@ function StickyMobileBuyBar({ price, onAdd }: { price: number; onAdd: () => void
       <div className="flex items-center justify-between px-5 py-3 gap-4 safe-bottom">
         <div className="min-w-0">
           <p className="font-mono text-[10px] uppercase tracking-[0.10em] text-white/45 truncate">CELLUNAD+</p>
-          <span className="text-[16px] font-sans font-semibold text-white">${price.toFixed(2)}</span>
+          <div className="flex items-baseline gap-2">
+            <span className="text-[16px] font-sans font-semibold text-white">${price.toFixed(2)}</span>
+            <span className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/30">2 capsules daily</span>
+          </div>
         </div>
         <button
           onClick={onAdd}
@@ -58,7 +61,7 @@ function StickyMobileBuyBar({ price, onAdd }: { price: number; onAdd: () => void
           style={{ boxShadow: '0 0 16px rgba(45,212,191,0.15)' }}
           data-testid="sticky-add-to-cart"
         >
-          Add to Cart -- ${price.toFixed(2)}
+          Add to Cart
         </button>
       </div>
     </div>
@@ -210,12 +213,12 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
   );
 
   const trustCards = [
-    { title: 'cGMP Manufactured', desc: 'Produced in FDA-registered, cGMP-certified facilities.' },
-    { title: 'Third-Party Tested', desc: 'Independent verification of purity, potency, and contaminants.' },
-    { title: 'Full Label Disclosure', desc: 'Every ingredient and dose listed. No proprietary blends.' },
-    { title: 'Non-Stimulant', desc: 'Supports cellular energy pathways, not temporary alertness.' },
-    { title: 'Vegan Formula', desc: 'Plant-based capsules. No animal-derived ingredients.' },
-    { title: 'CoA by Lot', desc: 'Certificate of Analysis available for every production lot.' },
+    { title: '500 mg NR foundation', desc: 'Daily NAD+ support anchored by 500 mg nicotinamide riboside.' },
+    { title: 'Co-factors built in', desc: 'NR is paired with methylation and mitochondrial support ingredients.' },
+    { title: 'Non-stimulant daily use', desc: 'Built for steady daily use, not quick energy spikes.' },
+    { title: 'More complete than NR alone', desc: 'Designed to go beyond a single-ingredient NAD+ capsule.' },
+    { title: 'Easy to stack later', desc: 'Works cleanly as the first layer before CELLUBIOME or CELLUNOVA.' },
+    { title: 'Fully disclosed label', desc: 'Every active and dose is listed for direct evaluation.' },
   ];
 
   const whyStartCards = [
@@ -227,12 +230,12 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
   ];
 
   const designedForItems = [
-    'Adults looking for a daily NAD+ foundation product',
-    'People who want non-stimulant cellular energy support',
-    'Those prioritizing long-term mitochondrial function',
-    'People who want a more complete formula than NR alone',
-    'Anyone starting the Age Revive system for the first time',
-    'Those who may later pair with CELLUBIOME or CELLUNOVA',
+    'Adults looking for a daily NAD+ foundation',
+    'People wanting non-stimulant cellular energy support',
+    'People prioritizing long-term mitochondrial function',
+    'People who want more than NR alone',
+    'First-time Age Revive buyers',
+    'People who may later add CELLUBIOME or CELLUNOVA',
   ];
 
   const formulaCards = [
@@ -254,10 +257,11 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
         splitRatio="6.5/5.5"
       />
 
-      {/* ─── 2. TRUST STRIP — LIGHT ─── */}
+      {/* ─── 2. WHY START HERE — LIGHT ─── */}
       <PdpSectionRow
-        eyebrow="Quality Standards"
-        heading="Built on transparency."
+        eyebrow="Why start here"
+        heading="Why most people start with CELLUNAD+."
+        intro="CELLUNAD+ covers the daily foundation first: 500 mg NR, built-in co-factors, and non-stimulant consistency."
         bg={LIGHT}
         className="cn-reveal"
       >
@@ -270,7 +274,7 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
               data-testid={`trust-badge-${i}`}
             >
               <p className="text-[13px] md:text-[14px] font-sans font-semibold text-[#0A1220]/80 leading-snug">{item.title}</p>
-              <p className="mt-1.5 text-[12px] lg:text-[13px] font-sans text-[#0A1220]/40 leading-[1.5]">{item.desc}</p>
+              <p className="mt-1.5 text-[12px] lg:text-[13px] font-sans text-[#0A1220]/50 leading-[1.5]">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -324,7 +328,8 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
       {/* ─── 5. WHY IT'S DIFFERENT — SECONDARY_DARK ─── */}
       <PdpSectionRow
         eyebrow="What Makes It Different"
-        heading="Not just another NR capsule."
+        heading="Why NR alone is not the whole story."
+        intro="CELLUNAD+ pairs NR with methylation and mitochondrial co-factors so the daily foundation is more complete from the start."
         bg={SECONDARY_DARK}
         dark
         className="cn-reveal"
@@ -350,8 +355,8 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
       {/* ─── 6. SUPPLEMENT FACTS — SECONDARY_DARK ─── */}
       <PdpSupplementFactsShell
         eyebrow="Supplement Facts"
-        heading="What's inside"
-        intro="Full label transparency. Every ingredient and dose listed. No proprietary blends."
+        heading="What's inside."
+        intro="Full label transparency. Every ingredient and dose listed directly."
         onViewFacts={() => setIsFactsOpen(true)}
         factsTable={
           <div className="rounded-xl border border-white/[0.06] overflow-hidden" style={{ backgroundColor: '#15202F' }}>
@@ -421,9 +426,8 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
 
       {/* ─── 8. HOW TO USE — LIGHT ─── */}
       <PdpSectionRow
-        eyebrow="How to Use"
-        heading="Simple daily routine"
-        intro="Consistency matters more than exact timing. Two capsules a day to support your NAD+ foundation."
+        eyebrow="Routine"
+        heading="How to use it."
         bg={LIGHT}
         className="cn-reveal"
       >
@@ -432,9 +436,9 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
           <div className="space-y-3 pt-4 border-t border-[#0A1220]/[0.06]">
             {[
               'Consistency matters more than exact timing.',
-              'This is not a stimulant -- it supports cellular energy pathways, not temporary alertness.',
-              'Designed for daily use. Most people evaluate results after 8-12 weeks.',
-              'Stacks cleanly with CELLUBIOME for gut-mitochondria support.',
+              'This is not a stimulant, so it supports cellular energy pathways, not temporary alertness.',
+              'Designed for daily use. Most people assess results after 8-12 weeks.',
+              'Stacks cleanly with CELLUBIOME for gut-mitochondrial support.',
             ].map((tip, i) => (
               <div key={i} className="flex items-start gap-3">
                 <span className="w-1 h-1 rounded-full bg-ar-teal shrink-0 mt-2" />
@@ -448,8 +452,8 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
       {/* ─── 9. RESULTS OVER TIME — SECONDARY_DARK ─── */}
       <PdpSectionRow
         eyebrow="Results Over Time"
-        heading="What consistent use looks like"
-        intro={(data as any).timelineSubline}
+        heading="What consistent use can look like."
+        intro="CELLUNAD+ is built for cumulative adaptation, not a stimulant effect."
         bg={SECONDARY_DARK}
         dark
         className="cn-reveal"
@@ -493,7 +497,7 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
       {/* ─── 10. COMPARISON — LIGHT ─── */}
       <PdpComparisonShell
         eyebrow="Compare"
-        heading="How CELLUNAD+ compares"
+        heading="How CELLUNAD+ differs from generic NAD+ boosters."
         bg={LIGHT}
       >
         <div className="bg-white rounded-xl border border-[#0A1220]/[0.06] overflow-hidden" style={{ boxShadow: '0 1px 3px rgba(10,18,32,0.04)' }}>
@@ -529,43 +533,49 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
       {/* ─── 11. PAIRS WELL WITH — SECONDARY_DARK ─── */}
       <PdpSectionRow
         eyebrow="The System"
-        heading="Optional next steps"
-        intro="Start with CELLUNAD+. Add more when you are ready."
+        heading="What to add later."
+        intro="Start with the daily foundation, then add the next layer when needed."
         bg={SECONDARY_DARK}
         dark
         className="cn-reveal"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
-          {data.stack.map((item, i) => (
-            <div
-              key={i}
-              className="cn-reveal rounded-xl p-6 md:p-7 lg:p-8 space-y-3 border border-white/[0.06] hover:border-white/[0.10] transition-colors flex flex-col"
-              style={{ backgroundColor: '#15202F' }}
-            >
-              <div className="flex justify-between items-start gap-3">
-                <h4 className="text-[16px] lg:text-[18px] font-head font-normal uppercase tracking-[-0.02em] text-white/90">{item.name}</h4>
-                <span className="font-mono text-[9px] px-2.5 py-1 rounded uppercase shrink-0 text-white/30 border border-white/[0.08]">{item.role}</span>
+          {data.stack.map((item, i) => {
+            const ctaLabels: Record<string, string> = {
+              cellubiome: 'Add gut-mito support',
+              cellunova: 'Add the monthly layer',
+            };
+            return (
+              <div
+                key={i}
+                className="cn-reveal rounded-xl p-6 md:p-7 lg:p-8 space-y-3 border border-white/[0.06] hover:border-white/[0.10] transition-colors flex flex-col"
+                style={{ backgroundColor: '#15202F' }}
+              >
+                <div className="flex justify-between items-start gap-3">
+                  <h4 className="text-[16px] lg:text-[18px] font-head font-normal uppercase tracking-[-0.02em] text-white/90">{item.name}</h4>
+                  <span className="font-mono text-[9px] px-2.5 py-1 rounded uppercase shrink-0 text-white/30 border border-white/[0.08]">{item.role}</span>
+                </div>
+                <p className="text-[13px] text-white/40 font-sans leading-relaxed flex-1">{item.add}</p>
+                <p className="text-[10px] font-mono text-white/20 uppercase tracking-[0.10em]">{item.when}</p>
+                <div className="flex gap-3 pt-1">
+                  <a
+                    href={`/product/${item.slug}`}
+                    className={`flex-1 py-2.5 border border-white/[0.08] rounded-lg font-mono text-[10px] font-bold uppercase tracking-[0.06em] hover:bg-white/[0.03] transition-colors text-center min-h-[38px] flex items-center justify-center text-white/40 hover:text-white/60 ${focusRing}`}
+                    data-testid={`stack-view-${item.slug}`}
+                  >
+                    Learn More
+                  </a>
+                  <button
+                    onClick={() => addStackItem(item.slug)}
+                    className={`flex-1 py-2.5 rounded-lg font-mono text-[10px] font-bold uppercase tracking-[0.06em] transition-all min-h-[38px] bg-ar-teal text-[#0A1220] hover:brightness-110 active:scale-[0.97] ${focusRing}`}
+                    data-testid={`stack-add-${item.slug}`}
+                  >
+                    {ctaLabels[item.slug] || 'Add to Cart'}
+                  </button>
+                </div>
               </div>
-              <p className="text-[13px] text-white/40 font-sans leading-relaxed flex-1">{item.add}</p>
-              <p className="text-[10px] font-mono text-white/20 uppercase tracking-[0.10em]">{item.when}</p>
-              <div className="flex gap-3 pt-1">
-                <a
-                  href={`/product/${item.slug}`}
-                  className={`flex-1 py-2.5 border border-white/[0.08] rounded-lg font-mono text-[10px] font-bold uppercase tracking-[0.06em] hover:bg-white/[0.03] transition-colors text-center min-h-[38px] flex items-center justify-center text-white/40 hover:text-white/60 ${focusRing}`}
-                  data-testid={`stack-view-${item.slug}`}
-                >
-                  Learn More
-                </a>
-                <button
-                  onClick={() => addStackItem(item.slug)}
-                  className={`flex-1 py-2.5 rounded-lg font-mono text-[10px] font-bold uppercase tracking-[0.06em] transition-all min-h-[38px] bg-ar-teal text-[#0A1220] hover:brightness-110 active:scale-[0.97] ${focusRing}`}
-                  data-testid={`stack-add-${item.slug}`}
-                >
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </PdpSectionRow>
 
@@ -608,12 +618,12 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
           <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-[0.92]" style={{ fontSize: 'clamp(1.7rem, 5.5vw, 3rem)' }}>
             Start with the daily
             <br />
-            <span className="text-white/30">NAD+ foundation.</span>
+            <span className="text-white/30">foundation.</span>
           </h2>
         }
         sub={
-          <p className="mt-5 text-[14px] font-sans text-white/35 max-w-[36ch] mx-auto leading-[1.6]">
-            500 mg NR. Methylation co-factors. Mitochondrial support. Non-stimulant. Fully disclosed. One daily protocol.
+          <p className="mt-5 text-[14px] font-sans text-white/35 max-w-[40ch] mx-auto leading-[1.6]">
+            CELLUNAD+ is the clearest first step for most people entering the Age Revive system.
           </p>
         }
         cta={
@@ -623,14 +633,14 @@ export default function CellunadPDP({ data, slug }: { data: ProductDetailData; s
             style={{ boxShadow: '0 2px 12px rgba(45,212,191,0.2), 0 0 24px rgba(45,212,191,0.06)' }}
             data-testid="final-add-to-cart"
           >
-            <span className="relative z-10">Add to Cart -- ${data.priceOneTime.toFixed(2)}</span>
+            <span className="relative z-10">Add CELLUNAD+ to Cart</span>
             <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
           </button>
         }
         footerNote="2 capsules daily · Non-stimulant · Fully disclosed"
         browseLink={
           <a href="/shop" className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/30 hover:text-white/50 transition-colors" data-testid="link-browse-products">
-            Browse all products →
+            Browse All Protocols →
           </a>
         }
       />

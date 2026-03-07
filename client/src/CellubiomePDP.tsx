@@ -50,7 +50,10 @@ function StickyMobileBuyBar({ data, onAdd }: { data: ProductDetailData; onAdd: (
       <div className="flex items-center justify-between px-5 py-3 gap-4 safe-bottom">
         <div className="min-w-0">
           <p className="font-mono text-[10px] uppercase tracking-[0.10em] text-white/45 truncate">CELLUBIOME</p>
-          <span className="text-[16px] font-sans font-semibold text-white">${data.priceOneTime.toFixed(2)}</span>
+          <div className="flex items-baseline gap-2">
+            <span className="text-[16px] font-sans font-semibold text-white">${data.priceOneTime.toFixed(2)}</span>
+            <span className="text-[10px] text-white/30 font-sans">/ 30-day supply</span>
+          </div>
         </div>
         <button
           onClick={onAdd}
@@ -58,7 +61,7 @@ function StickyMobileBuyBar({ data, onAdd }: { data: ProductDetailData; onAdd: (
           style={{ boxShadow: '0 0 16px rgba(45,212,191,0.15)' }}
           data-testid="sticky-add-to-cart"
         >
-          Add to Cart -- ${data.priceOneTime.toFixed(2)}
+          Add to Cart
         </button>
       </div>
     </div>
@@ -152,6 +155,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       <p className="text-[14px] lg:text-[15px] text-white/55 font-sans leading-relaxed max-w-md">
         Daily gut-barrier and mitochondrial support with urolithin A plus enteric tributyrin. Fully disclosed formula.*
       </p>
+      <p className="text-[11px] font-mono uppercase tracking-[0.08em] text-white/30">Not a probiotic blend.</p>
 
       <div className="flex flex-wrap gap-2">
         <span className="text-[10px] font-mono uppercase tracking-[0.06em] px-2.5 py-1.5 rounded-md text-white/55 bg-white/[0.05] border border-white/[0.07]">Enteric-Protected</span>
@@ -218,21 +222,22 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         splitRatio="6.5/5.5"
       />
 
-      {/* ─── 2. TRUST STRIP — LIGHT ─── */}
+      {/* ─── 2. WHAT MAKES IT DIFFERENT — LIGHT ─── */}
       <PdpSectionRow
-        eyebrow="Quality Standards"
-        heading="Built on transparency."
+        eyebrow="What makes it different"
+        heading="Why this is not another gut blend."
+        intro="CELLUBIOME is a targeted daily formula built around gut-barrier support and mitochondrial renewal, not a generic probiotic stack."
         bg={LIGHT}
         className="cb-reveal"
       >
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5">
           {[
-            { title: 'cGMP Manufactured', desc: 'Produced in FDA-registered, cGMP-certified facilities.' },
-            { title: 'Third-Party Tested', desc: 'Independent verification of purity, potency, and contaminants.' },
-            { title: 'Enteric Protected', desc: 'Capsules designed for intestinal release, not stomach degradation.' },
-            { title: 'Full Label Disclosure', desc: 'Every ingredient and dose listed. No proprietary blends.' },
-            { title: 'No Artificial Fillers', desc: 'Clean formulation. No unnecessary additives or excipients.' },
-            { title: 'CoA by Lot', desc: 'Certificate of Analysis available for every production lot.' },
+            { title: 'Not a probiotic blend', desc: 'This is a targeted compound formula, not a probiotic label swap.' },
+            { title: '500 mg urolithin A', desc: 'Human-studied dose used for mitochondrial-related biomarkers.' },
+            { title: 'Enteric tributyrin', desc: 'Designed for downstream butyrate delivery, not a basic butyrate salt.' },
+            { title: 'Gut-barrier support', desc: 'Built around intestinal barrier and butyrate-related biology.' },
+            { title: 'Mitochondrial support', desc: 'Pairs gut support with a mitochondrial renewal compound.' },
+            { title: 'Fully disclosed label', desc: 'Every ingredient and dose is listed directly on the label.' },
           ].map((item, i) => (
             <div
               key={i}
@@ -241,7 +246,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
               data-testid={`trust-badge-${i}`}
             >
               <p className="text-[13px] md:text-[14px] font-sans font-semibold text-[#0A1220]/80 leading-snug">{item.title}</p>
-              <p className="mt-1.5 text-[12px] lg:text-[13px] font-sans text-[#0A1220]/40 leading-[1.5]">{item.desc}</p>
+              <p className="mt-1.5 text-[12px] lg:text-[13px] font-sans text-[#0A1220]/50 leading-[1.5]">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -251,17 +256,19 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       <PdpSectionRow
         eyebrow="Best For"
         heading="CELLUBIOME is designed for"
-        intro="Targeted gut-barrier and mitochondrial support for adults building a longevity routine."
+        intro="Targeted gut-barrier and mitochondrial support for adults who want more than a generic gut supplement."
         bg={SECONDARY_DARK}
         dark
         className="cb-reveal"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4">
           {[
-            'Adults focused on daily gut barrier and mitochondrial support',
-            'People looking for a focused, two-compound daily protocol',
-            'Those who want enteric-protected delivery for targeted intestinal absorption',
-            'Anyone building a longevity routine and adding gut-mitochondria support',
+            'People prioritizing gut-barrier support',
+            'People interested in mitochondrial renewal support',
+            'People wanting a daily non-probiotic gut formula',
+            'People who value enteric delivery',
+            'People pairing a gut layer with CELLUNAD+',
+            'People looking for a targeted gut-mito formula',
           ].map((item, i) => (
             <div
               key={i}
@@ -276,10 +283,11 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
         </div>
       </PdpSectionRow>
 
-      {/* ─── 4. WHY IT'S DIFFERENT — LIGHT ─── */}
+      {/* ─── 4. FORMULA LOGIC — LIGHT ─── */}
       <PdpSectionRow
-        eyebrow="What Makes It Different"
-        heading="Not another gut supplement."
+        eyebrow="Formula Logic"
+        heading={<>Two compounds.<br className="hidden lg:inline" /> One targeted daily formula.</>}
+        intro="CELLUBIOME pairs urolithin A and enteric tributyrin because gut-barrier support and mitochondrial renewal are connected, but not identical."
         bg={LIGHT}
         className="cb-reveal"
       >
@@ -307,7 +315,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       <PdpSectionRow
         eyebrow="How It Works"
         heading={<>Two compounds.<br className="hidden lg:inline" /> One daily protocol.</>}
-        intro="Supports mitochondrial renewal and gut barrier resilience through the gut-mitochondria axis."
+        intro="CELLUBIOME pairs urolithin A and enteric tributyrin because gut-barrier support and mitochondrial renewal are connected, but not identical."
         bg={SECONDARY_DARK}
         dark
         className="cb-reveal"
@@ -335,8 +343,8 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       {/* ─── 6. SUPPLEMENT FACTS — LIGHT ─── */}
       <PdpSupplementFactsShell
         eyebrow="Supplement Facts"
-        heading="What's inside"
-        intro="Two targeted compounds. Enteric-protected. Fully transparent."
+        heading="What's inside."
+        intro="Two targeted compounds. Enteric-protected. Fully disclosed."
         onViewFacts={() => setIsFactsOpen(true)}
         bg={LIGHT}
         dark={false}
@@ -437,8 +445,8 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       {/* ─── 8. RESULTS OVER TIME — LIGHT ─── */}
       <PdpSectionRow
         eyebrow="Results Over Time"
-        heading="What consistent use looks like"
-        intro={(data as any).timelineSubline}
+        heading="What consistent use can look like."
+        intro="Gut-mito support is usually assessed over weeks, not days."
         bg={LIGHT}
         className="cb-reveal"
       >
@@ -481,16 +489,21 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       {/* ─── 9. HOW TO USE — SECONDARY_DARK ─── */}
       <PdpSectionRow
         eyebrow="How to Use"
-        heading="Simple daily routine"
+        heading="How to use it."
         bg={SECONDARY_DARK}
         dark
         className="cb-reveal"
       >
         <div className="max-w-md lg:max-w-none">
           <div className="rounded-xl p-6 md:p-8 lg:p-9 border border-white/[0.06]" style={{ backgroundColor: '#15202F' }}>
-            <p className="text-[17px] text-white/60 font-sans font-medium leading-relaxed text-center lg:text-left mb-6">{data.howToUse.instruction}</p>
+            <p className="text-[17px] text-white/60 font-sans font-medium leading-relaxed text-center lg:text-left mb-6">Take 2 enteric capsules daily. With or without food.</p>
             <div className="space-y-3 pt-4 border-t border-white/[0.06]">
-              {data.howToUse.tips.map((tip, i) => (
+              {[
+                'Consistency matters more than exact timing.',
+                'This is a daily formula, not a one-off gut reset.',
+                'Most people assess results over 8\u201312 weeks of daily use.',
+                'Pairs cleanly with CELLUNAD+ as a broader daily foundation.',
+              ].map((tip, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <span className="w-1 h-1 rounded-full bg-ar-teal shrink-0 mt-2" />
                   <span className="text-[13px] text-white/40 font-sans leading-snug">{tip}</span>
@@ -504,7 +517,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       {/* ─── 10. COMPARISON — LIGHT ─── */}
       <PdpComparisonShell
         eyebrow="Compare"
-        heading="How CELLUBIOME compares"
+        heading="How CELLUBIOME differs from generic gut formulas."
         bg={LIGHT}
       >
         <div className="bg-white rounded-xl border border-[#0A1220]/[0.06] overflow-hidden" style={{ boxShadow: '0 1px 3px rgba(10,18,32,0.04)' }}>
@@ -540,7 +553,8 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       {/* ─── 11. STACKING — SECONDARY_DARK ─── */}
       <PdpSectionRow
         eyebrow="The System"
-        heading="Pairs well with"
+        heading="Build around gut-mito support."
+        intro="Pair CELLUBIOME with CELLUNAD+ as a stronger daily base, then add CELLUNOVA as a periodic layer."
         bg={SECONDARY_DARK}
         dark
         className="cb-reveal"
@@ -571,7 +585,7 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
                   className={`flex-1 py-2.5 rounded-lg font-mono text-[10px] font-bold uppercase tracking-[0.06em] transition-all min-h-[38px] bg-ar-teal text-[#0A1220] hover:brightness-110 active:scale-[0.97] ${focusRing}`}
                   data-testid={`stack-add-${item.slug}`}
                 >
-                  Add to Cart
+                  {item.slug === 'cellunad' ? 'Add the daily foundation' : 'Add the monthly layer'}
                 </button>
               </div>
             </div>
@@ -616,14 +630,14 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
       <PdpFinalCtaBand
         heading={
           <h2 className="font-head font-normal tracking-[-0.04em] uppercase text-white leading-[0.92]" style={{ fontSize: 'clamp(1.7rem, 5.5vw, 3rem)' }}>
-            Daily gut-mito support
+            Add targeted
             <br />
-            <span className="text-white/30">starts here.</span>
+            <span className="text-white/30">gut-mito support.</span>
           </h2>
         }
         sub={
           <p className="mt-5 text-[14px] font-sans text-white/35 max-w-[36ch] mx-auto leading-[1.6]">
-            Two targeted compounds. Enteric-protected. Transparent dosing. One daily protocol.
+            Best if gut support is the priority or if you want a stronger daily base.
           </p>
         }
         cta={
@@ -633,14 +647,14 @@ export default function CellubiomePDP({ data, slug }: { data: ProductDetailData;
             style={{ boxShadow: '0 2px 12px rgba(45,212,191,0.2), 0 0 24px rgba(45,212,191,0.06)' }}
             data-testid="final-add-to-cart"
           >
-            <span className="relative z-10">Add to Cart -- ${data.priceOneTime.toFixed(2)}</span>
+            <span className="relative z-10">Add CELLUBIOME to Cart</span>
             <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
           </button>
         }
         footerNote="2 capsules daily · Enteric-protected · Fully disclosed"
         browseLink={
           <a href="/shop" className="text-[10px] font-mono uppercase tracking-[0.06em] text-white/30 hover:text-white/50 transition-colors" data-testid="link-browse-products">
-            Browse all products →
+            Browse All Protocols
           </a>
         }
       />

@@ -1,0 +1,824 @@
+You are a senior luxury DTC product-page strategist, CRO-focused UX writer, SEO lead, and front-end engineer.
+
+You are updating the 3 Age Revive product pages based on the CURRENT implementation already in the codebase:
+- CELLUNAD+
+- CELLUBIOME
+- CELLUNOVA
+
+This review is based on the updated mobile product pages, not the older versions.
+
+Goal:
+Make the product pages feel more premium, more differentiated, more trustworthy, more conversion-oriented, and more aligned with a $100M brand.
+
+Important:
+- Mobile is the priority in this pass
+- Do not break desktop
+- Do not redesign the brand
+- Do not change product truths, prices, serving sizes, ingredient doses, cadence, or supplement facts
+- Do not add decorative biotech visuals
+- Do not add random icons
+- Do not add visual noise
+- Improve hierarchy, product-specific proof, trust, search-facing metadata, and functional information design
+
+NON-NEGOTIABLE RULES
+
+Do not:
+- change prices
+- change serving sizes
+- change ingredient doses
+- change product roles
+- invent claims
+- overstate evidence
+- add DNA, molecule, AI, neural, biotech, or sci-fi visuals
+- add gradient gimmicks, glows, or visual noise
+- break mobile layouts
+- create text overflow
+- change URLs or slugs
+- break metadata, canonicals, schema, or FAQ visibility in the DOM
+
+Do:
+- preserve current live product truths
+- make each page feel more distinct from the others
+- keep the shared system language where useful
+- replace generic repeated sections with product-specific proof
+- keep important claims in visible HTML text
+- align metadata / OG / Product schema with visible copy
+- fix stale or inconsistent search-facing copy
+- preserve current mobile sticky purchase behavior unless improving it clearly reduces clutter
+
+CORE ASSESSMENT TO FIX
+
+The pages are much stronger than before, but still have 6 major issues:
+
+1. Too much sameness across all 3 product pages
+2. The first post-hero proof section is too generic and repeated
+3. Product differentiation should happen earlier and more decisively
+4. Some headings still sound like polished startup copy instead of premium, plain-English proof
+5. The final “system” / footer merchandising is too generic across all 3
+6. Search-facing metadata still needs cleanup so old messaging does not leak into search
+
+GLOBAL PRODUCT-PAGE RULES
+
+1. Keep the hero structure mostly intact if it is already working
+2. Do not blow up the whole page architecture
+3. Keep the sticky bottom bar, but refine it:
+   - reduce height slightly if possible
+   - left side should show product name + price + cadence
+   - right side button should say only “Add to Cart”
+   - do not repeat the price inside the button if the left side already shows it
+   - keep the CTA strong
+4. Keep the top nav working as-is unless a small spacing/contrast refinement is clearly better
+5. Keep the product images and current pack shots
+6. No need for new decorative visuals
+7. Use only functional visual elements:
+   - formula architecture cards
+   - compare tables
+   - use timeline/tabs
+   - system-layering cards
+   - small product-specific proof grids
+
+IMPORTANT STRUCTURAL CHANGE
+
+Do NOT let the first light section under the hero stay as the same generic “Built on Transparency” trust grid on all 3 pages.
+
+That section should become product-specific on each page.
+
+Keep brand trust proof in:
+- hero chips
+- quality page
+- FAQ / common questions
+- compare sections
+- final system layer section
+
+But make the first major light section product-specific so each page earns its own argument immediately.
+
+==================================================
+SEARCH / SEO / OG / SCHEMA CLEANUP
+==================================================
+
+This is required.
+
+Audit and update:
+- title tags
+- meta descriptions
+- Open Graph title/description
+- Twitter title/description if present
+- Product schema description
+- any hidden stale page-title or SEO string sources
+
+Important:
+remove or replace stale older search-facing language such as:
+- “DNA repair”
+- “Probiotic”
+- “cellular cleanup”
+- any outdated product subtitle that no longer matches the visible page copy
+
+Use these exact metadata targets:
+
+CELLUNAD+
+Title:
+CELLUNAD+ | Daily NAD+ Foundation with 500 mg NR | Age Revive
+Meta description:
+CELLUNAD+ is Age Revive’s daily NAD+ foundation with 500 mg NR plus methylation and mitochondrial co-factors. Non-stimulant. 2 capsules daily.
+
+CELLUBIOME
+Title:
+CELLUBIOME | Daily Gut-Mito Support with Urolithin A | Age Revive
+Meta description:
+CELLUBIOME pairs urolithin A with enteric tributyrin for daily gut-barrier and mitochondrial support. Not a probiotic. 2 enteric capsules daily.
+
+CELLUNOVA
+Title:
+CELLUNOVA | 7-Day Monthly Protocol | Age Revive
+Meta description:
+CELLUNOVA is a 7-day monthly protocol for autophagy-related support and mitochondrial resilience. Fully disclosed formula. Contains wheat.
+
+Rules:
+- visible hero copy, title tag, meta description, og:title, og:description, and Product schema description must align
+- do not leave old hidden SEO strings in content/data objects
+- do not keyword stuff
+- do not change prices or schema offer values unless already broken
+
+==================================================
+SHARED MOBILE UX REFINEMENTS
+==================================================
+
+Apply these shared improvements across all 3 product pages:
+
+1. Reduce template repetition
+- section order can remain similar
+- but the first major proof section must be product-specific on each page
+- the final system / footer CTA must also be product-specific on each page
+
+2. Tighten section rhythm
+- slightly reduce oversized vertical gaps between:
+  - hero and first section
+  - compare section and system section
+  - FAQ and footer CTA
+- keep breathing room, but remove any dead space that feels generic
+
+3. Improve small-label readability
+- slightly reduce tracking on tiny uppercase helper labels if they look too spaced out
+- keep the aesthetic, but improve readability
+
+4. Improve cream/light-section contrast
+- some secondary copy is still too faint
+- slightly increase body text contrast on cream backgrounds
+- do not change the palette drastically
+
+5. Keep cards equal height where they compare
+- compare cards, proof cards, and system cards should align cleanly
+- CTA rows should align where possible
+
+6. Preserve FAQ DOM visibility
+- keep all FAQ answers rendered in the DOM even if accordion-collapsed
+- preserve anchorability and structured data alignment if present
+
+==================================================
+CELLUNAD+ PAGE
+==================================================
+
+CURRENT STRATEGIC ROLE
+This is the clearest first purchase for most people.
+The page should feel like the strongest entry point into the system.
+
+HERO
+Keep H1:
+CELLUNAD+
+
+Keep the main descriptor if already present:
+Daily NAD+ foundation with 500 mg NR, methylation support, and mitochondrial co-factors.
+
+Keep the helper line:
+Best place to start for most people.
+
+Do not over-rewrite the hero if it already fits well.
+
+If hero trust chips exist, keep a concise set such as:
+- 500 mg NR
+- Methylation co-factors
+- Non-stimulant
+- Fully disclosed
+
+FIRST LIGHT SECTION — REPLACE GENERIC TRUST GRID
+
+Replace the current generic “Built on Transparency” section with a product-specific section.
+
+Section eyebrow:
+Why start here
+
+Section heading:
+Why most people start with CELLUNAD+.
+
+Section intro:
+CELLUNAD+ covers the daily foundation first: 500 mg NR, built-in co-factors, and non-stimulant consistency.
+
+Replace the 6 cards with:
+
+Card 1 title:
+500 mg NR foundation
+Card 1 body:
+Daily NAD+ support anchored by 500 mg nicotinamide riboside.
+
+Card 2 title:
+Co-factors built in
+Card 2 body:
+NR is paired with methylation and mitochondrial support ingredients.
+
+Card 3 title:
+Non-stimulant daily use
+Card 3 body:
+Built for steady daily use, not quick energy spikes.
+
+Card 4 title:
+More complete than NR alone
+Card 4 body:
+Designed to go beyond a single-ingredient NAD+ capsule.
+
+Card 5 title:
+Easy to stack later
+Card 5 body:
+Works cleanly as the first layer before CELLUBIOME or CELLUNOVA.
+
+Card 6 title:
+Fully disclosed label
+Card 6 body:
+Every active and dose is listed for direct evaluation.
+
+DESIGNED FOR SECTION
+
+If the current “designed for” section exists, keep the structure but tighten the copy to:
+
+- Adults looking for a daily NAD+ foundation
+- People wanting non-stimulant cellular energy support
+- People prioritizing long-term mitochondrial function
+- People who want more than NR alone
+- First-time Age Revive buyers
+- People who may later add CELLUBIOME or CELLUNOVA
+
+FORMULATION / ARCHITECTURE SECTION
+
+If a section currently explains why NR alone is not the whole story, keep it but tighten the copy.
+
+Section heading:
+Why NR alone is not the whole story.
+
+Section intro:
+CELLUNAD+ pairs NR with methylation and mitochondrial co-factors so the daily foundation is more complete from the start.
+
+If the section uses 3 cards, use:
+- NR foundation
+- Methylation support
+- Mitochondrial co-factors
+
+Keep it clean and functional.
+No icons needed.
+
+SUPPLEMENT FACTS SECTION
+
+Replace the heading with:
+What’s inside.
+
+Replace the short intro with:
+Full label transparency. Every ingredient and dose listed directly.
+
+Keep the supplement facts unchanged.
+
+ROUTINE SECTION
+
+Replace the heading with:
+How to use it.
+
+Replace the main routine line with:
+Take 2 capsules daily. With or without food.
+
+Replace supporting bullets with:
+- Consistency matters more than exact timing.
+- This is not a stimulant, so it supports cellular energy pathways, not temporary alertness.
+- Designed for daily use. Most people assess results after 8-12 weeks.
+- Stacks cleanly with CELLUBIOME for gut-mitochondrial support.
+
+RESULTS / TIMELINE SECTION
+
+If the “What consistent use looks like” section exists, keep it but tighten the intro.
+
+Section heading:
+What consistent use can look like.
+
+Section intro:
+CELLUNAD+ is built for cumulative adaptation, not a stimulant effect.
+
+Keep tabs/time windows if already implemented, but ensure the copy feels calm and non-hyped.
+
+COMPARE SECTION
+
+Replace the heading with:
+How CELLUNAD+ differs from generic NAD+ boosters.
+
+Keep the compare structure if already working.
+
+Make sure comparison rows use plain-English language such as:
+- 500 mg NR
+- Built-in co-factors
+- Designed for daily use
+- Fully disclosed label
+- Third-party tested
+
+CROSS-SELL / SYSTEM SECTION
+
+Replace the section heading with:
+What to add later.
+
+Replace the intro with:
+Start with the daily foundation, then add the next layer when needed.
+
+Card 1:
+CELLUBIOME
+Role:
+Daily gut-mito support
+CTA:
+Add gut-mito support
+
+Card 2:
+CELLUNOVA
+Role:
+7-day monthly protocol
+CTA:
+Add the monthly layer
+
+COMMON QUESTIONS SECTION
+
+Replace the heading with:
+Before you start.
+
+Keep these top questions near the top:
+- How long should I evaluate CELLUNAD+?
+- Can I take CELLUNAD+ with food?
+- Is CELLUNAD+ a stimulant?
+
+FINAL CTA
+
+Replace the final CTA heading with:
+Start with the daily foundation.
+
+Replace the subhead with:
+CELLUNAD+ is the clearest first step for most people entering the Age Revive system.
+
+Primary CTA:
+Add CELLUNAD+ to Cart
+
+Secondary CTA:
+Browse All Protocols
+
+==================================================
+CELLUBIOME PAGE
+==================================================
+
+CURRENT STRATEGIC ROLE
+This is the best starting point if gut support is the priority.
+It should feel clearly different from both generic gut products and generic probiotics.
+
+HERO
+Keep H1:
+CELLUBIOME
+
+Keep the main descriptor if already present:
+Daily gut-barrier and mitochondrial support with urolithin A plus enteric tributyrin.
+
+Keep the helper line:
+Best if gut support is the priority.
+
+If space allows, add one restrained micro-note near the hero chips or below the helper line:
+Not a probiotic blend.
+
+If this creates clutter, do not force it. But make sure “not a probiotic” appears early somewhere above the fold or in the first section.
+
+If hero trust chips exist, keep a concise set such as:
+- 500 mg Urolithin A
+- 500 mg Tributyrin
+- Enteric protected
+- Fully disclosed
+
+FIRST LIGHT SECTION — REPLACE GENERIC TRUST GRID
+
+Replace the generic trust grid with a product-specific section.
+
+Section eyebrow:
+What makes it different
+
+Section heading:
+Why this is not another gut blend.
+
+Section intro:
+CELLUBIOME is a targeted daily formula built around gut-barrier support and mitochondrial renewal, not a generic probiotic stack.
+
+Replace the 6 cards with:
+
+Card 1 title:
+Not a probiotic blend
+Card 1 body:
+This is a targeted compound formula, not a probiotic label swap.
+
+Card 2 title:
+500 mg urolithin A
+Card 2 body:
+Human-studied dose used for mitochondrial-related biomarkers.
+
+Card 3 title:
+Enteric tributyrin
+Card 3 body:
+Designed for downstream butyrate delivery, not a basic butyrate salt.
+
+Card 4 title:
+Gut-barrier support
+Card 4 body:
+Built around intestinal barrier and butyrate-related biology.
+
+Card 5 title:
+Mitochondrial support
+Card 5 body:
+Pairs gut support with a mitochondrial renewal compound.
+
+Card 6 title:
+Fully disclosed label
+Card 6 body:
+Every ingredient and dose is listed directly on the label.
+
+DESIGNED FOR SECTION
+
+If the current “designed for” section exists, keep the structure but tighten the copy to:
+
+- People prioritizing gut-barrier support
+- People interested in mitochondrial renewal support
+- People wanting a daily non-probiotic gut formula
+- People who value enteric delivery
+- People pairing a gut layer with CELLUNAD+
+- People looking for a targeted gut-mito formula
+
+FORMULA LOGIC SECTION
+
+If the page has a “two compounds / one daily protocol” type section, keep it and sharpen the structure.
+
+Section heading:
+Two compounds. One targeted daily formula.
+
+Section intro:
+CELLUBIOME pairs urolithin A and enteric tributyrin because gut-barrier support and mitochondrial renewal are connected, but not identical.
+
+If the section uses 3 cards, use:
+- Urolithin A
+- Enteric tributyrin
+- Why pair them
+
+Keep the explanation plain-English and evidence-aware.
+Do not flatten tributyrin to sound equally human-proven as urolithin A.
+
+SUPPLEMENT FACTS SECTION
+
+Replace the heading with:
+What’s inside.
+
+Replace the short intro with:
+Two targeted compounds. Enteric-protected. Fully disclosed.
+
+Keep the supplement facts unchanged.
+
+ROUTINE SECTION
+
+Replace the heading with:
+How to use it.
+
+Replace the main routine line with:
+Take 2 enteric capsules daily. With or without food.
+
+Replace supporting bullets with:
+- Consistency matters more than exact timing.
+- This is a daily formula, not a one-off gut reset.
+- Most people assess results over 8-12 weeks of daily use.
+- Pairs cleanly with CELLUNAD+ as a broader daily foundation.
+
+RESULTS / TIMELINE SECTION
+
+If the “What consistent use looks like” section exists, keep it but tighten the intro.
+
+Section heading:
+What consistent use can look like.
+
+Section intro:
+Gut-mito support is usually assessed over weeks, not days.
+
+COMPARE SECTION
+
+Replace the heading with:
+How CELLUBIOME differs from generic gut formulas.
+
+Use plain-English comparison points such as:
+- 500 mg urolithin A
+- 500 mg tributyrin
+- Enteric-targeted delivery
+- Third-party tested
+- Fully disclosed label
+- Not a probiotic blend
+
+CROSS-SELL / SYSTEM SECTION
+
+Replace the section heading with:
+Build around gut-mito support.
+
+Replace the intro with:
+Pair CELLUBIOME with CELLUNAD+ as a stronger daily base, then add CELLUNOVA as a periodic layer.
+
+Card 1:
+CELLUNAD+
+Role:
+Daily NAD+ foundation
+CTA:
+Add the daily foundation
+
+Card 2:
+CELLUNOVA
+Role:
+7-day monthly protocol
+CTA:
+Add the monthly layer
+
+COMMON QUESTIONS SECTION
+
+Replace the heading with:
+Before you start.
+
+Keep these top questions near the top:
+- Is CELLUBIOME a probiotic?
+- Why 500 mg Urolithin A?
+- Why tributyrin instead of butyrate salts?
+
+FINAL CTA
+
+Replace the final CTA heading with:
+Add targeted gut-mito support.
+
+Replace the subhead with:
+Best if gut support is the priority or if you want a stronger daily base.
+
+Primary CTA:
+Add CELLUBIOME to Cart
+
+Secondary CTA:
+Browse All Protocols
+
+==================================================
+CELLUNOVA PAGE
+==================================================
+
+CURRENT STRATEGIC ROLE
+This is the periodic 7-day monthly layer.
+It must feel clearly different from daily longevity blends and clearly not be positioned like a drug-equivalent protocol.
+
+HERO
+Keep H1:
+CELLUNOVA
+
+Keep the main descriptor if already present:
+7-day monthly protocol for autophagy-related support and mitochondrial resilience.
+
+Keep the helper line:
+Add as a periodic 7-day layer.
+
+If hero chips exist, keep a concise set such as:
+- 7 days on
+- 23 days off
+- 10 compounds
+- Fully disclosed
+
+FIRST LIGHT SECTION
+
+If the current section already says some version of “Not another daily autophagy blend,” keep that strategic idea, but sharpen it and make it the true first proof section.
+
+Section eyebrow:
+What makes it different
+
+Section heading:
+Why this is not a daily longevity blend.
+
+Section intro:
+CELLUNOVA is a defined 7-day monthly protocol. The time between cycles is part of the design.
+
+Replace the 6 cards with:
+
+Card 1 title:
+7-day monthly cycle
+Card 1 body:
+Designed for a defined 7-day window, not everyday use.
+
+Card 2 title:
+Not a daily baseline
+Card 2 body:
+Meant to layer onto the daily foundation, not replace it.
+
+Card 3 title:
+Fully disclosed doses
+Card 3 body:
+Every ingredient and dose is listed for direct evaluation.
+
+Card 4 title:
+Periodic protocol logic
+Card 4 body:
+Format and cadence are part of what makes it distinct.
+
+Card 5 title:
+Mitochondrial resilience included
+Card 5 body:
+Formula goes beyond single-theme autophagy positioning.
+
+Card 6 title:
+Contains wheat
+Card 6 body:
+Spermidine is sourced from wheat germ and should be checked before use.
+
+ARCHITECTURE SECTION
+
+If the current page has a multi-layer formula explanation, keep it and sharpen it.
+
+Section heading:
+Three layers. One 7-day cycle.
+
+Section intro:
+CELLUNOVA combines autophagy-related support, senescence-research context, and mitochondrial resilience in a defined monthly format.
+
+If the section uses cards, use these architecture buckets:
+- Autophagy-related support
+- Senescence-research context
+- Mitochondrial resilience
+
+Keep the explanation evidence-aware.
+Do not use aggressive language like:
+- cleanup
+- purge
+- remove damaged cells
+- deep cellular cleanup
+
+SUPPLEMENT FACTS SECTION
+
+Replace the heading with:
+What’s inside.
+
+Replace the short intro with:
+10 compounds, fully disclosed. Every ingredient listed for direct evaluation.
+
+Keep the supplement facts unchanged.
+
+Make sure the wheat note remains visible near the facts or immediately after them.
+
+USE SECTION
+
+Replace the heading with:
+How to use it.
+
+Replace the main routine line with:
+Take 5 capsules daily for 7 consecutive days.
+
+Replace supporting bullets with:
+- This is a periodic cycle, not a daily supplement.
+- Many people prefer taking it with food for comfort.
+- After the 7-day cycle, return to the daily baseline layers.
+- Review the allergen note before starting.
+
+COMPARE SECTION
+
+Replace the heading with:
+How CELLUNOVA differs from low-dose daily longevity blends.
+
+Use plain-English comparison points such as:
+- 7-day structured protocol format
+- Not designed as a daily blend
+- Includes mitochondrial support compounds
+- Fully disclosed label
+- Third-party tested
+- Built to layer onto the daily foundation
+
+SYSTEM / CROSS-SELL SECTION
+
+Replace the section heading with:
+Layer it onto the daily foundation.
+
+Replace the intro with:
+CELLUNOVA is designed to sit on top of daily CELLUNAD+ and CELLUBIOME, not replace them.
+
+Card 1:
+CELLUNAD+
+Role:
+Daily NAD+ foundation
+CTA:
+Add the foundation
+
+Card 2:
+CELLUBIOME
+Role:
+Daily gut-mito support
+CTA:
+Add gut-mito support
+
+COMMON QUESTIONS SECTION
+
+Replace the heading with:
+Before you start.
+
+Keep these top questions near the top:
+- Is CELLUNOVA taken daily?
+- Can I stack it with CELLUNAD+ and CELLUBIOME?
+- Does it contain allergens?
+
+FINAL CTA
+
+Replace the final CTA heading with:
+Add the monthly layer when you are ready.
+
+Replace the subhead with:
+CELLUNOVA is a periodic 7-day protocol designed to layer onto the daily foundation.
+
+Primary CTA:
+Add CELLUNOVA to Cart
+
+Secondary CTA:
+Browse All Protocols
+
+==================================================
+SHARED SYSTEM / FOOTER MODULE
+==================================================
+
+If there is a shared system footer/teaser repeated on all 3 PDPs, replace the generic copy with:
+
+Heading:
+Build the protocol in layers.
+
+Subheading:
+Start with the daily foundation, add gut-mito support, then layer in the 7-day monthly protocol.
+
+Shared product labels:
+- CELLUNAD+ — Daily NAD+ Foundation
+- CELLUBIOME — Daily Gut-Mito Support
+- CELLUNOVA — 7-Day Monthly Protocol
+
+If the module already has product links, keep them.
+Do not add extra promotional fluff.
+
+==================================================
+FUNCTIONAL VISUAL ELEMENTS ONLY
+==================================================
+
+Yes, keep or add these if the current layout supports them:
+- product-specific architecture cards
+- use timeline / tabs
+- compare tables
+- simple layering cards
+- restrained role labels
+
+Do NOT add:
+- decorative icons
+- biotech art
+- molecule patterns
+- DNA visuals
+- fake scientific charts
+- abstract glow effects
+- ornamental motion
+
+==================================================
+MOBILE SAFETY RULES
+==================================================
+
+Do not break mobile.
+
+Protect:
+- current hero hierarchy
+- current sticky purchase behavior unless refined cleanly
+- current section order
+- current card stacking
+- current FAQ behavior
+- current supplement-facts readability
+
+If shared components change:
+- keep mobile-first structure
+- add only safe refinements
+- do not make text smaller
+- do not create overflow at 375px
+
+==================================================
+FINAL IMPLEMENTATION RULES
+==================================================
+
+1. Update copy in centralized content/config objects where possible
+2. Keep product truths, price, cadence, and supplement facts intact
+3. Fix stale SEO/OG/Product schema descriptions
+4. Remove outdated search-facing copy
+5. Make each PDP feel more distinct while preserving the family system
+6. Preserve crawlable visible text and FAQ DOM visibility
+7. Do not let any section feel more generic after the edit
+
+WHEN DONE, RETURN:
+1. files changed
+2. exact text fields changed
+3. metadata / OG / Product schema changes
+4. any sticky-bar refinements made
+5. any product-specific section structure changes
+6. any places where shorter fallback copy was required
+7. any remaining layout risks

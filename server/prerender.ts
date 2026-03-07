@@ -582,13 +582,13 @@ function getProductPage(slug: ProductSlug): PageContent {
 
   const productTitles: Record<string, string> = {
     cellunad: "CELLUNAD+ | Daily NAD+ Foundation with 500 mg NR | Age Revive",
-    cellubiome: "CELLUBIOME | Daily Gut-Mito Support | Age Revive",
+    cellubiome: "CELLUBIOME | Daily Gut-Mito Support with Urolithin A | Age Revive",
     cellunova: "CELLUNOVA | 7-Day Monthly Protocol | Age Revive",
   };
   const productDescriptions: Record<string, string> = {
-    cellunad: "CELLUNAD+ is Age Revive's daily NAD+ foundation with 500 mg nicotinamide riboside plus methylation and mitochondrial co-factors. 2 capsules daily.",
-    cellubiome: "CELLUBIOME pairs 500 mg urolithin A with 500 mg enteric tributyrin for daily gut-barrier and mitochondrial support. 2 enteric capsules daily.",
-    cellunova: "CELLUNOVA is a 7-day monthly protocol combining autophagy-related support, senescence-research compounds, and mitochondrial resilience support. Contains wheat.",
+    cellunad: "CELLUNAD+ is Age Revive's daily NAD+ foundation with 500 mg NR plus methylation and mitochondrial co-factors. Non-stimulant. 2 capsules daily.",
+    cellubiome: "CELLUBIOME pairs urolithin A with enteric tributyrin for daily gut-barrier and mitochondrial support. Not a probiotic. 2 enteric capsules daily.",
+    cellunova: "CELLUNOVA is a 7-day monthly protocol for autophagy-related support and mitochondrial resilience. Fully disclosed formula. Contains wheat.",
   };
 
   return {
