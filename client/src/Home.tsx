@@ -62,7 +62,7 @@ const PRODUCTS = [
     slug: 'cellubiome',
     name: 'CELLUBIOME',
     category: 'Daily Gut-Mito Support',
-    role: 'Gut support priority',
+    role: 'Gut support',
     bestFor: 'Urolithin A plus enteric tributyrin for daily gut-mito support.',
     cadence: '2 enteric-coated capsules daily',
     price: '$110.00',
@@ -360,7 +360,7 @@ const ProductSystemSection = ({ onOpenProduct }: { onOpenProduct: (slug: string)
               style={{ border: '1px solid rgba(10,18,32,0.07)', boxShadow: '0 1px 2px rgba(10,18,32,0.04), 0 4px 20px rgba(10,18,32,0.04)' }}
             >
               {p.role && (
-                <div className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-md text-[10px] font-mono font-bold uppercase tracking-[0.10em]" style={{ backgroundColor: p.slug === 'cellunad' ? '#19B3A6' : 'rgba(10,18,32,0.07)', boxShadow: p.slug === 'cellunad' ? '0 2px 8px rgba(25,179,166,0.25)' : 'none', color: p.slug === 'cellunad' ? 'white' : 'rgba(10,18,32,0.60)', border: p.slug === 'cellunad' ? 'none' : '1px solid rgba(10,18,32,0.12)' }}>
+                <div className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-md text-[10px] font-mono font-bold uppercase tracking-[0.10em]" style={{ backgroundColor: '#19B3A6', boxShadow: '0 2px 8px rgba(25,179,166,0.25)', color: 'white' }}>
                   {p.role}
                 </div>
               )}
