@@ -982,7 +982,7 @@ const SHOP_PRODUCTS = [
     id: 'cellunad' as const,
     name: 'CELLUNAD+',
     role: 'Daily NAD+ Foundation',
-    bestFor: 'NAD+ metabolism, methylation support, daily energy baseline',
+    bestFor: 'Daily cellular energy and recovery support. The foundation most people start with.',
     cadence: '2 capsules daily',
     supply: '30-day supply',
     price: 79.99,
@@ -998,7 +998,7 @@ const SHOP_PRODUCTS = [
     id: 'cellubiome' as const,
     name: 'CELLUBIOME',
     role: 'Daily Gut-Mito Support',
-    bestFor: 'Gut barrier integrity, mitochondrial recycling, output stability',
+    bestFor: 'Gut lining and energy-production support. Enteric-coated for targeted delivery.',
     cadence: '2 enteric caps daily',
     supply: '30-day supply',
     price: 110.00,
@@ -1014,7 +1014,7 @@ const SHOP_PRODUCTS = [
     id: 'cellunova' as const,
     name: 'CELLUNOVA',
     role: '7-Day Monthly Protocol',
-    bestFor: 'Autophagy, senescence pathways, structured monthly renewal',
+    bestFor: 'Supports natural cleanup and renewal. 7 days on, 23 days off each month.',
     cadence: '5 caps/day · 7-day cycle',
     supply: '7-day monthly cycle',
     price: 49.99,
@@ -1037,7 +1037,7 @@ const TRUST_ITEMS = [
 
 const COMPARISON_ROWS = [
   { label: 'Role', cellunad: 'Daily NAD+ foundation', cellubiome: 'Daily gut-mito support', cellunova: '7-day monthly protocol' },
-  { label: 'Best For', cellunad: 'NAD+ metabolism, methylation, energy baseline', cellubiome: 'Gut barrier, mito recycling, output stability', cellunova: 'Autophagy, senescence pathways, renewal' },
+  { label: 'Best For', cellunad: 'Daily cellular energy and recovery', cellubiome: 'Gut lining and energy production', cellunova: 'Natural cleanup and renewal' },
   { label: 'Use Pattern', cellunad: 'Daily — ongoing', cellubiome: 'Daily — ongoing', cellunova: '7 days on / 23 days off' },
   { label: 'Serving', cellunad: '2 capsules', cellubiome: '2 enteric capsules', cellunova: '5 capsules' },
   { label: 'Key Actives', cellunad: 'NR 500 mg, TMG, Apigenin + 5 more', cellubiome: 'Urolithin A 500 mg, Tributyrin 500 mg', cellunova: 'Fisetin, Quercetin, Spermidine + 7 more' },
@@ -1137,7 +1137,7 @@ function ShopCatalog() {
                 <span className="text-[11px] md:text-[12px] font-head font-normal uppercase tracking-[-0.01em] text-white mb-0.5" data-testid={`text-hero-name-${p.id}`}>
                   <BrandName name={p.name} />
                 </span>
-                <span className="text-[10px] font-mono uppercase tracking-[0.08em] text-white/40 mb-1">{p.role}</span>
+                <span className="text-[9px] md:text-[10px] font-mono uppercase tracking-[0.06em] md:tracking-[0.08em] text-white/40 mb-1 leading-tight">{p.role}</span>
                 <span className="text-[14px] md:text-[15px] font-sans font-bold text-white" data-testid={`text-hero-price-${p.id}`}>${p.price.toFixed(2)}</span>
                 <span className="text-[10px] font-mono text-white/35">{p.isDaily ? 'daily' : '7-day cycle'}</span>
               </div>
@@ -1166,7 +1166,7 @@ function ShopCatalog() {
           <div className="flex items-center justify-center gap-2 flex-wrap" data-testid="trust-strip-hero">
             {TRUST_ITEMS.map((item, i) => (
               <span key={item} className="flex items-center gap-2">
-                <span className="text-[11px] font-mono uppercase tracking-[0.04em] text-white/45" data-testid={`text-trust-item-${i}`}>{item}</span>
+                <span className="text-[11px] font-mono uppercase tracking-[0.06em] text-white/50" data-testid={`text-trust-item-${i}`}>{item}</span>
                 {i < TRUST_ITEMS.length - 1 && <span className="text-white/20">·</span>}
               </span>
             ))}
@@ -1179,7 +1179,7 @@ function ShopCatalog() {
         <div className="mx-auto max-w-6xl lg:max-w-7xl px-5 md:px-8 py-[72px] md:py-[110px] lg:py-[80px]">
           <div className="text-center mb-8 md:mb-12 lg:mb-10">
             <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold mb-3" style={{ color: '#19B3A6' }}>Where to Start</span>
-            <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-[#0A1220]" data-testid="text-start-here-title">Choose Your Starting Point</h2>
+            <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-[#0A1220]" data-testid="text-start-here-title">Pick Your First Protocol</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 lg:gap-7 mb-10 md:mb-14 lg:mb-10">
@@ -1263,7 +1263,7 @@ function ShopCatalog() {
         <div className="mx-auto max-w-6xl lg:max-w-7xl px-5 md:px-8 py-[72px] md:py-[110px] lg:py-[80px]">
           <div className="text-center mb-8 md:mb-12 lg:mb-10">
             <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-400/60 mb-3">Compare</span>
-            <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white" data-testid="text-comparison-title">Side by Side</h2>
+            <h2 className="text-[22px] md:text-[34px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white" data-testid="text-comparison-title">How They Compare</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 lg:gap-7">
@@ -1421,6 +1421,10 @@ function ShopCatalog() {
       {/* ═══ S5 · TRUST + COMPARISON MATRIX ═══ (SECONDARY_DARK) */}
       <section style={{ background: SECONDARY_DARK }} data-testid="section-trust">
         <div className="mx-auto max-w-6xl lg:max-w-7xl px-5 md:px-8 py-[72px] md:py-[110px] lg:py-[72px]">
+          <div className="text-center mb-6 md:mb-8 lg:mb-6">
+            <span className="inline-block font-mono text-[10px] uppercase tracking-[0.20em] font-bold text-teal-400/60 mb-3">Standards</span>
+            <h2 className="text-[20px] md:text-[28px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white" data-testid="text-trust-title">What We Disclose</h2>
+          </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-5 mb-16 md:mb-20 lg:mb-14" data-testid="trust-grid">
             {[
               { title: 'Full Dose Disclosure', desc: 'Every active ingredient listed with its exact dose. No proprietary blends.' },
@@ -1441,7 +1445,7 @@ function ShopCatalog() {
           </div>
 
           <div className="text-center mb-8">
-            <h2 className="text-[20px] md:text-[28px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white" data-testid="text-matrix-title">How They Compare</h2>
+            <h2 className="text-[20px] md:text-[28px] font-head font-normal uppercase tracking-[-0.03em] leading-tight text-white" data-testid="text-matrix-title">Full Comparison</h2>
           </div>
 
           <div className="hidden md:block" data-testid="comparison-table-desktop">

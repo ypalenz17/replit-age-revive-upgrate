@@ -27,7 +27,7 @@ const PRODUCTS = [
     name: 'CELLUNAD+',
     category: 'Daily NAD+ Foundation',
     role: 'Start here',
-    bestFor: '500 mg NR with methylation and mitochondrial co-factors. The daily foundation most people begin with.',
+    bestFor: 'Daily cellular energy and recovery support. 8 actives, fully disclosed. The foundation most people start with.',
     cadence: '2 capsules daily',
     price: '$79.99',
     subPrice: '$67.99/mo',
@@ -63,7 +63,7 @@ const PRODUCTS = [
     name: 'CELLUBIOME',
     category: 'Daily Gut-Mito Support',
     role: 'Gut support priority',
-    bestFor: 'Urolithin A plus enteric tributyrin for gut-barrier and mitochondrial support. Add when gut health is the focus.',
+    bestFor: 'Gut lining and energy-production support. Two actives, enteric-coated for targeted delivery. Add when gut health is the priority.',
     cadence: '2 enteric-coated capsules daily',
     price: '$110.00',
     subPrice: '$93.50/mo',
@@ -93,7 +93,7 @@ const PRODUCTS = [
     name: 'CELLUNOVA',
     category: '7-Day Monthly Protocol',
     role: 'Periodic layer',
-    bestFor: 'Periodic support for autophagy-related pathways and mitochondrial resilience. Layer in after your daily base is set.',
+    bestFor: 'Supports the body\'s natural cleanup and renewal process. 7 days on, 23 days off. Layer in after your daily base is set.',
     cadence: '7-day monthly cycle',
     price: '$49.99',
     subPrice: '$42.49/mo',
@@ -134,9 +134,9 @@ const TRUST_POINTS = [
   { num: '01', title: 'Full Dose Disclosure', desc: 'Every ingredient and its exact dose printed on the label. No proprietary blends, ever.' },
   { num: '02', title: 'Third-Party Tested', desc: 'Independent lab verification for purity, potency, and heavy metals on every production lot.' },
   { num: '03', title: 'Lot Traceability', desc: 'Certificate of Analysis available for every lot. Request yours any time.' },
-  { num: '04', title: 'No Proprietary Blends', desc: 'What you see is what you get. No hidden formulas, no undisclosed amounts.' },
+  { num: '04', title: 'Clinically Studied Ranges', desc: 'Actives dosed at levels informed by published research. No fairy-dusting, no token amounts.' },
   { num: '05', title: 'Targeted Delivery', desc: 'Enteric-coated capsules where the science calls for it. Precision release, not generic capsules.' },
-  { num: '06', title: 'Documentation Support', desc: 'Full ingredient panels, research references, and protocol guides published on-site.' },
+  { num: '06', title: 'Glass Packaging', desc: 'UV-protected glass bottles. No plastic leaching. Better ingredient preservation over time.' },
 ];
 
 const HOME_FAQS = [
@@ -202,7 +202,7 @@ const SideSheet = ({ isOpen, onClose, title, children }: { isOpen: boolean; onCl
         </button>
         <div className="space-y-8 pt-2">
           <div className="space-y-2">
-            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-ar-teal">Clinical Archive</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ar-teal">Protocol Details</p>
             <h3 className="text-2xl md:text-3xl font-head font-normal tracking-[-0.03em] uppercase text-[#0A1220]">{title}</h3>
           </div>
           <div className="text-[14px] text-[#0A1220]/60 font-medium leading-relaxed space-y-4">
@@ -250,9 +250,9 @@ const Hero = () => {
           <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.16em] mb-4 md:mb-5">Three fully disclosed formulas. One system.</span>
 
           <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase" style={{ fontSize: 'clamp(34px, 8.5vw, 68px)' }}>
-            Daily NAD+ support. Gut resilience.
+            Daily NAD+. Gut resilience.
             <br />
-            <span className="text-white/55">One coordinated system.</span>
+            <span className="text-white/55">Monthly renewal. One system.</span>
           </h1>
 
           <p className="mt-5 md:mt-7 text-[15px] md:text-[17px] text-white/65 font-sans font-normal max-w-[40ch] leading-[1.6] mx-auto lg:mx-0">
@@ -360,7 +360,7 @@ const ProductSystemSection = ({ onOpenProduct }: { onOpenProduct: (slug: string)
               style={{ border: '1px solid rgba(10,18,32,0.07)', boxShadow: '0 1px 2px rgba(10,18,32,0.04), 0 4px 20px rgba(10,18,32,0.04)' }}
             >
               {p.role && (
-                <div className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-md text-[9px] font-mono font-bold uppercase tracking-[0.12em] text-white" style={{ backgroundColor: p.slug === 'cellunad' ? '#19B3A6' : 'rgba(255,255,255,0.12)', boxShadow: p.slug === 'cellunad' ? '0 2px 8px rgba(25,179,166,0.25)' : 'none', color: p.slug === 'cellunad' ? 'white' : 'rgba(10,18,32,0.55)' }}>
+                <div className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-md text-[10px] font-mono font-bold uppercase tracking-[0.10em]" style={{ backgroundColor: p.slug === 'cellunad' ? '#19B3A6' : 'rgba(10,18,32,0.07)', boxShadow: p.slug === 'cellunad' ? '0 2px 8px rgba(25,179,166,0.25)' : 'none', color: p.slug === 'cellunad' ? 'white' : 'rgba(10,18,32,0.60)', border: p.slug === 'cellunad' ? 'none' : '1px solid rgba(10,18,32,0.12)' }}>
                   {p.role}
                 </div>
               )}
@@ -465,7 +465,7 @@ const ScienceSection = () => {
         <div className="text-center mb-12 md:mb-16 lg:mb-10 reveal-stagger">
           <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.20em]">How the system works</span>
           <h2 className="mt-4 font-head font-normal tracking-[-0.03em] uppercase text-white leading-[0.95]" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)' }}>
-            Three roles. One coordinated protocol.
+            Three distinct roles. One protocol.
           </h2>
           <p className="mt-4 text-[14px] md:text-[15px] font-sans text-white/50 max-w-[42ch] mx-auto leading-[1.6]">
             Each formula has a distinct job. Together they cover energy, gut resilience, and periodic renewal.
