@@ -1,0 +1,127 @@
+Update the homepage hero text AND hero type hierarchy.
+
+This is not just a copy swap.
+The current hero has a broken hierarchy:
+- the eyebrow is too small
+- the main headline is too large
+- the headline takes too many lines
+- the subhead is too low-contrast and too weak
+- the whole hero feels visually unbalanced on mobile
+
+Fix the hierarchy while preserving the existing brand direction.
+
+DO NOT:
+- redesign the entire homepage
+- change the hero image in this pass
+- change button styling
+- change CTA destinations
+- change section order
+- change mobile layout structure unless required for clean hierarchy
+- break desktop
+- change schema, metadata, or links
+
+DO:
+- replace the hero text
+- increase the visual importance of the eyebrow
+- reduce the visual dominance of the H1 slightly
+- tighten the H1 line breaks
+- improve the contrast and readability of the subhead
+- rebalance spacing between eyebrow, H1, subhead, CTA row, and trust strip
+- keep the section premium and clean
+
+USE THIS EXACT HERO COPY
+
+Eyebrow:
+Built for the biology of aging.
+
+Main headline:
+Daily NAD+.  
+Mitochondrial and gut support.
+
+Subhead:
+Start with CELLUNAD+, add CELLUBIOME, then layer in CELLUNOVA as a 7-day monthly protocol.
+
+Primary CTA:
+Shop the System
+
+Secondary CTA:
+Explore the Science
+
+Trust strip:
+- Full dose disclosure
+- No proprietary blends
+- Third-party tested
+- Lot traceability
+
+TYPOGRAPHY / LAYOUT FIXES REQUIRED
+
+1. Eyebrow
+- Replace the current eyebrow text with the new line above
+- Increase eyebrow size noticeably so it does not feel tiny
+- Target: about 15% to 25% larger than current
+- Reduce excessive tracking slightly so it reads more premium and less stretched
+- Keep uppercase if that matches the design system
+- Improve contrast slightly so it reads clearly over the hero image
+
+2. H1
+- Replace the current H1 with:
+  Daily NAD+.
+  Mitochondrial and gut support.
+- Reduce H1 size slightly from the current oversized scale
+- Target: about 8% to 12% smaller than current
+- Tighten line-height slightly so it feels more controlled
+- Reduce tracking slightly if needed for cleaner line breaks
+- Keep the H1 to 2 lines on mobile if possible, 3 lines maximum
+- Do not let the H1 dominate the entire hero like a poster
+
+3. Subhead
+- Replace the subhead with the exact line above
+- Improve contrast so it is easier to read
+- Slightly reduce max width so it reads as a composed block
+- Tighten spacing between H1 and subhead
+- Keep the text size readable but secondary to the H1
+
+4. Spacing
+- Reduce the gap between eyebrow and H1
+- Reduce the gap between H1 and subhead
+- Reduce the dead space before the CTA buttons
+- Keep the trust strip closer to the CTA area so it feels connected, not detached
+
+5. Trust strip
+- Keep the 4 trust items listed above
+- Reduce excessive tracking in the trust text
+- Increase readability slightly
+- Keep it compact and premium
+- Make sure it does not feel like footer microcopy
+
+6. Mobile hierarchy goal
+The hero should feel like:
+- one strong premium statement
+- one clear explanatory line
+- one clear CTA row
+- one compact trust strip
+
+It should NOT feel like:
+- a giant poster headline
+- tiny eyebrow + massive H1
+- weak subhead
+- disconnected proof text
+
+RESPONSIVE RULES
+
+Mobile first:
+- make the hero feel clean and balanced on mobile
+- no text overflow
+- no awkward wrapping
+
+Desktop:
+- preserve the same copy and hierarchy logic
+- do not let the eyebrow become tiny again on desktop
+- keep the H1 large but more controlled than it is now
+
+AFTER MAKING THE CHANGE:
+1. verify there is no overflow at 375px mobile width
+2. verify the H1 reads cleanly in 2 to 3 lines max
+3. verify the eyebrow is visibly stronger than before
+4. verify the subhead contrast is improved
+5. report the exact file(s) changed

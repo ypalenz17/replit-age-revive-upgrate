@@ -247,19 +247,19 @@ const Hero = () => {
       <div className="relative z-10 w-full max-w-3xl lg:max-w-6xl mx-auto flex flex-col justify-center text-center lg:text-left px-6 md:px-8 lg:px-12 pt-24 md:pt-40 lg:pt-36 pb-12 md:pb-20 lg:pb-20 min-h-[100dvh] lg:min-h-[72vh]">
         <div className="flex flex-col hero-text w-full items-center lg:items-start">
 
-          <span className="font-mono text-[10px] md:text-[11px] text-ar-teal/80 uppercase tracking-[0.16em] mb-4 md:mb-5">Three fully disclosed formulas. One coordinated system.</span>
+          <span className="font-mono text-[12px] md:text-[13px] lg:text-[13px] text-ar-teal uppercase tracking-[0.10em] mb-3 md:mb-3">Built for the biology of aging.</span>
 
-          <h1 className="font-head font-normal text-white tracking-[-0.04em] leading-[0.88] uppercase" style={{ fontSize: 'clamp(34px, 8.5vw, 68px)' }}>
-            Daily NAD+ support. Gut resilience.
+          <h1 className="font-head font-normal text-white tracking-[-0.03em] leading-[0.90] uppercase" style={{ fontSize: 'clamp(30px, 7.5vw, 60px)' }}>
+            Daily NAD+.
             <br />
-            <span className="text-white/55">One coordinated system.</span>
+            <span className="text-white/50">Mitochondrial and gut support.</span>
           </h1>
 
-          <p className="mt-5 md:mt-7 text-[15px] md:text-[17px] text-white/65 font-sans font-normal max-w-[40ch] leading-[1.6] mx-auto lg:mx-0">
-            Start with CELLUNAD+, add CELLUBIOME, and layer in CELLUNOVA as a 7-day monthly protocol.
+          <p className="mt-4 md:mt-5 text-[15px] md:text-[17px] text-white/70 font-sans font-normal max-w-[38ch] leading-[1.55] mx-auto lg:mx-0">
+            Start with CELLUNAD+, add CELLUBIOME, then layer in CELLUNOVA as a 7-day monthly protocol.
           </p>
 
-          <div className="mt-7 lg:mt-9 flex flex-col sm:flex-row gap-3 w-full max-w-[360px] sm:max-w-none mx-auto lg:mx-0">
+          <div className="mt-5 lg:mt-7 flex flex-col sm:flex-row gap-3 w-full max-w-[360px] sm:max-w-none mx-auto lg:mx-0">
             <a
               href="/shop"
               className={`group relative w-full sm:w-auto px-9 lg:px-11 min-h-[48px] lg:min-h-[52px] flex items-center justify-center bg-ar-teal text-[#0A1220] rounded-lg font-mono font-bold uppercase text-[11px] tracking-[0.14em] overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98] ${focusRing}`}
@@ -278,11 +278,11 @@ const Hero = () => {
             </a>
           </div>
 
-          <div className="mt-10 lg:mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-x-0 gap-y-2" data-testid="hero-trust-strip">
+          <div className="mt-6 lg:mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-x-0 gap-y-2" data-testid="hero-trust-strip">
             {['Full dose disclosure', 'No proprietary blends', 'Third-party tested', 'Lot traceability'].map((item, i) => (
               <span key={item} className="flex items-center">
-                <span className="text-[10px] md:text-[11px] text-white/50 uppercase tracking-[0.10em] font-mono whitespace-nowrap">{item}</span>
-                {i < 3 && <span className="w-px h-[10px] bg-white/12 mx-3 md:mx-4 shrink-0" />}
+                <span className="text-[10px] md:text-[11px] text-white/55 uppercase tracking-[0.08em] font-mono whitespace-nowrap">{item}</span>
+                {i < 3 && <span className="w-px h-[10px] bg-white/15 mx-3 md:mx-4 shrink-0" />}
               </span>
             ))}
           </div>
