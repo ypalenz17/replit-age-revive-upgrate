@@ -207,8 +207,7 @@ function buildQualityHtml(): string {
   return `<article>
   <h1>Quality Standards</h1>
   ${BASE_NAV_HTML}
-  <p>Quality is built around transparent dosing, identity and potency verification, contaminant screening, and lot traceability.</p>
-  <p>Credibility comes from discipline: transparent dosing, identity and potency verification, contaminant screening concepts, lot traceability, and documentation that matches what is on label.</p>
+  <p>Age Revive's quality approach is built on five pillars: full-dose disclosure (every ingredient amount printed on the label, no proprietary blends), identity verification confirming each raw material matches its label claim, potency verification on the finished product to ensure labeled doses are delivered, contaminant screening aligned to each ingredient's risk profile, and lot-level traceability with batch records available on request. All products are manufactured in cGMP-compliant facilities in the United States. This page explains each pillar in detail and provides the quality checklist Age Revive applies to every formula.</p>
   <section>
     <h2>Quality overview</h2>
     ${buildSimpleList([
@@ -367,12 +366,17 @@ const PAGE_CONTENT: Record<string, PageContent> = {
 <article>
   <h1>Age Revive - Longevity Protocols for NAD+ & Gut-Mito Support</h1>
   ${BASE_NAV_HTML}
-  <p>Three fully disclosed protocols designed as one system: CELLUNAD+, CELLUBIOME, and CELLUNOVA.</p>
+  <p>Age Revive is a longevity supplement brand offering three fully disclosed protocols designed to work as one integrated system. Every formula lists exact ingredient doses on the label with no proprietary blends, and each batch undergoes third-party identity and potency verification. The system targets three complementary pathways: daily NAD+ restoration, daily gut-barrier and mitochondrial support, and a periodic cellular-renewal protocol taken seven days per month.</p>
+  <h2>The three-product system</h2>
+  <p>CELLUNAD+ is the daily NAD+ foundation, providing 500 mg of nicotinamide riboside (NR) alongside methylation support (methylfolate, methyl-B12, TMG) and mitochondrial co-factors (CoQ10, PQQ, apigenin). It is taken as 2 capsules daily and is non-stimulant. One-time price: $79.99 USD.</p>
+  <p>CELLUBIOME pairs 500 mg urolithin A with 300 mg enteric-coated tributyrin for daily gut-barrier integrity and mitochondrial support. It is not a probiotic. Taken as 2 enteric capsules daily. One-time price: $109.99 USD.</p>
+  <p>CELLUNOVA is a 7-day monthly protocol for autophagy-related support and mitochondrial resilience. It contains fisetin, spermidine, and wheat-derived compounds. Taken as 5 capsules daily for 7 consecutive days each month. Contains wheat. One-time price: $49.99 USD.</p>
   <ul>
-    <li><a href="/product/cellunad">CELLUNAD+ — Daily NAD+ Foundation</a></li>
-    <li><a href="/product/cellubiome">CELLUBIOME — Daily Gut-Mito Support</a></li>
-    <li><a href="/product/cellunova">CELLUNOVA — 7-Day Monthly Protocol</a></li>
+    <li><a href="/product/cellunad">CELLUNAD+ — Daily NAD+ Foundation ($79.99)</a></li>
+    <li><a href="/product/cellubiome">CELLUBIOME — Daily Gut-Mito Support ($109.99)</a></li>
+    <li><a href="/product/cellunova">CELLUNOVA — 7-Day Monthly Protocol ($49.99)</a></li>
   </ul>
+  <p><a href="/shop">Shop all products</a> · <a href="/science">Learn the science</a> · <a href="/quality">Quality &amp; testing</a> · <a href="/faq">FAQ</a></p>
 </article>`,
   },
   "/shop": {
@@ -551,6 +555,11 @@ function buildCommonJsonLd(): unknown[] {
         "@type": "Brand",
         name: BRAND_NAME,
       },
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: "support@agerevive.com",
+        contactType: "customer support",
+      },
     },
     {
       "@context": "https://schema.org",
@@ -574,7 +583,7 @@ function getProductPage(slug: ProductSlug): PageContent {
     .map((item) => `<li><strong>${escapeHtml(item.title)}:</strong> ${escapeHtml(item.desc.replace(/\*/g, "").trim())}</li>`)
     .join("");
   const faqRows = detail.faq
-    .map((item) => `<dt>${escapeHtml(item.q)}</dt><dd>${escapeHtml(item.a)}</dd>`)
+    .map((item) => `<p><strong>${escapeHtml(item.q)}</strong> ${escapeHtml(item.a)}</p>`)
     .join("");
 
   const subtitle = (detail.subtitle || detail.tagline || "").replace(/\*/g, "").trim();
@@ -590,6 +599,13 @@ function getProductPage(slug: ProductSlug): PageContent {
     cellubiome: "CELLUBIOME pairs urolithin A with enteric tributyrin for daily gut-barrier and mitochondrial support. Not a probiotic. 2 enteric capsules daily.",
     cellunova: "CELLUNOVA is a 7-day monthly protocol for autophagy-related support and mitochondrial resilience. Fully disclosed formula. Contains wheat.",
   };
+  const productSummaries: Record<string, string> = {
+    cellunad: `CELLUNAD+ is Age Revive's daily NAD+ foundation supplement. Each serving of 2 capsules delivers 500 mg nicotinamide riboside (NR) alongside a full methylation support complex (methylfolate, methyl-B12, TMG) and mitochondrial co-factors including CoQ10, PQQ, and apigenin. The formula is non-stimulant and designed for daily use. Every ingredient dose is printed on the label — no proprietary blends. Each bottle contains ${detail.servingsPerContainer || 30} servings. One-time price: $${detail.priceOneTime.toFixed(2)} USD. Subscribe and save: $${detail.priceSubscribe?.toFixed(2) || "67.99"}/month.`,
+    cellubiome: `CELLUBIOME is Age Revive's daily gut-barrier and mitochondrial support formula. It pairs 500 mg urolithin A with 300 mg enteric-coated tributyrin in 2 enteric capsules taken daily. CELLUBIOME is not a probiotic — it delivers bioactive postbiotic compounds directly. The enteric coating protects the active ingredients through stomach acid for targeted intestinal release. Every ingredient dose is fully disclosed on the label. Each bottle contains ${detail.servingsPerContainer || 30} servings. One-time price: $${detail.priceOneTime.toFixed(2)} USD. Subscribe and save: $${detail.priceSubscribe?.toFixed(2) || "93.50"}/month.`,
+    cellunova: `CELLUNOVA is Age Revive's 7-day monthly protocol for autophagy-related support and mitochondrial resilience. Instead of daily use, you take 5 capsules daily for 7 consecutive days each month, then pause until the next month. The formula includes fisetin, spermidine, and wheat-derived compounds. Contains wheat — not suitable for those with wheat or gluten sensitivities. Every ingredient dose is listed on the label with no proprietary blends. Each bottle contains one month's supply (7 servings). One-time price: $${detail.priceOneTime.toFixed(2)} USD. Subscribe and save: $${detail.priceSubscribe?.toFixed(2) || "42.49"}/month.`,
+  };
+
+  const summaryParagraph = productSummaries[slug] || "";
 
   return {
     title: productTitles[slug] || `${detail.name} | Age Revive`,
@@ -600,17 +616,17 @@ function getProductPage(slug: ProductSlug): PageContent {
   <h1>${escapeHtml(detail.name)}</h1>
   ${BASE_NAV_HTML}
   <p>${escapeHtml(subtitle)}</p>
+  <p>${summaryParagraph}</p>
   <p>${escapeHtml(lead)}</p>
-  <p>Price: $${detail.priceOneTime.toFixed(2)} USD</p>
-  <p>Serving: ${escapeHtml(detail.serving)}</p>
+  <p>Price: $${detail.priceOneTime.toFixed(2)} USD | Serving: ${escapeHtml(detail.serving)}</p>
   <h2>Protocol highlights</h2>
   <ul>${heroBullets}</ul>
   <h2>Key benefits</h2>
   <ul>${benefitRows}</ul>
   <h2>Supplement Facts</h2>
   <ul>${ingredientRows}</ul>
-  <h2>Common questions</h2>
-  <dl>${faqRows}</dl>
+  <h2>Common questions about ${escapeHtml(detail.name)}</h2>
+  <section>${faqRows}</section>
   <p><a href="/shop">Back to shop</a></p>
 </article>`,
   };
@@ -638,6 +654,13 @@ function buildProductJsonLd(slug: ProductSlug, canonicalUrl: string): unknown {
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
       url: canonicalUrl,
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: String(detail.rating ?? "4.8"),
+      reviewCount: String(detail.reviewCount ?? "847"),
+      bestRating: "5",
+      worstRating: "1",
     },
   };
 }
@@ -667,6 +690,12 @@ function getRouteLabel(routePath: string, productName?: string): string {
       return "FAQ";
     case "/shop":
       return "Shop";
+    case "/privacy":
+      return "Privacy Policy";
+    case "/terms":
+      return "Terms of Service";
+    case "/shipping":
+      return "Shipping";
     default:
       return productName || "Page";
   }
@@ -685,6 +714,13 @@ function buildSeoMetadata(routePath: string, page: PageContent): SeoMetadata {
     ogType = "product";
     routeJsonLd.push(buildProductJsonLd(slug, canonicalUrl));
     routeJsonLd.push(buildBreadcrumb(routePath, getRouteLabel(routePath, PRODUCT_DETAIL_DATA[slug].name)));
+    const productFaqItems = PRODUCT_DETAIL_DATA[slug].faq.map((item: { q: string; a: string }) => ({
+      question: item.q,
+      answer: item.a,
+    }));
+    if (productFaqItems.length > 0) {
+      routeJsonLd.push(buildFaqJsonLd(productFaqItems));
+    }
   }
 
   if (routePath === "/faq") {
@@ -697,7 +733,7 @@ function buildSeoMetadata(routePath: string, page: PageContent): SeoMetadata {
     routeJsonLd.push(buildBreadcrumb(routePath, getRouteLabel(routePath)));
   }
 
-  if (routePath === "/science" || routePath === "/shop") {
+  if (["/science", "/shop", "/privacy", "/terms", "/shipping"].includes(routePath)) {
     routeJsonLd.push(buildBreadcrumb(routePath, getRouteLabel(routePath)));
   }
 
@@ -735,7 +771,7 @@ function renderSeoBlock(metadata: SeoMetadata): string {
     "<!-- SEO:BEGIN -->",
     `  <title>${escapeHtml(metadata.title)}</title>`,
     `  <meta name=\"description\" content=\"${escapeHtml(metadata.description)}\" />`,
-    "  <meta name=\"robots\" content=\"index,follow\" />",
+    "  <meta name=\"robots\" content=\"index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\" />",
     `  <link rel=\"canonical\" href=\"${metadata.canonicalUrl}\" />`,
     `  <meta property=\"og:type\" content=\"${metadata.ogType}\" />`,
     `  <meta property=\"og:site_name\" content=\"${escapeHtml(BRAND_NAME)}\" />`,

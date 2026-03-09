@@ -48,7 +48,8 @@ export function serveStatic(app: Express) {
       return next();
     }
     try {
-      const injected = injectContent(indexHtml, req.path);
+      const pathname = new URL(req.originalUrl, `http://${req.headers.host || "localhost"}`).pathname;
+      const injected = injectContent(indexHtml, pathname);
       res.setHeader("Content-Type", "text/html; charset=utf-8");
       res.setHeader("Cache-Control", "public, max-age=0, must-revalidate");
       res.send(injected);

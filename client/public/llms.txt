@@ -1,12 +1,17 @@
-https://agerevive.com/
-https://agerevive.com/science
-https://agerevive.com/quality
-https://agerevive.com/faq
-https://agerevive.com/shop
-https://agerevive.com/product/cellunad
-https://agerevive.com/product/cellubiome
-https://agerevive.com/product/cellunova
-https://agerevive.com/privacy
-https://agerevive.com/terms
-https://agerevive.com/shipping
-https://agerevive.com/sitemap.xml
+# Age Revive
+
+> Age Revive is a premium longevity supplement brand offering a three-product cellular health system. Every formula uses clinically studied doses, full label disclosure (no proprietary blends), and third-party testing. The system targets NAD+ metabolism, gut-barrier integrity, mitochondrial renewal, and autophagy-related pathways.
+
+## Pages
+
+> https://agerevive.com/ — Homepage. Overview of the Age Revive three-product longevity system, brand philosophy, and product navigation.
+> https://agerevive.com/science — Science page. Research-backed explanations of NAD+ metabolism, the gut–mitochondria axis, autophagy pathways, and how each product supports cellular health.
+> https://agerevive.com/quality — Quality page. Manufacturing standards, third-party testing protocols, cGMP compliance, and full label disclosure policy.
+> https://agerevive.com/faq — FAQ page. Answers to common questions about products, ingredients, dosing, subscriptions, shipping, and returns.
+> https://agerevive.com/shop — Shop all products. Browse CELLUNAD+, CELLUBIOME, and CELLUNOVA with pricing and quick-add functionality.
+> https://agerevive.com/product/cellunad — CELLUNAD+ product page. Daily NAD+ foundation: 500 mg Nicotinamide Riboside, TMG, active B vitamins, R-lipoic acid, apigenin. 2 capsules/day, 30-day supply. $79.99 one-time / $67.99 subscribe.
+> https://agerevive.com/product/cellubiome — CELLUBIOME product page. Daily gut-barrier and mitochondrial support: 500 mg Urolithin A, 500 mg enteric tributyrin. 2 capsules/day, 30-day supply. $110.00 one-time / $93.50 subscribe.
+> https://agerevive.com/product/cellunova — CELLUNOVA product page. 7-day monthly protocol for autophagy and mitochondrial resilience: trans-resveratrol, quercetin, fisetin, spermidine, NAC, PQQ, astaxanthin, Ca-AKG, EGCG. 5 capsules/day for 7 days. $49.99 one-time / $42.49 subscribe.
+> https://agerevive.com/privacy — Privacy Policy. Data collection, usage, and protection practices.
+> https://agerevive.com/terms — Terms of Service. Purchase terms, disclaimers, and legal conditions.
+> https://agerevive.com/shipping — Shipping & Returns. Delivery timelines, return policy, and refund procedures.

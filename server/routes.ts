@@ -14,6 +14,7 @@ import {
   parseShipStationTrackingUpdate,
 } from "./shipstation";
 import type { Order } from "@shared/schema";
+import { PRODUCT_DETAIL_DATA } from "../client/src/productData";
 
 const require = createRequire(import.meta.url);
 const pbkdf2 = promisify(pbkdf2Callback);
@@ -423,7 +424,109 @@ function extractSearch(originalUrl: string): string {
   return queryStart === -1 ? "" : originalUrl.slice(queryStart);
 }
 
-const SITE_CONTENT = `# Age Revive\n\nCanonical pages:\n- https://agerevive.com/\n- https://agerevive.com/science\n- https://agerevive.com/quality\n- https://agerevive.com/faq\n- https://agerevive.com/shop\n- https://agerevive.com/product/cellunad\n- https://agerevive.com/product/cellubiome\n- https://agerevive.com/product/cellunova\n- https://agerevive.com/privacy\n- https://agerevive.com/terms\n- https://agerevive.com/shipping\n`;
+function buildSiteContentMarkdown(): string {
+  const cn = PRODUCT_DETAIL_DATA.cellunad;
+  const cb = PRODUCT_DETAIL_DATA.cellubiome;
+  const cv = PRODUCT_DETAIL_DATA.cellunova;
+
+  const lines: string[] = [];
+
+  lines.push("# Age Revive — Premium Longevity Supplements");
+  lines.push("");
+  lines.push("## Brand Summary");
+  lines.push("");
+  lines.push(
+    "Age Revive is a premium longevity supplement company offering a three-product cellular health system. " +
+    "Every formula features full-dose disclosure (no proprietary blends), third-party testing, and cGMP manufacturing. " +
+    "The system is designed so each product addresses a distinct biological layer — NAD+ metabolism, gut-mitochondria signaling, " +
+    "and periodic autophagy-related support — and all three stack together for comprehensive cellular coverage."
+  );
+  lines.push("");
+
+  lines.push("## Products");
+  lines.push("");
+
+  lines.push(`### ${cn.name} — ${cn.tagline}`);
+  lines.push("");
+  lines.push(cn.subtitle);
+  lines.push("");
+  lines.push(`- **Role**: Daily NAD+ foundation`);
+  lines.push(`- **Form**: ${cn.form}`);
+  lines.push(`- **Serving**: ${cn.serving}`);
+  lines.push(`- **Servings per container**: ${cn.servingsPerContainer}`);
+  lines.push(`- **Price (one-time)**: $${cn.priceOneTime.toFixed(2)}`);
+  lines.push(`- **Price (subscribe)**: $${cn.priceSubscribe.toFixed(2)}/month`);
+  lines.push(`- **Key Ingredients**: ${cn.supplementFacts.items.map(i => `${i.name} ${i.amount}`).join(", ")}`);
+  lines.push(`- **Rating**: ${cn.rating}/5 (${cn.reviewCount} reviews)`);
+  lines.push("");
+
+  lines.push(`### ${cb.name} — ${cb.tagline}`);
+  lines.push("");
+  lines.push(cb.subtitle);
+  lines.push("");
+  lines.push(`- **Role**: Daily gut-barrier and mitochondrial support`);
+  lines.push(`- **Form**: ${cb.form}`);
+  lines.push(`- **Serving**: ${cb.serving}`);
+  lines.push(`- **Servings per container**: ${cb.servingsPerContainer}`);
+  lines.push(`- **Price (one-time)**: $${cb.priceOneTime.toFixed(2)}`);
+  lines.push(`- **Price (subscribe)**: $${cb.priceSubscribe.toFixed(2)}/month`);
+  lines.push(`- **Key Ingredients**: ${cb.supplementFacts.items.map(i => `${i.name} ${i.amount}`).join(", ")}`);
+  lines.push(`- **Rating**: ${cb.rating}/5 (${cb.reviewCount} reviews)`);
+  lines.push("");
+
+  lines.push(`### ${cv.name} — ${cv.tagline}`);
+  lines.push("");
+  lines.push(cv.subtitle);
+  lines.push("");
+  lines.push(`- **Role**: 7-day monthly autophagy and cellular renewal protocol`);
+  lines.push(`- **Form**: ${cv.form}`);
+  lines.push(`- **Serving**: ${cv.serving}`);
+  lines.push(`- **Servings per container**: ${cv.servingsPerContainer}`);
+  lines.push(`- **Price (one-time)**: $${cv.priceOneTime.toFixed(2)}`);
+  lines.push(`- **Price (subscribe)**: $${cv.priceSubscribe.toFixed(2)}/month`);
+  lines.push(`- **Key Ingredients**: ${cv.supplementFacts.items.map(i => `${i.name} ${i.amount}`).join(", ")}`);
+  lines.push(`- **Rating**: ${cv.rating}/5 (${cv.reviewCount} reviews)`);
+  lines.push(`- **Allergen note**: ${cv.supplementFacts.allergenNote ?? "None"}`);
+  lines.push("");
+
+  lines.push("## System Overview — How the Three Products Work Together");
+  lines.push("");
+  lines.push(
+    "Age Revive's protocol is a layered system. CELLUNAD+ provides daily NAD+ metabolic support as the foundational layer. " +
+    "CELLUBIOME adds daily gut-barrier integrity and mitochondrial renewal via the gut-mitochondria axis. " +
+    "CELLUNOVA is a periodic 7-day monthly protocol that layers autophagy-related and senescence-research compounds on top of the daily foundation. " +
+    "Each product is designed to be effective on its own, but the three together address NAD+ metabolism, gut-mito signaling, and periodic cellular renewal."
+  );
+  lines.push("");
+
+  lines.push("## Key Differentiators");
+  lines.push("");
+  lines.push("- **Full-dose disclosure**: Every ingredient and its exact dose are printed on the label. No proprietary blends.");
+  lines.push("- **Third-party tested**: All products undergo independent third-party testing for purity and contaminants.");
+  lines.push("- **cGMP manufactured**: Produced in cGMP-certified facilities following FDA manufacturing guidelines.");
+  lines.push("- **Clinically studied doses**: Key ingredients are dosed at levels used in published human research.");
+  lines.push("- **No artificial fillers**: Clean formulations with minimal excipients.");
+  lines.push("");
+
+  lines.push("## Canonical Pages");
+  lines.push("");
+  lines.push("- https://agerevive.com/ — Homepage and brand overview");
+  lines.push("- https://agerevive.com/shop — Shop all products");
+  lines.push("- https://agerevive.com/product/cellunad — CELLUNAD+ product page");
+  lines.push("- https://agerevive.com/product/cellubiome — CELLUBIOME product page");
+  lines.push("- https://agerevive.com/product/cellunova — CELLUNOVA product page");
+  lines.push("- https://agerevive.com/science — Science and research references");
+  lines.push("- https://agerevive.com/quality — Quality standards and testing");
+  lines.push("- https://agerevive.com/faq — Frequently asked questions");
+  lines.push("- https://agerevive.com/privacy — Privacy policy");
+  lines.push("- https://agerevive.com/terms — Terms of service");
+  lines.push("- https://agerevive.com/shipping — Shipping and returns policy");
+  lines.push("");
+
+  return lines.join("\n");
+}
+
+const SITE_CONTENT = buildSiteContentMarkdown();
 
 export async function registerRoutes(httpServer: Server, app: Express): Promise<Server> {
   app.use((req, res, next) => {
