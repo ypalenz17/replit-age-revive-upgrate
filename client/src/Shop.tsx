@@ -1123,14 +1123,14 @@ function ShopCatalog() {
 
           <div className="grid grid-cols-3 gap-3 md:gap-6 max-w-3xl lg:max-w-5xl mx-auto mb-14 md:mb-16 lg:mb-12">
             {SHOP_PRODUCTS.map((p) => {
-              const imgH = p.id === 'cellunova' ? 'h-[72px] md:h-[104px]' : 'h-[90px] md:h-[130px]';
+              const imgMaxH = p.id === 'cellunova' ? 'max-h-[72px] md:max-h-[132px]' : 'max-h-[90px] md:max-h-[170px]';
               return (
               <a key={p.id} href={`/product/${p.id}`} className="flex flex-col items-center text-center group cursor-pointer no-underline" data-testid={`hero-product-${p.id}`}>
-                <div className="relative mb-3 transition-transform duration-300 group-hover:scale-105">
+                <div className="relative mb-3 h-[95px] md:h-[180px] flex items-end justify-center transition-transform duration-300 group-hover:scale-105">
                   <img
                     src={p.image}
                     alt={p.name}
-                    className={`${imgH} w-auto object-contain`}
+                    className={`${imgMaxH} w-auto object-contain`}
                     style={{ filter: 'drop-shadow(0 6px 16px rgba(0,0,0,0.45))' }}
                   />
                 </div>
@@ -1279,11 +1279,11 @@ function ShopCatalog() {
                 }}
                 data-testid={`compare-card-${p.id}`}
               >
-                <a href={`/product/${p.id}`} className="flex items-end justify-center pt-5 pb-3 px-4 h-[130px] md:h-[155px] cursor-pointer group/img" data-testid={`link-compare-img-${p.id}`}>
+                <a href={`/product/${p.id}`} className="flex items-end justify-center pt-5 pb-3 px-4 h-[130px] md:h-[170px] cursor-pointer group/img" data-testid={`link-compare-img-${p.id}`}>
                   <img
                     src={p.image}
                     alt={p.name}
-                    className={`${p.id === 'cellunova' ? 'h-[80px] md:h-[96px]' : 'h-[100px] md:h-[120px]'} w-auto object-contain transition-transform duration-300 group-hover/img:scale-105`}
+                    className={`${p.id === 'cellunova' ? 'max-h-[80px] md:max-h-[112px]' : 'max-h-[100px] md:max-h-[140px]'} w-auto object-contain transition-transform duration-300 group-hover/img:scale-105`}
                     style={{ filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.35))' }}
                   />
                 </a>

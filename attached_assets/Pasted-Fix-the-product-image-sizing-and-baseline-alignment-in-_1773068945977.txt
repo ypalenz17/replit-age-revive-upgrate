@@ -1,0 +1,132 @@
+Fix the product image sizing and baseline alignment in the SHOP page product trio / comparison row.
+
+This is a precise UI bug fix.
+Do not redesign the section.
+Do not rewrite the copy.
+Do not change prices, text, or CTA labels.
+Do not move cards around randomly.
+Do not just nudge margins.
+Fix the actual image sizing system and alignment logic.
+
+THE PROBLEM
+
+In the current product row:
+- CELLUBIOME is rendering too small compared with CELLUNAD+
+- CELLUNOVA is the correct smaller bottle/jar relative to the other SKUs, but it is aligned by the top instead of by the bottom
+- all 3 products need to sit on a shared baseline
+- CELLUNAD+ and CELLUBIOME should feel like equal hero SKUs in size
+- CELLUNOVA should be smaller, but grounded on the same bottom baseline
+
+DO NOT:
+- center by top edges
+- apply random margin-top or translateY hacks to only one product
+- change text, card spacing, or section layout
+- make all 3 products the same exact size
+- break mobile
+
+DO:
+- fix the image container sizing logic
+- fix the image render height logic
+- align the products by the bottom, not the top
+- make CELLUNAD+ and CELLUBIOME visually equal in size
+- keep CELLUNOVA smaller than the other two
+- keep all product labels, prices, and cadence text exactly as they are now
+
+REQUIRED VISUAL RESULT
+
+1. CELLUNAD+ and CELLUBIOME
+- must render at the same visual size
+- same displayed height on desktop
+- same visual weight
+- same bottom alignment
+
+2. CELLUNOVA
+- must remain smaller than CELLUNAD+ and CELLUBIOME
+- should sit on the same bottom baseline as the other two
+- should NOT align by the top of the jar
+- should feel intentionally smaller, not shrunken accidentally
+
+TECHNICAL FIX APPROACH
+
+Inspect the exact component and CSS/classes controlling:
+- the product-card image wrapper
+- the image sizing rules
+- object-fit / contain behavior
+- wrapper heights
+- alignment within the card
+
+Then implement this structure:
+
+1. Every product card should have:
+- a shared media wrapper with a fixed desktop height
+- flex alignment to the bottom
+- image anchored to the bottom center
+
+2. Use a desktop-only media wrapper height, approximately:
+- 220px to 240px tall for the trio row
+Pick the value that best fits the current section.
+
+3. Inside that wrapper:
+- use display: flex
+- justify-content: center
+- align-items: flex-end
+
+4. For the actual images, use explicit desktop max-heights:
+- CELLUNAD+ max-height: 170px
+- CELLUBIOME max-height: 170px
+- CELLUNOVA max-height: 132px
+
+These numbers can be adjusted by a few pixels if needed, but keep this exact ratio:
+- CELLUNAD+ = CELLUBIOME
+- CELLUNOVA visibly smaller
+
+5. Keep object-fit:
+- contain
+
+6. Keep width:
+- auto
+- height driven by max-height
+
+7. Ensure image wrappers do NOT align products from the top.
+They must align from the bottom edge.
+
+8. If different source image canvases are causing inconsistent render size, normalize them in CSS by using per-SKU image classes or per-SKU wrapper classes on desktop only.
+
+DESKTOP ONLY RULE
+
+Apply this fix only at desktop breakpoints where this row is displayed in the current format.
+Do not break the mobile card stack.
+Use breakpoint-specific classes/media rules if needed.
+
+REQUIRED CLASS / LOGIC OUTCOME
+
+You should end up with something equivalent to:
+
+- shared media wrapper height
+- bottom-aligned flex container
+- SKU-specific image height classes on desktop
+
+For example conceptually:
+- product-media
+- product-media--cellunad
+- product-media--cellubiome
+- product-media--cellunova
+
+But use the project’s actual class/component structure.
+
+VALIDATION
+
+After the fix:
+- CELLUNAD+ and CELLUBIOME must be the same displayed height
+- CELLUNOVA must be smaller
+- all 3 products must sit on one bottom baseline
+- no random top offsetting
+- text under the products stays untouched
+- mobile layout remains intact
+
+BEFORE FINISHING:
+1. verify at desktop width that the products align by the bottom
+2. verify CELLUBIOME is no longer smaller than CELLUNAD+
+3. verify CELLUNOVA is smaller but grounded correctly
+4. verify no mobile regression
+5. report the exact file(s) changed and exactly what sizing logic was changed
